@@ -284,18 +284,99 @@ info: |
 
 ---
 
-# הגדרת גרף תוכנית (Program Graph)
+# הערכות משתנים (Variable Evaluations)
 
-גרף תוכנית מעל קבוצת משתנים $Var$ הוא גרף מכוון שבו הקשתות מתויגות בתנאים ובפעולות.
+כדי לתאר מצבים התלויים בערכי נתונים, אנו משתמשים בקבוצת משתנים $Var$.
 
-- **משתנים וערכים:** לכל משתנה $x$ יש דומיין $dom(x)$. $Eval(Var)$ היא קבוצת ההערכות (evaluations).
-- **פעולות והשפעות:** ההשפעה של פעולה $\alpha \in Act$ מוגדרת ע"י מיפוי:
-  $$ Effect : Act \times Eval(Var) \to Eval(Var) $$
-  המתאר כיצד הערכה $\eta$ משתנה ע"י ביצוע הפעולה.
 
-- **דוגמה:** עבור $\alpha = (x := y+5)$, אם $\eta(x)=17, \eta(y)=-2$, אז:
-  $$ Effect(\alpha, \eta)(x) = \eta(y)+5 = 3, \quad Effect(\alpha, \eta)(y) = \eta(y) = -2 $$
+- **תחום ערכים:** לכל משתנה $x \in Var$ מוגדר תחום ערכים $dom(x)$ (סופי או אינסופי).
+  - דוגמה: $x$ הוא שלם ($\mathbb{Z}$), $y$ הוא בוליאני ($\{0, 1\}$), $z$ הוא צבע $\{\text{red, green}\}$.
 
-- **מיקומים (Locations):** צמתי הגרף נקראים "מיקומים". יש להם פונקציית בקרה הקובעת אילו מעברים מותנים אפשריים בכל שלב.
+- **הערכה (Evaluation):** פונקציה $\eta$ המתאימה לכל משתנה ערך מהדומיין שלו:
+  $$ \eta : Var \to \bigcup_{x \in Var} dom(x) \quad \text{s.t.} \quad \eta(x) \in dom(x) $$
+
+- **הקבוצה $Eval(Var)$:** אוסף כל ההערכות האפשריות מעל $Var$.
+
+<div class="grid grid-cols-2 gap-28 -mt-3 bg-blue-50 dark:bg-slate-800 p-1 rounded-lg text-[11.5px]">
+<div>
+
+**דוגמה א':** $Var = \{ x, y \}$,
+$dom(x) = \{1, 2\}$, $dom(y) = \{ \text{A, B} \}$
+
+$\eta_1 = \{ x \mapsto 1, y \mapsto \text{A} \}$
+$\eta_2 = \{ x \mapsto 1, y \mapsto \text{B} \}$
+$\eta_3 = \{ x \mapsto 2, y \mapsto \text{A} \}$
+$\eta_4 = \{ x \mapsto 2, y \mapsto \text{B} \}$
+
+בסך הכל: $|Eval(Var)| = 2 \times 2 = 4$.
+
+</div>
+<div>
+
+**דוגמה ב:** $Var = \{ bit \}$,
+$dom(bit) = \{ 0, 1 \}$
+
+$\eta_0 = \{ bit \mapsto 0 \}$
+$\eta_1 = \{ bit \mapsto 1 \}$
+
+בסך הכל: $|Eval(Var)| = 2$.
+
+</div>
+</div>
+
+
+---
+
+# תנאים בוליאניים (Boolean Conditions)
+
+אנו מגדירים את הקבוצה $Cond(Var)$ כאוסף כל התנאים הבוליאניים מעל המשתנים ב-$Var$.
+
+- **הגדרה:** נוסחאות בתחשיב הפסוקים שבהן הסימנים הבסיסיים הם מהצורה $x \in D$.
+  - כאן $x = (x_1, \dots, x_n)$ הוא וקטור של משתנים, ו-$D \subseteq dom(x_1) \times \dots \times dom(x_n)$.
+
+- **דוגמה לתנאי חוקי:**
+  $$ (-3 < x - x' \le 5) \wedge (x \ge 2 \cdot x') \wedge (y = \text{green}) $$
+  כאשר $x, x'$ משתנים שלמים ו-$y$ משתנה עם $dom(y) = \{\text{red, green}\}$.
+
+- **רישום מפושט:** לרוב נשתמש ברישום מתמטי מוכר במקום הרישום הפורמלי היבש.
+  - למשל: נכתוב $3 < x - x' \le 5$ במקום התיאור הקבוצתי המלא $(x, x') \in \{ (n, m) \mid 3 < n - m \le 5 \}$.
+
+
+---
+
+# פעולות ופונקציית ההשפעה (Effect)
+
+השינוי בערכי המשתנים כתוצאה מביצוע פעולה מוגדר פורמלית ע"י פונקציית השפעה.
+
+- **פונקציית ההשפעה:** $Effect : Act \times Eval(Var) \to Eval(Var)$
+  - מתארת כיצד הערכה $\eta$ של המשתנים משתנה לאחר ביצוע פעולה $\alpha$.
+
+- **דוגמה:**
+  נניח $\alpha$ היא הפעולה $x := y + 5$, כאשר $x, y$ משתנים שלמים.
+  אם $\eta$ היא הערכה שבה $\eta(x) = 17$ ו-$\eta(y) = -2$, אז:
+  - $Effect(\alpha, \eta)(x) = \eta(y) + 5 = -2 + 5 = 3$
+  - $Effect(\alpha, \eta)(y) = \eta(y) = -2$
+  ההערכה החדשה $Effect(\alpha, \eta)$ מקצה $3$ ל-$x$ ו-$-2$ ל-$y$.
+
+---
+
+# הגדרה פורמלית: גרף תוכנית (PG)
+
+גרף תוכנית $PG$ מעל קבוצת משתנים $Var$
+עם פונקציות משמעות ידועה לתנאים ולפעולות
+הוא סדורה $(Loc, Act, \rightarrow, Loc_0, g_0)$ כאשר:
+
+- $Loc$ היא קבוצת **מיקומים** (Locations/Nodes).
+
+- $Act$ היא קבוצת **פעולות**.
+- $\rightarrow \subseteq Loc \times Cond(Var) \times Act \times Loc$ הוא יחס המעברים המותנים.
+- $Loc_0 \subseteq Loc$ היא קבוצת המיקומים ההתחלתיים.
+- $g_0 \in Cond(Var)$ הוא התנאי ההתחלתי.
+
+התנאי $g$ נקרא ה"שומר" (Guard) של המעבר.
+
+- **קיצורים:**
+  - נכתוב $\ell \xrightarrow{g \,:\, \alpha} \ell'$ כקיצור ל-$(\ell, g, \alpha, \ell') \in \rightarrow$.
+  - אם $g \equiv \text{true}$, נכתוב פשוט $\ell \xrightarrow{\alpha} \ell'$. אם $\alpha = nothing$, נכתוב פשוט $\ell \xrightarrow{g} \ell'$.
 
 
