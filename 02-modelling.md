@@ -341,6 +341,8 @@ $\eta_1 = \{ bit \mapsto 1 \}$
 - **רישום מפושט:** לרוב נשתמש ברישום מתמטי מוכר במקום הרישום הפורמלי היבש.
   - למשל: נכתוב $3 < x - x' \le 5$ במקום התיאור הקבוצתי המלא $(x, x') \in \{ (n, m) \mid 3 < n - m \le 5 \}$.
 
+- **קיום תנאי (Satisfaction):** נכתוב $\eta \models g$ אם התנאי $g$ מתקיים תחת ההערכה $\eta$.
+
 
 ---
 
@@ -380,3 +382,58 @@ $\eta_1 = \{ bit \mapsto 1 \}$
   - אם $g \equiv \text{true}$, נכתוב פשוט $\ell \xrightarrow{\alpha} \ell'$. אם $\alpha = nothing$, נכתוב פשוט $\ell \xrightarrow{g} \ell'$.
 
 
+---
+
+# סמנטיקה אופרטיבית (Operational Semantics)
+
+ההתנהגות במיקום $\ell \in Loc$ תלויה בהערכת המשתנים הנוכחית $\eta$:
+
+- בחירה **אי-דטרמיניסטית** מתבצעת בין כל המעברים $\ell \xrightarrow{g:\alpha} \ell'$ המקיימים את התנאי $g$ תחת ההערכה $\eta$ .
+
+- ביצוע הפעולה $\alpha$ משנה את הערכת המשתנים לפי פונקציית ההשפעה $Effect(\alpha, \cdot)$.
+- לאחר מכן המערכת עוברת למיקום החדש $\ell'$.
+- אם אין מעבר אפשרי (כלומר, אף "שומר" אינו מתקיים), המערכת **נעצרת**.
+
+<div class="flex justify-center mt-8">
+  <img src="/operational_semantics_comic.png" class="h-44 rounded-lg shadow-lg" />
+</div>
+
+---
+
+# דוגמה: פריסת גרף תוכנית (Robot 2x2)
+
+עבור לוח $2 \times 2$ (כלומר $x,y \in \{0, 1\}$), המערכת נפרסת למצבים מהצורה $\langle \ell, (x, y) \rangle$.
+
+<div class="flex justify-center mt-5">
+<TransitionSystemD3  
+  :width="700" :height="350"
+  :states="[
+    { id: 'l00', text: '$\\langle load, (0,0) \\rangle$', initial: true, x: 350, y: 50, width: 120 },
+    { id: 'd00', text: '$\\langle diag, (0,0) \\rangle$', x: 550, y: 150, width: 120 },
+    { id: 'c00', text: '$\\langle cart, (0,0) \\rangle$', x: 231, y: 150, width: 120 },
+    { id: 'c10', text: '$\\langle cart, (1,0) \\rangle$', x: 31, y: 150, width: 120 },
+    { id: 'c01', text: '$\\langle cart, (0,1) \\rangle$', x: 232, y:  248, width: 120 },
+    { id: 'c11', text: '$\\langle cart, (1,1) \\rangle$', x: 32, y: 249, width: 120 },
+    { id: 'd11', text: '$\\langle diag, (1,1) \\rangle$', x: 550, y: 300, width: 120 },
+]"
+  :transitions="[
+    { source: 'l00', target: 'c00', action: '$\\tau$' },
+    { source: 'l00', target: 'd00', action: '$\\tau$' },
+    { source: 'c00', target: 'l00', action: '$\\tau$' },
+    { source: 'd00', target: 'l00', action: '$\\tau$' },
+    { source: 'c10', target: 'c00', action: '$E$', curve: 0.15 },
+    { source: 'c00', target: 'c10', action: '$W$', curve: 0.15 },
+    { source: 'c11', target: 'c01', action: '$E$', curve: 0.15 },
+    { source: 'c01', target: 'c11', action: '$W$', curve: 0.15 },
+    { source: 'c10', target: 'c11', action: '$S$', curve: 0.15 },
+    { source: 'c11', target: 'c10', action: '$N$', curve: 0.15 },
+    { source: 'c00', target: 'c01', action: '$S$', curve: 0.15 },
+    { source: 'c01', target: 'c00', action: '$N$', curve: 0.15 },
+    { source: 'd11', target: 'd00', action: '$NE$', curve: 0.5 }
+  ]"
+/>
+</div>
+
+<div class="mt-4 text-sm bg-blue-50 dark:bg-slate-800 p-2 rounded">
+**הסבר:** כל מצב ב-TS הוא שילוב של מיקום בגרף (למשל $cart$) והערכה של המשתנים (למשל $x=1, y=0$). המעברים נקבעים לפי השומרים בגרף והשפעת הפעולות.
+</div>
