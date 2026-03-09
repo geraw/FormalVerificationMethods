@@ -27,7 +27,7 @@ info: |
 
 ---
 
-# מבוא למערכות מקביליות
+# מבוא 
 
 בפרקים הקודמים הראינו כיצד למדל מעגלי חומרה ותוכניות מחשב סדרתיות כמערכות מעברים.
 אך במציאות, רוב מערכות החומרה והתוכנה הן **מקביליות (parallel)** במהותן.
@@ -58,4 +58,79 @@ $$TS = TS_1 \,\|\, TS_2 \,\|\, \dots \,\|\, TS_n$$
   (אפשר לשים סוגריים במקומות שונים)
 
 - שימוש בקומוטטיביות ובאסוציאטיביות מאפשר לתאר מערכות מורכבות בצורה מובנית (Structured), שבה כל רכיב עצמו יכול להיות מורכב מתת-רכיבים מקבילים.
+
+
+---
+
+# מקביליות ושזירה (Interleaving)
+
+פרדיגמה נפוצה למידול מערכות מקביליות היא **שזירה (Interleaving)**.
+
+- במודל זה, אנו מפשטים את העובדה שהמערכת מורכבת מרכיבים עצמאיים. 
+
+- **המצב הגלובלי** של המערכת – המורכב מהמצבים האינדיבידואליים של הרכיבים – משחק תפקיד מרכזי.
+
+- הפעולות של רכיבים עצמאיים ממוזגות ("נשזרות") אלו באלו.
+
+- מקביליות מיוצגת על ידי **בחירה אי-דטרמיניסטית** בין הפעילויות של התהליכים הפועלים בו-זמנית.
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="flex items-top justify-center space-x-6 my-10 rtl:space-x-reverse scale-110">
+  <span class="text-xl text-slate-400 font-serif">...</span>
+  <div class="bg-gradient-to-br from-blue-600 to-blue-700 text-white px-6 py-3 rounded-xl shadow-xl border-2 border-blue-400/30 font-bold transition-all hover:scale-105">
+    <div class="text-[10px] uppercase opacity-80 mb-1">
+    צעד של רובוט א'
+    </div>
+  </div>
+  <span class="text-xl text-slate-400 font-serif">...</span>
+  <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white px-6 py-3 rounded-xl shadow-xl border-2 border-blue-300/30 font-bold transition-all hover:scale-105">
+    <div class="text-[10px] uppercase opacity-80 mb-1">
+    צעד של רובוט ב'
+    </div>
+  </div>
+  <span class="text-xl text-slate-400 font-serif">...</span>
+</div>
+
+
+<!-- Comic Panel 1: Robot A moves -->
+<div class="absolute bottom-25 left-87 w-20 h-30" 
+     style="background-image: url('/interleaving_comic.png'); background-size: 200% 100%; background-position: left center;">
+</div>
+
+<!-- Comic Panel 2: Robot B moves -->
+<div class="absolute bottom-25 right-87 w-20 h-30" 
+     style="background-image: url('/interleaving_comic.png'); background-size: 200% 100%; background-position: right center;">
+</div>
+
+---
+
+# מבט ה"מעבד היחיד" (One-Processor View)
+
+פרדיגמת השזירה מבוססת על ההשקפה שרק מעבד אחד זמין, ועליו הפעולות של התהליכים השונים משתלבות זו בזו.
+
+- זהו **מושג מידול** בלבד: הוא תקף גם אם התהליכים רצים על מעבדים שונים פיזית.
+
+- (בשלב ראשון) לא מניחים הנחות לגבי הסדר שבו התהליכים השונים מבוצעים.
+
+<div class="flex items-center justify-center space-x-4 my-8 rtl:space-x-reverse">
+  <span class="text-2xl text-slate-400">...</span>
+  <div class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md font-bold text-sm border border-blue-400/20">צעד של רובוט א'</div>
+  <div class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md font-bold text-sm border border-blue-300/20">צעד של רובוט ב'</div>
+  <div class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md font-bold text-sm border border-blue-400/20">צעד של רובוט א'</div>
+  <div class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md font-bold text-sm border border-blue-400/20">צעד של רובוט א'</div>
+  <div class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md font-bold text-sm border border-blue-300/20">צעד של רובוט ב'</div>
+  <span class="text-2xl text-slate-400">...</span>
+</div>
+
+- דוגמה: עבור שני תהליכים עצמאיים $P$ ו-$Q$, אלו הם שלושה רצפי שזירה אפשריים:
+    1. $\dots, P, Q, P, Q, P, Q, Q, Q, P, \dots$
+    2. $\dots, P, P, Q, P, P, Q, P, P, Q, \dots$
+    3. $\dots, P, Q, P, P, Q, P, P, P, Q, \dots$
+
+- בשלב זה,נניח שכל שזירה היא אפשרית, גם אם היא "לא הוגנת" (למשל מצב שבו $Q$ אף פעם לא רץ). <br>
+  נושא ההגינות (Fairness) יידון בהמשך.
 
