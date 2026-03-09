@@ -470,7 +470,7 @@ $$\frac{\text{premise (הנחה)}}{\text{conclusion (מסקנה)}}$$
     { source: 'cart', target: 'load', action: '$x=0 \\land y=0$', actionX:-20 },
     { source: 'diag', target: 'load', action: '$x=0 \\land y=0$', actionX:20 },
     { source: 'cart', target: 'cart', action: '$x<1 :  E$ <br> $x>0 :  W$ <br> $y<1 :  N$ <br> $y>0 :  S$', loopDirection: '90deg', actionWidth: 150, actionHeight: 40, actionY: 30 },  
-    { source: 'diag', target: 'diag', action: '$x<1 :  NE$ <br> $x>0 :  NW$ <br> $y<1 :  SE$ <br> $y>0 :  SW$', loopDirection: '90deg', actionWidth: 150, actionHeight: 40, actionY: 30 },
+    { source: 'diag', target: 'diag', action: '$x<1 \\land y<1 :  NE$ <br> $x>0 \\land y<1 :  NW$ <br> $x<1 \\land y>0 :  SE$ <br> $x>0 \\land y>0 :  SW$', loopDirection: '90deg', actionWidth: 150, actionHeight: 40, actionY: 30 },
   ]"
 />
 </div>
