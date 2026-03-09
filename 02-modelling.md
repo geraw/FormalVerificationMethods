@@ -391,12 +391,57 @@ $\eta_1 = \{ bit \mapsto 1 \}$
 - בחירה **אי-דטרמיניסטית** מתבצעת בין כל המעברים $\ell \xrightarrow{g:\alpha} \ell'$ המקיימים את התנאי $g$ תחת ההערכה $\eta$ .
 
 - ביצוע הפעולה $\alpha$ משנה את הערכת המשתנים לפי פונקציית ההשפעה $Effect(\alpha, \cdot)$.
+
 - לאחר מכן המערכת עוברת למיקום החדש $\ell'$.
+
 - אם אין מעבר אפשרי (כלומר, אף "שומר" אינו מתקיים), המערכת **נעצרת**.
 
-<div class="flex justify-center mt-8">
-  <img src="/operational_semantics_comic.png" class="h-44 rounded-lg shadow-lg" />
-</div>
+- נגדיר את הסמנטיקה באופן פורמלי על ידי תרגום למערכת מעברים.
+  - מצב במערכת המעברים יהיה מקום של התוכנית + השמה למשתנים
+  
+  - המעברים יסמלצו את מה שכתבנו למעלה
+
+
+<img src="/operational_semantics_comic.png" class="absolute bottom-10 left-20 h-60 rounded-lg shadow-lg" />
+
+---
+
+# סמנטיקה של גרף תוכנית כמערכת מעברים
+
+מערכת המעברים $TS(PG)$ של גרף תוכנית $PG = (Loc, Act, Effect, \to, Loc_0, g_0)$ מעל קבוצת משתנים $Var$ היא השמיניה $(S, Act, \to, I, AP, L)$ כאשר:
+
+- $S = Loc \times Eval(Var)$
+- יחס המעברים $\to \subseteq S \times Act \times S$ מוגדר על ידי הכלל הבא:
+  $$\frac{\ell \xrightarrow{g:\alpha} \ell' \quad \eta \models g}{\langle \ell, \eta \rangle \xrightarrow{\alpha} \langle \ell', Effect(\alpha, \eta) \rangle}$$
+
+- $I = \{ \langle \ell, \eta \rangle \mid \ell \in Loc_0, \eta \models g_0 \}$
+- $AP = Loc \cup Cond(Var)$
+- $L(\langle \ell, \eta \rangle) = \{ \ell \} \cup \{ g \in Cond(Var) \mid \eta \models g \}$
+
+
+
+> **הערה:**
+> ההגדרה של $TS(PG)$ קובעת קבוצה גדולה מאוד של פסוקים אטומיים ($AP$). אך בדרך כלל, רק חלק קטן מ-$AP$ נחוץ לצורך ניסוח תכונות המערכת הרלוונטיות. נשתמש בחופש לבחור רק את הפסוקים הדרושים בהקשר הנתון.
+
+---
+
+# סמנטיקה אופרטיבית מבנית (SOS)
+
+בהגדרה הקודמת, יחס המעברים הוגדר באמצעות <br>
+מה שנקרא **SOS-notation**  (Structured Operational Semantics).
+
+התבנית:
+$$\frac{\text{premise (הנחה)}}{\text{conclusion (מסקנה)}}$$
+
+- יש לקרוא זאת כך: **אם** הטענה מעל הקו (ההנחה) מתקיימת, **אזי** גם הטענה מתחת לקו (המסקנה) מתקיימת.
+
+- טענות "אם... אז..." כאלו נקראות **כללי היסק** (Inference Rules).
+
+- אם ההנחה היא תמיד אמת (טאוטולוגיה), ניתן להשמיט אותה ואת הקו המפריד. <br>
+  במקרה כזה, הכלל נקרא **אקסיומה** (Axiom).
+
+ביטויים כמו "היחס $\to$ מוגדר על ידי הכללים הבאים" משמעותם הגדרה אינדוקטיבית של היחס.
+
 
 ---
 
@@ -404,36 +449,72 @@ $\eta_1 = \{ bit \mapsto 1 \}$
 
 עבור לוח $2 \times 2$ (כלומר $x,y \in \{0, 1\}$), המערכת נפרסת למצבים מהצורה $\langle \ell, (x, y) \rangle$.
 
-<div class="flex justify-center mt-5">
+למען הפשטות, זאת רק גרסא מוקטנת בלי משתנה לסוללה ובלי החלפת כיווני תנועה שאינה עוברת בעמדת הטעינה.
+
+<div class="flex items-center justify-center mt-10 scale-[0.8] origin-top">
+
+
+<!-- Program Graph (Right) -->
+<div class="flex-1 border-r border-slate-200 dark:border-slate-700 pl-20">
+<h4 class="text-center mb-4 font-bold text-slate-500 underline underline-offset-4 decoration-slate-300">גרף התוכנית PG</h4>
 <TransitionSystemD3  
-  :width="700" :height="350"
+  :width="300" :height="350"
   :states="[
-    { id: 'l00', text: '$\\langle load, (0,0) \\rangle$', initial: true, x: 350, y: 50, width: 120 },
-    { id: 'd00', text: '$\\langle diag, (0,0) \\rangle$', x: 550, y: 150, width: 120 },
-    { id: 'c00', text: '$\\langle cart, (0,0) \\rangle$', x: 231, y: 150, width: 120 },
-    { id: 'c10', text: '$\\langle cart, (1,0) \\rangle$', x: 31, y: 150, width: 120 },
-    { id: 'c01', text: '$\\langle cart, (0,1) \\rangle$', x: 232, y:  248, width: 120 },
-    { id: 'c11', text: '$\\langle cart, (1,1) \\rangle$', x: 32, y: 249, width: 120 },
-    { id: 'd11', text: '$\\langle diag, (1,1) \\rangle$', x: 550, y: 300, width: 120 },
-]"
+    { id: 'load', text: 'load', initial: true, initialDirection: 'top', x: 150, y: 50, width: 80 },
+    { id: 'cart', text: 'cart', x: 60, y: 150, width: 80 },
+    { id: 'diag', text: 'diag', x: 240, y: 150, width: 80 }
+  ]"
+  :transitions="[
+    { source: 'load', target: 'cart' },
+    { source: 'load', target: 'diag' },
+    { source: 'cart', target: 'load', action: '$x=0 \\land y=0$', actionX:-20 },
+    { source: 'diag', target: 'load', action: '$x=0 \\land y=0$', actionX:20 },
+    { source: 'cart', target: 'cart', action: '$x<1 :  E$ <br> $x>0 :  W$ <br> $y<1 :  N$ <br> $y>0 :  S$', loopDirection: '90deg', actionWidth: 150, actionHeight: 40, actionY: 30 },  
+    { source: 'diag', target: 'diag', action: '$x<1 :  NE$ <br> $x>0 :  NW$ <br> $y<1 :  SE$ <br> $y>0 :  SW$', loopDirection: '90deg', actionWidth: 150, actionHeight: 40, actionY: 30 },
+  ]"
+/>
+</div>
+
+
+<!-- Transition System (Left) -->
+<div class="flex-1 border-r border-slate-200 dark:border-slate-700 pl-20">
+<h4 class="text-center mb-4 font-bold text-slate-500 underline underline-offset-4 decoration-slate-300">מערכת המעברים TS(PG)</h4>
+<TransitionSystemD3  
+  :width="450" :height="350"
+  :states="[
+    { id: 'l00', text: '$\\langle load, (0,0) \\rangle$', initial: true, initialDirection: 'top', x: 225, y: 50, width: 120 },
+    { id: 'c00', text: '$\\langle cart, (0,0) \\rangle$', x: 125, y: 150, width: 120 },
+    { id: 'c10', text: '$\\langle cart, (1,0) \\rangle$', x: -50,  y: 150, width: 120 },
+    { id: 'c01', text: '$\\langle cart, (0,1) \\rangle$', x: 125, y: 250, width: 120 },
+    { id: 'c11', text: '$\\langle cart, (1,1) \\rangle$', x: -50,  y: 250, width: 120 },
+    { id: 'd00', text: '$\\langle diag, (0,0) \\rangle$', x: 325, y: 150, width: 120 },
+    { id: 'd11', text: '$\\langle diag, (1,1) \\rangle$', x: 325, y: 250, width: 120 },
+  ]"
   :transitions="[
     { source: 'l00', target: 'c00', action: '$\\tau$' },
     { source: 'l00', target: 'd00', action: '$\\tau$' },
     { source: 'c00', target: 'l00', action: '$\\tau$' },
     { source: 'd00', target: 'l00', action: '$\\tau$' },
-    { source: 'c10', target: 'c00', action: '$E$', curve: 0.15 },
-    { source: 'c00', target: 'c10', action: '$W$', curve: 0.15 },
-    { source: 'c11', target: 'c01', action: '$E$', curve: 0.15 },
-    { source: 'c01', target: 'c11', action: '$W$', curve: 0.15 },
-    { source: 'c10', target: 'c11', action: '$S$', curve: 0.15 },
-    { source: 'c11', target: 'c10', action: '$N$', curve: 0.15 },
-    { source: 'c00', target: 'c01', action: '$S$', curve: 0.15 },
-    { source: 'c01', target: 'c00', action: '$N$', curve: 0.15 },
-    { source: 'd11', target: 'd00', action: '$NE$', curve: 0.5 }
+    { source: 'c10', target: 'c00', action: '$W$',  curve: 0.15, actionY: 10 },
+    { source: 'c00', target: 'c10', action: '$E$',  curve: 0.15, actionY: -10  },
+    { source: 'c11', target: 'c01', action: '$W$',  curve: 0.15, actionY: 10 },
+    { source: 'c01', target: 'c11', action: '$E$',  curve: 0.15, actionY: -10 },
+    { source: 'c10', target: 'c11', action: '$S$',  curve: 0.15, actionX: -5 },
+    { source: 'c11', target: 'c10', action: '$N$',  curve: 0.15, actionX: 5 },
+    { source: 'c00', target: 'c01', action: '$S$',  curve: 0.15, actionX: -5 },
+    { source: 'c01', target: 'c00', action: '$N$',  curve: 0.15, actionX: 5 },
+    { source: 'd00', target: 'd11', action: '$SW$', curve: 0.25, actionX: -5 },
+    { source: 'd11', target: 'd00', action: '$NE$', curve: 0.25, actionX: 5 },
   ]"
 />
 </div>
 
-<div class="mt-4 text-sm bg-blue-50 dark:bg-slate-800 p-2 rounded">
-**הסבר:** כל מצב ב-TS הוא שילוב של מיקום בגרף (למשל $cart$) והערכה של המשתנים (למשל $x=1, y=0$). המעברים נקבעים לפי השומרים בגרף והשפעת הפעולות.
+
+
+</div>
+
+<div class="mt-0 text-sm bg-blue-50 dark:bg-slate-800 p-2 rounded">
+
+**הסבר:** כל מצב ב-TS הוא שילוב של מיקום בגרף (למשל $cart$) והערכה של המשתנים (למשל $x=1, y=0$). המעברים ב-TS נגזרים מהשומרים בגרף (למשל הכלל לתנועה $E$) ומהשפעת הפעולות על המשתנים.
+
 </div>
