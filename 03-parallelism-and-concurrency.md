@@ -441,10 +441,8 @@ $$\alpha \equiv x := 2x \hspace{1cm} \beta \equiv x := x+1$$
 - **שימו לב**: באופן כללי, $TS(PG_1 \,|||\, PG_2) \neq TS(PG_1) \,|||\, TS(PG_2)$.
   - השזירה ברמת ה-PG שומרת על הקשר בין הפעולות למשתנים.
 
-<div class="flex justify-center -mt-20">
-  <div class="bg-white p-4 rounded-xl shadow-lg border border-slate-100">
-    <img src="/images/pg_interleaving_comic_he.png" class="h-75" />
-  </div>
+<div class="flex justify-center -mt-10">
+    <img src="/images/pg_interleaving_comic_he.png" class="w-70" style="clip-path: inset(25% 0 25% 0);" />
 </div>
 
 ---
@@ -590,11 +588,218 @@ $PG_2$
 * פרשנות האי-דטרמיניזם ב-$TS(PG_1 \,|||\, PG_2)$ - אי-דטרמיניזם במצב של מערכת המעברים יכול לנבוע מ:
   - **בחירה פנימית**: בחירה אי-דטרמיניסטית בתוך $PG_1$ או $PG_2$ עצמם.
 
-  - **שזירה של פעולות לא קריטיות**: הסדר אינו משנה לתוצאה הסופית.
+  - **שזירה של פעולות לא קריטיות**: הסדר אינו משנה לתוצאה הסופית. 
   - **תחרות (Contention)**: התנגשות בין פעולות קריטיות (Concurrency).
 
 <div class="mt-4 p-4 bg-blue-50 border-r-4 border-blue-500 text-blue-900">
 
 📌 <b>שימו לב:</b> פעולה לא קריטית של $PG_1$ יכולה להתבצע במקביל לכל פעולה של $PG_2$ מבלי להשפיע על נכונותה. לעומת זאת, פעולות קריטיות דורשות <b>אסטרטגיית תזמון</b> (Scheduling) כדי ליישב את התחרות על המשתנה המשותף.
 </div>
+
+---
+
+# על אטומיות (Atomicity)
+
+<div class="text-sm my-2 ml-4">
+
+- בתהליך המידול של מערכת מקבילית באמצעות אופרטור השזירה, נקודת ההנחה המכרעת היא שהפעולות $\alpha \in Act$  **בלתי ניתנות לחלוקה**.
+  - מערכת המעברים מבטאת רק את האפקט של הפעולה $\alpha$ לאחר שבוצעה במלואה.
+  - אם פעולה מוגדרת ע"י רצף של פקודות, ההנחה היא שהמימוש **אינו מאפשר שזירה** עם תהליכים מקביליים אחרים.
+
+- דוגמה לפעולה אטומית מורכבת:
+נניח פעולה $\alpha$ המוגדרת ע"י רצף הפקודות:
+
+
+<div class="flex justify-center -my-4 text-5 mb-4">
+
+`x := x + 1; y := 2x + 1; if x < 12 then z := (x - z)^2 * y fi`
+
+</div>
+
+
+ האפקט הפורמלי $Effect(\alpha, \eta)$ מחושב כיחידה אחת:
+</div>
+<div class="text-left dir-ltr text-sm -my-8 ml-4">
+
+$Effect(\alpha, \eta)(x) = \eta(x) + 1$<br><br>
+$Effect(\alpha, \eta)(y) = 2(\eta(x) + 1) + 1$<br><br>
+$Effect(\alpha, \eta)(z) = \begin{cases} (\eta(x) + 1 - \eta(z))^2 \cdot (2(\eta(x) + 1) + 1) & \text{if } \eta(x) + 1 < 12 \\ \eta(z) & \text{otherwise} \end{cases}$
+</div>
+
+<div class="mt-8 p-4 bg-orange-50 border-r-4 border-orange-500 text-orange-900 text-sm">
+
+ניתן להצהיר על רצפי פקודות כאטומיים ע"י הצבתם כתווית בודדת על קשת בגרף התוכנית. בטקסט התוכנית, נקיף בלוקים כאלו בסוגריים משולשים: 
+$\langle \text{statement}_1; \dots; \text{statement}_n \rangle$.
+</div>
+
+---
+
+# דוגמה: מניעה הדדית (Mutual Exclusion) עם סמפורים
+
+נבחן שני תהליכים $P_i$ (עבור $i=1, 2$) מהצורה הבאה:
+
+<div class="flex justify-center my-4" dir="ltr">
+<div class="border border-slate-300 p-6 rounded bg-white shadow-sm text-lg leading-relaxed w-fit text-left">
+$$
+\begin{array}{ll}
+P_i & \mathbf{loop \ forever} \\
+& \vdots \qquad \qquad \qquad \qquad (* \text{ noncritical actions } *) \\
+& \mathit{request} \\
+& \mathit{critical \ section} \\
+& \mathit{release} \\
+& \vdots \qquad \qquad \qquad \qquad (* \text{ noncritical actions } *) \\
+& \mathbf{end \ loop}
+\end{array}
+$$
+</div>
+</div>
+
+- התהליכים משתמשים בסמפור בינארי משותף $y$:
+  - $y=1$: הסמפור חופשי.
+  - $y=0$: הסמפור תפוס ע"י אחד התהליכים.
+
+--
+
+<div class="grid grid-cols-2 gap-x-10 scale-[0.8] origin-top">
+
+<!-- PG1 -->
+<div class="flex flex-col items-center">
+<h4 class="font-bold text-slate-500 mb-2">$PG_1$:</h4>
+<TransitionSystemD3  
+  :width="250" :height="220"
+  :states="[
+    { id: 'n1', text: '$noncrit_1$', initial: true, initialDirection: 'top', x: 125, y: 20, width: 100, rx:10 },
+    { id: 'w1', text: '$wait_1$', x: 125, y: 100, width: 80, rx:10 },
+    { id: 'c1', text: '$crit_1$', x: 125, y: 190, width: 80, rx:10 }
+  ]"
+  :transitions="[
+    { source: 'n1', target: 'w1', action: ' ' },
+    { source: 'w1', target: 'c1', action: '$y > 0 : y := y-1$', actionX: 60 },
+    { source: 'c1', target: 'n1', action: '$y := y+1$', actionX: -70, type: 'curved', curve: -1 }
+  ]"
+/>
+</div>
+
+<!-- PG2 -->
+<div class="flex flex-col items-center">
+<h4 class="font-bold text-slate-500 mb-2">$PG_2$:</h4>
+<TransitionSystemD3  
+  :width="250" :height="220"
+  :states="[
+    { id: 'n2', text: '$noncrit_2$', initial: true, initialDirection: 'top', x: 125, y: 20, width: 100, rx:10 },
+    { id: 'w2', text: '$wait_2$', x: 125, y: 100, width: 80, rx:10 },
+    { id: 'c2', text: '$crit_2$', x: 125, y: 190, width: 80, rx:10 }
+  ]"
+  :transitions="[
+    { source: 'n2', target: 'w2', action: ' ' },
+    { source: 'w2', target: 'c2', action: '$y > 0 : y := y-1$', actionX: 60 },
+    { source: 'c2', target: 'n2', action: '$y := y+1$', actionX: -70, type: 'curved', curve: -60 }
+  ]"
+/>
+</div>
+
+</div>
+
+<div class="-mt-12 text-sm bg-orange-50 p-3 rounded border border-orange-200">
+💡 גרף התוכנית המשולב $PG_1 \,|||\, PG_2$ מורכב מ-9 מיקומים. 
+ביניהם נמצא המיקום הלא-רצוי $\langle crit_1, crit_2 \rangle$, המייצג מצב שבו שני התהליכים נמצאים בו-זמנית בקטע הקריטי.
+</div>
+
+---
+
+# גרף התוכנית המשולב $PG_1 \,|||\, PG_2$
+
+
+<div class="grid grid-cols-[1fr_1fr_1fr] gap-x-0 items-center scale-[0.8] origin-top mr-5">
+
+<!-- PG2 on the Left -->
+<div class="flex flex-col items-center -mr-40">
+<h4 class="font-bold text-slate-500 mb-6 text-xl">
+
+$PG_2$
+</h4>
+<TransitionSystemD3  
+  :width="150" :height="350"
+  :states="[
+    { id: 'n2', text: '$noncrit_2$', initial: true, initialDirection: 'top', x: 75, y: 0, width: 110, rx:8, color: '#fffde7' },
+    { id: 'w2', text: '$wait_2$', x: 75, y: 160-50, width: 100, rx:8, color: '#fffde7' },
+    { id: 'c2', text: '$crit_2$', x: 75, y: 270-50, width: 100, rx:8, color: '#fffde7' }
+  ]"
+  :transitions="[
+    { source: 'n2', target: 'w2', action: ' ' },
+    { source: 'w2', target: 'c2', action: '$y > 0 : y := y-1$', actionX: 0, actionWidth: 140 },
+    { source: 'c2', target: 'n2', action: '$y := y+1$', actionX: -15, type: 'curved', curve: -0.8, actionWidth: 100 }
+  ]"
+/>
+</div>
+
+<!-- Interleaved PG in the Center -->
+<div class="flex flex-col items-center">
+<h4 class="font-bold text-slate-500 mb-4 text-2xl">
+
+$PG_1 \,|||\, PG_2$
+</h4>
+<TransitionSystemD3  
+  :width="800" :height="500"
+  :states="[
+    { id: 'nn', text: '$\\langle n_1, n_2 \\rangle$', initial: true, initialDirection: 'top', x: 400, y: 0, width: 100, rx:8, color: '#fffde7' },
+    { id: 'wn', text: '$\\langle w_1, n_2 \\rangle$', x: 280, y: 150-50, width: 90, rx:8, color: '#fffde7' },
+    { id: 'nw', text: '$\\langle n_1, w_2 \\rangle$', x: 520, y: 150-50, width: 90, rx:8, color: '#fffde7' },
+    { id: 'cn', text: '$\\langle c_1, n_2 \\rangle$', x: 180, y: 260-50, width: 90, rx:8, color: '#fffde7' },
+    { id: 'ww', text: '$\\langle w_1, w_2 \\rangle$', x: 400, y: 260-50, width: 90, rx:8, color: '#fffde7' },
+    { id: 'nc', text: '$\\langle n_1, c_2 \\rangle$', x: 620, y: 260-50, width: 90, rx:8, color: '#fffde7' },
+    { id: 'cw', text: '$\\langle c_1, w_2 \\rangle$', x: 280, y: 370-50, width: 90, rx:8, color: '#fffde7' },
+    { id: 'wc', text: '$\\langle w_1, c_2 \\rangle$', x: 520, y: 370-50, width: 90, rx:8, color: '#fffde7' },
+    { id: 'cc', text: '$\\langle c_1, c_2 \\rangle$', x: 400, y: 460-50, width: 100, rx:8, color: '#fffde7' }
+  ]"
+  :transitions="[
+    { source: 'nn', target: 'wn', action: ' ' },
+    { source: 'nn', target: 'nw', action: ' ' },
+    { source: 'wn', target: 'cn', action: '$y > 0 : y := y-1$', actionX: 20, actionWidth: 150 },
+    { source: 'wn', target: 'ww', action: ' ' },
+    { source: 'nw', target: 'nc', action: '$y > 0 : y := y-1$', actionX: -20, actionWidth: 150 },
+    { source: 'nw', target: 'ww', action: ' ' },
+    { source: 'cn', target: 'nn', action: '$y := y+1$', type: 'curved', curve: -0.6, actionWidth: 120, actionX: -10, actionY: 0 },
+    { source: 'cn', target: 'cw', action: ' ' },
+    { source: 'ww', target: 'cw', action: '$y > 0 : y := y-1$', actionX: -10, actionY: 10, actionWidth: 140 },
+    { source: 'ww', target: 'wc', action: '$y > 0 : y := y-1$', actionX: 10, actionY: 10, actionWidth: 140 },
+    { source: 'nc', target: 'nn', action: '$y := y+1$', type: 'curved', curve: 0.6, actionWidth: 120, actionX: 10, actionY: 0 },
+    { source: 'nc', target: 'wc', action: ' ' },
+    { source: 'cw', target: 'cc', action: ' ', type: 'curved', curve: 0.3 },
+    { source: 'wc', target: 'cc', action: ' ', type: 'curved', curve: -0.3 },
+    { source: 'cc', target: 'cn', action: '$y := y+1$', type: 'curved', curve: -0.6, actionX: -10, actionY: 0, actionWidth: 110 },
+    { source: 'cc', target: 'nc', action: '$y := y+1$', type: 'curved', curve: 0.6, actionX: 10, actionY: 0, actionWidth: 110 }
+  ]"
+/>
+</div>
+
+<!-- PG1 on the Right -->
+<div class="flex flex-col items-center">
+<h4 class="font-bold text-slate-500 mb-6 text-xl">
+
+$PG_1$
+</h4>
+<TransitionSystemD3  
+  :width="150" :height="350"
+  :states="[
+    { id: 'n1', text: '$noncrit_1$', initial: true, initialDirection: 'top', x: 75, y: 0, width: 110, rx:8, color: '#fffde7' },
+    { id: 'w1', text: '$wait_1$', x: 75, y: 160-50, width: 100, rx:8, color: '#fffde7' },
+    { id: 'c1', text: '$crit_1$', x: 75, y: 270-50, width: 100, rx:8, color: '#fffde7' }
+  ]"
+  :transitions="[
+    { source: 'n1', target: 'w1', action: ' ' },
+    { source: 'w1', target: 'c1', action: '$y > 0 : y := y-1$', actionX: 0, actionWidth: 140 },
+    { source: 'c1', target: 'n1', action: '$y := y+1$', actionX: -15, type: 'curved', curve: -0.8, actionWidth: 100 }
+  ]"
+/>
+</div>
+
+</div>
+
+---
+
+# ניתוח מערכת המעברים $TS(PG_1 \,|||\, PG_2)$:
+- **מרחב המצבים**: כולל 18 מצבים גלובליים (שילוב של 9 מיקומים וערכי $y \in \{0, 1\}$).
+- **אי-דטרמיניזם**: במצבים כמו $\langle n_1, n_2, y=1 \rangle$, שני התהליכים יכולים לפעול במקביל – האי-דטרמיניזם מייצג **שזירה של פעולות לא קריטיות**.
+- **מניעה הדדית (Mutual Exclusion)**: ניתן להיווכח כי המצב $\langle crit_1, crit_2, y=\dots \rangle$ **אינו נגיש** (Unreachable) במערכת המעברים, ולכן דרישת המניעה ההדדית מתקיימת.
 
