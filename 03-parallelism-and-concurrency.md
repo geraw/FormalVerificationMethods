@@ -914,3 +914,49 @@ $PG_2$
 
 </div>
 </div>
+
+---
+
+# מערכת המעברים של אלגוריתם פטרסון ($TS_{pet}$)
+
+החלק הנגיש של מערכת המעברים $TS(PG_1 \,|||\, PG_2)$ חושף את המנגנון המונע כניסה סימולטנית.
+
+<div class="flex justify-center scale-[0.75] origin-top -mb-30 -mt-5">
+<TransitionSystemD3  
+  :width="1000" :height="400"
+  :states="[
+    { id: 'nn2', text: '$\\langle n_1, n_2, x=2 \\rangle$', initial: true, initialDirection: 'top', x: 350, y: 50, width: 140, rx:8, color: '#fffde7' },
+    { id: 'nn1', text: '$\\langle n_1, n_2, x=1 \\rangle$', initial: true, initialDirection: 'top', x: 650, y: 50, width: 140, rx:8, color: '#fffde7' },
+    { id: 'wn2', text: '$\\langle w_1, n_2, x=2 \\rangle$', x: 350, y: 150, width: 140, rx:8, color: '#fffde7' },
+    { id: 'nw1', text: '$\\langle n_1, w_2, x=1 \\rangle$', x: 650, y: 150, width: 140, rx:8, color: '#fffde7' },
+    { id: 'cn2', text: '$\\langle c_1, n_2, x=2 \\rangle$', x: 150, y: 150, width: 140, rx:8, color: '#fffde7' },
+    { id: 'nc1', text: '$\\langle n_1, c_2, x=1 \\rangle$', x: 850, y: 150, width: 140, rx:8, color: '#fffde7' },
+    { id: 'ww1', text: '$\\langle w_1, w_2, x=1 \\rangle$', x: 350, y: 250, width: 140, rx:8, color: '#fffde7' },
+    { id: 'ww2', text: '$\\langle w_1, w_2, x=2 \\rangle$', x: 650, y: 250, width: 140, rx:8, color: '#fffde7' },
+    { id: 'cw1', text: '$\\langle c_1, w_2, x=1 \\rangle$', x: 350, y: 350, width: 140, rx:8, color: '#fffde7' },
+    { id: 'wc2', text: '$\\langle w_1, c_2, x=2 \\rangle$', x: 650, y: 350, width: 140, rx:8, color: '#fffde7' }
+  ]"
+  :transitions="[
+    { source: 'nn2', target: 'wn2', action: ' ' },
+    { source: 'nn2', target: 'nw1', action: ' ' },
+    { source: 'nn1', target: 'wn2', action: ' ' },
+    { source: 'nn1', target: 'nw1', action: ' ' },
+    { source: 'wn2', target: 'ww1', action: ' ' },
+    { source: 'wn2', target: 'cn2', action: ' ' },
+    { source: 'nw1', target: 'ww2', action: ' ' },
+    { source: 'nw1', target: 'nc1', action: ' ' },
+    { source: 'cn2', target: 'nn2', action: ' ', type: 'curved', curve: -0.3 },
+    { source: 'cn2', target: 'cw1', action: ' ', type: 'curved', curve: 0.3 },
+    { source: 'nc1', target: 'nn1', action: ' ', type: 'curved', curve: 0.3 },
+    { source: 'nc1', target: 'wc2', action: ' ', type: 'curved', curve: -0.3 },
+    { source: 'ww1', target: 'cw1', action: ' ' },
+    { source: 'ww2', target: 'wc2', action: ' ' },
+    { source: 'cw1', target: 'nw1', action: ' '},
+    { source: 'wc2', target: 'wn2', action: ' ' }
+  ]"
+/>
+</div>
+
+- **מרחב מצבים נגיש**: השמטנו מצבים לא נגישים שבהם למשל $x=1$ בזמן ש-$P_1$ רק התחיל לחכות.
+
+- **הוכחת מניעה הדדית**: ניתן לראות כי מצבים מהצורה $\langle crit_1, crit_2, \dots \rangle$ **אינם נגישים** (Unreachable). 
