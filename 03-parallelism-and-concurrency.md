@@ -430,3 +430,150 @@ $$\alpha \equiv x := 2x \hspace{1cm} \beta \equiv x := x+1$$
 
 ---
 
+# שזירה של גרפי תוכנית (Interleaving of PGs)
+
+כדי לטפל בתוכניות מקביליות עם **משתנים משותפים**, נגדיר אופרטור שזירה ברמת גרפי התוכנית (במקום ישירות על מערכות מעברים).
+
+- השזירה של גרפי תוכנית $PG_1$ ו-$PG_2$ מסומנת ב-$PG_1 \,|||\, PG_2$.
+
+- מערכת המעברים של התוצאה, $TS(PG_1 \,|||\, PG_2)$, מתארת נאמנה מערכת מקבילית שמרכיביה מתקשרים באמצעות משתנים משותפים.
+
+- **שימו לב**: באופן כללי, $TS(PG_1 \,|||\, PG_2) \neq TS(PG_1) \,|||\, TS(PG_2)$.
+  - השזירה ברמת ה-PG שומרת על הקשר בין הפעולות למשתנים.
+
+<div class="flex justify-center -mt-20">
+  <div class="bg-white p-4 rounded-xl shadow-lg border border-slate-100">
+    <img src="/images/pg_interleaving_comic_he.png" class="h-75" />
+  </div>
+</div>
+
+---
+
+# הגדרה פורמלית: שזירה של גרפי תוכנית
+
+יהיו $PG_i = (Loc_i, Act_i, Effect_i, \rightarrow_i, Loc_{0,i}, g_{0,i})$ עבור $i=1, 2$ שני גרפי תוכנית מעל משתנים $Var_i$. 
+גרף התוכנית $PG_1 \,|||\, PG_2$ מעל $Var_1 \cup Var_2$ מוגדר ע"י:
+
+$PG_1 \,|||\, PG_2 = (Loc_1 \times Loc_2, Act_1 \uplus Act_2, Effect, \rightarrow, Loc_{0,1} \times Loc_{0,2}, g_{0,1} \land g_{0,2})$
+
+כאשר $\rightarrow$ מוגדר ע"י חוקי הגזירה:
+
+$$
+\frac{ \ell_1 \xrightarrow{g:\alpha}_1 \ell'_1 }{ \langle \ell_1, \ell_2 \rangle \xrightarrow{g:\alpha} \langle \ell'_1, \ell_2 \rangle } \quad \text{and} \quad \frac{ \ell_2 \xrightarrow{g:\alpha}_2 \ell'_2 }{ \langle \ell_1, \ell_2 \rangle \xrightarrow{g:\alpha} \langle \ell_1, \ell'_2 \rangle }
+$$
+
+ו-$Effect(\alpha, \eta) = Effect_i(\alpha, \eta)$ אם $\alpha \in Act_i$.
+
+---
+
+# משתנים משותפים לעומת מקומיים
+
+בגרף התוכנית המשולב $PG_1 \,|||\, PG_2$:
+
+1. **משתנים משותפים (Shared/Global Variables)**: המשתנים שנמצאים ב-$Var_1 \cap Var_2$. 
+   - אלו משתנים ששני התהליכים יכולים לקרוא ולכתוב אליהם.
+   - הם המנגנון המאפשר תקשורת בין התהליכים.
+
+2. **משתנים מקומיים (Local Variables)**: 
+   - $Var_1 \setminus Var_2$ הם המשתנים המקומיים של $PG_1$.
+   - $Var_2 \setminus Var_1$ הם המשתנים המקומיים של $PG_2$.
+
+<div class="mt-8 p-4 bg-orange-50 border-l-4 border-orange-400 text-orange-800">
+💡 השזירה ברמת ה-PG מאפשרת לנו למדל נכון "מצבי תחרות" (Race Conditions) וגישה הדדית למשאבים, שכן כל צעד ב-TS המאוחד מעדכן את מצב המשתנים המשותף בצורה עקבית.
+</div>
+
+
+---
+
+# דוגמה: שזירה עם משתנה משותף
+
+נבחן שתי פקודות הפועלות על אותו משתנה $x$ המתחיל עם הערך 3: $(x:=2) \,|||\, (x:=x+1)$
+
+<div class="grid grid-cols-2 gap-x-20 gap-y-4 scale-[0.7] origin-top -mt-5">
+
+<!-- Individual PGs -->
+<div class="flex flex-col items-center">
+<h4 class="font-bold text-slate-500 mb-2 underline">
+
+$PG_1$
+</h4>
+<TransitionSystemD3  
+  :width="200" :height="120"
+  :states="[
+    { id: 'l1',  text: '$\\ell_1$', initial: true, initialDirection: 'top', x: 100, y: 0, width: 40 },
+    { id: 'l1p', text: '$\\ell_1\'$', x: 100, y: 90, width: 40 }
+  ]"
+  :transitions="[{ source: 'l1', target: 'l1p', action: '$x := 2 \\cdot x$',  actionY: -5 }]"
+/>
+</div>
+
+<div class="flex flex-col items-center">
+<h4 class="font-bold text-slate-500 mb-2 underline">
+
+$PG_2$
+</h4>
+<TransitionSystemD3  
+  :width="200" :height="120"
+  :states="[
+    { id: 'l2',  text: '$\\ell_2$', initial: true, initialDirection: 'top', x: 100, y: 0, width: 40 },
+    { id: 'l2p', text: '$\\ell_2\'$', x: 100, y: 90, width: 40 }
+  ]"
+  :transitions="[{ source: 'l2', target: 'l2p', action: '$x := x+1$', actionY: -5 }]"
+/>
+</div>
+
+<!-- PG Interleaving -->
+<div class="flex flex-col items-center">
+<h4 class="font-bold text-slate-600 mb-2">
+
+גרף התוכנית $PG_1 \,|||\, PG_2$
+</h4>
+<TransitionSystemD3  
+  :width="400" :height="100"
+  :states="[
+    { id: 'start', text: '$\\ell_1, \\ell_2$', initial: true, initialDirection: 'top', x: 200, y: 0,  width: 80, rx: 10 },
+    { id: 'l1',    text: '$\\ell_1\', \\ell_2$', x: 80,  y: 80, width: 80, rx: 10 },
+    { id: 'l2',    text: '$\\ell_1, \\ell_2\'$', x: 320, y: 80, width: 80, rx: 10 },
+    { id: 'done',  text: '$\\ell_1\', \\ell_2\'$', x: 200, y: 160, width: 80, rx: 10 }
+  ]"
+  :transitions="[
+    { source: 'start', target: 'l1',   action: '$x := 2 \\cdot x$', actionX: -30 },
+    { source: 'start', target: 'l2',   action: '$x := x+1$', actionX: 30 },
+    { source: 'l1',    target: 'done', action: '$x := x+1$', actionX: -30 },
+    { source: 'l2',    target: 'done', action: '$x := 2 \\cdot x$', actionX: 30 }
+  ]"
+/>
+</div>
+
+<!-- TS Unfolding -->
+<div class="flex flex-col items-center"> 
+<h4 class="font-bold text-blue-700 mb-2">
+
+מערכת המעברים $TS(PG_1 \,|||\, PG_2)$
+</h4>
+<TransitionSystemD3  
+  :width="400" :height="100"
+  :states="[
+    { id: 's3', text: '$\\langle \\ell_1,   \\ell_2 \\rangle,   x{=}3$', initial: true, initialDirection: 'top', x: 200, y: 0,  width: 120, rx: 10 },
+    { id: 's6', text: '$\\langle \\ell_1\', \\ell_2 \\rangle,   x{=}6$', x: 100, y: 80,    width: 120, rx: 10 },
+    { id: 's4', text: '$\\langle \\ell_1,   \\ell_2\' \\rangle, x{=}4$', x: 300, y: 80,    width: 120, rx: 10 },
+    { id: 's7', text: '$\\langle \\ell_1\', \\ell_2\' \\rangle, x{=}7$', x: 100, y: 160,   width: 120, rx: 10 },
+    { id: 's8', text: '$\\langle \\ell_1\', \\ell_2\' \\rangle, x{=}8$', x: 300, y: 160,   width: 120, rx: 10 }
+  ]"
+  :transitions="[
+    { source: 's3', target: 's6', action: ' ' },
+    { source: 's3', target: 's4', action: ' ' },
+    { source: 's6', target: 's7', action: ' ' },
+    { source: 's4', target: 's8', action: ' ' }
+  ]"
+/>
+</div>
+
+</div>
+
+<div class="-mt-20 text-sm">
+
+  האי-דטרמיניזם במצב ההתחלתי מייצג את ה<b>תחרות (Contention)</b> על המשתנה המשותף $x$. <br>
+  שימו לב שהתוצאה הסופית תלויה בסדר הביצוע: $x=7$ או $x=8$.
+</div>
+
