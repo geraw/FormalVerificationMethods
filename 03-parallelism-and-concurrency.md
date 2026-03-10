@@ -960,3 +960,34 @@ $PG_2$
 - **מרחב מצבים נגיש**: השמטנו מצבים לא נגישים שבהם למשל $x=1$ בזמן ש-$P_1$ רק התחיל לחכות.
 
 - **הוכחת מניעה הדדית**: ניתן לראות כי מצבים מהצורה $\langle crit_1, crit_2, \dots \rangle$ **אינם נגישים** (Unreachable). 
+
+---
+
+# אטומיות וסוגיית סדר ההשמות
+
+הערות על המימוש והנחות המודל באלגוריתם פטרסון.
+
+-  אטומיות כפישוט (Abstraction) 
+    - הסימון $\langle b_i := true; x := j \rangle$ מעיד על פעולה **אטומית** (בלתי ניתנת לחלוקה).
+
+    - במציאות, הפעולות מבוצעות בזו אחר זו באופן לא אטומי.
+
+    - אלגוריתם פטרסון מבטיח מניעה הדדית **גם ללא אטומיות**, כל עוד נשמר הסדר: קודם $b_i$ ואז $x$.
+
+
+- אם נהפוך את הסדר (קודם $x$ ואז $b_i$), המניעה ההדדית **תופר**:
+
+
+$$
+\begin{array}{ll}
+1. & \langle n_1, n_2, x=1, b_1=F, b_2=F \rangle \text{ (start)} \\
+2. & \langle n_1, req_2, x=1, b_1=F, b_2=F \rangle \text{ (} P_2 \text{ performs } x:=1\text{)} \\
+3. & \langle req_1, req_2, x=2, b_1=F, b_2=F \rangle \text{ (} P_1 \text{ performs } x:=2\text{)} \\
+4. & \langle wait_1, req_2, x=2, b_1=T, b_2=F \rangle \text{ (} P_1 \text{ performs } b_1:=T\text{)} \\
+5. & \langle crit_1, req_2, x=2, b_1=T, b_2=F \rangle \text{ (} P_1 \text{ enters as } b_2=F\text{)} \\
+6. & \langle crit_1, wait_2, x=2, b_1=T, b_2=T \rangle \text{ (} P_2 \text{ performs } b_2:=T\text{)} \\
+7. & \langle crit_1, crit_2, x=2, b_1=T, b_2=T \rangle \text{ (} P_2 \text{ enters as } x=2\text{)} \quad \leftarrow \text{Collision!}
+\end{array}
+$$
+
+</div>
