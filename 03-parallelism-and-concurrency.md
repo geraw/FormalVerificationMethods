@@ -988,6 +988,87 @@ $$
 6. & \langle crit_1, wait_2, x=2, b_1=T, b_2=T \rangle \text{ (} P_2 \text{ performs } b_2:=T\text{)} \\
 7. & \langle crit_1, crit_2, x=2, b_1=T, b_2=T \rangle \text{ (} P_2 \text{ enters as } x=2\text{)} \quad \leftarrow \text{Collision!}
 \end{array}
+$$ 
+
+---
+
+# סנכרון בלחיצת יד (Handshaking Synchronization)
+
+עד כה ראינו שזירה (Interleaving) ותוכניות עם משתנים משותפים. כעת נבחן מנגנון תקשורת **סינכרוני**.
+
+### מהי "לחיצת יד" (Handshaking)?
+תהליכים המתקשרים באמצעות לחיצת יד חייבים לעשות זאת באופן סינכרוני:
+- אינטראקציה מתרחשת רק אם **שני הצדדים** משתתפים בה בו-זמנית.
+- הם "לוחצים ידיים" כדי להעביר מידע או לסנכרן צעדים.
+
+<br>
+
+### פעולות לחיצת יד ($H$):
+נגדיר קבוצת פעולות $H \subseteq Act$ המייצגות לחיצות יד (כאשר $\tau \notin H$):
+1.  **פעולות סינכרוניות ($h \in H$):** יכולות להתבצע רק אם שני התהליכים מוכנים לבצע את אותה פעולה $h$ בו-זמנית.
+2.  **פעולות עצמאיות ($a \in Act \setminus H$):** מבוצעות באופן אוטונומי בשזירה (Interleaving), ללא תלות בתהליך השני.
+
+<div class="mt-2 flex justify-center">
+  <div class="p-4 bg-emerald-50 border-r-4 border-emerald-500 text-emerald-900 rounded shadow-sm">
+    💡 בתפיסה זו, אנו מתמקדים בעצם קיום הסנכרון (Synchronization) ולאו דווקא בתוכן ההודעה המועברת.
+  </div>
+</div>
+
+<img src="/handshaking_robots_comic.png" class="absolute top-30 left-10 w-60" />
+
+---
+
+# קבוצת לחיצות יד ריקה
+
+<img src="/independent_robots.png" class="absolute bottom-0 right-70 w-100" />
+
+כאשר קבוצת לחיצות היד $H$ היא ריקה, כל הפעולות של התהליכים המשתתפים יכולות להתבצע באופן אוטונומי.
+במקרה זה, מנגנון לחיצת היד מצטמצם לשזירה רגילה:
+
+$$TS_1 \parallel_{\emptyset} TS_2 = TS_1 \, ||| \,  TS_2$$
+
+---
+
+# תכונות של אופרטור לחיצת היד ($\|_H$)
+
+אופרטור לחיצת היד מגדיר סנכרון בין מערכות מעברים, ולו מספר תכונות חשובות:
+
+- **קומוטטיביות:** האופרטור הוא קומוטטיבי: $TS_1 \|_H TS_2 = TS_2 \|_H TS_1$.
+- **אסוציאטיביות:** האופרטור **אינו** אסוציאטיבי באופן כללי (עבור קבוצות $H$ שונות).
+- אולם, עבור קבוצה קבועה $H$, האופרטור הוא **כן** אסוציאטיבי.
+
+### לחיצת יד רב-צדדית (Multiway Handshaking)
+ניתן להרחיב את המנגנון לסנכרון של $n$ תהליכים:
+$$TS = TS_1 \|_H TS_2 \|_H \dots \|_H TS_n$$
+כאשר $H \subseteq Act_1 \cap \dots \cap Act_n$ היא תת-קבוצה של פעולות המשותפות לכלל המערכות.
+
+### מידול שידור (Broadcasting)
+סנכרון רב-צדדי מתאים במיוחד למידול **שידור (Broadcasting)**: 
+מצב שבו תהליך אחד משדר נתון למספר תהליכים אחרים שקולטים אותו בו-זמנית ("לוחצים ידיים" כולם יחד).
+
+---
+
+# סנכרון זוגי (Pairwise Handshaking)
+
+במקרים רבים, תהליכים מתקשרים בזוגות על בסיס פעולות המשותפות להם.
+
+### הגדרה וכללים
+עבור $n$ מערכות מעברים, $TS_i$ ו-$TS_j$ מסתנכרנות מעל קבוצת הפעולות $H_{i,j} = Act_i \cap Act_j$.
+המצב הגלובלי מוגדר כ-$\langle s_1, \dots, s_n \rangle$.
+
+**חוק 1: פעולה אוטונומית (עבור $\alpha \notin \bigcup H_{i,j}$)**
+פעולות שאינן דורשות לחיצת יד מבוצעות באופן עצמאי:
+
+$$
+\frac{s_i \xrightarrow{\alpha} s'_i}{\langle s_1, \dots, s_i, \dots, s_n \rangle \xrightarrow{\alpha} \langle s_1, \dots, s'_i, \dots, s_n \rangle}
 $$
 
-</div>
+**חוק 2: פעולה סינכרונית (עבור $\alpha \in H_{i,j}$)**
+שני תהליכים חייבים לבצע את הפעולה המשותפת יחד:
+
+$$
+\frac{s_i \xrightarrow{\alpha} s'_i \wedge s_j \xrightarrow{\alpha} s'_j}{\langle s_1, \dots, s_i, \dots, s_j, \dots, s_n \rangle \xrightarrow{\alpha} \langle s_1, \dots, s'_i, \dots, s'_j, \dots, s_n \rangle}
+$$
+
+### סיכום
+החוק הראשון מאפשר ביצוע פעולות בשזירה (Interleaving), בעוד החוק השני דורש תיאום מוחלט בין המשתתפים בלחיצת היד.
