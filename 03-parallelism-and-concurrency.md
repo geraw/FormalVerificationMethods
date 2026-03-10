@@ -361,3 +361,72 @@ $$
 />
 </div>
 </div>
+
+
+---
+
+# מגבלות השזירה הפשוטה ($|||$)
+
+אופרטור השזירה ($|||$) מתאים למצבים בהם תתי-התהליכים פועלים באופן **בלתי-תלוי לחלוטין**, ללא העברת הודעות או מאבקים על משתנים משותפים.
+
+אך עבור רוב המערכות המקביליות, האופרטור הזה הוא "פשוט מדי". 
+
+**דוגמה: שזירה של תהליכים מתחרים**
+נבחן שתי פקודות המשתמשות באותו משתנה $x$ (בהתחלה $x=3$):
+$$\alpha \equiv x := 2x \hspace{1cm} \beta \equiv x := x+1$$
+
+אופרטור השזירה הפשוט בונה את מכפלת מרחבי המצבים באופן "עיוור", מה שיוצר מצב לא עקבי כמו $\langle x=6, x=4 \rangle$:
+
+<div class="flex justify-center items-center scale-75 -mt-17 space-x-4 rtl:space-x-reverse">
+
+<!-- TS1 -->
+<div class="flex flex-col items-center">
+<TransitionSystemD3  
+  :width="120" :height="150"
+  :states="[{ id: 's3', text: 'x=3', initial: true, initialDirection: 'top', x: 60, y: 30, width: 70 }, { id: 's6', text: 'x=6', x: 60, y: 120, width: 70 }]"
+  :transitions="[{ source: 's3', target: 's6', action: '$\\alpha$' }]"
+/>
+</div>
+
+<div class="text-3xl font-bold text-slate-400 mx-2">|||</div>
+
+<!-- TS2 -->
+<div class="flex flex-col items-center">
+<TransitionSystemD3  
+  :width="120" :height="150"
+  :states="[{ id: 's3b', text: 'x=3', initial: true, initialDirection: 'top', x: 60, y: 30, width: 70 }, { id: 's4', text: 'x=4', x: 60, y: 120, width: 70 }]"
+  :transitions="[{ source: 's3b', target: 's4', action: '$\\beta$' }]"
+/>
+</div>
+
+<div class="text-3xl font-bold text-slate-400 mx-2">=</div>
+
+<!-- Product TS -->
+<div class="flex flex-col items-center">
+<TransitionSystemD3  
+  :width="400" :height="200"
+  :states="[
+    { id: 's33', text: 'x=3, x=3', initial: true, initialDirection: 'top', x: 200, y: 30, width: 100 },
+    { id: 's63', text: 'x=6, x=3', x: 80, y: 100,  width: 100 },
+    { id: 's34', text: 'x=3, x=4', x: 320, y: 100, width: 100 },
+    { id: 's64', text: 'x=6, x=4', x: 200, y: 170, width: 100, stroke: 'red', strokeWidth: 3 }
+  ]"
+  :transitions="[
+    { source: 's33', target: 's63', action: '$\\alpha$' },
+    { source: 's33', target: 's34', action: '$\\beta$' },
+    { source: 's63', target: 's64', action: '$\\beta$' },
+    { source: 's34', target: 's64', action: '$\\alpha$' }
+  ]"
+/>
+</div>
+
+</div>
+
+<div class="-mt-8 ">
+
+הבעיה: האופרטור לא מזהה שהמצבים המקומיים $x=6$ ו-$x=4$ הם **מאורעות מתנגשים** כי הם ניגשים לאותו משאב.
+
+</div>
+
+---
+

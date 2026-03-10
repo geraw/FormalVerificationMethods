@@ -38,6 +38,8 @@ interface State {
   initialText?: string;
   initialTextWidth?: number;
   initialTextHeight?: number;
+  stroke?: string;
+  strokeWidth?: number;
 }
 
 interface Transition {
@@ -266,8 +268,8 @@ const render = () => {
         .attr("rx", 5)
         .attr("ry", 5)
         .attr("fill", "#FFF59D")
-        .attr("stroke", "#000")
-        .attr("stroke-width", 2)
+        .attr("stroke", (d: any) => d.stroke || "#000")
+        .attr("stroke-width", (d: any) => d.strokeWidth !== undefined ? d.strokeWidth : 2)
         .style("cursor", "grab")
         .on("contextmenu", printCoordinates);
 
