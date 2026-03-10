@@ -255,3 +255,109 @@ $$Effect(\alpha \,|||\, \beta, \eta) = Effect((\alpha ; \beta) + (\beta ; \alpha
 </div>
 
 - עבור פעולות **תלויות**, הסדר הוא קריטי! למשל: $x := x + 1 \,|||\, x := 2x$.
+
+---
+
+#  להרכבה בשזירה (Interleaving)
+
+כעת אנו מוכנים להגדיר פורמלית את הרכבת השזירה (Interleaving) של מערכות מעברים. המערכת $TS_1 \,|||\, TS_2$ מייצגת מערכת מקבילית הנוצרת ממיזוג (weaving) של פעולות הרכיבים.
+
+- **הנחה**: אין תקשורת ואין מאבקים על משאבים (כמו משתנים משותפים).
+
+- **מצבים**: המצבים ה"גלובליים" הם זוגות $\langle s_1, s_2 \rangle$ המורכבים מהמצבים המקומיים.
+
+- **מעברים**: המעברים היוצאים של מצב גלובלי מורכבים מאיחוד המעברים היוצאים של $s_1$ ואלו של $s_2$.
+
+- **ביצוע**: בכל שלב, מתבצעת בחירה אי-דטרמיניסטית בין כל המעברים האפשריים של שני הרכיבים.
+
+<div class="flex justify-center mt-4">
+  <img src="/interleaving_comic.png" class="h-50" />
+</div>
+
+
+
+
+---
+
+# הגדרה פורמלית: שזירה (Interleaving)
+
+יהיו $TS_1, TS_2$ שתי מערכות מעברים. מערכת המעברים המייצגת את השזירה שלהן, $TS_1 \,|||\, TS_2$, מוגדרת כך:
+
+- **מצבים**: $S = S_1 \times S_2$. המצבים הגלובליים הם זוגות $\langle s_1, s_2 \rangle$.
+
+- **פעולות**: $Act = Act_1 \cup Act_2$.
+- **מצבים התחלתיים**: $I = I_1 \times I_2$.
+- **פסוקים אטומיים**: $AP = AP_1 \cup AP_2$.
+- **פונקציית התיוג**: $L(\langle s_1, s_2 \rangle) = L_1(s_1) \cup L_2(s_2)$.
+
+- **יחס המעברים** $\to$ מוגדר על ידי חוקי הגזירה הבאים:
+
+$$
+\frac{s_1 \xrightarrow{\alpha}_1 s_1'}{ \langle s_1, s_2 \rangle \xrightarrow{\alpha} \langle s_1', s_2 \rangle } \quad \quad \frac{s_2 \xrightarrow{\alpha}_2 s_2'}{ \langle s_1, s_2 \rangle \xrightarrow{\alpha} \langle s_1, s_2' \rangle }
+$$
+
+הבחירה בין המעברים של $TS_1$ למעברים של $TS_2$ היא אי-דטרמיניסטית. <br>
+(בשלב זה) אנו מניחים שאין תקשורת ואין משתנים משותפים.
+
+---
+
+# דוגמה: בנייה צעד-אחר-צעד
+
+נראה איך כללי הגרירה בונים את המערכת השזורה עבור שתי המנורות:
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+<div v-click="1" class="text-sm bg-blue-50 p-2 rounded border border-blue-200 mb-2">
+
+<b>שלב 1: החלת כלל 1 (מנורה 1 זזה)</b><br>
+במנורה 1: $O \xrightarrow{next} D$. <br> 
+לכן בשזירה: $\langle O,O \rangle \xrightarrow{n_1} \langle D,O \rangle$
+</div>
+
+<div v-click="3" class="text-sm bg-green-50 p-2 rounded border border-green-200 mb-2">
+
+<b>שלב 2: החלת כלל 2 (מנורה 2 זזה)</b><br>
+במנורה 2: $O \xrightarrow{next} D$. <br> 
+לכן בשזירה: $\langle O,O \rangle \xrightarrow{n_2} \langle O,D \rangle$
+</div>
+
+<div v-click="5" class="text-sm bg-purple-50 p-2 rounded border border-purple-200">
+
+<b>שלב 3: המשך הבנייה</b><br>
+ממשיכים להחיל את הכללים על כל זוג מצבים וכל פעולה אפשרית עד לקבלת המערכת המלאה.
+</div>
+
+</div>
+
+<div class="bg-slate-850 rounded-lg p-2 border flex items-center justify-center">
+<TransitionSystemD3  
+  :width="300" :height="350"
+  :states="[
+    { id: 'oo', text: 'O,O', initial: true, initialDirection: 'top', x: 300, y: 50,  width: 50 },
+    ...($clicks >= 2 ? [{ id: 'do', text: 'D,O', x: 150, y: 50,  width: 50 }] : []),
+    ...($clicks >= 4 ? [{ id: 'od', text: 'O,D', x: 300, y: 175, width: 50 }] : []),
+    ...($clicks >= 5 ? [
+      { id: 'bo', text: 'B,O', x: 0,   y: 50,  width: 50 },
+      { id: 'dd', text: 'D,D', x: 150, y: 175, width: 50 },
+      { id: 'bd', text: 'B,D', x: 0,   y: 175, width: 50 },
+      { id: 'ob', text: 'O,B', x: 300, y: 300, width: 50 },
+      { id: 'db', text: 'D,B', x: 150, y: 300, width: 50 },
+      { id: 'bb', text: 'B,B', x: 0,   y: 300, width: 50 }
+    ] : [])
+  ]"
+  :transitions="[
+    ...($clicks >= 2 ? [{ source: 'oo', target: 'do', action: '$n_1$' }] : []),
+    ...($clicks >= 4 ? [{ source: 'oo', target: 'od', action: '$n_2$' }] : []),
+    ...($clicks >= 5 ? [
+      { source: 'do', target: 'bo', action: '$n_1$' }, { source: 'bo', target: 'oo', action: '$r_1$', curve: -0.2, actionY:-5 },
+      { source: 'od', target: 'dd', action: '$n_1$' }, { source: 'dd', target: 'bd', action: '$n_1$' }, { source: 'bd', target: 'od', action: '$r_1$', curve: 0.2, actionX:30, actionY:4 },
+      { source: 'ob', target: 'db', action: '$n_1$' }, { source: 'db', target: 'bb', action: '$n_1$' }, { source: 'bb', target: 'ob', action: '$r_1$', curve: 0.2 },
+      { source: 'od', target: 'ob', action: '$n_2$' }, { source: 'ob', target: 'oo', action: '$r_2$', curve: 0.3, actionX:5 },
+      { source: 'do', target: 'dd', action: '$n_2$' }, { source: 'dd', target: 'db', action: '$n_2$' }, { source: 'db', target: 'do', action: '$r_2$', curve: -0.3, actionY: -20, actionX: -5 },
+      { source: 'bo', target: 'bd', action: '$n_2$' }, { source: 'bd', target: 'bb', action: '$n_2$' }, { source: 'bb', target: 'bo', action: '$r_2$', curve: -0.3, actionX: -5 }
+    ] : [])
+  ]"
+/>
+</div>
+</div>
