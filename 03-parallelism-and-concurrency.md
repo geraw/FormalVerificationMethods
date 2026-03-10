@@ -810,3 +810,107 @@ $PG_1$
   <img src="/images/happy_tester.png" class="w-60" />
 </div>
 
+---
+
+# פתרון קונפליקטי תזמון (Scheduling Contention)
+
+במצב $\langle wait_1, wait_2, y=1 \rangle$, קיימת תחרות: מי ייכנס ראשון לקטע הקריטי?
+
+### המודל כ"מופשט" (Abstract):
+- האי-דטרמיניזם במודל הנוכחי משאיר את שאלת התזמון **פתוחה**.
+- המודל אינו מפרט *כיצד* נפתרת התחרות בין $P_1$ ל-$P_2$.
+
+### אסטרטגיות לפתרון:
+1.  **מימוש הסמפור**: בשלבי תכנון מאוחרים יותר, ניתן לממש את $y$ באמצעות תור (Queue).
+    - תור **FIFO** (First-In, First-Out)
+    - תור **LIFO** (Last-In, First-Out)
+2.  **אלגוריתמים קונקרטיים**: בחירת אלגוריתם מורכב יותר הפותר את הבעיה באופן מובנה.
+    - דוגמה בולטת: **אלגוריתם פטרסון (Peterson's Algorithm, 1981)**, המבטיח מניעה הדדית ומונע הרעבה (Starvation) ללא צורך בסמפור חומרתי.
+
+<div class=" flex justify-center">
+  <div class="p-4 bg-blue-50 border-l-4 border-blue-500 text-blue-900 rounded shadow-sm">
+    💡 במודלים פורמליים, אי-דטרמיניזם הוא כלי עוצמתי המאפשר לנו להוכיח תכונות (כמו מניעה הדדית) מבלי להתחייב מראש למדיניות תזמון ספציפית.
+  </div>
+</div>
+
+---
+
+# דוגמה: אלגוריתם פטרסון (Peterson's Algorithm)
+
+פתרון קונקרטי לבעיית המניעה ההדדית עבור שני תהליכים ($P_1, P_2$).
+
+<div class="grid grid-cols-2 gap-4 text-sm mb-4">
+<div>
+
+### משתנים משותפים:
+- $b_1, b_2$ (Boolean): $b_i$ מסמן ש-$P_i$ מעוניין להיכנס לקטע הקריטי.
+- $x \in \{1, 2\}$: קובע למי התור להיכנס במקרה של תחרות.
+
+<br> 
+
+### פסאודו-קוד ($P_1$):
+
+<div class="text-left w-fit bg-slate-50 border border-slate-100 p-1 px-8 rounded overflow-hidden" dir="ltr">
+
+```text
+loop forever
+  ... noncritical actions ...
+  <b1 := true; x := 2>; // בקשה
+  wait until (x = 1 ∨ ¬b2);
+  ... critical section ...
+  b1 := false; // שחרור
+end loop
+```
+
+</div>
+</div>
+
+<div class="">
+
+### מנגנון הפעולה
+בכניסה ל-$wait_1$, תהליך $P_1$ מעלה את הדגל שלו ($b_1$) ונותן את התור ל-$P_2$ ($x:=2$).
+$P_1$ ייכנס לקטע הקריטי רק אם $P_2$ לא מעוניין ($\neg b_2$) **או** אם הגיע תורו של $P_1$ ($x=1$).
+
+<div class="flex justify-around gap-2 scale-[0.9] origin-bottom mt-auto">
+<div class="flex flex-col items-center ml-15">
+<h4 class="font-bold text-slate-500 mb-2 -mt-8 mr-0">      
+
+$PG_1$
+</h4>
+    <TransitionSystemD3  
+      :width="200" :height="120"
+      :states="[
+        { id: 'n1', text: '$n_1$', initial: true, initialDirection: 'top', x: 100, y: 0, width: 80, rx:8, color: '#e3f2fd' },
+        { id: 'w1', text: '$w_1$', x: 100, y: 120-30, width: 80, rx:8, color: '#e3f2fd' },
+        { id: 'c1', text: '$c_1$', x: 100, y: 210-30, width: 80, rx:8, color: '#e3f2fd' }
+      ]"
+      :transitions="[
+        { source: 'n1', target: 'w1', action: '$b_1, x:=2$', actionX: 60, actionWidth: 120 },
+        { source: 'w1', target: 'c1', action: '$x=1 \\lor \\neg b_2$', actionX: 60, actionWidth: 120 },
+        { source: 'c1', target: 'n1', action: '$b_1:=F$', type: 'curved', curve: -0.7, actionX: -40 }
+      ]"
+    />
+  </div>
+  <div class="flex flex-col items-center">
+    <h4 class="font-bold text-slate-500 mb-2 -mt-8">
+    
+$PG_2$ 
+</h4>
+    <TransitionSystemD3  
+      :width="200" :height="120"
+      :states="[
+        { id: 'n2', text: '$n_2$', initial: true, initialDirection: 'top', x: 100, y: 0, width: 80, rx:8, color: '#f3e5f5' },
+        { id: 'w2', text: '$w_2$', x: 100, y: 120-30, width: 80, rx:8, color: '#f3e5f5' },
+        { id: 'c2', text: '$c_2$', x: 100, y: 210-30, width: 80, rx:8, color: '#f3e5f5' }
+      ]"
+      :transitions="[
+        { source: 'n2', target: 'w2', action: '$b_2, x:=1$', actionX: 60, actionWidth: 120 },
+        { source: 'w2', target: 'c2', action: '$x=2 \\lor \\neg b_1$', actionX: 60, actionWidth: 120 },
+        { source: 'c2', target: 'n2', action: '$b_2:=F$', type: 'curved', curve: -0.7, actionX: -40 }
+      ]"
+    />
+  </div>
+</div>
+
+</div>
+</div>
