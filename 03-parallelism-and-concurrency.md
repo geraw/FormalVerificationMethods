@@ -100,7 +100,7 @@ $$TS = TS_1 \,\|\, TS_2 \,\|\, \dots \,\|\, TS_n$$
 <div class="absolute bottom-25 left-87 w-20 h-30" 
      style="background-image: url('/interleaving_comic.png'); background-size: 200% 100%; background-position: left center;">
 </div>
-
+ 
 <!-- Comic Panel 2: Robot B moves -->
 <div class="absolute bottom-25 right-87 w-20 h-30" 
      style="background-image: url('/interleaving_comic.png'); background-size: 200% 100%; background-position: right center;">
@@ -134,3 +134,94 @@ $$TS = TS_1 \,\|\, TS_2 \,\|\, \dots \,\|\, TS_n$$
 - בשלב זה,נניח שכל שזירה היא אפשרית, גם אם היא "לא הוגנת" (למשל מצב שבו $Q$ אף פעם לא רץ). <br>
   נושא ההגינות (Fairness) יידון בהמשך.
 
+
+---
+
+# דוגמה: שזירה של שתי מנורות חכמות
+
+נדגים שזירה באמצעות שתי מנורות, כאשר לכל מנורה שלוש עוצמות: כבוי (Off), עמום (Dim) ובהיר (Bright).
+בכל צעד, רק מנורה אחת משנה סטטוס (מעגל סגור: $O \to D \to B \to O$).
+
+<div class="grid grid-cols-2 gap-0 mt-5 scale-[0.6] origin-top">
+
+<!-- Single Lamp 1 -->
+<div class="flex flex-col items-center">
+<h4 class="font-bold -mb-20 ml-20">
+
+מערכת $Lamp_1$
+</h4>
+<TransitionSystemD3  
+  :width="300" :height="150"
+  :states="[
+    { id: 'o1', text: 'Off', initial: true, initialDirection: 'right', x: 350,  y: 75, width: 60 },
+    { id: 'd1', text: 'Dim',                                          x: 200, y: 75, width: 60 },
+    { id: 'b1', text: 'Bright',                                       x: 50, y: 75, width: 60 }
+  ]"
+  :transitions="[
+    { source: 'o1', target: 'd1', action: 'next' },
+    { source: 'd1', target: 'b1', action: 'next' },
+    { source: 'b1', target: 'o1', action: 'reset', curve: 0.2, actionY: 5 }
+  ]"
+/>
+</div>
+
+<!-- Single Lamp 2 -->
+<div class="flex flex-col items-center">
+<h4 class="font-bold -ml-70">
+
+מערכת $Lamp_2$
+</h4>
+<TransitionSystemD3  
+  :width="300" :height="150"
+  :states="[
+    { id: 'o2', text: 'Off', initial: true, initialDirection: 'left', x: 0, y:0  , width: 60 },
+    { id: 'd2', text: 'Dim',                                          x: 0, y:150 , width: 60 },
+    { id: 'b2', text: 'Bright',                                       x: 0, y:300 , width: 60 }
+  ]"
+  :transitions="[
+    { source: 'o2', target: 'd2', action: 'next' },
+    { source: 'd2', target: 'b2', action: 'next' },
+    { source: 'b2', target: 'o2', action: 'reset', curve: 0.3, actionX: 10 }
+  ]"
+/>
+</div>
+
+<!-- Interleaved Product -->
+<div class="col-span-2 flex flex-col items-center  -mt-20">
+<h4 class="font-bold -mb-10 ml-0 text-blue-700">
+
+$Lamp_1 \,|||\, Lamp_2$ (שזירה)
+</h4>
+<TransitionSystemD3  
+  :width="700" :height="350"
+  :states="[
+    { id: 'oo', text: 'O,O', initial: true, initialDirection: 'top', x: 500, y: 50,  width: 50 },
+    { id: 'do', text: 'D,O', x: 350, y: 50,  width: 50 },
+    { id: 'bo', text: 'B,O', x: 200,  y: 50,  width: 50 },
+    { id: 'od', text: 'O,D', x: 500, y: 175, width: 50 },
+    { id: 'dd', text: 'D,D', x: 350, y: 175, width: 50 },
+    { id: 'bd', text: 'B,D', x: 200,  y: 175, width: 50 },
+    { id: 'ob', text: 'O,B', x: 500, y: 300, width: 50 },
+    { id: 'db', text: 'D,B', x: 350, y: 300, width: 50 },
+    { id: 'bb', text: 'B,B', x: 200,  y: 300, width: 50 }
+  ]"
+  :transitions="[
+    /* Lamp 1 moves */
+    { source: 'oo', target: 'do', action: '$n_1$' }, { source: 'do', target: 'bo', action: '$n_1$' }, { source: 'bo', target: 'oo', action: '$r_1$', curve: -0.2, actionY:-5 },
+    { source: 'od', target: 'dd', action: '$n_1$' }, { source: 'dd', target: 'bd', action: '$n_1$' }, { source: 'bd', target: 'od', action: '$r_1$', curve: 0.2, actionX:30, actionY:4 },
+    { source: 'ob', target: 'db', action: '$n_1$' }, { source: 'db', target: 'bb', action: '$n_1$' }, { source: 'bb', target: 'ob', action: '$r_1$', curve: 0.2 },
+    /* Lamp 2 moves */
+    { source: 'oo', target: 'od', action: '$n_2$' }, { source: 'od', target: 'ob', action: '$n_2$' }, { source: 'ob', target: 'oo', action: '$r_2$', curve: 0.3, actionX:5 },
+    { source: 'do', target: 'dd', action: '$n_2$' }, { source: 'dd', target: 'db', action: '$n_2$' }, { source: 'db', target: 'do', action: '$r_2$', curve: -0.3, actionY: -20, actionX: -5 },
+    { source: 'bo', target: 'bd', action: '$n_2$' }, { source: 'bd', target: 'bb', action: '$n_2$' }, { source: 'bb', target: 'bo', action: '$r_2$', curve: -0.3, actionX: -5 }
+  ]"
+/>
+</div>
+
+</div>
+
+<div class="mt-0 text-[10px] text-gray-500 text-center">
+
+רק מנורה אחת משנה מצב בכל צעד. סך הכל $3 \times 3 = 9$ מצבים.
+
+</div>
