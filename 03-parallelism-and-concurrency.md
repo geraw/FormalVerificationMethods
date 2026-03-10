@@ -206,11 +206,9 @@ $Lamp_1 \,|||\, Lamp_2$ (שזירה)
     { id: 'bb', text: 'B,B', x: 200,  y: 300, width: 50 }
   ]"
   :transitions="[
-    /* Lamp 1 moves */
     { source: 'oo', target: 'do', action: '$n_1$' }, { source: 'do', target: 'bo', action: '$n_1$' }, { source: 'bo', target: 'oo', action: '$r_1$', curve: -0.2, actionY:-5 },
     { source: 'od', target: 'dd', action: '$n_1$' }, { source: 'dd', target: 'bd', action: '$n_1$' }, { source: 'bd', target: 'od', action: '$r_1$', curve: 0.2, actionX:30, actionY:4 },
     { source: 'ob', target: 'db', action: '$n_1$' }, { source: 'db', target: 'bb', action: '$n_1$' }, { source: 'bb', target: 'ob', action: '$r_1$', curve: 0.2 },
-    /* Lamp 2 moves */
     { source: 'oo', target: 'od', action: '$n_2$' }, { source: 'od', target: 'ob', action: '$n_2$' }, { source: 'ob', target: 'oo', action: '$r_2$', curve: 0.3, actionX:5 },
     { source: 'do', target: 'dd', action: '$n_2$' }, { source: 'dd', target: 'db', action: '$n_2$' }, { source: 'db', target: 'do', action: '$r_2$', curve: -0.3, actionY: -20, actionX: -5 },
     { source: 'bo', target: 'bd', action: '$n_2$' }, { source: 'bd', target: 'bb', action: '$n_2$' }, { source: 'bb', target: 'bo', action: '$r_2$', curve: -0.3, actionX: -5 }
@@ -225,3 +223,35 @@ $Lamp_1 \,|||\, Lamp_2$ (שזירה)
 רק מנורה אחת משנה מצב בכל צעד. סך הכל $3 \times 3 = 9$ מצבים.
 
 </div>
+
+---
+
+# צידוק לשזירה: פעולות בלתי-תלויות
+
+צידוק לשזירה הוא שהאפקט של ביצוע פעולות בלתי-תלויות $\alpha$ ו-$\beta$ במקביל, זהה לביצוען בזה אחר זה בסדר כלשהו.
+
+$$Effect(\alpha \,|||\, \beta, \eta) = Effect((\alpha ; \beta) + (\beta ; \alpha), \eta)$$
+
+- **דוגמה**: נניח $\alpha \equiv x := x + 1$ ו-$\beta \equiv y := y - 2$.
+
+- אם בתחילה $x=0, y=7$, התוצאה תהיה תמיד $x=1, y=5$.
+
+<div class="flex justify-center items-center scale-90">
+<TransitionSystemD3  
+  :width="600" :height="200"
+  :states="[
+    { id: 's0', text: 'x=0, y=7', initial: true, initialDirection: 'left', x: 50, y: 75, width: 90 },
+    { id: 'sa', text: 'x=1, y=7', x: 250, y: 0,  width: 90 },
+    { id: 'sb', text: 'x=0, y=5', x: 250, y: 150, width: 90 },
+    { id: 's1', text: 'x=1, y=5', x: 450, y: 75, width: 90 }
+  ]"
+  :transitions="[
+    { source: 's0', target: 'sa', action: '$\\alpha$' },
+    { source: 's0', target: 'sb', action: '$\\beta$' },
+    { source: 'sa', target: 's1', action: '$\\beta$' },
+    { source: 'sb', target: 's1', action: '$\\alpha$' }
+  ]"
+/>
+</div>
+
+- עבור פעולות **תלויות**, הסדר הוא קריטי! למשל: $x := x + 1 \,|||\, x := 2x$.
