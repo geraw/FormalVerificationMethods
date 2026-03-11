@@ -17,7 +17,13 @@ npm install
 
 ## 🚀 Running Locally
 
-Launch the presentation server for specific topics:
+To run a specific slide deck (e.g., `03-parallelism-and-concurrency.md`):
+
+```bash
+npx slidev ./03-parallelism-and-concurrency.md
+```
+
+You can also use the predefined npm scripts:
 
 ```bash
 # Main Index
@@ -25,9 +31,6 @@ npm run dev
 
 # Course Introduction
 npm run dev:intro
-
-# Z3 Theorem Prover
-npm run dev:z3
 ```
 
 ## 📦 Deployment

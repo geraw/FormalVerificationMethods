@@ -1,66 +1,52 @@
 ---
-# הגדרות ערכת נושא ועיצוב
-theme: seriph
-background: https://get.wallhere.com/photo/white-background-minimalism-circuit-board-blue-circuits-technology-1563214.jpg
-class: text-center
+layout: center
 highlighter: shiki
-lineNumbers: true
-dir: rtl
-drawings:
-  enabled: true
-
-# הגדרות סגנון מותאמות אישית (CSS)
-style: |
-  .slidev-layout h1 {
-    color: #003366; /* כחול בן גוריון */
-  }
-  .bgu-logo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 80px;
-  }
-  .department-footer {
-    position: absolute;
-    bottom: 10px;
-    right: 20px;
-    font-size: 0.8em;
-    color: #666;
-  }
+css: unocss
+transition: slide-left
 ---
-
-# מבוא לאימות תוכנה בשיטות פורמאליות
-### המחלקה למדעי המחשב | אוניברסיטת בן-גוריון 
-
-**מרצה: גרא וייס**
 
 <img src="https://in.bgu.ac.il/marketing/DocLib/Pages/visual-identity/BGU_Logo_Heb_Eng_V_Color.png" class="bgu-logo" />
 
-<div class="department-footer">המחלקה למדעי המחשב | BGU CS</div>
+# אימות תוכנה בשיטות פורמליות
+### מצגות הקורס - המחלקה למדעי המחשב, אוניברסיטת בן-גוריון
 
----
+<div class="mt-10 grid grid-cols-2 gap-6 w-160 auto-cols-auto" dir="rtl">
 
-# מהות השיטה הפורמלית
+<a href="./00-intro.html" target="_blank" class="p-6 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors no-underline group">
+  <div class="text-xl font-bold mb-2 group-hover:text-blue-700">00 - מבוא</div>
+  <div class="text-sm opacity-70">מהות השיטה הפורמלית, עלויות ואמינות.</div>
+</a>
 
-אימות פורמלי מתמקד בסריקה שיטתית של מרחב המצבים. 
+<a href="./01-transition-systems.html" target="_blank" class="p-6 bg-green-50 rounded-lg border border-green-200 hover:bg-green-100 transition-colors no-underline group">
+  <div class="text-xl font-bold mb-2 group-hover:text-green-700">01 - מערכות מעברים</div>
+  <div class="text-sm opacity-70">מצבים, מעברים, פוסט ופרה, ריצות וקונפיגורציות.</div>
+</a>
 
-במערכות מקביליות, אנו מתמודדים עם בעיית ה**שזירה (Interleaving)**.
-מספר הריצות האפשריות $M$ עבור $N$ תהליכים כאשר לכל תהליך $n_i$ פעולות מחושב כך:
+<a href="./02-modelling.html" target="_blank" class="p-6 bg-purple-50 rounded-lg border border-purple-200 hover:bg-purple-100 transition-colors no-underline group">
+  <div class="text-xl font-bold mb-2 group-hover:text-purple-700">02 - מידול תוכנה</div>
+  <div class="text-sm opacity-70">גרפי תוכנית, הערכת משתנים ומערכות חומרה.</div>
+</a>
 
-$$M = \frac{(\sum_{i=1}^{N} n_i)!}{\prod_{i=1}^{N} (n_i!)}$$ 
+<a href="./03-parallelism-and-concurrency.html" target="_blank" class="p-6 bg-orange-50 rounded-lg border border-orange-200 hover:bg-orange-100 transition-colors no-underline group">
+  <div class="text-xl font-bold mb-2 group-hover:text-orange-700">03 - מקביליות וסינכרון</div>
+  <div class="text-sm opacity-70">שזירה (Interleaving), ערוצי תקשורת (ABP) ואלגוריתם פיטרסון.</div>
+</a>
 
+</div>
 
+<div class="mt-20 text-xs opacity-50 flex items-center justify-center gap-2">
+  <div class="i-carbon-logo-github" />
+  הפריסה מתבצעת באופן אוטומטי ב-push באמצעות GitHub Actions.
+</div>
 
----
-layout: default
----
-
-# למה להשקיע באימות תוכנה?
-
-* **עלות כלכלית**: שגיאות תוכנה עולות כ-60 מיליארד דולר בשנה בארה"ב בלבד.
-* **בטיחות**: הסתמכות גוברת על מערכות קריטיות כמו כורים אטומיים ורכבים אוטונומיים.
-* **אמינות**: במערכות מורכבות, בדיקות (Testing) רגילות לא מכסות את כל מקרי הקצה.
-
-> "אימות (Verification) הוא הבדיקה שאנחנו בונים את הדבר נכון".
-
----
+<style>
+.bgu-logo {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 150px;
+}
+.slidev-layout h1 {
+  color: #003366;
+}
+</style>
