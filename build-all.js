@@ -98,6 +98,20 @@ for (const file of decks) {
     builtCount++;
 }
 
+// Build index.md as the main landing page
+if (fs.existsSync("index.md")) {
+    console.log(`\n▶ Building index.md as the landing page index.html...`);
+    execSync(
+        `npx slidev build index.md --base "/${REPO}/" -o dist/root_index`,
+        { stdio: "inherit" }
+    );
+    // Copy built index.html and assets directly to dist root
+    fs.cpSync(`dist/root_index/index.html`, `dist/index.html`);
+    if (fs.existsSync("dist/root_index/assets")) {
+        fs.cpSync(`dist/root_index/assets`, `dist/assets`, { recursive: true });
+    }
+}
+
 // Build index.md separately or copy it?
 // In the original, index.md seems to encompass the main page.
 // The original build script iterates over *all* .md files.
