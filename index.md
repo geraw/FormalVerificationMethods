@@ -11,7 +11,7 @@ dir: rtl
 </a>
 
 ## מצגות הקורס מבוא לאימות תוכנה בשיטות פורמליות
-###  - המחלקה למדעי המחשב, אוניברסיטת בן-גוריון
+###  הפקולטה למדעי המחשב והמידע, אוניברסיטת בן-גוריון
 
 <div class="mt-10 grid grid-cols-2 gap-6 w-160 auto-cols-auto" dir="rtl">
 
@@ -38,7 +38,7 @@ dir: rtl
 </div>
 
 <style>
-.slidev-layout h1 {
+.slidev-layout h2 {
   color: #003366;
   font-weight: 800;
   margin-bottom: 0.5rem;
