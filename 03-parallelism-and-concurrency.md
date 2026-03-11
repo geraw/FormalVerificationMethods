@@ -1219,3 +1219,318 @@ $$
 <div class="absolute bottom-5 left-10">
   <img src="/images/happy_tester.png" class="w-40" />
 </div>
+
+---
+
+# דוגמה: מערכת רישום (Booking System)
+
+מערכת המורכבת משלושה רכיבים: קורא ברקוד (BCR), תוכנית רישום (BP) ומדפסת (Printer).
+
+<div class="grid grid-cols-4 gap-2 scale-[0.7] origin-top">
+
+<div class="flex flex-col items-center">
+<h4 class="font-bold -mb-10">BCR</h4>
+<TransitionSystemD3 :width="150" :height="150"
+  :states="[
+    { id: '0b', text: '0', initial: true, x: 75, y: 30 },
+    { id: '1b', text: '1', x: 75, y: 120 }
+]"
+  :transitions="[{source:'0b', target:'1b', action:'scan', curve:0.5, actionX:-10}, {source:'1b', target:'0b', action:'store', curve:0.5, actionX:10}]" />
+</div>
+
+<div class="flex flex-col items-center">
+<h4 class="font-bold -mb-10">BP</h4>
+<TransitionSystemD3 :width="150" :height="150"
+  :states="[{id:'0p', text:'0', initial:true, x:75, y:30}, {id:'1p', text:'1', x:75, y:120}]"
+  :transitions="[{source:'0p', target:'1p', action:'store', curve:0.5, actionX:-10}, {source:'1p', target:'0p', action:'$prt\\_cmd$', curve:0.5, actionX:10}]" />
+</div>
+
+<div class="flex flex-col items-center">
+<h4 class="font-bold -mb-10">Printer</h4>
+<TransitionSystemD3 :width="150" :height="150"
+  :states="[{id:'0r', text:'0', initial:true, x:75, y:30}, {id:'1r', text:'1', x:75, y:120}]"
+  :transitions="[{source:'0r', target:'1r', action:'$prt\\_cmd$', curve:0.5, actionX:-10}, {source:'1r', target:'0r', action:'print', curve:0.5, actionX:10}]" />
+</div>
+
+<div class="flex flex-col justify-center items-center p-4 bg-blue-50 border border-blue-200 rounded text-sm">
+<b>לחיצות יד:</b>
+<br>
+BCR ↔ BP : {store}
+<br>
+BP ↔ Printer : {prt_cmd}
+</div>
+
+</div>
+
+<div class="flex flex-col items-center scale-70 -mt-20">
+<h4 class="font-bold text-blue-700 -mb-15">
+
+המערכת הכוללת: $BCR \,||\, BP \,||\, Printer$
+</h4>
+
+<TransitionSystemD3 :width="800" :height="300"
+:states="[
+    { id: '000', text: '000', initial: true, initialDirection: 'top', x: 210, y: 190 },
+    { id: '100', text: '100', x: 20, y: 190 },
+    { id: '010', text: '010', x: 420, y: 330 },
+    { id: '001', text: '001', x: 340, y: 190 },
+    { id: '110', text: '110', x: 500, y: 190 },
+    { id: '101', text: '101', x: 420, y: 50 },
+    { id: '011', text: '011', x: 820, y: 190 },
+    { id: '111', text: '111', x: 630, y: 190 }
+]"
+  :transitions="[
+    { source: '000', target: '100', action: 'scan' },
+    { source: '100', target: '010', action: 'store' },
+    { source: '010', target: '110', action: 'scan' },
+    { source: '010', target: '001', action: '$prt\\_cmd$' },
+    { source: '110', target: '101', action: '$prt\\_cmd$' },
+    { source: '001', target: '000', action: 'print'},
+    { source: '001', target: '101', action: 'scan' },
+    { source: '101', target: '100', action: 'print'},
+    { source: '101', target: '011', action: 'store' },
+    { source: '011', target: '010', action: 'print'},
+    { source: '011', target: '111', action: 'scan' },
+    { source: '111', target: '110', action: 'print'}
+  ]"
+/>
+</div>
+
+---
+
+# דוגמה: מחסום רכבת (Railroad Crossing)
+
+במחסום רכבת, המערכת צריכה לסגור את המחסום עם קבלת אות שהרכבת מתקרבת, ולפתוח אותו רק לאחר שהרכבת חצתה את הכביש. 
+
+<div class="grid grid-cols-3 gap-2 scale-[0.7] origin-top -mb-10"> 
+
+<div class="flex flex-col items-center">
+<h4 class="font-bold -mb-8">רכבת (Train)</h4>
+<TransitionSystemD3 :width="200" :height="150"
+  :states="[
+    {id:'far', text:'far', initial:true, x:100, y:30}, 
+    {id:'near', text:'near', x:170, y:120},
+    {id:'in', text:'in', x:30, y:120}
+  ]"
+  :transitions="[
+    {source:'far', target:'near', action:'approach'}, 
+    {source:'near', target:'in', action:'enter'},
+    {source:'in', target:'far', action:'exit'}
+  ]" />
+</div>
+
+<div class="flex flex-col items-center">
+<h4 class="font-bold -mb-8">בקר (Controller)</h4>
+<TransitionSystemD3 :width="150" :height="150"
+  :states="[
+    {id:'c0', text:'0', initial:true, x:0, y:30}, 
+    {id:'c1', text:'1', x:150, y:30},
+    {id:'c2', text:'2', x:150, y:120},
+    {id:'c3', text:'3', x:0, y:120}
+  ]"
+  :transitions="[
+    {source:'c0', target:'c1', action:'approach'}, 
+    {source:'c1', target:'c2', action:'lower'},
+    {source:'c2', target:'c3', action:'exit'},
+    {source:'c3', target:'c0', action:'raise'}
+  ]" />
+</div>
+
+<div class="flex flex-col items-center">
+<h4 class="font-bold -mb-8">מחסום (Gate)</h4>
+<TransitionSystemD3 :width="150" :height="150"
+  :states="[{id:'up', text:'up', initial:true, x:75, y:30}, {id:'down', text:'down', x:75, y:120}]"
+  :transitions="[{source:'up', target:'down', action:'lower', curve:0.5, actionX:-10}, {source:'down', target:'up', action:'raise', curve:0.5, actionX:10}]" />
+</div>
+
+</div>
+
+- **הרכבת (Train):** נעה בין המצבים far (רחוקה), near (מתקרבת) ו-in (במפגש).
+
+- **השער (Gate):** פתוח (up) או סגור (down).
+
+- **הבקר (Controller):** מתאם בין הרכבת לשער. 
+  - הוא מקבל התראות מהרכבת (approach, exit) ושולח פקודות לשער (lower, raise).
+
+**הדרישה הבטיחותית:** המחסום חייב להיות סגור תמיד כשהרכבת חוצה את המפגש. כפי שנראה מיד, מודל השזירה חושף כשל תכנוני שבו הרכבת נכנסת לפני שהשער נסגר.
+
+
+---
+
+# מערכת המעברים המורכבת של מחסום הרכבת
+
+<div class="flex flex-col items-center scale-40">
+<TransitionSystemD3 :width="600" :height="50"
+  :states="[
+    { id: '00up', text: '〈far, 0, up〉', initial: true, initialDirection: 'top', x: 400, y:0, width: 150 },
+    { id: '11up', text: '〈near, 1, up〉',          x: 400,     y: 150-50, width: 150 },
+    { id: '22down', text: '〈near, 2, down〉',      x: 250,     y: 250-50, width: 180 },
+    { id: '11up_bad', text: '〈in, 1, up〉',        x: 550,     y: 250-50, stroke: 'red', strokeWidth: 3, width: 150 },
+    { id: '22down_in', text: '〈in, 2, down〉',     x: 250,     y: 350-50, width: 180 },
+    { id: '11up_far', text: '〈far, 1, up〉',       x: 550,     y: 350-50, width: 150 },
+    { id: '22down_far', text: '〈far, 2, down〉',   x: 550,     y: 450-50, width: 200 },
+    { id: '33down', text: '〈far, 3, down〉',       x: 400-150, y: 500-50, width: 200 },
+    { id: '33down_near', text: '〈near, 3, down〉', x: 400-150, y: 600-50, width: 200 },
+    { id: '00up_near', text: '〈near, 0, up〉',     x: 550-150, y: 700-50, width: 200 },
+    { id: '33down_in', text: '〈in, 3, down〉',     x: 250-150, y: 700-50, width: 200 },
+    { id: '00up_in', text: '〈in, 0, up〉',         x: 400-150, y: 800-50, width: 200 },
+  ]"
+  :transitions="[
+    { source: '00up', target: '11up', action: 'approach', stroke: 'red', strokeWidth: 4, actionY: -15 },
+    { source: '11up', target: '22down', action: 'lower' },
+    { source: '11up', target: '11up_bad', action: 'enter', stroke: 'red', strokeWidth: 4 },
+    { source: '22down', target: '22down_in', action: 'enter' },
+    { source: '11up_bad', target: '11up_far', action: 'exit' },
+    { source: '11up_bad', target: '22down_in', action: 'lower' },
+    { source: '11up_far', target: '22down_far', action: 'lower' },
+    { source: '11up_far', target: '11up', action: 'approach', midPoints: [{ x: 700, y: 300 }, { x: 700, y: 100 }], actionY: 100 },
+    { source: '22down_far', target: '22down', action: 'approach' },
+    { source: '22down_in', target: '33down', action: 'exit' },
+    { source: '33down', target: '33down_near', action: 'approach' },
+    { source: '33down', target: '00up', action: 'raise', midPoints: [{ x: 50, y: 450 }, { x: 50, y: 0 }], actionY: 100 },
+    { source: '33down_near', target: '33down_in', action: 'enter' },
+    { source: '33down_near', target: '00up_near', action: 'raise' },
+    { source: '33down_in', target: '00up_in', action: 'exit' },
+    { source: '33down_in', target: '33down', action: 'exit', curve: -0.5 },
+    { source: '00up_near', target: '00up_in', action: 'enter' },
+    { source: '00up_in', target: '00up', action: 'exit', midPoints: [{ x: -40, y: 750 }, { x: -40, y: 0 }], actionY: 100 }
+  ]"
+/>
+</div>
+
+<div class="mt-70 text-sm bg-red-50 p-3 rounded border border-red-200">
+⚠️ <b>הבעיה:</b> בשל השזירה (Interleaving), הרכבת יכולה להיכנס למפגש (enter) <b>לפני</b> שהמחסום ירד.  
+זוהי הוכחה שהמודל הזה אינו מספיק: במציאות המערכת בטוחה רק אם הורדת המחסום מהירה יותר מהגעת הרכבת.  
+<i>(בהמשך הקורס נלמד איך למדל אילוצי זמן אמת כאלו)</i>
+</div>
+
+---
+
+# מערכות ערוצים (Channel Systems)
+
+מערכת מקבילית שבה תהליכים מתקשרים דרך **ערוצים (Channels)** — חוצצים מסוג FIFO שמכילים הודעות.
+
+- מערכות ערוצים הן **סגורות**: תהליכים מתקשרים רק עם תהליכים אחרים במערכת, לא עם העולם החיצוני.
+- מהוות את הבסיס לשפת **Promela** — שפת הקלט של מאמת המודלים **SPIN**.
+
+<div class="mt-4">
+
+**פעולות תקשורת (Communication Actions):**
+
+$$Comm = \{c!v,\ c?x \mid c \in Chan,\ v \in dom(c),\ x \in Var \text{ with } dom(x) \supseteq dom(c)\}$$
+
+</div>
+
+<div class="grid grid-cols-2 gap-6 mt-4">
+<div class="bg-blue-50 p-3 rounded border border-blue-200">
+
+**שליחה: $c!v$**  
+שולח את הערך $v$ לסוף החוצץ של ערוץ $c$.
+
+</div>
+<div class="bg-green-50 p-3 rounded border border-green-200">
+
+**קבלה: $c?x$**  
+קורא הודעה מראש החוצץ של ערוץ $c$ <br>
+ושם אותה במשתנה $x$.
+
+</div>
+</div>
+
+- כל תהליך $P_i$ מוגדר ע"י **גרף תוכנית** $PG_i$ המורחב עם פעולות תקשורת.
+- המעברים בגרף הם: מעברים מותנים רגילים (שמירות ופעולות), **או** פעולות תקשורת ($c!v$ / $c?x$).
+
+---
+
+# ערוצים: קיבולת וטיפוסים
+
+לכל ערוץ $c$ שני מאפיינים:
+
+- **תחום (Domain):** $dom(c)$ - טיפוס ההודעות שניתן לשדר.
+  - לדוגמה: $dom(c) = \{0, 1\}$ לערוץ ביטים, או $dom(c) = \Sigma^{200}$ לטקסטים.
+
+- **קיבולת (Capacity):** $cap(c) \in \mathbb{N} \cup \{\infty\}$ - מספר ההודעות המרבי שניתן לאחסן בחוצץ.
+
+<div class="grid grid-cols-2 gap-6 mt-6">
+<div class="bg-orange-50 p-4 rounded border border-orange-200">
+
+**$cap(c) = 0$ - סינכרוני**
+
+אין חוצץ. התקשורת היא **Handshaking**: שליחה וקבלה מתרחשות **בו-זמנית**.
+
+מקביל למנגנון ה-Handshaking שכבר ראינו!
+
+</div>
+<div class="bg-purple-50 p-2 rounded border border-purple-200">
+
+**$cap(c) > 0$ - א-סינכרוני**
+
+יש חוצץ. שליחה וקבלה מתרחשות **ברגעים שונים** - יש עיכוב בין שליחה לקריאה.
+
+שליחה וקריאה של אותה הודעה <br>
+ **לעולם אינן בו-זמניות**.
+
+</div>
+</div>
+
+
+מערכות ערוצים מאפשרות מידול של **שני** סוגי התקשורת: סינכרונית וא-סינכרונית.
+
+---
+
+# הגדרה פורמלית: מערכת ערוצים 
+
+**גרף תוכנית מעל $(Var, Chan)$** הוא סדורה:
+
+$$PG = (Loc,\ Act,\ Effect,\ \rightarrow,\ Loc_0,\ g_0)$$
+
+כמו בהגדרה של גרף תוכנית רגיל, עם ההבדל שיחס המעברים מורחב לכלול פעולות תקשורת:
+
+$$\rightarrow\ \subseteq\ Loc \times \big(Cond(Var) \times (Act \cup {\color{red} Comm})\big) \times Loc$$
+
+<div class="mt-6 bg-blue-50 p-4 rounded border border-blue-200">
+
+**מערכת ערוצים** $CS$ מעל $(Var, Chan)$ מורכבת מגרפי תוכנית $PG_i$ מעל $(Var_i, Chan)$ כאשר $Var = \bigcup_{1 \leq i \leq n} Var_i$:
+
+$$CS = [PG_1 \mid \ldots \mid PG_n]$$
+
+</div>
+
+- הסימון $[\cdot | \cdot]$ מציין הרכבה מקבילית של תהליכים עם תקשורת דרך ערוצים.
+- כל תהליך $PG_i$ יכול לבצע פעולות מקומיות **או** פעולות תקשורת ($c!v$ / $c?x$).
+
+---
+
+# מתי פעולות תקשורת בנות-ביצוע?
+
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-orange-50 p-3 rounded border border-orange-200">
+
+**Handshaking: $cap(c) = 0$**
+
+תהליך $P_i$ יכול לשלוח $c!v$ **רק אם** תהליך אחר $P_j$ מציע פעולת קבלה משלימה $c?x$ **בו-זמנית**.
+
+שני התהליכים מבצעים את הפעולה **יחד**, והאפקט הוא השמה מבוזרת:
+
+$$x := v$$
+
+</div>
+<div class="bg-purple-50 p-3 rounded border border-purple-200">
+
+**א-סינכרוני: $cap(c) > 0$**
+
+- **שליחה** $c!v$: בר-ביצוע אם הערוץ **אינו מלא** (פחות מ-$cap(c)$ הודעות). הערך $v$ נכנס לסוף החוצץ.
+
+- **קבלה** $c?x$: בר-ביצוע אם החוצץ **אינו ריק**. האיבר הראשון נשלף ומושם ב-$x$.
+
+</div>
+</div>
+
+<div class="mt-4">
+
+| | ...בר-ביצוע אם | אפקט |
+|:---:|:---:|:---:|
+| $c!v$ | הערוץ $c$ לא מלא | $Enqueue(c, v)$ |
+| $c?x$ | הערוץ $c$ לא ריק | $x := Front(c);\ Dequeue(c)$ |
+
+</div>

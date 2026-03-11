@@ -3,9 +3,10 @@
        @mousedown.stop @touchstart.stop @pointerdown.stop>
     <svg ref="svgRef" :width="width" :height="height" class="overflow-visible">
       <defs>
-        <marker :id="markerId" markerWidth="7" markerHeight="5" 
+        <marker v-for="color in uniqueColors" :key="color"
+          :id="getMarkerId(color)" markerWidth="7" markerHeight="5" 
           refX="6" refY="2.5" orient="auto">
-          <polygon points="0 0, 7 2.5, 0 5" fill="#333" />
+          <polygon points="0 0, 7 2.5, 0 5" :fill="color" />
         </marker>
       </defs>
       <g ref="zoomLayer">
@@ -17,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
 import * as d3 from 'd3';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
@@ -40,6 +41,8 @@ interface State {
   initialTextHeight?: number;
   stroke?: string;
   strokeWidth?: number;
+  color?: string;
+  rx?: number;
 }
 
 interface Transition {
@@ -52,6 +55,9 @@ interface Transition {
   actionX?: number; // Offset from default center
   actionY?: number; // Offset from default center
   curve?: number;
+  midPoints?: { x: number; y: number }[];
+  stroke?: string;
+  strokeWidth?: number;
 }
 
 interface Props {
@@ -72,7 +78,18 @@ const svgRef = ref<SVGSVGElement | null>(null);
 const zoomLayer = ref<SVGGElement | null>(null);
 const containerRef = ref<HTMLDivElement | null>(null);
 
-const markerId = `arrowhead-ts-d3-${Math.random().toString(36).slice(2, 11)}`;
+const markerIdBase = `arrowhead-ts-d3-${Math.random().toString(36).slice(2, 11)}`;
+const getMarkerId = (color: string) => `${markerIdBase}-${color.replace('#', '')}`;
+
+const uniqueColors = computed(() => {
+    const set = new Set<string>();
+    set.add('#333'); // Default
+    set.add('#000'); // For initial arrows
+    props.transitions.forEach(t => {
+        if (t.stroke) set.add(t.stroke);
+    });
+    return Array.from(set);
+});
 
 let simulation: d3.Simulation<d3.SimulationNodeDatum, undefined> | null = null;
 
@@ -225,11 +242,11 @@ const render = () => {
         .append("g")
         .attr("class", "link-group");
 
-    const paths = linkSelection.append("path")
-        .attr("stroke", "#333")
-        .attr("stroke-width", 2)
+        const paths = linkSelection.append("path")
+        .attr("stroke", (d: any) => d.stroke || "#333")
+        .attr("stroke-width", (d: any) => d.strokeWidth || 2)
         .attr("fill", "none")
-        .attr("marker-end", `url(#${markerId})`);
+        .attr("marker-end", (d: any) => `url(#${getMarkerId(d.stroke || "#333")})`);
 
     // Link Labels (foreignObject) - keep reference to foreignObject for positioning
     const linkLabelFOs = linkSelection.append("foreignObject")
@@ -246,7 +263,7 @@ const render = () => {
         .style("height", "100%")
         .style("font-size", "12px")
         .style("padding", "0")
-        .html((d: any) => d.action ? `<span style="background:white; padding:1px 3px; border-radius:2px">${renderMath(d.action)}</span>` : "");
+        .html((d: any) => d.action ? `<span style="background:white; padding:1px 3px; border-radius:2px; color: ${d.stroke || 'inherit'}">${renderMath(d.action)}</span>` : "");
 
     // Draw Nodes
     const nodeGroup = layer.select(".nodes");
@@ -257,7 +274,6 @@ const render = () => {
         .attr("class", "node-group")
         .call(dragBehavior);
     
-    console.log("Nodes created with drag:", nodeSelection.size());
 
     // Node Rectangle
     nodeSelection.append("rect")
@@ -265,9 +281,9 @@ const render = () => {
         .attr("height", rectH)
         .attr("x", (d: any) => -(d.width || rectW) / 2)
         .attr("y", -rectH / 2)
-        .attr("rx", 5)
-        .attr("ry", 5)
-        .attr("fill", "#FFF59D")
+        .attr("rx", (d: any) => d.rx !== undefined ? d.rx : 5)
+        .attr("ry", (d: any) => d.rx !== undefined ? d.rx : 5)
+        .attr("fill", (d: any) => d.color || "#FFF59D")
         .attr("stroke", (d: any) => d.stroke || "#000")
         .attr("stroke-width", (d: any) => d.strokeWidth !== undefined ? d.strokeWidth : 2)
         .style("cursor", "grab")
@@ -290,7 +306,7 @@ const render = () => {
         })
         .attr("stroke", "#000")
         .attr("stroke-width", 2)
-        .attr("marker-end", `url(#${markerId})`);
+        .attr("marker-end", `url(#${getMarkerId("#000")})`);
 
     // Initial state label (foreignObject)
     const initialLabels = nodeSelection.filter(d => !!d.initial && !!d.initialText).append("foreignObject")
@@ -362,27 +378,57 @@ const render = () => {
                return getSelfLoopPath(source.x!, source.y!, d.loopDirection || '-45deg', source.width || rectW);
             }
             
+            const sw = source.width || rectW;
+            const tw = target.width || rectW;
+
+            if (d.midPoints && d.midPoints.length > 0) {
+                const firstMid = d.midPoints[0];
+                const lastMid = d.midPoints[d.midPoints.length - 1];
+                
+                const sInt = getRectIntersection(firstMid.x - source.x!, firstMid.y - source.y!, sw, rectH);
+                const tInt = getRectIntersection(lastMid.x - target.x!, lastMid.y - target.y!, tw, rectH);
+                
+                const startPt = { x: source.x! + sInt.x, y: source.y! + sInt.y };
+                const endPt = { x: target.x! + tInt.x, y: target.y! + tInt.y };
+                
+                if (d.curve) {
+                    if (d.midPoints.length === 1) {
+                        return `M ${startPt.x},${startPt.y} Q ${firstMid.x},${firstMid.y} ${endPt.x},${endPt.y}`;
+                    } else {
+                        // Multi-point curve: simplified as polyline for now or a basic spline
+                        let path = `M ${startPt.x},${startPt.y}`;
+                        d.midPoints.forEach(p => { path += ` L ${p.x},${p.y}`; });
+                        path += ` L ${endPt.x},${endPt.y}`;
+                        return path;
+                    }
+                } else {
+                    let path = `M ${startPt.x},${startPt.y}`;
+                    d.midPoints.forEach(p => { path += ` L ${p.x},${p.y}`; });
+                    path += ` L ${endPt.x},${endPt.y}`;
+                    return path;
+                }
+            }
+
             const dx = target.x! - source.x!;
             const dy = target.y! - source.y!;
             const dist = Math.sqrt(dx*dx + dy*dy);
             
             if (d.curve) {
-                // Perpendicular vector
                 const nx = -dy / dist;
                 const ny = dx / dist;
                 const curveOffset = dist * d.curve;
                 const cx = (source.x! + target.x!) / 2 + nx * curveOffset;
                 const cy = (source.y! + target.y!) / 2 + ny * curveOffset;
                 
-                const sourceInt = getRectIntersection(cx - source.x!, cy - source.y!, source.width || rectW, rectH);
-                const targetInt = getRectIntersection(cx - target.x!, cy - target.y!, target.width || rectW, rectH);
+                const sInt = getRectIntersection(cx - source.x!, cy - source.y!, sw, rectH);
+                const tInt = getRectIntersection(cx - target.x!, cy - target.y!, tw, rectH);
                 
-                return `M ${source.x! + sourceInt.x},${source.y! + sourceInt.y} Q ${cx},${cy} ${target.x! + targetInt.x},${target.y! + targetInt.y}`;
+                return `M ${source.x! + sInt.x},${source.y! + sInt.y} Q ${cx},${cy} ${target.x! + tInt.x},${target.y! + tInt.y}`;
             }
 
-            const sourceInt = getRectIntersection(dx, dy, source.width || rectW, rectH);
-            const targetInt = getRectIntersection(-dx, -dy, target.width || rectW, rectH);
-            return `M ${source.x! + sourceInt.x},${source.y! + sourceInt.y} L ${target.x! + targetInt.x},${target.y! + targetInt.y}`;
+            const sInt = getRectIntersection(dx, dy, sw, rectH);
+            const tInt = getRectIntersection(-dx, -dy, tw, rectH);
+            return `M ${source.x! + sInt.x},${source.y! + sInt.y} L ${target.x! + tInt.x},${target.y! + tInt.y}`;
         });
 
         linkLabelFOs
@@ -406,6 +452,11 @@ const render = () => {
                      return s.x! + Math.cos(angle) * distLoop - w/2 + offsetX;
                  }
                  
+                 if (d.midPoints && d.midPoints.length > 0) {
+                     const mid = d.midPoints[Math.floor(d.midPoints.length / 2)];
+                     return mid.x - w/2 + offsetX;
+                 }
+
                  if (d.curve) {
                      const dx = t.x! - s.x!;
                      const dy = t.y! - s.y!;
@@ -437,6 +488,13 @@ const render = () => {
                      return s.y! + Math.sin(angle) * distLoop - h/2 + offsetY;
                  }
                  
+                 if (d.midPoints && d.midPoints.length > 0) {
+                     // Midpoint of the entire polyline/curve
+                     // For now, center on the middle segment or the first midpoint
+                     const mid = d.midPoints[Math.floor(d.midPoints.length / 2)];
+                     return mid.y - h/2 + offsetY;
+                 }
+
                  if (d.curve) {
                      const dx = t.x! - s.x!;
                      const dy = t.y! - s.y!;
