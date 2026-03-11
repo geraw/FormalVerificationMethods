@@ -1,13 +1,12 @@
 ---
 theme: academic
 dir: rtl
-background: https://source.unsplash.com/featured/?computer,science
 class: text-center
 highlighter: shiki
 lineNumbers: true
 htmlAttrs:
-    dir: rtl
-    lang: heb
+  dir: rtl
+  lang: heb
 drawings:
   enabled: true
 info: |
@@ -20,7 +19,7 @@ info: |
 
 **גרא וייס**
 
-<img src="https://in.bgu.ac.il/marketing/DocLib/Pages/graphics/just-logo.png" class="bgu-logo" style="position: absolute;  bottom: 40px; left: 450px; width: 80px; z-index: 100;" />
+<img src="https://in.bgu.ac.il/marketing/DocLib/Pages/graphics/just-logo.png" class="bgu-logo" style="position: absolute; top: 40px; right: 40px; width: 80px; z-index: 100;" />
 
 
 ---
@@ -28,22 +27,27 @@ info: |
 # מידע כללי ℹ️
 
 * **מרצה:** גרא וייס
+
 * **משרד:** חדר 123 בבניין 37
 * **שעות קבלה:** ימי רביעי, 14:00-16:00 
 * **דוא"ל:** geraw@bgu.ac.il
-* **אתר הקורס:** [Moodle BGU](https://moodle.bgu.ac.il/moodle/course/view.php?id=58529)
+* **אתר הקורס:** [מודל](https://moodle.bgu.ac.il/moodle/course/view.php?id=58529)
 
 ---
 
 # מרכיבי הציון 🎓
 
+<div dir="rtl" class="text-right">
+
 | רכיב | משקל | הערות |
 | --- | --- | --- |
 | עבודות תכנותיות | 10% |  |
 | עבודות עיוניות | 10% |  |
-| **בוחן אמצע** | 20% | מתקיים ב-18/5/25 |
+| **בוחן אמצע** | 20% | מתוכנן להתקיים ב-1/5/26 |
 | **מבחן סופי** | 60% |  |
 | עבודות בונוס | +2% | לכל עבודה |
+
+</div>
 
 > **תנאי מעבר:** מעבר בוחן ומבחן, והגשת 80% מתרגילי הבית.
 > **השקעה נדרשת:** 5-10 שעות עבודה עצמית בשבוע.

@@ -3,9 +3,33 @@
   display: inline-flex;
 }
 
+/* RTL Header Alignment - only if not explicitly centered */
+[dir="rtl"] .slidev-layout:not(.text-center) :is(h1, h2, h3, h4) {
+  text-align: right;
+}
+
+/* RTL Table Alignment */
+[dir="rtl"] table th,
+[dir="rtl"] table td {
+  text-align: right;
+}
+
 /* בסיס לטבלאות רגילות */
 :where(.slidev-layout) table {
-  direction: ltr;
+  direction: inherit;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+:where(.slidev-layout) table th,
+:where(.slidev-layout) table td {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e2e8f0; /* Light gray border */
+}
+
+:where(.slidev-layout) table th {
+  background-color: #f8fafc;
+  border-bottom: 2px solid #cbd5e1; /* Thicker header separator */
 }
 
 /* סגנון לטבלאות אמת בלבד */

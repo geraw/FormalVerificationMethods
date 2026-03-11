@@ -2,11 +2,12 @@
 theme: academic
 dir: rtl
 class: text-center
+background: https://source.unsplash.com/featured/?computer,science
 highlighter: shiki
 lineNumbers: true
 htmlAttrs:
-  dir: rtl
-  lang: heb
+    dir: rtl
+    lang: heb
 drawings:
   enabled: true
 info: |
