@@ -6,6 +6,10 @@ transition: slide-left
 dir: rtl
 ---
 
+<a href="https://in.bgu.ac.il/" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Ben-Gurion_University_of_the_Negev_logo.svg/1024px-Ben-Gurion_University_of_the_Negev_logo.svg.png" class="bgu-logo" />
+</a>
+
 # אימות תוכנה בשיטות פורמליות
 ### מצגות הקורס - המחלקה למדעי המחשב, אוניברסיטת בן-גוריון
 
@@ -50,5 +54,3 @@ dir: rtl
   width: 150px;
 }
 </style>
-
-<img src="https://in.bgu.ac.il/marketing/DocLib/Pages/visual-identity/BGU_Logo_Heb_Eng_V_Color.png" class="bgu-logo" />
