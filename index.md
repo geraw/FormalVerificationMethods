@@ -10,8 +10,8 @@ dir: rtl
   <img src="https://in.bgu.ac.il/marketing/DocLib/Pages/graphics/just-logo.png" class="bgu-logo" />
 </a>
 
-# אימות תוכנה בשיטות פורמליות
-### מצגות הקורס - המחלקה למדעי המחשב, אוניברסיטת בן-גוריון
+## מצגות הקורס מבוא לאימות תוכנה בשיטות פורמליות
+###  - המחלקה למדעי המחשב, אוניברסיטת בן-גוריון
 
 <div class="mt-10 grid grid-cols-2 gap-6 w-160 auto-cols-auto" dir="rtl">
 
@@ -51,6 +51,6 @@ dir: rtl
   position: absolute;
   top: 40px;
   right: 40px;
-  width: 150px;
+  width: 80px;
 }
 </style>
