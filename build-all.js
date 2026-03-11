@@ -6,122 +6,91 @@ import crypto from "crypto";
 const REPO = "FormalVerificationMethods";
 
 /**
- * Restores file modification times from git history.
- * Only touches files that are not modified in the working directory.
+ * Calculates a content hash for the file.
+ * We use content-only hashing to ensure robustness against flaky timestamps.
  */
-function restoreGitTimestamps() {
-    try {
-        // Get list of files modified in working directory/staging
-        const status = execSync('git status --porcelain', { encoding: 'utf8' });
-        const modifiedFiles = new Set(
-            status.split('\n')
-                .map(line => line.slice(3).trim())
-                .filter(f => f)
-        );
-
-        const files = execSync('git ls-files -z', { encoding: 'utf8' })
-            .split('\0')
-            .filter(f => f && !modifiedFiles.has(f));
-
-        for (const file of files) {
-            if (!fs.existsSync(file)) continue;
-
-            const timestamp = execSync(
-                `git log -1 --format=%ct -- "${file}"`,
-                { encoding: 'utf8' }
-            ).trim();
-
-            if (timestamp) {
-                const date = new Date(parseInt(timestamp) * 1000);
-                fs.utimesSync(file, date, date);
-            }
-        }
-        console.log('✓ Restored file timestamps from git history (excluding local modifications)\n');
-    } catch (err) {
-        console.warn('⚠ Could not restore git timestamps:', err.message);
-    }
-}
-
-/**
- * Calculates a signature for the file based on its content hash and modification time.
- */
-function getFileSignature(filePath) {
-    const stats = fs.statSync(filePath);
+function getFileHash(filePath) {
     const content = fs.readFileSync(filePath);
-    const hash = crypto.createHash('md5').update(content).digest('hex');
-    return `${hash}_${stats.mtimeMs}`;
+    return crypto.createHash('sha1').update(content).digest('hex');
 }
 
 /**
- * Checks if a file needs to be rebuilt by comparing its signature with a stored one.
+ * Checks if a file needs to be rebuilt by comparing its hash with a stored one.
  */
-function needsRebuild(sourceFile, outputDir) {
-    const signatureFile = path.join(outputDir, ".build_signature");
-    if (!fs.existsSync(signatureFile)) return true;
-    
-    const targetMain = path.join(outputDir, "index.html");
-    if (!fs.existsSync(targetMain)) return true;
+function needsRebuild(sourceFile, outputDir, targetFile = null) {
+    const signatureFile = path.join(outputDir, ".build_hash");
+    const actualTarget = targetFile || path.join(outputDir, "index.html");
 
-    const currentSignature = getFileSignature(sourceFile);
-    const savedSignature = fs.readFileSync(signatureFile, 'utf8').trim();
+    if (!fs.existsSync(signatureFile)) return { rebuild: true, reason: "Missing signature file" };
+    if (!fs.existsSync(actualTarget)) return { rebuild: true, reason: "Missing output file" };
+
+    const currentHash = getFileHash(sourceFile);
+    const savedHash = fs.readFileSync(signatureFile, 'utf8').trim();
     
-    return currentSignature !== savedSignature;
+    if (currentHash !== savedHash) {
+        return { rebuild: true, reason: "Content changed" };
+    }
+    
+    return { rebuild: false };
 }
 
 function saveSignature(sourceFile, outputDir) {
-    const signatureFile = path.join(outputDir, ".build_signature");
-    const currentSignature = getFileSignature(sourceFile);
-    fs.writeFileSync(signatureFile, currentSignature);
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
+    const signatureFile = path.join(outputDir, ".build_hash");
+    const currentHash = getFileHash(sourceFile);
+    fs.writeFileSync(signatureFile, currentHash);
 }
 
-restoreGitTimestamps();
+// 0. Setup dist
+if (!fs.existsSync("dist")) {
+    fs.mkdirSync("dist");
+}
 
-// Only include files starting with two digits + .md
+// Get all .md files starting with 2 digits
 const decks = fs
     .readdirSync(process.cwd(), { withFileTypes: true })
     .filter(dirent => dirent.isFile() && /^\d{2}-.*\.md$/.test(dirent.name))
     .map(dirent => dirent.name);
 
-// Create dist directory if it doesn't exist
-if (!fs.existsSync("dist")) {
-    fs.mkdirSync("dist");
-}
-
 let builtCount = 0;
 let skippedCount = 0;
 
+console.log(`🔍 Checking for updates in ${decks.length + 1} files...`);
+
 // 1. Build index.md as the main landing page
 if (fs.existsSync("index.md")) {
-    // For root index, we check against a hidden folder to avoid collisions
-    const rootIndexSigDir = path.join("dist", ".root_index_sig");
-    if (!fs.existsSync(rootIndexSigDir)) fs.mkdirSync(rootIndexSigDir);
+    const result = needsRebuild("index.md", "dist", path.join("dist", "index.html"));
     
-    if (needsRebuild("index.md", rootIndexSigDir) || !fs.existsSync("dist/index.html")) {
-        console.log(`\n▶ Building index.md as the root landing page...`);
+    if (result.rebuild) {
+        console.log(`\n▶ [REBUILD] index.md (${result.reason})`);
         execSync(
             `npx slidev build index.md --base "/${REPO}/" -o dist`,
             { stdio: "inherit" }
         );
-        saveSignature("index.md", rootIndexSigDir);
+        saveSignature("index.md", "dist");
         builtCount++;
     } else {
-        console.log(`⏭️  Skipping index.md (up to date)`);
+        console.log(`⏭️  [SKIP] index.md (up to date)`);
         skippedCount++;
     }
 }
 
-// 2. Build each deck only if changed
+// 2. Build each deck into its own directory
 for (const file of decks) {
     const base = file.replace(/\.md$/, "");
     const outputDir = path.join("dist", base);
+    const result = needsRebuild(file, outputDir);
 
-    if (needsRebuild(file, outputDir)) {
-        console.log(`\n▶ Building ${file} into ${outputDir}/ ...`);
+    if (result.rebuild) {
+        console.log(`\n▶ [REBUILD] ${file} (${result.reason})`);
         
-        // Ensure outputDir exists
-        if (!fs.existsSync(outputDir)) {
-            fs.mkdirSync(outputDir, { recursive: true });
+        // Clean target directory to ensure fresh build
+        if (fs.existsSync(outputDir)) {
+            fs.rmSync(outputDir, { recursive: true, force: true });
         }
+        fs.mkdirSync(outputDir, { recursive: true });
 
         execSync(
             `npx slidev build ${file} --base "/${REPO}/${base}/" -o ${outputDir}`,
@@ -130,11 +99,11 @@ for (const file of decks) {
         saveSignature(file, outputDir);
         builtCount++;
     } else {
-        console.log(`⏭️  Skipping ${file} (up to date)`);
+        console.log(`⏭️  [SKIP] ${file} (up to date)`);
         skippedCount++;
     }
 }
 
-console.log(`\n🎉 Build summary:`);
+console.log(`\n🎉 Build complete!`);
 console.log(`Built:   ${builtCount}`);
 console.log(`Skipped: ${skippedCount}`);
