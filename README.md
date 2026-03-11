@@ -1,34 +1,41 @@
 # Formal Verification Methods Presentations
 
-This repository contains the interactive slide decks for the Formal Verification Methods course content, built using [Slidev](https://sli.dev/).
+Interactive slide decks for the Formal Verification Methods course content, built with [Slidev](https://sli.dev/).
 
-## Running the Presentations Locally
+🚀 **Live Demo:** [https://geraw.github.io/FormalVerificationMethods/](https://geraw.github.io/FormalVerificationMethods/)
 
-Use the following npm scripts to launch the interactive presentation server for specific topics:
+## 🛠 Installation
 
-### Z3 Theorem Prover
 ```bash
+# Clone the repository
+git clone https://github.com/geraw/FormalVerificationMethods.git
+cd FormalVerificationMethods
+
+# Install dependencies
+npm install
+```
+
+## 🚀 Running Locally
+
+Launch the presentation server for specific topics:
+
+```bash
+# Main Index
+npm run dev
+
+# Course Introduction
+npm run dev:intro
+
+# Z3 Theorem Prover
 npm run dev:z3
 ```
-*Note: The Z3 presentation includes a local Node.js proxy backend for executing Python constraints interactively on the slides.*
 
-### Course Introduction
-```bash
-npm run dev:intro
-```
+## 📦 Deployment
 
-### Main Index
-```bash
-npm run dev
-```
+The presentations are automatically deployed to GitHub Pages on every `push` to the `main` branch using GitHub Actions.
 
-## Building
-
-To build the presentations into static single-page applications:
+To build manually:
 ```bash
-npm run build
-```
-Or to build all available decks:
-```bash
+# Build all decks
 npm run build:all
 ```
