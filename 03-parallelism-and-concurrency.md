@@ -1539,6 +1539,8 @@ $$x := v$$
 
 # דוגמה: פרוטוקול הביט המתחלף (ABP)
 
+<img src="/images/abp_channels_comic.png" class="absolute bottom-0 left-0 w-70" />
+
 מערכת תקשורת בין שולח $S$ ומקבל $R$ דרך שני ערוצים:
 
 - **ערוץ $c$** (שולח $\to$ מקבל): לא אמין - הודעות עלולות **ללכת לאיבוד**.
@@ -1556,87 +1558,92 @@ $$\langle m_0, 0 \rangle,\ \langle m_1, 1 \rangle,\ \langle m_2, 0 \rangle,\ \la
 - $S$ מקבל ACK עם $b$ ושולח הודעה חדשה עם ביט $\neg b$.
 - אם $S$ מחכה זמן רב מדי - מתרחש **timeout** והוא שולח מחדש.
 
+
 ---
 
 # ABP: גרפי התוכנית
 
-<div class="grid grid-cols-3 gap-2 scale-[0.55] origin-top -mb-30">
+<div class="grid grid-cols-[3fr_2fr] gap-40 scale-[.6] origin-left -mt-40" dir="ltr">
 
 <div class="flex flex-col items-center">
-<h4 class="font-bold -mb-5">שולח (Sender S)</h4>
-<TransitionSystemD3 :width="350" :height="350"
+<h4 class="font-bold mb-10">שולח (Sender S)</h4>
+<TransitionSystemD3 :width="900" :height="250"
   :states="[
-    { id: 'snd0', text: 'snd_msg(0)', initial: true, x: 175, y: 30, width: 140 },
-    { id: 'st0', text: 'st_tmr(0)', x: 175, y: 110, width: 120 },
-    { id: 'wait0', text: 'wait(0)', x: 175, y: 190, width: 100 },
-    { id: 'chk0', text: 'chk_ack(0)', x: 175, y: 270, width: 140 },
-    { id: 'snd1', text: 'snd_msg(1)', x: 175, y: 350, width: 140 },
-    { id: 'st1', text: 'st_tmr(1)', x: 175, y: 430, width: 120 },
-    { id: 'wait1', text: 'wait(1)', x: 175, y: 510, width: 100 },
-    { id: 'chk1', text: 'chk_ack(1)', x: 175, y: 590, width: 140 }
+    { id: 'snd0', text: 'snd_msg(0)', initial: true, initialDirection: 'top', x: 80, y: 50, width: 130, rx: 20 },
+    { id: 'st0', text: 'st_tmr(0)', x: 310, y: 50, width: 110, rx: 20 },
+    { id: 'wait0', text: 'wait(0)', x: 540, y: 50, width: 90, rx: 20 },
+    { id: 'chk0', text: 'chk_ack(0)', x: 770, y: 50, width: 130, rx: 20 },
+    { id: 'chk1', text: 'chk_ack(1)', x: 80, y: 230, width: 130, rx: 20 },
+    { id: 'wait1', text: 'wait(1)', x: 310, y: 230, width: 90, rx: 20 },
+    { id: 'st1', text: 'st_tmr(1)', x: 540, y: 230, width: 110, rx: 20 },
+    { id: 'snd1', text: 'snd_msg(1)', x: 770, y: 230, width: 130, rx: 20 }
   ]"
   :transitions="[
-    { source: 'snd0', target: 'st0', action: 'c!⟨m,0⟩ / lost' },
+    { source: 'snd0', target: 'st0', action: 'c!⟨m,0⟩' },
+    { source: 'snd0', target: 'st0', action: 'lost', curve: 0.2, actionY: 8 },
     { source: 'st0', target: 'wait0', action: 'tmr_on!' },
     { source: 'wait0', target: 'chk0', action: 'd?x' },
-    { source: 'wait0', target: 'snd0', action: 'timeout?', midPoints: [{ x: 20, y: 190 }, { x: 20, y: 30 }] },
     { source: 'chk0', target: 'snd1', action: 'x=0: tmr_off!' },
-    { source: 'chk0', target: 'snd0', action: 'x=1', midPoints: [{ x: 350, y: 270 }, { x: 350, y: 30 }] },
-    { source: 'snd1', target: 'st1', action: 'c!⟨m,1⟩ / lost' },
+    { source: 'chk0', target: 'snd0', action: 'x=1', curve: 0.2, actionY: -10 },
+    { source: 'wait0', target: 'snd0', action: 'timeout?', curve: 0.2, actionY: -5, actionX: 40 },
+    { source: 'snd1', target: 'st1', action: 'c!⟨m,1⟩' },
+    { source: 'snd1', target: 'st1', action: 'lost', curve: 0.2, actionY: -8 },
     { source: 'st1', target: 'wait1', action: 'tmr_on!' },
     { source: 'wait1', target: 'chk1', action: 'd?x' },
-    { source: 'wait1', target: 'snd1', action: 'timeout?', midPoints: [{ x: 20, y: 510 }, { x: 20, y: 350 }] },
-    { source: 'chk1', target: 'snd0', action: 'x=1: tmr_off!', midPoints: [{ x: 350, y: 590 }, { x: 350, y: 30 }] },
-    { source: 'chk1', target: 'snd1', action: 'x=0', midPoints: [{ x: 20, y: 590 }, { x: 20, y: 350 }] }
+    { source: 'chk1', target: 'snd0', action: 'x=1 : tmr_off!' },
+    { source: 'chk1', target: 'snd1', action: 'x=0', curve: 0.2, actionY: 10 },
+    { source: 'wait1', target: 'snd1', action: 'timeout?', curve: 0.2, actionY: 5, actionX: -40 }
   ]"
 />
 </div>
+
+<div class="flex flex-col gap-4">
 
 <div class="flex flex-col items-center">
 <h4 class="font-bold -mb-5">מקבל (Receiver R)</h4>
-<TransitionSystemD3 :width="250" :height="350"
+<TransitionSystemD3 :width="550" :height="150"
   :states="[
-    { id: 'w0', text: 'wait(0)', initial: true, x: 125, y: 30, width: 100 },
-    { id: 'pr0', text: 'pr_msg(0)', x: 125, y: 130, width: 120 },
-    { id: 'sa0', text: 'snd_ack(0)', x: 125, y: 230, width: 120 },
-    { id: 'w1', text: 'wait(1)', x: 125, y: 330, width: 100 },
-    { id: 'pr1', text: 'pr_msg(1)', x: 125, y: 430, width: 120 },
-    { id: 'sa1', text: 'snd_ack(1)', x: 125, y: 530, width: 120 }
+    { id: 'w0', text: 'wait(0)', initial: true, initialDirection: 'top', x: 70, y: 50, width: 90, rx: 20 },
+    { id: 'pr0', text: 'pr_msg(0)', x: 270, y: 50, width: 120, rx: 20 },
+    { id: 'sa0', text: 'snd_ack(0)', x: 470, y: 50, width: 120, rx: 20 },
+    { id: 'sa1', text: 'snd_ack(1)', x: 70, y: 220, width: 120, rx: 20 },
+    { id: 'pr1', text: 'pr_msg(1)', x: 270, y: 220, width: 120, rx: 20 },
+    { id: 'w1', text: 'wait(1)', x: 470, y: 220, width: 90, rx: 20 }
   ]"
   :transitions="[
-    { source: 'w0', target: 'pr0', action: 'c?⟨m,y⟩, y=0' },
-    { source: 'w0', target: 'w0', action: 'y=1', loopDirection: '0deg' },
-    { source: 'pr0', target: 'sa0' },
+    { source: 'w0', target: 'pr0', action: 'c?⟨m,y⟩' },
+    { source: 'pr0', target: 'sa0', action: 'y=0', actionY: -20 },
+    { source: 'pr0', target: 'w0', action: 'y=1', curve: 0.3, actionY: -10 },
     { source: 'sa0', target: 'w1', action: 'd!0' },
-    { source: 'w1', target: 'pr1', action: 'c?⟨m,y⟩, y=1' },
-    { source: 'w1', target: 'w1', action: 'y=0', loopDirection: '0deg' },
-    { source: 'pr1', target: 'sa1' },
-    { source: 'sa1', target: 'w0', action: 'd!1', midPoints: [{ x: 250, y: 530 }, { x: 250, y: 30 }] }
+    { source: 'w1', target: 'pr1', action: 'c?⟨m,y⟩' },
+    { source: 'pr1', target: 'sa1', action: 'y=1', actionY: 5 },
+    { source: 'pr1', target: 'w1', action: 'y=0', curve: 0.3, actionY: 10 },
+    { source: 'sa1', target: 'w0', action: 'd!1' }
   ]"
 />
 </div>
 
-<div class="flex flex-col items-center">
+<div class="flex flex-col items-center mt-20">
 <h4 class="font-bold -mb-5">טיימר (Timer)</h4>
-<TransitionSystemD3 :width="150" :height="150"
+<TransitionSystemD3 :width="200" :height="150"
   :states="[
-    { id: 'off', text: 'off', initial: true, x: 75, y: 30 },
-    { id: 'on', text: 'on', x: 75, y: 120 }
+    { id: 'off', text: 'off', initial: true, initialDirection: 'top', x: 100, y: 50, rx: 20 },
+    { id: 'on', text: 'on', x: 100, y: 140, rx: 20 }
   ]"
   :transitions="[
-    { source: 'off', target: 'on', action: 'tmr_on?', curve: 0.5, actionX: -15 },
-    { source: 'on', target: 'off', action: 'timeout! / tmr_off?', curve: 0.5, actionX: 15 }
+    { source: 'off', target: 'on', action: 'tmr_on?', curve: 1, actionX: -20 },
+    { source: 'on', target: 'off', action: 'tmr_off?'  },
+    { source: 'on', target: 'off', action: 'timeout!', curve: 1, actionX: 20 }
   ]"
 />
+</div>
 
-<div class="mt-8 text-sm bg-gray-50 p-3 rounded border border-gray-200 text-right">
+
+</div>
+
+
+</div>
 
 $$ABP = [S \mid Timer \mid R]$$
 
-$Chan = \{c, d, tmr\_on, tmr\_off, timeout\}$
-
-$Var = \{x, y, m_i\}$
-</div>
-</div>
-
-</div>
+$$Chan = \{c, d, tmr\_on, tmr\_off, timeout\}, Var = \{x, y, m_i\}$$
