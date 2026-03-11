@@ -32,10 +32,6 @@ transition: slide-left
 
 </div>
 
-<div class="mt-20 text-xs opacity-50 flex items-center justify-center gap-2">
-  <div class="i-carbon-logo-github text-lg" />
-  הפריסה מתבצעת באופן אוטומטי ב-push באמצעות GitHub Actions.
-</div>
 
 <style>
 .slidev-layout h1 {
