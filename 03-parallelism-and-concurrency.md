@@ -452,7 +452,7 @@ $$\alpha \equiv x := 2x \hspace{1cm} \beta \equiv x := x+1$$
 יהיו $PG_i = (Loc_i, Act_i, Effect_i, \rightarrow_i, Loc_{0,i}, g_{0,i})$ עבור $i=1, 2$ שני גרפי תוכנית מעל משתנים $Var_i$. 
 גרף התוכנית $PG_1 \,|||\, PG_2$ מעל $Var_1 \cup Var_2$ מוגדר ע"י:
 
-$PG_1 \,|||\, PG_2 = (Loc_1 \times Loc_2, Act_1 \uplus Act_2, Effect, \rightarrow, Loc_{0,1} \times Loc_{0,2}, g_{0,1} \land g_{0,2})$
+$$PG_1 \,|||\, PG_2 = (Loc_1 \times Loc_2, Act_1 \uplus Act_2, Effect, \rightarrow, Loc_{0,1} \times Loc_{0,2}, g_{0,1} \land g_{0,2})$$
 
 כאשר $\rightarrow$ מוגדר ע"י חוקי הגזירה:
 
@@ -961,6 +961,11 @@ $PG_2$
 
 - **הוכחת מניעה הדדית**: ניתן לראות כי מצבים מהצורה $\langle crit_1, crit_2, \dots \rangle$ **אינם נגישים** (Unreachable). 
 
+<div class="absolute bottom-10 left-1">
+  <img src="/images/happy_tester.png" class="w-40" />
+</div>
+
+
 ---
 
 # אטומיות וסוגיית סדר ההשמות
@@ -1035,24 +1040,26 @@ $$TS_1 \parallel_{\emptyset} TS_2 = TS_1 \, ||| \,  TS_2$$
 
 - **קומוטטיביות:** האופרטור הוא קומוטטיבי: $TS_1 \|_H TS_2 = TS_2 \|_H TS_1$.
 - **אסוציאטיביות:** האופרטור **אינו** אסוציאטיבי באופן כללי (עבור קבוצות $H$ שונות).
-- אולם, עבור קבוצה קבועה $H$, האופרטור הוא **כן** אסוציאטיבי.
+- עבור קבוצה קבועה $H$, האופרטור הוא **כן** אסוציאטיבי.
+
+<br>
 
 ### לחיצת יד רב-צדדית (Multiway Handshaking)
 ניתן להרחיב את המנגנון לסנכרון של $n$ תהליכים:
-$$TS = TS_1 \|_H TS_2 \|_H \dots \|_H TS_n$$
+$$TS = TS_1 \, \|_H  \, TS_2 \, \|_H \, \cdots \, \|_H \, TS_n$$
 כאשר $H \subseteq Act_1 \cap \dots \cap Act_n$ היא תת-קבוצה של פעולות המשותפות לכלל המערכות.
 
-### מידול שידור (Broadcasting)
+
+### שידור (Broadcasting)
 סנכרון רב-צדדי מתאים במיוחד למידול **שידור (Broadcasting)**: 
 מצב שבו תהליך אחד משדר נתון למספר תהליכים אחרים שקולטים אותו בו-זמנית ("לוחצים ידיים" כולם יחד).
 
 ---
 
-# סנכרון זוגי (Pairwise Handshaking)
+# סנכרון בזוגות (Pairwise Handshaking)
 
 במקרים רבים, תהליכים מתקשרים בזוגות על בסיס פעולות המשותפות להם.
 
-### הגדרה וכללים
 עבור $n$ מערכות מעברים, $TS_i$ ו-$TS_j$ מסתנכרנות מעל קבוצת הפעולות $H_{i,j} = Act_i \cap Act_j$.
 המצב הגלובלי מוגדר כ-$\langle s_1, \dots, s_n \rangle$.
 
@@ -1070,5 +1077,145 @@ $$
 \frac{s_i \xrightarrow{\alpha} s'_i \wedge s_j \xrightarrow{\alpha} s'_j}{\langle s_1, \dots, s_i, \dots, s_j, \dots, s_n \rangle \xrightarrow{\alpha} \langle s_1, \dots, s'_i, \dots, s'_j, \dots, s_n \rangle}
 $$
 
-### סיכום
+**סיכום:**
 החוק הראשון מאפשר ביצוע פעולות בשזירה (Interleaving), בעוד החוק השני דורש תיאום מוחלט בין המשתתפים בלחיצת היד.
+
+---
+
+# דוגמה: מניעה הדדית באמצעות בורר (Arbiter)
+
+פתרון חלופי לבעיית המניעה ההדדית בין $P_1$ ו-$P_2$ הוא שימוש בתהליך חיצוני – **הבורר (Arbiter)**.
+
+
+
+<div class="grid grid-cols-2 gap-4">
+
+<div>
+
+
+**תהליך $T_i$ (עבור $i \in \{1,2ew\}$):**
+
+<div class="grid grid-rows-2 gap-0 -mt-15">
+
+<TransitionSystemD3
+  :width="400" :height="130"
+  :states="[
+    { id: 'n', text: '$noncrit_1$', initial: true, x: 100, y: 100,  width:90 },
+    { id: 'c', text: '$crit_1$', x: 300, y: 100 }
+  ]"
+  :transitions="[
+    { source: 'n', target: 'c', action: 'request', type: 'curved', curve: 0.5, actionY:10 },
+    { source: 'c', target: 'n', action: 'release', type: 'curved', curve: 0.5, actionY:-10 }
+  ]"
+/>
+
+<TransitionSystemD3
+  :width="400" :height="110"
+  :states="[
+    { id: 'n', text: '$noncrit_2$', initial: true, x: 100, y: 100,  width:90 },
+    { id: 'c', text: '$crit_2$', x: 300, y: 100 }
+  ]"
+  :transitions="[
+    { source: 'n', target: 'c', action: 'request', type: 'curved', curve: 0.5, actionY:10 },
+    { source: 'c', target: 'n', action: 'release', type: 'curved', curve: 0.5, actionY:-10 }
+  ]"
+/>
+
+</div>
+</div>
+<div>
+
+**הבורר (Arbiter):**
+<div class="mt-4 flex justify-center scale-100 origin-top">
+
+
+<TransitionSystemD3
+  :width="60" :height="200"
+  :states="[
+    { id: 'unlock', text: 'unlock', initial: true, x: 0, y: 0, width:90 },
+    { id: 'lock', text: 'lock', x: 0, y: 150, width:90 }
+  ]"
+  :transitions="[
+    { source: 'unlock', target: 'lock', action: 'request', type: 'curved', curve: 0.5 },
+    { source: 'lock', target: 'unlock', action: 'release', type: 'curved', curve: 0.5 }
+  ]"
+/>
+</div>
+</div>
+</div>
+
+---
+
+# שזירת התהליכים עצמם
+
+ללא בורר, התהליכים פועלים בשזירה רגילה (Interleaving). המצב $\langle crit_1, crit_2 \rangle$ אפשרי בגרף זה.
+
+<div class="flex items-center justify-center gap-8 mt-10">
+<div class="scale-110">
+<TransitionSystemD3
+  :width="400" :height="300"
+  :states="[
+    { id: 'nn', text: '$n_1, n_2$', initial: true, x: 200, y: 50, color: '#e3f2fd' },
+    { id: 'cn', text: '$c_1, n_2$', x: 80, y: 150, color: '#e3f2fd' },
+    { id: 'nc', text: '$n_1, c_2$', x: 320, y: 150, color: '#e3f2fd' },
+    { id: 'cc', text: '$c_1, c_2$', x: 200, y: 250, color: '#ffebee' }
+  ]"
+  :transitions="[
+    { source: 'nn', target: 'cn', action: 'request', curve: 0.2 },
+    { source: 'nn', target: 'nc', action: 'request', curve: 0.2 },
+    { source: 'cn', target: 'cc', action: 'request', curve: 0.2 },
+    { source: 'nc', target: 'cc', action: 'request', curve: 0.2 },
+    { source: 'cc', target: 'cn', action: 'release', curve: 0.2 },
+    { source: 'cc', target: 'nc', action: 'release', curve: 0.2 },
+    { source: 'cn', target: 'nn', action: 'release', curve: 0.2 },
+    { source: 'nc', target: 'nn', action: 'release', curve: 0.2 }
+  ]"
+/>
+</div>
+  <div class="text-4xl font-mono text-slate-400">
+  
+  $T_1 \,|||\, T_2 \,\, =$
+  </div>
+
+
+</div>
+
+---
+
+# המערכת המשולבת עם בורר
+
+כאשר מחברים את השזירה לבורר באמצעות לחיצת יד על הקבוצה $H = \{request, release\}$, מתקבל גרף שבו מובטחת מניעה הדדית.
+
+<div class="flex items-center justify-center gap-8 mt-10">
+<div class="scale-100">
+<TransitionSystemD3
+  :width="500" :height="250"
+  :states="[
+    { id: 'nnu', text: '$n_1, n_2, unlock$', initial: true, x: 250, y: 50, color: '#f1f8e9', width:140 },
+    { id: 'cnl', text: '$c_1, n_2, lock$', x: 100, y: 180, color: '#f1f8e9', width:120 },
+    { id: 'ncl', text: '$n_1, c_2, lock$', x: 400, y: 180, color: '#f1f8e9', width:120 }
+  ]"
+  :transitions="[
+    { source: 'nnu', target: 'cnl', action: 'request', type: 'curved', curve: 0.2 },
+    { source: 'cnl', target: 'nnu', action: 'release', type: 'curved', curve: 0.2 },
+    { source: 'nnu', target: 'ncl', action: 'request', type: 'curved', curve: -0.2 },
+    { source: 'ncl', target: 'nnu', action: 'release', type: 'curved', curve: -0.2 }
+  ]"
+/>
+</div>
+<div class="text-2xl font-mono text-slate-400">
+  
+  $(T_1 \,|||\, T_2) \parallel Arbiter \,\, =$
+</div>
+
+</div>
+
+<div class="mt-8 text-center text-emerald-700 font-bold">
+  
+  💡 המצב $\langle crit_1, crit_2, lock \rangle$ אינו נגיש – מניעה הדדית מובטחת!
+</div>
+
+
+<div class="absolute bottom-5 left-10">
+  <img src="/images/happy_tester.png" class="w-40" />
+</div>

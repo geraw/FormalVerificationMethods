@@ -277,13 +277,16 @@ const render = () => {
     nodeSelection.filter(d => !!d.initial).append("path")
         .attr("d", (d: any) => {
              const dir = d.initialDirection || 'left';
-             const len = 50;
+             const len = 30; // Length of the arrow itself
+             const gap = 5;  // Gap from node boundary
              const nw = d.width || rectW;
-             if (dir === 'left') return `M -${len},0 L -${nw/2 + 5},0`;
-             if (dir === 'right') return `M ${len},0 L ${nw/2 + 5},0`;
-             if (dir === 'top') return `M 0,-${len} L 0,-${rectH/2 + 5}`;
-             if (dir === 'bottom') return `M 0,${len} L 0,${rectH/2 + 5}`;
-             return `M -${len},0 L -${nw/2 + 5},0`;
+             const nh = rectH;
+             
+             if (dir === 'left') return `M -${nw/2 + gap + len},0 L -${nw/2 + gap},0`;
+             if (dir === 'right') return `M ${nw/2 + gap + len},0 L ${nw/2 + gap},0`;
+             if (dir === 'top') return `M 0,-${nh/2 + gap + len} L 0,-${nh/2 + gap}`;
+             if (dir === 'bottom') return `M 0,${nh/2 + gap + len} L 0,${nh/2 + gap}`;
+             return `M -${nw/2 + gap + len},0 L -${nw/2 + gap},0`;
         })
         .attr("stroke", "#000")
         .attr("stroke-width", 2)
