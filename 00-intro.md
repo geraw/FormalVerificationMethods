@@ -309,12 +309,15 @@ $$M = \frac{(\sum_{i=1}^{N} n_i)!}{\prod_{i=1}^{N} (n_i!)}$$
 
 # התפתחות שיטות אימות 📜
 
-* **1940:** הוכחה מתמטית ידנית (אלן טיורינג).
-* **1969:** לוגיקת הואר (Hoare) לתוכנות סדרתיות.
-* **1977:** אמיר פנואלי מכניס את לוגיקת הזמן (פרס טיורינג 1996).
-* **2008:** פרס טיורינג לקלארק, אמרסון וסיפאקיס על פיתוח Model Checking.
-
-<div class="mt-8 flex justify-center">
-  <img src="./images/verification_history_timeline.png" class="h-80 rounded-lg shadow-xl bg-white p-2" />
+<div class="absolute  bottom-20 left-60 h-50 overflow-hidden shadow-xl rounded-lg bg-white border border-gray-100">
+  <img src="./images/verification_history_timeline.png" class="w-120 max-w-none -mt-30 opacity-95" />
 </div>
+
+<div class="mt-4 space-y-2">
+  <li><strong>1940:</strong> הוכחה מתמטית ידנית (אלן טיורינג).</li>
+  <li><strong>1969:</strong> לוגיקת הואר (Hoare) לתוכנות סדרתיות.</li>
+  <li><strong>1977:</strong> אמיר פנואלי מכניס את לוגיקת הזמן (פרס טיורינג 1996).</li>
+  <li><strong>2008:</strong> פרס טיורינג לקלארק, אמרסון וסיפאקיס על פיתוח Model Checking.</li>
+</div>
+
 
