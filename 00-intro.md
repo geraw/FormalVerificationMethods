@@ -73,34 +73,82 @@ info: |
 
 טכניקות **מתמטיות ואלגוריתמיות** לאפיון, פיתוח ואימות תוכנה וחומרה אמינה.
 
-* **מוטיבציה:** אנליזה מתמטית מסודרת תורמת ליציבות התכנון (כמו בכל הנדסה).
-* **שימוש כיום:** בעיקר במערכות קריטיות (בטיחות ואמינות גבוהה) בשל עלות ומורכבות.
+<div class="grid grid-cols-2 gap-8 items-start mt-8 ml-10">
+  <div>
+    <ul class="space-y-4">
+      <li><strong>מוטיבציה:</strong> אנליזה מתמטית מסודרת תורמת ליציבות התכנון (כמו בכל הנדסה).</li>
+      <li><strong>שימוש כיום:</strong> בעיקר במערכות קריטיות (בטיחות ואמינות גבוהה) בשל עלות ומורכבות.</li>
+    </ul>
+  </div>
+  <div class="flex justify-center">
+    <img src="./images/engineering_comparison.png" class="h-70 rounded-lg shadow-xl border border-blue-100" />
+  </div>
+</div>
 
 ---
 
 # בדיקות (Testing) vs. אימות פורמאלי (Verification) 🔍
 
-* **בדיקה רגילה:** נבדק מסלול פעולה יחיד עבור קלט נתון $d$.
-* **אימות פורמאלי:** סריקת **כל** מצבי המערכת עד גילוי שגיאה או הוכחת נכונות.
+<div class="grid grid-cols-2 gap-8 items-center mt-20 ml-10">
+  <div class="flex flex-col gap-6">
+    <div class="p-4 bg-blue-50 border-r-4 border-blue-500 rounded">     
+      <strong>בדיקה רגילה:</strong> נבדק מסלול פעולה יחיד עבור קלט נתון.
+    </div>
+    <div class="p-4 bg-green-50 border-r-4 border-green-500 rounded">
+      <strong>אימות פורמאלי:</strong> סריקת <strong>כל</strong> מצבי המערכת עד גילוי שגיאה או הוכחת נכונות.
+    </div>
+  </div>
+  <div class="flex justify-center">
+    <img src="./images/testing_vs_verification.png" class="h-70 rounded-lg shadow-xl border border-gray-100" />
+  </div>
+</div>
 
 ---
 
-# הבעיה: שזירת תהליכים (Threads Interleaving) 🧵
+# : שזירת תהליכים (Threads Interleaving) 🧵
+
+<div class="grid grid-cols-2 gap-10 items-center mt-5">
+  <div>
 
 במערכות מקביליות, מספר הריצות האפשריות ($M$) גדל אקספוננציאלית:
 
-$$M = \frac{(\sum_{i=1}^{N} n_i)!}{\prod_{i=1}^{N} (n_i!)}$$
+<div class="my-6">
 
-* כל מלבן מייצג פעולה אטומית של thread.
-* אימות פורמאלי נועד לצוד באגים במרחב המצבים העצום הזה.
+$$M = \frac{(\sum_{i=1}^{N} n_i)!}{\prod_{i=1}^{N} (n_i!)}$$
+</div>
+
+<ul class="space-y-4">
+  <li>כל מלבן באיור מייצג <strong>פעולה אטומית</strong> של thread.</li>
+  <li>אימות פורמאלי נועד לצוד באגים במרחב המצבים העצום שנוצר מהשזירות.</li>
+</ul>
+  </div>
+  <div class="flex justify-center">
+    <img src="./images/threads_interleaving.png" class="h-85 crop=" />
+  </div>
+</div>
 
 ---
 
 # "צייד באגים" - חשיבות הגילוי המוקדם 🐛
 
-ככל ששגיאה מתגלה מאוחר יותר בציר הזמן, עלות התיקון שלה מזנקת:
-* **תכנון/תכנות:** עלות נמוכה.
-* **בדיקות/שימוש:** עלות שמגיעה לאלפי דולרים ($12.5K+) לשגיאה.
+<div class="grid grid-cols-2 gap-10 items-center mt-10 ml-10">
+  <div>
+    ככל ששגיאה מתגלה מאוחר יותר בציר הזמן, עלות התיקון שלה מזנקת:
+    
+<ul class="mt-6 space-y-4">
+  
+  <li><strong>אפיון ותכנון:</strong> עלות נמוכה, קל לתקן.</li>
+  <li><strong>בדיקות ותפעול:</strong> עלות שמגיעה לאלפי דולרים ($12.5K+) לשגיאה.</li>
+</ul>
+    
+<blockquote>
+  <strong>מסקנה:</strong> אימות פורמלי בשלב התכנון חוסך הון!
+</blockquote>
+</div>
+<div class="flex justify-center">
+<img src="./images/bug_cost_graph_he.png" class="h-80 rounded-lg shadow-xl" />
+</div>
+</div>
 
 ---
 
