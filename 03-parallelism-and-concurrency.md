@@ -1534,3 +1534,109 @@ $$x := v$$
 | $c?x$ | הערוץ $c$ לא ריק | $x := Front(c);\ Dequeue(c)$ |
 
 </div>
+
+---
+
+# דוגמה: פרוטוקול הביט המתחלף (ABP)
+
+מערכת תקשורת בין שולח $S$ ומקבל $R$ דרך שני ערוצים:
+
+- **ערוץ $c$** (שולח $\to$ מקבל): לא אמין - הודעות עלולות **ללכת לאיבוד**.
+  - $cap(c) = \infty$ (חוצץ אינסופי)
+- **ערוץ $d$** (מקבל $\to$ שולח): אמין לחלוטין.
+  - $cap(d) = \infty$
+
+**עיקרון Send-and-Wait:** $S$ שולח הודעה ומחכה לאישור (ACK) לפני שליחת ההודעה הבאה.
+
+**ביט בקרה מתחלף:** ההודעות נשלחות כזוגות $\langle m, b \rangle$ כאשר $b \in \{0,1\}$:
+
+$$\langle m_0, 0 \rangle,\ \langle m_1, 1 \rangle,\ \langle m_2, 0 \rangle,\ \langle m_3, 1 \rangle,\ \ldots$$
+
+- $R$ מקבל $\langle m, b \rangle$ ושולח ACK עם ביט $b$ חזרה דרך $d$.
+- $S$ מקבל ACK עם $b$ ושולח הודעה חדשה עם ביט $\neg b$.
+- אם $S$ מחכה זמן רב מדי - מתרחש **timeout** והוא שולח מחדש.
+
+---
+
+# ABP: גרפי התוכנית
+
+<div class="grid grid-cols-3 gap-2 scale-[0.55] origin-top -mb-30">
+
+<div class="flex flex-col items-center">
+<h4 class="font-bold -mb-5">שולח (Sender S)</h4>
+<TransitionSystemD3 :width="350" :height="350"
+  :states="[
+    { id: 'snd0', text: 'snd_msg(0)', initial: true, x: 175, y: 30, width: 140 },
+    { id: 'st0', text: 'st_tmr(0)', x: 175, y: 110, width: 120 },
+    { id: 'wait0', text: 'wait(0)', x: 175, y: 190, width: 100 },
+    { id: 'chk0', text: 'chk_ack(0)', x: 175, y: 270, width: 140 },
+    { id: 'snd1', text: 'snd_msg(1)', x: 175, y: 350, width: 140 },
+    { id: 'st1', text: 'st_tmr(1)', x: 175, y: 430, width: 120 },
+    { id: 'wait1', text: 'wait(1)', x: 175, y: 510, width: 100 },
+    { id: 'chk1', text: 'chk_ack(1)', x: 175, y: 590, width: 140 }
+  ]"
+  :transitions="[
+    { source: 'snd0', target: 'st0', action: 'c!⟨m,0⟩ / lost' },
+    { source: 'st0', target: 'wait0', action: 'tmr_on!' },
+    { source: 'wait0', target: 'chk0', action: 'd?x' },
+    { source: 'wait0', target: 'snd0', action: 'timeout?', midPoints: [{ x: 20, y: 190 }, { x: 20, y: 30 }] },
+    { source: 'chk0', target: 'snd1', action: 'x=0: tmr_off!' },
+    { source: 'chk0', target: 'snd0', action: 'x=1', midPoints: [{ x: 350, y: 270 }, { x: 350, y: 30 }] },
+    { source: 'snd1', target: 'st1', action: 'c!⟨m,1⟩ / lost' },
+    { source: 'st1', target: 'wait1', action: 'tmr_on!' },
+    { source: 'wait1', target: 'chk1', action: 'd?x' },
+    { source: 'wait1', target: 'snd1', action: 'timeout?', midPoints: [{ x: 20, y: 510 }, { x: 20, y: 350 }] },
+    { source: 'chk1', target: 'snd0', action: 'x=1: tmr_off!', midPoints: [{ x: 350, y: 590 }, { x: 350, y: 30 }] },
+    { source: 'chk1', target: 'snd1', action: 'x=0', midPoints: [{ x: 20, y: 590 }, { x: 20, y: 350 }] }
+  ]"
+/>
+</div>
+
+<div class="flex flex-col items-center">
+<h4 class="font-bold -mb-5">מקבל (Receiver R)</h4>
+<TransitionSystemD3 :width="250" :height="350"
+  :states="[
+    { id: 'w0', text: 'wait(0)', initial: true, x: 125, y: 30, width: 100 },
+    { id: 'pr0', text: 'pr_msg(0)', x: 125, y: 130, width: 120 },
+    { id: 'sa0', text: 'snd_ack(0)', x: 125, y: 230, width: 120 },
+    { id: 'w1', text: 'wait(1)', x: 125, y: 330, width: 100 },
+    { id: 'pr1', text: 'pr_msg(1)', x: 125, y: 430, width: 120 },
+    { id: 'sa1', text: 'snd_ack(1)', x: 125, y: 530, width: 120 }
+  ]"
+  :transitions="[
+    { source: 'w0', target: 'pr0', action: 'c?⟨m,y⟩, y=0' },
+    { source: 'w0', target: 'w0', action: 'y=1', loopDirection: '0deg' },
+    { source: 'pr0', target: 'sa0' },
+    { source: 'sa0', target: 'w1', action: 'd!0' },
+    { source: 'w1', target: 'pr1', action: 'c?⟨m,y⟩, y=1' },
+    { source: 'w1', target: 'w1', action: 'y=0', loopDirection: '0deg' },
+    { source: 'pr1', target: 'sa1' },
+    { source: 'sa1', target: 'w0', action: 'd!1', midPoints: [{ x: 250, y: 530 }, { x: 250, y: 30 }] }
+  ]"
+/>
+</div>
+
+<div class="flex flex-col items-center">
+<h4 class="font-bold -mb-5">טיימר (Timer)</h4>
+<TransitionSystemD3 :width="150" :height="150"
+  :states="[
+    { id: 'off', text: 'off', initial: true, x: 75, y: 30 },
+    { id: 'on', text: 'on', x: 75, y: 120 }
+  ]"
+  :transitions="[
+    { source: 'off', target: 'on', action: 'tmr_on?', curve: 0.5, actionX: -15 },
+    { source: 'on', target: 'off', action: 'timeout! / tmr_off?', curve: 0.5, actionX: 15 }
+  ]"
+/>
+
+<div class="mt-8 text-sm bg-gray-50 p-3 rounded border border-gray-200 text-right">
+
+$$ABP = [S \mid Timer \mid R]$$
+
+$Chan = \{c, d, tmr\_on, tmr\_off, timeout\}$
+
+$Var = \{x, y, m_i\}$
+</div>
+</div>
+
+</div>
