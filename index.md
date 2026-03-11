@@ -3,6 +3,7 @@ layout: center
 highlighter: shiki
 css: unocss
 transition: slide-left
+dir: rtl
 ---
 
 # אימות תוכנה בשיטות פורמליות
@@ -45,7 +46,7 @@ transition: slide-left
 .bgu-logo {
   position: absolute;
   top: 40px;
-  left: 40px;
+  right: 40px;
   width: 150px;
 }
 </style>

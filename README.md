@@ -31,6 +31,15 @@ npm run dev
 
 # Course Introduction
 npm run dev:intro
+
+# Module 01 - Transition Systems
+npm run dev:01
+
+# Module 02 - Modelling
+npm run dev:02
+
+# Module 03 - Parallelism and Concurrency
+npm run dev:03
 ```
 
 ## 📦 Deployment
