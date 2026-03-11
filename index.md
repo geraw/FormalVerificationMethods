@@ -7,7 +7,7 @@ dir: rtl
 ---
 
 <a href="https://in.bgu.ac.il/" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Ben-Gurion_University_of_the_Negev_logo.svg/1024px-Ben-Gurion_University_of_the_Negev_logo.svg.png" class="bgu-logo" />
+  <img src="https://in.bgu.ac.il/marketing/DocLib/Pages/graphics/just-logo.png" class="bgu-logo" />
 </a>
 
 # אימות תוכנה בשיטות פורמליות

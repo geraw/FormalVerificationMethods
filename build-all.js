@@ -30,43 +30,72 @@ function restoreGitTimestamps() {
     }
 }
 
+function needsRebuild(sourceFile, targetFile) {
+    if (!fs.existsSync(targetFile)) return true;
+    
+    const sourceStats = fs.statSync(sourceFile);
+    const targetStats = fs.statSync(targetFile);
+    
+    return sourceStats.mtime > targetStats.mtime;
+}
+
 restoreGitTimestamps();
 
+// Only include files starting with two digits + .md
 const decks = fs
     .readdirSync(process.cwd(), { withFileTypes: true })
-    .filter(dirent => dirent.isFile() && dirent.name.endsWith(".md") && !dirent.name.startsWith("_"))
+    .filter(dirent => dirent.isFile() && /^\d{2}-.*\.md$/.test(dirent.name))
     .map(dirent => dirent.name);
 
-if (fs.existsSync("dist")) {
-    fs.rmSync("dist", { recursive: true, force: true });
-}
-fs.mkdirSync("dist");
-
-// 1. Build index.md as the main landing page (index.html)
-if (fs.existsSync("index.md")) {
-    console.log(`\n▶ Building index.md as the root landing page...`);
-    execSync(
-        `npx slidev build index.md --base "/${REPO}/" -o dist`,
-        { stdio: "inherit" }
-    );
+// Create dist directory if it doesn't exist, but DON'T delete it to keep incremental results
+if (!fs.existsSync("dist")) {
+    fs.mkdirSync("dist");
 }
 
-// 2. Build each deck into its own isolated directory
-// This provides clean URLs (e.g., /00-intro/) and avoids asset collisions
 let builtCount = 0;
+let skippedCount = 0;
+
+// 1. Build index.md if changed
+if (fs.existsSync("index.md")) {
+    const target = path.join("dist", "index.html");
+    if (needsRebuild("index.md", target)) {
+        console.log(`\n▶ Building index.md as the root landing page...`);
+        execSync(
+            `npx slidev build index.md --base "/${REPO}/" -o dist`,
+            { stdio: "inherit" }
+        );
+        builtCount++;
+    } else {
+        console.log(`⏭️  Skipping index.md (up to date)`);
+        skippedCount++;
+    }
+}
+
+// 2. Build each deck only if changed
 for (const file of decks) {
     const base = file.replace(/\.md$/, "");
-    if (base === 'index') continue;
-
     const outputDir = path.join("dist", base);
-    console.log(`\n▶ Building ${file} into ${outputDir}/ ...`);
+    const target = path.join(outputDir, "index.html");
 
-    execSync(
-        `npx slidev build ${file} --base "/${REPO}/${base}/" -o ${outputDir}`,
-        { stdio: "inherit" }
-    );
-    builtCount++;
+    if (needsRebuild(file, target)) {
+        console.log(`\n▶ Building ${file} into ${outputDir}/ ...`);
+        
+        // Remove old output for this specific deck to ensure clean build
+        if (fs.existsSync(outputDir)) {
+            fs.rmSync(outputDir, { recursive: true, force: true });
+        }
+
+        execSync(
+            `npx slidev build ${file} --base "/${REPO}/${base}/" -o ${outputDir}`,
+            { stdio: "inherit" }
+        );
+        builtCount++;
+    } else {
+        console.log(`⏭️  Skipping ${file} (up to date)`);
+        skippedCount++;
+    }
 }
 
-console.log(`\n🎉 Build complete!`);
-console.log(`Built ${builtCount} decks + 1 index page.`);
+console.log(`\n🎉 Build summary:`);
+console.log(`Built:   ${builtCount}`);
+console.log(`Skipped: ${skippedCount}`);
