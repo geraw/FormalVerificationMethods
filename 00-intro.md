@@ -152,50 +152,169 @@ $$M = \frac{(\sum_{i=1}^{N} n_i)!}{\prod_{i=1}^{N} (n_i!)}$$
 
 ---
 
-# תוכנית הקורס 📚
+# מושגי יסוד שנלמד בקורס  📚
 
-1. **מערכות מעברים (Transition Systems):** תיאור תוכנה כגרף תוכנית.
-2. **שפת Promela:** תיאור מערכות מבוזרות.
-3. **לוגיקת זמן (Temporal Logic):** אפיון תכונות דינמיות.
-4. **בדיקות מודל (Model Checking):** אלגוריתמים לאימות אוטומטי.
+<div class="grid grid-cols-2 gap-x-10 gap-y-6 text-sm">
+  <div>
+    <strong>1. מערכות מעברים (Transition Systems)</strong>
+    <ul class="opacity-80">
+      <li>מידול התנהגות תוכנה וחומרה באמצעות מצבים ומעברים.</li>
+      <li>טיפול באי-דטרמיניזם וריצה מקבילית.</li>
+      <li>גרפי תוכנית (Program Graphs) ומשתנים משותפים.</li>
+    </ul>
+  </div>
+  <div>
+    <strong>5. תכונות בטיחות וחיות (Safety & Liveness)</strong>
+    <ul class="opacity-80">
+      <li><strong>Safety:</strong> "משהו רע לעולם לא יקרה" (למשל: אין Deadlock).</li>
+      <li><strong>Liveness:</strong> "משהו טוב יקרה בסופו של דבר" (למשל: שירות יינתן).</li>
+    </ul>
+  </div>
+  <div>
+    <strong>2. שפת Promela וכלי הבדיקה SPIN</strong>
+    <ul class="opacity-80">
+      <li>שפה ייעודית למידול מערכות מבוזרות ומקביליות.</li>
+      <li>ניהול ערוצי תקשורת (Channels) וסנכרון.</li>
+      <li>אימות אוטומטי של מודלים מורכבים.</li>
+    </ul>
+  </div>
+  <div>
+    <strong>6. פיצוץ מצבים והפשטה (State Explosion)</strong>
+    <ul class="opacity-80">
+      <li>התמודדות עם הצמיחה האקספוננציאלית של מרחב המצבים.</li>
+      <li>טכניקות צמצום (Partial Order Reduction).</li>
+    </ul>
+  </div>
+  <div>
+    <strong>3. לוגיקת זמן (LTL - Temporal Logic)</strong>
+    <ul class="opacity-80">
+      <li>שפה פורמלית לתיאור דרישות לאורך זמן (Always, Eventually).</li>
+      <li>קשר בין לוגיקה לאוטומטים של בוכי (Büchi Automata).</li>
+    </ul>
+  </div>
+  <div>
+    <strong>7. הגינות (Fairness)</strong>
+    <ul class="opacity-80">
+      <li>הנחות על תזמון תהליכים (Weak/Strong Fairness).</li>
+      <li>חיוני להוכחת תכונות חיות (Liveness).</li>
+    </ul>
+  </div>
+  <div>
+    <strong>4. בדיקות מודל (Model Checking)</strong>
+    <ul class="opacity-80">
+      <li>אלגוריתמים לסריקה שיטתית של גרף המצבים.</li>
+      <li>יצירת דוגמה נגדית (Counter-example) במקרה של שגיאה.</li>
+    </ul>
+  </div>
+</div>
 
----
-
-# דוגמאות לאסונות שניתן היה למנוע ⚠️
-
-* **Therac-25:** קרינת יתר קטלנית עקב Race Condition בתוכנה.
-* **AT&T Network:** נפילת רשת ל-9 שעות עקב פירוש שגוי של פקודת `break` ב-C.
-* **Ariane 5:** התרסקות טיל שעלתה 500 מיליון אירו עקב טעות בהמרת משתנה (Overflow).
-* **Intel Pentium:** שגיאת FDIV בחילוק נקודה צפה שעלתה 500 מיליון דולר.
 
 ---
 
 # אימות (Verification) ≠ תִּקּוּף (Validation) ✅
 
-* **אימות:** "האם אנחנו בונים את הדבר **נכון**?" (עמידה בדרישות).
-* **תִּקּוּף:** "האם אנחנו בונים את הדבר **הנכון**?" (האם זה מה שהלקוח צריך).
+<div class="grid grid-cols-2 gap-10 items-center mt-12 ml-10">
+  <div class="flex flex-col gap-6">
+    <div class="p-6 bg-blue-50 border-r-8 border-blue-600 rounded-lg shadow-sm">
+      <div class="text-xl font-bold mb-2">אימות (Verification)</div>
+      "האם אנחנו בונים את הדבר <strong>נכון</strong>?"
+      <div class="text-sm opacity-70 mt-2">בדיקה מול המפרט והדרישות הטכניות.</div>
+    </div>
+    
+  <div class="p-6 bg-green-50 border-r-8 border-green-600 rounded-lg shadow-sm">
+    <div class="text-xl font-bold mb-2">תִּקּוּף (Validation)</div>
+    "האם אנחנו בונים את הדבר <strong>הנכון</strong>?"
+    <div class="text-sm opacity-70 mt-2">בדיקה האם המוצר עונה על הצורך האמיתי של המשתמש.</div>
+  </div>
+  </div>
+  
+  <div class="flex justify-center">
+    <img src="./images/verification_vs_validation.png" class="h-85 rounded-xl shadow-2xl border border-gray-100" />
+  </div>
+</div>
 
 ---
 
 # שיטות לאימות פורמאלי 🧩
 
-* **שיטות דדוקטיביות:** הוכחה מתמטית של נכונות (Theorem Provers).
-* **בדיקות מודל (Model Checking):** בדיקה ממוכנת של כל ריצה אפשרית במכונת מצבים.
-* **סימולציה:** בדיקת $P$ על ידי הפעלת התנהגויות (לא מבטיח הוכחה מלאה).
+<div class="relative h-80 mt-10">
+  <!-- שיטות דדוקטיביות - למעלה משמאל -->
+  <div class="absolute top-0 right-0 w-65 p-4 bg-blue-50 rounded-lg border border-blue-200 shadow-sm">
+    <div class="font-bold text-sm mb-1 text-blue-800 underline">שיטות דדוקטיביות (Deductive)</div>
+    <div class="text-[14px] leading-relaxed">
+      <strong>מהות:</strong> הוכחה מתמטית ידנית או חצי-ממוכנת באמצעות לוגיקה.
+      <ul class="mt-2 space-y-1">
+        <li>✅ <strong>יתרון:</strong> טיפול במערכות אינסופיות.</li>
+        <li>❌ <strong>חיסרון:</strong> דורש מומחיות וזמן רב.</li>
+        <li>🛠️ <strong>דוגמה:</strong> Coq, Isabelle, Lean.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- בדיקות מודל - במרכז -->
+  <div class="absolute top-20 left-65 w-75 p-5 bg-green-50 rounded-lg border-2 border-green-400 shadow-md z-10 scale-110">
+    <div class="font-bold text-base mb-1 text-green-800 underline">בדיקות מודל (Model Checking)</div>
+    <div class="text-[12px] leading-relaxed font-semibold">
+      <strong>מהות:</strong> סריקה אוטומטית ומלאה של מרחב המצבים.
+      <ul class="mt-2 space-y-1">
+        <li>✅ <strong>יתרון:</strong> אוטומטי, מספק דוגמה נגדית.</li>
+        <li>❌ <strong>חיסרון:</strong> בעיית "פיצוץ המצבים".</li>
+        <li>🛠️ <strong>דוגמה:</strong> SPIN, NuSMV, TLC+.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- סימולציה - למטה מימין -->
+  <div class="absolute top-45 -left-10 w-65 p-4 bg-orange-50 rounded-lg border border-orange-200 shadow-sm">
+    <div class="font-bold text-sm mb-1 text-orange-800 underline">סימולציה (Simulation)</div>
+    <div class="text-[12px] leading-relaxed">
+      <strong>מהות:</strong> הרצת המערכת על תרחישים נבחרים (בדיקות דינמיות).
+      <ul class="mt-2 space-y-1">
+        <li>✅ <strong>יתרון:</strong> מהיר, זול, על המערכת האמיתית.</li>
+        <li>❌ <strong>חיסרון:</strong> לא מבטיח הוכחה מלאה.</li>
+        <li>🛠️ <strong>דוגמה:</strong> JUnit, Pytest, Simulink.</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 ---
 
-# אבני דרך בהיסטוריה 📜
+# למה דווקא בדיקות מודל (Model Checking)? 🎯
 
-* **1940:** הוכחה מתמטית ידנית (טיורינג).
+<div class="grid grid-cols-2 gap-10 items-center">
+  <div class="flex justify-center">
+    <img src="./images/formal_methods_landscape.png" class="h-85 rounded-xl shadow-2xl" />
+  </div>
+  
+  <div class="space-y-6">
+    <div class="p-4 bg-green-50 border-r-4 border-green-600 rounded">
+      <strong>השילוב המנצח (Sweet Spot):</strong>
+      בדיקות מודל משלבות את הדיוק המתמטי של שיטות הוכחה עם האוטומציה של בדיקות תוכנה.
+    </div>
+    
+  <ul class="space-y-3">
+    <li>✅ <strong>ללא הוכחות ידניות:</strong> הכלי עושה את העבודה הקשה.</li>
+    <li>✅ <strong>כיסוי מלא:</strong> בניגוד לבדיקות, כאן בודקים את <em>כל</em> המצבים.</li>
+    <li>✅ <strong>משוב ישיר:</strong> קבלת מסלול מדויק (Counter-example) המראה איך הגענו לבאג.</li>
+  </ul>
+  
+  <div class="italic text-sm opacity-70">
+    זהו הכלי המעשי ביותר כיום לאימות של מערכות מורכבות ומקביליות.
+  </div>
+  </div>
+</div>
+
+---
+
+# התפתחות שיטות אימות 📜
+
+* **1940:** הוכחה מתמטית ידנית (אלן טיורינג).
 * **1969:** לוגיקת הואר (Hoare) לתוכנות סדרתיות.
 * **1977:** אמיר פנואלי מכניס את לוגיקת הזמן (פרס טיורינג 1996).
 * **2008:** פרס טיורינג לקלארק, אמרסון וסיפאקיס על פיתוח Model Checking.
 
----
+<div class="mt-8 flex justify-center">
+  <img src="./images/verification_history_timeline.png" class="h-80 rounded-lg shadow-xl bg-white p-2" />
+</div>
 
-# כלי ה-SPIN ומרחב המצבים 🤖
-
-* **SPIN:** כלי לניתוח מודלים מבוזרים ומקביליים.
-* **פרויקט הקורס:** פיתוח כלי דומה ל-SPIN.
-* **דוגמה:** בחינת תהליכי Inc, Dec ו-Reset על משתנה $x$ ובדיקת חריגות מהטווח $0 \le x \le 200$.
