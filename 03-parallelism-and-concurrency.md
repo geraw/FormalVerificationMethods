@@ -218,6 +218,7 @@ $Lamp_1 \,|||\, Lamp_2$ (שזירה)
 
 </div>
 
+
 <div class="mt-0 text-[10px] text-gray-500 text-center">
 
 רק מנורה אחת משנה מצב בכל צעד. סך הכל $3 \times 3 = 9$ מצבים.
@@ -1478,29 +1479,6 @@ $$Comm = \{c!v,\ c?x \mid c \in Chan,\ v \in dom(c),\ x \in Var \text{ with } do
 
 ---
 
-# הגדרה פורמלית: מערכת ערוצים 
-
-**גרף תוכנית מעל $(Var, Chan)$** הוא סדורה:
-
-$$PG = (Loc,\ Act,\ Effect,\ \rightarrow,\ Loc_0,\ g_0)$$
-
-כמו בהגדרה של גרף תוכנית רגיל, עם ההבדל שיחס המעברים מורחב לכלול פעולות תקשורת:
-
-$$\rightarrow\ \subseteq\ Loc \times \big(Cond(Var) \times (Act \cup {\color{red} Comm})\big) \times Loc$$
-
-<div class="mt-6 bg-blue-50 p-4 rounded border border-blue-200">
-
-**מערכת ערוצים** $CS$ מעל $(Var, Chan)$ מורכבת מגרפי תוכנית $PG_i$ מעל $(Var_i, Chan)$ כאשר $Var = \bigcup_{1 \leq i \leq n} Var_i$:
-
-$$CS = [PG_1 \mid \ldots \mid PG_n]$$
-
-</div>
-
-- הסימון $[\cdot | \cdot]$ מציין הרכבה מקבילית של תהליכים עם תקשורת דרך ערוצים.
-- כל תהליך $PG_i$ יכול לבצע פעולות מקומיות **או** פעולות תקשורת ($c!v$ / $c?x$).
-
----
-
 # מתי פעולות תקשורת בנות-ביצוע?
 
 <div class="grid grid-cols-2 gap-4">
@@ -1534,6 +1512,359 @@ $$x := v$$
 | $c?x$ | הערוץ $c$ לא ריק | $x := Front(c);\ Dequeue(c)$ |
 
 </div>
+
+
+---
+
+# הגדרה פורמלית: מערכת ערוצים 
+
+**גרף תוכנית מעל $(Var, Chan)$** הוא סדורה:
+
+$$PG = (Loc,\ Act,\ Effect,\ \rightarrow,\ Loc_0,\ g_0)$$
+
+כמו בהגדרה של גרף תוכנית רגיל, עם ההבדל שיחס המעברים מורחב לכלול פעולות תקשורת:
+
+$$\rightarrow\ \subseteq\ Loc \times \big(Cond(Var) \times (Act \cup {\color{red} Comm})\big) \times Loc$$
+
+<div class="mt-6 bg-blue-50 p-4 rounded border border-blue-200">
+
+**מערכת ערוצים** $CS$ מעל $(Var, Chan)$ מורכבת מגרפי תוכנית $PG_i$ מעל $(Var_i, Chan)$ כאשר $Var = \bigcup_{1 \leq i \leq n} Var_i$:
+
+$$CS = [PG_1 \mid \ldots \mid PG_n]$$
+
+</div>
+
+- הסימון $[\cdot | \cdot]$ מציין הרכבה מקבילית של תהליכים עם תקשורת דרך ערוצים.
+- כל תהליך $PG_i$ יכול לבצע פעולות מקומיות **או** פעולות תקשורת ($c!v$ / $c?x$).
+
+---
+
+# הסמנטיקה הגלובלית: $TS(CS)$
+
+כמו שמעבירים גרף תוכנית רגיל למערכת מעברים, כך גם למערכת ערוצים
+
+$$CS = [PG_1 \mid \ldots \mid PG_n]$$
+
+מתאימה מערכת המעברים $TS(CS)$ המתארת את ההתנהגות של **כל המערכת יחד**.
+
+<div class="mt-5 bg-blue-50 p-4 rounded border border-blue-200">
+
+המצבים הגלובליים של $TS(CS)$ הם מהצורה:
+
+$$\langle l_1,\ldots,l_n,\eta,\xi \rangle$$
+
+</div>
+
+<div class="grid grid-cols-3 gap-4 mt-5 text-sm">
+<div class="bg-slate-50 p-3 rounded border border-slate-200">
+
+**$l_i$**  
+המיקום הנוכחי של הרכיב $PG_i$
+
+</div>
+<div class="bg-green-50 p-3 rounded border border-green-200">
+
+**$\eta \in Eval(Var)$**  
+השמה נוכחית של כל המשתנים
+
+</div>
+<div class="bg-purple-50 p-3 rounded border border-purple-200">
+
+**$\xi$**  
+תוכן כל הערוצים במערכת
+
+</div>
+</div>
+
+---
+
+# הערכת ערוצים (Channel Evaluation)
+
+הפונקציה $\xi$ מתארת עבור כל ערוץ מה נמצא כרגע בחוצץ שלו:
+
+$$\xi \in Eval(Chan)$$
+$$\xi : c \in Chan \mapsto \xi(c) \in dom(c)^*$$
+
+- כלומר, לכל ערוץ $c$ מותאמת **סדרה סופית** של הודעות מתוך $dom(c)$.
+- אורך הסדרה חייב לכבד את קיבולת הערוץ:
+
+$$len(\xi(c)) \leq cap(c)$$
+
+<div class="mt-5 bg-purple-50 p-4 rounded border border-purple-200">
+
+אם
+
+$$\xi(c) = v_1 v_2 \cdots v_k$$
+
+אז $v_1$ נמצא **בראש התור** (front), ו-$v_k$ נמצא **בסוף התור** (rear).
+
+</div>
+
+---
+
+# סימון שימושי לערוצים
+
+כדי לעדכן את תוכן ערוץ יחיד נשתמש בסימון:
+
+$$\xi[c := v_1,\ldots,v_k]$$
+
+כלומר: אותה הערכת ערוצים כמו $\xi$, פרט לכך שהערוץ $c$ מקבל את הרצף החדש $v_1\ldots v_k$.
+
+$$
+\xi[c := v_1 \ldots v_k](c') =
+\begin{cases}
+\xi(c') & c' \neq c \\
+v_1 \ldots v_k & c' = c
+\end{cases}
+$$
+
+<div class="mt-5 grid grid-cols-2 gap-4 text-sm">
+<div class="bg-slate-50 p-3 rounded border border-slate-200">
+
+כך אפשר לתאר פורמלית  
+**enqueue** כעדכון של סוף הרצף
+
+</div>
+<div class="bg-slate-50 p-3 rounded border border-slate-200">
+
+וכך אפשר לתאר פורמלית  
+**dequeue** כהסרת האיבר הראשון
+
+</div>
+</div>
+
+---
+
+# מצבים התחלתיים ופעולות של $TS(CS)$
+
+<div class="grid grid-cols-2 gap-6 mt-4 items-start">
+<div>
+
+מצב התחלתי של $TS(CS)$ חייב לקיים שלושה תנאים:
+
+1. לכל רכיב $PG_i$ המיקום $l_i$ הוא מיקום התחלתי, כלומר $l_i \in Loc_{0,i}$.
+2. השמת המשתנים $\eta$ מקיימת את תנאי ההתחלה $g_0$.
+3. כל הערוצים ריקים בתחילת הריצה.
+
+</div>
+<div class="bg-orange-50 p-4 rounded border border-orange-200 text-[15px]">
+
+הערכת הערוצים ההתחלתית היא $\xi_0$.
+
+עבור כל $c \in Chan$ מתקיים:
+
+$$\xi_0(c) = \varepsilon$$
+$$len(\varepsilon) = 0$$
+
+</div>
+</div>
+
+<div class="mt-5 bg-blue-50 p-4 rounded border border-blue-200">
+
+קבוצת הפעולות של $TS(CS)$ כוללת:
+
+- את כל הפעולות המקומיות $\alpha \in Act_i$ של הרכיבים.
+- את הסימון המיוחד $\tau$ עבור **צעדי תקשורת**: שליחה, קבלה או handshaking דרך ערוצים.
+
+</div>
+
+---
+
+# הגדרה פורמלית: $TS(CS)$
+
+<div class="text-[13px] leading-snug">
+
+<div class="bg-slate-50 px-4 py-3 rounded border border-slate-200 mt-2">
+
+$$
+CS = [PG_1 \mid \ldots \mid PG_n], \qquad
+PG_i = (Loc_i, Act_i, Effect_i, \to_i, Loc_{0,i}, g_{0,i})
+$$
+
+$$TS(CS) = (S, Act, \to, I, AP, L)$$
+
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-4">
+<div class="bg-blue-50 p-3 rounded border border-blue-200">
+
+<div class="font-bold mb-1">מרחב המצבים והפעולות</div>
+
+$$
+S = (Loc_1 \times \ldots \times Loc_n) \times Eval(Var) \times Eval(Chan)
+$$
+
+$$
+Act = \biguplus_{0 < i \leq n} Act_i \cup \{\tau\}
+$$
+
+<div class="mt-1">
+היחס → מוגדר בשקף הבא ע"י כללי המעבר של interleaving, מסרים א־סינכרוניים ו־handshaking.
+</div>
+
+</div>
+<div class="bg-orange-50 p-3 rounded border border-orange-200">
+
+<div class="font-bold mb-1">מצבים התחלתיים ואטומים</div>
+
+$$
+\begin{aligned}
+I = \{ \langle l_1,\ldots,l_n,\eta,\xi_0 \rangle \mid
+&\forall\, 0 < i \leq n.\\
+&(l_i \in Loc_{0,i} \land \eta \models g_{0,i}) \}
+\end{aligned}
+$$
+
+$$
+AP = \biguplus_{0 < i \leq n} Loc_i \cup Cond(Var)
+$$
+
+</div>
+</div>
+
+<div class="mt-4 bg-purple-50 p-3 rounded border border-purple-200">
+
+<div class="font-bold mb-1">פונקציית התיוג</div>
+
+$$
+L(\langle l_1,\ldots,l_n,\eta,\xi \rangle)
+=
+\{l_1,\ldots,l_n\} \cup \{g \in Cond(Var) \mid \eta \models g\}
+$$
+
+תיוג מצב גלובלי כולל גם את מיקומי הבקרה הנוכחיים וגם את כל התנאים שמתקיימים תחת $\eta$.
+
+</div>
+
+</div>
+
+---
+
+# יחס המעברים של $TS(CS)$
+
+<div class="-mt-3 text-[12px] leading-[1.05]">
+
+<div class="bg-blue-50 p-2 rounded border border-blue-200 mt-1">
+
+<div class="font-bold mb-0">
+
+1. שזירה (Interleaving) של פעולה מקומית $\alpha$
+<!-- 1. שזירה (Interleaving) של פעולה מקומית α -->
+</div>
+
+<div class="-my-2">
+$$
+\frac{
+l_i \xrightarrow{g:\alpha}_i l_i'
+\qquad
+\eta \models g
+}{
+\langle l_1,\ldots,l_i,\ldots,l_n,\eta,\xi\rangle
+\xrightarrow{\alpha}
+\langle l_1,\ldots,l_i',\ldots,l_n,\eta',\xi\rangle
+}
+$$
+</div>
+
+כאשר $\eta' = Effect(\alpha,\eta)$.
+
+</div>
+
+<div class="grid grid-cols-2 gap-2 mt-2">
+<div class="bg-purple-50 p-2 rounded border border-purple-200">
+
+<div class="font-bold mb-0">
+
+2א. קבלה א-סינכרונית כאשר $c \in Chan$ ו-$cap(c)>0$ 
+<!-- 2א. קבלה א־סינכרונית כאשר c ∈ Chan ו־cap(c) &gt; 0 -->
+</div>
+
+<div class="-my-2">
+$$
+\frac{
+l_i \xrightarrow{g:c?x}_i l_i'
+\quad
+\eta \models g
+\quad
+len(\xi(c)) = k > 0
+\quad
+\xi(c) = v_1 \ldots v_k
+}{
+\langle l_1,\ldots,l_i,\ldots,l_n,\eta,\xi\rangle
+\xrightarrow{\tau}
+\langle l_1,\ldots,l_i',\ldots,l_n,\eta',\xi'\rangle
+}
+$$
+</div>
+
+כאשר $\eta' = \eta[x := v_1]$ ו־$\xi' = \xi[c := v_2 \ldots v_k]$.
+
+</div>
+<div class="bg-purple-50 p-2 rounded border border-purple-200">
+
+<div class="font-bold mb-0">
+
+2ב. שליחה א-סינכרונית כאשר $c \in Chan$ ו-$cap(c)>0$
+<!-- 2ב. שליחה א־סינכרונית כאשר c ∈ Chan ו־cap(c) &gt; 0 -->
+</div>
+
+<div class="-my-2">
+$$
+\frac{
+l_i \xrightarrow{g:c!v}_i l_i'
+\quad
+\eta \models g
+\quad
+len(\xi(c)) = k < cap(c)
+\quad
+\xi(c) = v_1 \ldots v_k
+}{
+\langle l_1,\ldots,l_i,\ldots,l_n,\eta,\xi\rangle
+\xrightarrow{\tau}
+\langle l_1,\ldots,l_i',\ldots,l_n,\eta,\xi'\rangle
+}
+$$
+</div>
+
+כאשר $\xi' = \xi[c := v_1 \ldots v_k v]$.
+
+</div>
+</div>
+
+<div class="bg-orange-50 p-2 rounded border border-orange-200 mt-2">
+
+<div class="font-bold mb-0">
+
+3. תקשורת סינכרונית כאשר $c \in Chan$ ו-$cap(c) = 0$
+<!-- 3. תקשורת סינכרונית כאשר c ∈ Chan ו־cap(c) = 0 -->
+</div>
+
+<div class="-my-2">
+$$
+\frac{
+l_i \xrightarrow{g_1:c?x}_i l_i'
+\qquad
+\eta \models g_1
+\qquad
+\eta \models g_2
+\qquad
+l_j \xrightarrow{g_2:c!v}_j l_j'
+\qquad
+i \neq j
+}{
+\langle l_1,\ldots,l_i,\ldots,l_j,\ldots,l_n,\eta,\xi\rangle
+\xrightarrow{\tau}
+\langle l_1,\ldots,l_i',\ldots,l_j',\ldots,l_n,\eta',\xi\rangle
+}
+$$
+</div>
+
+כאשר $\eta' = \eta[x := v]$.
+
+</div>
+
+</div>
+
 
 ---
 
@@ -1645,6 +1976,119 @@ $$\langle m_0, 0 \rangle,\ \langle m_1, 1 \rangle,\ \langle m_2, 0 \rangle,\ \la
 $$ABP = [S \mid Timer \mid R]$$
 $$Chan = \{c, d, tmr\_on, tmr\_off, timeout\}, Var = \{x, y, m_i\}$$
 
+</div>
+
+</div>
+
+---
+
+# ABP: ריצה עם שידור חוזר לא צפוי
+
+<div class="-mt-2 text-[11px] leading-tight">
+
+<div class="mb-1">
+קטע הריצה הבא מראה מדוע המקבל `R` חייב לדעת להתמודד גם עם קבלה חוזרת של
+`⟨m,0⟩` אחרי שכבר עבר למצב `wait(1)`.
+</div>
+
+<table class="w-full text-[9px] border-collapse" dir="ltr">
+  <thead>
+    <tr class="bg-slate-100">
+      <th class="border border-slate-300 px-1 py-0.5 text-center align-middle">sender S</th>
+      <th class="border border-slate-300 px-1 py-0.5 text-center align-middle">timer</th>
+      <th class="border border-slate-300 px-1 py-0.5 text-center align-middle">receiver R</th>
+      <th class="border border-slate-300 px-1 py-0.5 text-center align-middle">channel c</th>
+      <th class="border border-slate-300 px-1 py-0.5 text-center align-middle">channel d</th>
+      <th class="border border-slate-300 px-1 py-0.5 text-center align-middle" dir="rtl">אירוע</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>snd_msg(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>off</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>wait(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">&empty;</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">&empty;</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle" dir="rtl"></td>
+    </tr>
+    <tr>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>st_tmr(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>off</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>wait(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">⟨m,0⟩</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">&empty;</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle" dir="rtl">הודעה עם סיבית 0 נשלחת</td>
+    </tr>
+    <tr>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>wait(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>on</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>wait(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">⟨m,0⟩</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">&empty;</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle" dir="rtl"></td>
+    </tr>
+    <tr>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>snd_msg(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>off</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>wait(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">⟨m,0⟩</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">&empty;</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle" dir="rtl">timeout</td>
+    </tr>
+    <tr>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>st_tmr(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>off</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>wait(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">⟨m,0⟩,⟨m,0⟩</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">&empty;</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle" dir="rtl">שידור חוזר</td>
+    </tr>
+    <tr>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>st_tmr(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>off</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>pr_msg(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">⟨m,0⟩</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">&empty;</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle" dir="rtl">המקבל קורא את ההודעה הראשונה</td>
+    </tr>
+    <tr>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>st_tmr(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>off</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>wait(1)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">⟨m,0⟩</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">0</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle" dir="rtl">המקבל עובר למצב 1</td>
+    </tr>
+    <tr>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>st_tmr(0)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>off</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle"><i>pr_msg(1)</i></td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">&empty;</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">0</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle" dir="rtl">המקבל מתעלם מהשידור החוזר</td>
+    </tr>
+    <tr>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">...</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">...</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">...</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">...</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle">...</td>
+      <td class="border border-slate-300 px-1 py-0.5 text-center align-middle" dir="rtl">...</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="grid grid-cols-2 gap-2 mt-2">
+  <div class="bg-red-50 p-2 rounded border border-red-200 text-[10px]">
+    <b>למה זה חיוני?</b><br>
+    בלי ההתנהגות הזו בגרף של `R`, המערכת הייתה נתקעת כאשר שידור חוזר ישן היה מגיע
+    אחרי שהמקבל כבר עבר למצב `wait(1)`.
+  </div>
+  <div class="bg-green-50 p-2 rounded border border-green-200 text-[10px]">
+    <b>פישוט אפשרי של `S`:</b><br>
+    אם הערוץ `d` אמין, אפשר להשמיט את המצבים <i>chk_ack(0)</i> ו־<i>chk_ack(1)</i>.
+    אם `d` אינו אמין, המצבים הללו נשארים הכרחיים.
+  </div>
 </div>
 
 </div>
