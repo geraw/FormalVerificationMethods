@@ -240,7 +240,75 @@ $$
 ---
 
 
-# השמה, ביטויים ו־guards
+# תחביר פורמלי של פקודות
+
+<div class="text-[13px] leading-snug -mt-1">
+
+<div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
+איור התחביר של <span dir="ltr">NanoPromela</span> מגדיר כיצד בונים פקודות מתוך השמה, תקשורת,
+הרכבה סדרתית, אזור אטומי ומבני <span dir="ltr">guarded commands</span>.
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-zinc-900 text-zinc-100 px-4 py-3 rounded">
+
+<div dir="ltr" class="text-left">
+
+```text {lineNumbers: false}
+stmt ::= skip
+      | x := expr
+      | c?x
+      | c!expr
+      | stmt1 ; stmt2
+      | atomic{assignments}
+      | if :: g1 -> stmt1 ... :: gn -> stmtn fi
+      | do :: g1 -> stmt1 ... :: gn -> stmtn od
+```
+
+</div>
+
+</div>
+
+<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
+<div class="font-bold mb-1">עקביות טיפוסים</div>
+
+<ul class="list-disc pr-5 mt-1 space-y-2">
+<li>בהשמה <span dir="ltr"><code>x := expr</code></span> נדרש של־<span dir="ltr"><code>x</code></span> ול־<span dir="ltr"><code>expr</code></span> יהיו טיפוסים תואמים.</li>
+<li>בקליטה <span dir="ltr"><code>c?x</code></span> נדרש <span dir="ltr"><code>dom(c) ⊆ dom(x)</code></span>.</li>
+<li>בשליחה <span dir="ltr"><code>c!expr</code></span> נדרש שהטיפוס של <span dir="ltr"><code>expr</code></span> יתאים ל־<span dir="ltr"><code>dom(c)</code></span>.</li>
+</ul>
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-green-50 px-3 py-2 rounded border border-green-200">
+<div class="font-bold mb-1">Guards</div>
+
+הביטויים <span dir="ltr"><code>g1, ..., gn</code></span> שמופיעים ב־<span dir="ltr"><code>if-fi</code></span>
+וב־<span dir="ltr"><code>do-od</code></span> הם <b>guards</b>.
+אנו מניחים ש־<span dir="ltr"><code>gi ∈ Cond(Var)</code></span>, כלומר כל guard הוא תנאי בוליאני על ערכי המשתנים.
+</div>
+
+<div class="bg-amber-50 px-3 py-2 rounded border border-amber-200">
+<div class="font-bold mb-1">גוף של אזור אטומי</div>
+
+הביטוי <span dir="ltr"><code>assignments</code></span> בתוך
+<span dir="ltr"><code>atomic{...}</code></span> הוא הרכבה סדרתית לא־ריקה של השמות:
+
+<div dir="ltr" class="text-center text-[12px] mt-3 mb-3 font-mono">
+x1 := expr1; x2 := expr2; ...; xm := exprm &nbsp;&nbsp; (m ≥ 1)
+</div>
+
+כאשר לכל <span dir="ltr"><code>i</code></span> הטיפוסים של <span dir="ltr"><code>xi</code></span> ושל <span dir="ltr"><code>expri</code></span> תואמים.
+</div>
+</div>
+
+</div>
+
+---
+
+
+# משמעות: השמה, ביטויים ו־guards
 
 - המשמעות  של `x := expr` פשוטה: למשתנה `x` משויך הערך של `expr` לפי הערכת המשתנים הנוכחית.
 
