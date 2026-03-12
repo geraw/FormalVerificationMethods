@@ -593,3 +593,74 @@ od
 
 
 
+---
+
+
+# דוגמה נוספת: רובוט על Grid עם קירות
+
+<div class="text-[14px] leading-snug -mt-1">
+
+<div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
+נניח רובוט שנע על לוח <span dir="ltr"><code>3x3</code></span>.
+המיקום שלו נשמר במשתנה יחיד <span dir="ltr"><code>pos</code></span>,
+ואנחנו רוצים להבטיח שהוא <b>לעולם לא ייכנס לקיר</b>.
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
+<div class="font-bold mb-1">קידוד המצבים</div>
+
+<div class="mt-2 flex justify-center">
+<div class="grid grid-cols-3 gap-1 text-center text-[12px] font-mono" dir="ltr">
+<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">1</div>
+<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">2</div>
+<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">3</div>
+<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">4</div>
+<div class="w-10 h-10 flex items-center justify-center border border-rose-400 rounded bg-rose-100">5</div>
+<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">6</div>
+<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">7</div>
+<div class="w-10 h-10 flex items-center justify-center border border-rose-400 rounded bg-rose-100">8</div>
+<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">9</div>
+</div>
+</div>
+
+<ul class="list-disc pr-5 mt-3 space-y-2">
+<li>הקירות נמצאים בתאים <span dir="ltr"><code>5</code></span> ו־<span dir="ltr"><code>8</code></span>.</li>
+<li>לכן הם אינם מופיעים באף השמה ל־<span dir="ltr"><code>pos</code></span>.</li>
+<li>כל guard מתאר צעד חוקי אחד של הרובוט: למעלה, למטה, ימינה או שמאלה.</li>
+<li>אם אין מעבר חוקי, הלולאה מסתיימת.</li>
+</ul>
+</div>
+
+<div class="bg-blue-900 text-zinc-100 px-1 py-4 rounded">
+<div class="font-bold mb-2 text-right text-white">התהליך של הרובוט</div>
+<div dir="ltr" class="text-left">
+
+```text {lineNumbers: false}
+do
+:: pos = 1 -> pos := 2
+:: pos = 1 -> pos := 4
+:: pos = 2 -> pos := 1
+:: pos = 2 -> pos := 3
+:: pos = 3 -> pos := 2
+:: pos = 3 -> pos := 6
+:: pos = 4 -> pos := 1
+:: pos = 4 -> pos := 7
+:: pos = 6 -> pos := 3
+:: pos = 6 -> pos := 9
+:: pos = 7 -> pos := 4
+:: pos = 9 -> pos := 6
+od
+```
+
+</div>
+</div>
+</div>
+
+<div class="mt-2 bg-green-50 px-4 py-2 rounded border border-green-200">
+אם למשל מתחילים ב־<span dir="ltr"><code>pos = 1</code></span>, אז לאורך כל ריצה
+יתקיים תמיד <span dir="ltr"><code>pos ∈ {1,2,3,4,6,7,9}</code></span>.
+זהו בדיוק סוג האילוץ שקל לנסח בעזרת <b>guards</b> ולבדוק בהמשך בצורה פורמלית.
+</div>
+
+</div>
