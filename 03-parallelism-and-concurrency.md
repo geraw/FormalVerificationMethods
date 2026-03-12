@@ -218,7 +218,6 @@ $Lamp_1 \,|||\, Lamp_2$ (שזירה)
 
 </div>
 
-
 <div class="mt-0 text-[10px] text-gray-500 text-center">
 
 רק מנורה אחת משנה מצב בכל צעד. סך הכל $3 \times 3 = 9$ מצבים.
@@ -1868,6 +1867,87 @@ $$
 
 ---
 
+# דוגמה: שימוש בכללי הגזירה
+
+<div class="-mt-2 text-[12px] leading-tight">
+
+<div class="bg-slate-50 px-3 py-2 rounded border border-slate-200">
+
+נבחן מערכת קטנה
+$
+CS = [P \mid S \mid R \mid T \mid U]
+$
+עם ערוץ אגירה $a$ שעבורו $cap(a)=2$ וערוץ סינכרוני $h$ שעבורו $cap(h)=0$.
+
+$$
+\begin{aligned}
+P&: \ p_0 \xrightarrow{\texttt{true}:\alpha} p_1
+\qquad Effect(\alpha,\eta)=\eta[z:=1] \\
+S&: \ s_0 \xrightarrow{\texttt{true}:a!5} s_1
+\qquad
+R: \ r_0 \xrightarrow{\texttt{true}:a?x} r_1 \\
+T&: \ t_0 \xrightarrow{\texttt{true}:h!7} t_1
+\qquad
+U: \ u_0 \xrightarrow{x=5:h?y} u_1
+\end{aligned}
+$$
+
+</div>
+
+<div class="grid grid-cols-2 gap-2 mt-2">
+<div class="bg-blue-50 p-2 rounded border border-blue-200">
+<div class="font-bold mb-1">1. פעולה מקומית (Interleaving)</div>
+
+$$
+\langle p_0,s_0,r_0,t_0,u_0,\eta,\xi_0\rangle
+\xrightarrow{\alpha}
+\langle p_1,s_0,r_0,t_0,u_0,\eta[z:=1],\xi_0\rangle
+$$
+
+כאן רק הרכיב $P$ מתקדם, ואין שינוי בערוצים.
+</div>
+
+<div class="bg-purple-50 p-2 rounded border border-purple-200">
+<div class="font-bold mb-1">2. שליחה א־סינכרונית</div>
+
+$$
+\langle p_1,s_0,r_0,t_0,u_0,\eta,\xi_0\rangle
+\xrightarrow{\tau}
+\langle p_1,s_1,r_0,t_0,u_0,\eta,\xi_1\rangle
+$$
+
+כאשר $\xi_0(a)=\varepsilon$ ו־$\xi_1=\xi_0[a:=5]$.
+</div>
+
+<div class="bg-purple-50 p-2 rounded border border-purple-200">
+<div class="font-bold mb-1">3. קבלה א־סינכרונית</div>
+
+$$
+\langle p_1,s_1,r_0,t_0,u_0,\eta,\xi_1\rangle
+\xrightarrow{\tau}
+\langle p_1,s_1,r_1,t_0,u_0,\eta[x:=5],\xi_0\rangle
+$$
+
+המקבל $R$ קורא את הערך הראשון מ־$a$ ולכן החוצץ חוזר להיות ריק.
+</div>
+
+<div class="bg-orange-50 p-2 rounded border border-orange-200">
+<div class="font-bold mb-1">4. תקשורת סינכרונית</div>
+
+$$
+\langle p_1,s_1,r_1,t_0,u_0,\eta[x{:=}5],\xi_0\rangle
+\xrightarrow{\tau}
+\langle p_1,s_1,r_1,t_1,u_1,\eta[x{:=}5;y{:=}7],\xi_0\rangle
+$$
+
+כיוון ש־$cap(h)=0$, הרכיבים $T$ ו־$U$ חייבים להתקדם יחד.
+</div>
+</div>
+
+</div>
+
+---
+
 # דוגמה: פרוטוקול הביט המתחלף (ABP)
 
 <img src="/images/abp_channels_comic.png" class="absolute bottom-0 left-0 w-70" />
@@ -1986,7 +2066,7 @@ $$Chan = \{c, d, tmr\_on, tmr\_off, timeout\}, Var = \{x, y, m_i\}$$
 
 <div class="-mt-2 text-[11px] leading-tight">
 
-<div class="mb-1">
+<div class="mb-0">
 קטע הריצה הבא מראה מדוע המקבל `R` חייב לדעת להתמודד גם עם קבלה חוזרת של
 `⟨m,0⟩` אחרי שכבר עבר למצב `wait(1)`.
 </div>
@@ -2089,6 +2169,105 @@ $$Chan = \{c, d, tmr\_on, tmr\_off, timeout\}, Var = \{x, y, m_i\}$$
     אם הערוץ `d` אמין, אפשר להשמיט את המצבים <i>chk_ack(0)</i> ו־<i>chk_ack(1)</i>.
     אם `d` אינו אמין, המצבים הללו נשארים הכרחיים.
   </div>
+</div>
+
+</div>
+
+---
+
+# 2.2.5 NanoPromela
+
+<div class="text-[13px] leading-snug">
+
+<div class="bg-slate-50 px-4 py-3 rounded border border-slate-200 mt-2">
+המודלים שראינו עד עכשיו, כמו <span dir="ltr">program graphs</span>, הרכבה מקבילית ו־<span dir="ltr">channel systems</span>,
+מספקים בסיס מתמטי מדויק למידול מערכות תגובתיות. אבל כדי לבנות כלים אוטומטיים לאימות,
+נוח יותר לעבוד עם <b>שפת מפרט קטנה ופשוטה</b> שממנה אפשר לגזור את המודל הפורמלי.
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-4">
+  <div class="bg-blue-50 p-3 rounded border border-blue-200">
+    <div class="font-bold mb-2">מה אנחנו רוצים משפת מפרט?</div>
+    <ul class="list-disc pr-5 space-y-1">
+      <li>שתהיה פשוטה וקלה להבנה, גם עבור משתמשים שאינם מומחים.</li>
+      <li>שתהיה מספיק אקספרסיבית כדי לתאר התנהגות צעד־אחר־צעד של תהליכים ואינטראקציות.</li>
+      <li>שתאפשר לתאר גם חישוב מקומי וגם תקשורת בין תהליכים.</li>
+    </ul>
+  </div>
+
+  <div class="bg-orange-50 p-3 rounded border border-orange-200">
+    <div class="font-bold mb-2">למה חייבים סמנטיקה פורמלית?</div>
+    <ul class="list-disc pr-5 space-y-1">
+      <li>כדי שהמשמעות של כל פקודה תהיה חד־משמעית.</li>
+      <li>כדי לשייך לכל תוכנית מערכת מעברים פורמלית.</li>
+      <li>כדי לאפשר סימולציה ו־model checking מול נוסחאות זמן.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="mt-4 bg-purple-50 p-3 rounded border border-purple-200 text-center">
+
+$$
+\text{Specification program}
+\Longrightarrow
+\text{Channel System}
+\Longrightarrow
+\text{Transition System}
+$$
+
+</div>
+
+</div>
+
+---
+
+# NanoPromela ו־Promela
+
+<div class="text-[12.5px] leading-snug">
+
+<div class="bg-slate-50 px-4 py-3 rounded border border-slate-200 mt-2">
+<b>NanoPromela</b> היא תת־שפה קטנה של <b>Promela</b>, שפת הקלט של בודק המודלים
+<b>SPIN</b>. הרעיון הוא לעבוד עם גרסה קומפקטית של השפה, אבל עם סמנטיקה שמתבססת
+בדיוק על אותם מושגים שכבר פיתחנו.
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-4">
+  <div class="bg-green-50 p-3 rounded border border-green-200">
+    <div class="font-bold mb-2">מבנה התוכנית</div>
+
+    $$
+    P = [P_1 \mid \ldots \mid P_n]
+    $$
+
+    כל תוכנית מורכבת ממספר סופי של תהליכים שרצים במקביל.
+
+    התקשורת יכולה להיעשות באמצעות:
+    <ul class="list-disc pr-5 mt-1 space-y-1">
+      <li>משתנים משותפים</li>
+      <li>ערוצי FIFO סינכרוניים או מאוגרים</li>
+    </ul>
+  </div>
+
+  <div class="bg-blue-50 p-3 rounded border border-blue-200">
+    <div class="font-bold mb-2">איך מתארים התנהגות?</div>
+
+    Promela משתמשת בשפת <span dir="ltr">guarded commands</span>:
+    תנאי (guard) יחד עם פעולה.
+
+    היא כוללת בין היתר:
+    <ul class="list-disc pr-5 mt-1 space-y-1">
+      <li>השמות למשתנים</li>
+      <li>תנאים, לולאות והרכבה סדרתית</li>
+      <li>שליחה וקבלה מערוצים</li>
+      <li>אזורים אטומיים שמונעים interleavings לא רצויים</li>
+    </ul>
+  </div>
+</div>
+
+<div class="mt-4 bg-amber-50 p-3 rounded border border-amber-200">
+Promela אינה משתמשת בדרך כלל ב־<span dir="ltr">action names</span> נפרדים; במקום זאת,
+הפקודה עצמה מתארת ישירות את האפקט של הצעד. הסמנטיקה הפורמלית של תוכנית Promela
+ניתנת דרך <span dir="ltr">channel system</span>, ומשם נפרסת ל־<span dir="ltr">transition system</span>.
 </div>
 
 </div>
