@@ -487,9 +487,9 @@ $$
 
 # דוגמה: שימוש בכללי הגזירה
 
-<div class="-mt-2 text-[12px] leading-tight">
+<div class="-mt-2 text-[11px] leading-tight">
 
-<div class="bg-slate-50 px-3 py-2 rounded border border-slate-200">
+<div class="bg-slate-50 px-3 py-0 rounded border border-slate-200">
 
 נבחן מערכת קטנה
 $
@@ -510,55 +510,89 @@ U: \ u_0 \xrightarrow{x=5:h?y} u_1
 \end{aligned}
 $$
 
+<div class="mt-2 bg-white/80 rounded border border-slate-200 px-3 py-0">
+<div class="font-bold mb-1">
+
+מצב התחלתי ב־$TS(CS)$
 </div>
 
-<div class="grid grid-cols-2 gap-2 mt-2">
-<div class="bg-blue-50 p-2 rounded border border-blue-200">
-<div class="font-bold mb-1">1. פעולה מקומית (Interleaving)</div>
+$$
+\sigma_0 =
+\langle p_0,s_0,r_0,t_0,u_0,\eta,\xi_0\rangle
+\qquad
+\xi_0(a)=\varepsilon
+$$
+</div>
+
+</div>
+
+<div class="grid grid-cols-2 gap-0 mt-0">
+<div v-click class="bg-blue-50 p-2 rounded border border-blue-200">
+<div class="font-bold mb-1">1. הפעלת כלל השזירה</div>
 
 $$
-\langle p_0,s_0,r_0,t_0,u_0,\eta,\xi_0\rangle
+\sigma_0
 \xrightarrow{\alpha}
+\sigma_1
+=
 \langle p_1,s_0,r_0,t_0,u_0,\eta[z:=1],\xi_0\rangle
 $$
 
-כאן רק הרכיב $P$ מתקדם, ואין שינוי בערוצים.
+רק הרכיב $P$ מתקדם, ולכן זהו צעד מסוג interleaving.
 </div>
 
-<div class="bg-purple-50 p-2 rounded border border-purple-200">
-<div class="font-bold mb-1">2. שליחה א־סינכרונית</div>
+<div v-click class="bg-purple-50 p-2 rounded border border-purple-200">
+<div class="font-bold mb-1">2. הפעלת כלל שליחה א־סינכרונית</div>
 
 $$
-\langle p_1,s_0,r_0,t_0,u_0,\eta,\xi_0\rangle
+\sigma_1
 \xrightarrow{\tau}
-\langle p_1,s_1,r_0,t_0,u_0,\eta,\xi_1\rangle
+\sigma_2
+=
+\langle p_1,s_1,r_0,t_0,u_0,\eta[z:=1],\xi_1\rangle
 $$
 
-כאשר $\xi_0(a)=\varepsilon$ ו־$\xi_1=\xi_0[a:=5]$.
+כאשר $\xi_1=\xi_0[a:=5]$, כלומר ההודעה $5$ נכנסת לחוצץ של $a$.
 </div>
 
-<div class="bg-purple-50 p-2 rounded border border-purple-200">
-<div class="font-bold mb-1">3. קבלה א־סינכרונית</div>
+<div v-click class="bg-purple-50 p-2 rounded border border-purple-200">
+<div class="font-bold mb-1">3. הפעלת כלל קבלה א־סינכרונית</div>
 
 $$
-\langle p_1,s_1,r_0,t_0,u_0,\eta,\xi_1\rangle
+\sigma_2
 \xrightarrow{\tau}
-\langle p_1,s_1,r_1,t_0,u_0,\eta[x:=5],\xi_0\rangle
+\sigma_3
+=
+\langle p_1,s_1,r_1,t_0,u_0,\eta[z:=1,x:=5],\xi_0\rangle
 $$
 
-המקבל $R$ קורא את הערך הראשון מ־$a$ ולכן החוצץ חוזר להיות ריק.
+הרכיב $R$ שולף את $5$ מראש התור, ולכן $a$ חוזר להיות ריק.
 </div>
 
-<div class="bg-orange-50 p-2 rounded border border-orange-200">
-<div class="font-bold mb-1">4. תקשורת סינכרונית</div>
+<div v-click class="bg-orange-50 p-2 rounded border border-orange-200">
+<div class="font-bold mb-1">4. הפעלת כלל התקשורת הסינכרונית</div>
 
 $$
-\langle p_1,s_1,r_1,t_0,u_0,\eta[x{:=}5],\xi_0\rangle
+\sigma_3
 \xrightarrow{\tau}
-\langle p_1,s_1,r_1,t_1,u_1,\eta[x{:=}5;y{:=}7],\xi_0\rangle
+\sigma_4
+=
+\langle p_1,s_1,r_1,t_1,u_1,\eta[z:=1,x:=5,y:=7],\xi_0\rangle
 $$
 
-כיוון ש־$cap(h)=0$, הרכיבים $T$ ו־$U$ חייבים להתקדם יחד.
+כיוון ש־$cap(h)=0$, הרכיבים $T$ ו־$U$ חייבים לבצע handshaking יחד.
+</div>
+</div>
+
+<div class="mt-2 bg-emerald-50 px-3 py-2 rounded border border-emerald-200">
+<div class="font-bold mb-1">מסלול ריצה שמתפרש בהדרגה</div>
+
+<div class="font-mono text-[10px] leading-snug">
+<span>\(\sigma_0\)</span>
+<span v-click>\(\xrightarrow{\alpha} \sigma_1\)</span>
+<span v-click>\(\xrightarrow{\tau} \sigma_2\)</span>
+<span v-click>\(\xrightarrow{\tau} \sigma_3\)</span>
+<span v-click>\(\xrightarrow{\tau} \sigma_4\)</span>
 </div>
 </div>
 
@@ -791,6 +825,5 @@ $$Chan = \{c, d, tmr\_on, tmr\_off, timeout\}, Var = \{x, y, m_i\}$$
 
 </div>
 
----
 
 
