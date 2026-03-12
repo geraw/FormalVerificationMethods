@@ -6,6 +6,7 @@ node_modules
 components.d.ts
 .vite
 dist
+dist-nanopromela-check/
 old_latex_file
 Files.zip
 

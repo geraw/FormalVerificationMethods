@@ -240,6 +240,167 @@ $$
 ---
 
 
+# פקודות תנאי: משמעות אינטואיטיבית
+
+<div class="text-[14px] leading-snug -mt-1">
+
+<div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
+הפקודות <span dir="ltr"><code>if-fi</code></span> ו־<span dir="ltr"><code>do-od</code></span>
+הן הכללה של מבני <span dir="ltr">if-then-else</span> ו־<span dir="ltr">while</span> הרגילים,
+אבל עם <b>בחירה לא־דטרמיניסטית</b> בין guarded commands.
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
+<div class="font-bold mb-1">מה עושה <span dir="ltr"><code>if-fi</code></span>?</div>
+
+<div dir="ltr" class="text-left text-[12px] font-mono mt-1 mb-2">
+if :: g<sub>1</sub> -> stmt<sub>1</sub> ... :: g<sub>n</sub> -> stmt<sub>n</sub> fi
+</div>
+
+הפקודה מייצגת <b>בחירה לא־דטרמיניסטית</b> בין כל הפקודות
+<span dir="ltr"><code>stmt<sub>i</sub></code></span> שעבורן ה־guard
+<span dir="ltr"><code>g<sub>i</sub></code></span> מתקיים בהערכת המשתנים הנוכחית.
+</div>
+
+<div class="bg-green-50 px-3 py-2 rounded border border-green-200">
+<div class="font-bold mb-1">הנחת Test-and-Set</div>
+
+אנו מניחים סמנטיקה אטומית שבה שלושת השלבים הבאים קורים כיחידה אחת:
+
+<ul class="list-disc pr-5 mt-1 space-y-1">
+<li>בדיקת כל ה־guards.</li>
+<li>בחירת אחד מה־guarded commands המאופשרים.</li>
+<li>ביצוע הצעד האטומי הראשון של הפקודה שנבחרה.</li>
+</ul>
+
+לכן תהליכים מקביליים אחרים <b>אינם יכולים להשתלב</b> באמצע שלושת השלבים הללו.
+</div>
+</div>
+
+</div>
+
+---
+
+
+# פקודות תנאי: חסימה והקשר ל־if רגיל
+
+<div class="text-[13px] leading-snug -mt-1">
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-amber-50 px-3 py-2 rounded border border-amber-200">
+<div class="font-bold mb-1">מתי <span dir="ltr"><code>if-fi</code></span> נתקעת?</div>
+
+אם אף אחד מה־guards <span dir="ltr"><code>g<sub>1</sub>, ..., g<sub>n</sub></code></span>
+לא מתקיים במצב הנוכחי, הפקודה <b>נחסמת</b>.
+
+<div class="mt-2">
+החסימה נבחנת תמיד בהקשר של מערכת מקבילית: ייתכן שתהליך אחר ישנה משתנים משותפים,
+וכך בהמשך אחד ה־guards יהפוך לאמיתי והחסימה תוסר.
+</div>
+</div>
+
+<div class="bg-rose-50 px-3 py-2 rounded border border-rose-200">
+<div class="font-bold mb-1">דוגמה אינטואיטיבית</div>
+
+<div dir="ltr" class="text-left text-[12px] font-mono mt-1 mb-2">
+if :: y &gt; 0 -> x := 42 fi
+</div>
+
+אם במצב הנוכחי <span dir="ltr"><code>y = 0</code></span>, התהליך ממתין עד שתהליך אחר
+ישייך ל־<span dir="ltr"><code>y</code></span> ערך שונה מאפס.
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
+<div class="font-bold mb-1">איך מקבלים <span dir="ltr">if-then-else</span> רגיל?</div>
+
+<div dir="ltr" class="text-left text-[12px] font-mono mt-1">
+if :: g -> stmt<sub>1</sub> :: !g -> stmt<sub>2</sub> fi
+</div>
+
+כך מקודדים מבנה מהצורה:
+<span dir="ltr"><code>if g then stmt<sub>1</sub> else stmt<sub>2</sub> fi</code></span>.
+</div>
+
+<div class="bg-green-50 px-3 py-2 rounded border border-green-200">
+<div class="font-bold mb-1">ומה עם <span dir="ltr">if</span> בלי <span dir="ltr">else</span>?</div>
+
+<div dir="ltr" class="text-left text-[12px] font-mono mt-1">
+if :: g -> stmt :: !g -> skip fi
+</div>
+
+האפשרות השנייה משתמשת ב־<span dir="ltr"><code>skip</code></span>, ולכן אם
+<span dir="ltr"><code>g</code></span> שקרי פשוט "לא קורה כלום".
+</div>
+</div>
+
+</div>
+
+---
+
+
+# לולאות <span dir="ltr"><code>do-od</code></span>
+
+<div class="text-[13px] leading-snug -mt-1">
+
+<div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
+בדומה ל־<span dir="ltr"><code>if-fi</code></span>, גם
+<span dir="ltr"><code>do-od</code></span> מבוססת על guarded commands,
+אבל כאן מדובר על <b>חזרה</b> כל עוד לפחות guard אחד מתקיים.
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
+<div class="font-bold mb-1">המשמעות האינטואיטיבית</div>
+
+<div dir="ltr" class="text-left text-[12px] font-mono mt-1 mb-2">
+do :: g<sub>1</sub> -> stmt<sub>1</sub> ... :: g<sub>n</sub> -> stmt<sub>n</sub> od
+</div>
+
+הלולאה מבצעת שוב ושוב בחירה לא־דטרמיניסטית בין כל הפקודות
+<span dir="ltr"><code>g<sub>i</sub> -> stmt<sub>i</sub></code></span>
+שעבורן ה־guard המתאים מתקיים.
+</div>
+
+<div class="bg-amber-50 px-3 py-2 rounded border border-amber-200">
+<div class="font-bold mb-1">מה קורה כשאין guard מאופשר?</div>
+
+בשונה מ־<span dir="ltr"><code>if-fi</code></span>, הלולאה <b>אינה נחסמת</b>.
+אם כל ה־guards מופרכים במצב הנוכחי, הלולאה פשוט <b>מסתיימת</b>.
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-green-50 px-3 py-2 rounded border border-green-200">
+<div class="font-bold mb-1">הקשר ל־<span dir="ltr">while</span> רגיל</div>
+
+הלולאה הבודדת
+
+<div dir="ltr" class="text-left text-[12px] font-mono mt-1">
+do :: g -> stmt od
+</div>
+
+שקולה אינטואיטיבית ל־
+<span dir="ltr"><code>while g do stmt od</code></span>,
+עם תנאי סיום <span dir="ltr"><code>!g</code></span>.
+</div>
+
+<div class="bg-rose-50 px-3 py-2 rounded border border-rose-200">
+<div class="font-bold mb-1">הבדל מול Promela</div>
+
+ב־<span dir="ltr">nanoPromela</span> איננו מסיימים לולאות באמצעות
+<span dir="ltr"><code>break</code></span>.
+הסיום קורה כאשר אין אף guard שמתקיים.
+</div>
+</div>
+
+</div>
+
+---
+
+
 # תחביר פורמלי של פקודות
 
 <div class="text-[13px] leading-snug -mt-1">
@@ -308,15 +469,62 @@ x<sub>1</sub> := expr<sub>1</sub>; x<sub>2</sub> := expr<sub>2</sub>; ...; x<sub
 ---
 
 
-# משמעות: השמה, ביטויים ו־guards
+# משמעות אינטואיטיבית של הפקודות
 
-- המשמעות  של `x := expr` פשוטה: למשתנה `x` משויך הערך של `expr` לפי הערכת המשתנים הנוכחית.
+<div class="text-[14px] leading-snug -mt-1">
 
-- התחביר המדויק של ביטויים וביטויים בוליאניים אינו חשוב כאן.
-- אפשר להניח שביטויים עבור משתנה `x` נבנים מתוך:
-  קבועים מתוך `dom(x)`, משתנים `y` מאותו טיפוס או מתת־טיפוס מתאים, ואופרטורים על `dom(x)`.
-- לדוגמה:
-  עבור תחום בוליאני אפשר להשתמש בקשרים כמו `∧`, `∨`, `¬`;
-  עבור תחומים אריתמטיים אפשר להשתמש באופרטורים כמו `+`, `*`.
-- ה־guards הם ביטויים בוליאניים שמטילים תנאים על ערכי המשתנים.
-- לכן נתייחס אל guards כאל איברים של `Cond(Var)`.
+<div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
+לפני הסמנטיקה הפורמלית, כדאי להבין אינטואיטיבית מה כל פקודה "עושה" בזמן ריצה.
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
+<div class="font-bold mb-1">פקודות בסיסיות</div>
+
+<ul class="list-disc pr-5 mt-1 space-y-3">
+<li><span dir="ltr"><code>skip</code></span> מייצגת תהליך שמסתיים בצעד אחד, בלי לשנות משתנים ובלי לשנות את תוכן הערוצים.</li>
+<li>המשמעות של <span dir="ltr"><code>x := expr</code></span> אינטואיטיבית: מחשבים את <span dir="ltr"><code>expr</code></span> לפי ההערכה הנוכחית, ומשייכים את התוצאה ל־<span dir="ltr"><code>x</code></span>.</li>
+</ul>
+</div>
+
+<div class="bg-green-50 px-3 py-2 rounded border border-green-200">
+<div class="font-bold mb-1">הרכבה סדרתית</div>
+
+<div>
+הפקודה <span dir="ltr"><code>stmt<sub>1</sub> ; stmt<sub>2</sub></code></span> מתארת
+<b>ביצוע בזה אחר זה</b>:
+</div>
+
+<div class="mt-2">
+קודם מבוצעת <span dir="ltr"><code>stmt<sub>1</sub></code></span>, ורק לאחר סיומה
+מתחילה <span dir="ltr"><code>stmt<sub>2</sub></code></span>.
+</div>
+
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-amber-50 px-3 py-2 rounded border border-amber-200">
+<div class="font-bold mb-1">אזור אטומי</div>
+
+הפקודה <span dir="ltr"><code>atomic{stmt}</code></span> גורמת לכך שהביצוע של
+<span dir="ltr"><code>stmt</code></span> ייתפס כצעד אטומי אחד, כלומר
+<b>לא ניתן לשזור</b> לתוכו צעדים של תהליכים אחרים.
+</div>
+
+<div class="bg-rose-50 px-3 py-2 rounded border border-rose-200">
+<div class="font-bold mb-1">למה זה חשוב?</div>
+
+<ul class="list-disc pr-5 mt-1 space-y-2">
+<li>אזור אטומי יכול לשמש גם כטכניקת <b>דחיסה</b> של מרחב המצבים.</li>
+<li>מתעלמים מהקונפיגורציות הביניים שבתוך האזור האטומי, ומתייחסים לביצוע כולו כיחידה אחת.</li>
+<li>בקורס נניח שגוף אזור אטומי הוא סדרה של השמות, כדי לפשט את כללי ההסקה בהמשך.</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+---
+
+
