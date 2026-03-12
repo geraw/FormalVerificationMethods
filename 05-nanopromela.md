@@ -259,10 +259,10 @@ stmt ::= skip
       | x := expr
       | c?x
       | c!expr
-      | stmt1 ; stmt2
+      | stmt₁ ; stmt₂
       | atomic{assignments}
-      | if :: g1 -> stmt1 ... :: gn -> stmtn fi
-      | do :: g1 -> stmt1 ... :: gn -> stmtn od
+      | if :: g₁ -> stmt₁ ... :: gₙ -> stmtₙ fi
+      | do :: g₁ -> stmt₁ ... :: gₙ -> stmtₙ od
 ```
 
 </div>
@@ -284,9 +284,9 @@ stmt ::= skip
 <div class="bg-green-50 px-3 py-2 rounded border border-green-200">
 <div class="font-bold mb-1">Guards</div>
 
-הביטויים <span dir="ltr"><code>g1, ..., gn</code></span> שמופיעים ב־<span dir="ltr"><code>if-fi</code></span>
+הביטויים <span dir="ltr"><code>g<sub>1</sub>, ..., g<sub>n</sub></code></span> שמופיעים ב־<span dir="ltr"><code>if-fi</code></span>
 וב־<span dir="ltr"><code>do-od</code></span> הם <b>guards</b>.
-אנו מניחים ש־<span dir="ltr"><code>gi ∈ Cond(Var)</code></span>, כלומר כל guard הוא תנאי בוליאני על ערכי המשתנים.
+אנו מניחים ש־<span dir="ltr"><code>g<sub>i</sub> ∈ Cond(Var)</code></span>, כלומר כל guard הוא תנאי בוליאני על ערכי המשתנים.
 </div>
 
 <div class="bg-amber-50 px-3 py-2 rounded border border-amber-200">
@@ -296,10 +296,10 @@ stmt ::= skip
 <span dir="ltr"><code>atomic{...}</code></span> הוא הרכבה סדרתית לא־ריקה של השמות:
 
 <div dir="ltr" class="text-center text-[12px] mt-3 mb-3 font-mono">
-x1 := expr1; x2 := expr2; ...; xm := exprm &nbsp;&nbsp; (m ≥ 1)
+x<sub>1</sub> := expr<sub>1</sub>; x<sub>2</sub> := expr<sub>2</sub>; ...; x<sub>m</sub> := expr<sub>m</sub> &nbsp;&nbsp; (m ≥ 1)
 </div>
 
-כאשר לכל <span dir="ltr"><code>i</code></span> הטיפוסים של <span dir="ltr"><code>xi</code></span> ושל <span dir="ltr"><code>expri</code></span> תואמים.
+כאשר לכל <span dir="ltr"><code>i</code></span> הטיפוסים של <span dir="ltr"><code>x<sub>i</sub></code></span> ושל <span dir="ltr"><code>expr<sub>i</sub></code></span> תואמים.
 </div>
 </div>
 
