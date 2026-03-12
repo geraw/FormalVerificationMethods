@@ -539,3 +539,57 @@ do :: g -> stmt od
 ---
 
 
+# דוגמה: אלגוריתם המניעה ההדדית של פיטרסון
+
+<div class="text-[16px] leading-snug -mt-1">
+
+<div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
+את אלגוריתם פיטרסון עבור שני תהליכים אפשר לנסח ב־<span dir="ltr">nanoPromela</span>
+באמצעות המשתנים הבוליאניים <span dir="ltr"><code>b<sub>1</sub>, b<sub>2</sub></code></span>,
+המשתנה <span dir="ltr"><code>x</code></span> עם
+<span dir="ltr"><code>dom(x) = {1,2}</code></span>, והמשתנים
+<span dir="ltr"><code>crit<sub>1</sub>, crit<sub>2</sub></code></span>.
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
+<div class="font-bold mb-1">משמעות החלקים במודל</div>
+
+<ul class="list-disc pr-5 mt-6 space-y-2">
+<li><span dir="ltr"><code>skip</code></span> מייצג את הפעילות בקטע הלא־קריטי.</li>
+<li><span dir="ltr"><code>crit<sub>i</sub> := true</code></span> מייצג כניסה של התהליך <span dir="ltr"><code>P<sub>i</sub></code></span> לקטע הקריטי.</li>
+<li>בהתחלה: <span dir="ltr"><code>b<sub>1</sub> = b<sub>2</sub> = crit<sub>1</sub> = crit<sub>2</sub> = false</code></span>, ואילו <span dir="ltr"><code>x</code></span> שרירותי.</li>
+</ul>
+</div>
+
+<div class="bg-blue-900 text-zinc-100 px-1 py-10 rounded">
+<div class="font-bold mb-2 text-right text-white">הקוד של <span dir="ltr" class="text-black"><code>P<sub>1</sub></code></span></div>
+<div dir="ltr" class="text-left">
+
+```text {lineNumbers: false}
+do :: true -> skip;
+
+     atomic{b1 := true; x := 2};
+
+     if :: (x = 1) or !b2 -> crit1 := true fi;
+
+     atomic{crit1 := false; b1 := false}
+
+od
+```
+
+</div>
+</div>
+</div>
+
+<div class="mt-2 bg-green-50 px-4 py-2 rounded border border-green-200">
+הקוד של <span dir="ltr"><code>P<sub>2</sub></code></span> סימטרי: מחליפים את
+<span dir="ltr"><code>1</code></span> ו־<span dir="ltr"><code>2</code></span>,
+ואת <span dir="ltr"><code>b<sub>1</sub>, crit<sub>1</sub></code></span> ב־
+<span dir="ltr"><code>b<sub>2</sub>, crit<sub>2</sub></code></span>.
+</div>
+
+</div>
+
+
+
