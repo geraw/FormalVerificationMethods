@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">Comic illustration for intuitive meaning of if-fi</title>
+  <desc id="desc">Three-panel comic showing guard evaluation, nondeterministic choice among enabled branches, and atomic test-and-set semantics blocking interleaving.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fffdf7; }
+      .panel { fill: #ffffff; stroke: #111827; stroke-width: 4; rx: 22; ry: 22; }
+      .caption { font: 700 22px 'Trebuchet MS', 'Comic Sans MS', sans-serif; fill: #111827; }
+      .bubble { fill: #ffffff; stroke: #111827; stroke-width: 3; }
+      .bubble-text { font: 600 18px 'Trebuchet MS', 'Comic Sans MS', sans-serif; fill: #111827; }
+      .label { font: 700 18px 'Courier New', monospace; fill: #111827; }
+      .small { font: 600 15px 'Trebuchet MS', 'Comic Sans MS', sans-serif; fill: #334155; }
+      .guard-on { fill: #dcfce7; stroke: #166534; stroke-width: 3; }
+      .guard-off { fill: #fee2e2; stroke: #991b1b; stroke-width: 3; }
+      .cmd { fill: #eff6ff; stroke: #2563eb; stroke-width: 3; }
+      .atomic { fill: #fff7ed; stroke: #ea580c; stroke-width: 4; stroke-dasharray: 10 8; }
+      .arrow { stroke: #111827; stroke-width: 4; fill: none; marker-end: url(#arrowhead); }
+      .blocked { stroke: #b91c1c; stroke-width: 5; fill: none; }
+      .motion { stroke: #64748b; stroke-width: 3; fill: none; stroke-dasharray: 8 6; }
+    </style>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#111827"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="320" />
+
+  <rect class="panel" x="20" y="30" width="360" height="250" />
+  <rect class="panel" x="420" y="30" width="360" height="250" />
+  <rect class="panel" x="820" y="30" width="360" height="250" />
+
+  <text class="caption" x="200" y="62" text-anchor="middle">1. Check Guards</text>
+  <circle cx="88" cy="148" r="20" fill="#fde68a" stroke="#111827" stroke-width="3"/>
+  <line x1="88" y1="168" x2="88" y2="220" stroke="#111827" stroke-width="4"/>
+  <line x1="88" y1="184" x2="62" y2="202" stroke="#111827" stroke-width="4"/>
+  <line x1="88" y1="184" x2="116" y2="170" stroke="#111827" stroke-width="4"/>
+  <line x1="88" y1="220" x2="68" y2="250" stroke="#111827" stroke-width="4"/>
+  <line x1="88" y1="220" x2="108" y2="250" stroke="#111827" stroke-width="4"/>
+  <ellipse class="bubble" cx="176" cy="108" rx="92" ry="34"/>
+  <polygon class="bubble" points="113,129 96,147 126,136"/>
+  <text class="bubble-text" x="176" y="104" text-anchor="middle">Which guards</text>
+  <text class="bubble-text" x="176" y="126" text-anchor="middle">are true now?</text>
+
+  <rect class="guard-on" x="208" y="94" width="122" height="44" rx="12"/>
+  <text class="label" x="269" y="122" text-anchor="middle">g₁ = true</text>
+  <rect class="guard-off" x="208" y="156" width="122" height="44" rx="12"/>
+  <text class="label" x="269" y="184" text-anchor="middle">g₂ = false</text>
+  <rect class="guard-on" x="208" y="218" width="122" height="44" rx="12"/>
+  <text class="label" x="269" y="246" text-anchor="middle">g₃ = true</text>
+  <path class="motion" d="M118 166 C 145 158, 165 150, 198 118"/>
+  <path class="motion" d="M120 174 C 150 180, 170 184, 198 178"/>
+  <path class="motion" d="M118 184 C 150 196, 170 214, 198 236"/>
+
+  <text class="caption" x="600" y="62" text-anchor="middle">2. Choose One Enabled Branch</text>
+  <circle cx="486" cy="148" r="20" fill="#bfdbfe" stroke="#111827" stroke-width="3"/>
+  <line x1="486" y1="168" x2="486" y2="220" stroke="#111827" stroke-width="4"/>
+  <line x1="486" y1="184" x2="458" y2="196" stroke="#111827" stroke-width="4"/>
+  <line x1="486" y1="184" x2="512" y2="170" stroke="#111827" stroke-width="4"/>
+  <line x1="486" y1="220" x2="468" y2="250" stroke="#111827" stroke-width="4"/>
+  <line x1="486" y1="220" x2="506" y2="250" stroke="#111827" stroke-width="4"/>
+  <path class="arrow" d="M520 148 C 548 124, 562 108, 592 100"/>
+  <path class="arrow" d="M520 154 C 548 174, 562 200, 592 222"/>
+  <rect class="cmd" x="592" y="78" width="126" height="48" rx="12"/>
+  <text class="label" x="655" y="108" text-anchor="middle">g₁ → stmt₁</text>
+  <rect class="cmd" x="592" y="198" width="126" height="48" rx="12"/>
+  <text class="label" x="655" y="228" text-anchor="middle">g₃ → stmt₃</text>
+  <ellipse class="bubble" cx="600" cy="154" rx="86" ry="34"/>
+  <text class="bubble-text" x="600" y="150" text-anchor="middle">Only enabled</text>
+  <text class="bubble-text" x="600" y="172" text-anchor="middle">branches compete</text>
+  <text class="small" x="487" y="276" text-anchor="middle">choice is nondeterministic</text>
+
+  <text class="caption" x="1000" y="62" text-anchor="middle">3. Atomic Test-and-Set</text>
+  <rect class="atomic" x="858" y="92" width="212" height="126" rx="20"/>
+  <rect class="cmd" x="878" y="110" width="172" height="28" rx="10"/>
+  <text class="label" x="964" y="129" text-anchor="middle">test guards</text>
+  <rect class="cmd" x="878" y="146" width="172" height="28" rx="10"/>
+  <text class="label" x="964" y="165" text-anchor="middle">pick one branch</text>
+  <rect class="cmd" x="878" y="182" width="172" height="28" rx="10"/>
+  <text class="label" x="964" y="201" text-anchor="middle">first atomic step</text>
+  <text class="small" x="964" y="232" text-anchor="middle">one indivisible unit</text>
+
+  <circle cx="1110" cy="136" r="18" fill="#fecaca" stroke="#111827" stroke-width="3"/>
+  <line x1="1110" y1="154" x2="1110" y2="198" stroke="#111827" stroke-width="4"/>
+  <line x1="1110" y1="166" x2="1085" y2="180" stroke="#111827" stroke-width="4"/>
+  <line x1="1110" y1="166" x2="1135" y2="180" stroke="#111827" stroke-width="4"/>
+  <line x1="1110" y1="198" x2="1090" y2="228" stroke="#111827" stroke-width="4"/>
+  <line x1="1110" y1="198" x2="1126" y2="228" stroke="#111827" stroke-width="4"/>
+  <path class="motion" d="M1100 170 C 1088 170, 1080 166, 1070 160"/>
+  <path class="blocked" d="M1078 150 l24 24"/>
+  <path class="blocked" d="M1102 150 l-24 24"/>
+  <ellipse class="bubble" cx="1090" cy="100" rx="84" ry="30"/>
+  <text class="bubble-text" x="1090" y="97" text-anchor="middle">No interleaving</text>
+  <text class="bubble-text" x="1090" y="118" text-anchor="middle">allowed here!</text>
+</svg>

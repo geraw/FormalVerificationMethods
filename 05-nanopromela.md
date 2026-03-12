@@ -73,7 +73,7 @@ $$
 
 # משתנים, ביטויים וערוצים
 
-<div class="text-[14px] leading-snug -mt-1">
+<div class="text-[13px] leading-snug -mt-1">
 
 <div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
 ב־NanoPromela המשתנים יכולים להיות מטיפוסים שונים
@@ -240,167 +240,6 @@ $$
 ---
 
 
-# פקודות תנאי: משמעות אינטואיטיבית
-
-<div class="text-[14px] leading-snug -mt-1">
-
-<div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
-הפקודות <span dir="ltr"><code>if-fi</code></span> ו־<span dir="ltr"><code>do-od</code></span>
-הן הכללה של מבני <span dir="ltr">if-then-else</span> ו־<span dir="ltr">while</span> הרגילים,
-אבל עם <b>בחירה לא־דטרמיניסטית</b> בין guarded commands.
-</div>
-
-<div class="grid grid-cols-2 gap-3 mt-2">
-<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
-<div class="font-bold mb-1">מה עושה <span dir="ltr"><code>if-fi</code></span>?</div>
-
-<div dir="ltr" class="text-left text-[12px] font-mono mt-1 mb-2">
-if :: g<sub>1</sub> -> stmt<sub>1</sub> ... :: g<sub>n</sub> -> stmt<sub>n</sub> fi
-</div>
-
-הפקודה מייצגת <b>בחירה לא־דטרמיניסטית</b> בין כל הפקודות
-<span dir="ltr"><code>stmt<sub>i</sub></code></span> שעבורן ה־guard
-<span dir="ltr"><code>g<sub>i</sub></code></span> מתקיים בהערכת המשתנים הנוכחית.
-</div>
-
-<div class="bg-green-50 px-3 py-2 rounded border border-green-200">
-<div class="font-bold mb-1">הנחת Test-and-Set</div>
-
-אנו מניחים סמנטיקה אטומית שבה שלושת השלבים הבאים קורים כיחידה אחת:
-
-<ul class="list-disc pr-5 mt-1 space-y-1">
-<li>בדיקת כל ה־guards.</li>
-<li>בחירת אחד מה־guarded commands המאופשרים.</li>
-<li>ביצוע הצעד האטומי הראשון של הפקודה שנבחרה.</li>
-</ul>
-
-לכן תהליכים מקביליים אחרים <b>אינם יכולים להשתלב</b> באמצע שלושת השלבים הללו.
-</div>
-</div>
-
-</div>
-
----
-
-
-# פקודות תנאי: חסימה והקשר ל־if רגיל
-
-<div class="text-[13px] leading-snug -mt-1">
-
-<div class="grid grid-cols-2 gap-3 mt-2">
-<div class="bg-amber-50 px-3 py-2 rounded border border-amber-200">
-<div class="font-bold mb-1">מתי <span dir="ltr"><code>if-fi</code></span> נתקעת?</div>
-
-אם אף אחד מה־guards <span dir="ltr"><code>g<sub>1</sub>, ..., g<sub>n</sub></code></span>
-לא מתקיים במצב הנוכחי, הפקודה <b>נחסמת</b>.
-
-<div class="mt-2">
-החסימה נבחנת תמיד בהקשר של מערכת מקבילית: ייתכן שתהליך אחר ישנה משתנים משותפים,
-וכך בהמשך אחד ה־guards יהפוך לאמיתי והחסימה תוסר.
-</div>
-</div>
-
-<div class="bg-rose-50 px-3 py-2 rounded border border-rose-200">
-<div class="font-bold mb-1">דוגמה אינטואיטיבית</div>
-
-<div dir="ltr" class="text-left text-[12px] font-mono mt-1 mb-2">
-if :: y &gt; 0 -> x := 42 fi
-</div>
-
-אם במצב הנוכחי <span dir="ltr"><code>y = 0</code></span>, התהליך ממתין עד שתהליך אחר
-ישייך ל־<span dir="ltr"><code>y</code></span> ערך שונה מאפס.
-</div>
-</div>
-
-<div class="grid grid-cols-2 gap-3 mt-2">
-<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
-<div class="font-bold mb-1">איך מקבלים <span dir="ltr">if-then-else</span> רגיל?</div>
-
-<div dir="ltr" class="text-left text-[12px] font-mono mt-1">
-if :: g -> stmt<sub>1</sub> :: !g -> stmt<sub>2</sub> fi
-</div>
-
-כך מקודדים מבנה מהצורה:
-<span dir="ltr"><code>if g then stmt<sub>1</sub> else stmt<sub>2</sub> fi</code></span>.
-</div>
-
-<div class="bg-green-50 px-3 py-2 rounded border border-green-200">
-<div class="font-bold mb-1">ומה עם <span dir="ltr">if</span> בלי <span dir="ltr">else</span>?</div>
-
-<div dir="ltr" class="text-left text-[12px] font-mono mt-1">
-if :: g -> stmt :: !g -> skip fi
-</div>
-
-האפשרות השנייה משתמשת ב־<span dir="ltr"><code>skip</code></span>, ולכן אם
-<span dir="ltr"><code>g</code></span> שקרי פשוט "לא קורה כלום".
-</div>
-</div>
-
-</div>
-
----
-
-
-# לולאות <span dir="ltr"><code>do-od</code></span>
-
-<div class="text-[13px] leading-snug -mt-1">
-
-<div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
-בדומה ל־<span dir="ltr"><code>if-fi</code></span>, גם
-<span dir="ltr"><code>do-od</code></span> מבוססת על guarded commands,
-אבל כאן מדובר על <b>חזרה</b> כל עוד לפחות guard אחד מתקיים.
-</div>
-
-<div class="grid grid-cols-2 gap-3 mt-2">
-<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
-<div class="font-bold mb-1">המשמעות האינטואיטיבית</div>
-
-<div dir="ltr" class="text-left text-[12px] font-mono mt-1 mb-2">
-do :: g<sub>1</sub> -> stmt<sub>1</sub> ... :: g<sub>n</sub> -> stmt<sub>n</sub> od
-</div>
-
-הלולאה מבצעת שוב ושוב בחירה לא־דטרמיניסטית בין כל הפקודות
-<span dir="ltr"><code>g<sub>i</sub> -> stmt<sub>i</sub></code></span>
-שעבורן ה־guard המתאים מתקיים.
-</div>
-
-<div class="bg-amber-50 px-3 py-2 rounded border border-amber-200">
-<div class="font-bold mb-1">מה קורה כשאין guard מאופשר?</div>
-
-בשונה מ־<span dir="ltr"><code>if-fi</code></span>, הלולאה <b>אינה נחסמת</b>.
-אם כל ה־guards מופרכים במצב הנוכחי, הלולאה פשוט <b>מסתיימת</b>.
-</div>
-</div>
-
-<div class="grid grid-cols-2 gap-3 mt-2">
-<div class="bg-green-50 px-3 py-2 rounded border border-green-200">
-<div class="font-bold mb-1">הקשר ל־<span dir="ltr">while</span> רגיל</div>
-
-הלולאה הבודדת
-
-<div dir="ltr" class="text-left text-[12px] font-mono mt-1">
-do :: g -> stmt od
-</div>
-
-שקולה אינטואיטיבית ל־
-<span dir="ltr"><code>while g do stmt od</code></span>,
-עם תנאי סיום <span dir="ltr"><code>!g</code></span>.
-</div>
-
-<div class="bg-rose-50 px-3 py-2 rounded border border-rose-200">
-<div class="font-bold mb-1">הבדל מול Promela</div>
-
-ב־<span dir="ltr">nanoPromela</span> איננו מסיימים לולאות באמצעות
-<span dir="ltr"><code>break</code></span>.
-הסיום קורה כאשר אין אף guard שמתקיים.
-</div>
-</div>
-
-</div>
-
----
-
-
 # תחביר פורמלי של פקודות
 
 <div class="text-[13px] leading-snug -mt-1">
@@ -524,6 +363,178 @@ x<sub>1</sub> := expr<sub>1</sub>; x<sub>2</sub> := expr<sub>2</sub>; ...; x<sub
 </div>
 
 </div>
+
+
+---
+
+
+# פקודות תנאי: משמעות אינטואיטיבית
+
+<div class="text-[14px] leading-snug -mt-1">
+
+<div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
+הפקודות <span dir="ltr"><code>if-fi</code></span> ו־<span dir="ltr"><code>do-od</code></span>
+הן הכללה של מבני <span dir="ltr">if-then-else</span> ו־<span dir="ltr">while</span> הרגילים,
+אבל עם <b>בחירה לא־דטרמיניסטית</b> בין guarded commands.
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
+<div class="font-bold mb-1">מה עושה <span dir="ltr"><code>if-fi</code></span>?</div>
+
+<div dir="ltr" class="text-left text-[12px] font-mono mt-1 mb-2">
+if :: g<sub>1</sub> -> stmt<sub>1</sub> ... :: g<sub>n</sub> -> stmt<sub>n</sub> fi
+</div>
+
+הפקודה מייצגת <b>בחירה לא־דטרמיניסטית</b> בין כל הפקודות
+<span dir="ltr"><code>stmt<sub>i</sub></code></span> שעבורן ה־guard
+<span dir="ltr"><code>g<sub>i</sub></code></span> מתקיים בהערכת המשתנים הנוכחית.
+</div>
+
+<div class="bg-green-50 px-3 py-2 rounded border border-green-200">
+<div class="font-bold mb-1">הנחת Test-and-Set</div>
+
+אנו מניחים סמנטיקה אטומית שבה שלושת השלבים הבאים קורים כיחידה אחת:
+
+<ul class="list-disc pr-5 mt-1 space-y-1">
+<li>בדיקת כל ה־guards.</li>
+<li>בחירת אחד מה־guarded commands המאופשרים.</li>
+<li>ביצוע הצעד האטומי הראשון של הפקודה שנבחרה.</li>
+</ul>
+
+לכן תהליכים מקביליים אחרים <b>אינם יכולים להשתלב</b> באמצע שלושת השלבים הללו.
+</div>
+</div>
+
+<div class="mt-3 bg-yellow-50 px-3 py-2 rounded border border-slate-200">
+  <div class="text-[14px] text-slate-600 text-center -mt-1">
+    קודם בודקים אילו guards מאופשרים, אחר כך בוחרים אחד מהם, ואת הצעד האטומי הראשון מבצעים בלי interleaving של תהליכים אחרים.
+  </div>
+</div>
+
+</div>
+
+
+  <img src="./images/if_fi_comic.svg" alt="איור קומי של בחירת guarded command ושל סמנטיקת test-and-set" class="absolute bottom-34 right-18 w-100" />
+
+---
+
+
+# פקודות תנאי: חסימה והקשר ל־if רגיל
+
+<div class="text-[13px] leading-snug -mt-1">
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-amber-50 px-3 py-2 rounded border border-amber-200">
+<div class="font-bold mb-1">מתי <span dir="ltr"><code>if-fi</code></span> נתקעת?</div>
+
+אם אף אחד מה־guards <span dir="ltr"><code>g<sub>1</sub>, ..., g<sub>n</sub></code></span>
+לא מתקיים במצב הנוכחי, הפקודה <b>נחסמת</b>.
+
+<div class="mt-2">
+החסימה נבחנת תמיד בהקשר של מערכת מקבילית: ייתכן שתהליך אחר ישנה משתנים משותפים,
+וכך בהמשך אחד ה־guards יהפוך לאמיתי והחסימה תוסר.
+</div>
+</div>
+
+<div class="bg-rose-50 px-3 py-2 rounded border border-rose-200">
+<div class="font-bold mb-1">דוגמה אינטואיטיבית</div>
+
+<div dir="ltr" class="text-left text-[12px] font-mono mt-1 mb-2">
+if :: y &gt; 0 -> x := 42 fi
+</div>
+
+אם במצב הנוכחי <span dir="ltr"><code>y = 0</code></span>, התהליך ממתין עד שתהליך אחר
+ישייך ל־<span dir="ltr"><code>y</code></span> ערך שונה מאפס.
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
+<div class="font-bold mb-1">איך מקבלים <span dir="ltr">if-then-else</span> רגיל?</div>
+
+<div dir="ltr" class="text-left text-[12px] font-mono mt-1">
+if :: g -> stmt<sub>1</sub> :: !g -> stmt<sub>2</sub> fi
+</div>
+
+כך מקודדים מבנה מהצורה:
+<span dir="ltr"><code>if g then stmt<sub>1</sub> else stmt<sub>2</sub> fi</code></span>.
+</div>
+
+<div class="bg-green-50 px-3 py-2 rounded border border-green-200">
+<div class="font-bold mb-1">ומה עם <span dir="ltr">if</span> בלי <span dir="ltr">else</span>?</div>
+
+<div dir="ltr" class="text-left text-[12px] font-mono mt-1">
+if :: g -> stmt :: !g -> skip fi
+</div>
+
+האפשרות השנייה משתמשת ב־<span dir="ltr"><code>skip</code></span>, ולכן אם
+<span dir="ltr"><code>g</code></span> שקרי פשוט "לא קורה כלום".
+</div>
+</div>
+
+</div>
+
+---
+
+
+# לולאות <span dir="ltr"><code>do-od</code></span>
+
+<div class="text-[13px] leading-snug -mt-1">
+
+<div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
+בדומה ל־<span dir="ltr"><code>if-fi</code></span>, גם
+<span dir="ltr"><code>do-od</code></span> מבוססת על guarded commands,
+אבל כאן מדובר על <b>חזרה</b> כל עוד לפחות guard אחד מתקיים.
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
+<div class="font-bold mb-1">המשמעות האינטואיטיבית</div>
+
+<div dir="ltr" class="text-left text-[12px] font-mono mt-1 mb-2">
+do :: g<sub>1</sub> -> stmt<sub>1</sub> ... :: g<sub>n</sub> -> stmt<sub>n</sub> od
+</div>
+
+הלולאה מבצעת שוב ושוב בחירה לא־דטרמיניסטית בין כל הפקודות
+<span dir="ltr"><code>g<sub>i</sub> -> stmt<sub>i</sub></code></span>
+שעבורן ה־guard המתאים מתקיים.
+</div>
+
+<div class="bg-amber-50 px-3 py-2 rounded border border-amber-200">
+<div class="font-bold mb-1">מה קורה כשאין guard מאופשר?</div>
+
+בשונה מ־<span dir="ltr"><code>if-fi</code></span>, הלולאה <b>אינה נחסמת</b>.
+אם כל ה־guards מופרכים במצב הנוכחי, הלולאה פשוט <b>מסתיימת</b>.
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-3 mt-2">
+<div class="bg-green-50 px-3 py-2 rounded border border-green-200">
+<div class="font-bold mb-1">הקשר ל־<span dir="ltr">while</span> רגיל</div>
+
+הלולאה הבודדת
+
+<div dir="ltr" class="text-left text-[12px] font-mono mt-1">
+do :: g -> stmt od
+</div>
+
+שקולה אינטואיטיבית ל־
+<span dir="ltr"><code>while g do stmt od</code></span>,
+עם תנאי סיום <span dir="ltr"><code>!g</code></span>.
+</div>
+
+<div class="bg-rose-50 px-3 py-2 rounded border border-rose-200">
+<div class="font-bold mb-1">הבדל מול Promela</div>
+
+ב־<span dir="ltr">nanoPromela</span> איננו מסיימים לולאות באמצעות
+<span dir="ltr"><code>break</code></span>.
+הסיום קורה כאשר אין אף guard שמתקיים.
+</div>
+</div>
+
+</div>
+
 
 ---
 
