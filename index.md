@@ -13,7 +13,7 @@ dir: rtl
 ## מצגות הקורס מבוא לאימות תוכנה בשיטות פורמליות
 ###  הפקולטה למדעי המחשב והמידע, אוניברסיטת בן-גוריון
 
-<div class="mt-10 grid grid-cols-2 gap-6 w-160 auto-cols-auto" dir="rtl">
+<div class="mt-10 grid grid-cols-3 gap-6 w-190 auto-cols-auto" dir="rtl">
 
 <a href="./00-intro/#1" target="_blank" class="p-6 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors no-underline group flex flex-col justify-center">
   <div class="text-xl font-bold mb-2 group-hover:text-blue-700">00 - מבוא</div>
@@ -32,7 +32,17 @@ dir: rtl
 
 <a href="./03-parallelism-and-concurrency/#1" target="_blank" class="p-6 bg-orange-50 rounded-lg border border-orange-200 hover:bg-orange-100 transition-colors no-underline group flex flex-col justify-center">
   <div class="text-xl font-bold mb-2 group-hover:text-orange-700">03 - מקביליות וסינכרון</div>
-  <div class="text-sm opacity-70">שזירה (Interleaving), ערוצי תקשורת (ABP) ואלגוריתם פיטרסון.</div>
+  <div class="text-sm opacity-70">שזירה (Interleaving), סנכרון, handshaking ואלגוריתם פיטרסון.</div>
+</a>
+
+<a href="./04-channel-systems/#1" target="_blank" class="p-6 bg-amber-50 rounded-lg border border-amber-200 hover:bg-amber-100 transition-colors no-underline group flex flex-col justify-center">
+  <div class="text-xl font-bold mb-2 group-hover:text-amber-700">04 - מערכות ערוצים</div>
+  <div class="text-sm opacity-70">Channel Systems, סמנטיקה גלובלית, יחס המעברים ופרוטוקול ABP.</div>
+</a>
+
+<a href="./05-nanopromela/#1" target="_blank" class="p-6 bg-rose-50 rounded-lg border border-rose-200 hover:bg-rose-100 transition-colors no-underline group flex flex-col justify-center">
+  <div class="text-xl font-bold mb-2 group-hover:text-rose-700">05 - NanoPromela</div>
+  <div class="text-sm opacity-70">פתיחה ל־Promela ול־NanoPromela, לקראת הרחבה בהמשך.</div>
 </a>
 
 </div>
