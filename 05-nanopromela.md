@@ -415,7 +415,7 @@ if :: g<sub>1</sub> -> stmt<sub>1</sub> ... :: g<sub>n</sub> -> stmt<sub>n</sub>
 </div>
 
 
-  <img src="./images/if_fi_comic.svg" alt="איור קומי של בחירת guarded command ושל סמנטיקת test-and-set" class="absolute bottom-34 right-18 w-100" />
+  <img src=".\images\if-fi-mine.svg" alt="איור קומי של בחירת guarded command ושל סמנטיקת test-and-set" class="absolute bottom-30 right-12 w-110" />
 
 ---
 
@@ -538,58 +538,28 @@ do :: g -> stmt od
 
 ---
 
+ 
+# דוגמה: אלגוריתם המניעה ההדדית של פטרסון
 
-# דוגמה: אלגוריתם המניעה ההדדית של פיטרסון
+את אלגוריתם פטרסון עבור שני תהליכים אפשר לנסח ב־`nanoPromela` באמצעות המשתנים הבוליאניים `b1`, `b2`, המשתנה `x` עם `dom(x) = {1,2}`, והמשתנים `crit1`, `crit2`.
 
-<div class="text-[16px] leading-snug -mt-1">
+- `skip` מייצג את הפעילות בקטע הלא־קריטי.
+- `criti := true` מייצג כניסה של התהליך `Pi` לקטע הקריטי.
+- בהתחלה: `b1 = b2 = crit1 = crit2 = false`, ואילו `x` שרירותי.
 
-<div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
-את אלגוריתם פיטרסון עבור שני תהליכים אפשר לנסח ב־<span dir="ltr">nanoPromela</span>
-באמצעות המשתנים הבוליאניים <span dir="ltr"><code>b<sub>1</sub>, b<sub>2</sub></code></span>,
-המשתנה <span dir="ltr"><code>x</code></span> עם
-<span dir="ltr"><code>dom(x) = {1,2}</code></span>, והמשתנים
-<span dir="ltr"><code>crit<sub>1</sub>, crit<sub>2</sub></code></span>.
-</div>
-
-<div class="grid grid-cols-2 gap-3 mt-2">
-<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
-<div class="font-bold mb-1">משמעות החלקים במודל</div>
-
-<ul class="list-disc pr-5 mt-6 space-y-2">
-<li><span dir="ltr"><code>skip</code></span> מייצג את הפעילות בקטע הלא־קריטי.</li>
-<li><span dir="ltr"><code>crit<sub>i</sub> := true</code></span> מייצג כניסה של התהליך <span dir="ltr"><code>P<sub>i</sub></code></span> לקטע הקריטי.</li>
-<li>בהתחלה: <span dir="ltr"><code>b<sub>1</sub> = b<sub>2</sub> = crit<sub>1</sub> = crit<sub>2</sub> = false</code></span>, ואילו <span dir="ltr"><code>x</code></span> שרירותי.</li>
-</ul>
-</div>
-
-<div class="bg-blue-900 text-zinc-100 px-1 py-10 rounded">
-<div class="font-bold mb-2 text-right text-white">הקוד של <span dir="ltr" class="text-black"><code>P<sub>1</sub></code></span></div>
-<div dir="ltr" class="text-left">
+הקוד של `P1`:
+<div dir="ltr" align="left" class="bigger-code-block">
 
 ```text {lineNumbers: false}
 do :: true -> skip;
-
-     atomic{b1 := true; x := 2};
-
-     if :: (x = 1) or !b2 -> crit1 := true fi;
-
-     atomic{crit1 := false; b1 := false}
-
+  atomic{b1 := true; x := 2};
+  if :: (x = 1) or !b2 -> crit1 := true fi;
+  atomic{crit1 := false; b1 := false}
 od
 ```
-
-</div>
-</div>
 </div>
 
-<div class="mt-2 bg-green-50 px-4 py-2 rounded border border-green-200">
-הקוד של <span dir="ltr"><code>P<sub>2</sub></code></span> סימטרי: מחליפים את
-<span dir="ltr"><code>1</code></span> ו־<span dir="ltr"><code>2</code></span>,
-ואת <span dir="ltr"><code>b<sub>1</sub>, crit<sub>1</sub></code></span> ב־
-<span dir="ltr"><code>b<sub>2</sub>, crit<sub>2</sub></code></span>.
-</div>
-
-</div>
+הקוד של `P2` סימטרי: מחליפים את `1` ו־`2`, ואת `b1`, `crit1` ב־`b2`, `crit2`.
 
 
 
@@ -598,43 +568,24 @@ od
 
 # דוגמה נוספת: רובוט על Grid עם קירות
 
-<div class="text-[14px] leading-snug -mt-1">
+נניח רובוט שנע על לוח `3x3`. המיקום שלו נשמר במשתנה יחיד `pos`, ואנחנו רוצים להבטיח שהוא לעולם לא ייכנס לקיר.
 
-<div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
-נניח רובוט שנע על לוח <span dir="ltr"><code>3x3</code></span>.
-המיקום שלו נשמר במשתנה יחיד <span dir="ltr"><code>pos</code></span>,
-ואנחנו רוצים להבטיח שהוא <b>לעולם לא ייכנס לקיר</b>.
+<div dir="ltr" class="absolute top-50 right-50 w-60">
+  <div class="grid grid-cols-3 gap-2 text-center font-mono text-[22px]">
+    <div class="rounded border border-slate-300 bg-white py-2">1</div>
+    <div class="rounded border border-slate-300 bg-white py-2">2</div>
+    <div class="rounded border border-slate-300 bg-white py-2">3</div>
+    <div class="rounded border border-slate-300 bg-white py-2">4</div>
+    <div class="rounded border border-rose-400 bg-rose-100 py-2 font-bold text-rose-700">X</div>
+    <div class="rounded border border-slate-300 bg-white py-2">6</div>
+    <div class="rounded border border-slate-300 bg-white py-2">7</div>
+    <div class="rounded border border-rose-400 bg-rose-100 py-2 font-bold text-rose-700">X</div>
+    <div class="rounded border border-slate-300 bg-white py-2">9</div>
+  </div>
+  <div class="mt-2 text-center text-[13px] text-slate-600">X = קיר</div>
 </div>
 
-<div class="grid grid-cols-2 gap-3 mt-2">
-<div class="bg-blue-50 px-3 py-2 rounded border border-blue-200">
-<div class="font-bold mb-1">קידוד המצבים</div>
-
-<div class="mt-2 flex justify-center">
-<div class="grid grid-cols-3 gap-1 text-center text-[12px] font-mono" dir="ltr">
-<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">1</div>
-<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">2</div>
-<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">3</div>
-<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">4</div>
-<div class="w-10 h-10 flex items-center justify-center border border-rose-400 rounded bg-rose-100">5</div>
-<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">6</div>
-<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">7</div>
-<div class="w-10 h-10 flex items-center justify-center border border-rose-400 rounded bg-rose-100">8</div>
-<div class="w-10 h-10 flex items-center justify-center border border-slate-400 rounded bg-white">9</div>
-</div>
-</div>
-
-<ul class="list-disc pr-5 mt-3 space-y-2">
-<li>הקירות נמצאים בתאים <span dir="ltr"><code>5</code></span> ו־<span dir="ltr"><code>8</code></span>.</li>
-<li>לכן הם אינם מופיעים באף השמה ל־<span dir="ltr"><code>pos</code></span>.</li>
-<li>כל guard מתאר צעד חוקי אחד של הרובוט: למעלה, למטה, ימינה או שמאלה.</li>
-<li>אם אין מעבר חוקי, הלולאה מסתיימת.</li>
-</ul>
-</div>
-
-<div class="bg-blue-900 text-zinc-100 px-1 py-4 rounded">
-<div class="font-bold mb-2 text-right text-white">התהליך של הרובוט</div>
-<div dir="ltr" class="text-left">
+<div dir="ltr" align="left" >
 
 ```text {lineNumbers: false}
 do
@@ -654,13 +605,353 @@ od
 ```
 
 </div>
-</div>
+
+- כל guard מתאר צעד חוקי אחד של הרובוט: למעלה, למטה, ימינה או שמאלה.
+- אם אין מעבר חוקי, הלולאה מסתיימת.
+- אם מתחילים ב־`pos = 1`, אז לאורך כל ריצה מתקיים תמיד `pos ∈ {1,2,3,4,6,7,9}`.
+
+---
+
+
+# הדגמה: סמנטיקה של פקודות תנאי
+
+נבחן שתי פקודות תנאי שרצות במקביל, כדי לראות שילוב של בחירה לא דטרמיניסטית בענף ובשיבוץ
+
+<div class="grid grid-cols-[1fr_1.2fr] gap-4 mt-2">
+
+<div>
+
+
+<div class="relative bg-slate-50 px-3 py-2 rounded border border-slate-200 text-sm ml-8" align="left" dir="ltr">
+  <div class="absolute top-1.5 -left-8 bg-white border border-slate-300 px-1.5 py-0.5 text-xs rounded shadow-sm flex items-center justify-center font-math z-10 w-6 h-6">
+      <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-slate-300"></div>
+      <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[5px] border-l-white z-10"></div>
+      <span class="-ml-1 text-[13px]"><i class="font-serif">l</i><sub>1</sub></span>
+  </div>
+  <div class="absolute bottom-1.5 -left-8 bg-white border border-slate-300 px-1.5 py-0.5 text-xs rounded shadow-sm flex items-center justify-center font-math z-10 w-6 h-6">
+      <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-slate-300"></div>
+      <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[5px] border-l-white z-10"></div>
+      <span class="-ml-1 text-[13px]"><i class="font-serif">l</i><sub>2</sub></span>
+  </div>
+
+```text {lineNumbers: false}
+if
+  :: true -> x := 3
+  :: true -> x := 4
+fi 
+```
+
 </div>
 
-<div class="mt-2 bg-green-50 px-4 py-2 rounded border border-green-200">
-אם למשל מתחילים ב־<span dir="ltr"><code>pos = 1</code></span>, אז לאורך כל ריצה
-יתקיים תמיד <span dir="ltr"><code>pos ∈ {1,2,3,4,6,7,9}</code></span>.
-זהו בדיוק סוג האילוץ שקל לנסח בעזרת <b>guards</b> ולבדוק בהמשך בצורה פורמלית.
+
+<div class="relative bg-slate-50 mt-2 px-3 py-2 rounded border border-slate-200 text-sm ml-8" align="left" dir="ltr">
+  <div class="absolute top-1.5 -left-8 bg-white border border-slate-300 px-1.5 py-0.5 text-xs rounded shadow-sm flex items-center justify-center font-math z-10 w-6 h-6">
+      <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-slate-300"></div>
+      <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[5px] border-l-white z-10"></div>
+      <span class="-ml-1 text-[13px]"><i class="font-serif">l</i><sub>1</sub></span>
+  </div>
+  <div class="absolute bottom-1.5 -left-8 bg-white border border-slate-300 px-1.5 py-0.5 text-xs rounded shadow-sm flex items-center justify-center font-math z-10 w-6 h-6">
+      <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-slate-300"></div>
+      <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[5px] border-l-white z-10"></div>
+      <span class="-ml-1 text-[13px]"><i class="font-serif">l</i><sub>2</sub></span>
+  </div>
+
+
+  ```text {lineNumbers: false}
+if
+    :: x > 3 -> y := 1
+    :: x > 2 -> y := 2 
+fi 
+  ```
+
 </div>
 
 </div>
+
+<div class="flex flex-col items-center justify-center -mt-0 -ml-6 border border-slate-200 rounded pt-8 bg-slate-50 relative">
+
+<div class="absolute top-2 right-3 font-bold text-slate-500 text-sm">מרחב המצבים</div>
+
+<TransitionSystemD3
+  :width="600"
+  :height="100"
+  :scale="60"
+  :states="[
+  { id: 's1', text: '$l_1, l_1, x \\mapsto 0, y \\mapsto 0$',     x: 300, y: 50 -140, width: 220, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
+  { id: 's2_3', text: '$l_1, l_2, x \\mapsto 3, y \\mapsto 0$',   x: 130, y: 150-140, width: 220, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
+  { id: 's2_4', text: '$l_1, l_2, x \\mapsto 4, y \\mapsto 0$',   x: 470, y: 150-140, width: 220, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
+  { id: 's3_3_2', text: '$l_2, l_2, x \\mapsto 3, y \\mapsto 2$', x: 130, y: 250-140, width: 220, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
+  { id: 's3_4_1', text: '$l_2, l_2, x \\mapsto 4, y \\mapsto 1$', x: 360, y: 250-140, width: 200, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
+  { id: 's3_4_2', text: '$l_2, l_2, x \\mapsto 4, y \\mapsto 2$', x: 570, y: 250-140, width: 200, color: '#FEF08A', rx: 0, stroke: '#d4af37' }
+  ]"
+  :transitions="[
+  { source: 's1', target: 's2_3', stroke: '#A1824A', strokeWidth: 2 },
+  { source: 's1', target: 's2_4', stroke: '#A1824A', strokeWidth: 2 },
+  { source: 's2_3', target: 's3_3_2', stroke: '#A1824A', strokeWidth: 2 },
+  { source: 's2_4', target: 's3_4_1', stroke: '#A1824A', strokeWidth: 2 },
+  { source: 's2_4', target: 's3_4_2', stroke: '#A1824A', strokeWidth: 2 }
+  ]"
+/>
+
+</div>
+
+</div>
+
+<div class="mt-4 text-[14px] leading-snug">
+
+- ב־$l_1, l_1$ שתי האפשרויות מאופשרות, לכן אפשר להגיע ל־$x = 3$ וגם ל־$x = 4$.
+
+- אם מגיעים ל־$l_1, l_2$ עם $x = 3$, רק ה־guard $x > 2$ מאופשר ולכן חייבים לקבל $y = 2$ ומגיעים למצב הסיום $l_2, l_2$.
+- אם מגיעים ל־$l_1, l_2$ עם $x = 4$, שני ה־guards מאופשרים ולכן אפשר לקבל גם $y = 1$ וגם $y = 2$ ומגיעים למצב הסיום $l_2, l_2$ בכל מקרה.
+- כלומר, ה־`if-fi` הראשון מייצר אי־דטרמיניזם, והשני עלול להוסיף עליו אי־דטרמיניזם נוסף.
+
+</div>
+
+---
+
+
+# הדגמה: סמנטיקה של לולאות
+
+השקפים מדגישים שתי התנהגויות שונות של `do-od`: לולאה שיכולה להסתיים, ולולאה שאין לה מצב יציאה.
+
+```text {lineNumbers: false}
+לולאה שיכולה להסתיים:
+do
+:: x < 3 -> skip
+od
+
+לולאה שאינה מסתיימת:
+do
+:: true -> x := 3
+:: true -> x := 0
+od
+```
+
+- אם `x < 3`, הלולאה הראשונה יכולה לבצע עוד צעד.
+- אם `x >= 3`, אין אף guard מאופשר והלולאה הראשונה מסתיימת.
+- בלולאה השנייה תמיד קיים guard מאופשר, ולכן אין מעבר יציאה.
+- המסר העיקרי: לולאות ב־`nanoPromela` אינן נתקעות. או שממשיכים לרוץ, או שיוצאים.
+
+---
+
+
+# דוגמה: מכונת משקאות
+
+דוגמת מכונת המשקאות מהספר ומהשקפים מרכזת במקום אחד `do`, `if`, הרכבה סדרתית ואזור אטומי.
+
+```text {lineNumbers: false}
+do
+:: true ->
+     skip;
+     if
+     :: nsoda > 0 -> nsoda := nsoda - 1
+     :: nbeer > 0 -> nbeer := nbeer - 1
+     :: nsoda == 0 && nbeer == 0 -> skip
+     fi
+:: true ->
+     atomic { nbeer := max; nsoda := max }
+od
+```
+
+- במיקום ההתחלתי יש שתי אפשרויות מאופשרות: הכנסת מטבע או מילוי מחדש.
+- האפשרות הראשונה ממשיכה ל־`skip ; if ... fi`, ולכן נוצרת גם הרכבה סדרתית.
+- בתוך ה־`if-fi` יש שלוש בחירות אפשריות, ורק חלקן מאופשרות בכל מצב.
+- המילוי מחדש מתבצע כיחידה אחת באמצעות `atomic`.
+- עץ התחביר של הדוגמה מסביר אילו תת־פקודות קיימות, ואלו בדיוק ישמשו בהמשך כמקומות בגרף התוכנית.
+
+---
+
+
+# מכאן להגדרות פורמליות
+
+כדי לתת משמעות מדויקת ל־`nanoPromela`, לא מספיק תיאור אינטואיטיבי. אנחנו רוצים לעבור לשפה שכבר למדנו לעבוד איתה: גרפי תוכנית, ואז מערכות ערוצים ולבסוף מערכות מעברים.
+
+$$
+\text{stmt}
+\Longrightarrow
+\text{sub(stmt)}
+\Longrightarrow
+\text{Program Graph}
+\Longrightarrow
+\text{Channel System}
+\Longrightarrow
+\text{Transition System}
+$$
+
+1. מגדירים רקורסיבית את קבוצת המקומות: `Loc = sub(stmt)`.
+2. גוזרים את המעברים בין המקומות בעזרת כללי היסק.
+
+הטריק המתודולוגי הוא ששם של מקום בתוכנית הוא פשוט "מה עוד נשאר לבצע".
+
+---
+
+
+# דוגמה: גרף תוכנית ל־`if-fi`
+
+```text {lineNumbers: false}
+stmt:
+if
+:: x > 1 -> y := x + y
+:: true  -> x := 0; y := x
+fi
+
+locations:
+if ... fi, y := x + y, x := 0; y := x, y := x, exit
+
+edges:
+if ... fi -- x > 1 : y := x + y --> exit
+if ... fi -- true  : x := 0     --> y := x
+y := x    -- true  : y := x     --> exit
+```
+
+בפרט, לענף השני אין מעבר ישיר ל־`exit`, כי ההרכבה `x := 0; y := x` מתבצעת בשני צעדים.
+
+---
+
+
+# דוגמה: גרף תוכנית ל־`do-od`
+
+```text {lineNumbers: false}
+stmt:
+do
+:: x > 1 -> y := x + y
+:: y < x -> x := 0; y := x
+od
+
+edges:
+loop        -- x > 1                : y := x + y --> loop
+loop        -- y < x                : x := 0     --> y := x ; loop
+y := x;loop -- true                 : y := x     --> loop
+loop        -- !(x > 1) && !(y < x) : id         --> exit
+```
+
+המעבר האחרון מייצג סיום תקין של הלולאה, ולא חסימה.
+
+---
+
+
+# הגדרה: המקומות הם תת־הפקודות
+
+נסמן ב־`sub(stmt)` את קבוצת תת־הפקודות של `stmt`. זוהי בדיוק קבוצת המקומות בגרף התוכנית, יחד עם `exit`.
+
+```text {lineNumbers: false}
+מקרי בסיס:
+sub(skip)      = { skip, exit }
+sub(x := expr) = { x := expr, exit }
+sub(c?x)       = { c?x, exit }
+sub(c!expr)    = { c!expr, exit }
+sub(atomic{a1; ...; am}) = { atomic{a1; ...; am}, exit }
+
+הרכבה סדרתית:
+sub(stmt1 ; stmt2) =
+  { s' ; stmt2 | s' ∈ sub(stmt1) \ {exit} } ∪ sub(stmt2)
+
+פקודת תנאי:
+sub(if :: g1 -> stmt1 ... :: gn -> stmtn fi) =
+  { cond_cmd } ∪ sub(stmt1) ∪ ... ∪ sub(stmtn)
+
+לולאה:
+sub(do :: g1 -> stmt1 ... :: gn -> stmtn od) =
+  { loop_cmd, exit } ∪ ⋃i { s' ; loop_cmd | s' ∈ sub(stmti) \ {exit} }
+```
+
+---
+
+
+# כללי גזירה: פקודות בסיסיות והרכבה
+
+המעברים בגרף התוכנית מתקבלים מכללי גזירה. כל מעבר מסומן על ידי guard ופעולה: `g : α`.
+
+```text {lineNumbers: false}
+אקסיומות לפקודות אטומיות:
+skip      -- true : id               --> exit
+x := expr -- true : assign(x, expr)  --> exit
+c?x       -- c?x                     --> exit
+c!expr    -- c!expr                  --> exit
+atomic{a1; ...; am} -- true : α      --> exit
+
+כללי הרכבה סדרתית:
+stmt1 -- g : α --> stmt1' ≠ exit
+--------------------------------
+stmt1 ; stmt2 -- g : α --> stmt1' ; stmt2
+
+stmt1 -- g : α --> exit
+-----------------------
+stmt1 ; stmt2 -- g : α --> stmt2
+```
+
+---
+
+
+# כללי גזירה: תנאי ולולאה
+
+פקודת תנאי:
+
+```text {lineNumbers: false}
+stmti -- h : α --> stmti'
+------------------------------------------
+cond_cmd -- (gi && h) : α --> stmti'
+
+פקודת לולאה:
+stmti -- h : α --> stmti' ≠ exit
+------------------------------------------
+loop_cmd -- (gi && h) : α --> stmti' ; loop_cmd
+
+stmti -- h : α --> exit
+------------------------------------------
+loop_cmd -- (gi && h) : α --> loop_cmd
+
+loop_cmd -- (!g1 && ... && !gn) : id --> exit
+```
+
+הכלל האחרון הוא בדיוק הסיבה לכך שלולאות אינן נחסמות: כאשר אין guard מאופשר, יוצאים מן הלולאה.
+
+דוגמה אופיינית: בפקודה `if :: y = 0 -> do :: x < 3 -> x := x + 1 od fi` מתקבל מעבר ראשון עם guard משולב `y = 0 ∧ x < 3`.
+
+---
+
+
+# Test-and-Set מול Two-Step
+
+בספר מודגשת הבחנה חשובה בין שתי סמנטיקות אפשריות עבור `if-fi` ו־`do-od`.
+
+בסמנטיקת `test-and-set`, שבה משתמשים בקורס:
+
+1. בודקים אילו guards מאופשרים.
+2. בוחרים אחד מהם.
+3. מבצעים את הצעד האטומי הראשון של הגוף.
+
+כל שלושת השלבים האלה קורים כיחידה אחת.
+
+ב־`SPIN`, לעומת זאת, מקובל לדבר על `two-step semantics`, שבה הבחירה בענף וביצוע הפעולה הראשונה מופרדים. כאשר מריצים כמה תהליכים במקביל, ההפרדה הזאת עלולה לאפשר שזירות שלא קיימות אצלנו.
+
+---
+
+
+# Promela מול nanoPromela
+
+`nanoPromela` היא תת־שפה נקייה ופשוטה, אבל `Promela` המלאה מכילה עוד יכולות רבות:
+
+- `else` כ־guard מיוחד.
+- `break` ליציאה מלולאות.
+- אזורים אטומיים כלליים יותר, לא רק רצף של השמות.
+- מערכים, טיפוסים נוספים ויצירה דינמית של תהליכים.
+
+דוגמה אופיינית:
+
+```text {lineNumbers: false}
+Promela:
+do
+:: atomic{x > 1 -> y := x + y}
+:: atomic{y < x -> x := 0}; y := x
+:: atomic{else -> break}
+od
+
+nanoPromela:
+do
+:: x > 1 -> y := x + y
+:: y < x -> x := 0; y := x
+od
+```
+
+ב־`nanoPromela` אין `else` ואין `break`: היציאה מן הלולאה מתרחשת בדיוק כאשר אין אף guard מאופשר.

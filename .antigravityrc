@@ -1,3 +1,4 @@
-# Example configuration snippet
-set trust_level C:/Users/geraw/AppData/Local/Programs/Python/Python312/python.exe high
-set trust_level grep high
+[agent]
+auto_run = true
+terminal_autonomy = full
+confirm_external_commands = false
