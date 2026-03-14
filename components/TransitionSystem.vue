@@ -50,9 +50,10 @@ const render = () => {
   const rectW = 60;
   const rectH = 40;
 
-  // Determine if we need automatic layout
   const hasMissingCoords = props.states.some(s => s.x === undefined || s.y === undefined);
-  const shouldLayout = props.auto || hasMissingCoords;
+  // Use automatic layout only if coordinates are missing.
+  // If coordinates are present, we use 'preset' layout.
+  const shouldLayout = hasMissingCoords;
 
   props.states.forEach(s => {
     // Main State Node
@@ -64,11 +65,7 @@ const render = () => {
         name: s.name || s.id 
       },
       position: hasPosition ? { x: s.x!, y: s.y! } : undefined,
-      classes: 'state',
-      // Lock if manual position provided, unless auto is strictly true? 
-      // User said: "If I didn't say where... it should be auto". 
-      // Implies: If I DID say where, it should be THERE.
-      locked: hasPosition
+      classes: 'state'
     });
 
     // Label Node (for propositions)
@@ -178,7 +175,7 @@ const render = () => {
           'text-rotation': 'autorotate',
           'text-background-opacity': 1,
           'text-background-color': '#ffffff',
-          'text-background-padding': 2
+          'text-background-padding': '2px'
         }
       },
       {
@@ -202,9 +199,46 @@ const render = () => {
       }
     ],
     layout: { name: 'preset' }, // Initial preset layout to place elements
-    userZoomingEnabled: false,
-    userPanningEnabled: false,
+    userZoomingEnabled: true,
+    userPanningEnabled: true,
     boxSelectionEnabled: false
+  });
+
+  // Enable dragging even for nodes with explicit positions
+  cy.nodes().grabify();
+
+  // Export to console on right-click
+  cy.on('cxttap', (event) => {
+    if (event.target === cy) {
+      const statesArr = props.states.map(s => {
+        const node = cy?.getElementById(s.id);
+        const pos = node?.position();
+        return {
+          ...s,
+          x: Math.round(pos?.x || 0),
+          y: Math.round(pos?.y || 0)
+        };
+      });
+
+      const statesStr = JSON.stringify(statesArr, null, 2)
+        .replace(/"([^"]+)":/g, '$1:') // remove quotes from keys
+        .replace(/"/g, "'"); // use single quotes
+
+      const transStr = JSON.stringify(props.transitions, null, 2)
+        .replace(/"([^"]+)":/g, '$1:')
+        .replace(/"/g, "'");
+
+      const code = `<TransitionSystem 
+  :states="${statesStr}"
+  :transitions="${transStr}"
+  :height="${props.height}"
+/>`;
+      
+      console.log('--- TransitionSystem Export ---');
+      console.log(code);
+      console.log('-------------------------------');
+      alert('Diagram code exported to console!');
+    }
   });
 
   // Define layout configuration

@@ -45,6 +45,11 @@ dir: rtl
   <div class="text-sm opacity-70">פתיחה ל־Promela ול־NanoPromela, לקראת הרחבה בהמשך.</div>
 </a>
 
+<a href="./06-SMV/#1" target="_blank" class="p-6 bg-cyan-50 rounded-lg border border-cyan-200 hover:bg-cyan-100 transition-colors no-underline group flex flex-col justify-center">
+  <div class="text-xl font-bold mb-2 group-hover:text-cyan-700">06 - SMV</div>
+  <div class="text-sm opacity-70">היכרות עם NuSMV, שפת SMV, סימולציה ואימות תכונות של מערכות תגובתיות.</div>
+</a>
+
 </div>
 
 <style>

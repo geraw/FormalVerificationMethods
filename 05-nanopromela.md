@@ -714,24 +714,93 @@ fi
 
 השקפים מדגישים שתי התנהגויות שונות של `do-od`: לולאה שיכולה להסתיים, ולולאה שאין לה מצב יציאה.
 
-```text {lineNumbers: false}
-לולאה שיכולה להסתיים:
+<div class="grid grid-cols-[1fr_1.2fr] gap-4 mt-2">
+
+<div>
+
+<div class="relative bg-slate-50 px-3 py-2 rounded border border-slate-200 text-sm ml-8" align="left" dir="ltr">
+  <div class="absolute top-1.5 -left-8 bg-white border border-slate-300 px-1.5 py-0.5 text-xs rounded shadow-sm flex items-center justify-center font-math z-10 w-6 h-6">
+      <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-slate-300"></div>
+      <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[5px] border-l-white z-10"></div>
+      <span class="-ml-1 text-[13px]"><i class="font-serif">l</i><sub>1</sub></span>
+  </div>
+  <div class="absolute bottom-1.5 -left-8 bg-white border border-slate-300 px-1.5 py-0.5 text-xs rounded shadow-sm flex items-center justify-center font-math z-10 w-6 h-6">
+      <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-slate-300"></div>
+      <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[5px] border-l-white z-10"></div>
+      <span class="-ml-1 text-[13px]"><i class="font-serif">l</i><sub>2</sub></span>
+  </div>
+
+  ```text {lineNumbers: false}
 do
-:: x < 3 -> skip
+     :: x < 3 -> skip
 od
+  ```
 
-לולאה שאינה מסתיימת:
+</div>
+
+<div class="relative bg-slate-50 mt-2 px-3 py-2 rounded border border-slate-200 text-sm ml-8" align="left" dir="ltr">
+  <div class="absolute top-1.5 -left-8 bg-white border border-slate-300 px-1.5 py-0.5 text-xs rounded shadow-sm flex items-center justify-center font-math z-10 w-6 h-6">
+      <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-slate-300"></div>
+      <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[5px] border-l-white z-10"></div>
+      <span class="-ml-1 text-[13px]"><i class="font-serif">l</i><sub>1</sub></span>
+  </div>
+  <div class="absolute bottom-1.5 -left-8 bg-white border border-slate-300 px-1.5 py-0.5 text-xs rounded shadow-sm flex items-center justify-center font-math z-10 w-6 h-6">
+      <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-slate-300"></div>
+      <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[5px] border-l-white z-10"></div>
+      <span class="-ml-1 text-[13px]"><i class="font-serif">l</i><sub>2</sub></span>
+  </div>
+
+  ```text {lineNumbers: false}
 do
-:: true -> x := 3
-:: true -> x := 0
+     :: true -> x := 3
+     :: true -> x := 0
 od
-```
+  ```
 
-- אם `x < 3`, הלולאה הראשונה יכולה לבצע עוד צעד.
-- אם `x >= 3`, אין אף guard מאופשר והלולאה הראשונה מסתיימת.
-- בלולאה השנייה תמיד קיים guard מאופשר, ולכן אין מעבר יציאה.
-- המסר העיקרי: לולאות ב־`nanoPromela` אינן נתקעות. או שממשיכים לרוץ, או שיוצאים.
+</div>
 
+</div>
+
+<div class="flex flex-col items-center justify-center -mt-0 -ml-6 border border-slate-200 rounded pt-8 bg-slate-50 relative">
+
+<div class="absolute top-2 right-3 font-bold text-slate-500 text-sm">מרחב המצבים</div>
+
+<TransitionSystemD3
+  :width="600"
+  :height="350"
+  :scale="60"
+  :states="[
+  { id: 's1_0', text: '$l_1, l_1, x \\mapsto 0$', x: 300, y: 50,  width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37', initial: true },
+  { id: 's1_3', text: '$l_1, l_1, x \\mapsto 3$', x: 300, y: 150, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
+  { id: 's2_3', text: '$l_2, l_1, x \\mapsto 3$', x: 300, y: 250, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
+  { id: 's2_0', text: '$l_2, l_1, x \\mapsto 0$', x: 100, y: 250, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' }
+  ]"  
+  :transitions="[
+  { source: 's1_0', target: 's1_3', label: 'x:=3', stroke: '#A1824A', strokeWidth: 2 },
+  { source: 's1_0', target: 's1_0', label: 'x:=0', stroke: '#A1824A', strokeWidth: 2 },
+  { source: 's1_0', target: 's1_0', label: 'skip', stroke: '#A1824A', strokeWidth: 2, curve: .1 },
+  { source: 's1_3', target: 's1_3', label: 'x:=3', stroke: '#A1824A', strokeWidth: 2 },
+  { source: 's1_3', target: 's1_0', label: 'x:=0', curve: -.5, stroke: '#A1824A', strokeWidth: 2 },
+  { source: 's1_3', target: 's2_3', label: 'nothing', stroke: '#A1824A', strokeWidth: 2 },
+  { source: 's2_3', target: 's2_3', label: 'x:=3', stroke: '#A1824A', strokeWidth: 2 },
+  { source: 's2_3', target: 's2_0', label: 'x:=0', stroke: '#A1824A', strokeWidth: 2 },
+  { source: 's2_0', target: 's2_0', label: 'x:=0', stroke: '#A1824A', strokeWidth: 2 },
+  { source: 's2_0', target: 's2_3', label: 'x:=3', curve: .1, stroke: '#A1824A', strokeWidth: 2 }
+  ]"
+/>
+
+</div>
+
+</div>
+
+<div class="mt-4 text-[14px] leading-snug">
+
+- אם $x < 3$, הלולאה הראשונה יכולה לבצע צעד $skip$ ולהישאר במקום.
+- אם $x \ge 3$, אין אף guard מאופשר והלולאה הראשונה מסתיימת (מעבר $nothing$ מהמיקום הראשון לשני).
+- בלולאה השנייה תמיד קיים guard מאופשר ($true$), ולכן היא אינה מסתיימת לעולם.
+- המסר העיקרי: לולאות ב־`nanoPromela` אינן נתקעות. הן ממשיכות לרוץ כל עוד יש guard מאופשר, ויוצאות ברגע שכולם שקריים.
+
+</div>
 ---
 
 
