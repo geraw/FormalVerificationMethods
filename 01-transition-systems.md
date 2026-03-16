@@ -544,7 +544,7 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 </div>
 
 
-</div>
+</div> 
 
 ---
 
