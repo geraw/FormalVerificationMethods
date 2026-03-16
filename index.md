@@ -52,6 +52,8 @@ dir: rtl
 
 </div>
 
+---
+
 <div class="mt-10 w-190 mx-auto pdf-panel" dir="rtl">
   <div class="text-lg font-bold mb-2">הורדת PDF</div>
   <div class="text-sm opacity-75 mb-4">לכל מצגת זמינה גם גרסת PDF חד-קובצי להורדה ישירה.</div>
