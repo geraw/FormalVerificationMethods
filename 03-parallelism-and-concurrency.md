@@ -4,6 +4,8 @@ dir: rtl
 class: text-center
 highlighter: shiki
 lineNumbers: true
+download: true
+exportFilename: 03-parallelism-and-concurrency
 htmlAttrs:
   dir: rtl
   lang: heb

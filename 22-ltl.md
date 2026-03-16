@@ -3,6 +3,8 @@ theme: default
 defaults:
   layout: full
 lineNumbers: false
+download: true
+exportFilename: 22-ltl
 htmlAttrs:
   dir: rtl
   lang: heb

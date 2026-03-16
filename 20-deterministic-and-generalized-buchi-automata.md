@@ -3,6 +3,8 @@ theme: default
 defaults:
   layout: full
 lineNumbers: false
+download: true
+exportFilename: 20-deterministic-and-generalized-buchi-automata
 htmlAttrs:
   dir: rtl
   lang: heb

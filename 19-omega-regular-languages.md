@@ -3,6 +3,8 @@ theme: default
 defaults:
   layout: full
 lineNumbers: false
+download: true
+exportFilename: 19-omega-regular-languages
 htmlAttrs:
   dir: rtl
   lang: heb

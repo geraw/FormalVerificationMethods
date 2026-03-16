@@ -5,6 +5,7 @@ class: text-center
 highlighter: shiki
 lineNumbers: true
 download: true
+exportFilename: 00-intro
 htmlAttrs:
   dir: rtl
   lang: heb

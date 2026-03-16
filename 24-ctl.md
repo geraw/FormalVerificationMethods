@@ -4,6 +4,8 @@ dir: rtl
 class: text-center
 highlighter: shiki
 lineNumbers: true
+download: true
+exportFilename: 24-ctl
 htmlAttrs:
   dir: rtl
   lang: heb

@@ -48,6 +48,13 @@ The presentations are automatically deployed to GitHub Pages on every `push` to 
 
 To build manually:
 ```bash
-# Build all decks
+# Build all decks (HTML + one-file PDF per presentation)
 npm run build:all
+```
+
+Generated PDFs are written next to each deck build output, for example:
+
+```text
+dist/01-transition-systems/01-transition-systems.pdf
+dist/22-ltl/22-ltl.pdf
 ```

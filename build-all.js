@@ -14,15 +14,29 @@ function getFileHash(filePath) {
     return crypto.createHash('sha1').update(content).digest('hex');
 }
 
+function quote(value) {
+    return `"${String(value).replace(/"/g, '\\"')}"`;
+}
+
+function runSlidev(command, args) {
+    const quotedArgs = args.map(quote).join(" ");
+    execSync(`npx slidev ${command} ${quotedArgs}`, { stdio: "inherit" });
+}
+
 /**
  * Checks if a file needs to be rebuilt by comparing its hash with a stored one.
  */
-function needsRebuild(sourceFile, outputDir, targetFile = null) {
+function needsRebuild(sourceFile, outputDir, targetFiles = []) {
     const signatureFile = path.join(outputDir, ".build_hash");
-    const actualTarget = targetFile || path.join(outputDir, "index.html");
+    const actualTargets = targetFiles.length > 0
+        ? targetFiles
+        : [path.join(outputDir, "index.html")];
 
     if (!fs.existsSync(signatureFile)) return { rebuild: true, reason: "Missing signature file" };
-    if (!fs.existsSync(actualTarget)) return { rebuild: true, reason: "Missing output file" };
+    const missingTarget = actualTargets.find(target => !fs.existsSync(target));
+    if (missingTarget) {
+        return { rebuild: true, reason: `Missing output file (${path.basename(missingTarget)})` };
+    }
 
     const currentHash = getFileHash(sourceFile);
     const savedHash = fs.readFileSync(signatureFile, 'utf8').trim();
@@ -61,14 +75,11 @@ console.log(`🔍 Checking for updates in ${decks.length + 1} files...`);
 
 // 1. Build index.md as the main landing page
 if (fs.existsSync("index.md")) {
-    const result = needsRebuild("index.md", "dist", path.join("dist", "index.html"));
+    const result = needsRebuild("index.md", "dist", [path.join("dist", "index.html")]);
     
     if (result.rebuild) {
         console.log(`\n▶ [REBUILD] index.md (${result.reason})`);
-        execSync(
-            `npx slidev build index.md --base "/${REPO}/" -o dist`,
-            { stdio: "inherit" }
-        );
+        runSlidev("build", ["index.md", "--base", `/${REPO}/`, "-o", "dist"]);
         saveSignature("index.md", "dist");
         builtCount++;
     } else {
@@ -81,7 +92,11 @@ if (fs.existsSync("index.md")) {
 for (const file of decks) {
     const base = file.replace(/\.md$/, "");
     const outputDir = path.join("dist", base);
-    const result = needsRebuild(file, outputDir);
+    const pdfOutput = path.join(outputDir, `${base}.pdf`);
+    const result = needsRebuild(file, outputDir, [
+        path.join(outputDir, "index.html"),
+        pdfOutput,
+    ]);
 
     if (result.rebuild) {
         console.log(`\n▶ [REBUILD] ${file} (${result.reason})`);
@@ -92,10 +107,8 @@ for (const file of decks) {
         }
         fs.mkdirSync(outputDir, { recursive: true });
 
-        execSync(
-            `npx slidev build ${file} --base "/${REPO}/${base}/" -o ${outputDir}`,
-            { stdio: "inherit" }
-        );
+        runSlidev("build", [file, "--base", `/${REPO}/${base}/`, "-o", outputDir]);
+        runSlidev("export", [file, "--output", pdfOutput]);
         saveSignature(file, outputDir);
         builtCount++;
     } else {

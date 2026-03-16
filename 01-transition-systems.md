@@ -6,6 +6,7 @@ background: https://source.unsplash.com/featured/?computer,science
 highlighter: shiki
 lineNumbers: true
 download: true
+exportFilename: 01-transition-systems
 htmlAttrs:
     dir: rtl
     lang: heb

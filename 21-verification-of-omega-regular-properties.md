@@ -3,6 +3,8 @@ theme: default
 defaults:
   layout: full
 lineNumbers: false
+download: true
+exportFilename: 21-verification-of-omega-regular-properties
 htmlAttrs:
   dir: rtl
   lang: heb

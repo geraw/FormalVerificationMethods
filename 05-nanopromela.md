@@ -4,6 +4,8 @@ dir: rtl
 class: text-center
 highlighter: shiki
 lineNumbers: true
+download: true
+exportFilename: 05-nanopromela
 htmlAttrs:
   dir: rtl
   lang: heb

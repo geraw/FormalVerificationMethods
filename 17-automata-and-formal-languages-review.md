@@ -3,6 +3,8 @@ theme: default
 defaults:
   layout: full
 lineNumbers: false
+download: true
+exportFilename: 17-automata-and-formal-languages-review
 htmlAttrs:
   dir: rtl
   lang: heb
