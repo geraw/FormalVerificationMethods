@@ -132,7 +132,6 @@ info: |
   </div>
 </div>
 
-
 ---
 
 # לוגיקה בפעולה 🧠
@@ -145,7 +144,7 @@ info: |
     * גילוי שגיאות לוגיות בתכנון ובמימוש.
 
 <div class="absolute top-40 left-40">
-  <img src="./images/logic_evolution_cartoon_2.png" class="h-90" />
+  <img src="./images/logic_evolution_cartoon_2.png" class="h90" />
 </div>
 
 
@@ -384,4 +383,32 @@ $$M = \frac{(\sum_{i=1}^{N} n_i)!}{\prod_{i=1}^{N} (n_i!)}$$
   <li><strong>2008:</strong> פרס טיורינג לקלארק, אמרסון וסיפאקיס על פיתוח Model Checking.</li>
 </div>
 
+
+---
+
+# מערכות סדרתיות vs. מערכות ריאקטיביות 🔄
+
+<div class="grid grid-cols-2 gap-10 mt-10">
+  <div class="flex flex-col items-center">
+    <div class="font-bold mb-4 text-red-700">מערכת סדרתית (Sequential)</div>
+    <img src="./images/sequential_system.png" class="h-50 mb-6" />
+    <ul class="text-right space-y-2 text-sm">
+      <li>📥 <strong>קלט:</strong> ניתן במלואו בתחילת הריצה.</li>
+      <li>⚙️ <strong>עיבוד:</strong> תהליך טרנספורמטיבי (Input to Output).</li>
+      <li>📤 <strong>פלט:</strong> מתקבל בסיום הריצה.</li>
+      <li>🛑 <strong>סיום:</strong> מצפים מהמערכת לעצור.</li>
+    </ul>
+  </div>
+
+  <div class="flex flex-col items-center border-r-2 border-gray-100 pr-10">
+    <div class="font-bold mb-4 text-green-700">מערכת ריאקטיבית (Reactive)</div>
+    <img src="./images/reactive_cactus.png" class="h-50 mb-6" />
+    <ul class="text-right space-y-2 text-sm">
+      <li>🌵 <strong>מטפורת הקקטוס:</strong> אינטראקציה מתמשכת.</li>
+      <li>⚡ <strong>אירועים:</strong> זורמים למערכת באופן שוטף.</li>
+      <li>🎯 <strong>תגובות:</strong> המערכת מגיבה לאירועים בזמן אמת.</li>
+      <li>🔄 <strong>ריצה:</strong> לרוב אינה אמורה להסתיים (למשל: בקר טיסה).</li>
+    </ul>
+  </div>
+</div>
 
