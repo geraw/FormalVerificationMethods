@@ -85,7 +85,7 @@ info: |
 
 $S = \{s_0, s_1, s_2\}$, $\mathit{Act} = \{\alpha, \beta, \gamma, \delta\}$, $I = \{s_0\}$, $\mathit{AP} = \{p, q\}$
 
-$\to = \{(s_0, \alpha, s_1), (s_1, \beta, s_2), (s_2, \gamma, s_0), (s_2, \delta, s_2)\}$
+$\to = \{\langle s_0, \alpha, s_1 \rangle, \langle s_1, \beta, s_2 \rangle, \langle s_2, \gamma, s_0 \rangle, \langle s_2, \delta, s_2 \rangle\}$
 
 $L(s_0) = \{p\}, L(s_1) = \{q\}, L(s_2) = \{p,q\}$
 
@@ -102,7 +102,7 @@ $L(s_0) = \{p\}, L(s_1) = \{q\}, L(s_2) = \{p,q\}$
 
 # התנהגות אינטואיטיבית ואי-דטרמיניזם
 
-לשם נוחות, נסמן $s \xrightarrow{\alpha} s'$ במקום $(s, \alpha, s') \in\ \to$. 
+לשם נוחות, נסמן $s \xrightarrow{\alpha} s'$ במקום $\langle s, \alpha, s' \rangle \in\ \to$. 
 
 ההתנהגות של מערכת מעברים מתוארת באופן הבא:
 
@@ -149,31 +149,30 @@ $$ s \models \Phi \quad \text{iff} \quad L(s) \models \Phi $$
 # דוגמה: רובוט במבוך
 
 נניח רובוט שנע בתוך מבוך המיוצג כרשת משבצות $4 \times 4$.
-המצבים של המערכת הם הקואורדינטות של הרובוט: $S = \{ (i,j) \mid 1 \le i \le 4, 1 \le j \le 4 \}$.
+המצבים של המערכת הם הקואורדינטות של הרובוט: $S = \{ \langle i,j \rangle \mid 1 \le i \le 4, 1 \le j \le 4 \}$.
 פעולות המעבר האפשריות הן תזוזה לאחת מארבעת הכיוונים (למשבצות פנויות בלבד).
 
 נגדיר שני פסוקים אטומיים: $AP = \{\text{TH}, \text{EH}\}$.   (קיצור של- **T**op**H**alf, **R**ight**H**alf)
 
 פונקציית התיוג $L$ מתרגמת את המטריקה של הרשת לתכונות לוגיות פשוטות :
-- רובוט נמצא בחצי העליון של הרשת: $\text{TH} \in L((i,j)) \iff j \ge 3$
-- רובוט נמצא בחצי הימני של הרשת: $\text{RH} \in L((i,j)) \iff i \ge 3$
+- רובוט נמצא בחצי העליון של הרשת: $\text{TH} \in L(\langle i,j \rangle) \iff j \ge 3$
+- רובוט נמצא בחצי הימני של הרשת: $\text{RH} \in L(\langle i,j \rangle) \iff i \ge 3$
 
-<div class="grid grid-cols-2 gap-4 mt-6">
+<div class="grid grid-cols-2 gap-0 mt-6">
 <div>
 
 * **לדוגמה:**
-  - $L((4,4)) = \{\text{TH}, \text{RH}\}$
+  - $L(\langle 4,4 \rangle) = \{\text{TH}, \text{RH}\}$
 
-  - $L((1,1)) = \emptyset$
-  - $L((3,1)) = \{\text{RH}\}$
+  - $L(\langle 1,1 \rangle) = \emptyset$
+  - $L(\langle 3,1 \rangle) = \{\text{RH}\}$
 
 </div>
 <div>
 
 * **אימות תכונות:**
-  - ניתן לשאול : 
-"האם הרובוט יכול להגיע למצב  
-$s \models\text{TH} \land \text{RH}$ מבלי לעבור אף פעם במצב  $s \models \neg\text{RH}$?"
+  - ניתן לשאול: <br/>
+    <span class="text-sm">האם אפשר להגיע ל-$s \models\text{TH} {\land} \text{RH}$ מבלי לעבור ב-$s \models \neg\text{RH}$?</span>
   - הפרדה בין האימות למבנה הפנימי של המערכת
 </div>
 </div>
@@ -182,7 +181,7 @@ $s \models\text{TH} \land \text{RH}$ מבלי לעבור אף פעם במצב  $
 
 # דוגמה: מסלול במבוך
 
-נבחן שני מסלולים אפשריים במערכת המעברים של הרובוט מרגע ההתחלה $(3,1)$.
+נבחן שני מסלולים אפשריים במערכת המעברים של הרובוט מרגע ההתחלה $\langle 3,1 \rangle$.
 המטרה: **להגיע ל-$TH \land RH$ (כלומר $i \ge 3, j \ge 3$) מבלי לצאת מה-$RH$ ($i \ge 3$)**.
 
 <div class="grid grid-cols-2 gap-4 mt-4">
@@ -195,9 +194,9 @@ $s \models\text{TH} \land \text{RH}$ מבלי לעבור אף פעם במצב  $
 <TransitionSystemD3  
   :width="400" :height="200"
   :states="[
-    { id: 's0', text: '$(3,1)$', label: '$\\{RH\\}$', initial: true, initialDirection: 'right', x: 200, y: 180 },
-    { id: 's1', text: '$(3,2)$', label: '$\\{RH\\}$', x: 200, y: 90 },
-    { id: 's2', text: '$(3,3)$', label: '$\\{TH, RH\\}$', x: 200, y: 0 }
+    { id: 's0', text: '$\\langle 3,1 \\rangle$', label: '$\\{RH\\}$', initial: true, initialDirection: 'right', x: 200, y: 180 },
+    { id: 's1', text: '$\\langle 3,2 \\rangle$', label: '$\\{RH\\}$', x: 200, y: 90 },
+    { id: 's2', text: '$\\langle 3,3 \\rangle$', label: '$\\{TH, RH\\}$', x: 200, y: 0 }
   ]"
   :transitions="[
     { source: 's0', target: 's1', action: '$Up$' },
@@ -224,11 +223,11 @@ $L: \{RH\} \to \{RH\} \to \{TH,RH\}$
 <TransitionSystemD3  
   :width="400" :height="200" 
   :states="[
-    { id: 's0', text: '$(3,1)$', label: '$\\{RH\\}$', initial: true, initialDirection: 'right',  x: 280, y: 180 },
-    { id: 's1', text: '$(2,1)$', label: '$\\emptyset$', x: 120, y: 180 },
-    { id: 's2', text: '$(2,2)$', label: '$\\emptyset$', x: 120, y: 90 },
-    { id: 's3', text: '$(2,3)$', label: '$\\{TH\\}$', x: 120, y: 0 },
-    { id: 's4', text: '$(3,3)$', label: '$\\{TH, RH\\}$', x: 280, y: 0 }
+    { id: 's0', text: '$\\langle 3,1 \\rangle$', label: '$\\{RH\\}$', initial: true, initialDirection: 'right',  x: 280, y: 180 },
+    { id: 's1', text: '$\\langle 2,1 \\rangle$', label: '$\\emptyset$', x: 120, y: 180 },
+    { id: 's2', text: '$\\langle 2,2 \\rangle$', label: '$\\emptyset$', x: 120, y: 90 },
+    { id: 's3', text: '$\\langle 2,3 \\rangle$', label: '$\\{TH\\}$', x: 120, y: 0 },
+    { id: 's4', text: '$\\langle 3,3 \\rangle$', label: '$\\{TH, RH\\}$', x: 280, y: 0 }
   ]"
   :transitions="[
     { source: 's0', target: 's1', action: '$Left$' },
@@ -265,13 +264,35 @@ $L: \{RH\} \to \emptyset \to \emptyset \to \{TH\} \to \{TH,RH\}$
 
 # חשיבות האי-דטרמיניזם במערכות מעברים
 
-האי-דטרמיניזם במערכות מעברים הוא הרבה יותר ממושג תאורטי, והוא קריטי למידול מערכות חומרה ותוכנה:
+<div class="grid grid-cols-[1fr_.6fr] gap-8 mt-4">
 
-* **מידול מערכות מקבילות (Parallel Systems):** אי-דטרמיניזם משמש למידול הרצה מקבילית של פעילויות בלתי תלויות באמצעות שזירה (Interleaving) – כלומר, בחירה אי-דטרמיניסטית של סדר ביצוע הפעולות של תהליכים הרצים במקביל. הוא גם מודל מצבי קונפליקט, למשל כאשר שני תהליכים מנסים לגשת למשאב משותף (Shared Resource).
+<div>
 
-* **הפשטה (Abstraction) ומידול חסר (Underspecification):** בשלבי תכנון שלבי מוקדמים, המעצב עשוי לבנות מודל גס המייצג מספר אפשרויות התנהגות שונות באמצעות אי-דטרמיניזם ("מידול חסר"). הרעיון הוא שבשלבי הזיקוק הבאים, המעצב יממש חלופה אחת ויוותר על האחרות. במובן זה, אי-דטרמיניזם מייצג **חופש מימוש (Implementation Freedom)**.
+אי-דטרמיניזם מאפשר לנו לייצג:
 
-* **ממשק מול סביבה לא ידועה:** הוא מאפשר גם מודל של ממשק עם סביבה בלתי צפויה – למשל, משתמש אנושי או תנאי שטח משתנים. דוגמה לכך היא רובוט המסייר בסביבה בלתי מוכרת: הסביבה או המשתמש מכריעים את הבחירה האי-דטרמיניסטית בין מעברי ה-$\tau$ של הרובוט במצב "היתקלות במכשול" (Obstacle Encountered), כשהוא מחליט אם לחשב מסלול מחדש או לבקש עזרה.
+* **שזירה**
+  - סדרי ריצה שונים של תהליכים מקבילים.
+
+* **קונפליקט**
+  - תחרות על משאב משותף.
+
+* **הפשטה וחופש מימוש**
+  - כמה חלופות אפשריות באותו מודל.
+  - ההכרעה נדחית לשלבי התכנון הבאים.
+
+* **סביבה לא צפויה**
+  - משתמש, קלט או תנאי שטח משתנים.
+
+</div>
+
+
+
+<div class="flex items-center justify-center">
+  <img src="/images/nondeterminism_uses.png" class="rounded-xl shadow-2xl border border-white/10" />
+</div>
+
+
+</div>
 
 ---
 
@@ -279,7 +300,7 @@ $L: \{RH\} \to \emptyset \to \emptyset \to \{TH\} \to \{TH,RH\}$
 
 <img src="/predecessors_successors_comic.png" class="absolute right-95 bottom-2 w-55" />
 
-תהי $TS = (S, Act, \to, I, AP, L)$ מערכת מעברים. עבור מצב $s \in S$ ופעולה $\alpha \in Act$:
+תהי $TS = \langle S, Act, \to, I, AP, L \rangle$ מערכת מעברים. עבור מצב $s \in S$ ופעולה $\alpha \in Act$:
 
 <div class="grid grid-cols-2 gap-4 mt-4">
 
@@ -311,7 +332,7 @@ $L: \{RH\} \to \emptyset \to \emptyset \to \{TH\} \to \{TH,RH\}$
 
 <img src="/pointwise_extension_comic.png" class="absolute right-95 bottom-2 w-55" />
 
-תהי $TS = (S, Act, \to, I, AP, L)$ מערכת מעברים. עבור קבוצת מצבים $C \subseteq S$ ופעולה $\alpha \in Act$:
+תהי $TS = \langle S, Act, \to, I, AP, L \rangle$ מערכת מעברים. עבור קבוצת מצבים $C \subseteq S$ ופעולה $\alpha \in Act$:
 
 <div class="grid grid-cols-2 gap-4 mt-4">
 
@@ -377,7 +398,7 @@ $L: \{RH\} \to \emptyset \to \emptyset \to \{TH\} \to \{TH,RH\}$
 
 <img src="/deterministic_observers.png" class="absolute right-95 bottom-5 w-55" />
 
-תהי $TS = (S, Act, \to, I, AP, L)$ מערכת מעברים.
+תהי $TS = \langle S, Act, \to, I, AP, L \rangle$ מערכת מעברים.
 
 <div class="grid grid-cols-2 gap-6 mt-4">
 
@@ -416,7 +437,7 @@ $|I| \le 1$ וגם <br> <br> $|Post(s) \cap \{ s' \in S \mid L(s') = A \}| \le 1
 
 עד כה תיארנו את התנהגות מערכת המעברים באופן אינטואיטיבי. כעת נפרמל זאת באמצעות המושג **ריצה** (execution/run). ריצה נוצרת מתוך הכרעת האי-דטרמיניזם האפשרי במערכת, ומתארת התנהגות אפשרית אחת.
 
-תהי $TS = (S, Act, \to, I, AP, L)$ מערכת מעברים.
+תהי $TS = \langle S, Act, \to, I, AP, L \rangle$ מערכת מעברים.
 
 * **מקטע ריצה סופי:** רצף מתחלף של מצבים ופעולות המסתיים במצב:
   $$\varrho = s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alpha_n} s_n$$
@@ -490,6 +511,55 @@ $|I| \le 1$ וגם <br> <br> $|Post(s) \cap \{ s' \in S \mid L(s') = A \}| \le 1
 $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alpha_n} s_n = s$$
 
 הקבוצה $Reach(TS)$ מציינת את **קבוצת כל המצבים הנגישים** ב-$TS$.
+
+</div>
+
+---
+
+# דוגמה: חידה כבעיית נגישות
+
+נתונה מערכת מעברים פשוטה שבה $s_0$ הוא מצב התחלתי, ו-$s_4$ מייצג "אוצר".
+
+<div class="grid grid-cols-2 gap-6 mt-4 items-start">
+
+<div>
+
+<TransitionSystemD3  
+  :width="430" :height="220"
+  :states="[
+    { id: 's0', text: '$s_0$', initial: true, x: 60, y: 110 },
+    { id: 's1', text: '$s_1$', x: 180, y: 50 },
+    { id: 's2', text: '$s_2$', x: 300, y: 50 },
+    { id: 's3', text: '$s_3$', x: 180, y: 170 },
+    { id: 's4', text: '$s_4$', x: 390, y: 170 }
+  ]"
+  :transitions="[
+    { source: 's0', target: 's1', action: '$a$' },
+    { source: 's0', target: 's3', action: '$b$' },
+    { source: 's1', target: 's2', action: '$c$' },
+    { source: 's2', target: 's1', action: '$d$', curve: 0.2 },
+    { source: 's3', target: 's0', action: '$e$' },
+    { source: 's4', target: 's2', action: '$f$' }
+  ]"
+/>
+
+</div>
+
+<div class="text-right leading-8">
+  <div><b>חידה:</b> האם אפשר להגיע מ-s₀ אל s₄?</div>
+
+  <div class="mt-4"><b>נחשב בהדרגה:</b></div>
+  <ul class="mt-2">
+    <li>Reach₀ = {s₀}</li>
+    <li>Reach₁ = {s₀, s₁, s₃}</li>
+    <li>Reach₂ = {s₀, s₁, s₂, s₃}</li>
+    <li>מכאן לא מתקבלים מצבים חדשים.</li>
+  </ul>
+
+  <div class="mt-4 rounded bg-yellow-100 p-3">
+    <b>מסקנה:</b> s₄ אינו נגיש, ולכן אין פתרון לחידה.
+  </div>
+</div>
 
 </div>
 
