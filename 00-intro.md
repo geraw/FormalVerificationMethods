@@ -4,6 +4,7 @@ dir: rtl
 class: text-center
 highlighter: shiki
 lineNumbers: true
+download: true
 htmlAttrs:
   dir: rtl
   lang: heb
