@@ -516,52 +516,54 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 
 ---
 
-# דוגמה: חידה כבעיית נגישות
+# דוגמה: חידת כדורים
 
-נתונה מערכת מעברים פשוטה שבה $s_0$ הוא מצב התחלתי, ו-$s_4$ מייצג "אוצר".
+<div class="grid grid-cols-[1fr_.5fr] gap-8 mt-4">
 
-<div class="grid grid-cols-2 gap-6 mt-4 items-start">
 
 <div>
 
-<TransitionSystemD3  
-  :width="430" :height="220"
-  :states="[
-    { id: 's0', text: '$s_0$', initial: true, x: 60, y: 110 },
-    { id: 's1', text: '$s_1$', x: 180, y: 50 },
-    { id: 's2', text: '$s_2$', x: 300, y: 50 },
-    { id: 's3', text: '$s_3$', x: 180, y: 170 },
-    { id: 's4', text: '$s_4$', x: 390, y: 170 }
-  ]"
-  :transitions="[
-    { source: 's0', target: 's1', action: '$a$' },
-    { source: 's0', target: 's3', action: '$b$' },
-    { source: 's1', target: 's2', action: '$c$' },
-    { source: 's2', target: 's1', action: '$d$', curve: 0.2 },
-    { source: 's3', target: 's0', action: '$e$' },
-    { source: 's4', target: 's2', action: '$f$' }
-  ]"
-/>
+- בשק יש 2026 כדורים שחורים ו-2026 כדורים לבנים.
+- בכל צעד מוציאים שני כדורים:
+  - `BB -> W`
+  - `WW -> W`
+  - `BW -> B`
+- השאלה: מה צבע הכדור האחרון?
+
+נמדל כמערכת מעברים:
+
+- מצב: $\langle b,w \rangle$
+- פירוש: $b$ = מספר הכדורים השחורים, $w$ = מספר הכדורים הלבנים
+- מצב התחלתי: $\langle 2026,2026 \rangle$
+- מצבי סיום: $\langle 1,0 \rangle$ או $\langle 0,1 \rangle$
 
 </div>
 
-<div class="text-right leading-8">
-  <div><b>חידה:</b> האם אפשר להגיע מ-s₀ אל s₄?</div>
-
-  <div class="mt-4"><b>נחשב בהדרגה:</b></div>
-  <ul class="mt-2">
-    <li>Reach₀ = {s₀}</li>
-    <li>Reach₁ = {s₀, s₁, s₃}</li>
-    <li>Reach₂ = {s₀, s₁, s₂, s₃}</li>
-    <li>מכאן לא מתקבלים מצבים חדשים.</li>
-  </ul>
-
-  <div class="mt-4 rounded bg-yellow-100 p-3">
-    <b>מסקנה:</b> s₄ אינו נגיש, ולכן אין פתרון לחידה.
-  </div>
+<div class="flex flex-col items-center justify-center">
+  <img src="/images/balls_puzzle_student.png" class="rounded-xl shadow-2xl border border-white/10 w-90" />
 </div>
 
+
 </div>
+
+---
+
+# פתרון דרך $Reach(TS)$
+
+- `BB`: $\langle b,w \rangle \xrightarrow{BB} \langle b-2,w+1 \rangle$
+- `WW`: $\langle b,w \rangle \xrightarrow{WW} \langle b,w-1 \rangle$
+- `BW`: $\langle b,w \rangle \xrightarrow{BW} \langle b,w-1 \rangle$
+
+תצפית על המצבים הנגישים:
+
+- בכל מעבר מספר הכדורים השחורים נשאר זוגי.
+- לכן לכל $\langle b,w \rangle \in Reach(TS)$ מתקיים: $b$ זוגי.
+- בפרט, $\langle 1,0 \rangle \notin Reach(TS)$.
+
+מסקנה:
+
+- מצב הסיום הנגיש היחיד הוא $\langle 0,1 \rangle$.
+- לכן הכדור האחרון הוא לבן.
 
 ---
 
