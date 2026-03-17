@@ -5,18 +5,18 @@ class: text-center
 highlighter: shiki
 lineNumbers: true
 download: true
-exportFilename: 02-modelling
+exportFilename: 02-program-graphs
 htmlAttrs:
   dir: rtl
   lang: heb
 drawings:
   enabled: true
 info: |
-  ## מערכות מעברים (Transition Systems)
+  ## גרפי תוכנית (Program Graphs)
   מרצה: גרא וייס
 ---
 
-# מידול מערכות חומרה ותוכנה 
+# גרפי תוכנית
 
 ##  הרצאה בקורס מבוא לאימות תוכנה <br> בשיטות פורמאליות
 הפקולטה למדעי המחשב והמידע | אוניברסיטת בן-גוריון
@@ -29,7 +29,7 @@ info: |
 
 ---
 
-# מידול מעגלי חומרה ותוכניות מחשב
+# גרפי תוכנית
 
 חלק זה מדגים את השימוש במערכות מעברים על ידי הרחבה על מידול של **מעגלי חומרה (סינכרוניים)** ו**מערכות סדרתיות תלויות-נתונים** – סוג של תוכניות מחשב סדרתיות פשוטות.
 

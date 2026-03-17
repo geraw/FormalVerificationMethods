@@ -24,12 +24,14 @@
 :where(.slidev-layout) table th,
 :where(.slidev-layout) table td {
   padding: 0.5rem 1rem;
-  border: 1px solid #e2e8f0; /* Light gray border */
+  border: 1px solid #e2e8f0;
+  /* Light gray border */
 }
 
 :where(.slidev-layout) table th {
   background-color: #f8fafc;
-  border-bottom: 2px solid #cbd5e1; /* Thicker header separator */
+  border-bottom: 2px solid #cbd5e1;
+  /* Thicker header separator */
 }
 
 /* סגנון לטבלאות אמת בלבד */
@@ -164,4 +166,66 @@ strong {
 :where(.slidev-layout) .bigger-code-block :is(pre, pre code, .shiki, .shiki code) {
   font-size: 1.1rem !important;
   line-height: 1.8 !important;
+}
+
+/* Custom Scrollable List Container */
+.list-container {
+  max-height: 380px;
+  overflow-y: scroll !important;
+  padding: 1.5rem;
+  background: rgba(228, 229, 210, 0.15) !important;
+  /* Semi-transparent green as requested by user */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  scrollbar-width: thin;
+  scrollbar-color: #98a1ae rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  display: block !important;
+}
+
+/* Chrome, Edge, and Safari Scrollbar styling */
+.list-container::-webkit-scrollbar {
+  width: 12px !important;
+  display: block !important;
+}
+
+.list-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1) !important;
+  border-radius: 10px;
+}
+
+.list-container::-webkit-scrollbar-thumb {
+  background-color: #bfd0e8 !important;
+  border-radius: 10px !important;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+.list-container ul {
+  list-style-type: disc;
+  padding-right: 1.5rem;
+  margin: 0;
+}
+
+.list-container li {
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.list-container a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.list-container a:hover {
+  text-decoration: underline;
+}
+
+.bgu-logo {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 80px;
 }

@@ -8,7 +8,7 @@
         "dev": "slidev index.md --open",
         "dev:intro": "slidev 00-intro.md --open",
         "dev:01": "slidev 01-transition-systems.md --open",
-        "dev:02": "slidev 02-modelling.md --open",
+        "dev:02": "slidev 02-program-graphs.md --open",
         "dev:03": "slidev 03-parallelism-and-concurrency.md --open",
         "dev:z3": "concurrently \"node runner-server.js\" \"slidev z3.md --open\""
     },

@@ -35,7 +35,7 @@ npm run dev:intro
 # Module 01 - Transition Systems
 npm run dev:01
 
-# Module 02 - Modelling
+# Module 02 - Program Graphs
 npm run dev:02
 
 # Module 03 - Parallelism and Concurrency
