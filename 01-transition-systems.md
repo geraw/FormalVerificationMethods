@@ -575,3 +575,177 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 * נרצה לבדוק אם כל (סדרות התיוגים של) הריצות של המערכת "חוקיות".
 * **שקילות:** שתי מערכות מעברים יקראו שקולות אם קבוצת הסדרות הנ"ל שוות.
 
+---
+
+# חידת סיום: מי שקולה למקור?
+
+נניח ששקילות נבחנת לפי **סדרות התיוגים של הריצות**.
+
+איזו מן המערכות `B` או `C` שקולה למערכת `A`?
+האם אפשר להחליף את `A` במערכת קטנה יותר בלי שצופה חיצוני ירגיש?
+
+<div class="grid grid-cols-3 gap-3 mt-4">
+
+<div class="border-2 border-blue-300 bg-blue-50 rounded-lg p-2">
+
+<div class="font-bold text-lg mb-1">A</div>
+
+<TransitionSystemD3
+  :width="250" :height="220" 
+  :states="[
+    { id: 'a0', text: '$s_0$', label: '$\\{p\\}$', initial: true, x: 125, y: 175 },
+    { id: 'a1', text: '$s_1$', label: '$\\{q\\}$', x: 65, y: 100 },
+    { id: 'a2', text: '$s_2$', label: '$\\{q\\}$', x: 185, y: 100 },
+    { id: 'a3', text: '$s_3$', label: '$\\{r\\}$', x: 65, y: 25 },
+    { id: 'a4', text: '$s_4$', label: '$\\{r\\}$', x: 185, y: 25 }
+  ]"
+  :transitions="[
+    { source: 'a0', target: 'a1' },
+    { source: 'a0', target: 'a2' },
+    { source: 'a1', target: 'a3' },
+    { source: 'a2', target: 'a4' },
+    { source: 'a1', target: 'a2' },
+    { source: 'a2', target: 'a1' },
+    { source: 'a3', target: 'a3', loopDirection: '180deg' },
+    { source: 'a4', target: 'a4', loopDirection: '180deg' }
+  ]"
+/>
+
+</div>
+
+<div class="border-2 border-green-300 bg-green-50 rounded-lg p-2">
+
+<div class="font-bold text-lg mb-1">B</div>
+
+<TransitionSystemD3
+  :width="250" :height="220" 
+  :states="[
+    { id: 'b0', text: '$t_0$', label: '$\\{p\\}$', initial: true, x: 125, y: 175 },
+    { id: 'b1', text: '$t_1$', label: '$\\{q\\}$', x: 125, y: 100 },
+    { id: 'b2', text: '$t_2$', label: '$\\{r\\}$', x: 125, y: 25 }
+  ]"
+  :transitions="[
+    { source: 'b0', target: 'b1' },
+    { source: 'b1', target: 'b2' },
+    { source: 'b2', target: 'b2', loopDirection: '180deg' }
+  ]"
+/>
+
+</div>
+
+<div class="border-2 border-red-300 bg-red-50 rounded-lg p-2">
+
+<div class="font-bold text-lg mb-1">C</div>
+
+<TransitionSystemD3
+  :width="250" :height="220" 
+  :states="[
+    { id: 'c0', text: '$u_0$', label: '$\\{p\\}$', initial: true, x: 125, y: 175, initialDirection: '180deg' },
+    { id: 'c1', text: '$u_1$', label: '$\\{q\\}$', x: 125, y: 100 },
+    { id: 'c2', text: '$u_2$', label: '$\\{r\\}$', x: 125, y: 25 }
+  ]"
+  :transitions="[
+    { source: 'c0', target: 'c1' },
+    { source: 'c1', target: 'c1', loopDirection: '180deg' },
+    { source: 'c1', target: 'c2' },
+    { source: 'c2', target: 'c2', loopDirection: '180deg' }
+  ]"
+/>
+
+</div>
+
+</div>
+
+<div v-click="1" class="mt-4 text-sm bg-blue-50 p-2 rounded border border-blue-200">
+רמז: ב-<b>A</b> יש שני מצבי <code>q</code> ושני מצבי <code>r</code> שנראים אותו דבר לצופה החיצוני.
+</div>
+
+<div v-click="2" class="mt-2 text-sm bg-green-50 p-2 rounded border border-green-200">
+פתרון: <b>B</b> שקולה ל-<b>A</b>. לעומת זאת <b>C</b> אינה שקולה, כי היא מאפשרת להישאר צעד נוסף ב-<code>q</code>, ולכן נוצרת סדרת תיוגים חדשה.
+</div>
+
+---
+
+# חידה נוספת: פרשי המלך
+
+<div class="grid grid-cols-3 gap-4 mt-4 items-start">
+
+<div class="bg-slate-50 border-2 border-slate-200 rounded-lg p-3">
+<div class="font-bold text-center mb-2">התחלה</div>
+<div class="grid grid-cols-3 w-48 mx-auto overflow-hidden rounded border border-slate-400 text-center text-lg font-bold">
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a3</span><span class="text-blue-700">ל</span></div>
+  <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">b3</span><span class="text-slate-400">·</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c3</span><span class="text-blue-700">ל</span></div>
+  <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a2</span><span class="text-slate-400">·</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">b2</span><span class="text-slate-400">·</span></div>
+  <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c2</span><span class="text-slate-400">·</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a1</span><span class="text-slate-900">ש</span></div>
+  <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">b1</span><span class="text-slate-400">·</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c1</span><span class="text-slate-900">ש</span></div>
+</div>
+</div>
+
+<div class="bg-slate-50 border-2 border-slate-200 rounded-lg p-3">
+<div class="font-bold text-center mb-2">מטרה</div>
+<div class="grid grid-cols-3 w-48 mx-auto overflow-hidden rounded border border-slate-400 text-center text-lg font-bold">
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a3</span><span class="text-slate-900">ש</span></div>
+  <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">b3</span><span class="text-slate-400">·</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c3</span><span class="text-slate-900">ש</span></div>
+  <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a2</span><span class="text-slate-400">·</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">b2</span><span class="text-slate-400">·</span></div>
+  <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c2</span><span class="text-slate-400">·</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a1</span><span class="text-blue-700">ל</span></div>
+  <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">b1</span><span class="text-slate-400">·</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c1</span><span class="text-blue-700">ל</span></div>
+</div>
+</div>
+
+<div class="bg-blue-50 border-2 border-blue-200 rounded-lg p-4 text-sm leading-6">
+<div class="font-bold text-base mb-2">השאלה</div>
+<ul class="list-disc ps-5">
+  <li>פרש נע ב-<code>L</code> כרגיל.</li>
+  <li>אסור לשני פרשים לעמוד על אותה משבצת.</li>
+  <li>האם ההחלפה אפשרית?</li>
+  <li>אם כן, מהו מספר הצעדים המינימלי?</li>
+</ul>
+</div>
+
+</div>
+
+<div v-click="1" class="mt-4 text-sm bg-yellow-50 p-2 rounded border border-yellow-200">
+רמז: בנו מערכת מעברים שבה המצבים הם משבצות הלוח, והמעברים הם מהלכי פרש חוקיים.
+</div>
+
+---
+
+# פתרון: מחליפים לוח במעגל
+
+<div class="grid grid-cols-2 gap-5 mt-4 items-start">
+
+<div class="bg-sky-50 border-2 border-sky-200 rounded-lg p-4 text-sm leading-6">
+<div class="font-bold text-base mb-2">המערכת השקולה</div>
+המשבצת <code>b2</code> מבודדת, ושאר 8 המשבצות יוצרות מעגל אחד:
+
+<div class="mt-3 text-sm font-mono bg-white border border-sky-200 rounded p-2">
+1:a1 → 2:b3 → 3:c1 → 4:a2 → 5:c3 → 6:b1 → 7:a3 → 8:c2 → 1
+</div>
+
+<div v-click="1" class="mt-3 bg-white border border-sky-200 rounded p-2">
+במקום לנתח לוח דו-ממדי, אפשר לעבור למערכת מעברים שקולה שהיא פשוט מעגל בן 8 מצבים.
+</div>
+</div>
+
+<div class="bg-emerald-50 border-2 border-emerald-200 rounded-lg p-4 text-sm leading-6">
+<div class="font-bold text-base mb-2">סופרים צעדים</div>
+<ul class="list-disc ps-5">
+  <li>בהתחלה: שחורים ב-<code>1,3</code>, לבנים ב-<code>5,7</code>.</li>
+  <li>הסדר היחסי נשמר, כי אי אפשר לעבור דרך פרש אחר.</li>
+  <li>כדי להחליף צבעים, כל פרש צריך להתקדם 4 צעדים על המעגל.</li>
+</ul>
+
+<div v-click="2" class="mt-4 bg-white border border-emerald-200 rounded p-2">
+לכן ההחלפה <b>אפשרית</b>, ומספר הצעדים המינימלי הוא <b>16</b>.
+</div>
+</div>
+
+</div>
