@@ -4,6 +4,12 @@ import path from "path";
 import crypto from "crypto";
 
 const REPO = "FormalVerificationMethods";
+const MIN_VALID_PDF_SIZE_BYTES = 10 * 1024;
+const PDF_EXPORT_ARGS = [
+    "--wait-until", "networkidle",
+    "--wait", "1000",
+    "--timeout", "120000",
+];
 
 /**
  * Calculates a content hash for the file.
@@ -21,6 +27,20 @@ function quote(value) {
 function runSlidev(command, args) {
     const quotedArgs = args.map(quote).join(" ");
     execSync(`npx slidev ${command} ${quotedArgs}`, { stdio: "inherit" });
+}
+
+function exportPdfWithRetry(sourceFile, outputFile, maxAttempts = 2) {
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+        runSlidev("export", [sourceFile, "--output", outputFile, ...PDF_EXPORT_ARGS]);
+
+        if (fs.existsSync(outputFile) && fs.statSync(outputFile).size >= MIN_VALID_PDF_SIZE_BYTES) {
+            return;
+        }
+
+        console.warn(`\n[WARN] PDF export for ${sourceFile} looks incomplete after attempt ${attempt}/${maxAttempts}.`);
+    }
+
+    throw new Error(`Failed to export a valid PDF for ${sourceFile}`);
 }
 
 /**
@@ -136,7 +156,7 @@ for (const file of decks) {
         fs.mkdirSync(outputDir, { recursive: true });
 
         runSlidev("build", [file, "--base", `/${REPO}/${base}/`, "-o", outputDir]);
-        runSlidev("export", [file, "--output", pdfOutput]);
+        exportPdfWithRetry(file, pdfOutput);
         saveSignature(file, outputDir);
         builtCount++;
     } else {
