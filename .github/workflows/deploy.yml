@@ -4,6 +4,25 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+    paths:
+      - '.github/workflows/deploy.yml'
+      - 'build-all.js'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'slidev.config.js'
+      - 'styles.css'
+      - 'components/**'
+      - 'public/**'
+      - 'images/**'
+      - 'setup/**'
+      - '*.md'
+      - '*.png'
+      - '*.jpg'
+      - '*.jpeg'
+      - '*.svg'
+      - '*.gif'
+      - '*.webp'
+      - '*.pdf'
 
 permissions:
   contents: read
@@ -39,10 +58,21 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+
       - name: Install Playwright for PDF export
         run: |
           npm i -D playwright-chromium
-          npx playwright install --with-deps chromium
+          if [ "${{ steps.playwright-cache.outputs.cache-hit }}" = "true" ]; then
+            npx playwright install-deps chromium
+          else
+            npx playwright install --with-deps chromium
+          fi
 
       - name: Restore previous dist snapshot
         uses: actions/cache/restore@v4
