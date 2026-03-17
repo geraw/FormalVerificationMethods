@@ -57,6 +57,15 @@ function saveSignature(sourceFile, outputDir) {
     fs.writeFileSync(signatureFile, currentHash);
 }
 
+function replaceRootDistContents(tempDir, distDir, preservedDirs = new Set()) {
+    for (const entry of fs.readdirSync(distDir, { withFileTypes: true })) {
+        if (entry.isDirectory() && preservedDirs.has(entry.name)) continue;
+        fs.rmSync(path.join(distDir, entry.name), { recursive: true, force: true });
+    }
+
+    fs.cpSync(tempDir, distDir, { recursive: true });
+}
+
 // 0. Setup dist
 if (!fs.existsSync("dist")) {
     fs.mkdirSync("dist");
@@ -93,7 +102,12 @@ if (fs.existsSync("index.md")) {
     
     if (result.rebuild) {
         console.log(`\n▶ [REBUILD] index.md (${result.reason})`);
-        runSlidev("build", ["index.md", "--base", `/${REPO}/`, "-o", "dist"]);
+        const tempIndexDir = path.join(".slidev-temp", "index");
+        fs.rmSync(tempIndexDir, { recursive: true, force: true });
+        fs.mkdirSync(path.dirname(tempIndexDir), { recursive: true });
+        runSlidev("build", ["index.md", "--base", `/${REPO}/`, "-o", tempIndexDir]);
+        replaceRootDistContents(tempIndexDir, "dist", deckBases);
+        fs.rmSync(".slidev-temp", { recursive: true, force: true });
         saveSignature("index.md", "dist");
         builtCount++;
     } else {
