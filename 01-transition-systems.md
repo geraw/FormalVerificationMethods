@@ -462,7 +462,7 @@ $|I| \le 1$ וגם <br> <br> $|Post(s) \cap \{ s' \in S \mid L(s') = A \}| \le 1
 
 # מקטעי ריצה מקסימליים והתחלתיים
 
-<img src="/maximal_initial_fragments.png" class="absolute right-95 bottom-0 w-45" />
+<img v-click-hide src="/maximal_initial_fragments.png" class="absolute right-95 bottom-0 w-45" />
 
 מקטע ריצה נקרא **מקסימלי** כאשר לא ניתן להאריך אותו, ו**התחלתי** כאשר הוא מתחיל ממצב התחלתי:
 
@@ -493,9 +493,22 @@ $|I| \le 1$ וגם <br> <br> $|Post(s) \cap \{ s' \in S \mid L(s') = A \}| \le 1
 
 </div>
 
-<div class="border-2 border-red-400 bg-red-50 rounded-lg p-3 mt-4" dir="rtl" align="center">
+<div class="border-2 border-red-400 bg-red-50 rounded-lg p-3 mt-3 " dir="rtl" align="center">
 
 **ריצה (Execution):** מקטע ריצה שהוא גם **התחלתי** וגם **מקסימלי**.
+
+</div>
+
+<div v-click="1" class="mt-3 border-2 border-yellow-400 bg-yellow-50 rounded-lg p-3">
+
+**שאלה לבחינת הריכוז:** מה צריך להניח על המערכת כדי שלכל רצף תיוגים   $\sigma \in (2^{AP})^*$
+תהיה לכל היותר ריצה אחת
+$r = s_0 \xrightarrow{\alpha_1} s_1 \cdots \xrightarrow{\alpha_n} s_n$
+שעבורה $L(s_i) = \sigma[i]$ לכל $i$? 
+(
+אנחנו מסמנים את האות ה-$i$ של $\sigma$ ב-$\sigma[i]$
+)
+
 
 </div>
 
@@ -673,30 +686,30 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 <div class="bg-slate-50 border-2 border-slate-200 rounded-lg p-3">
 <div class="font-bold text-center mb-2">התחלה</div>
 <div class="grid grid-cols-3 w-48 mx-auto overflow-hidden rounded border border-slate-400 text-center text-lg font-bold">
-  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a3</span><span class="text-blue-700">ל</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a3</span><span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-slate-400 shadow-sm text-[28px] leading-none text-slate-800" style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;">♘</span></div>
   <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">b3</span><span class="text-slate-400">·</span></div>
-  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c3</span><span class="text-blue-700">ל</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c3</span><span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-slate-400 shadow-sm text-[28px] leading-none text-slate-800" style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;">♘</span></div>
   <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a2</span><span class="text-slate-400">·</span></div>
   <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">b2</span><span class="text-slate-400">·</span></div>
   <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c2</span><span class="text-slate-400">·</span></div>
-  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a1</span><span class="text-slate-900">ש</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a1</span><span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-slate-900 border-2 border-slate-300 shadow-sm text-[28px] leading-none text-white" style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;">♞</span></div>
   <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">b1</span><span class="text-slate-400">·</span></div>
-  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c1</span><span class="text-slate-900">ש</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c1</span><span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-slate-900 border-2 border-slate-300 shadow-sm text-[28px] leading-none text-white" style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;">♞</span></div>
 </div>
 </div>
 
 <div class="bg-slate-50 border-2 border-slate-200 rounded-lg p-3">
 <div class="font-bold text-center mb-2">מטרה</div>
 <div class="grid grid-cols-3 w-48 mx-auto overflow-hidden rounded border border-slate-400 text-center text-lg font-bold">
-  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a3</span><span class="text-slate-900">ש</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a3</span><span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-slate-900 border-2 border-slate-300 shadow-sm text-[28px] leading-none text-white" style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;">♞</span></div>
   <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">b3</span><span class="text-slate-400">·</span></div>
-  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c3</span><span class="text-slate-900">ש</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c3</span><span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-slate-900 border-2 border-slate-300 shadow-sm text-[28px] leading-none text-white" style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;">♞</span></div>
   <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a2</span><span class="text-slate-400">·</span></div>
   <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">b2</span><span class="text-slate-400">·</span></div>
   <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c2</span><span class="text-slate-400">·</span></div>
-  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a1</span><span class="text-blue-700">ל</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">a1</span><span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-slate-400 shadow-sm text-[28px] leading-none text-slate-800" style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;">♘</span></div>
   <div class="relative h-14 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">b1</span><span class="text-slate-400">·</span></div>
-  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c1</span><span class="text-blue-700">ל</span></div>
+  <div class="relative h-14 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[10px] text-slate-500 font-normal">c1</span><span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white border-2 border-slate-400 shadow-sm text-[28px] leading-none text-slate-800" style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;">♘</span></div>
 </div>
 </div>
 
@@ -720,31 +733,126 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 
 # פתרון: מחליפים לוח במעגל
 
-<div class="grid grid-cols-2 gap-5 mt-4 items-start">
+<div class="grid grid-cols-[0.92fr_1.05fr_0.95fr] gap-3 mt-2 items-start text-[12px] leading-5">
 
-<div class="bg-sky-50 border-2 border-sky-200 rounded-lg p-4 text-sm leading-6">
-<div class="font-bold text-base mb-2">המערכת השקולה</div>
-המשבצת <code>b2</code> מבודדת, ושאר 8 המשבצות יוצרות מעגל אחד:
+<div class="bg-sky-50 border-2 border-sky-200 rounded-lg p-3">
+<div class="font-bold text-[14px] mb-1">1. ממספרים את הלוח</div>
+<div class="text-[12px]">המשבצת <code>b2</code> מבודדת, ושאר 8 המשבצות מקבלות מספרים.</div>
 
-<div class="mt-3 text-sm font-mono bg-white border border-sky-200 rounded p-2">
-1:a1 → 2:b3 → 3:c1 → 4:a2 → 5:c3 → 6:b1 → 7:a3 → 8:c2 → 1
+<div class="grid grid-cols-3 w-44 mx-auto mt-2 overflow-hidden rounded border border-sky-300 text-center">
+  <div class="relative h-12 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[9px] text-slate-500">a3</span><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-600 text-white font-bold text-[12px]">7</span></div>
+  <div class="relative h-12 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[9px] text-slate-500">b3</span><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-600 text-white font-bold text-[12px]">2</span></div>
+  <div class="relative h-12 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[9px] text-slate-500">c3</span><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-600 text-white font-bold text-[12px]">5</span></div>
+  <div class="relative h-12 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[9px] text-slate-500">a2</span><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-600 text-white font-bold text-[12px]">4</span></div>
+  <div class="relative h-12 bg-amber-100 border border-slate-300 flex flex-col items-center justify-center text-[9px] text-slate-500"><span class="absolute left-1 top-1 text-[9px] text-slate-500">b2</span><span class="font-bold">מבודדת</span></div>
+  <div class="relative h-12 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[9px] text-slate-500">c2</span><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-600 text-white font-bold text-[12px]">8</span></div>
+  <div class="relative h-12 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[9px] text-slate-500">a1</span><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-600 text-white font-bold text-[12px]">1</span></div>
+  <div class="relative h-12 bg-stone-200 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[9px] text-slate-500">b1</span><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-600 text-white font-bold text-[12px]">6</span></div>
+  <div class="relative h-12 bg-amber-100 border border-slate-300 flex items-center justify-center"><span class="absolute left-1 top-1 text-[9px] text-slate-500">c1</span><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-sky-600 text-white font-bold text-[12px]">3</span></div>
 </div>
 
-<div v-click="1" class="mt-3 bg-white border border-sky-200 rounded p-2">
-במקום לנתח לוח דו-ממדי, אפשר לעבור למערכת מעברים שקולה שהיא פשוט מעגל בן 8 מצבים.
+<div v-click="1" class="mt-2 bg-white border border-sky-200 rounded p-2 text-[11px] leading-4">
+כל מהלך פרש מהלוח המקורי עובר בדיוק לאחד משני השכנים של אותו מספר.
 </div>
 </div>
 
-<div class="bg-emerald-50 border-2 border-emerald-200 rounded-lg p-4 text-sm leading-6">
-<div class="font-bold text-base mb-2">סופרים צעדים</div>
-<ul class="list-disc ps-5">
-  <li>בהתחלה: שחורים ב-<code>1,3</code>, לבנים ב-<code>5,7</code>.</li>
-  <li>הסדר היחסי נשמר, כי אי אפשר לעבור דרך פרש אחר.</li>
-  <li>כדי להחליף צבעים, כל פרש צריך להתקדם 4 צעדים על המעגל.</li>
-</ul>
+<div class="bg-sky-50 border-2 border-sky-200 rounded-lg p-3">
+<div class="font-bold text-[14px] mb-1">2. מקבלים מעגל שקול</div>
 
-<div v-click="2" class="mt-4 bg-white border border-emerald-200 rounded p-2">
-לכן ההחלפה <b>אפשרית</b>, ומספר הצעדים המינימלי הוא <b>16</b>.
+<svg viewBox="0 0 260 220" class="w-full h-[220px] mt-2">
+  <defs>
+    <marker id="cycle-arrow" markerWidth="4" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#0284c7" />
+    </marker>
+  </defs>
+
+  <line x1="130" y1="184" x2="184" y2="163" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
+  <line x1="197" y1="150" x2="218" y2="96" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
+  <line x1="205" y1="82" x2="184" y2="37" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
+  <line x1="171" y1="24" x2="117" y2="16" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
+  <line x1="103" y1="24" x2="57" y2="37" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
+  <line x1="44" y1="50" x2="23" y2="104" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
+  <line x1="31" y1="118" x2="57" y2="163" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
+  <line x1="70" y1="176" x2="117" y2="184" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
+
+  <circle cx="130" cy="190" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
+  <circle cx="191" cy="165" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
+  <circle cx="216" cy="104" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
+  <circle cx="191" cy="43" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
+  <circle cx="130" cy="18" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
+  <circle cx="69" cy="43" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
+  <circle cx="44" cy="104" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
+  <circle cx="69" cy="165" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
+
+  <circle cx="130" cy="104" r="19" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 3" />
+
+  <text x="130" y="195" text-anchor="middle" font-size="8" font-weight="700" fill="#0369a1">1</text>
+  <text x="191" y="170" text-anchor="middle" font-size="8" font-weight="700" fill="#0369a1">2</text>
+  <text x="216" y="109" text-anchor="middle" font-size="8" font-weight="700" fill="#0369a1">3</text>
+  <text x="191" y="48" text-anchor="middle"  font-size="8" font-weight="700" fill="#0369a1">4</text>
+  <text x="130" y="23" text-anchor="middle"  font-size="8" font-weight="700" fill="#0369a1">5</text>
+  <text x="69" y="48" text-anchor="middle"   font-size="8" font-weight="700" fill="#0369a1">6</text>
+  <text x="44" y="109" text-anchor="middle"  font-size="8" font-weight="700" fill="#0369a1">7</text>
+  <text x="69" y="170" text-anchor="middle"  font-size="8" font-weight="700" fill="#0369a1">8</text>
+
+  <text x="130" y="211" text-anchor="middle" font-size="6" fill="#475569">a1</text>
+  <text x="205" y="183" text-anchor="middle" font-size="6" fill="#475569">b3</text>
+  <text x="236" y="108" text-anchor="middle" font-size="6" fill="#475569">c1</text>
+  <text x="206" y="30"  text-anchor="middle"  font-size="6" fill="#475569">a2</text>
+  <text x="130" y="5"   text-anchor="middle"   font-size="6" fill="#475569">c3</text>
+  <text x="55" y="30"   text-anchor="middle"   font-size="6" fill="#475569">b1</text>
+  <text x="24" y="108"  text-anchor="middle"  font-size="6" fill="#475569">a3</text>
+  <text x="55" y="183"  text-anchor="middle"  font-size="6" fill="#475569">c2</text>
+
+  <text x="130" y="101" text-anchor="middle" font-size="6" font-weight="700" fill="#475569">b2</text>
+  <text x="130" y="147" text-anchor="middle" font-size="6" fill="#64748b">מבודדת</text>
+</svg>
+
+<div class="bg-white border border-sky-200 rounded p-2 text-center font-mono text-[11px] leading-4">
+1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 1
+</div>
+
+<div v-click="2" class="mt-2 bg-white border border-sky-200 rounded p-2 text-[11px] leading-4">
+עכשיו רואים את המערכת השקולה כגרף ממשי: מחזור בן 8 מצבים ועוד מצב מבודד אחד.
+</div>
+</div>
+
+<div class="bg-emerald-50 border-2 border-emerald-200 rounded-lg p-3">
+<div class="font-bold text-[14px] mb-1">3. סופרים צעדים</div>
+
+<div class="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1 items-center text-[11px]">
+  <div class="font-bold">התחלה</div>
+  <div class="flex gap-[2px]">
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex flex-col items-center justify-center"><div class="text-[8px]">1</div><div style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;" class="text-sm leading-none">♞</div></div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex items-center justify-center text-slate-300">·</div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex flex-col items-center justify-center"><div class="text-[8px]">3</div><div style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;" class="text-sm leading-none">♞</div></div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex items-center justify-center text-slate-300">·</div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex flex-col items-center justify-center"><div class="text-[8px]">5</div><div style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;" class="text-sm leading-none">♘</div></div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex items-center justify-center text-slate-300">·</div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex flex-col items-center justify-center"><div class="text-[8px]">7</div><div style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;" class="text-sm leading-none">♘</div></div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex items-center justify-center text-slate-300">·</div>
+  </div>
+
+  <div class="font-bold">יעד</div>
+  <div class="flex gap-[2px]">
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex flex-col items-center justify-center"><div class="text-[8px]">1</div><div style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;" class="text-sm leading-none">♘</div></div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex items-center justify-center text-slate-300">·</div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex flex-col items-center justify-center"><div class="text-[8px]">3</div><div style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;" class="text-sm leading-none">♘</div></div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex items-center justify-center text-slate-300">·</div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex flex-col items-center justify-center"><div class="text-[8px]">5</div><div style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;" class="text-sm leading-none">♞</div></div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex items-center justify-center text-slate-300">·</div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex flex-col items-center justify-center"><div class="text-[8px]">7</div><div style="font-family: 'Noto Sans Symbols 2', 'Segoe UI Symbol', 'DejaVu Sans', serif;" class="text-sm leading-none">♞</div></div>
+    <div class="w-7 h-10 rounded border border-emerald-300 bg-white flex items-center justify-center text-slate-300">·</div>
+  </div>
+ </div>
+
+<div class="mt-2 space-y-1 text-[11px] leading-4">
+  <div class="bg-white border border-emerald-200 rounded p-2">אי אפשר לעקוף פרש אחר, לכן הסדר היחסי נשמר לאורך כל הריצה.</div>
+  <div class="bg-white border border-emerald-200 rounded p-2">כדי להגיע מהתחלה ליעד, כל אחד מארבעת הפרשים חייב להתקדם בדיוק 4 צעדים על המעגל.</div>
+</div>
+
+<div v-click="3" class="mt-2 bg-white border border-emerald-300 rounded p-2 text-[11px] leading-4">
+לכן ההחלפה אפשרית, ומספר הצעדים המינימלי הוא <b>16</b>.
 </div>
 </div>
 
