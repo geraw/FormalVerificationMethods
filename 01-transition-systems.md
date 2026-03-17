@@ -505,9 +505,7 @@ $|I| \le 1$ וגם <br> <br> $|Post(s) \cap \{ s' \in S \mid L(s') = A \}| \le 1
 תהיה לכל היותר ריצה אחת
 $r = s_0 \xrightarrow{\alpha_1} s_1 \cdots \xrightarrow{\alpha_n} s_n$
 שעבורה $L(s_i) = \sigma[i]$ לכל $i$? 
-(
-אנחנו מסמנים את האות ה-$i$ של $\sigma$ ב-$\sigma[i]$
-)
+( אנחנו מסמנים את האות ה-$i$ של $\sigma$ ב-$\sigma[i]$ )
 
 
 </div>
@@ -588,9 +586,50 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 * נרצה לבדוק אם כל (סדרות התיוגים של) הריצות של המערכת "חוקיות".
 * **שקילות:** שתי מערכות מעברים יקראו שקולות אם קבוצת הסדרות הנ"ל שוות.
 
+<div class="grid grid-cols-2 gap-4 mt-8">
+  <div class="rounded-lg border-2 border-blue-200 bg-blue-50 p-3">
+    <div class="text-sm font-bold mb-2 text-center">מערכת <span dir="ltr">TS_1</span></div>
+    <div class="flex justify-center">
+      <TransitionSystemD3
+        :width="300" :height="150"
+        :states="[
+          { id: 's0', text: '$s_0$', label: '$\\{p\\}$', initial: true, x: 50, y: 75 },
+          { id: 's1', text: '$s_1$', label: '$\\{q\\}$', x: 250, y: 75 }
+        ]"
+        :transitions="[
+          { source: 's0', target: 's1', action: '$\\alpha$' }
+        ]"
+      />
+    </div>
+  </div>
+  <div class="rounded-lg border-2 border-emerald-200 bg-emerald-50 p-3">
+    <div class="text-sm font-bold mb-2 text-center">מערכת <span dir="ltr">TS_2</span> (שקולה)</div>
+    <div class="flex justify-center">
+      <TransitionSystemD3
+        :width="300" :height="150"
+        :states="[
+          { id: 'q0', text: '$q_0$', label: '$\\{p\\}$', initial: true, x: 50, y: 75 },
+          { id: 'q1', text: '$q_1$', label: '$\\{q\\}$', x: 250, y: 30 },
+          { id: 'q2', text: '$q_2$', label: '$\\{q\\}$', x: 250, y: 120 }
+        ]"
+        :transitions="[
+          { source: 'q0', target: 'q1', action: '$\\alpha$' },
+          { source: 'q0', target: 'q2', action: '$\\alpha$' }
+        ]"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="mt-4 rounded-lg border border-slate-300 bg-slate-50 p-3 text-center">
+  שתי המערכות מייצרות את אותן עקבות נצפות:
+  <span dir="ltr"><code>{p}</code> ואז <code>{q}</code></span>.
+</div>
+
+
 ---
 
-# חידת סיום: מי שקולה למקור?
+# שאלת ריכוז: מי שקולה למקור?
 
 נניח ששקילות נבחנת לפי **סדרות התיוגים של הריצות**.
 
@@ -759,54 +798,32 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 <div class="bg-sky-50 border-2 border-sky-200 rounded-lg p-3">
 <div class="font-bold text-[14px] mb-1">2. מקבלים מעגל שקול</div>
 
-<svg viewBox="0 0 260 220" class="w-full h-[220px] mt-2">
-  <defs>
-    <marker id="cycle-arrow" markerWidth="4" markerHeight="8" refX="6" refY="4" orient="auto">
-      <path d="M0,0 L8,4 L0,8 z" fill="#0284c7" />
-    </marker>
-  </defs>
-
-  <line x1="130" y1="184" x2="184" y2="163" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
-  <line x1="197" y1="150" x2="218" y2="96" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
-  <line x1="205" y1="82" x2="184" y2="37" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
-  <line x1="171" y1="24" x2="117" y2="16" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
-  <line x1="103" y1="24" x2="57" y2="37" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
-  <line x1="44" y1="50" x2="23" y2="104" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
-  <line x1="31" y1="118" x2="57" y2="163" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
-  <line x1="70" y1="176" x2="117" y2="184" stroke="#38bdf8" stroke-width="3" marker-end="url(#cycle-arrow)" />
-
-  <circle cx="130" cy="190" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
-  <circle cx="191" cy="165" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
-  <circle cx="216" cy="104" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
-  <circle cx="191" cy="43" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
-  <circle cx="130" cy="18" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
-  <circle cx="69" cy="43" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
-  <circle cx="44" cy="104" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
-  <circle cx="69" cy="165" r="15" fill="white" stroke="#0ea5e9" stroke-width="2.5" />
-
-  <circle cx="130" cy="104" r="19" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 3" />
-
-  <text x="130" y="195" text-anchor="middle" font-size="8" font-weight="700" fill="#0369a1">1</text>
-  <text x="191" y="170" text-anchor="middle" font-size="8" font-weight="700" fill="#0369a1">2</text>
-  <text x="216" y="109" text-anchor="middle" font-size="8" font-weight="700" fill="#0369a1">3</text>
-  <text x="191" y="48" text-anchor="middle"  font-size="8" font-weight="700" fill="#0369a1">4</text>
-  <text x="130" y="23" text-anchor="middle"  font-size="8" font-weight="700" fill="#0369a1">5</text>
-  <text x="69" y="48" text-anchor="middle"   font-size="8" font-weight="700" fill="#0369a1">6</text>
-  <text x="44" y="109" text-anchor="middle"  font-size="8" font-weight="700" fill="#0369a1">7</text>
-  <text x="69" y="170" text-anchor="middle"  font-size="8" font-weight="700" fill="#0369a1">8</text>
-
-  <text x="130" y="211" text-anchor="middle" font-size="6" fill="#475569">a1</text>
-  <text x="205" y="183" text-anchor="middle" font-size="6" fill="#475569">b3</text>
-  <text x="236" y="108" text-anchor="middle" font-size="6" fill="#475569">c1</text>
-  <text x="206" y="30"  text-anchor="middle"  font-size="6" fill="#475569">a2</text>
-  <text x="130" y="5"   text-anchor="middle"   font-size="6" fill="#475569">c3</text>
-  <text x="55" y="30"   text-anchor="middle"   font-size="6" fill="#475569">b1</text>
-  <text x="24" y="108"  text-anchor="middle"  font-size="6" fill="#475569">a3</text>
-  <text x="55" y="183"  text-anchor="middle"  font-size="6" fill="#475569">c2</text>
-
-  <text x="130" y="101" text-anchor="middle" font-size="6" font-weight="700" fill="#475569">b2</text>
-  <text x="130" y="147" text-anchor="middle" font-size="6" fill="#64748b">מבודדת</text>
-</svg>
+<div class="flex justify-center -mt-4">
+<TransitionSystemD3  
+  :width="500" :height="300"
+  :states="[
+    { id: '1', text: '1', label: 'a1', x: 250, y: 280 },
+    { id: '2', text: '2', label: 'b3', x: 370, y: 220 },
+    { id: '3', text: '3', label: 'c1', x: 420, y: 100 },
+    { id: '4', text: '4', label: 'a2', x: 370, y: -20 },
+    { id: '5', text: '5', label: 'c3', x: 250, y: -80 },
+    { id: '6', text: '6', label: 'b1', x: 130, y: -20 },
+    { id: '7', text: '7', label: 'a3', x: 80, y: 100 },
+    { id: '8', text: '8', label: 'c2', x: 130, y: 220 },
+    { id: 'b2', text: 'b2', label: 'מבודדת', x: 250, y: 100, color: '#94a3b8' }
+  ]"
+  :transitions="[
+    { source: '1', target: '2' },
+    { source: '2', target: '3' },
+    { source: '3', target: '4' },
+    { source: '4', target: '5' },
+    { source: '5', target: '6' },
+    { source: '6', target: '7' },
+    { source: '7', target: '8' },
+    { source: '8', target: '1' }
+  ]"
+/>
+</div>
 
 <div class="bg-white border border-sky-200 rounded p-2 text-center font-mono text-[11px] leading-4">
 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 1

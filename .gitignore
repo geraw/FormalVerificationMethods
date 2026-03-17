@@ -9,6 +9,9 @@ dist
 dist-nanopromela-check/
 old_latex_file
 Files.zip
+tmp/
+tmp-*
+slidev-preview*.log
 
 # TeX artifacts
 *.aux
