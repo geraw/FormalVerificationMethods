@@ -44,23 +44,23 @@ jobs:
           npm i -D playwright-chromium
           npx playwright install --with-deps chromium
 
-      - name: Restore dist cache
+      - name: Restore previous dist snapshot
         uses: actions/cache/restore@v4
         with:
           path: dist
-          key: ${{ runner.os }}-dist-${{ github.sha }}
+          key: ${{ runner.os }}-dist-${{ github.ref_name }}-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-dist-
+            ${{ runner.os }}-dist-${{ github.ref_name }}-
 
       - name: Build
         run: nr build:all
 
-      - name: Save dist cache
+      - name: Save dist snapshot
         uses: actions/cache/save@v4
-        if: always()
+        if: success()
         with:
           path: dist
-          key: ${{ runner.os }}-dist-${{ github.sha }}
+          key: ${{ runner.os }}-dist-${{ github.ref_name }}-${{ github.sha }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

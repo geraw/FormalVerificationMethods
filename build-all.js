@@ -68,8 +68,22 @@ const decks = fs
     .filter(dirent => dirent.isFile() && /^\d{2}-.*\.md$/.test(dirent.name))
     .map(dirent => dirent.name);
 
+const deckBases = new Set(decks.map(file => file.replace(/\.md$/, "")));
+
 let builtCount = 0;
 let skippedCount = 0;
+let removedCount = 0;
+
+for (const entry of fs.readdirSync("dist", { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    if (!/^\d{2}-.*$/.test(entry.name)) continue;
+    if (deckBases.has(entry.name)) continue;
+
+    const staleDir = path.join("dist", entry.name);
+    console.log(`\n[REMOVE] ${staleDir} (source deck no longer exists)`);
+    fs.rmSync(staleDir, { recursive: true, force: true });
+    removedCount++;
+}
 
 console.log(`🔍 Checking for updates in ${decks.length + 1} files...`);
 
@@ -120,3 +134,4 @@ for (const file of decks) {
 console.log(`\n🎉 Build complete!`);
 console.log(`Built:   ${builtCount}`);
 console.log(`Skipped: ${skippedCount}`);
+console.log(`Removed: ${removedCount}`);
