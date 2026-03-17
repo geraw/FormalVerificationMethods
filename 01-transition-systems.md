@@ -2,7 +2,6 @@
 theme: academic
 dir: rtl
 class: text-center
-background: https://source.unsplash.com/featured/?computer,science
 highlighter: shiki
 lineNumbers: true
 download: true
