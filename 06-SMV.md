@@ -116,6 +116,7 @@ tar -xf NuSMV-2.7.0-linux64.tar.xz
 export PATH="$PWD/NuSMV-2.7.0-linux64/bin:$PATH"
 NuSMV -int short.smv
 
+
 # macOS
 xcode-select --install
 brew install gmp
@@ -124,16 +125,19 @@ tar -xf NuSMV-2.7.0-macos-universal.tar.xz
 export PATH="$PWD/NuSMV-2.7.0-macos-universal/bin:$PATH"
 NuSMV -int short.smv
 
+
 # Windows PowerShell
 Invoke-WebRequest https://nusmv.fbk.eu/distrib/2.7.0/NuSMV-2.7.0-win64.zip -OutFile .\NuSMV-2.7.0-win64.zip
 Expand-Archive .\NuSMV-2.7.0-win64.zip C:\tools\NuSMV
 $env:Path += ";C:\tools\NuSMV\bin"
 NuSMV.exe -int short.smv
+
+
 ```
 
-<div class="mt-3 bg-amber-50 p-3 rounded border border-amber-200 text-right text-[12px] leading-snug">
+<!-- <div class="mt-3 bg-amber-50 p-3 rounded border border-amber-200 text-right text-[12px] leading-snug">
 מומלץ להוריד תמיד את הגרסה העדכנית ביותר מתוך דף ההורדות הרשמי, ולא להסתמך על קישור ישן.
-</div>
+</div> -->
 
 </div>
 </div>
