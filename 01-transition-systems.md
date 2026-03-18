@@ -448,15 +448,19 @@ $|I| \le 1$ וגם <br> <br> $|Post(s) \cap \{ s' \in S \mid L(s') = A \}| \le 1
   $$\rho = s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} s_2 \xrightarrow{\alpha_3} \dots$$
   כך ש- $s_i \xrightarrow{\alpha_{i+1}} s_{i+1}$ לכל $i \ge 0$.
 
+<img src="/execution_fragment_comic.png" class="absolute left-10 bottom-10 w-55" />
+
 ---
 
 # הערות על מקטעי ריצה
 
 * הרצף $s$ (מצב בודד) הוא מקטע ריצה סופי חוקי באורך $n=0$.
 
-* כל קידומת באורך אי-זוגי של מקטע ריצה אינסופי היא מקטע ריצה סופי.
+* כל רישא באורך אי-זוגי של מקטע ריצה אינסופי היא מקטע ריצה סופי.
 
 * מעתה, המונח **"מקטע ריצה"** יתייחס הן למקטע סופי והן לאינסופי.
+
+<img src="/execution_notes_comic.png" class="absolute right-90 bottom-2 w-70" />
 
 ---
 
@@ -540,7 +544,8 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
   - בכל צעד מוציאים שני כדורים:
   - אם הם בצבעים שונים מחזירים כדור שחור
   - אם שניהם באותו הצבע מחזירים כדור לבן
-- השאלה: מה צבע הכדור האחרון?
+- השאלה: מה צבע הכדור האחרון שישאר בשק? <br>
+ (בכל צעד יש כדור אחד פחות, בסוף ישאר רק אחד)
 
 נמדל כמערכת מעברים:
 
@@ -566,7 +571,7 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 - `WW`: $\langle b,w \rangle \xrightarrow{WW} \langle b,w-1 \rangle$
 - `BW`: $\langle b,w \rangle \xrightarrow{BW} \langle b,w-1 \rangle$
 
-תצפית על המצבים הנגישים:
+הבחנה על המצבים הנגישים:
 
 - בכל מעבר מספר הכדורים השחורים נשאר זוגי.
 - לכן לכל $\langle b,w \rangle \in Reach(TS)$ מתקיים: $b$ זוגי.
