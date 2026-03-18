@@ -586,12 +586,28 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 
 # שקילות מערכות מעברים
 
-* התנהגות המערכת תוגדר באמצעות תיאור קבוצת הריצות שלה.
+<!-- <div class="rounded-lg border border-slate-300 bg-slate-50 p-3 text-right text-[12px] leading-snug"> -->
+<div class="rounded-lg border border-slate-300 bg-slate-50 p-2 text-right text-[12px] leading-tight">
 
-* נרצה לבדוק אם כל (סדרות התיוגים של) הריצות של המערכת "חוקיות".
-* **שקילות:** שתי מערכות מעברים יקראו שקולות אם קבוצת הסדרות הנ"ל שוות.
+תהי $TS = \langle S, Act, \to, I, AP, L \rangle$ ו-
+$\rho = s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} s_2 \xrightarrow{\alpha_3} \cdots$
+ריצה שלה. נגידר:
+$$
+\mathrm{Traces}(TS)=\{\,\mathrm{trace}(\rho)\mid \rho \text{ היא ריצה של } TS\,\}.
 
-<div class="grid grid-cols-2 gap-4 mt-8">
+\hspace{1cm}
+\text{וגם} 
+\hspace{1cm}
+
+\mathrm{trace}(\rho)=L(s_0)L(s_1)L(s_2)\cdots \in (2^{AP})^* \cup (2^{AP})^\omega
+$$
+
+עבור שתי מערכות מעברים מעל אותה קבוצת פסוקים אטומיים נגדיר:
+$TS_1 \equiv_{\mathrm{tr}} TS_2 \iff \mathrm{Traces}(TS_1)=\mathrm{Traces}(TS_2)\hspace{1cm}$.
+
+</div>
+
+<div class="grid grid-cols-2 gap-4 -mt-4 scale-75">
   <div class="rounded-lg border-2 border-blue-200 bg-blue-50 p-3">
     <div class="text-sm font-bold mb-2 text-center">מערכת <span dir="ltr">TS_1</span></div>
     <div class="flex justify-center">
@@ -626,9 +642,10 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
   </div>
 </div>
 
-<div class="mt-4 rounded-lg border border-slate-300 bg-slate-50 p-3 text-center">
-  שתי המערכות מייצרות את אותן עקבות נצפות:
-  <span dir="ltr"><code>{p}</code> ואז <code>{q}</code></span>.
+<div class="rounded-lg border border-slate-300 bg-slate-50 p-2 text-center text-[12px] leading-tight">
+
+  בדוגמה הזו:
+  $\mathrm{Traces}(TS_1)=\mathrm{Traces}(TS_2)=\{\langle \{p\}, \{q\} \rangle\}$.
 </div>
 
 
@@ -636,12 +653,12 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 
 # שאלת ריכוז: מי שקולה למקור?
 
-נניח ששקילות נבחנת לפי **סדרות התיוגים של הריצות**.
+הגדרנו ששקילות נבחנת לפי $\mathrm{Traces}(TS)$, כלומר לפי **סדרות התיוגים של הריצות**.
 
-איזו מן המערכות `B` או `C` שקולה למערכת `A`?
+איזו מן המערכות `B` או `C` שקולה למערכת `A`? <br>
 האם אפשר להחליף את `A` במערכת קטנה יותר בלי שצופה חיצוני ירגיש?
 
-<div class="grid grid-cols-3 gap-3 mt-4">
+<div class="grid grid-cols-3 gap-10 -mt-10 scale-70">
 
 <div class="border-2 border-blue-300 bg-blue-50 rounded-lg p-2">
 
@@ -670,7 +687,7 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 
 </div>
 
-<div class="border-2 border-green-300 bg-green-50 rounded-lg p-2">
+<div class="border-2 border-green-300 bg-green-50 rounded-lg p-2 ">
 
 <div class="font-bold text-lg mb-1">B</div>
 
@@ -713,12 +730,12 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 
 </div>
 
-<div v-click="1" class="mt-4 text-sm bg-blue-50 p-2 rounded border border-blue-200">
+<div v-click="1" class="-mt-8 text-sm bg-blue-50 p-2 rounded border border-blue-200">
 רמז: ב-<b>A</b> יש שני מצבי <code>q</code> ושני מצבי <code>r</code> שנראים אותו דבר לצופה החיצוני.
 </div>
 
-<div v-click="2" class="mt-2 text-sm bg-green-50 p-2 rounded border border-green-200">
-פתרון: <b>B</b> שקולה ל-<b>A</b>. לעומת זאת <b>C</b> אינה שקולה, כי היא מאפשרת להישאר צעד נוסף ב-<code>q</code>, ולכן נוצרת סדרת תיוגים חדשה.
+<div v-click="2" class="mt-2 text-sm p-2 rounded border border-red-300 bg-red-50">
+פתרון: <b>C</b> שקולה ל-<b>A</b>. לעומת זאת <b>B</b> אינה שקולה, כי היא מחייבת מעבר ל-<code>r</code> מיד אחרי צעד אחד ב-<code>q</code>, בעוד שב-<b>A</b> (וב-<b>C</b>) ניתן להישאר ב-<code>q</code> מספר צעדים כרצוננו (או לנצח).
 </div>
 
 ---
@@ -803,19 +820,19 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 <div class="bg-sky-50 border-2 border-sky-200 rounded-lg p-3">
 <div class="font-bold text-[14px] mb-1">2. מקבלים מעגל שקול</div>
 
-<div class="flex justify-center -mt-4">
+<div class="flex justify-center -mt-4 scale-50">
 <TransitionSystemD3  
-  :width="500" :height="300"
+  :width="110" :height="200"
   :states="[
-    { id: '1', text: '1', label: 'a1', x: 250, y: 280 },
-    { id: '2', text: '2', label: 'b3', x: 370, y: 220 },
-    { id: '3', text: '3', label: 'c1', x: 420, y: 100 },
-    { id: '4', text: '4', label: 'a2', x: 370, y: -20 },
-    { id: '5', text: '5', label: 'c3', x: 250, y: -80 },
-    { id: '6', text: '6', label: 'b1', x: 130, y: -20 },
-    { id: '7', text: '7', label: 'a3', x: 80, y: 100 },
-    { id: '8', text: '8', label: 'c2', x: 130, y: 220 },
-    { id: 'b2', text: 'b2', label: 'מבודדת', x: 250, y: 100, color: '#94a3b8' }
+    { id: '1', text: '1', label: 'a1', x: 250-180, y: 280 },
+    { id: '2', text: '2', label: 'b3', x: 370-180, y: 220 },
+    { id: '3', text: '3', label: 'c1', x: 420-180, y: 100 },
+    { id: '4', text: '4', label: 'a2', x: 370-180, y: -20 },
+    { id: '5', text: '5', label: 'c3', x: 250-180, y: -80 },
+    { id: '6', text: '6', label: 'b1', x: 130-180, y: -20 },
+    { id: '7', text: '7', label: 'a3', x: 80-180, y: 100 },
+    { id: '8', text: '8', label: 'c2', x: 130-180, y: 220 },
+    { id: 'b2', text: 'b2', label: 'מבודדת', x: 250-180, y: 100, color: '#94a3b8' }
   ]"
   :transitions="[
     { source: '1', target: '2' },
@@ -830,7 +847,8 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 />
 </div>
 
-<div class="bg-white border border-sky-200 rounded p-2 text-center font-mono text-[11px] leading-4">
+<div class="bg-white border border-sky-200 rounded p-2 text-center font-mono text-[11px] leading-4  text-left">
+
 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 1
 </div>
 
