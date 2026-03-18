@@ -847,7 +847,7 @@ $TS_1 \equiv_{\mathrm{tr}} TS_2 \iff \mathrm{Traces}(TS_1)=\mathrm{Traces}(TS_2)
 />
 </div>
 
-<div class="bg-white border border-sky-200 rounded p-2 text-center font-mono text-[11px] leading-4  text-left">
+<div class="bg-white border border-sky-200 rounded p-2 text-center font-mono text-[11px] leading-4" dir="ltr">
 
 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 1
 </div>
