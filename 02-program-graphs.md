@@ -593,6 +593,35 @@ const robot2dSmallExample = `pg_to_ts(
     'x': range(2),
     'y': range(2),
   },
+  locations=['L', 'R'],
+  initial_locations=['L'],
+  initial_guard='x == 0 and y == 0',
+  transitions=[
+    ('L', True, 'switch', {'x': 'y', 'y': 'x'}, 'R'),
+    ('R', True, 'switch', {'x': 'y', 'y': 'x'}, 'L'),
+    ('L', True, 'toggle_y', {'y': '1-y'}, 'L'),
+    ('R', True, 'toggle_x', {'x': '1-x'}, 'R'),
+  ],
+)`
+</script>
+
+<ProgramGraphTsRunner
+  src="/pg_to_ts_lib.py"
+  :initial-expression="robot2dSmallExample"
+/>
+
+
+---
+
+
+# הזנת גרף תוכנית וקבלת TS(PG)
+
+<script setup>
+const robot2dSmallExample = `pg_to_ts(
+  var_domains={
+    'x': range(2),
+    'y': range(2),
+  },
   locations=['L', 'C', 'D'],
   initial_locations=['L'],
   initial_guard='x == 0 and y == 0',
