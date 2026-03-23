@@ -91,10 +91,10 @@ const props = withDefaults(defineProps<{
   },
   locations=['l0', 'l1'],
   initial_locations=['l0'],
-  initial_guard=lambda eta: eta['x'] == 0,
+  initial_guard='x == 0',
   transitions=[
-    ('l0', lambda eta: eta['x'] < 2, 'inc', lambda eta: update(eta, x=eta['x'] + 1), 'l1'),
-    ('l1', lambda eta: True, 'reset', lambda eta: update(eta, x=0), 'l0'),
+    ('l0', 'x < 2', 'inc', {'x': 'x + 1'}, 'l1'),
+    ('l1', True, 'reset', {'x': 0}, 'l0'),
   ],
 )`,
 })

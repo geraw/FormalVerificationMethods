@@ -1,6 +1,24 @@
 import itertools
 
 
+SAFE_EVAL_GLOBALS = {
+    '__builtins__': {},
+    'abs': abs,
+    'all': all,
+    'any': any,
+    'bool': bool,
+    'dict': dict,
+    'int': int,
+    'len': len,
+    'list': list,
+    'max': max,
+    'min': min,
+    'set': set,
+    'sum': sum,
+    'tuple': tuple,
+}
+
+
 def identity(env):
     return dict(env)
 
@@ -33,6 +51,80 @@ def _all_evaluations(var_domains):
     return [dict(zip(names, values)) for values in product]
 
 
+def _expression_locals(valuation):
+    scope = dict(valuation)
+    scope['eta'] = dict(valuation)
+    scope['update'] = update
+    scope['identity'] = identity
+    return scope
+
+
+def _eval_expression(expr, valuation, context_name):
+    try:
+        return eval(expr, SAFE_EVAL_GLOBALS, _expression_locals(valuation))
+    except Exception as exc:
+        raise ValueError(f'Failed to evaluate {context_name} expression {expr!r}: {exc}') from exc
+
+
+def _compile_guard(guard, context_name):
+    if callable(guard):
+        return guard
+
+    if isinstance(guard, str):
+        return lambda eta, expr=guard, name=context_name: bool(
+            _eval_expression(expr, eta, name)
+        )
+
+    if isinstance(guard, bool):
+        return lambda eta, value=guard: value
+
+    raise TypeError(f'{context_name} must be callable, a Python expression string, or a bool.')
+
+
+def _compile_effect(effect, action_name):
+    if callable(effect):
+        return effect
+
+    if effect is None:
+        return identity
+
+    if isinstance(effect, dict):
+        assignments = dict(effect)
+
+        def apply_assignments(eta, assignments=assignments, action_name=action_name):
+            base = dict(eta)
+            updates = {}
+            for name, value_or_expr in assignments.items():
+                if isinstance(value_or_expr, str):
+                    updates[name] = _eval_expression(
+                        value_or_expr,
+                        eta,
+                        f'assignment to {name!r} in action {action_name!r}',
+                    )
+                else:
+                    updates[name] = value_or_expr
+            base.update(updates)
+            return base
+
+        return apply_assignments
+
+    if isinstance(effect, str):
+        def evaluate_effect(eta, expr=effect, action_name=action_name):
+            result = _eval_expression(expr, eta, f'effect for action {action_name!r}')
+            if not isinstance(result, dict):
+                raise TypeError(
+                    f'Effect expression for action {action_name!r} must evaluate to a dict valuation.'
+                )
+            return result
+
+        return evaluate_effect
+
+    raise TypeError(
+        f'Effect for action {action_name!r} must be callable, a dict of assignments, '
+        'a Python expression string, or None.'
+    )
+
+
 def _normalize_transition(entry):
     if isinstance(entry, dict):
         source = entry['source']
@@ -48,16 +140,13 @@ def _normalize_transition(entry):
             )
         source, guard, action, effect, target = entry
 
-    if not callable(guard):
-        raise TypeError(f'Guard for transition {source!r}->{target!r} must be callable.')
-    if not callable(effect):
-        raise TypeError(f'Effect for transition {source!r}->{target!r} must be callable.')
+    action_name = str(action)
 
     return {
         'source': source,
-        'guard': guard,
-        'action': str(action),
-        'effect': effect,
+        'guard': _compile_guard(guard, f'Guard for transition {source!r}->{target!r}'),
+        'action': action_name,
+        'effect': _compile_effect(effect, action_name),
         'target': target,
     }
 
@@ -101,8 +190,7 @@ def pg_to_ts(var_domains, locations, initial_locations, initial_guard, transitio
     locations = list(locations)
     initial_locations = list(initial_locations)
 
-    if not callable(initial_guard):
-        raise TypeError('initial_guard must be callable.')
+    initial_guard = _compile_guard(initial_guard, 'initial_guard')
 
     location_set = set(locations)
     for location in initial_locations:

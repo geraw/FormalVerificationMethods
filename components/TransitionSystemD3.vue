@@ -107,7 +107,7 @@ let simulation: d3.Simulation<d3.SimulationNodeDatum, undefined> | null = null;
 let zoomBehavior: d3.ZoomBehavior<SVGSVGElement, unknown> | null = null;
 let currentZoomTransform = d3.zoomIdentity;
 
-const zoomMin = 0.35;
+const zoomMin = 0.12;
 const zoomMax = 3;
 
 function applyZoomTransform(transform: d3.ZoomTransform) {
