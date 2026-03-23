@@ -180,26 +180,41 @@ function resetZoom() {
         .call(zoomBehavior.transform, d3.zoomIdentity);
 }
 
-// Helper to render KaTeX with delimiters $...$
-// Passes content directly to KaTeX like the rest of Slidev
-const renderMath = (str: string): string => {
-    if (!str) return '';
-    
-    // Split by $ delimiter and render math parts
-    const parts = str.split('$');
-    if (parts.length < 3) return str;
+const escapeHtml = (str: string): string =>
+    str
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
 
-    return parts.map((part, index) => {
-        if (index % 2 === 1) {
-            // Math part - pass directly to KaTeX
-            try {
-                return katex.renderToString(part, { throwOnError: false });
-            } catch (e) {
-                return part;
+// Render inline math while escaping plain text, so labels like <l0, {...}>
+// stay visible instead of being interpreted as HTML.
+const renderMath = (str: string, preserveLineBreaks = false): string => {
+    if (!str) return '';
+
+    const renderSegment = (segment: string) => {
+        const parts = segment.split('$');
+        return parts.map((part, index) => {
+            if (index % 2 === 1) {
+                try {
+                    return katex.renderToString(part, { throwOnError: false });
+                } catch (e) {
+                    return escapeHtml(part);
+                }
             }
-        }
-        return part;
-    }).join('');
+            return escapeHtml(part);
+        }).join('');
+    };
+
+    if (!preserveLineBreaks) {
+        return renderSegment(str);
+    }
+
+    return str
+        .split('<br>')
+        .map(segment => renderSegment(segment))
+        .join('<br>');
 };
 
 const render = () => {
@@ -350,7 +365,7 @@ const render = () => {
         .style("height", "100%")
         .style("font-size", (d: any) => `${d.actionFontSize || 12}px`)
         .style("padding", "0")
-        .html((d: any) => d.action ? `<span style="background:white; padding:1px 3px; border-radius:2px; color: ${d.stroke || 'inherit'}">${renderMath(d.action)}</span>` : "");
+        .html((d: any) => d.action ? `<span style="background:white; padding:1px 3px; border-radius:2px; color: ${d.stroke || 'inherit'}">${renderMath(d.action, true)}</span>` : "");
 
     // Draw Nodes
     const nodeGroup = layer.select(".nodes");
