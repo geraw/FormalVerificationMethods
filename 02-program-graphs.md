@@ -587,4 +587,36 @@ $$\frac{\text{premise (הנחה)}}{\text{conclusion (מסקנה)}}$$
 
 # הזנת גרף תוכנית וקבלת TS(PG)
 
-<ProgramGraphTsRunner src="/pg_to_ts_lib.py" />
+<script setup>
+const robot2dSmallExample = `pg_to_ts(
+  var_domains={
+    'x': range(2),
+    'y': range(2),
+  },
+  locations=['L', 'C', 'D'],
+  initial_locations=['L'],
+  initial_guard='x == 0 and y == 0',
+  transitions=[
+    ('L', True, 'nothing', {}, 'C'),
+    ('L', True, 'nothing', {}, 'D'),
+
+    ('C', 'x == 0 and y == 0', 'nothing', {}, 'L'),
+    ('D', 'x == 0 and y == 0', 'nothing', {}, 'L'),
+
+    ('C', 'x < 1', 'E', {'x': 'x + 1'}, 'C'),
+    ('C', 'x > 0', 'W', {'x': 'x - 1'}, 'C'),
+    ('C', 'y < 1', 'N', {'y': 'y + 1'}, 'C'),
+    ('C', 'y > 0', 'S', {'y': 'y - 1'}, 'C'),
+
+    ('D', 'x < 1 and y < 1', 'NE', {'x': 'x + 1', 'y': 'y + 1'}, 'D'),
+    ('D', 'x > 0 and y < 1', 'NW', {'x': 'x - 1', 'y': 'y + 1'}, 'D'),
+    ('D', 'x < 1 and y > 0', 'SE', {'x': 'x + 1', 'y': 'y - 1'}, 'D'),
+    ('D', 'x > 0 and y > 0', 'SW', {'x': 'x - 1', 'y': 'y - 1'}, 'D'),
+  ],
+)`
+</script>
+
+<ProgramGraphTsRunner
+  src="/pg_to_ts_lib.py"
+  :initial-expression="robot2dSmallExample"
+/>
