@@ -400,6 +400,33 @@ $\eta_1 = \{ bit \mapsto 1 \}$
 
 # הגדרה פורמלית: גרף תוכנית (PG)
 
+<div class="absolute top-35 left-4 w-[310px] bg-white/95 dark:bg-slate-900/92 border border-slate-200 dark:border-slate-700 rounded-xl p-3 shadow-lg">
+<div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1 text-right">דוגמה</div>
+
+<TransitionSystemD3
+  :width="260" :height="130" :auto="false"
+  :states="[
+    { id: 'l0', text: '$\\ell_0$', x: 70,  y: 62, width: 56, initial: true, initialDirection: 'top', initialText: '$x=0$', initialTextWidth: 54 },
+    { id: 'l1', text: '$\\ell_1$', x: 190, y: 62, width: 56 }
+  ]"
+  :transitions="[
+    { source: 'l0', target: 'l1', action: '$x<2 : inc$', actionWidth: 84, actionY: 20, actionFontSize: 9,  curve: 0.24 },
+    { source: 'l1', target: 'l0', action: '$true : done$', curve: 0.24, actionWidth: 92, actionY: -20, actionFontSize: 9 }
+  ]"
+/>
+
+<div dir="ltr" class="mt-1 rounded-lg bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 px-2 py-1.5 text-[9.5px] leading-4 text-left font-mono">
+PG = (Loc, Act, →, Loc₀, g₀)<br>
+Loc = {ℓ₀, ℓ₁}<br>
+Act = {inc, done}<br>
+→ = {(ℓ₀, x&lt;2, inc, ℓ₁), (ℓ₁, true, done, ℓ₀)}<br>
+Loc₀ = {ℓ₀}<br>
+g₀ = (x = 0)
+</div>
+</div>
+
+<div style="max-width: 620px;">
+
 גרף תוכנית $PG$ מעל קבוצת משתנים $Var$
 עם פונקציות משמעות ידועה לתנאים ולפעולות
 הוא סדורה $(Loc, Act, \rightarrow, Loc_0, g_0)$ כאשר:
@@ -416,6 +443,7 @@ $\eta_1 = \{ bit \mapsto 1 \}$
 - **קיצורים:**
   - נכתוב $\ell \xrightarrow{g \,:\, \alpha} \ell'$ כקיצור ל-$(\ell, g, \alpha, \ell') \in \rightarrow$.
   - אם $g \equiv \text{true}$, נכתוב פשוט $\ell \xrightarrow{\alpha} \ell'$. אם $\alpha = nothing$, נכתוב פשוט $\ell \xrightarrow{g} \ell'$.
+</div>
 
 
 ---
