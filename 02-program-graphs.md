@@ -207,6 +207,18 @@ info: |
 
 ---
 
+# הזנת extract_ts וקבלת ציור
+
+<div class="text-right text-sm leading-5 bg-blue-50 border border-blue-200 rounded-lg p-2 mb-3">
+אפשר לערוך ישירות את הקריאה ל-<span dir="ltr"><code>extract_ts(...)</code></span>.
+הרכיב יריץ את הקוד ב-<span dir="ltr"><code>Pyodide</code></span>, יהפוך את הפלט למבנה של
+<span dir="ltr"><code>TransitionSystemD3</code></span>, ויצייר את מערכת המעברים בפריסה אוטומטית.
+</div>
+
+<ExtractTsDiagramRunner src="/extract_ts_lib.py" />
+
+---
+
 # מערכות תלויות-נתונים (Data-Dependent Systems)
 
 פעולות הניתנות לביצוע במערכת תלויה בנתונים נובעות בדרך כלל מהסתעפות מותנית (conditional branching).
