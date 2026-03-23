@@ -1,6 +1,11 @@
 <template>
   <div ref="containerRef" class="transition-system-container flex justify-center items-center mt-8"
-       @mousedown.stop @touchstart.stop @pointerdown.stop>
+       @mousedown.stop @touchstart.stop @pointerdown.stop @wheel.stop>
+    <div v-if="zoomable && showZoomControls" class="zoom-controls">
+      <button type="button" class="zoom-button" @click.stop="zoomOut">-</button>
+      <button type="button" class="zoom-button" @click.stop="resetZoom">Reset</button>
+      <button type="button" class="zoom-button" @click.stop="zoomIn">+</button>
+    </div>
     <svg ref="svgRef" :width="width" :height="height" class="overflow-visible">
       <defs>
         <marker v-for="color in uniqueColors" :key="color"
@@ -18,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch, computed } from 'vue';
+import { ref, onMounted, onBeforeUnmount, watch, computed } from 'vue';
 import * as d3 from 'd3';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
@@ -66,12 +71,16 @@ interface Props {
   width?: number;
   height?: number;
   auto?: boolean;
+  zoomable?: boolean;
+  showZoomControls?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   width: 600,
   height: 400,
-  auto: true
+  auto: true,
+  zoomable: false,
+  showZoomControls: false,
 });
 
 const svgRef = ref<SVGSVGElement | null>(null);
@@ -80,6 +89,8 @@ const containerRef = ref<HTMLDivElement | null>(null);
 
 const markerIdBase = `arrowhead-ts-d3-${Math.random().toString(36).slice(2, 11)}`;
 const getMarkerId = (color: string) => `${markerIdBase}-${color.replace('#', '')}`;
+const zoomable = computed(() => props.zoomable);
+const showZoomControls = computed(() => props.showZoomControls);
 
 const uniqueColors = computed(() => {
     const set = new Set<string>();
@@ -92,6 +103,81 @@ const uniqueColors = computed(() => {
 });
 
 let simulation: d3.Simulation<d3.SimulationNodeDatum, undefined> | null = null;
+let zoomBehavior: d3.ZoomBehavior<SVGSVGElement, unknown> | null = null;
+let currentZoomTransform = d3.zoomIdentity;
+
+const zoomMin = 0.35;
+const zoomMax = 3;
+
+function applyZoomTransform(transform: d3.ZoomTransform) {
+    currentZoomTransform = transform;
+    if (!zoomLayer.value) return;
+    d3.select(zoomLayer.value).attr("transform", transform.toString());
+}
+
+function setupZoom() {
+    if (!svgRef.value) return;
+
+    const svg = d3.select(svgRef.value);
+
+    if (!props.zoomable) {
+        svg.on(".zoom", null);
+        zoomBehavior = null;
+        applyZoomTransform(d3.zoomIdentity);
+        return;
+    }
+
+    zoomBehavior = d3.zoom<SVGSVGElement, unknown>()
+        .scaleExtent([zoomMin, zoomMax])
+        .extent([[0, 0], [props.width, props.height]])
+        .translateExtent([
+            [-props.width * 2, -props.height * 2],
+            [props.width * 3, props.height * 3],
+        ])
+        .filter((event: any) => {
+            const target = event.target as Element | null;
+            if (event.type === 'wheel') return true;
+            if (event.type === 'mousedown') {
+                return event.button === 0 && !target?.closest?.('.node-group');
+            }
+            if (event.type === 'touchstart') {
+                return !target?.closest?.('.node-group');
+            }
+            return false;
+        })
+        .on("zoom", (event) => {
+            applyZoomTransform(event.transform);
+            event.sourceEvent?.stopPropagation?.();
+        });
+
+    svg.call(zoomBehavior);
+    svg.on("dblclick.zoom", null);
+    svg.call(zoomBehavior.transform, currentZoomTransform);
+}
+
+function zoomIn() {
+    if (!svgRef.value || !zoomBehavior) return;
+    d3.select(svgRef.value)
+        .transition()
+        .duration(180)
+        .call(zoomBehavior.scaleBy, 1.2);
+}
+
+function zoomOut() {
+    if (!svgRef.value || !zoomBehavior) return;
+    d3.select(svgRef.value)
+        .transition()
+        .duration(180)
+        .call(zoomBehavior.scaleBy, 1 / 1.2);
+}
+
+function resetZoom() {
+    if (!svgRef.value || !zoomBehavior) return;
+    d3.select(svgRef.value)
+        .transition()
+        .duration(180)
+        .call(zoomBehavior.transform, d3.zoomIdentity);
+}
 
 // Helper to render KaTeX with delimiters $...$
 // Passes content directly to KaTeX like the rest of Slidev
@@ -545,6 +631,8 @@ const render = () => {
         tick();
     }
 
+    applyZoomTransform(currentZoomTransform);
+    setupZoom();
 
 };
 
@@ -560,10 +648,23 @@ onMounted(() => {
        containerRef.value.addEventListener('pointerdown', (e) => {
            e.stopPropagation();
        }, { capture: false });
+       containerRef.value.addEventListener('wheel', (e) => {
+           e.stopPropagation();
+       }, { capture: false });
    }
 });
 
-watch(() => [props.states, props.transitions, props.width, props.height], () => {
+onBeforeUnmount(() => {
+   if (simulation) {
+       simulation.stop();
+       simulation = null;
+   }
+   if (svgRef.value) {
+       d3.select(svgRef.value).on(".zoom", null);
+   }
+});
+
+watch(() => [props.states, props.transitions, props.width, props.height, props.zoomable], () => {
    render();
 }, { deep: true });
 </script>
@@ -573,6 +674,35 @@ watch(() => [props.states, props.transitions, props.width, props.height], () => 
   position: relative;
   z-index: 100;
   pointer-events: auto !important;
+}
+.zoom-controls {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  z-index: 101;
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 3px;
+  box-shadow: 0 3px 8px rgba(15, 23, 42, 0.1);
+}
+.zoom-button {
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #0f172a;
+  border-radius: 999px;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+.zoom-button:hover {
+  background: #e2e8f0;
 }
 .transition-system-container svg {
   pointer-events: auto !important;

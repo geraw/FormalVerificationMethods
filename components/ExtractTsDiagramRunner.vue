@@ -29,12 +29,17 @@
             :width="width"
             :height="height"
             :auto="true"
+            :zoomable="true"
+            :show-zoom-controls="true"
             :states="graphData.states"
             :transitions="graphData.transitions"
           />
           <div v-else class="diagram-placeholder">
             The graph will appear here after running <code>extract_ts(...)</code>.
           </div>
+        </div>
+        <div v-if="graphData" class="diagram-help-text">
+          Zoom with the mouse wheel or trackpad pinch, and drag the background to pan.
         </div>
       </div>
     </div>
@@ -272,5 +277,11 @@ onMounted(() => {
   font-size: 12px;
   padding: 20px;
   text-align: center;
+}
+
+.diagram-help-text {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #475569;
 }
 </style>

@@ -215,7 +215,17 @@ info: |
 <span dir="ltr"><code>TransitionSystemD3</code></span>, ויצייר את מערכת המעברים בפריסה אוטומטית.
 </div>
 
-<ExtractTsDiagramRunner src="/extract_ts_lib.py" />
+
+
+<ExtractTsDiagramRunner
+  src="/extract_ts_lib.py"
+  :initial-expression="`extract_ts(
+  1,
+  [0],
+  lambda x, r: [r[0] ^ x[0]],
+  lambda x, r: ~r[0],
+)`"
+/>
 
 ---
 
@@ -306,7 +316,7 @@ info: |
 - **תחום ערכים:** לכל משתנה $x \in Var$ מוגדר תחום ערכים $dom(x)$ (סופי או אינסופי).
   - דוגמה: $x$ הוא שלם ($\mathbb{Z}$), $y$ הוא בוליאני ($\{0, 1\}$), $z$ הוא צבע $\{\text{red, green}\}$.
 
-- **הערכה (Evaluation):** פונקציה $\eta$ המתאימה לכל משתנה ערך מהדומיין שלו:
+- **הערכה (Evaluation):** פונקציה $\eta$ המתאימה לכל משתנה ערך מהתחום שלו:
   $$ \eta : Var \to \bigcup_{x \in Var} dom(x) \quad \text{s.t.} \quad \eta(x) \in dom(x) $$
 
 - **הקבוצה $Eval(Var)$:** אוסף כל ההערכות האפשריות מעל $Var$.

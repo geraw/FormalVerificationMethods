@@ -1,7 +1,35 @@
 import itertools
 
 
+def _normalize_bits(values, name, expected_len=None):
+    try:
+        items = tuple(values)
+    except TypeError as exc:
+        if expected_len is None:
+            raise TypeError(f'{name} must be an iterable of bit values (0/1).') from exc
+        raise TypeError(
+            f'{name} must be an iterable of {expected_len} bit values (0/1).'
+        ) from exc
+
+    if expected_len is not None and len(items) != expected_len:
+        raise ValueError(
+            f'{name} must return {expected_len} value(s), '
+            f'but returned {len(items)}: {list(items)}'
+        )
+
+    normalized = []
+    for index, value in enumerate(items):
+        if value not in (0, 1, False, True):
+            raise ValueError(
+                f'{name}[{index}] must be 0 or 1, but got {value!r}'
+            )
+        normalized.append(int(bool(value)))
+
+    return tuple(normalized)
+
+
 def extract_ts(n_inputs, initial_r, delta, lam):
+    initial_r = _normalize_bits(initial_r, 'initial_r')
     k = len(initial_r)
     states = list(itertools.product([0, 1], repeat=n_inputs + k))
     transitions = []
@@ -24,7 +52,7 @@ def extract_ts(n_inputs, initial_r, delta, lam):
 
         labels[state] = '{' + ','.join(active_props) + '}'
 
-        next_r = tuple(delta(x, r))
+        next_r = _normalize_bits(delta(x, r), 'delta(x, r)', expected_len=k)
         for next_x in itertools.product([0, 1], repeat=n_inputs):
             transitions.append((state, next_x + next_r))
 
@@ -59,10 +87,25 @@ def _state_width(text):
 def ts_to_slidev_data(ts):
     states, transitions, init, labels = ts
     state_ids = {state: f's{i}' for i, state in enumerate(states)}
+    expected_state_width = len(states[0]) if states else None
 
     unique_transitions = []
     seen_edges = set()
     for src, tgt in transitions:
+        if src not in state_ids:
+            raise ValueError(
+                f'Transition source {src} is not in the state space.'
+            )
+        if tgt not in state_ids:
+            width_hint = (
+                f' Expected states of width {expected_state_width}.'
+                if expected_state_width is not None
+                else ''
+            )
+            raise ValueError(
+                f'Transition target {tgt} is not in the state space.{width_hint} '
+                'Check that delta(x, r) returns one next-register bit per register.'
+            )
         edge = (src, tgt)
         if edge in seen_edges:
             continue
