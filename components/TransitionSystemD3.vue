@@ -54,6 +54,7 @@ interface Transition {
   source: string;
   target: string;
   action?: string;
+  actionFontSize?: number;
   loopDirection?: string; // e.g., '0deg', '90deg'
   actionWidth?: number;
   actionHeight?: number;
@@ -347,7 +348,7 @@ const render = () => {
         .style("align-items", "center")
         .style("width", "100%")
         .style("height", "100%")
-        .style("font-size", "12px")
+        .style("font-size", (d: any) => `${d.actionFontSize || 12}px`)
         .style("padding", "0")
         .html((d: any) => d.action ? `<span style="background:white; padding:1px 3px; border-radius:2px; color: ${d.stroke || 'inherit'}">${renderMath(d.action)}</span>` : "");
 

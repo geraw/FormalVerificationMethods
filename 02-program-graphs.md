@@ -394,6 +394,8 @@ $\eta_1 = \{ bit \mapsto 1 \}$
   - $Effect(\alpha, \eta)(y) = \eta(y) = -2$
   ההערכה החדשה $Effect(\alpha, \eta)$ מקצה $3$ ל-$x$ ו-$-2$ ל-$y$.
 
+  <img src="/images/effect_explanation.png" class="absolute right-100 -bottom-1 w-45" />
+
 ---
 
 # הגדרה פורמלית: גרף תוכנית (PG)

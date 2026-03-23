@@ -3,60 +3,15 @@
     <div class="walkthrough-grid">
       <section class="panel">
         <div class="panel-title">גרף התוכנית</div>
-        <svg class="program-graph" viewBox="0 0 360 250" aria-label="Program graph animation">
-          <defs>
-            <marker id="robot-pg-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-              <polygon points="0 0, 8 3, 0 6" fill="#475569" />
-            </marker>
-          </defs>
-
-          <path
-            d="M 177 64 C 150 96, 118 120, 92 145"
-            :class="edgeClasses('load-cart')"
-            marker-end="url(#robot-pg-arrow)"
+        <div class="program-graph-shell">
+          <TransitionSystemD3
+            :width="360"
+            :height="228"
+            :auto="false"
+            :states="graphStates"
+            :transitions="graphTransitions"
           />
-          <path
-            d="M 74 190 C 28 220, 12 134, 66 120"
-            :class="edgeClasses('cart-loop')"
-            marker-end="url(#robot-pg-arrow)"
-          />
-          <path
-            d="M 104 160 L 256 160"
-            :class="edgeClasses('cart-diag')"
-            marker-end="url(#robot-pg-arrow)"
-          />
-          <path
-            d="M 286 190 C 332 220, 348 134, 294 120"
-            :class="edgeClasses('diag-loop')"
-            marker-end="url(#robot-pg-arrow)"
-          />
-          <path
-            d="M 268 145 C 240 103, 214 82, 184 64"
-            :class="edgeClasses('diag-load')"
-            marker-end="url(#robot-pg-arrow)"
-          />
-
-          <text x="126" y="98" class="edge-label">τ</text>
-          <text x="22" y="148" class="edge-label">E / N / S / W</text>
-          <text x="180" y="148" class="edge-label">TR</text>
-          <text x="262" y="112" class="edge-label">NE / NW / SE / SW</text>
-          <text x="219" y="93" class="edge-label">x=0 ∧ y=0</text>
-
-          <g :class="nodeClasses('load')" transform="translate(180 42)">
-            <rect x="-48" y="-22" width="96" height="44" rx="16" />
-            <text y="7">טעינה</text>
-          </g>
-
-          <g :class="nodeClasses('cart')" transform="translate(80 160)">
-            <rect x="-56" y="-24" width="112" height="48" rx="18" />
-            <text y="7">צירים</text>
-          </g>
-
-          <g :class="nodeClasses('diag')" transform="translate(280 160)">
-            <rect x="-62" y="-24" width="124" height="48" rx="18" />
-            <text y="7">אלכסון</text>
-          </g>
-        </svg>
+        </div>
 
         <div class="panel-note">{{ current.note }}</div>
       </section>
@@ -65,11 +20,6 @@
         <div class="panel-title">הרצת הרובוט</div>
         <div class="world-layout">
           <div class="board-wrap">
-            <div class="direction north">N</div>
-            <div class="direction south">S</div>
-            <div class="direction west">W</div>
-            <div class="direction east">E</div>
-
             <div class="board">
               <div
                 v-for="cell in boardCells"
@@ -144,9 +94,19 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import TransitionSystemD3 from './TransitionSystemD3.vue'
 
 type LocationId = 'load' | 'cart' | 'diag'
-type EdgeId = 'load-cart' | 'cart-loop' | 'cart-diag' | 'diag-loop' | 'diag-load' | null
+type EdgeId =
+  | 'load-cart'
+  | 'load-diag'
+  | 'cart-load'
+  | 'diag-load'
+  | 'cart-loop'
+  | 'diag-loop'
+  | 'cart-diag'
+  | 'diag-cart'
+  | null
 
 type Frame = {
   id: string
@@ -273,19 +233,145 @@ function boardPosition(x: number, y: number) {
 const robotStyle = computed(() => boardPosition(current.value.x, current.value.y))
 const chargerStyle = boardPosition(0, 0)
 
-function edgeClasses(edgeId: EdgeId) {
+function graphEdgeStyle(edgeId: Exclude<EdgeId, null>) {
+  if (current.value.activeEdge === edgeId) {
+    return {
+      stroke: '#ea580c',
+      strokeWidth: 4,
+    }
+  }
   return {
-    'pg-edge': true,
-    'is-active': current.value.activeEdge === edgeId,
+    stroke: '#94a3b8',
+    strokeWidth: 2.4,
   }
 }
 
-function nodeClasses(location: LocationId) {
-  return {
-    'pg-node': true,
-    'is-active': current.value.location === location,
-  }
-}
+const graphStates = computed(() => {
+  const activeLocation = current.value.location
+  const styleFor = (location: LocationId) => ({
+    color: activeLocation === location ? '#fef3c7' : '#e2e8f0',
+    stroke: activeLocation === location ? '#d97706' : '#475569',
+    strokeWidth: activeLocation === location ? 4 : 2.5,
+  })
+
+  return [
+    {
+      id: 'load',
+      text: 'טעינה',
+      x: 180,
+      y: 34,
+      width: 94,
+      rx: 16,
+      initial: true,
+      initialDirection: 'top' as const,
+      ...styleFor('load'),
+    },
+    {
+      id: 'cart',
+      text: 'צירים',
+      x: 88,
+      y: 152,
+      width: 104,
+      rx: 18,
+      ...styleFor('cart'),
+    },
+    {
+      id: 'diag',
+      text: 'אלכסון',
+      x: 272,
+      y: 152,
+      width: 114,
+      rx: 18,
+      ...styleFor('diag'),
+    },
+  ]
+})
+
+const graphTransitions = computed(() => [
+  {
+    source: 'load',
+    target: 'cart',
+    action: '$bat > 10$',
+    actionFontSize: 9,
+    actionWidth: 74,
+    actionX: -18,
+    actionY: -14,
+    ...graphEdgeStyle('load-cart'),
+  },
+  {
+    source: 'load',
+    target: 'diag',
+    action: '$bat > 10$',
+    actionFontSize: 9,
+    actionWidth: 74,
+    actionX: 16,
+    actionY: -14,
+    ...graphEdgeStyle('load-diag'),
+  },
+  {
+    source: 'cart',
+    target: 'load',
+    action: '$x=0 \\land y=0$',
+    actionFontSize: 8,
+    curve: -0.48,
+    actionWidth: 112,
+    actionX: -20,
+    actionY: -2,
+    ...graphEdgeStyle('cart-load'),
+  },
+  {
+    source: 'diag',
+    target: 'load',
+    action: '$x=0 \\land y=0$',
+    actionFontSize: 8,
+    curve: 0.48,
+    actionWidth: 112,
+    actionX: 20,
+    actionY: -2,
+    ...graphEdgeStyle('diag-load'),
+  },
+  {
+    source: 'cart',
+    target: 'cart',
+    action: '$E$ / $N$ / $S$ / $W$',
+    actionFontSize: 8,
+    loopDirection: '115deg',
+    actionWidth: 118,
+    actionHeight: 28,
+    actionY: 24,
+    ...graphEdgeStyle('cart-loop'),
+  },
+  {
+    source: 'diag',
+    target: 'diag',
+    action: '$NE$ / $NW$ / $SE$ / $SW$',
+    actionFontSize: 8,
+    loopDirection: '65deg',
+    actionWidth: 156,
+    actionHeight: 28,
+    actionY: 24,
+    ...graphEdgeStyle('diag-loop'),
+  },
+  {
+    source: 'cart',
+    target: 'diag',
+    action: '$TR$',
+    actionFontSize: 9,
+    actionWidth: 42,
+    actionY: -10,
+    ...graphEdgeStyle('cart-diag'),
+  },
+  {
+    source: 'diag',
+    target: 'cart',
+    action: '$TR$',
+    actionFontSize: 9,
+    curve: 0.18,
+    actionWidth: 42,
+    actionY: 14,
+    ...graphEdgeStyle('diag-cart'),
+  },
+])
 
 function startCycle() {
   stopCycle()
@@ -348,52 +434,16 @@ onBeforeUnmount(() => {
   margin-bottom: 6px;
 }
 
-.program-graph {
-  width: 100%;
-  height: 214px;
-  overflow: visible;
-}
-
-.pg-edge {
-  fill: none;
-  stroke: #94a3b8;
-  stroke-width: 3;
-  stroke-linecap: round;
-  transition: stroke 0.45s ease, stroke-width 0.45s ease, filter 0.45s ease;
-}
-
-.pg-edge.is-active {
-  stroke: #ea580c;
-  stroke-width: 5;
-  filter: drop-shadow(0 0 10px rgba(234, 88, 12, 0.28));
-  stroke-dasharray: 8 6;
-  animation: edge-dash 1s linear infinite;
-}
-
-.edge-label {
-  font-size: 10px;
-  font-weight: 700;
-  fill: #475569;
-}
-
-.pg-node rect {
-  fill: #e2e8f0;
-  stroke: #64748b;
-  stroke-width: 2.5;
-  transition: fill 0.4s ease, stroke 0.4s ease, transform 0.4s ease;
-}
-
-.pg-node text {
-  text-anchor: middle;
-  font-size: 13px;
-  font-weight: 800;
-  fill: #0f172a;
-}
-
-.pg-node.is-active rect {
-  fill: #fef3c7;
-  stroke: #d97706;
-  transform: scale(1.04);
+.program-graph-shell {
+  height: 228px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.98), rgba(226, 232, 240, 0.88));
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  overflow: hidden;
 }
 
 .panel-note {
@@ -439,38 +489,6 @@ onBeforeUnmount(() => {
   border: 1px dashed rgba(100, 116, 139, 0.35);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(226, 232, 240, 0.75));
-}
-
-.direction {
-  position: absolute;
-  font-size: 10px;
-  font-weight: 800;
-  color: #0f766e;
-  letter-spacing: 0.18em;
-}
-
-.north {
-  top: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.south {
-  bottom: 4px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.west {
-  left: 4px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.east {
-  right: 4px;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .charger-ring,
@@ -667,9 +685,4 @@ onBeforeUnmount(() => {
   color: #334155;
 }
 
-@keyframes edge-dash {
-  to {
-    stroke-dashoffset: -14;
-  }
-}
 </style>
