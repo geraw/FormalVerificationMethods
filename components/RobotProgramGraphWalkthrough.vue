@@ -4,13 +4,15 @@
       <section class="panel">
         <div class="panel-title">גרף התוכנית</div>
         <div class="program-graph-shell">
-          <TransitionSystemD3
-            :width="360"
-            :height="228"
-            :auto="false"
-            :states="graphStates"
-            :transitions="graphTransitions"
-          />
+          <div class="scale-wrapper">
+            <TransitionSystemD3
+              :width="600"
+              :height="250"
+              :auto="false"
+              :states="graphStates"
+              :transitions="graphTransitions"
+            />
+          </div>
         </div>
 
         <div class="panel-note">{{ current.note }}</div>
@@ -106,6 +108,7 @@ type EdgeId =
   | 'diag-loop'
   | 'cart-diag'
   | 'diag-cart'
+  | 'load-loop'
   | null
 
 type Frame = {
@@ -152,10 +155,10 @@ const frames: Frame[] = [
     location: 'cart',
     activeEdge: 'cart-loop',
     action: 'E',
-    x: -1,
+    x: 1,
     y: 0,
     bat: 99,
-    effect: 'x ← x - 1, bat ← bat - 1',
+    effect: 'x ← x + 1, bat ← bat - 1',
     note: 'בלולאת cart בוחרים פעולה אופקית, והרובוט מתקדם מזרחה.',
   },
   {
@@ -164,10 +167,10 @@ const frames: Frame[] = [
     location: 'cart',
     activeEdge: 'cart-loop',
     action: 'N',
-    x: -1,
-    y: -1,
+    x: 1,
+    y: 1,
     bat: 98,
-    effect: 'y ← y - 1, bat ← bat - 1',
+    effect: 'y ← y + 1, bat ← bat - 1',
     note: 'צעד נוסף בצירים: N משנה את y ומקדם את הרובוט כלפי מעלה.',
   },
   {
@@ -176,8 +179,8 @@ const frames: Frame[] = [
     location: 'diag',
     activeEdge: 'cart-diag',
     action: 'TR',
-    x: -1,
-    y: -1,
+    x: 1,
+    y: 1,
     bat: 88,
     effect: 'bat ← bat - 10',
     note: 'הפעולה TR מחליפה mode מ-cart ל-diag ומבזבזת 10 יחידות סוללה.',
@@ -191,7 +194,7 @@ const frames: Frame[] = [
     x: 0,
     y: 0,
     bat: 87,
-    effect: 'x ← x + 1, y ← y + 1, bat ← bat - 1',
+    effect: 'x ← x - 1, y ← y - 1, bat ← bat - 1',
     note: 'במצב האלכסוני הרובוט חוזר ל-(0,0), ולכן שוב מתקיים תנאי החזרה ל-load.',
   },
   {
@@ -221,8 +224,8 @@ const cellSize = 46
 const tokenOffset = 8
 
 function boardPosition(x: number, y: number) {
-  const col = 2 - x
-  const row = 2 + y
+  const col = x
+  const row = 4 - y
   return {
     top: '0px',
     left: '0px',
@@ -258,30 +261,29 @@ const graphStates = computed(() => {
     {
       id: 'load',
       text: 'טעינה',
-      x: 180,
-      y: 34,
-      width: 94,
-      rx: 16,
+      x: 300,
+      y: 50,
+      width: 80,
       initial: true,
-      initialDirection: 'top' as const,
+      initialDirection: 'top',
+      initialText: '$bat=100 \\land x=0 \\land y=0$',
+      initialTextWidth: 200,
       ...styleFor('load'),
     },
     {
       id: 'cart',
-      text: 'צירים',
-      x: 88,
-      y: 152,
-      width: 104,
-      rx: 18,
+      text: 'תזוזה בצירים',
+      x: 100,
+      y: 180,
+      width: 140,
       ...styleFor('cart'),
     },
     {
       id: 'diag',
-      text: 'אלכסון',
-      x: 272,
-      y: 152,
-      width: 114,
-      rx: 18,
+      text: 'תזוזה באלכסון',
+      x: 500,
+      y: 180,
+      width: 140,
       ...styleFor('diag'),
     },
   ]
@@ -290,86 +292,74 @@ const graphStates = computed(() => {
 const graphTransitions = computed(() => [
   {
     source: 'load',
+    target: 'load',
+    action: '$bat < 100 : CH$',
+    actionWidth: 200,
+    loopDirection: '90deg',
+    ...graphEdgeStyle('load-loop'),
+  },
+  {
+    source: 'load',
     target: 'cart',
-    action: '$bat > 10$',
-    actionFontSize: 9,
-    actionWidth: 74,
-    actionX: -18,
-    actionY: -14,
+    action: '$bat > 10 : $  $nothing$',
+    actionX: -20,
     ...graphEdgeStyle('load-cart'),
   },
   {
     source: 'load',
     target: 'diag',
-    action: '$bat > 10$',
-    actionFontSize: 9,
-    actionWidth: 74,
-    actionX: 16,
-    actionY: -14,
+    action: '$bat > 10 : $  $nothing$',
     ...graphEdgeStyle('load-diag'),
   },
   {
     source: 'cart',
-    target: 'load',
-    action: '$x=0 \\land y=0$',
-    actionFontSize: 8,
-    curve: -0.48,
-    actionWidth: 112,
-    actionX: -20,
-    actionY: -2,
-    ...graphEdgeStyle('cart-load'),
-  },
-  {
-    source: 'diag',
-    target: 'load',
-    action: '$x=0 \\land y=0$',
-    actionFontSize: 8,
-    curve: 0.48,
-    actionWidth: 112,
-    actionX: 20,
-    actionY: -2,
-    ...graphEdgeStyle('diag-load'),
-  },
-  {
-    source: 'cart',
-    target: 'cart',
-    action: '$E$ / $N$ / $S$ / $W$',
-    actionFontSize: 8,
-    loopDirection: '115deg',
-    actionWidth: 118,
-    actionHeight: 28,
-    actionY: 24,
-    ...graphEdgeStyle('cart-loop'),
-  },
-  {
-    source: 'diag',
     target: 'diag',
-    action: '$NE$ / $NW$ / $SE$ / $SW$',
-    actionFontSize: 8,
-    loopDirection: '65deg',
-    actionWidth: 156,
-    actionHeight: 28,
-    actionY: 24,
-    ...graphEdgeStyle('diag-loop'),
-  },
-  {
-    source: 'cart',
-    target: 'diag',
-    action: '$TR$',
-    actionFontSize: 9,
-    actionWidth: 42,
-    actionY: -10,
+    action: '$bat > 10 : TR$',
     ...graphEdgeStyle('cart-diag'),
   },
   {
     source: 'diag',
     target: 'cart',
-    action: '$TR$',
-    actionFontSize: 9,
-    curve: 0.18,
-    actionWidth: 42,
-    actionY: 14,
+    action: '$bat > 10 : TR$',
     ...graphEdgeStyle('diag-cart'),
+  },
+  {
+    source: 'cart',
+    target: 'load',
+    action: '$x=0 \\land y=0 : $ $nothing$',
+    curve: -0.5,
+    actionWidth: 150,
+    actionX: -50,
+    ...graphEdgeStyle('cart-load'),
+  },
+  {
+    source: 'diag',
+    target: 'load',
+    action: '$x=0 \\land y=0 : $ $nothing$',
+    curve: 0.5,
+    actionWidth: 150,
+    actionX: 10,
+    ...graphEdgeStyle('diag-load'),
+  },
+  {
+    source: 'cart',
+    target: 'cart',
+    action: '$x<10 \\land bat>0 :  E$ <br> $x>0 \\land bat>0 :  W$ <br> $y<10 \\land bat>0 :  N$ <br> $y>0 \\land bat>0 :  S$',
+    loopDirection: '90deg',
+    actionWidth: 150,
+    actionHeight: 40,
+    actionY: 30,
+    ...graphEdgeStyle('cart-loop'),
+  },
+  {
+    source: 'diag',
+    target: 'diag',
+    action: '$x<10 \\land y>0 \\land bat>0 :  NE$ <br> $x>0 \\land y>0 \\land bat>0 :  NW$ <br> $y<10 \\land x>0 \\land bat>0 :  SE$ <br> $y<10 \\land x<10 \\land bat>0 :  SW$',
+    loopDirection: '90deg',
+    actionWidth: 250,
+    actionHeight: 40,
+    actionY: 30,
+    ...graphEdgeStyle('diag-loop'),
   },
 ])
 
@@ -436,14 +426,21 @@ onBeforeUnmount(() => {
 
 .program-graph-shell {
   height: 228px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 14px;
+  position: relative;
   background:
     radial-gradient(circle at top, rgba(255, 255, 255, 0.98), rgba(226, 232, 240, 0.88));
   border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 14px;
   overflow: hidden;
+}
+
+.scale-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.58);
+  width: 600px;
+  height: 250px;
 }
 
 .panel-note {

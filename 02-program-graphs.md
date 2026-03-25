@@ -267,14 +267,14 @@ info: |
 
 | פעולה | השפעה |
 | :--- | :--- |
-| **$N$**  | $y {\leftarrow} y{-}1;\,\, bat {\leftarrow} bat{-}1$ |
-| **$NE$** | $x {\leftarrow} x{-}1;\,\, y {\leftarrow} y{-}1;\,\, bat {\leftarrow} bat{-}1$ |
-| **$E$**  | $x {\leftarrow} x{-}1;\,\, bat {\leftarrow} bat{-}1$ |
-| **$SE$** | $x {\leftarrow} x{-}1;\,\, y {\leftarrow} y{+}1;\,\, bat {\leftarrow} bat{-}1$ |
-| **$S$**  | $y {\leftarrow} y{+}1;\,\, bat {\leftarrow} bat{-}1$ |
-| **$SW$** | $x {\leftarrow} x{+}1;\,\, y {\leftarrow} y{+}1;\,\, bat {\leftarrow} bat{-}1$ |
-| **$W$**  | $x {\leftarrow} x{+}1;\,\, bat {\leftarrow} bat{-}1$ |
-| **$NW$** | $x {\leftarrow} x{+}1;\,\, y {\leftarrow} y{-}1;\,\, bat {\leftarrow} bat{-}1$ |
+| **$N$**  | $y {\leftarrow} y{+}1;\,\, bat {\leftarrow} bat{-}1$ |
+| **$NE$** | $x {\leftarrow} x{+}1;\,\, y {\leftarrow} y{+}1;\,\, bat {\leftarrow} bat{-}1$ |
+| **$E$**  | $x {\leftarrow} x{+}1;\,\, bat {\leftarrow} bat{-}1$ |
+| **$SE$** | $x {\leftarrow} x{+}1;\,\, y {\leftarrow} y{-}1;\,\, bat {\leftarrow} bat{-}1$ |
+| **$S$**  | $y {\leftarrow} y{-}1;\,\, bat {\leftarrow} bat{-}1$ |
+| **$SW$** | $x {\leftarrow} x{-}1;\,\, y {\leftarrow} y{-}1;\,\, bat {\leftarrow} bat{-}1$ |
+| **$W$**  | $x {\leftarrow} x{-}1;\,\, bat {\leftarrow} bat{-}1$ |
+| **$NW$** | $x {\leftarrow} x{-}1;\,\, y {\leftarrow} y{+}1;\,\, bat {\leftarrow} bat{-}1$ |
 | **$CH$** | $bat {\leftarrow} bat{+}1$ |
 | **$TR$** | $bat {\leftarrow} bat{-}10$ |
 
@@ -293,8 +293,8 @@ info: |
     { source: 'load', target: 'load', action: '$bat < 100 : CH$', actionWidth: 200,  loopDirection: '90deg' },
     { source: 'load', target: 'cart', action: '$bat > 10 : $  $nothing$', actionX: -20 },
     { source: 'load', target: 'diag', action: '$bat > 10 : $  $nothing$' },
-    { source: 'cart', target: 'diag', action: '$TR$ $bat > 10 : $' },
-    { source: 'diag', target: 'cart', action: '$TR$ $bat > 10 : $' },
+    { source: 'cart', target: 'diag', action: '$bat > 10 : TR$' },
+    { source: 'diag', target: 'cart', action: '$bat > 10 : TR$' },
     { source: 'cart', target: 'load', action: '$x=0 \\land y=0 : $ $nothing$', curve: -0.5, actionWidth: 150, actionX: -50 },
     { source: 'diag', target: 'load', action: '$x=0 \\land y=0 : $ $nothing$', curve: 0.5, actionWidth: 150, actionX: 10 },
     { source: 'cart', target: 'cart', action: 
@@ -563,12 +563,12 @@ $$\frac{\text{premise (הנחה)}}{\text{conclusion (מסקנה)}}$$
     { source: 'c00', target: 'c10', action: '$E$',  curve: 0.15, actionY: -10  },
     { source: 'c11', target: 'c01', action: '$W$',  curve: 0.15, actionY: 10 },
     { source: 'c01', target: 'c11', action: '$E$',  curve: 0.15, actionY: -10 },
-    { source: 'c10', target: 'c11', action: '$S$',  curve: 0.15, actionX: -5 },
-    { source: 'c11', target: 'c10', action: '$N$',  curve: 0.15, actionX: 5 },
-    { source: 'c00', target: 'c01', action: '$S$',  curve: 0.15, actionX: -5 },
-    { source: 'c01', target: 'c00', action: '$N$',  curve: 0.15, actionX: 5 },
-    { source: 'd00', target: 'd11', action: '$SW$', curve: 0.25, actionX: -5 },
-    { source: 'd11', target: 'd00', action: '$NE$', curve: 0.25, actionX: 5 },
+    { source: 'c10', target: 'c11', action: '$N$',  curve: 0.15, actionX: -5 },
+    { source: 'c11', target: 'c10', action: '$S$',  curve: 0.15, actionX: 5 },
+    { source: 'c00', target: 'c01', action: '$N$',  curve: 0.15, actionX: -5 },
+    { source: 'c01', target: 'c00', action: '$S$',  curve: 0.15, actionX: 5 },
+    { source: 'd00', target: 'd11', action: '$NE$', curve: 0.25, actionX: -5 },
+    { source: 'd11', target: 'd00', action: '$SW$', curve: 0.25, actionX: 5 },
   ]"
 />
 </div>
