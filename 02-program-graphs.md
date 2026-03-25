@@ -174,12 +174,12 @@ info: |
 
 # המודל הפורמלי: מערכת המעברים $TS$
 
-מערכת המעברים $TS = (S, Act, \to, I, AP, L)$ הממדלת מעגל זה:
+מערכת המעברים $TS = \langle S, Act, \to, I, AP, L \rangle$ הממדלת מעגל זה:
 
 1.  **מרחב המצבים:** $S = Eval(x_1, \dots, x_n, r_1, \dots, r_k) \cong \{0, 1\}^{n+k}$.
 
 2.  **מצבים התחלתיים:** האוגרים מקבלים את ערכם ההתחלתי, והקלטים שרירותיים:
-    $$I = \{(a_1, \dots, a_n, c_{0,1}, \dots, c_{0,k}) \mid a_1, \dots, a_n \in \{0, 1\}\}$$
+    $$I = \{\langle a_1, \dots, a_n, c_{0,1}, \dots, c_{0,k} \rangle \mid a_1, \dots, a_n \in \{0, 1\}\}$$
 3.  **פעולות:** קבוצת הפעולות אינה רלוונטית, נבחר $Act = \{\tau\}$.
 4.  **פסוקים אטומיים:** $AP = \{x_1, \dots, x_n, y_1, \dots, y_m, r_1, \dots, r_k\}$.
 
@@ -192,7 +192,7 @@ info: |
     כאשר $\lambda_{y_i}$ היא פונקציית המיתוג של ביט הפלט $y_i$.
 
 6.  **מעברים:** מייצגים את עדכון האוגרים לפי פונקציות המעבר $\delta_{r_j}$:
-    $$( \underbrace{a_1, \dots, a_n}_{\text{input}}, \underbrace{c_1, \dots, c_k}_{\text{register}} ) \xrightarrow{\tau} (a'_1, \dots, a'_n, c'_1, \dots, c'_k)$$
+    $$\langle \underbrace{a_1, \dots, a_n}_{\text{input}}, \underbrace{c_1, \dots, c_k}_{\text{register}} \rangle \xrightarrow{\tau} \langle a'_1, \dots, a'_n, c'_1, \dots, c'_k \rangle$$
     אם ורק אם $c'_j = \delta_{r_j}(a_1, \dots, a_n, c_1, \dots, c_k)$ לכל $j$.
 
     **שימו לב:** אין הגבלה על ערכי הקלט החדשים $a'_1, \dots, a'_n$ (שינוי אי-דטרמיניסטי).
@@ -364,14 +364,14 @@ $\eta_1 = \{ bit \mapsto 1 \}$
 אנו מגדירים את הקבוצה $Cond(Var)$ כאוסף כל התנאים הבוליאניים מעל המשתנים ב-$Var$.
 
 - **הגדרה:** נוסחאות בתחשיב הפסוקים שבהן הסימנים הבסיסיים הם מהצורה $x \in D$.
-  - כאן $x = (x_1, \dots, x_n)$ הוא וקטור של משתנים, ו-$D \subseteq dom(x_1) \times \dots \times dom(x_n)$.
+  - כאן $x = \langle x_1, \dots, x_n \rangle$ הוא וקטור של משתנים, ו-$D \subseteq dom(x_1) \times \dots \times dom(x_n)$.
 
 - **דוגמה לתנאי חוקי:**
   $$ (-3 < x - x' \le 5) \wedge (x \ge 2 \cdot x') \wedge (y = \text{green}) $$
   כאשר $x, x'$ משתנים שלמים ו-$y$ משתנה עם $dom(y) = \{\text{red, green}\}$.
 
 - **רישום מפושט:** לרוב נשתמש ברישום מתמטי מוכר במקום הרישום הפורמלי היבש.
-  - למשל: נכתוב $3 < x - x' \le 5$ במקום התיאור הקבוצתי המלא $(x, x') \in \{ (n, m) \mid 3 < n - m \le 5 \}$.
+  - למשל: נכתוב $3 < x - x' \le 5$ במקום התיאור הקבוצתי המלא $\langle x, x' \rangle \in \{ \langle n, m \rangle \mid 3 < n - m \le 5 \}$.
 
 - **קיום תנאי (Satisfaction):** נכתוב $\eta \models g$ אם התנאי $g$ מתקיים תחת ההערכה $\eta$.
 
@@ -417,10 +417,10 @@ $\eta_1 = \{ bit \mapsto 1 \}$
 />
 
 <div dir="ltr" class="mt-1 rounded-lg bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 px-2 py-1.5 text-[9.5px] leading-4 text-left font-mono">
-PG = (Loc, Act, →, Loc₀, g₀)<br>
+PG = ⟨Loc, Act, →, Loc₀, g₀⟩<br>
 Loc = {ℓ₀, ℓ₁}<br>
 Act = {inc, done}<br>
-→ = {(ℓ₀, x&lt;2, inc, ℓ₁), (ℓ₁, true, done, ℓ₀)}<br>
+→ = {⟨ℓ₀, x&lt;2, inc, ℓ₁⟩, ⟨ℓ₁, true, done, ℓ₀⟩}<br>
 Loc₀ = {ℓ₀}<br>
 g₀ = (x = 0)
 </div>
@@ -430,7 +430,7 @@ g₀ = (x = 0)
 
 גרף תוכנית $PG$ מעל קבוצת משתנים $Var$
 עם פונקציות משמעות ידועות לתנאים ולפעולות
-הוא סדורה $(Loc, Act, \rightarrow, Loc_0, g_0)$ כאשר:
+הוא סדורה $\langle Loc, Act, \rightarrow, Loc_0, g_0 \rangle$ כאשר:
 
 - $Loc$ היא קבוצת **מיקומים** (Locations/Nodes).
 
@@ -442,7 +442,7 @@ g₀ = (x = 0)
 התנאי $g$ נקרא ה"שומר" (Guard) של המעבר.
 
 - **קיצורים:**
-  - נכתוב $\ell \xrightarrow{g \,:\, \alpha} \ell'$ כקיצור ל-$(\ell, g, \alpha, \ell') \in \rightarrow$.
+  - נכתוב $\ell \xrightarrow{g \,:\, \alpha} \ell'$ כקיצור ל-$\langle \ell, g, \alpha, \ell' \rangle \in \rightarrow$.
   - אם $g \equiv \text{true}$, נכתוב פשוט $\ell \xrightarrow{\alpha} \ell'$. אם $\alpha = nothing$, נכתוב פשוט $\ell \xrightarrow{g} \ell'$.
 </div>
 
@@ -473,7 +473,7 @@ g₀ = (x = 0)
 
 # סמנטיקה של גרף תוכנית כמערכת מעברים
 
-מערכת המעברים $TS(PG)$ של גרף תוכנית $PG = (Loc, Act, Effect, \to, Loc_0, g_0)$ מעל קבוצת משתנים $Var$ היא הסדורה $(S, Act, \to, I, AP, L)$ כאשר:
+מערכת המעברים $TS(PG)$ של גרף תוכנית $PG = \langle Loc, Act, Effect, \to, Loc_0, g_0 \rangle$ מעל קבוצת משתנים $Var$ היא הסדורה $\langle S, Act, \to, I, AP, L \rangle$ כאשר:
 
 - $S = Loc \times Eval(Var)$
 - יחס המעברים $\to \subseteq S \times Act \times S$ מוגדר על ידי הכלל הבא:
