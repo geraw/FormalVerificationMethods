@@ -67,11 +67,11 @@ $$TS = TS_1 \,\|\, TS_2 \,\|\, \dots \,\|\, TS_n$$
 
 # מקביליות ושזירה (Interleaving)
 
-פרדיגמה נפוצה למידול מערכות מקביליות היא **שזירה (Interleaving)**.
+שיטה נפוצה למידול מערכות מקביליות היא **שזירה (Interleaving)**.
 
 - במודל זה, אנו מפשטים את העובדה שהמערכת מורכבת מרכיבים עצמאיים. 
 
-- **המצב הגלובלי** של המערכת – המורכב מהמצבים האינדיבידואליים של הרכיבים – משחק תפקיד מרכזי.
+- **המצב הגלובלי** של המערכת, המורכב מהמצבים של כל רכיב ורכיב, משחק תפקיד מרכזי.
 
 - הפעולות של רכיבים עצמאיים ממוזגות ("נשזרות") אלו באלו.
 
@@ -209,12 +209,12 @@ $Lamp_1 \,|||\, Lamp_2$ (שזירה)
     { id: 'bb', text: 'B,B', x: 200,  y: 300, width: 50 }
   ]"
   :transitions="[
-    { source: 'oo', target: 'do', action: '$n_1$' }, { source: 'do', target: 'bo', action: '$n_1$' }, { source: 'bo', target: 'oo', action: '$r_1$', curve: -0.2, actionY:-5 },
-    { source: 'od', target: 'dd', action: '$n_1$' }, { source: 'dd', target: 'bd', action: '$n_1$' }, { source: 'bd', target: 'od', action: '$r_1$', curve: 0.2, actionX:30, actionY:4 },
-    { source: 'ob', target: 'db', action: '$n_1$' }, { source: 'db', target: 'bb', action: '$n_1$' }, { source: 'bb', target: 'ob', action: '$r_1$', curve: 0.2 },
-    { source: 'oo', target: 'od', action: '$n_2$' }, { source: 'od', target: 'ob', action: '$n_2$' }, { source: 'ob', target: 'oo', action: '$r_2$', curve: 0.3, actionX:5 },
-    { source: 'do', target: 'dd', action: '$n_2$' }, { source: 'dd', target: 'db', action: '$n_2$' }, { source: 'db', target: 'do', action: '$r_2$', curve: -0.3, actionY: -20, actionX: -5 },
-    { source: 'bo', target: 'bd', action: '$n_2$' }, { source: 'bd', target: 'bb', action: '$n_2$' }, { source: 'bb', target: 'bo', action: '$r_2$', curve: -0.3, actionX: -5 }
+    { source: 'oo', target: 'do', action: 'next' }, { source: 'do', target: 'bo', action: 'next' }, { source: 'bo', target: 'oo', action: 'reset', curve: -0.2, actionY:-5 },
+    { source: 'od', target: 'dd', action: 'next' }, { source: 'dd', target: 'bd', action: 'next' }, { source: 'bd', target: 'od', action: 'reset', curve: 0.2, actionX:30, actionY:4 },
+    { source: 'ob', target: 'db', action: 'next' }, { source: 'db', target: 'bb', action: 'next' }, { source: 'bb', target: 'ob', action: 'reset', curve: 0.2 },
+    { source: 'oo', target: 'od', action: 'next' }, { source: 'od', target: 'ob', action: 'next' }, { source: 'ob', target: 'oo', action: 'reset', curve: 0.3, actionX:5 },
+    { source: 'do', target: 'dd', action: 'next' }, { source: 'dd', target: 'db', action: 'next' }, { source: 'db', target: 'do', action: 'reset', curve: -0.3, actionY: -20, actionX: -5 },
+    { source: 'bo', target: 'bd', action: 'next' }, { source: 'bd', target: 'bb', action: 'next' }, { source: 'bb', target: 'bo', action: 'reset', curve: -0.3, actionX: -5 }
   ]"
 />
 </div>
@@ -296,11 +296,10 @@ $$Effect(\alpha \,|||\, \beta, \eta) = Effect((\alpha ; \beta) + (\beta ; \alpha
 - **יחס המעברים** $\to$ מוגדר על ידי חוקי הגזירה הבאים:
 
 $$
-\frac{s_1 \xrightarrow{\alpha}_1 s_1'}{ \langle s_1, s_2 \rangle \xrightarrow{\alpha} \langle s_1', s_2 \rangle } \quad \quad \frac{s_2 \xrightarrow{\alpha}_2 s_2'}{ \langle s_1, s_2 \rangle \xrightarrow{\alpha} \langle s_1, s_2' \rangle }
+\frac{s_1 \xrightarrow{\alpha}_1 s_1'}{ \langle s_1, s_2 \rangle \xrightarrow{\alpha} \langle s_1', s_2 \rangle } \hspace{3cm} \frac{s_2 \xrightarrow{\alpha}_2 s_2'}{ \langle s_1, s_2 \rangle \xrightarrow{\alpha} \langle s_1, s_2' \rangle }
 $$
 
 הבחירה בין המעברים של $TS_1$ למעברים של $TS_2$ היא אי-דטרמיניסטית. <br>
-(בשלב זה) אנו מניחים שאין תקשורת ואין משתנים משותפים.
 
 ---
 
@@ -315,14 +314,14 @@ $$
 
 <b>שלב 1: החלת כלל 1 (מנורה 1 זזה)</b><br>
 במנורה 1: $O \xrightarrow{next} D$. <br> 
-לכן בשזירה: $\langle O,O \rangle \xrightarrow{n_1} \langle D,O \rangle$
+לכן בשזירה: $\langle O,O \rangle \xrightarrow{next} \langle D,O \rangle$
 </div>
 
 <div v-click="3" class="text-sm bg-green-50 p-2 rounded border border-green-200 mb-2">
 
 <b>שלב 2: החלת כלל 2 (מנורה 2 זזה)</b><br>
 במנורה 2: $O \xrightarrow{next} D$. <br> 
-לכן בשזירה: $\langle O,O \rangle \xrightarrow{n_2} \langle O,D \rangle$
+לכן בשזירה: $\langle O,O \rangle \xrightarrow{next} \langle O,D \rangle$
 </div>
 
 <div v-click="5" class="text-sm bg-purple-50 p-2 rounded border border-purple-200">
@@ -350,15 +349,15 @@ $$
     ] : [])
   ]"
   :transitions="[
-    ...($clicks >= 2 ? [{ source: 'oo', target: 'do', action: '$n_1$' }] : []),
-    ...($clicks >= 4 ? [{ source: 'oo', target: 'od', action: '$n_2$' }] : []),
+    ...($clicks >= 2 ? [{ source: 'oo', target: 'do', action: 'next' }] : []),
+    ...($clicks >= 4 ? [{ source: 'oo', target: 'od', action: 'next' }] : []),
     ...($clicks >= 5 ? [
-      { source: 'do', target: 'bo', action: '$n_1$' }, { source: 'bo', target: 'oo', action: '$r_1$', curve: -0.2, actionY:-5 },
-      { source: 'od', target: 'dd', action: '$n_1$' }, { source: 'dd', target: 'bd', action: '$n_1$' }, { source: 'bd', target: 'od', action: '$r_1$', curve: 0.2, actionX:30, actionY:4 },
-      { source: 'ob', target: 'db', action: '$n_1$' }, { source: 'db', target: 'bb', action: '$n_1$' }, { source: 'bb', target: 'ob', action: '$r_1$', curve: 0.2 },
-      { source: 'od', target: 'ob', action: '$n_2$' }, { source: 'ob', target: 'oo', action: '$r_2$', curve: 0.3, actionX:5 },
-      { source: 'do', target: 'dd', action: '$n_2$' }, { source: 'dd', target: 'db', action: '$n_2$' }, { source: 'db', target: 'do', action: '$r_2$', curve: -0.3, actionY: -20, actionX: -5 },
-      { source: 'bo', target: 'bd', action: '$n_2$' }, { source: 'bd', target: 'bb', action: '$n_2$' }, { source: 'bb', target: 'bo', action: '$r_2$', curve: -0.3, actionX: -5 }
+      { source: 'do', target: 'bo', action: 'next' }, { source: 'bo', target: 'oo', action: 'reset', curve: -0.2, actionY:-5 },
+      { source: 'od', target: 'dd', action: 'next' }, { source: 'dd', target: 'bd', action: 'next' }, { source: 'bd', target: 'od', action: 'reset', curve: 0.2, actionX:30, actionY:4 },
+      { source: 'ob', target: 'db', action: 'next' }, { source: 'db', target: 'bb', action: 'next' }, { source: 'bb', target: 'ob', action: 'reset', curve: 0.2 },
+      { source: 'od', target: 'ob', action: 'next' }, { source: 'ob', target: 'oo', action: 'reset', curve: 0.3, actionX:5 },
+      { source: 'do', target: 'dd', action: 'next' }, { source: 'dd', target: 'db', action: 'next' }, { source: 'db', target: 'do', action: 'reset', curve: -0.3, actionY: -20, actionX: -5 },
+      { source: 'bo', target: 'bd', action: 'next' }, { source: 'bd', target: 'bb', action: 'next' }, { source: 'bb', target: 'bo', action: 'reset', curve: -0.3, actionX: -5 }
     ] : [])
   ]"
 />
