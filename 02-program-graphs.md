@@ -426,7 +426,6 @@ g₀ = (x = 0)
 </div>
 </div>
 
-<div style="max-width: 620px;">
 
 גרף תוכנית $PG$ מעל קבוצת משתנים $Var$
 עם פונקציות משמעות ידועות לתנאים ולפעולות
@@ -444,8 +443,6 @@ g₀ = (x = 0)
 - **קיצורים:**
   - נכתוב $\ell \xrightarrow{g \,:\, \alpha} \ell'$ כקיצור ל-$\langle \ell, g, \alpha, \ell' \rangle \in \rightarrow$.
   - אם $g \equiv \text{true}$, נכתוב פשוט $\ell \xrightarrow{\alpha} \ell'$. אם $\alpha = nothing$, נכתוב פשוט $\ell \xrightarrow{g} \ell'$.
-</div>
-
 
 ---
 
@@ -471,13 +468,24 @@ g₀ = (x = 0)
 
 ---
 
-# סמנטיקה של גרף תוכנית כמערכת מעברים
+# **הגדרה**: סמנטיקה של גרף תוכנית כמערכת מעברים
 
-מערכת המעברים $TS(PG)$ של גרף תוכנית $PG = \langle Loc, Act, Effect, \to, Loc_0, g_0 \rangle$ מעל קבוצת משתנים $Var$ היא הסדורה $\langle S, Act, \to, I, AP, L \rangle$ כאשר:
+מערכת המעברים $TS(PG)$ של גרף תוכנית $PG = \langle Loc, Act, Effect, \to, Loc_0, g_0 \rangle$ מעל קבוצת משתנים $Var$ היא הסדורה $\langle S, Act, \to, I, AP, L \rangle$ באשר:
 
 - $S = Loc \times Eval(Var)$
-- יחס המעברים $\to \subseteq S \times Act \times S$ מוגדר על ידי הכלל הבא:
+- יחס המעברים $\to \subseteq S \times Act \times S$ מוגדר על ידי הכלל:
   $$\frac{\ell \xrightarrow{g:\alpha} \ell' \quad \eta \models g}{\langle \ell, \eta \rangle \xrightarrow{\alpha} \langle \ell', Effect(\alpha, \eta) \rangle}$$
+
+<!-- ניתן לשנות את מיקומי top ו-left כאן כדי להזיז את החצים -->
+<div class="absolute top-[245px] left-[210px] text-blue-500 flex items-center gap-3 text-xl font-bold bg-white/80 pl-4 py-1 rounded">
+  <svg width="80" height="20" viewBox="0 0 80 20" class="mt-1"><path d="M 0 10 L 75 10 M 65 5 L 75 10 L 65 15" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span>אם</span>
+</div>
+
+<div class="absolute top-[270px] left-[213px] text-emerald-600 flex items-center gap-3 text-xl font-bold bg-white/80 pl-4 py-1 rounded">
+  <svg width="80" height="20" viewBox="0 0 80 20" class="mt-1"><path d="M 0 10 L 75 10 M 65 5 L 75 10 L 65 15" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span>אז</span>
+</div>
 
 - $I = \{ \langle \ell, \eta \rangle \mid \ell \in Loc_0, \eta \models g_0 \}$
 - $AP = Loc \cup Cond(Var)$
