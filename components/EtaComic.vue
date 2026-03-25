@@ -1,0 +1,72 @@
+<template>
+  <div class="eta-comic-container" dir="ltr">
+    <svg viewBox="0 0 450 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="eta-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#0ea5e9" />
+        </marker>
+        <filter id="eta-shadow">
+          <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+        </filter>
+      </defs>
+
+      <!-- Panel Background -->
+      <rect x="5" y="5" width="440" height="210" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#eta-shadow)"/>
+      
+      <!-- Character: The Evaluator (eta) -->
+      <g transform="translate(370, 90)">
+        <text x="0" y="30" font-size="60" text-anchor="middle">🧑‍🏫</text>
+        <text x="0" y="65" font-size="14" font-weight="bold" fill="#334155" text-anchor="middle" direction="rtl">פונקציית הערכה</text>
+        <text x="0" y="90" font-size="24" font-weight="bold" font-family="serif" fill="#0ea5e9" text-anchor="middle">η</text>
+      </g>
+      
+      <!-- Speech Bubble -->
+      <g transform="translate(170, 20)">
+        <path d="M 30 10 Q 150 10 150 40 Q 150 70 90 70 L 140 100 L 100 70 Q 30 70 30 40 Z" fill="#f0f9ff" stroke="#bae6fd" stroke-width="2"/>
+        <text x="90" y="35" font-size="13" font-weight="bold" fill="#0369a1" text-anchor="middle" direction="rtl">לכל משתנה מהקבוצה Var,</text>
+        <text x="90" y="55" font-size="13" font-weight="bold" fill="#0369a1" text-anchor="middle" direction="rtl">אתאים ערך חוקי מהתחום שלו!</text>
+      </g>
+
+      <!-- Variables section -->
+      <g transform="translate(30, 40)">
+        <!-- Title -->
+        <rect x="5" y="-20" width="140" height="25" rx="4" fill="#f1f5f9"/>
+        <text x="75" y="-3" font-size="12" font-weight="bold" fill="#475569" text-anchor="middle" direction="rtl">הקבוצה Eval(Var)</text>
+        
+        <!-- Box X -->
+        <g transform="translate(0, 15)">
+          <rect x="0" y="0" width="150" height="35" rx="6" fill="#fff" stroke="#94a3b8" stroke-dasharray="4" stroke-width="2"/>
+          <text x="140" y="23" font-size="14" font-family="monospace" fill="#64748b" text-anchor="end">x : int</text>
+          <text x="40" y="25" font-size="20" font-weight="bold" fill="#10b981" text-anchor="middle">42</text>
+          <!-- Arrow -->
+          <path d="M 300 65 Q 230 17 160 17" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="4" marker-end="url(#eta-arrow)"/>
+        </g>
+        
+        <!-- Box Y -->
+        <g transform="translate(0, 65)">
+          <rect x="0" y="0" width="150" height="35" rx="6" fill="#fff" stroke="#94a3b8" stroke-dasharray="4" stroke-width="2"/>
+          <text x="140" y="23" font-size="14" font-family="monospace" fill="#64748b" text-anchor="end">y : bool</text>
+          <text x="40" y="25" font-size="18" fill="#10b981" text-anchor="middle">✅</text>
+          <path d="M 300 25 Q 230 17 160 17" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="4" marker-end="url(#eta-arrow)"/>
+        </g>
+
+        <!-- Box Z -->
+        <g transform="translate(0, 115)">
+          <rect x="0" y="0" width="150" height="35" rx="6" fill="#fff" stroke="#94a3b8" stroke-dasharray="4" stroke-width="2"/>
+          <text x="140" y="23" font-size="14" font-family="monospace" fill="#64748b" text-anchor="end">z : color</text>
+          <text x="40" y="25" font-size="18" fill="#10b981" text-anchor="middle">🔴</text>
+          <path d="M 300 -15 Q 230 17 160 17" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="4" marker-end="url(#eta-arrow)"/>
+        </g>
+        
+      </g>
+
+    </svg>
+  </div>
+</template>
+
+<style scoped>
+.eta-comic-container {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 1rem 0;
+}
+</style>

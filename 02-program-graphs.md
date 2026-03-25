@@ -355,6 +355,7 @@ $\eta_1 = \{ bit \mapsto 1 \}$
 </div>
 </div>
 
+<img src="/images/eta_comic_hebrew.svg" class="absolute bottom-40 left-1 w-[250px]" />
 
 ---
 
@@ -374,7 +375,7 @@ $\eta_1 = \{ bit \mapsto 1 \}$
 
 - **קיום תנאי (Satisfaction):** נכתוב $\eta \models g$ אם התנאי $g$ מתקיים תחת ההערכה $\eta$.
 
-
+<img src="/images/models_comic_hebrew.svg" class="absolute bottom-0 left-10 w-[220px]" />
 ---
 
 # פעולות ופונקציית ההשפעה (Effect)
@@ -428,7 +429,7 @@ g₀ = (x = 0)
 <div style="max-width: 620px;">
 
 גרף תוכנית $PG$ מעל קבוצת משתנים $Var$
-עם פונקציות משמעות ידועה לתנאים ולפעולות
+עם פונקציות משמעות ידועות לתנאים ולפעולות
 הוא סדורה $(Loc, Act, \rightarrow, Loc_0, g_0)$ כאשר:
 
 - $Loc$ היא קבוצת **מיקומים** (Locations/Nodes).
@@ -472,7 +473,7 @@ g₀ = (x = 0)
 
 # סמנטיקה של גרף תוכנית כמערכת מעברים
 
-מערכת המעברים $TS(PG)$ של גרף תוכנית $PG = (Loc, Act, Effect, \to, Loc_0, g_0)$ מעל קבוצת משתנים $Var$ היא השמיניה $(S, Act, \to, I, AP, L)$ כאשר:
+מערכת המעברים $TS(PG)$ של גרף תוכנית $PG = (Loc, Act, Effect, \to, Loc_0, g_0)$ מעל קבוצת משתנים $Var$ היא הסדורה $(S, Act, \to, I, AP, L)$ כאשר:
 
 - $S = Loc \times Eval(Var)$
 - יחס המעברים $\to \subseteq S \times Act \times S$ מוגדר על ידי הכלל הבא:
