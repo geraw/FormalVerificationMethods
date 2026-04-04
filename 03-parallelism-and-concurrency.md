@@ -663,7 +663,7 @@ $PG_2$
 
 <div class="text-sm my-2 ml-4">
 
-- בתהליך המידול של מערכת מקבילית באמצעות אופרטור השזירה, נקודת ההנחה המכרעת היא שהפעולות $\alpha \in Act$  **בלתי ניתנות לחלוקה**.
+- בתהליך המידול של מערכת מקבילית באמצעות אופרטור השזירה, ההנחה המכרעת היא שהפעולות $\alpha \in Act$  **בלתי ניתנות לחלוקה**.
   - מערכת המעברים מבטאת רק את האפקט של הפעולה $\alpha$ לאחר שבוצעה במלואה.
   - אם פעולה מוגדרת ע"י רצף של פקודות, ההנחה היא שהמימוש **אינו מאפשר שזירה** עם תהליכים מקביליים אחרים.
 
@@ -699,8 +699,9 @@ $\langle \text{statement}_1; \dots; \text{statement}_n \rangle$.
 
 נבחן שני תהליכים $P_i$ (עבור $i=1, 2$) מהצורה הבאה:
 
-<div class="flex justify-center my-4" dir="ltr">
-<div class="border border-slate-300 p-6 rounded bg-white shadow-sm text-lg leading-relaxed w-fit text-left">
+<div class="grid grid-cols-[1.15fr_0.85fr] items-center gap-6 my-4" dir="ltr">
+<div class="flex justify-center">
+<div class="border border-slate-300 p-5 rounded bg-white shadow-sm text-base leading-relaxed w-fit text-left">
 $$
 \begin{array}{ll}
 P_i & \mathbf{loop \ forever} \\
@@ -715,7 +716,28 @@ $$
 </div>
 </div>
 
-- התהליכים משתמשים בסמפור בינארי משותף $y$:
+<div class="flex flex-col items-center scale-[0.9] origin-top -mt-1">
+<h4 class="font-bold text-slate-500 -mb-3">
+
+$PG_i$:
+</h4>
+<TransitionSystemD3  
+  :width="230" :height="220"
+  :states="[
+    { id: 'ni', text: '$noncrit_i$', initial: true, initialDirection: 'top', x: 115, y: 20, width: 110, rx:10 },
+    { id: 'wi', text: '$wait_i$', x: 115, y: 100, width: 80, rx:10 },
+    { id: 'ci', text: '$crit_i$', x: 115, y: 210, width: 80, rx:10 }
+  ]"
+  :transitions="[
+    { source: 'ni', target: 'wi', action: ' ' },
+    { source: 'wi', target: 'ci', action: '$y > 0 : y := y-1$', actionX: 55, actionWidth: 130 },
+    { source: 'ci', target: 'ni', action: '$y := y+1$', actionX: -65, type: 'curved', curve: -0.8, actionWidth: 90 }
+  ]"
+/>
+</div>
+</div>
+
+- בדוגמה הראשונה שנראה, התהליכים משתמשים בסמפור בינארי משותף $y$:
   - $y=1$: הסמפור חופשי.
   - $y=0$: הסמפור תפוס ע"י אחד התהליכים.
 
@@ -725,7 +747,10 @@ $$
 
 <!-- PG1 -->
 <div class="flex flex-col items-center">
-<h4 class="font-bold text-slate-500 mb-2">$PG_1$:</h4>
+<h4 class="font-bold text-slate-500 mb-2">
+
+$PG_1$:
+</h4>
 <TransitionSystemD3  
   :width="250" :height="220"
   :states="[
@@ -743,7 +768,10 @@ $$
 
 <!-- PG2 -->
 <div class="flex flex-col items-center">
-<h4 class="font-bold text-slate-500 mb-2">$PG_2$:</h4>
+<h4 class="font-bold text-slate-500 mb-2">
+
+$PG_2$:
+</h4>
 <TransitionSystemD3  
   :width="250" :height="220"
   :states="[
