@@ -1059,17 +1059,17 @@ clicks: 4
 <!-- מוסיפים לכל זוג מיקומים את $x$; את $b_1, b_2$ משחזרים מן המיקום:
 $n_i \Rightarrow F$, ואילו $w_i, c_i \Rightarrow T$. -->
 
-<div class="min-h-[96px] mt-1">
-<div v-if="$clicks === 0" class="text-[12px] bg-sky-50 p-2 rounded border border-sky-200">
+<div class="relative h-[152px] mt-0.5">
+<div v-if="$clicks === 0" class="absolute inset-0 text-[12px] leading-tight bg-sky-50 px-2 py-1 rounded border border-sky-200 [&_.katex-display]:my-1">
 
 <b>עומק 0</b>: מתחילים משני המצבים ההתחלתיים.
 </div>
-<div v-if="$clicks === 1" class="text-[12px] bg-emerald-50 p-2 rounded border border-emerald-200">
+<div v-if="$clicks === 1" class="absolute inset-0 text-[12px] leading-tight bg-emerald-50 px-2 py-1 rounded border border-emerald-200 [&_.katex-display]:my-1">
 
 <b>עומק 1</b>: מפעילים את מעברי ה־request בגרפי התוכנית:
 $\hspace{1cm}P_1:\ n_1 \xrightarrow{b_1 := T;\ x:=2} w_1\hspace{1cm}$ וגם $\hspace{1cm}P_2:\ n_2 \xrightarrow{b_2 := T;\ x:=1} w_2\hspace{1cm}$
 </div>
-<div v-if="$clicks === 2" class="text-[12px] bg-amber-50 p-2 rounded border border-amber-200">
+<div v-if="$clicks === 2" class="absolute inset-0 text-[12px] leading-tight bg-amber-50 px-2 py-1 rounded border border-amber-200 [&_.katex-display]:my-1">
 
 <b>עומק 2</b>: מן החזית מפעילים את מעברי ההמתנה והבקשה:
 
@@ -1081,7 +1081,7 @@ $$P_2:\ n_2 \xrightarrow{b_2 := T;\ x:=1} w_2
 \qquad
 w_2 \xrightarrow{x=2 \lor \neg b_1} c_2$$
 </div>
-<div v-if="$clicks === 3" class="text-[12px] bg-rose-50 p-2 rounded border border-rose-200">
+<div v-if="$clicks === 3" class="absolute inset-0 text-[12px] leading-tight bg-rose-50 px-2 py-1 rounded border border-rose-200 [&_.katex-display]:my-1">
 
 <b>עומק 3</b>: שוב נחשפים אותם מעברים על החזית החדשה:
 $$\hspace{1cm}P_1:\ w_1 \xrightarrow{x=1 \lor \neg b_2} c_1
@@ -1092,7 +1092,7 @@ $$\hspace{1cm}P_2:\ n_2 \xrightarrow{b_2 := T;\ x:=1} w_2
 \qquad
 w_2 \xrightarrow{x=2 \lor \neg b_1} c_2$$
 </div>
-<div v-if="$clicks >= 4" class="text-[12px] bg-slate-50 p-2 rounded border border-slate-200">
+<div v-if="$clicks >= 4" class="absolute inset-0 text-[12px] leading-tight bg-slate-50 px-2 py-1 rounded border border-slate-200 [&_.katex-display]:my-1">
 
 <b>סגירה</b>: מפעילים את מעברי ה־release:
 $P_1:\ c_1 \xrightarrow{b_1:=F} n_1 \hspace{1cm} P_2:\ c_2 \xrightarrow{b_2:=F} n_2 \hspace{1cm}$
@@ -1101,7 +1101,7 @@ $P_1:\ c_1 \xrightarrow{b_1:=F} n_1 \hspace{1cm} P_2:\ c_2 \xrightarrow{b_2:=F} 
 </div>
 </div>
 
-<div class="flex justify-center scale-[0.73] origin-top -mt-1 -mb-24">
+<div class="flex justify-center scale-[0.73] origin-top -mt-3 -mb-24">
 <TransitionSystemD3  
   :width="1000" :height="400"
   :states="[
