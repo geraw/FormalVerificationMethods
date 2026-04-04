@@ -974,7 +974,7 @@ $PG_1$
         { id: 'c1', text: '$c_1$', x: 100, y: 210-30, width: 80, rx:8, color: '#e3f2fd' }
       ]"
       :transitions="[
-        { source: 'n1', target: 'w1', action: '$b_1, x:=2$', actionX: 60, actionWidth: 120 },
+        { source: 'n1', target: 'w1', action: '$b_1 := T; x:=2$', actionX: 60, actionWidth: 120 },
         { source: 'w1', target: 'c1', action: '$x=1 \\lor \\neg b_2$', actionX: 60, actionWidth: 120 },
         { source: 'c1', target: 'n1', action: '$b_1:=F$', type: 'curved', curve: -0.7, actionX: -40 }
       ]"
@@ -993,7 +993,7 @@ $PG_2$
         { id: 'c2', text: '$c_2$', x: 100, y: 210-30, width: 80, rx:8, color: '#f3e5f5' }
       ]"
       :transitions="[
-        { source: 'n2', target: 'w2', action: '$b_2, x:=1$', actionX: 60, actionWidth: 120 },
+        { source: 'n2', target: 'w2', action: '$b_2 := T; x:=1$', actionX: 60, actionWidth: 120 },
         { source: 'w2', target: 'c2', action: '$x=2 \\lor \\neg b_1$', actionX: 60, actionWidth: 120 },
         { source: 'c2', target: 'n2', action: '$b_2:=F$', type: 'curved', curve: -0.7, actionX: -40 }
       ]"
@@ -1002,6 +1002,41 @@ $PG_2$
 </div>
 
 </div>
+</div>
+
+---
+
+# שלבים בבניית $TS_{pet}$
+
+$$
+PG_1, PG_2 \;\Longrightarrow\; PG_1 \,|||\, PG_2 \;\Longrightarrow\; TS(PG_1 \,|||\, PG_2) \;\Longrightarrow\; TS_{pet}
+$$
+
+<div class="text-sm my-2">
+
+1. **בונים את $PG_1$ ו-$PG_2$**:
+   - פעולת `request` היא אטומית ומעדכנת גם את $b_i$ וגם את $x$.
+   - פעולת `release` מאפסת את $b_i$.
+
+2. **משזרים את גרפי התוכנית**:
+   - מקבלים את $PG_1 \,|||\, PG_2$ מעל המשתנים המשותפים $b_1, b_2, x$.
+   - המיקום הגלובלי הוא זוג מהצורה $\langle \ell_1, \ell_2 \rangle$.
+
+3. **בונים את מערכת המעברים הגלובלית**:
+   - מצב גלובלי הוא $\langle \ell_1, \ell_2, \eta \rangle$.
+   - מתחילים משני מצבים התחלתיים:
+     $\langle n_1, n_2, b_1=F, b_2=F, x=1 \rangle$ ו-$\langle n_1, n_2, b_1=F, b_2=F, x=2 \rangle$.
+   - מוסיפים רק מעברים שעבורם ה-guard מתקיים, ומעדכנים את $\eta$ לפי הפעולה שנבחרה.
+
+4. **מצמצמים לתצוגה של $TS_{pet}$**:
+   - שומרים רק את החלק הנגיש של המערכת.
+   - בתרשים אפשר להשמיט את $b_1, b_2$, כי הם נקבעים לפי המיקום:
+     $n_i \Rightarrow b_i = F$ ואילו $w_i, c_i \Rightarrow b_i = T$.
+
+</div>
+
+<div class="mt-4 p-3 bg-blue-50 border-r-4 border-blue-500 text-blue-900 rounded text-sm">
+השקף הבא מציג בדיוק את החלק הנגיש הזה, לאחר ההשמטה של הדגלים שניתנים לשחזור מן המיקומים.
 </div>
 
 ---
