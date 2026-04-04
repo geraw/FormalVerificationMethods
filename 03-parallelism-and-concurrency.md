@@ -369,7 +369,7 @@ $$
 
 # מגבלות השזירה הפשוטה ($|||$)
 
-אופרטור השזירה ($|||$) מתאים למצבים בהם תתי-התהליכים פועלים באופן **בלתי-תלוי לחלוטין**, ללא העברת הודעות או מאבקים על משתנים משותפים.
+אופרטור השזירה ($|||$) מתאים למצבים בהם תת-התהליכים פועלים באופן **בלתי-תלוי לחלוטין**, ללא העברת הודעות או מאבקים על משתנים משותפים.
 
 אך עבור רוב המערכות המקביליות, האופרטור הזה הוא "פשוט מדי". 
 
@@ -434,7 +434,7 @@ $$\alpha \equiv x := 2x \hspace{1cm} \beta \equiv x := x+1$$
 
 # שזירה של גרפי תוכנית (Interleaving of PGs)
 
-כדי לטפל בתוכניות מקביליות עם **משתנים משותפים**, נגדיר אופרטור שזירה ברמת גרפי התוכנית (במקום ישירות על מערכות מעברים).
+כדי לטפל בתוכניות מקביליות עם **משתנים משותפים**, נגדיר אופרטור שזירה ברמת גרפי התוכנית <br> (במקום ישירות על מערכות מעברים).
 
 - השזירה של גרפי תוכנית $PG_1$ ו-$PG_2$ מסומנת ב-$PG_1 \,|||\, PG_2$.
 
@@ -452,6 +452,7 @@ $$\alpha \equiv x := 2x \hspace{1cm} \beta \equiv x := x+1$$
 # הגדרה פורמלית: שזירה של גרפי תוכנית
 
 יהיו $PG_i = (Loc_i, Act_i, Effect_i, \rightarrow_i, Loc_{0,i}, g_{0,i})$ עבור $i=1, 2$ שני גרפי תוכנית מעל משתנים $Var_i$. 
+
 גרף התוכנית $PG_1 \,|||\, PG_2$ מעל $Var_1 \cup Var_2$ מוגדר ע"י:
 
 $$PG_1 \,|||\, PG_2 = (Loc_1 \times Loc_2, Act_1 \uplus Act_2, Effect, \rightarrow, Loc_{0,1} \times Loc_{0,2}, g_{0,1} \land g_{0,2})$$
@@ -461,8 +462,66 @@ $$PG_1 \,|||\, PG_2 = (Loc_1 \times Loc_2, Act_1 \uplus Act_2, Effect, \rightarr
 $$
 \frac{ \ell_1 \xrightarrow{g:\alpha}_1 \ell'_1 }{ \langle \ell_1, \ell_2 \rangle \xrightarrow{g:\alpha} \langle \ell'_1, \ell_2 \rangle } \quad \text{and} \quad \frac{ \ell_2 \xrightarrow{g:\alpha}_2 \ell'_2 }{ \langle \ell_1, \ell_2 \rangle \xrightarrow{g:\alpha} \langle \ell_1, \ell'_2 \rangle }
 $$
-
+ 
 ו-$Effect(\alpha, \eta) = Effect_i(\alpha, \eta)$ אם $\alpha \in Act_i$.
+
+<!-- גרפים ממחישים במיקום אבסולוטי (הזז באופן חופשי) -->
+
+<div class="absolute bottom-10 left-10 scale-[0.7] origin-bottom-left group">
+<h4 class="font-bold text-slate-500 mb-10 mr-13 text-center">
+
+$PG_1$
+</h4>
+<TransitionSystemD3  
+  :width="150" :height="120"
+  :states="[
+    { id: 'l1', text: '$\\ell_1$', initial: true, initialDirection: 'top', x: 75, y: 20, width: 40, rx: 10 },
+    { id: 'l1p', text: '$\\ell_1\'$', x: 75, y: 120, width: 40, rx: 10 }
+  ]"
+  :transitions="[
+    { source: 'l1', target: 'l1p', action: '$g_1 : \\alpha$' }
+  ]"
+/>
+</div>
+
+<div class="absolute bottom-10 left-40 scale-[0.7] origin-bottom-left group" title="ניתן להזיז (לשנות bottom/left)">
+<h4 class="font-bold text-slate-500 mb-10 mr-13 text-center">
+
+$PG_2$
+</h4>
+<TransitionSystemD3  
+  :width="150" :height="120"
+  :states="[
+    { id: 'l2', text: '$\\ell_2$', initial: true, initialDirection: 'top', x: 75, y: 20, width: 40, rx: 10 },
+    { id: 'l2p', text: '$\\ell_2\'$', x: 75, y: 120, width: 40, rx: 10 }
+  ]"
+  :transitions="[
+    { source: 'l2', target: 'l2p', action: '$g_2 : \\beta$' }
+  ]"
+/>
+</div>
+
+<div class="absolute -bottom-13 left-60 scale-[0.6] group" title="ניתן להזיז (לשנות top/right)">
+<h4 class="font-bold text-slate-500 mb-10 mr-23 text-center w-max whitespace-nowrap">
+
+$PG_1 \,|||\, PG_2$
+</h4>
+<TransitionSystemD3  
+  :width="300" :height="220"
+  :states="[
+    { id: 's0', text: '$\\ell_1, \\ell_2$', initial: true, initialDirection: 'top', x: 150, y: 20, width: 60, rx: 5 },
+    { id: 's1', text: '$\\ell_1\', \\ell_2$', x: 50, y: 100, width: 60, rx: 5 },
+    { id: 's2', text: '$\\ell_1, \\ell_2\'$', x: 250, y: 100, width: 60, rx: 5 },
+    { id: 's3', text: '$\\ell_1\', \\ell_2\'$', x: 150, y: 180, width: 60, rx: 5 }
+  ]"
+  :transitions="[
+    { source: 's0', target: 's1', action: '$g_1 : \\alpha$', actionX: -25, actionY: -5 },
+    { source: 's0', target: 's2', action: '$g_2 : \\beta$', actionX: 25, actionY: -5 },
+    { source: 's1', target: 's3', action: '$g_2 : \\beta$', actionX: -25, actionY: -5 },
+    { source: 's2', target: 's3', action: '$g_1 : \\alpha$', actionX: 25, actionY: -5 }
+  ]"
+/>
+</div>
 
 ---
 
