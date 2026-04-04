@@ -1051,34 +1051,111 @@ $PG_2$
 - המיקום $\langle c_1, c_2 \rangle$ קיים בגרף התוכנית השזור, אבל רק בשלב הבא נבדוק אם הוא באמת יוצר מצב גלובלי נגיש.
 
 ---
+clicks: 4
+---
 
-# שלב 2: תוצר בניית המצבים הגלובליים
+# שלב 2: פריסת מערכת המעברים
 
-כעת מוסיפים את ערך $x$ לכל זוג מיקומים. את $b_1, b_2$ אפשר לשחזר מן המיקום:
-$n_i \Rightarrow b_i = F$ ואילו $w_i, c_i \Rightarrow b_i = T$.
+<!-- מוסיפים לכל זוג מיקומים את $x$; את $b_1, b_2$ משחזרים מן המיקום:
+$n_i \Rightarrow F$, ואילו $w_i, c_i \Rightarrow T$. -->
 
-### מצבים עם $x=2$
-- $\langle n_1, n_2, x=2 \rangle$
-- $\langle w_1, n_2, x=2 \rangle$
-- $\langle c_1, n_2, x=2 \rangle$
-- $\langle w_1, w_2, x=2 \rangle$
-- $\langle w_1, c_2, x=2 \rangle$
+<div class="min-h-[96px] mt-1">
+<div v-if="$clicks === 0" class="text-[12px] bg-sky-50 p-2 rounded border border-sky-200">
 
-### מצבים עם $x=1$
-- $\langle n_1, n_2, x=1 \rangle$
-- $\langle n_1, w_2, x=1 \rangle$
-- $\langle n_1, c_2, x=1 \rangle$
-- $\langle w_1, w_2, x=1 \rangle$
-- $\langle c_1, w_2, x=1 \rangle$
+<b>עומק 0</b>: מתחילים משני המצבים ההתחלתיים.
+</div>
+<div v-if="$clicks === 1" class="text-[12px] bg-emerald-50 p-2 rounded border border-emerald-200">
 
-- סה"כ מתקבלים **10 מצבים נגישים**.
-- צירופים כמו $\langle c_1, c_2, x \rangle$ אינם מתקבלים כלל.
+<b>עומק 1</b>: מפעילים את מעברי ה־request בגרפי התוכנית:
+$\hspace{1cm}P_1:\ n_1 \xrightarrow{b_1 := T;\ x:=2} w_1\hspace{1cm}$ וגם $\hspace{1cm}P_2:\ n_2 \xrightarrow{b_2 := T;\ x:=1} w_2\hspace{1cm}$
+</div>
+<div v-if="$clicks === 2" class="text-[12px] bg-amber-50 p-2 rounded border border-amber-200">
+
+<b>עומק 2</b>: מן החזית מפעילים את מעברי ההמתנה והבקשה:
+
+$$P_1:\ w_1 \xrightarrow{x=1 \lor \neg b_2} c_1
+\qquad
+n_1 \xrightarrow{b_1 := T;\ x:=2} w_1$$
+
+$$P_2:\ n_2 \xrightarrow{b_2 := T;\ x:=1} w_2
+\qquad
+w_2 \xrightarrow{x=2 \lor \neg b_1} c_2$$
+</div>
+<div v-if="$clicks === 3" class="text-[12px] bg-rose-50 p-2 rounded border border-rose-200">
+
+<b>עומק 3</b>: שוב נחשפים אותם מעברים על החזית החדשה:
+$$\hspace{1cm}P_1:\ w_1 \xrightarrow{x=1 \lor \neg b_2} c_1
+\qquad
+n_1 \xrightarrow{b_1 := T;\ x:=2} w_1$$
+
+$$\hspace{1cm}P_2:\ n_2 \xrightarrow{b_2 := T;\ x:=1} w_2
+\qquad
+w_2 \xrightarrow{x=2 \lor \neg b_1} c_2$$
+</div>
+<div v-if="$clicks >= 4" class="text-[12px] bg-slate-50 p-2 rounded border border-slate-200">
+
+<b>סגירה</b>: מפעילים את מעברי ה־release:
+$P_1:\ c_1 \xrightarrow{b_1:=F} n_1 \hspace{1cm} P_2:\ c_2 \xrightarrow{b_2:=F} n_2 \hspace{1cm}$
+
+לא מתקבלים מצבים חדשים, ולכן אלה כל 10 המצבים הנגישים.
+</div>
+</div>
+
+<div class="flex justify-center scale-[0.73] origin-top -mt-1 -mb-24">
+<TransitionSystemD3  
+  :width="1000" :height="400"
+  :states="[
+    { id: 'nn2', text: '$\\langle n_1, n_2, x=2 \\rangle$', initial: true, initialDirection: 'top', x: 350, y: 50, width: 140, rx:8, color: '#dbeafe' },
+    { id: 'nn1', text: '$\\langle n_1, n_2, x=1 \\rangle$', initial: true, initialDirection: 'top', x: 650, y: 50, width: 140, rx:8, color: '#dbeafe' },
+    ...($clicks >= 1 ? [
+      { id: 'wn2', text: '$\\langle w_1, n_2, x=2 \\rangle$', x: 350, y: 150, width: 140, rx:8, color: '#dcfce7' },
+      { id: 'nw1', text: '$\\langle n_1, w_2, x=1 \\rangle$', x: 650, y: 150, width: 140, rx:8, color: '#dcfce7' }
+    ] : []),
+    ...($clicks >= 2 ? [
+      { id: 'cn2', text: '$\\langle c_1, n_2, x=2 \\rangle$', x: 150, y: 150, width: 140, rx:8, color: '#fef3c7' },
+      { id: 'nc1', text: '$\\langle n_1, c_2, x=1 \\rangle$', x: 850, y: 150, width: 140, rx:8, color: '#fef3c7' },
+      { id: 'ww1', text: '$\\langle w_1, w_2, x=1 \\rangle$', x: 350, y: 250, width: 140, rx:8, color: '#fef3c7' },
+      { id: 'ww2', text: '$\\langle w_1, w_2, x=2 \\rangle$', x: 650, y: 250, width: 140, rx:8, color: '#fef3c7' }
+    ] : []),
+    ...($clicks >= 3 ? [
+      { id: 'cw1', text: '$\\langle c_1, w_2, x=1 \\rangle$', x: 350, y: 350, width: 140, rx:8, color: '#fee2e2' },
+      { id: 'wc2', text: '$\\langle w_1, c_2, x=2 \\rangle$', x: 650, y: 350, width: 140, rx:8, color: '#fee2e2' }
+    ] : [])
+  ]"
+  :transitions="[
+    ...($clicks >= 1 ? [
+      { source: 'nn2', target: 'wn2', stroke: '#10b981', strokeWidth: 3 },
+      { source: 'nn2', target: 'nw1', stroke: '#10b981', strokeWidth: 3 },
+      { source: 'nn1', target: 'wn2', stroke: '#10b981', strokeWidth: 3 },
+      { source: 'nn1', target: 'nw1', stroke: '#10b981', strokeWidth: 3 }
+    ] : []),
+    ...($clicks >= 2 ? [
+      { source: 'wn2', target: 'ww1', stroke: '#f59e0b', strokeWidth: 3 },
+      { source: 'wn2', target: 'cn2', stroke: '#f59e0b', strokeWidth: 3 },
+      { source: 'nw1', target: 'ww2', stroke: '#f59e0b', strokeWidth: 3 },
+      { source: 'nw1', target: 'nc1', stroke: '#f59e0b', strokeWidth: 3 }
+    ] : []),
+    ...($clicks >= 3 ? [
+      { source: 'cn2', target: 'cw1', stroke: '#ef4444', strokeWidth: 3, type: 'curved', curve: 0.3 },
+      { source: 'ww1', target: 'cw1', stroke: '#ef4444', strokeWidth: 3 },
+      { source: 'ww2', target: 'wc2', stroke: '#ef4444', strokeWidth: 3 },
+      { source: 'nc1', target: 'wc2', stroke: '#ef4444', strokeWidth: 3, type: 'curved', curve: -0.3 }
+    ] : []),
+    ...($clicks >= 4 ? [
+      { source: 'cn2', target: 'nn2', stroke: '#64748b', strokeWidth: 2, type: 'curved', curve: -0.3 },
+      { source: 'nc1', target: 'nn1', stroke: '#64748b', strokeWidth: 2, type: 'curved', curve: 0.3 },
+      { source: 'cw1', target: 'nw1', stroke: '#64748b', strokeWidth: 2 },
+      { source: 'wc2', target: 'wn2', stroke: '#64748b', strokeWidth: 2 }
+    ] : [])
+  ]"
+/>
+</div>
 
 ---
 
-# שלב 3: מערכת המעברים של אלגוריתם פטרסון ($TS_{pet}$)
+# שלב 3: בדיקה שאין מצבים נגישים בעייתיים
 
-מחברים כעת בין 10 המצבים שקיבלנו לפי המעברים המותרים, ומקבלים את $TS_{pet}$.
+מסתכלים כעת על $TS_{pet}$ שהתקבל ובודקים שאין בו מצבים נגישים בעייתיים, ובפרט שאין מצב שבו שני התהליכים נמצאים יחד בקטע הקריטי.
 
 <div class="flex justify-center scale-[0.75] origin-top -mb-30 -mt-5">
 <TransitionSystemD3  
