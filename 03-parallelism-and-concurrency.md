@@ -1006,44 +1006,79 @@ $PG_2$
 
 ---
 
-# שלבים בבניית $TS_{pet}$
+# שלב 1: תוצר השזירה $PG_1 \,|||\, PG_2$
 
-$$
-PG_1, PG_2 \;\Longrightarrow\; PG_1 \,|||\, PG_2 \;\Longrightarrow\; TS(PG_1 \,|||\, PG_2) \;\Longrightarrow\; TS_{pet}
-$$
+בשלב הזה שוזרים את $PG_1$ ו-$PG_2$: המצבים הם זוגות מיקומים, וכל קשת יורשת את השומר או הפעולה מן הגרף המתאים. עדיין אין כאן השמה לערכי המשתנים.
 
-<div class="text-sm my-2">
-
-1. **בונים את $PG_1$ ו-$PG_2$**:
-   - פעולת `request` היא אטומית ומעדכנת גם את $b_i$ וגם את $x$.
-   - פעולת `release` מאפסת את $b_i$.
-
-2. **משזרים את גרפי התוכנית**:
-   - מקבלים את $PG_1 \,|||\, PG_2$ מעל המשתנים המשותפים $b_1, b_2, x$.
-   - המיקום הגלובלי הוא זוג מהצורה $\langle \ell_1, \ell_2 \rangle$.
-
-3. **בונים את מערכת המעברים הגלובלית**:
-   - מצב גלובלי הוא $\langle \ell_1, \ell_2, \eta \rangle$.
-   - מתחילים משני מצבים התחלתיים:
-     $\langle n_1, n_2, b_1=F, b_2=F, x=1 \rangle$ ו-$\langle n_1, n_2, b_1=F, b_2=F, x=2 \rangle$.
-   - מוסיפים רק מעברים שעבורם ה-guard מתקיים, ומעדכנים את $\eta$ לפי הפעולה שנבחרה.
-
-4. **מצמצמים לתצוגה של $TS_{pet}$**:
-   - שומרים רק את החלק הנגיש של המערכת.
-   - בתרשים אפשר להשמיט את $b_1, b_2$, כי הם נקבעים לפי המיקום:
-     $n_i \Rightarrow b_i = F$ ואילו $w_i, c_i \Rightarrow b_i = T$.
-
+<div class="flex justify-center scale-[0.70] origin-top -mt-4 -mb-8">
+<TransitionSystemD3  
+  :width="900" :height="620"
+  :states="[
+    { id: 'nn', text: '$\\langle n_1, n_2 \\rangle$', initial: true, initialDirection: 'top', x: 140, y: 70, width: 120, rx:8, color: '#fffde7' },
+    { id: 'nw', text: '$\\langle n_1, w_2 \\rangle$', x: 450, y: 70, width: 120, rx:8, color: '#fffde7' },
+    { id: 'nc', text: '$\\langle n_1, c_2 \\rangle$', x: 760, y: 70, width: 120, rx:8, color: '#fffde7' },
+    { id: 'wn', text: '$\\langle w_1, n_2 \\rangle$', x: 140, y: 260, width: 120, rx:8, color: '#fffde7' },
+    { id: 'ww', text: '$\\langle w_1, w_2 \\rangle$', x: 450, y: 260, width: 120, rx:8, color: '#fffde7' },
+    { id: 'wc', text: '$\\langle w_1, c_2 \\rangle$', x: 760, y: 260, width: 120, rx:8, color: '#fffde7' },
+    { id: 'cn', text: '$\\langle c_1, n_2 \\rangle$', x: 140, y: 450, width: 120, rx:8, color: '#fffde7' },
+    { id: 'cw', text: '$\\langle c_1, w_2 \\rangle$', x: 450, y: 450, width: 120, rx:8, color: '#fffde7' },
+    { id: 'cc', text: '$\\langle c_1, c_2 \\rangle$', x: 760, y: 450, width: 120, rx:8, color: '#fee2e2' }
+  ]"
+  :transitions="[
+    { source: 'nn', target: 'wn', action: '$b_1 := T; x:=2$', stroke: '#2563eb', actionFontSize: 12, actionWidth: 120, actionHeight: 24, actionX: 0 },
+    { source: 'wn', target: 'cn', action: '$x=1 \\lor \\neg b_2$', stroke: '#2563eb', actionFontSize: 12, actionWidth: 120, actionHeight: 24, actionX: 0 },
+    { source: 'cn', target: 'nn', action: '$b_1:=F$', stroke: '#2563eb', actionFontSize: 12, actionWidth: 70, actionHeight: 24, type: 'curved', curve: -0.55, actionX: 0 },
+    { source: 'nw', target: 'ww', action: '$b_1 := T; x:=2$', stroke: '#2563eb', actionFontSize: 12, actionWidth: 120, actionHeight: 24, actionX: 0 },
+    { source: 'ww', target: 'cw', action: '$x=1 \\lor \\neg b_2$', stroke: '#2563eb', actionFontSize: 12, actionWidth: 120, actionHeight: 24, actionX: 0 },
+    { source: 'cw', target: 'nw', action: '$b_1:=F$', stroke: '#2563eb', actionFontSize: 12, actionWidth: 70, actionHeight: 24, type: 'curved', curve: -0.45, actionX: 0, actionY: 70 },
+    { source: 'nc', target: 'wc', action: '$b_1 := T; x:=2$', stroke: '#2563eb', actionFontSize: 12, actionWidth: 120, actionHeight: 24, actionX: 0 },
+    { source: 'wc', target: 'cc', action: '$x=1 \\lor \\neg b_2$', stroke: '#2563eb', actionFontSize: 12, actionWidth: 120, actionHeight: 24, actionX: 0 },
+    { source: 'cc', target: 'nc', action: '$b_1:=F$', stroke: '#2563eb', actionFontSize: 12, actionWidth: 70, actionHeight: 24, type: 'curved', curve: 0.55, actionX: 0 },
+    { source: 'nn', target: 'nw', action: '$b_2 := T; x:=1$', stroke: '#7c3aed', actionFontSize: 12, actionWidth: 120, actionHeight: 24, actionY: 0 },
+    { source: 'nw', target: 'nc', action: '$x=2 \\lor \\neg b_1$', stroke: '#7c3aed', actionFontSize: 12, actionWidth: 120, actionHeight: 24, actionY: 0 },
+    { source: 'nc', target: 'nn', action: '$b_2:=F$', stroke: '#7c3aed', actionFontSize: 12, actionWidth: 70, actionHeight: 24, type: 'curved', curve: 0.15, actionY: -10 },
+    { source: 'wn', target: 'ww', action: '$b_2 := T; x:=1$', stroke: '#7c3aed', actionFontSize: 12, actionWidth: 120, actionHeight: 24, actionY: 0 },
+    { source: 'ww', target: 'wc', action: '$x=2 \\lor \\neg b_1$', stroke: '#7c3aed', actionFontSize: 12, actionWidth: 120, actionHeight: 24, actionY: 0 },
+    { source: 'wc', target: 'wn', action: '$b_2:=F$', stroke: '#7c3aed', actionFontSize: 12, actionWidth: 70, actionHeight: 24, type: 'curved', curve: -0.35, actionY: -5, actionX: 100 },
+    { source: 'cn', target: 'cw', action: '$b_2 := T; x:=1$', stroke: '#7c3aed', actionFontSize: 12, actionWidth: 120, actionHeight: 24, actionY: 0 },
+    { source: 'cw', target: 'cc', action: '$x=2 \\lor \\neg b_1$', stroke: '#7c3aed', actionFontSize: 12, actionWidth: 120, actionHeight: 24, actionY: 0 },
+    { source: 'cc', target: 'cn', action: '$b_2:=F$', stroke: '#7c3aed', actionFontSize: 12, actionWidth: 70, actionHeight: 24, type: 'curved', curve: -0.15, actionY: 7 }
+  ]"
+/>
 </div>
 
-<div class="mt-4 p-3 bg-blue-50 border-r-4 border-blue-500 text-blue-900 rounded text-sm">
-השקף הבא מציג בדיוק את החלק הנגיש הזה, לאחר ההשמטה של הדגלים שניתנים לשחזור מן המיקומים.
-</div>
+- קשת כחולה ואנכית מתאימה לצעד של $P_1$, וקשת סגולה ואופקית מתאימה לצעד של $P_2$.
+- המיקום $\langle c_1, c_2 \rangle$ קיים בגרף התוכנית השזור, אבל רק בשלב הבא נבדוק אם הוא באמת יוצר מצב גלובלי נגיש.
 
 ---
 
-# מערכת המעברים של אלגוריתם פטרסון ($TS_{pet}$)
+# שלב 2: תוצר בניית המצבים הגלובליים
 
-החלק הנגיש של מערכת המעברים $TS(PG_1 \,|||\, PG_2)$ חושף את המנגנון המונע כניסה סימולטנית.
+כעת מוסיפים את ערך $x$ לכל זוג מיקומים. את $b_1, b_2$ אפשר לשחזר מן המיקום:
+$n_i \Rightarrow b_i = F$ ואילו $w_i, c_i \Rightarrow b_i = T$.
+
+### מצבים עם $x=2$
+- $\langle n_1, n_2, x=2 \rangle$
+- $\langle w_1, n_2, x=2 \rangle$
+- $\langle c_1, n_2, x=2 \rangle$
+- $\langle w_1, w_2, x=2 \rangle$
+- $\langle w_1, c_2, x=2 \rangle$
+
+### מצבים עם $x=1$
+- $\langle n_1, n_2, x=1 \rangle$
+- $\langle n_1, w_2, x=1 \rangle$
+- $\langle n_1, c_2, x=1 \rangle$
+- $\langle w_1, w_2, x=1 \rangle$
+- $\langle c_1, w_2, x=1 \rangle$
+
+- סה"כ מתקבלים **10 מצבים נגישים**.
+- צירופים כמו $\langle c_1, c_2, x \rangle$ אינם מתקבלים כלל.
+
+---
+
+# שלב 3: מערכת המעברים של אלגוריתם פטרסון ($TS_{pet}$)
+
+מחברים כעת בין 10 המצבים שקיבלנו לפי המעברים המותרים, ומקבלים את $TS_{pet}$.
 
 <div class="flex justify-center scale-[0.75] origin-top -mb-30 -mt-5">
 <TransitionSystemD3  
