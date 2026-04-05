@@ -976,7 +976,7 @@ $$
 
 הכלל האחרון הוא בדיוק הסיבה לכך שלולאות אינן נחסמות: כאשר אין guard מאופשר, יוצאים מן הלולאה.
 
-דוגמה אופיינית: בפקודה `if :: y = 0 -> do :: x < 3 -> x := x + 1 od fi` מתקבל מעבר ראשון עם guard משולב `y = 0 ∧ x < 3`.
+דוגמה אופיינית: בפקודה `if :: y == 0 -> do :: x < 3 -> x := x + 1 od fi` מתקבל מעבר ראשון עם guard משולב `y == 0 ∧ x < 3`.
 
 ---
 clicks: 5
@@ -1004,48 +1004,34 @@ clicks: 7
 
 ---
 
+# הדגמה חיה: תרגום ננו-פרומלה לגרף תוכנית
 
-# Test-and-Set מול Two-Step
+<script setup>
+const liveNanoPromelaDoExample = `do
+:: x > 1 -> y := x + y
+:: y < x -> x := 0; y := x
+od`
+</script>
 
-בספר מודגשת הבחנה חשובה בין שתי סמנטיקות אפשריות עבור `if-fi` ו־`do-od`.
-
-בסמנטיקת `test-and-set`, שבה משתמשים בקורס:
-
-1. בודקים אילו guards מאופשרים.
-2. בוחרים אחד מהם.
-3. מבצעים את הצעד האטומי הראשון של הגוף.
-
-כל שלושת השלבים האלה קורים כיחידה אחת.
-
-ב־`SPIN`, לעומת זאת, מקובל לדבר על `two-step semantics`, שבה הבחירה בענף וביצוע הפעולה הראשונה מופרדים. כאשר מריצים כמה תהליכים במקביל, ההפרדה הזאת עלולה לאפשר שזירות שלא קיימות אצלנו.
+<NanoPromelaProgramGraphRunner
+  src="/nanopromela_pg_lib.py"
+  :initial-code="liveNanoPromelaDoExample"
+/>
 
 ---
 
+# הדגמה חיה: תרגום ננו-פרומלה לגרף תוכנית
 
-# Promela מול nanoPromela
+<script setup>
+const liveNanoPromelaNestedExample = `if
+:: y == 0 -> do
+             :: x < 3 -> x := x + 1
+           od
+:: true  -> skip
+fi`
+</script>
 
-`nanoPromela` היא גרסה נקייה ופשוטה של הרעיונות המרכזיים ב־`Promela`, אבל `Promela` המלאה מכילה עוד יכולות רבות:
-
-- `else` כ־guard מיוחד.
-- `break` ליציאה מלולאות.
-- אזורים אטומיים כלליים יותר, לא רק רצף של השמות.
-- מערכים, טיפוסים נוספים ויצירה דינמית של תהליכים.
-
-דוגמה אופיינית:
-
-```text {lineNumbers: false}
-Promela:
-do
-:: atomic{x > 1 -> y := x + y}
-:: atomic{y < x -> x := 0}; y := x
-:: atomic{else -> break}
-od
-
-nanoPromela:
-do
-:: x > 1 -> y := x + y
-:: y < x -> x := 0; y := x
-od
-```
-
-ב־`nanoPromela` אין `else` ואין `break`: היציאה מן הלולאה מתרחשת בדיוק כאשר אין אף guard מאופשר.
+<NanoPromelaProgramGraphRunner
+  src="/nanopromela_pg_lib.py"
+  :initial-code="liveNanoPromelaNestedExample"
+/>

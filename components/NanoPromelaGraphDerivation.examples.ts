@@ -506,7 +506,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
   'nested-if-do': {
     program: [
       'if',
-      ':: y = 0 -> do',
+      ':: y == 0 -> do',
       '             :: x < 3 -> x := x + 1',
       '           od',
       ':: true  -> skip',
@@ -523,7 +523,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
       {
         id: 'nested-l0',
         shortLabel: 'l_0',
-        locationText: 'if :: y = 0 -> do :: x < 3 -> x := x + 1 od :: true -> skip fi',
+        locationText: 'if :: y == 0 -> do :: x < 3 -> x := x + 1 od :: true -> skip fi',
         reachableFromStart: true,
         x: 270,
         y: 58,
@@ -628,8 +628,8 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         id: 'nested-e6',
         source: 'nested-l0',
         target: 'nested-l1',
-        graphLabel: '$x < 3 \\land y = 0 : \\\\ \\quad x := x + 1$',
-        previewLabel: '-- x < 3 && y = 0 : x := x + 1 -->',
+        graphLabel: '$x < 3 \\land y == 0 : \\\\ \\quad x := x + 1$',
+        previewLabel: '-- x < 3 && y == 0 : x := x + 1 -->',
         actionWidth: 208,
         actionX: 8,
         actionY: -10,
@@ -638,8 +638,8 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         id: 'nested-e7',
         source: 'nested-l0',
         target: 'nested-exit',
-        graphLabel: '$\\neg(x < 3) \\land y = 0 : skip$',
-        previewLabel: '-- !(x < 3) && y = 0 : skip -->',
+        graphLabel: '$\\neg(x < 3) \\land y == 0 : skip$',
+        previewLabel: '-- !(x < 3) && y == 0 : skip -->',
         actionWidth: 204,
         curve: 0.24,
         actionX: -10,
@@ -733,7 +733,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         edgeId: 'nested-e6',
         source: 'nested-l0',
         target: 'nested-l1',
-        note: 'על הענף הראשון של if מחברים את guard y = 0 אל המעבר החוזר של do.',
+        note: 'על הענף הראשון של if מחברים את guard y == 0 אל המעבר החוזר של do.',
         ruleTitle: 'כלל if',
         ruleLines: [
           'אם stmt_i -- h : alpha --> stmt_i\'',
@@ -742,7 +742,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         ruleLatex: IF_RULE_LATEX,
         instanceLines: [
           'l_1 -- x < 3 : x := x + 1 --> l_1',
-          'l_0 -- x < 3 && y = 0 : x := x + 1 --> l_1',
+          'l_0 -- x < 3 && y == 0 : x := x + 1 --> l_1',
         ],
       },
       {
@@ -759,7 +759,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         ruleLatex: IF_RULE_LATEX,
         instanceLines: [
           'l_1 -- !(x < 3) : skip --> exit',
-          'l_0 -- !(x < 3) && y = 0 : skip --> exit',
+          'l_0 -- !(x < 3) && y == 0 : skip --> exit',
         ],
       },
     ],

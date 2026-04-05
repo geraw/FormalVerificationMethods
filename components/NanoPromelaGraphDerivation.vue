@@ -138,6 +138,7 @@ const props = defineProps<{
 }>()
 
 const GRAPH_SCALE = 0.82
+const DERIVATION_EDGE_LABEL_X_SHIFT = 24
 
 const { $clicks } = useSlideContext()
 
@@ -252,7 +253,7 @@ const graphTransitions = computed<DiagramTransition[]>(() =>
       actionFontSize: 10,
       actionWidth: scaleSize(edge.actionWidth),
       actionHeight: scaleSize(edge.actionHeight),
-      actionX: scaleSize(edge.actionX),
+      actionX: scaleSize((edge.actionX ?? 0) + DERIVATION_EDGE_LABEL_X_SHIFT),
       actionY: scaleSize(edge.actionY),
       loopDirection: edge.loopDirection,
       loopRadius: scaleSize(edge.loopRadius),
