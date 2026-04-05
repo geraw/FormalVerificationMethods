@@ -65,9 +65,6 @@
             The program graph will appear here after running the translation.
           </div>
         </div>
-        <div v-if="diagramData" class="diagram-help-text">
-          Zoom with the mouse wheel or trackpad pinch, and drag the background to pan.
-        </div>
       </div>
     </div>
   </div>
@@ -515,9 +512,4 @@ onMounted(() => {
   text-align: center;
 }
 
-.diagram-help-text {
-  margin-top: 8px;
-  font-size: 12px;
-  color: #475569;
-}
 </style>
