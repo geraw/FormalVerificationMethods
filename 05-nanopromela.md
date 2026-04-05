@@ -980,6 +980,30 @@ $$
 
 ---
 
+# דוגמה מונחית: גזירת מעברי PG עבור `if`
+
+<NanoPromelaGraphDerivation example="if-basic" />
+
+---
+clicks: 5
+---
+
+# דוגמה מונחית: גזירת מעברי PG עבור `do`
+
+<NanoPromelaGraphDerivation example="do-basic" />
+
+---
+clicks: 6
+---
+
+# דוגמה מונחית: גזירת מעברי PG עבור קינון
+
+<NanoPromelaGraphDerivation example="nested-if-do" />
+
+---
+clicks: 7
+---
+
 
 # Test-and-Set מול Two-Step
 
