@@ -10,7 +10,7 @@
         <svg
           class="tree-edges"
           :viewBox="`0 0 ${currentExample.width} ${currentExample.height}`"
-          preserveAspectRatio="xMidYMid meet"
+          preserveAspectRatio="none"
         >
           <line
             v-for="edge in currentExample.edges"
@@ -256,7 +256,7 @@ const examples: Record<ExampleKey, Example> = {
       {
         id: 'if-yx',
         lines: ['y := x'],
-        x: 590,
+        x: 540,
         y: 258,
         width: 108,
         step: 3,
@@ -705,7 +705,7 @@ function edgeClass(targetId: string) {
   border: 2px solid #cbd5e1;
   background: rgba(255, 255, 255, 0.96);
   color: #0f172a;
-  padding: 6px 8px;
+  padding: 6px 8px 4px;
   min-height: 36px;
   box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
   text-align: center;
@@ -765,7 +765,7 @@ function edgeClass(targetId: string) {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 8.9px;
   line-height: 1.12;
-  white-space: nowrap;
+  white-space: pre;
 }
 
 .note-card {
@@ -801,7 +801,7 @@ function edgeClass(targetId: string) {
   font-size: 8.7px;
   line-height: 1.14;
   color: #0f172a;
-  white-space: pre-wrap;
+  white-space: pre;
   text-align: start;
 }
 </style>
