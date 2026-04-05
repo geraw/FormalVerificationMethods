@@ -295,6 +295,61 @@ const render = () => {
 
     const links = props.transitions.map(t => ({ ...t }));
 
+    function centeredCurveValues(count: number, step = 0.18) {
+        if (count <= 1) return [0];
+        const midpoint = (count - 1) / 2;
+        return Array.from({ length: count }, (_, index) => (index - midpoint) * step);
+    }
+
+    function sameSideCurveValues(count: number, start = 0.16, step = 0.14) {
+        return Array.from({ length: count }, (_, index) => start + index * step);
+    }
+
+    function pairKey(link: any) {
+        return [String(link.source), String(link.target)].sort().join("::");
+    }
+
+    function curveValue(link: any) {
+        return link.curve !== undefined ? link.curve : link.__autoCurve;
+    }
+
+    const pairGroups = new Map<string, any[]>();
+    links.forEach(link => {
+        if (link.source === link.target) return;
+        if (link.midPoints && link.midPoints.length > 0) return;
+
+        const key = pairKey(link);
+        if (!pairGroups.has(key)) pairGroups.set(key, []);
+        pairGroups.get(key)!.push(link);
+    });
+
+    pairGroups.forEach(group => {
+        if (group.length <= 1) return;
+        if (group.some(link => link.curve !== undefined)) return;
+
+        const directedGroups = new Map<string, any[]>();
+        group.forEach(link => {
+            const key = `${link.source}->${link.target}`;
+            if (!directedGroups.has(key)) directedGroups.set(key, []);
+            directedGroups.get(key)!.push(link);
+        });
+
+        if (directedGroups.size > 1) {
+            directedGroups.forEach(directedLinks => {
+                const autoCurves = sameSideCurveValues(directedLinks.length);
+                directedLinks.forEach((link, index) => {
+                    link.__autoCurve = autoCurves[index];
+                });
+            });
+            return;
+        }
+
+        const autoCurves = centeredCurveValues(group.length);
+        group.forEach((link, index) => {
+            link.__autoCurve = autoCurves[index];
+        });
+    });
+
     // Helper: Rectangle Intersection
     function getRectIntersection(dx: number, dy: number, w: number, h: number) {
        if (dx === 0 && dy === 0) return { x: 0, y: 0 };
@@ -547,7 +602,8 @@ const render = () => {
                 const startPt = { x: source.x! + sInt.x, y: source.y! + sInt.y };
                 const endPt = { x: target.x! + tInt.x, y: target.y! + tInt.y };
                 
-                if (d.curve) {
+                const currentCurve = curveValue(d);
+                if (currentCurve) {
                     if (d.midPoints.length === 1) {
                         return `M ${startPt.x},${startPt.y} Q ${firstMid.x},${firstMid.y} ${endPt.x},${endPt.y}`;
                     } else {
@@ -569,10 +625,11 @@ const render = () => {
             const dy = target.y! - source.y!;
             const dist = Math.sqrt(dx*dx + dy*dy);
             
-            if (d.curve) {
+            const currentCurve = curveValue(d);
+            if (currentCurve) {
                 const nx = -dy / dist;
                 const ny = dx / dist;
-                const curveOffset = dist * d.curve;
+                const curveOffset = dist * currentCurve;
                 const cx = (source.x! + target.x!) / 2 + nx * curveOffset;
                 const cy = (source.y! + target.y!) / 2 + ny * curveOffset;
                 
@@ -613,13 +670,14 @@ const render = () => {
                      return mid.x - w/2 + offsetX;
                  }
 
-                 if (d.curve) {
+                 const currentCurve = curveValue(d);
+                 if (currentCurve) {
                      const dx = t.x! - s.x!;
                      const dy = t.y! - s.y!;
                      const dist = Math.sqrt(dx*dx + dy*dy);
                      const nx = -dy / dist;
                      const ny = dx / dist;
-                     const curveOffset = dist * d.curve;
+                     const curveOffset = dist * currentCurve;
                      return (s.x! + t.x!) / 2 + nx * (curveOffset * 0.5) - w/2 + offsetX;
                  }
                  // Center on link
@@ -651,13 +709,14 @@ const render = () => {
                      return mid.y - h/2 + offsetY;
                  }
 
-                 if (d.curve) {
+                 const currentCurve = curveValue(d);
+                 if (currentCurve) {
                      const dx = t.x! - s.x!;
                      const dy = t.y! - s.y!;
                      const dist = Math.sqrt(dx*dx + dy*dy);
                      const nx = -dy / dist;
                      const ny = dx / dist;
-                     const curveOffset = dist * d.curve;
+                     const curveOffset = dist * currentCurve;
                      return (s.y! + t.y!) / 2 + ny * (curveOffset * 0.5) - h/2 + offsetY;
                  }
                  return (s.y! + t.y!) / 2 - h/2 + offsetY;

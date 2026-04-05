@@ -806,31 +806,6 @@ od
 ---
 
 
-# דוגמה: מכונת משקאות
-
-דוגמת מכונת המשקאות מהספר ומהשקפים מרכזת במקום אחד `do`, `if`, הרכבה סדרתית ואזור אטומי.
-
-```text {lineNumbers: false}
-do
-:: true ->
-     skip;
-     if
-     :: nsoda > 0 -> nsoda := nsoda - 1
-     :: nbeer > 0 -> nbeer := nbeer - 1
-     :: nsoda == 0 && nbeer == 0 -> skip
-     fi
-:: true ->
-     atomic { nbeer := max; nsoda := max }
-od
-```
-
-- במיקום ההתחלתי יש שתי אפשרויות מאופשרות: הכנסת מטבע או מילוי מחדש.
-- האפשרות הראשונה ממשיכה ל־`skip ; if ... fi`, ולכן נוצרת גם הרכבה סדרתית.
-- בתוך ה־`if-fi` יש שלוש בחירות אפשריות, ורק חלקן מאופשרות בכל מצב.
-- המילוי מחדש מתבצע כיחידה אחת באמצעות `atomic`.
-- עץ התחביר של הדוגמה מסביר אילו תת־פקודות קיימות, ואלו בדיוק ישמשו בהמשך כמקומות בגרף התוכנית.
-
----
 
 
 # מכאן להגדרות פורמליות
@@ -897,6 +872,23 @@ loop        -- !(x > 1) && !(y < x) : id         --> exit
 ```
 
 המעבר האחרון מייצג סיום תקין של הלולאה, ולא חסימה.
+
+---
+
+
+# הדגמה חיה: nanoPromela לגרף תוכנית
+
+<script setup>
+const liveNanoPromelaExample = `if
+:: x > 1 -> y := x + y
+:: true  -> x := 0; y := x
+fi`
+</script>
+
+<NanoPromelaProgramGraphRunner
+  src="/nanopromela_pg_lib.py"
+  :initial-code="liveNanoPromelaExample"
+/>
 
 ---
 
