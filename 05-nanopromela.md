@@ -846,7 +846,7 @@ fi`
 </script>
 
 <NanoPromelaProgramGraphRunner
-  src="/nanopromela_pg_lib.py"
+  src="nanopromela_pg_lib.py"
   :initial-code="liveNanoPromelaExample"
 />
 
@@ -1014,7 +1014,7 @@ od`
 </script>
 
 <NanoPromelaProgramGraphRunner
-  src="/nanopromela_pg_lib.py"
+  src="nanopromela_pg_lib.py"
   :initial-code="liveNanoPromelaDoExample"
 />
 
@@ -1032,6 +1032,6 @@ fi`
 </script>
 
 <NanoPromelaProgramGraphRunner
-  src="/nanopromela_pg_lib.py"
+  src="nanopromela_pg_lib.py"
   :initial-code="liveNanoPromelaNestedExample"
 />
