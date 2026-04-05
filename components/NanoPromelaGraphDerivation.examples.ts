@@ -36,7 +36,9 @@ export type PgStep = {
   note: string
   ruleTitle: string
   ruleLines: string[]
+  ruleLatex?: string
   instanceLines: string[]
+  instanceLatex?: string
 }
 
 export type PgExample = {
@@ -49,6 +51,20 @@ export type PgExample = {
   edges: PgEdge[]
   steps: PgStep[]
 }
+
+const ASSIGN_RULE_LATEX = String.raw`\frac{}{\texttt{x := expr} \xrightarrow{\mathrm{true} : \texttt{x := expr}} \texttt{exit}}`
+
+const SKIP_RULE_LATEX = String.raw`\frac{}{\texttt{skip} \xrightarrow{\mathrm{true} : \texttt{skip}} \texttt{exit}}`
+
+const SEQ_RULE_LATEX = String.raw`\frac{stmt_1 \xrightarrow{g : \alpha} \texttt{exit}}{stmt_1 ; stmt_2 \xrightarrow{g : \alpha} stmt_2}`
+
+const IF_RULE_LATEX = String.raw`\frac{stmt_i \xrightarrow{h : \alpha} stmt_i'}{\texttt{cond\_cmd} \xrightarrow{(g_i \land h) : \alpha} stmt_i'}`
+
+const DO_FINISH_RULE_LATEX = String.raw`\frac{stmt_i \xrightarrow{h : \alpha} \texttt{exit}}{\texttt{loop\_cmd} \xrightarrow{(g_i \land h) : \alpha} \texttt{loop\_cmd}}`
+
+const DO_CONTINUE_RULE_LATEX = String.raw`\frac{stmt_i \xrightarrow{h : \alpha} stmt_i' \quad stmt_i' \neq \texttt{exit}}{\texttt{loop\_cmd} \xrightarrow{(g_i \land h) : \alpha} stmt_i' ; \texttt{loop\_cmd}}`
+
+const DO_EXIT_RULE_LATEX = String.raw`\frac{}{\texttt{loop\_cmd} \xrightarrow{(\neg g_1 \land \cdots \land \neg g_n) : \texttt{skip}} \texttt{exit}}`
 
 export const pgExamples: Record<PgExampleKey, PgExample> = {
   'if-basic': {
@@ -82,8 +98,8 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         shortLabel: 'l_1',
         locationText: 'x := 0; y := x',
         reachableFromStart: true,
-        x: 448,
-        y: 162,
+        x: 504,
+        y: 122,
         width: 74,
       },
       {
@@ -91,8 +107,8 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         shortLabel: 'l_2',
         locationText: 'y := x',
         reachableFromStart: true,
-        x: 448,
-        y: 278,
+        x: 504,
+        y: 286,
         width: 74,
       },
       {
@@ -142,7 +158,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         graphLabel: '$true : x := 0$',
         previewLabel: '-- true : x := 0 -->',
         actionWidth: 120,
-        actionX: -48,
+        actionX: 8,
       },
       {
         id: 'if-e4',
@@ -151,7 +167,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         graphLabel: '$x > 1 : y := x + y$',
         previewLabel: '-- x > 1 : y := x + y -->',
         actionWidth: 166,
-        actionX: -84,
+        actionX: -32,
         actionY: -2,
       },
       {
@@ -175,6 +191,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         ruleLines: [
           'x := expr -- true : x := expr --> exit',
         ],
+        ruleLatex: ASSIGN_RULE_LATEX,
         instanceLines: [
           'y := x + y -- true : y := x + y --> exit',
         ],
@@ -189,6 +206,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         ruleLines: [
           'x := expr -- true : x := expr --> exit',
         ],
+        ruleLatex: ASSIGN_RULE_LATEX,
         instanceLines: [
           'y := x -- true : y := x --> exit',
         ],
@@ -204,6 +222,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
           'אם stmt_1 -- g : alpha --> exit',
           'אז stmt_1 ; stmt_2 -- g : alpha --> stmt_2',
         ],
+        ruleLatex: SEQ_RULE_LATEX,
         instanceLines: [
           'x := 0 -- true : x := 0 --> exit',
           'x := 0 ; y := x -- true : x := 0 --> y := x',
@@ -220,10 +239,12 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
           'אם stmt_i -- h : alpha --> stmt_i\'',
           'אז cond_cmd -- (g_i && h) : alpha --> stmt_i\'',
         ],
+        ruleLatex: IF_RULE_LATEX,
         instanceLines: [
           'y := x + y -- true : y := x + y --> exit',
           'l_0 -- x > 1 : y := x + y --> exit',
         ],
+        instanceLatex: String.raw`\frac{\frac{}{\texttt{y := x + y} \xrightarrow{\mathrm{true} : \texttt{y := x + y}} \texttt{exit}}}{\ell_0 \xrightarrow{x > 1 : \texttt{y := x + y}} \texttt{exit}}`,
       },
       {
         id: 'if-step-5',
@@ -236,10 +257,12 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
           'אם stmt_i -- h : alpha --> stmt_i\'',
           'אז cond_cmd -- (g_i && h) : alpha --> stmt_i\'',
         ],
+        ruleLatex: IF_RULE_LATEX,
         instanceLines: [
           'x := 0 ; y := x -- true : x := 0 --> y := x',
           'l_0 -- true : x := 0 --> l_2',
         ],
+        instanceLatex: String.raw`\frac{\frac{\frac{}{\texttt{x := 0} \xrightarrow{\mathrm{true} : \texttt{x := 0}} \texttt{exit}}}{\texttt{x := 0 ; y := x} \xrightarrow{\mathrm{true} : \texttt{x := 0}} \texttt{y := x}}}{\ell_0 \xrightarrow{\mathrm{true} : \texttt{x := 0}} \ell_2}`,
       },
     ],
   },
@@ -267,15 +290,15 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         y: 66,
         width: 74,
         initial: true,
-        initialDirection: 'top',
+        initialDirection: 'left',
       },
       {
         id: 'do-l1',
         shortLabel: 'l_1',
         locationText: 'x := 0; y := x; loop_cmd',
         reachableFromStart: true,
-        x: 426,
-        y: 234,
+        x: 458,
+        y: 258,
         width: 82,
       },
       {
@@ -301,7 +324,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         shortLabel: 'exit',
         locationText: 'exit',
         reachableFromStart: true,
-        x: 486,
+        x: 506,
         y: 72,
         width: 74,
       },
@@ -325,6 +348,8 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         previewLabel: '-- true : y := x -->',
         actionWidth: 118,
         curve: 0.12,
+        actionX: 34,
+        actionY: -18,
       },
       {
         id: 'do-e3',
@@ -333,7 +358,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         graphLabel: '$true : x := 0$',
         previewLabel: '-- true : x := 0 -->',
         actionWidth: 120,
-        actionX: -48,
+        actionX: 6,
       },
       {
         id: 'do-e4',
@@ -354,7 +379,8 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         graphLabel: '$y < x : x := 0$',
         previewLabel: '-- y < x : x := 0 -->',
         actionWidth: 134,
-        actionX: 18,
+        actionX: -10,
+        actionY: 16,
         curve: 0.1,
       },
       {
@@ -363,9 +389,9 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         target: 'do-exit',
         graphLabel: '$\\neg(x > 1) \\land \\neg(y < x) : skip$',
         previewLabel: '-- !(x > 1) && !(y < x) : skip -->',
-        actionWidth: 238,
-        actionX: 46,
-        actionY: 2,
+        actionWidth: 220,
+        actionX: 14,
+        actionY: 6,
       },
     ],
     steps: [
@@ -380,10 +406,12 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
           'אם stmt_1 -- g : alpha --> exit',
           'אז stmt_1 ; stmt_2 -- g : alpha --> stmt_2',
         ],
+        ruleLatex: SEQ_RULE_LATEX,
         instanceLines: [
           'y := x + y -- true : y := x + y --> exit',
           'y := x + y ; loop_cmd -- true : y := x + y --> loop_cmd',
         ],
+        instanceLatex: String.raw`\frac{\frac{}{\texttt{y := x + y} \xrightarrow{\mathrm{true} : \texttt{y := x + y}} \texttt{exit}}}{\texttt{y := x + y ; loop\_cmd} \xrightarrow{\mathrm{true} : \texttt{y := x + y}} \texttt{loop\_cmd}}`,
       },
       {
         id: 'do-step-2',
@@ -396,10 +424,12 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
           'אם stmt_1 -- g : alpha --> exit',
           'אז stmt_1 ; stmt_2 -- g : alpha --> stmt_2',
         ],
+        ruleLatex: SEQ_RULE_LATEX,
         instanceLines: [
           'y := x -- true : y := x --> exit',
           'y := x ; loop_cmd -- true : y := x --> loop_cmd',
         ],
+        instanceLatex: String.raw`\frac{\frac{}{\texttt{y := x} \xrightarrow{\mathrm{true} : \texttt{y := x}} \texttt{exit}}}{\texttt{y := x ; loop\_cmd} \xrightarrow{\mathrm{true} : \texttt{y := x}} \texttt{loop\_cmd}}`,
       },
       {
         id: 'do-step-3',
@@ -412,10 +442,12 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
           'אם stmt_1 -- g : alpha --> exit',
           'אז stmt_1 ; stmt_2 -- g : alpha --> stmt_2',
         ],
+        ruleLatex: SEQ_RULE_LATEX,
         instanceLines: [
           'x := 0 -- true : x := 0 --> exit',
           'x := 0 ; y := x ; loop_cmd -- true : x := 0 --> y := x ; loop_cmd',
         ],
+        instanceLatex: String.raw`\frac{\frac{}{\texttt{x := 0} \xrightarrow{\mathrm{true} : \texttt{x := 0}} \texttt{exit}}}{\texttt{x := 0 ; y := x ; loop\_cmd} \xrightarrow{\mathrm{true} : \texttt{x := 0}} \texttt{y := x ; loop\_cmd}}`,
       },
       {
         id: 'do-step-4',
@@ -428,10 +460,12 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
           'אם stmt_i -- h : alpha --> exit',
           'אז loop_cmd -- (g_i && h) : alpha --> loop_cmd',
         ],
+        ruleLatex: DO_FINISH_RULE_LATEX,
         instanceLines: [
           'y := x + y -- true : y := x + y --> exit',
           'l_0 -- x > 1 : y := x + y --> l_0',
         ],
+        instanceLatex: String.raw`\frac{\frac{}{\texttt{y := x + y} \xrightarrow{\mathrm{true} : \texttt{y := x + y}} \texttt{exit}}}{\ell_0 \xrightarrow{x > 1 : \texttt{y := x + y}} \ell_0}`,
       },
       {
         id: 'do-step-5',
@@ -444,10 +478,12 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
           'אם stmt_i -- h : alpha --> stmt_i\' ו-stmt_i\' != exit',
           'אז loop_cmd -- (g_i && h) : alpha --> stmt_i\' ; loop_cmd',
         ],
+        ruleLatex: DO_CONTINUE_RULE_LATEX,
         instanceLines: [
           'x := 0 ; y := x -- true : x := 0 --> y := x',
           'l_0 -- y < x : x := 0 --> l_3',
         ],
+        instanceLatex: String.raw`\frac{\frac{\frac{}{\texttt{x := 0} \xrightarrow{\mathrm{true} : \texttt{x := 0}} \texttt{exit}}}{\texttt{x := 0 ; y := x} \xrightarrow{\mathrm{true} : \texttt{x := 0}} \texttt{y := x}}}{\ell_0 \xrightarrow{y < x : \texttt{x := 0}} \ell_3}`,
       },
       {
         id: 'do-step-6',
@@ -459,6 +495,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         ruleLines: [
           'loop_cmd -- (!(g_1) && ... && !(g_n)) : skip --> exit',
         ],
+        ruleLatex: DO_EXIT_RULE_LATEX,
         instanceLines: [
           'l_0 -- !(x > 1) && !(y < x) : skip --> exit',
         ],
@@ -487,8 +524,8 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         shortLabel: 'l_0',
         locationText: 'if :: y = 0 -> do :: x < 3 -> x := x + 1 od :: true -> skip fi',
         reachableFromStart: true,
-        x: 284,
-        y: 54,
+        x: 270,
+        y: 58,
         width: 74,
         initial: true,
         initialDirection: 'top',
@@ -498,8 +535,8 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         shortLabel: 'l_1',
         locationText: 'do :: x < 3 -> x := x + 1 od',
         reachableFromStart: true,
-        x: 124,
-        y: 168,
+        x: 116,
+        y: 172,
         width: 74,
       },
       {
@@ -507,8 +544,8 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         shortLabel: 'l_2',
         locationText: 'skip',
         reachableFromStart: false,
-        x: 458,
-        y: 168,
+        x: 476,
+        y: 130,
         width: 74,
       },
       {
@@ -516,8 +553,8 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         shortLabel: 'l_3',
         locationText: 'x := x + 1 ; loop_cmd',
         reachableFromStart: false,
-        x: 124,
-        y: 310,
+        x: 118,
+        y: 318,
         width: 82,
       },
       {
@@ -525,8 +562,8 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         shortLabel: 'exit',
         locationText: 'exit',
         reachableFromStart: true,
-        x: 284,
-        y: 316,
+        x: 388,
+        y: 312,
         width: 74,
       },
     ],
@@ -538,7 +575,9 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         graphLabel: '$true : skip$',
         previewLabel: '-- true : skip -->',
         actionWidth: 110,
-        curve: 0.12,
+        curve: 0.08,
+        actionX: 10,
+        actionY: -20,
       },
       {
         id: 'nested-e2',
@@ -547,7 +586,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         graphLabel: '$true : x := x + 1$',
         previewLabel: '-- true : x := x + 1 -->',
         actionWidth: 146,
-        actionX: -54,
+        actionX: -36,
       },
       {
         id: 'nested-e3',
@@ -559,8 +598,8 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         loopDirection: '-150deg',
         loopRadius: 90,
         loopLabelRadius: 80,
-        actionX: -10,
-        actionY: -4,
+        actionX: 20,
+        actionY: -20,
       },
       {
         id: 'nested-e4',
@@ -569,7 +608,9 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         graphLabel: '$\\neg(x < 3) : skip$',
         previewLabel: '-- !(x < 3) : skip -->',
         actionWidth: 156,
-        curve: 0.12,
+        curve: 0.06,
+        actionX: 0,
+        actionY: 22,
       },
       {
         id: 'nested-e5',
@@ -578,17 +619,19 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         graphLabel: '$true : skip$',
         previewLabel: '-- true : skip -->',
         actionWidth: 116,
-        curve: -0.22,
-        actionX: -70,
+        curve: -0.28,
+        actionX: 0,
+        actionY: -12,
       },
       {
         id: 'nested-e6',
         source: 'nested-l0',
         target: 'nested-l1',
-        graphLabel: '$x < 3 \\land y = 0 : x := x + 1$',
+        graphLabel: '$x < 3 \\land y = 0 : \\\\ \\quad x := x + 1$',
         previewLabel: '-- x < 3 && y = 0 : x := x + 1 -->',
-        actionWidth: 220,
-        actionX: -36,
+        actionWidth: 208,
+        actionX: 8,
+        actionY: -10,
       },
       {
         id: 'nested-e7',
@@ -596,10 +639,10 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         target: 'nested-exit',
         graphLabel: '$\\neg(x < 3) \\land y = 0 : skip$',
         previewLabel: '-- !(x < 3) && y = 0 : skip -->',
-        actionWidth: 214,
-        curve: 0.22,
-        actionX: 66,
-        actionY: 6,
+        actionWidth: 204,
+        curve: 0.24,
+        actionX: -10,
+        actionY: 10,
       },
     ],
     steps: [
@@ -613,6 +656,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         ruleLines: [
           'skip -- true : skip --> exit',
         ],
+        ruleLatex: SKIP_RULE_LATEX,
         instanceLines: [
           'l_2 -- true : skip --> exit',
         ],
@@ -628,6 +672,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
           'אם stmt_1 -- g : alpha --> exit',
           'אז stmt_1 ; stmt_2 -- g : alpha --> stmt_2',
         ],
+        ruleLatex: SEQ_RULE_LATEX,
         instanceLines: [
           'x := x + 1 -- true : x := x + 1 --> exit',
           'x := x + 1 ; loop_cmd -- true : x := x + 1 --> loop_cmd',
@@ -644,6 +689,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
           'אם stmt_i -- h : alpha --> exit',
           'אז loop_cmd -- (g_i && h) : alpha --> loop_cmd',
         ],
+        ruleLatex: DO_FINISH_RULE_LATEX,
         instanceLines: [
           'x := x + 1 -- true : x := x + 1 --> exit',
           'l_1 -- x < 3 : x := x + 1 --> l_1',
@@ -659,6 +705,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         ruleLines: [
           'loop_cmd -- (!(g_1) && ... && !(g_n)) : skip --> exit',
         ],
+        ruleLatex: DO_EXIT_RULE_LATEX,
         instanceLines: [
           'l_1 -- !(x < 3) : skip --> exit',
         ],
@@ -674,6 +721,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
           'אם stmt_i -- h : alpha --> stmt_i\'',
           'אז cond_cmd -- (g_i && h) : alpha --> stmt_i\'',
         ],
+        ruleLatex: IF_RULE_LATEX,
         instanceLines: [
           'skip -- true : skip --> exit',
           'l_0 -- true : skip --> exit',
@@ -690,6 +738,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
           'אם stmt_i -- h : alpha --> stmt_i\'',
           'אז cond_cmd -- (g_i && h) : alpha --> stmt_i\'',
         ],
+        ruleLatex: IF_RULE_LATEX,
         instanceLines: [
           'l_1 -- x < 3 : x := x + 1 --> l_1',
           'l_0 -- x < 3 && y = 0 : x := x + 1 --> l_1',
@@ -706,6 +755,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
           'אם stmt_i -- h : alpha --> stmt_i\'',
           'אז cond_cmd -- (g_i && h) : alpha --> stmt_i\'',
         ],
+        ruleLatex: IF_RULE_LATEX,
         instanceLines: [
           'l_1 -- !(x < 3) : skip --> exit',
           'l_0 -- !(x < 3) && y = 0 : skip --> exit',

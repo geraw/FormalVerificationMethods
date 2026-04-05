@@ -979,13 +979,15 @@ $$
 דוגמה אופיינית: בפקודה `if :: y = 0 -> do :: x < 3 -> x := x + 1 od fi` מתקבל מעבר ראשון עם guard משולב `y = 0 ∧ x < 3`.
 
 ---
+clicks: 5
+---
 
 # דוגמה מונחית: גזירת מעברי PG עבור `if`
 
 <NanoPromelaGraphDerivation example="if-basic" />
 
 ---
-clicks: 5
+clicks: 6
 ---
 
 # דוגמה מונחית: גזירת מעברי PG עבור `do`
@@ -993,15 +995,13 @@ clicks: 5
 <NanoPromelaGraphDerivation example="do-basic" />
 
 ---
-clicks: 6
+clicks: 7
 ---
 
 # דוגמה מונחית: גזירת מעברי PG עבור קינון
 
 <NanoPromelaGraphDerivation example="nested-if-do" />
 
----
-clicks: 7
 ---
 
 
