@@ -181,6 +181,7 @@ $$
 \Longrightarrow
 \text{Transition System}
 $$
+
 </div>
 
 </div>
@@ -835,7 +836,7 @@ $$
 ---
 
 
-# הדגמה חיה: nanoPromela לגרף תוכנית
+# הדגמה חיה: תרגום ננו-פרומלה לגרף תוכנית
 
 <script setup>
 const liveNanoPromelaExample = `if
@@ -888,53 +889,91 @@ $$
 </div>
 
 ---
+clicks: 5
+---
+
+# דוגמה מונחית: חישוב `sub(stmt)` עבור `if`
+
+<NanoPromelaSubTree example="if-basic" />
+
+---
+clicks: 5
+---
+
+# דוגמה מונחית: חישוב `sub(stmt)` עבור `do`
+
+<NanoPromelaSubTree example="do-basic" />
+
+---
+clicks: 4
+---
+
+# דוגמה מונחית: קינון של `if` ו־`do`
+
+<NanoPromelaSubTree example="nested-if-do" />
+
+---
 
 
 # כללי גזירה: פקודות בסיסיות והרכבה
 
-המעברים בגרף התוכנית מתקבלים מכללי גזירה. כל מעבר מסומן על ידי guard ופעולה: `g : α`.
+המעברים בגרף התוכנית מתקבלים מכללי גזירה. כל מעבר מסומן על ידי guard ופעולה מן הצורה $g : \alpha$.
 
-```text {lineNumbers: false}
-אקסיומות לפקודות אטומיות:
-skip      -- true : id               --> exit
-x := expr -- true : assign(x, expr)  --> exit
-c?x       -- c?x                     --> exit
-c!expr    -- c!expr                  --> exit
-atomic{a1; ...; am} -- true : α      --> exit
+<div class="text-[0.9em] leading-tight">
 
-כללי הרכבה סדרתית:
-stmt1 -- g : α --> stmt1' ≠ exit
---------------------------------
-stmt1 ; stmt2 -- g : α --> stmt1' ; stmt2
+<div class="font-bold mb-1">אקסיומות לפקודות אטומיות</div>
 
-stmt1 -- g : α --> exit
------------------------
-stmt1 ; stmt2 -- g : α --> stmt2
-```
+$$
+\begin{aligned}
+\texttt{skip} &\xrightarrow{true : id} \texttt{exit} \\
+\texttt{x := expr} &\xrightarrow{true : \operatorname{assign}(x, expr)} \texttt{exit} \\
+\texttt{c?x} &\xrightarrow{\texttt{c?x}} \texttt{exit} \\
+\texttt{c!expr} &\xrightarrow{\texttt{c!expr}} \texttt{exit} \\
+\mathtt{atomic}\{a_1; \ldots; a_m\} &\xrightarrow{true : \alpha} \texttt{exit}
+\end{aligned}
+$$
+
+<div class="font-bold mb-1">כללי הרכבה סדרתית</div>
+
+$$
+\frac{stmt_1 \xrightarrow{g : \alpha} stmt_1' \qquad stmt_1' \neq \texttt{exit}}
+     {stmt_1 ; stmt_2 \xrightarrow{g : \alpha} stmt_1' ; stmt_2}
+\hspace{6em}
+\frac{stmt_1 \xrightarrow{g : \alpha} \texttt{exit}}
+     {stmt_1 ; stmt_2 \xrightarrow{g : \alpha} stmt_2}
+$$
+
+</div>
 
 ---
 
 
 # כללי גזירה: תנאי ולולאה
 
-פקודת תנאי:
+<div class="text-[0.9em] leading-tight">
 
-```text {lineNumbers: false}
-stmti -- h : α --> stmti'
-------------------------------------------
-cond_cmd -- (gi && h) : α --> stmti'
+<div class="font-bold mb-1">פקודת תנאי</div>
 
-פקודת לולאה:
-stmti -- h : α --> stmti' ≠ exit
-------------------------------------------
-loop_cmd -- (gi && h) : α --> stmti' ; loop_cmd
+$$
+\frac{stmt_i \xrightarrow{h : \alpha} stmt_i'}
+     {\texttt{cond\_cmd} \xrightarrow{(g_i \land h) : \alpha} stmt_i'}
+$$
 
-stmti -- h : α --> exit
-------------------------------------------
-loop_cmd -- (gi && h) : α --> loop_cmd
+<div class="font-bold mb-1">פקודת לולאה</div>
 
-loop_cmd -- (!g1 && ... && !gn) : id --> exit
-```
+$$
+\frac{stmt_i \xrightarrow{h : \alpha} stmt_i' \qquad stmt_i' \neq \texttt{exit}}
+     {\texttt{loop\_cmd} \xrightarrow{(g_i \land h) : \alpha} stmt_i' ; \texttt{loop\_cmd}}
+$$
+
+$$
+\frac{stmt_i \xrightarrow{h : \alpha} \texttt{exit}}
+     {\texttt{loop\_cmd} \xrightarrow{(g_i \land h) : \alpha} \texttt{loop\_cmd}}
+\hspace{6em}
+\texttt{loop\_cmd} \xrightarrow{(\neg g_1 \land \cdots \land \neg g_n) : id} \texttt{exit}
+$$
+
+</div>
 
 הכלל האחרון הוא בדיוק הסיבה לכך שלולאות אינן נחסמות: כאשר אין guard מאופשר, יוצאים מן הלולאה.
 
