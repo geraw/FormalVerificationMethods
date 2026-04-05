@@ -810,6 +810,7 @@ od
 
 # מכאן להגדרות פורמליות
 
+
 כדי לתת משמעות מדויקת ל־`nanoPromela`, לא מספיק תיאור אינטואיטיבי. אנחנו רוצים לעבור לשפה שכבר למדנו לעבוד איתה: גרפי תוכנית, ואז מערכות ערוצים ולבסוף מערכות מעברים.
 
 $$
@@ -829,49 +830,7 @@ $$
 
 הטריק המתודולוגי הוא ששם של מקום בתוכנית הוא פשוט "מה עוד נשאר לבצע".
 
----
-
-
-# דוגמה: גרף תוכנית ל־`if-fi`
-
-```text {lineNumbers: false}
-stmt:
-if
-:: x > 1 -> y := x + y
-:: true  -> x := 0; y := x
-fi
-
-locations:
-if ... fi, y := x + y, x := 0; y := x, y := x, exit
-
-edges:
-if ... fi -- x > 1 : y := x + y --> exit
-if ... fi -- true  : x := 0     --> y := x
-y := x    -- true  : y := x     --> exit
-```
-
-בפרט, לענף השני אין מעבר ישיר ל־`exit`, כי ההרכבה `x := 0; y := x` מתבצעת בשני צעדים.
-
----
-
-
-# דוגמה: גרף תוכנית ל־`do-od`
-
-```text {lineNumbers: false}
-stmt:
-do
-:: x > 1 -> y := x + y
-:: y < x -> x := 0; y := x
-od
-
-edges:
-loop        -- x > 1                : y := x + y --> loop
-loop        -- y < x                : x := 0     --> y := x ; loop
-y := x;loop -- true                 : y := x     --> loop
-loop        -- !(x > 1) && !(y < x) : id         --> exit
-```
-
-המעבר האחרון מייצג סיום תקין של הלולאה, ולא חסימה.
+<img src=".\images\location_is_todo.png" alt="איור קומי המסביר שמקום בתוכנית הוא פשוט רשימת המשימות שנותרו" class="absolute bottom-2 left-60 w-50 transform -rotate-1 hover:rotate-10 transition-transform" />
 
 ---
 
@@ -895,28 +854,38 @@ fi`
 
 # הגדרה: המקומות הם תת־הפקודות
 
-נסמן ב־`sub(stmt)` את קבוצת תת־הפקודות של `stmt`. זוהי בדיוק קבוצת המקומות בגרף התוכנית, יחד עם `exit`.
+<div class="text-[0.9em] leading-tight">
 
-```text {lineNumbers: false}
-מקרי בסיס:
-sub(skip)      = { skip, exit }
-sub(x := expr) = { x := expr, exit }
-sub(c?x)       = { c?x, exit }
-sub(c!expr)    = { c!expr, exit }
-sub(atomic{a1; ...; am}) = { atomic{a1; ...; am}, exit }
+נסמן ב־$\operatorname{sub}(stmt)$ את קבוצת תת־הפקודות של `stmt`. זוהי בדיוק קבוצת המקומות בגרף התוכנית, כולל `exit`.
 
-הרכבה סדרתית:
-sub(stmt1 ; stmt2) =
-  { s' ; stmt2 | s' ∈ sub(stmt1) \ {exit} } ∪ sub(stmt2)
+$$
+\begin{aligned}
+\operatorname{sub}(\texttt{skip})
+  &= \{ \texttt{skip}, \texttt{exit} \} \\
+\operatorname{sub}(\texttt{x := expr})
+  &= \{ \texttt{x := expr}, \texttt{exit} \} \\
+\operatorname{sub}(\texttt{c?x})
+  &= \{ \texttt{c?x}, \texttt{exit} \} \\
+\operatorname{sub}(\texttt{c!expr})
+  &= \{ \texttt{c!expr}, \texttt{exit} \} \\
+\operatorname{sub}(\mathtt{atomic}\{a_1; \ldots; a_m\})
+  &= \{ \mathtt{atomic}\{a_1; \ldots; a_m\}, \texttt{exit} \} \\[0.95em]
 
-פקודת תנאי:
-sub(if :: g1 -> stmt1 ... :: gn -> stmtn fi) =
-  { cond_cmd } ∪ sub(stmt1) ∪ ... ∪ sub(stmtn)
+\operatorname{sub}(stmt_1 ; stmt_2)
+  &= \{\, s' ; stmt_2 \mid s' \in \operatorname{sub}(stmt_1) \setminus \{ \texttt{exit} \} \,\} \cup \operatorname{sub}(stmt_2) \\[0.95em]
 
-לולאה:
-sub(do :: g1 -> stmt1 ... :: gn -> stmtn od) =
-  { loop_cmd, exit } ∪ ⋃i { s' ; loop_cmd | s' ∈ sub(stmti) \ {exit} }
-```
+\operatorname{sub}(\texttt{if } :: g_1 \texttt{ -> } stmt_1 \cdots :: g_n 
+\texttt{ -> } stmt_n \texttt{ fi})
+  &= \{ \texttt{cond\_cmd} \} \\
+  &\qquad \cup \operatorname{sub}(stmt_1) \cup \cdots \cup \operatorname{sub}(stmt_n) \\[0.95em]
+
+\operatorname{sub}(\texttt{do } :: g_1 \texttt{ -> } stmt_1 \cdots :: g_n \texttt{ -> } stmt_n \texttt{ od})
+  &= \{ \texttt{loop\_cmd}, \texttt{exit} \} \\ 
+  &\qquad \cup \bigcup_i \{\, s' ; \texttt{loop\_cmd} \mid s' \in \operatorname{sub}(stmt_i) \setminus \{ \texttt{exit} \} \,\}
+\end{aligned}
+$$
+
+</div>
 
 ---
 
