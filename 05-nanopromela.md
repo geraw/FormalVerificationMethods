@@ -889,6 +889,30 @@ $$
 </div>
 
 ---
+clicks: 5
+---
+
+# דוגמה מונחית: חישוב `sub(stmt)` עבור `if`
+
+<NanoPromelaSubTree example="if-basic" />
+
+---
+clicks: 5
+---
+
+# דוגמה מונחית: חישוב `sub(stmt)` עבור `do`
+
+<NanoPromelaSubTree example="do-basic" />
+
+---
+clicks: 4
+---
+
+# דוגמה מונחית: קינון של `if` ו־`do`
+
+<NanoPromelaSubTree example="nested-if-do" />
+
+---
 
 # כללי גזירה: פקודות בסיסיות והרכבה
 
@@ -901,10 +925,10 @@ $$
 $$
 \begin{aligned}
 \texttt{skip} &\xrightarrow{true : id} \texttt{exit} \\
-\texttt{x := expr} &\xrightarrow{true : \operatorname{assign}(x, expr)} \texttt{exit} \\
-\texttt{c?x} &\xrightarrow{\texttt{c?x}} \texttt{exit} \\
-\texttt{c!expr} &\xrightarrow{\texttt{c!expr}} \texttt{exit} \\
-\mathtt{atomic}\{a_1; \ldots; a_m\} &\xrightarrow{true : \alpha} \texttt{exit}
+\texttt{x := expr} &\xrightarrow{true : \texttt{x := expr}} \texttt{exit} \\
+\texttt{c?x} &\xrightarrow{true : \texttt{c?x}} \texttt{exit} \\
+\texttt{c!expr} &\xrightarrow{true : \texttt{c!expr}} \texttt{exit} \\
+\mathtt{atomic}\{a_1; \ldots; a_m\} &\xrightarrow{true : a_1; \ldots; a_m} \texttt{exit}
 \end{aligned}
 $$
 
@@ -953,30 +977,6 @@ $$
 הכלל האחרון הוא בדיוק הסיבה לכך שלולאות אינן נחסמות: כאשר אין guard מאופשר, יוצאים מן הלולאה.
 
 דוגמה אופיינית: בפקודה `if :: y = 0 -> do :: x < 3 -> x := x + 1 od fi` מתקבל מעבר ראשון עם guard משולב `y = 0 ∧ x < 3`.
-
----
-clicks: 5
----
-
-# דוגמה מונחית: חישוב `sub(stmt)` עבור `if`
-
-<NanoPromelaSubTree example="if-basic" />
-
----
-clicks: 5
----
-
-# דוגמה מונחית: חישוב `sub(stmt)` עבור `do`
-
-<NanoPromelaSubTree example="do-basic" />
-
----
-clicks: 4
----
-
-# דוגמה מונחית: קינון של `if` ו־`do`
-
-<NanoPromelaSubTree example="nested-if-do" />
 
 ---
 

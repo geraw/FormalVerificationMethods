@@ -187,7 +187,7 @@ function edgeClass(targetId: string) {
   return currentStep.value >= nodeMap.value[targetId].step
     ? 'tree-edge edge-done'
     : 'tree-edge edge-pending'
-}
+  }
 </script>
 
 <style scoped>
