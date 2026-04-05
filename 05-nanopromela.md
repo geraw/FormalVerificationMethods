@@ -131,7 +131,7 @@ $$
 <div class="text-[14px] leading-snug -mt-1">
 
 <div class="bg-slate-50 px-4 py-2 rounded border border-slate-200 mt-1">
-<b>NanoPromela</b> היא תת־שפה קומפקטית של <b>Promela</b>, שפת הקלט של <b>SPIN</b>.
+<b>NanoPromela</b> היא גרסה מוקטנת ופשוטה של <b>Promela</b>, שפת הקלט של <b>SPIN</b>.
 המטרה היא שפת מפרט קטנה ונוחה, עם סמנטיקה פורמלית שנשענת על
 <span dir="ltr">program graphs</span>, <span dir="ltr">channel systems</span>
 ו־<span dir="ltr">transition systems</span>.
@@ -1001,7 +1001,7 @@ loop_cmd -- (!g1 && ... && !gn) : id --> exit
 
 # Promela מול nanoPromela
 
-`nanoPromela` היא תת־שפה נקייה ופשוטה, אבל `Promela` המלאה מכילה עוד יכולות רבות:
+`nanoPromela` היא גרסה נקייה ופשוטה של הרעיונות המרכזיים ב־`Promela`, אבל `Promela` המלאה מכילה עוד יכולות רבות:
 
 - `else` כ־guard מיוחד.
 - `break` ליציאה מלולאות.
