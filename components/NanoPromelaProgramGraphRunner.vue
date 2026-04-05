@@ -85,6 +85,7 @@ type RawState = {
   fullWidth: number
   anchorLine?: number | null
   anchorColumn?: number | null
+  hasExactSourceMatch?: boolean
   initial?: boolean
   initialDirection?: 'left' | 'right' | 'top' | 'bottom'
   color?: string
@@ -201,7 +202,7 @@ const markerPositions = computed(() => {
     .filter((state) =>
       state.shortText !== 'exit'
       && state.anchorLine
-      && state.anchorColumn,
+      && state.anchorColumn
     )
     .sort((a, b) =>
       (a.anchorLine! - b.anchorLine!)
@@ -230,7 +231,7 @@ const markerPositions = computed(() => {
 })
 
 const visibleMarkerPositions = computed(() =>
-  showCodeMarkers.value ? markerPositions.value : [],
+  showCodeMarkers.value ? [...markerPositions.value, endCodeMarker.value] : [],
 )
 
 function measurePrefixWidth(text: string) {
@@ -259,6 +260,21 @@ function measurePrefixWidth(text: string) {
 
   return width
 }
+
+const endCodeMarker = computed(() => {
+  const lines = code.value.split(/\r?\n/)
+  const lastLineIndex = Math.max(0, lines.length - 1)
+  const lastLine = lines[lastLineIndex] ?? ''
+
+  return {
+    key: '__end__',
+    title: 'End of code',
+    style: {
+      left: `${CODE_PADDING_X + measurePrefixWidth(lastLine) - MARKER_OFFSET_X}px`,
+      top: `${CODE_PADDING_Y + lastLineIndex * LINE_HEIGHT}px`,
+    },
+  }
+})
 
 async function loadPyodideFromCDN() {
   if ((window as any).loadPyodide) {

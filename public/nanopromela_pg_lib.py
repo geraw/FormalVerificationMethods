@@ -3,6 +3,7 @@ Adapted from the NanoPromela-to-program-graph notebook code in FVM-Python/HW4.ip
 This helper parses a NanoPromela statement and returns Slidev-friendly graph data.
 """
 
+import re
 from collections import defaultdict, deque
 from itertools import chain
 
@@ -425,6 +426,24 @@ def _state_width(text, short_names):
     return max(120, min(520, 24 + len(text) * 7))
 
 
+def _normalize_source_text(text):
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _source_slice(location, code):
+    if location == EXIT_LOCATION:
+        return ""
+
+    meta = getattr(location, "meta", None)
+    start_pos = getattr(meta, "start_pos", None)
+    end_pos = getattr(meta, "end_pos", None)
+
+    if start_pos is None or end_pos is None:
+        return ""
+
+    return code[int(start_pos):int(end_pos)]
+
+
 def _anchor_position(location):
     if location == EXIT_LOCATION:
         return None, None
@@ -487,6 +506,7 @@ def nanopromela_to_pg_slidev_data(code):
         full_text = tree_to_code(location)
         is_exit = location == EXIT_LOCATION
         anchor_line, anchor_column = _anchor_position(location)
+        source_slice = _source_slice(location, code)
         states.append({
             "id": state_ids[location],
             "shortText": short_names[location],
@@ -495,6 +515,8 @@ def nanopromela_to_pg_slidev_data(code):
             "fullWidth": _state_width(full_text, False),
             "anchorLine": anchor_line,
             "anchorColumn": anchor_column,
+            "hasExactSourceMatch": _normalize_source_text(full_text)
+            == _normalize_source_text(source_slice),
             "initial": location == root,
             "initialDirection": "top",
             "color": "#fef3c7" if is_exit else "#f8fafc",
