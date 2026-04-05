@@ -3,12 +3,6 @@
     <pre class="program-text">{{ currentExample.program.join('\n') }}</pre>
 
     <div class="tree-card">
-      <div class="tree-toolbar">
-        <span class="tree-progress">
-          {{ currentStep === 0 ? 'מתחילים מן העלים' : `צעד ${currentStep} מתוך ${currentExample.maxSteps}` }}
-        </span>
-      </div>
-
       <div
         class="tree-stage"
         :style="{ height: `${displayHeight}px` }"
@@ -66,7 +60,6 @@
           :style="nodeStyle(node)"
           dir="ltr"
         >
-          <div class="tree-node-step">{{ node.step }}</div>
           <div
             v-for="line in node.lines"
             :key="line"
@@ -78,7 +71,21 @@
       </div>
     </div>
 
-    <div class="note-card">{{ currentNote }}</div>
+    <div class="note-card">
+      <div class="note-text">{{ currentNote }}</div>
+
+      <div class="rule-block">
+        <div class="rule-title">{{ currentRule.title }}</div>
+        <div
+          v-for="line in currentRule.lines"
+          :key="line"
+          class="rule-line"
+          dir="auto"
+        >
+          {{ line }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -93,6 +100,7 @@ type SubBox = {
   y: number
   width: number
   lines: string[]
+  placement?: 'absolute' | 'above-node'
 }
 
 type TreeNode = {
@@ -113,12 +121,18 @@ type TreeEdge = {
   labelY: number
 }
 
+type StepRule = {
+  title: string
+  lines: string[]
+}
+
 type Example = {
   program: string[]
   width: number
   height: number
   maxSteps: number
   notes: Record<number, string>
+  rules: Record<number, StepRule>
   nodes: TreeNode[]
   edges: TreeEdge[]
 }
@@ -148,6 +162,32 @@ const examples: Record<ExampleKey, Example> = {
       4: 'עכשיו אפשר לטפס להורה עם כלל ההרכבה הסדרתית: sub של שני הבנים משולב ל-sub של x := 0 ; y := x.',
       5: 'לבסוף מפעילים את ההגדרה של if: מאחדים את שני הענפים ומוסיפים cond_cmd.',
     },
+    rules: {
+      0: {
+        title: 'כיוון העבודה',
+        lines: ['מתקדמים מן העלים כלפי מעלה.'],
+      },
+      1: {
+        title: 'מקרה בסיס',
+        lines: ['sub(cmd) = { cmd, exit }'],
+      },
+      2: {
+        title: 'מקרה בסיס',
+        lines: ['sub(cmd) = { cmd, exit }'],
+      },
+      3: {
+        title: 'מקרה בסיס',
+        lines: ['sub(cmd) = { cmd, exit }'],
+      },
+      4: {
+        title: 'הרכבה סדרתית',
+        lines: ['sub(stmt1 ; stmt2) = { stmt1 ; stmt2 } ∪ (sub(stmt1) \\ {exit}) ∪ sub(stmt2)'],
+      },
+      5: {
+        title: 'כלל if',
+        lines: ['sub(if ... fi) = { cond_cmd } ∪ ⋃_i sub(stmt_i)'],
+      },
+    },
     nodes: [
       {
         id: 'if-root',
@@ -157,9 +197,10 @@ const examples: Record<ExampleKey, Example> = {
         width: 148,
         step: 5,
         sub: {
-          x: 124,
+          x: 224,
           y: 58,
-          width: 200,
+          width: 100,
+          placement: 'absolute',
           lines: [
             'sub = {',
             '  cond_cmd,',
@@ -252,6 +293,35 @@ const examples: Record<ExampleKey, Example> = {
       4: 'כמו קודם, קודם בונים את sub של x := 0 ; y := x לפי כלל ההרכבה הסדרתית.',
       5: 'רק בשורש do מחברים לכל תת-פקודה לא-סופית את ; loop_cmd ומוסיפים loop_cmd, exit.',
     },
+    rules: {
+      0: {
+        title: 'כיוון העבודה',
+        lines: ['מתקדמים מן העלים כלפי מעלה.'],
+      },
+      1: {
+        title: 'מקרה בסיס',
+        lines: ['sub(cmd) = { cmd, exit }'],
+      },
+      2: {
+        title: 'מקרה בסיס',
+        lines: ['sub(cmd) = { cmd, exit }'],
+      },
+      3: {
+        title: 'מקרה בסיס',
+        lines: ['sub(cmd) = { cmd, exit }'],
+      },
+      4: {
+        title: 'הרכבה סדרתית',
+        lines: ['sub(stmt1 ; stmt2) = { stmt1 ; stmt2 } ∪ (sub(stmt1) \\ {exit}) ∪ sub(stmt2)'],
+      },
+      5: {
+        title: 'כלל do',
+        lines: [
+          'sub(do ... od) = { loop_cmd, exit }',
+          '                 ∪ ⋃_i { stmt ; loop_cmd | stmt ∈ sub(stmt_i) \\ {exit} }',
+        ],
+      },
+    },
     nodes: [
       {
         id: 'do-root',
@@ -261,9 +331,10 @@ const examples: Record<ExampleKey, Example> = {
         width: 148,
         step: 5,
         sub: {
-          x: 136,
+          x: 176,
           y: 66,
           width: 224,
+          placement: 'absolute',
           lines: [
             'sub = {',
             '  loop_cmd, exit,',
@@ -357,6 +428,31 @@ const examples: Record<ExampleKey, Example> = {
       3: 'גם לענף השני של if, כלומר skip, יש sub בסיסי משלו.',
       4: 'לבסוף if מאחד את sub של do עם sub של skip, ומוסיף cond_cmd.',
     },
+    rules: {
+      0: {
+        title: 'כיוון העבודה',
+        lines: ['קודם מחשבים את sub של do, ורק אחר כך של if.'],
+      },
+      1: {
+        title: 'מקרה בסיס',
+        lines: ['sub(cmd) = { cmd, exit }'],
+      },
+      2: {
+        title: 'כלל do',
+        lines: [
+          'sub(do ... od) = { loop_cmd, exit }',
+          '                 ∪ ⋃_i { stmt ; loop_cmd | stmt ∈ sub(stmt_i) \\ {exit} }',
+        ],
+      },
+      3: {
+        title: 'מקרה בסיס',
+        lines: ['sub(cmd) = { cmd, exit }'],
+      },
+      4: {
+        title: 'כלל if',
+        lines: ['sub(if ... fi) = { cond_cmd } ∪ ⋃_i sub(stmt_i)'],
+      },
+    },
     nodes: [
       {
         id: 'nested-root',
@@ -366,9 +462,10 @@ const examples: Record<ExampleKey, Example> = {
         width: 146,
         step: 4,
         sub: {
-          x: 566,
+          x: 520,
           y: 60,
           width: 190,
+          placement: 'absolute',
           lines: [
             'sub = {',
             '  cond_cmd,',
@@ -389,8 +486,8 @@ const examples: Record<ExampleKey, Example> = {
         sub: {
           x: 96,
           y: 162,
-          width: 180,
-          lines: ['sub = {', '  loop_cmd, exit,', '  x := x + 1 ; loop_cmd', '}'],
+          width: 162,
+          lines: ['sub = { loop_cmd, exit,', '        x := x + 1 ; loop_cmd }'],
         },
       },
       {
@@ -403,8 +500,8 @@ const examples: Record<ExampleKey, Example> = {
         sub: {
           x: 96,
           y: 244,
-          width: 170,
-          lines: ['sub = {', '  x := x + 1,', '  exit', '}'],
+          width: 150,
+          lines: ['sub = { x := x + 1, exit }'],
         },
       },
       {
@@ -417,8 +514,8 @@ const examples: Record<ExampleKey, Example> = {
         sub: {
           x: 608,
           y: 190,
-          width: 136,
-          lines: ['sub = {', '  skip,', '  exit', '}'],
+          width: 128,
+          lines: ['sub = { skip, exit }'],
         },
       },
     ],
@@ -449,6 +546,13 @@ const currentNote = computed(() =>
   currentExample.value.notes[currentStep.value] ?? '',
 )
 
+const currentRule = computed<StepRule>(() =>
+  currentExample.value.rules[currentStep.value] ?? {
+    title: '',
+    lines: [],
+  },
+)
+
 function nodeStyle(node: TreeNode) {
   return {
     left: `${(node.x / currentExample.value.width) * 100}%`,
@@ -459,10 +563,21 @@ function nodeStyle(node: TreeNode) {
 
 function subStyle(node: TreeNode) {
   const sub = node.sub!
+  const placement = sub.placement ?? 'above-node'
+  const leftValue = placement === 'absolute'
+    ? sub.x
+    : node.x
+  const topValue = placement === 'absolute'
+    ? sub.y
+    : node.y - 18
+
   return {
-    left: `${(sub.x / currentExample.value.width) * 100}%`,
-    top: `${(sub.y / currentExample.value.height) * 100}%`,
+    left: `${(leftValue / currentExample.value.width) * 100}%`,
+    top: `${(topValue / currentExample.value.height) * 100}%`,
     width: `${sub.width}px`,
+    '--sub-translate-y': placement === 'absolute'
+      ? 'calc(-50% - 4px)'
+      : 'calc(-100% - 6px)',
   }
 }
 
@@ -527,27 +642,13 @@ function edgeClass(targetId: string) {
 }
 
 .tree-card {
-  padding: 7px;
-}
-
-.tree-toolbar {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 4px;
-}
-
-.tree-progress {
-  font-size: 9.5px;
-  color: #0369a1;
-  background: #e0f2fe;
-  border: 1px solid #bae6fd;
-  border-radius: 999px;
-  padding: 2px 7px;
+  position: relative;
+  padding: 7px 7px 12px;
 }
 
 .tree-stage {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 14px;
   background:
     radial-gradient(circle at top left, rgba(125, 211, 252, 0.18), transparent 36%),
@@ -630,29 +731,6 @@ function edgeClass(targetId: string) {
   background: #ecfdf5;
 }
 
-.tree-node-step {
-  position: absolute;
-  top: -7px;
-  right: 7px;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 4px;
-  border-radius: 999px;
-  background: #0f172a;
-  color: white;
-  font-size: 9px;
-  font-weight: 700;
-  line-height: 18px;
-}
-
-.tree-node.current .tree-node-step {
-  background: #d97706;
-}
-
-.tree-node.done .tree-node-step {
-  background: #059669;
-}
-
 .tree-node-line {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 10.4px;
@@ -662,7 +740,8 @@ function edgeClass(targetId: string) {
 
 .sub-box {
   position: absolute;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, var(--sub-translate-y));
+  z-index: 2;
   border-radius: 12px;
   border: 1px solid #cbd5e1;
   background: rgba(255, 255, 255, 0.96);
@@ -690,9 +769,39 @@ function edgeClass(targetId: string) {
 }
 
 .note-card {
-  padding: 7px 10px;
-  font-size: 10.2px;
-  line-height: 1.28;
+  padding: 7px 10px 8px;
   color: #334155;
+}
+
+.note-text {
+  font-size: 10.1px;
+  line-height: 1.26;
+}
+
+.rule-block {
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px dashed #cbd5e1;
+}
+
+.rule-title {
+  display: inline-block;
+  margin-bottom: 3px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: #ffedd5;
+  border: 1px solid #fdba74;
+  color: #9a3412;
+  font-size: 8.8px;
+  font-weight: 700;
+}
+
+.rule-line {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 8.7px;
+  line-height: 1.14;
+  color: #0f172a;
+  white-space: pre-wrap;
+  text-align: start;
 }
 </style>

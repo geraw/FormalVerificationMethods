@@ -889,31 +889,6 @@ $$
 </div>
 
 ---
-clicks: 5
----
-
-# דוגמה מונחית: חישוב `sub(stmt)` עבור `if`
-
-<NanoPromelaSubTree example="if-basic" />
-
----
-clicks: 5
----
-
-# דוגמה מונחית: חישוב `sub(stmt)` עבור `do`
-
-<NanoPromelaSubTree example="do-basic" />
-
----
-clicks: 4
----
-
-# דוגמה מונחית: קינון של `if` ו־`do`
-
-<NanoPromelaSubTree example="nested-if-do" />
-
----
-
 
 # כללי גזירה: פקודות בסיסיות והרכבה
 
@@ -978,6 +953,30 @@ $$
 הכלל האחרון הוא בדיוק הסיבה לכך שלולאות אינן נחסמות: כאשר אין guard מאופשר, יוצאים מן הלולאה.
 
 דוגמה אופיינית: בפקודה `if :: y = 0 -> do :: x < 3 -> x := x + 1 od fi` מתקבל מעבר ראשון עם guard משולב `y = 0 ∧ x < 3`.
+
+---
+clicks: 5
+---
+
+# דוגמה מונחית: חישוב `sub(stmt)` עבור `if`
+
+<NanoPromelaSubTree example="if-basic" />
+
+---
+clicks: 5
+---
+
+# דוגמה מונחית: חישוב `sub(stmt)` עבור `do`
+
+<NanoPromelaSubTree example="do-basic" />
+
+---
+clicks: 4
+---
+
+# דוגמה מונחית: קינון של `if` ו־`do`
+
+<NanoPromelaSubTree example="nested-if-do" />
 
 ---
 
