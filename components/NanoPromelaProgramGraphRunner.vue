@@ -287,6 +287,19 @@ async function loadPyodideFromCDN() {
   })
 }
 
+function resolveRunnerAssetUrl(src: string) {
+  if (!src) return src
+  if (/^(?:[a-z]+:)?\/\//i.test(src) || src.startsWith('data:')) {
+    return src
+  }
+
+  const baseUrl = import.meta.env.BASE_URL || '/'
+  const normalizedBaseUrl = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`
+  const normalizedSrc = src.startsWith('/') ? src.slice(1) : src
+
+  return new URL(normalizedSrc, `${window.location.origin}${normalizedBaseUrl}`).toString()
+}
+
 async function ensureLarkInstalled() {
   if (!pyodide) return
 
@@ -306,10 +319,15 @@ await micropip.install("lark")
 
 async function initialize() {
   try {
+    const helperUrl = resolveRunnerAssetUrl(props.src)
     const [helperResp, loadPyodide] = await Promise.all([
-      fetch(props.src),
+      fetch(helperUrl),
       loadPyodideFromCDN(),
     ])
+
+    if (!helperResp.ok) {
+      throw new Error(`Failed to load helper: ${helperResp.status} ${helperResp.statusText}`)
+    }
 
     const helperSource = await helperResp.text()
     pyodide = await loadPyodide({
