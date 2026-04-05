@@ -390,8 +390,9 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         graphLabel: '$\\neg(x > 1) \\land \\neg(y < x) : skip$',
         previewLabel: '-- !(x > 1) && !(y < x) : skip -->',
         actionWidth: 220,
-        actionX: 14,
-        actionY: 6,
+        actionX: 10,
+        actionY: -30,
+        curve: -0.1,
       },
     ],
     steps: [
@@ -598,7 +599,7 @@ export const pgExamples: Record<PgExampleKey, PgExample> = {
         loopDirection: '-150deg',
         loopRadius: 90,
         loopLabelRadius: 80,
-        actionX: 20,
+        actionX: 29,
         actionY: -20,
       },
       {

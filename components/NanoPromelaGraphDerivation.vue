@@ -448,7 +448,7 @@ const renderFormulaLine = (value: string) => {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  max-width: 840px;
+  max-width: 930px;
   margin: 0 auto;
 }
 
@@ -476,7 +476,7 @@ const renderFormulaLine = (value: string) => {
 
 .walkthrough-grid {
   display: grid;
-  grid-template-columns: 1.18fr 0.92fr;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1.02fr);
   gap: 6px;
   align-items: start;
 }
