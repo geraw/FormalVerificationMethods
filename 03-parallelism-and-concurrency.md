@@ -1085,7 +1085,7 @@ w_2 \xrightarrow{x=2 \lor \neg b_1} c_2$$
 
 <b>עומק 3</b>: שוב נחשפים אותם מעברים על החזית החדשה:
 $$\hspace{1cm}P_1:\ w_1 \xrightarrow{x=1 \lor \neg b_2} c_1
-\qquad
+\qquad 
 n_1 \xrightarrow{b_1 := T;\ x:=2} w_1$$
 
 $$\hspace{1cm}P_2:\ n_2 \xrightarrow{b_2 := T;\ x:=1} w_2

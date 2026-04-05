@@ -602,7 +602,7 @@ $$
 
 ---
 
-# דוגמה: פרוטוקול הביט המתחלף (ABP)
+# דוגמה: פרוטוקול הביט המתהפך (ABP)
 
 <img src="/images/abp_channels_comic.png" class="absolute bottom-0 left-0 w-70" />
 
