@@ -39,6 +39,8 @@ interface State {
   width?: number; // Custom width override
   initial?: boolean;
   initialDirection?: 'left' | 'right' | 'top' | 'bottom';
+  initialStroke?: string;
+  initialStrokeWidth?: number;
   labelX?: number; // Offset for label
   labelY?: number;
   initialText?: string;
@@ -56,6 +58,9 @@ interface Transition {
   action?: string;
   actionFontSize?: number;
   loopDirection?: string; // e.g., '0deg', '90deg'
+  loopRadius?: number;
+  loopLabelRadius?: number;
+  loopSpread?: number;
   actionWidth?: number;
   actionHeight?: number;
   actionX?: number; // Offset from default center
@@ -96,12 +101,50 @@ const showZoomControls = computed(() => props.showZoomControls);
 const uniqueColors = computed(() => {
     const set = new Set<string>();
     set.add('#333'); // Default
-    set.add('#000'); // For initial arrows
     props.transitions.forEach(t => {
         if (t.stroke) set.add(t.stroke);
     });
+    props.states.forEach(s => {
+        if (s.initialStroke) set.add(s.initialStroke);
+    });
     return Array.from(set);
 });
+
+function getInitialArrowColor(state: State) {
+    if (state.initialStroke) return state.initialStroke;
+
+    const outgoingColors = new Set(
+        props.transitions
+            .filter(t => t.source === state.id)
+            .map(t => t.stroke || '#333')
+    );
+    if (outgoingColors.size === 1) return Array.from(outgoingColors)[0];
+
+    const allTransitionColors = new Set(
+        props.transitions.map(t => t.stroke || '#333')
+    );
+    if (allTransitionColors.size === 1) return Array.from(allTransitionColors)[0];
+
+    return '#333';
+}
+
+function getInitialArrowStrokeWidth(state: State) {
+    if (state.initialStrokeWidth !== undefined) return state.initialStrokeWidth;
+
+    const outgoingWidths = new Set(
+        props.transitions
+            .filter(t => t.source === state.id)
+            .map(t => t.strokeWidth !== undefined ? t.strokeWidth : 2)
+    );
+    if (outgoingWidths.size === 1) return Array.from(outgoingWidths)[0];
+
+    const allTransitionWidths = new Set(
+        props.transitions.map(t => t.strokeWidth !== undefined ? t.strokeWidth : 2)
+    );
+    if (allTransitionWidths.size === 1) return Array.from(allTransitionWidths)[0];
+
+    return 2;
+}
 
 let simulation: d3.Simulation<d3.SimulationNodeDatum, undefined> | null = null;
 let zoomBehavior: d3.ZoomBehavior<SVGSVGElement, unknown> | null = null;
@@ -262,7 +305,14 @@ const render = () => {
     }
     
     // Helper: Self Loop Path
-    function getSelfLoopPath(x: number, y: number, dirStr: string = '-45deg', nodeWidth: number = rectW) {
+    function getSelfLoopPath(
+       x: number,
+       y: number,
+       dirStr: string = '-45deg',
+       nodeWidth: number = rectW,
+       loopRadius: number = 80,
+       loopSpread: number = Math.PI / 5,
+    ) {
        let angle = -Math.PI * 3 / 4; 
        const degMatch = dirStr.match(/(-?[\d.]+)deg/);
        if (degMatch) {
@@ -270,10 +320,8 @@ const render = () => {
        } else if (!isNaN(parseFloat(dirStr))) {
            angle = parseFloat(dirStr) * Math.PI / 180;
        }
-       
-       const loopWid = 30;
-       // Wider spread for a more circular loop
-       const spread = Math.PI / 5; 
+
+       const spread = loopSpread;
        const a1 = angle - spread;
        const a2 = angle + spread;
        
@@ -285,8 +333,7 @@ const render = () => {
        const x2 = x + p2.x;
        const y2 = y + p2.y;
        
-       // Larger control point distance for a rounder loop
-       const cpDist = 80;
+       const cpDist = loopRadius;
        const cx1 = x + Math.cos(a1) * cpDist;
        const cy1 = y + Math.sin(a1) * cpDist;
        const cx2 = x + Math.cos(a2) * cpDist;
@@ -406,9 +453,9 @@ const render = () => {
              if (dir === 'bottom') return `M 0,${nh/2 + gap + len} L 0,${nh/2 + gap}`;
              return `M -${nw/2 + gap + len},0 L -${nw/2 + gap},0`;
         })
-        .attr("stroke", "#000")
-        .attr("stroke-width", 2)
-        .attr("marker-end", `url(#${getMarkerId("#000")})`);
+        .attr("stroke", (d: any) => getInitialArrowColor(d))
+        .attr("stroke-width", (d: any) => getInitialArrowStrokeWidth(d))
+        .attr("marker-end", (d: any) => `url(#${getMarkerId(getInitialArrowColor(d))})`);
 
     // Initial state label (foreignObject)
     const initialLabels = nodeSelection.filter(d => !!d.initial && !!d.initialText).append("foreignObject")
@@ -477,7 +524,14 @@ const render = () => {
             if (!source || !target) return "";
 
             if (source.id === target.id) {
-               return getSelfLoopPath(source.x!, source.y!, d.loopDirection || '-45deg', source.width || rectW);
+               return getSelfLoopPath(
+                   source.x!,
+                   source.y!,
+                   d.loopDirection || '-45deg',
+                   source.width || rectW,
+                   d.loopRadius || 80,
+                   d.loopSpread || Math.PI / 5,
+               );
             }
             
             const sw = source.width || rectW;
@@ -550,7 +604,7 @@ const render = () => {
                      let angle = -Math.PI * 3 / 4;
                      const degMatch = dirStr.match(/(-?[\d.]+)deg/);
                      if (degMatch) angle = parseFloat(degMatch[1]) * Math.PI / 180;
-                     const distLoop = 70;
+                     const distLoop = d.loopLabelRadius || (d.loopRadius ? Math.max(50, d.loopRadius - 10) : 70);
                      return s.x! + Math.cos(angle) * distLoop - w/2 + offsetX;
                  }
                  
@@ -586,7 +640,7 @@ const render = () => {
                      let angle = -Math.PI * 3 / 4;
                      const degMatch = dirStr.match(/(-?[\d.]+)deg/);
                      if (degMatch) angle = parseFloat(degMatch[1]) * Math.PI / 180;
-                     const distLoop = 70;
+                     const distLoop = d.loopLabelRadius || (d.loopRadius ? Math.max(50, d.loopRadius - 10) : 70);
                      return s.y! + Math.sin(angle) * distLoop - h/2 + offsetY;
                  }
                  

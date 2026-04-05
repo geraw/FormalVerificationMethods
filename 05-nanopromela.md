@@ -677,7 +677,7 @@ fi
 <TransitionSystemD3
   :width="600"
   :height="100"
-  :scale="60"
+  :scale="70"
   :states="[
   { id: 's1', text: '$l_1, l_1, x \\mapsto 0, y \\mapsto 0$',     x: 300, y: 50 -140, width: 220, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
   { id: 's2_3', text: '$l_1, l_2, x \\mapsto 3, y \\mapsto 0$',   x: 130, y: 150-140, width: 220, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
@@ -768,26 +768,26 @@ od
 <div class="absolute top-2 right-3 font-bold text-slate-500 text-sm">מרחב המצבים</div>
 
 <TransitionSystemD3
-  :width="600"
-  :height="350"
-  :scale="60"
+  :width="640"
+  :height="380"
+  :scale="80"
   :states="[
-  { id: 's1_0', text: '$l_1, l_1, x \\mapsto 0$', x: 300, y: 50,  width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37', initial: true },
-  { id: 's1_3', text: '$l_1, l_1, x \\mapsto 3$', x: 300, y: 150, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
-  { id: 's2_3', text: '$l_2, l_1, x \\mapsto 3$', x: 300, y: 250, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
-  { id: 's2_0', text: '$l_2, l_1, x \\mapsto 0$', x: 100, y: 250, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' }
+  { id: 's1_0', text: '$l_1, l_1, x \\mapsto 0$', x: 350, y: 50,  width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37', initial: true, initialDirection: 'top' },
+  { id: 's1_3', text: '$l_1, l_1, x \\mapsto 3$', x: 350, y: 170, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
+  { id: 's2_3', text: '$l_2, l_1, x \\mapsto 3$', x: 350, y: 300, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
+  { id: 's2_0', text: '$l_2, l_1, x \\mapsto 0$', x: 90, y: 300, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' }
   ]"  
   :transitions="[
-  { source: 's1_0', target: 's1_3', label: 'x:=3', stroke: '#A1824A', strokeWidth: 2 },
-  { source: 's1_0', target: 's1_0', label: 'x:=0', stroke: '#A1824A', strokeWidth: 2 },
-  { source: 's1_0', target: 's1_0', label: 'skip', stroke: '#A1824A', strokeWidth: 2, curve: .1 },
-  { source: 's1_3', target: 's1_3', label: 'x:=3', stroke: '#A1824A', strokeWidth: 2 },
-  { source: 's1_3', target: 's1_0', label: 'x:=0', curve: -.5, stroke: '#A1824A', strokeWidth: 2 },
-  { source: 's1_3', target: 's2_3', label: 'nothing', stroke: '#A1824A', strokeWidth: 2 },
-  { source: 's2_3', target: 's2_3', label: 'x:=3', stroke: '#A1824A', strokeWidth: 2 },
-  { source: 's2_3', target: 's2_0', label: 'x:=0', stroke: '#A1824A', strokeWidth: 2 },
-  { source: 's2_0', target: 's2_0', label: 'x:=0', stroke: '#A1824A', strokeWidth: 2 },
-  { source: 's2_0', target: 's2_3', label: 'x:=3', curve: .1, stroke: '#A1824A', strokeWidth: 2 }
+  { source: 's1_0', target: 's1_3', action: 'x:=3', stroke: '#A1824A', strokeWidth: 2, actionX: 28 },
+  { source: 's1_0', target: 's1_0', action: 'x:=0', stroke: '#A1824A', strokeWidth: 2, loopDirection: '-150deg', loopRadius: 108, loopLabelRadius: 96, actionWidth: 72, actionX: -6, actionY: -4 },
+  { source: 's1_0', target: 's1_0', action: 'skip', stroke: '#A1824A', strokeWidth: 2, loopDirection: '-30deg', loopRadius: 108, loopLabelRadius: 96, actionWidth: 72, actionX: 8, actionY: -4 },
+  { source: 's1_3', target: 's1_3', action: 'x:=3', stroke: '#A1824A', strokeWidth: 2, loopDirection: '10deg', loopRadius: 104, loopLabelRadius: 92, actionWidth: 72, actionX: 8 },
+  { source: 's1_3', target: 's1_0', action: 'x:=0', curve: -.5, stroke: '#A1824A', strokeWidth: 2, actionX: -30, actionY: -6 },
+  { source: 's1_3', target: 's2_3', action: 'nothing', stroke: '#A1824A', strokeWidth: 2, actionWidth: 86, actionX: 34 },
+  { source: 's2_3', target: 's2_3', action: 'x:=3', stroke: '#A1824A', strokeWidth: 2, loopDirection: '20deg', loopRadius: 104, loopLabelRadius: 92, actionWidth: 72, actionX: 10, actionY: 4 },
+  { source: 's2_3', target: 's2_0', action: 'x:=0', stroke: '#A1824A', strokeWidth: 2, actionX: 0, actionY: -10 },
+  { source: 's2_0', target: 's2_0', action: 'x:=0', stroke: '#A1824A', strokeWidth: 2, loopDirection: '-170deg', loopRadius: 100, loopLabelRadius: 88, actionWidth: 72, actionX: -10 },
+  { source: 's2_0', target: 's2_3', action: 'x:=3', curve: .1, stroke: '#A1824A', strokeWidth: 2, actionY: 17 }
   ]"
 />
 
