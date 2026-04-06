@@ -806,8 +806,8 @@ watch(() => [props.states, props.transitions, props.width, props.height, props.z
 }
 .zoom-controls {
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: -30px;
+  right: 65px;
   z-index: 101;
   display: flex;
   gap: 4px;
