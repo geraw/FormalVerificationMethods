@@ -221,52 +221,64 @@ info: |
 <div class="text-[14px] leading-snug text-right">
 
 <div class="bg-slate-50 px-4 py-3 rounded border border-slate-200 mt-2">
-<span dir="ltr">BDD = Binary Decision Diagram</span>. זהו גרף מכוון וחסר-מחזורים
-שמייצג פונקציה בוליאנית. אחרי שמקודדים את משתני המצב לביטים, כל קבוצת מצבים
-נהפכת לפונקציה בוליאנית, ולכן גם ל-<span dir="ltr">BDD</span>.
+<span dir="ltr">BDD = Binary Decision Diagram</span>. זהו <b>גרף מכוון, מושרש וחסר-מחזורים</b>
+שמייצג פונקציה בוליאנית: בכל צומת פנימי שואלים על משתנה אחד, הקשתות מייצגות
+<span dir="ltr">0/1</span>, והעלים הם <span dir="ltr">0</span> ו-<span dir="ltr">1</span>.
+בפועל כמעט תמיד משתמשים ב-<span dir="ltr">ROBDD</span>: אותו סדר משתנים על כל מסלול,
+איחוד תתי-גרפים זהים והסרת צמתים מיותרים. עבור סדר משתנים קבוע מתקבל ייצוג קנוני.
 </div>
 
 <div class="grid grid-cols-2 gap-4 mt-4">
 <div class="bg-blue-50 p-3 rounded border border-blue-200">
-<div class="font-bold mb-2">דוגמה פשוטה</div>
-נניח שמצב המערכת הוא <span dir="ltr"><code>(mode, x)</code></span>, כאשר
+<div class="font-bold mb-2">דוגמה מאימות מערכות</div>
+נניח שמצב של פרוטוקול הדדיות מקודד על ידי
+<span dir="ltr"><code>crit0, crit1, want0, want1, turn</code></span>.
 
 $$
-mode \in \{idle, busy\}
-\qquad\qquad
-x \in \{0,1,2,3\}
+Bad = crit0 \land crit1
 $$
 
 <div class="mt-3">
-אחרי קידוד לביטים <span dir="ltr"><code>m,x_1,x_0</code></span>, הקבוצה
+זו קבוצת המצבים שבה <b>שני התהליכים נמצאים יחד בקטע הקריטי</b>.
+יש כאן <span dir="ltr"><code>2^5 = 32</code></span> מצבים אפשריים, אבל
+הנוסחה למעלה מתארת בבת אחת את כל <span dir="ltr"><code>8</code></span> המצבים הבעייתיים.
 </div>
-
-$$
-\{(busy,0),(busy,1),(busy,2),(busy,3)\}
-$$
 
 <div class="mt-2">
-נהפכת פשוט ל:
+המשתנים <span dir="ltr"><code>want0,want1,turn</code></span> בכלל לא משנים כאן, ולכן
+ייצוג סימבולי טוב לא צריך "לפתוח" אותם.
 </div>
-
-$$
-m = 1
-$$
-
 </div>
 
 <div class="bg-green-50 p-3 rounded border border-green-200">
-<div class="font-bold mb-2">למה זה חזק?</div>
-<ul class="list-disc pr-5 space-y-2 text-[13px]">
-<li>כדי לתאר את כל המצבים האלה, לא צריך להזכיר בכלל את <span dir="ltr"><code>x_1,x_0</code></span>.</li>
-<li>מבחינת ה-<span dir="ltr">BDD</span>, מספיק "לשאול" רק על <span dir="ltr"><code>m</code></span>.</li>
-<li>כל המצבים שבהם <span dir="ltr"><code>mode = busy</code></span> מתכנסים לייצוג קטן אחד.</li>
-</ul>
+<div class="font-bold mb-2">איך BDD "רואה" את הקבוצה?</div>
+<div class="text-[13px]">
+במקום למנות מצבים, הוא שואל רק על המשתנים שבאמת קובעים:
+</div>
 
-<div dir="ltr" class="mt-4 bg-white/80 rounded border border-slate-200 p-3 text-center font-mono text-[18px] leading-tight">
-<div>m ?</div>
-<div>/ &nbsp;&nbsp; \</div>
-<div>0 &nbsp;&nbsp;&nbsp; 1</div>
+<div dir="ltr" class="mt-1 bg-white/80 rounded border border-slate-200 p-3">
+<div class="relative -mt-6 mx-auto h-[140px] max-w-[270px] scale-50">
+  <div class="absolute left-[134px] top-[28px] border-t-[3px] border-dashed border-slate-500 origin-left" style="width: 166px; transform: rotate(119deg);"></div>
+  <div class="absolute left-[134px] top-[28px] border-t-[3px] border-sky-600 origin-left" style="width: 112px; transform: rotate(47deg);"></div>
+  <div class="absolute left-[210px] top-[110px] border-t-[3px] border-dashed border-slate-500 origin-left" style="width: 169px; transform: rotate(158deg);"></div>
+  <div class="absolute left-[210px] top-[110px] border-t-[3px] border-sky-600 origin-left" style="width: 74px; transform: rotate(65deg);"></div>
+
+  <div class="absolute left-[112px] top-[6px] z-10 h-[44px] w-[44px] rounded-full border-[3px] border-blue-600 bg-blue-100 flex items-center justify-center text-[11px] font-semibold text-blue-900">crit0</div>
+  <div class="absolute left-[188px] top-[88px] z-10 h-[44px] w-[44px] rounded-full border-[3px] border-blue-600 bg-blue-100 flex items-center justify-center text-[11px] font-semibold text-blue-900">crit1</div>
+  <div class="absolute left-[36px] top-[156px] z-10 h-[34px] w-[34px] rounded-md border-[3px] border-slate-500 bg-slate-50 flex items-center justify-center text-[18px] font-semibold text-slate-700">0</div>
+  <div class="absolute left-[224px] top-[160px] z-10 h-[34px] w-[34px] rounded-md border-[3px] border-lime-600 bg-lime-50 flex items-center justify-center text-[18px] font-semibold text-lime-700">1</div>
+
+  <div class="absolute left-[78px] top-[82px] z-20 text-[12px] font-semibold text-slate-600">0</div>
+  <div class="absolute left-[182px] top-[52px] z-20 text-[12px] font-semibold text-sky-700">1</div>
+  <div class="absolute left-[136px] top-[148px] z-20 text-[12px] font-semibold text-slate-600">0</div>
+  <div class="absolute left-[238px] top-[130px] z-20 text-[12px] font-semibold text-sky-700">1</div>
+</div>
+
+</div>
+
+<div class="mt-3 text-[13px]">
+זה כל הרעיון: הרבה מצבים מפורשים מתכנסים לגרף קטן, וכאן אפילו רואים
+ששתי דרכים שונות מגיעות לאותו עלה <span dir="ltr"><code>0</code></span>.
 </div>
 </div>
 </div>
@@ -293,7 +305,7 @@ $$
 
 <div class="bg-green-50 p-2.5 rounded border border-green-200">
 <div class="font-bold mb-2"><span dir="ltr">Trans(V,V')</span></div>
-כל המעברים החוקיים בין מצב נוכחי למצב הבא.
+כל המעברים החוקיים בין <span dir="ltr">V</span> ל-<span dir="ltr">V'</span>.
 </div>
 
 <div class="bg-rose-50 p-2.5 rounded border border-rose-200">
