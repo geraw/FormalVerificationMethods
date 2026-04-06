@@ -80,6 +80,291 @@ info: |
 
 ---
 
+# דוגמה: ניתוח סימבולי אחורה
+
+<div class="text-[13px] leading-snug text-right">
+
+<div class="bg-slate-50 px-4 py-3 rounded border border-slate-200 mt-2">
+נרצה להוכיח שהמערכת <b>לא יכולה להגיע ל-<span dir="ltr">l4</span></b>.
+במקום למנות את כל המצבים האפשריים, נייצג <b>קבוצות של מצבים</b> בעזרת פסוקים
+ונחשב אותן <b>אחורה</b>.
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-4 items-start">
+<div class="bg-amber-50 p-3 rounded border border-amber-200">
+<div class="font-bold mb-2">גרף התוכנית</div>
+<div class="flex justify-center">
+<TransitionSystemD3
+  :width="300"
+  :height="255"
+  :auto="false"
+  :states="[
+    {
+      id: 'l1sym',
+      text: '$l_1$',
+      x: 85,
+      y: 34,
+      width: 52,
+      color: '#fde047',
+      stroke: '#a16207',
+      initial: true,
+      initialDirection: 'top',
+      initialText: '$1 \\le x \\le 10,\\ 1 \\le y \\le 10$',
+      initialTextWidth: 170,
+      initialTextHeight: 26,
+    },
+    {
+      id: 'l2sym',
+      text: '$l_2$',
+      x: 85,
+      y: 96,
+      width: 52,
+      color: '#fde047',
+      stroke: '#a16207',
+    },
+    {
+      id: 'l3sym',
+      text: '$l_3$',
+      x: 85,
+      y: 158,
+      width: 52,
+      color: '#fde047',
+      stroke: '#a16207',
+    },
+    {
+      id: 'l4sym',
+      text: '$l_4$',
+      x: 85,
+      y: 220,
+      width: 52,
+      color: '#dc2626',
+      stroke: '#991b1b',
+    },
+  ]"
+  :transitions="[
+    {
+      source: 'l1sym',
+      target: 'l2sym',
+      action: '$true : y := y + 10$',
+      actionWidth: 126,
+      actionX: 84,
+      actionY: -2,
+    },
+    {
+      source: 'l2sym',
+      target: 'l3sym',
+      action: '$true : x := x + 1$',
+      actionWidth: 120,
+      actionX: 82,
+      actionY: -2,
+    },
+    {
+      source: 'l3sym',
+      target: 'l4sym',
+      action: '$x > y : \\texttt{nothing}$',
+      actionWidth: 130,
+      actionX: 92,
+      actionY: -2,
+    },
+  ]"
+/>
+</div>
+
+<div class="text-center text-[12px] text-red-700 -mt-3 font-semibold">Assertion violation</div>
+</div>
+
+<div class="space-y-3">
+<div class="bg-blue-50 p-3 rounded border border-blue-200">
+<div class="font-bold mb-2">חישוב אחורה באופן סימבולי</div>
+
+<div dir="ltr" class="text-left">
+<div class="symbolic-backward-note">Each line is a symbolic set of states.</div>
+<div class="symbolic-backward-row"><span class="symbolic-backward-name">S0</span><span class="symbolic-backward-op">=</span><span class="symbolic-backward-formula">at l4</span></div>
+<div class="symbolic-backward-row"><span class="symbolic-backward-name">S1</span><span class="symbolic-backward-op">=</span><span class="symbolic-backward-formula">Pre(S0) = at l3 ∧ x &gt; y</span></div>
+<div class="symbolic-backward-row"><span class="symbolic-backward-name">S2</span><span class="symbolic-backward-op">=</span><span class="symbolic-backward-formula">Pre(S1) = at l2 ∧ x + 1 &gt; y</span></div>
+<div class="symbolic-backward-row"><span class="symbolic-backward-name">S3</span><span class="symbolic-backward-op">=</span><span class="symbolic-backward-formula">Pre(S2) = at l1 ∧ x + 1 &gt; y + 10</span></div>
+</div>
+
+<div class="mt-3 bg-green-50 border border-green-200 rounded p-3 text-[12px]">
+<div class="font-bold mb-1">התנגשות עם תנאי ההתחלה</div>
+אם <span dir="ltr"><code>1 ≤ x ≤ 10</code></span> ו-<span dir="ltr"><code>1 ≤ y ≤ 10</code></span>,
+אז בהכרח <span dir="ltr"><code>x + 1 ≤ 11</code></span> וגם
+<br><span dir="ltr"><code>y + 10 ≥ 11</code></span>, ולכן
+<span dir="ltr"><code>x + 1 &gt; y + 10</code></span> בלתי אפשרי.
+</div>
+</div>
+
+<div class="bg-rose-50 p-3 rounded border border-rose-200 text-[11px] leading-snug">
+לא רשמנו אפילו מצב אחד במפורש. בכל שורה כתבנו <b>קבוצה שלמה של מצבים</b>, ואז הפעלנו עליה
+את <span dir="ltr"><code>Pre</code></span>.
+
+<div class="mt-2">
+כאן יש <span dir="ltr"><code>4 · 10 · 10 = 400</code></span> מצבים. אם היינו מכפילים את כל הקבועים פי 10,
+היינו מגיעים לכ-<span dir="ltr"><code>4 · 100 · 100 = 40{,}000</code></span> מצבים, כלומר
+<b>פי 100 יותר מצבים</b>.
+</div>
+
+<div class="mt-2">
+אבל עדיין היינו צריכים רק <b>4 צעדי חישוב אחורה</b>, כי מספר הצעדים נקבע על ידי
+מבנה הבקרה של הגרף, ולא על ידי מספר המצבים המפורש.
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+---
+
+# אז מה זה BDD?
+
+<div class="text-[14px] leading-snug text-right">
+
+<div class="bg-slate-50 px-4 py-3 rounded border border-slate-200 mt-2">
+<span dir="ltr">BDD = Binary Decision Diagram</span>. זהו גרף מכוון וחסר-מחזורים
+שמייצג פונקציה בוליאנית. אחרי שמקודדים את משתני המצב לביטים, כל קבוצת מצבים
+נהפכת לפונקציה בוליאנית, ולכן גם ל-<span dir="ltr">BDD</span>.
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-4">
+<div class="bg-blue-50 p-3 rounded border border-blue-200">
+<div class="font-bold mb-2">דוגמה פשוטה</div>
+נניח שמצב המערכת הוא <span dir="ltr"><code>(mode, x)</code></span>, כאשר
+
+$$
+mode \in \{idle, busy\}
+\qquad\qquad
+x \in \{0,1,2,3\}
+$$
+
+<div class="mt-3">
+אחרי קידוד לביטים <span dir="ltr"><code>m,x_1,x_0</code></span>, הקבוצה
+</div>
+
+$$
+\{(busy,0),(busy,1),(busy,2),(busy,3)\}
+$$
+
+<div class="mt-2">
+נהפכת פשוט ל:
+</div>
+
+$$
+m = 1
+$$
+
+</div>
+
+<div class="bg-green-50 p-3 rounded border border-green-200">
+<div class="font-bold mb-2">למה זה חזק?</div>
+<ul class="list-disc pr-5 space-y-2 text-[13px]">
+<li>כדי לתאר את כל המצבים האלה, לא צריך להזכיר בכלל את <span dir="ltr"><code>x_1,x_0</code></span>.</li>
+<li>מבחינת ה-<span dir="ltr">BDD</span>, מספיק "לשאול" רק על <span dir="ltr"><code>m</code></span>.</li>
+<li>כל המצבים שבהם <span dir="ltr"><code>mode = busy</code></span> מתכנסים לייצוג קטן אחד.</li>
+</ul>
+
+<div dir="ltr" class="mt-4 bg-white/80 rounded border border-slate-200 p-3 text-center font-mono text-[18px] leading-tight">
+<div>m ?</div>
+<div>/ &nbsp;&nbsp; \</div>
+<div>0 &nbsp;&nbsp;&nbsp; 1</div>
+</div>
+</div>
+</div>
+
+<div class="mt-4 bg-amber-50 p-3 rounded border border-amber-200 text-[13px]">
+אין צורך לדעת לבנות <span dir="ltr">BDD</span>-ים ביד. חשוב רק להבין שהם שומרים
+תיאורים בוליאניים בצורה קומפקטית, עם הרבה שיתוף פנימי, ולכן הם יכולים לייצג
+מרחבי מצבים גדולים הרבה יותר ממה שאפשר לכתוב ידנית.
+</div>
+
+</div>
+
+---
+
+# איך NuSMV משתמש בזה?
+
+<div class="text-[13px] leading-snug text-right">
+
+<div class="grid grid-cols-3 gap-4 mt-2">
+<div class="bg-blue-50 p-2.5 rounded border border-blue-200">
+<div class="font-bold mb-2"><span dir="ltr">Init(V)</span></div>
+קבוצת המצבים ההתחלתיים.
+</div>
+
+<div class="bg-green-50 p-2.5 rounded border border-green-200">
+<div class="font-bold mb-2"><span dir="ltr">Trans(V,V')</span></div>
+כל המעברים החוקיים בין מצב נוכחי למצב הבא.
+</div>
+
+<div class="bg-rose-50 p-2.5 rounded border border-rose-200">
+<div class="font-bold mb-2"><span dir="ltr">Bad(V)</span></div>
+המצבים שמפרים את התכונה.
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-3">
+<div class="bg-slate-50 p-3 rounded border border-slate-200 text-center">
+
+<div class="font-bold text-[12px] mb-2"><span dir="ltr">Forward reachability</span></div>
+
+$$
+R_0 = Init
+$$
+
+$$
+R_{i+1} = R_i \cup Post(R_i)
+$$
+
+$$
+Post(R) = \{\, s' \mid \exists s \in R : Trans(s,s') \,\}
+$$
+
+</div>
+
+<div class="bg-slate-50 p-3 rounded border border-slate-200 text-center">
+
+<div class="font-bold text-[12px] mb-2"><span dir="ltr">Backward reachability</span></div>
+
+$$
+P_0 = Bad
+$$
+
+$$
+P_{i+1} = P_i \cup Pre(P_i)
+$$
+
+$$
+Pre(P) = \{\, s \mid \exists s' \in P : Trans(s,s') \,\}
+$$
+
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-3">
+<div class="bg-purple-50 p-3 rounded border border-purple-200">
+<div class="font-bold mb-2">מה האלגוריתם עושה?</div>
+<ul class="list-disc pr-5 space-y-1.5 text-[12px]">
+<li>לפעמים נוח לחשב קדימה מ-<span dir="ltr">Init</span>, ולפעמים אחורה מ-<span dir="ltr">Bad</span>.</li>
+<li>בכל שלב מוסיפים לא מצב בודד, אלא קבוצה שלמה של מצבים.</li>
+<li>עוצרים כשהקבוצה כבר לא משתנה.</li>
+<li>בדוגמה הקודמת השתמשנו בדיוק בחישוב אחורה כזה.</li>
+</ul>
+</div>
+
+<div class="bg-amber-50 p-3 rounded border border-amber-200">
+<div class="font-bold mb-2">המסר החשוב לקורס</div>
+<ul class="list-disc pr-5 space-y-1.5 text-[12px]">
+<li>לא עובדים על קשתות בודדות, אלא על קבוצות של מצבים ומעברים.</li>
+<li><span dir="ltr">BDD</span> הוא אחת הדרכים היעילות לשמור את הייצוגים האלה.</li>
+<li>לכן <span dir="ltr">NuSMV</span> יכול לטפל גם במודלים שקשה מאוד לצייר במפורש.</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+---
+
 # התקנת NuSMV
 
 <div class="grid grid-cols-2 gap-4 mt-2 items-start">
@@ -1046,5 +1331,37 @@ state:  y=0  y=1  y=2  y=3  y=4  y=5
 .small-code :is(pre, code) {
   font-size: 0.72rem;
   line-height: 1.25;
+}
+
+.symbolic-backward-note {
+  margin-bottom: 0.5rem;
+  font-size: 0.74rem;
+  color: #475569;
+}
+
+.symbolic-backward-row {
+  display: grid;
+  grid-template-columns: 2.1rem 0.7rem 1fr;
+  align-items: start;
+  gap: 0.35rem;
+  margin: 0.28rem 0;
+  padding: 0.38rem 0.55rem;
+  border: 1px solid #93c5fd;
+  border-radius: 0.65rem;
+  background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+  font-size: 0.76rem;
+}
+
+.symbolic-backward-name {
+  font-weight: 700;
+}
+
+.symbolic-backward-op {
+  text-align: center;
+}
+
+.symbolic-backward-formula {
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 </style>
