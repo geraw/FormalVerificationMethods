@@ -493,7 +493,7 @@ $$
 <ul class="list-disc pr-5 space-y-2">
 <li><span dir="ltr"><code>MODULE</code></span> – הגדרת מודול.</li>
 <li><span dir="ltr"><code>VAR</code></span>, <span dir="ltr"><code>IVAR</code></span> – משתני מצב וקלט.</li>
-<li><span dir="ltr"><code>ASSIGN</code></span> – השמות למצב נוכחי, התחלתי והבא.</li>
+<li><span dir="ltr"><code>ASSIGN</code></span> – הַשָּׂמוֹת למצב נוכחי, התחלתי והבא.</li>
 <li><span dir="ltr"><code>DEFINE</code></span> – קיצור שמחושב פונקציונלית ואינו מגדיל את מרחב המצבים.</li>
 <li><span dir="ltr"><code>INIT</code></span>, <span dir="ltr"><code>TRANS</code></span>, <span dir="ltr"><code>INVAR</code></span> – תיאור ישיר של ה-<span dir="ltr">FSM</span>.</li>
 <li><span dir="ltr"><code>SPEC</code></span>, <span dir="ltr"><code>INVARSPEC</code></span>, <span dir="ltr"><code>LTLSPEC</code></span> – תכונות לאימות.</li>
