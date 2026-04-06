@@ -168,6 +168,37 @@ strong {
   line-height: 1.8 !important;
 }
 
+/* Custom Code Sizes */
+:where(.slidev-layout) :is(.small-code, .tiny-code) {
+  direction: ltr;
+  text-align: left;
+}
+
+:where(.slidev-layout) .small-code {
+  --code-font-size: 0.72rem;
+  --code-line-height: 1.25;
+}
+
+:where(.slidev-layout) .tiny-code {
+  --code-font-size: 0.62rem;
+  --code-line-height: 1.15;
+}
+
+:where(.slidev-layout) :is(.small-code, .tiny-code) :is(pre, code, .shiki, .shiki code, .slidev-code, .slidev-code-wrapper, .slidev-code code, .slidev-code code .line) {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate !important;
+  font-size: var(--code-font-size) !important;
+  line-height: var(--code-line-height) !important;
+}
+
+:where(.slidev-layout) :is(.small-code, .tiny-code) :is(.slidev-code-wrapper, .slidev-code, pre.shiki) {
+  display: block !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
 /* Custom Scrollable List Container */
 .list-container {
   max-height: 380px;

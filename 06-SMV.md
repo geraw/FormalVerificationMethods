@@ -3,7 +3,7 @@ theme: academic
 dir: rtl
 class: text-center
 highlighter: shiki
-lineNumbers: true
+lineNumbers: false
 download: true
 exportFilename: 06-SMV
 htmlAttrs:
@@ -55,7 +55,7 @@ info: |
 </div>
 
 <div class="grid grid-cols-2 gap-4 mt-4 text-right">
-<div class="bg-blue-50 p-3 rounded border border-blue-200">
+<div class="bg-blue-50 p-3 rounded border border-blue-200 text-left">
 <div class="font-bold mb-2">מה הכלי יודע לעשות?</div>
 <ul class="list-disc pr-5 space-y-2">
 <li>לנתח מודלים סינכרוניים וא-סינכרוניים.</li>
@@ -611,7 +611,7 @@ ASSIGN
 <ul class="list-disc pr-5 space-y-2">
 <li>אילוץ סותר ב-<span dir="ltr"><code>INIT</code></span> או <span dir="ltr"><code>TRANS</code></span> עלול ליצור מודל ריק.</li>
 <li>מצב בלי יורש יוצר <span dir="ltr">deadlock</span>, ולעתים הופך תכונות לנכונות "רק בגלל תקלה במודל".</li>
-<li>לא כל כשל לייבנס הוא כשל במערכת; לפעמים חסר אילוץ הגינות.</li>
+<li>לא כל כשל התקדמות הוא כשל במערכת; לפעמים חסר אילוץ הגינות.</li>
 </ul>
 </div>
 </div>
@@ -795,7 +795,7 @@ VAR
 <div class="bg-rose-50 p-3 rounded border border-rose-200 mt-3">
 <div class="font-bold mb-2">למה צריך הגינות?</div>
 ללא <span dir="ltr"><code>FAIRNESS running</code></span>, ייתכן שתהליך לעולם לא ייבחר.
-אז תכונת לייבנס יכולה להיכשל לא בגלל בעיה בפרוטוקול, אלא בגלל מתזמן לא הוגן.
+אז תכונת ההתקדמות יכולה להיכשל לא בגלל בעיה בפרוטוקול, אלא בגלל מתזמן לא הוגן.
 </div>
 </div>
 </div>
@@ -889,7 +889,7 @@ NuSMV > show_traces -v
 <div class="font-bold mb-2"><span dir="ltr">INVARSPEC</span></div>
 מתאים לתכונות מצביות פשוטות.
 
-<div dir="ltr" class="mt-3 small-code">
+<div dir="ltr" class="text-left">
 
 ```text
 INVARSPEC !(p0_crit & p1_crit)
@@ -904,7 +904,7 @@ INVARSPEC !(p0_crit & p1_crit)
 <div class="font-bold mb-2"><span dir="ltr">SPEC</span> עבור CTL</div>
 מדבר על כל המסלולים או קיום מסלול.
 
-<div dir="ltr" class="mt-3 small-code">
+<div dir="ltr" class="text-left">
 
 ```text
 SPEC AG (request -> AF grant)
@@ -919,7 +919,7 @@ SPEC AG !(red_ns & red_ew)
 <div class="font-bold mb-2"><span dir="ltr">LTLSPEC</span></div>
 מדבר על ריצות לינאריות.
 
-<div dir="ltr" class="mt-3 small-code">
+<div dir="ltr" class="text-left">
 
 ```text
 LTLSPEC G (req0 -> F grant0)
@@ -928,6 +928,7 @@ LTLSPEC G F heartbeat
 ```
 
 </div>
+
 </div>
 </div>
 
@@ -936,12 +937,15 @@ LTLSPEC G F heartbeat
 # דוגמה 1: רמזור דו-כיווני
 
 <div class="grid grid-cols-2 gap-4 mt-2 items-start">
-<div dir="ltr" class="small-code">
+<div dir="ltr" >
 
 ```text
 MODULE main
+
 VAR
-  phase : {ns_green, ns_yellow, ns_red_wait, ew_green, ew_yellow, ew_red_wait};
+  phase : {ns_green, ns_yellow, ns_red_wait, 
+           ew_green, ew_yellow, ew_red_wait};
+
 ASSIGN
   init(phase) := ns_green;
   next(phase) := case
@@ -953,6 +957,7 @@ ASSIGN
     phase = ew_red_wait : ns_green;
     TRUE              : phase;
   esac;
+
 DEFINE
   ns_go := phase = ns_green;
   ew_go := phase = ew_green;
@@ -963,7 +968,7 @@ DEFINE
 <div class="text-right text-[14px] leading-snug">
 <div class="bg-blue-50 p-3 rounded border border-blue-200">
 <div class="font-bold mb-2">מה נבדוק?</div>
-<div dir="ltr" class="small-code">
+<div dir="ltr" class="text-left">
 
 ```text
 INVARSPEC !(ns_go & ew_go)
@@ -976,7 +981,7 @@ LTLSPEC G (ew_go -> F ns_go)
 
 <div class="bg-amber-50 p-3 rounded border border-amber-200 mt-3">
 <div class="font-bold mb-2">למה זו דוגמה טובה?</div>
-יש כאן גם <b>בטיחות</b> וגם <b>לייבנס</b>:
+יש כאן גם <b>בטיחות</b> וגם <b>התקדמות</b>:
 לא ייתכנו שני כיוונים ירוקים יחד, וכל כיוון שמקבל ירוק מפנה בסוף את הבמה לאחר.
 </div>
 </div>
@@ -987,9 +992,10 @@ LTLSPEC G (ew_go -> F ns_go)
 # דוגמה 2: הדדיות בעזרת סמפור
 
 <div class="grid grid-cols-2 gap-4 mt-2 items-start">
+
 <div dir="ltr" class="small-code">
 
-```text
+```text 
 MODULE main
 VAR
   sem  : boolean;
@@ -1023,7 +1029,7 @@ FAIRNESS running
 <div class="text-right text-[14px] leading-snug">
 <div class="bg-green-50 p-3 rounded border border-green-200">
 <div class="font-bold mb-2">תכונות טבעיות</div>
-<div dir="ltr" class="small-code">
+<div dir="ltr" class="text-left">
 
 ```text
 INVARSPEC !(p0.st = critical & p1.st = critical)
@@ -1036,7 +1042,7 @@ SPEC AG (p1.st = wait -> AF p1.st = critical)
 
 <div class="bg-rose-50 p-3 rounded border border-rose-200 mt-3">
 <div class="font-bold mb-2">מה לומדים מהמודל?</div>
-בטיחות ההדדיות לרוב קלה יחסית. לייבנס, לעומת זאת, תלויה לא רק בפרוטוקול
+בטיחות ההדדיות לרוב קלה יחסית. תכונות התקדמות, לעומת זאת, תלויות לא רק בפרוטוקול
 אלא גם בהנחת הוגנות על המתזמן.
 </div>
 </div>
@@ -1047,7 +1053,7 @@ SPEC AG (p1.st = wait -> AF p1.st = critical)
 # דוגמה 3: ארביטר דו-לקוחות
 
 <div class="grid grid-cols-2 gap-4 mt-2 items-start">
-<div dir="ltr" class="small-code">
+<div dir="ltr" >
 
 ```text
 MODULE main
@@ -1075,7 +1081,7 @@ ASSIGN
 <div class="text-right text-[14px] leading-snug">
 <div class="bg-blue-50 p-3 rounded border border-blue-200">
 <div class="font-bold mb-2">תכונות מעניינות</div>
-<div dir="ltr" class="small-code">
+<div dir="ltr" class="text-left">
 
 ```text
 INVARSPEC (grant = g0 -> req0)
@@ -1193,7 +1199,7 @@ state:  y=0  y=1  y=2  y=3  y=4  y=5
 </div>
 
 <div class="bg-blue-50 p-3 rounded border border-blue-200">
-<div class="font-bold mb-2">לייבנס והתקדמות</div>
+<div class="font-bold mb-2">התקדמות</div>
 <ul class="list-disc pr-5 space-y-2">
 <li>בקשה תטופל בסוף.</li>
 <li>תהליך רעב יקבל eventually שירות.</li>
@@ -1215,7 +1221,7 @@ state:  y=0  y=1  y=2  y=3  y=4  y=5
 <div class="font-bold mb-2">כימות זמן מוגבל</div>
 <ul class="list-disc pr-5 space-y-2">
 <li>יש נגד-דוגמה באורך עד <span dir="ltr">k</span>?</li>
-<li>יש מסלול לולאתי קצר שמפריך לייבנס?</li>
+<li>יש מסלול לולאתי קצר שמפריך תכונת התקדמות?</li>
 <li>האם אינווריאנט מוכח אינדוקטיבית?</li>
 </ul>
 </div>
@@ -1272,7 +1278,7 @@ state:  y=0  y=1  y=2  y=3  y=4  y=5
 <li>לשמור על טיפוסים סופיים וקטנים ככל האפשר.</li>
 <li>להפריד בין קלטי סביבה (<span dir="ltr"><code>IVAR</code></span>) לבין מצב פנימי.</li>
 <li>להשתמש ב-<span dir="ltr"><code>DEFINE</code></span> לשמות עזר במקום להגדיל את מצב המערכת.</li>
-<li>להתחיל ב-<span dir="ltr"><code>INVARSPEC</code></span> לפני שעוברים ללייבנס.</li>
+<li>להתחיל ב-<span dir="ltr"><code>INVARSPEC</code></span> לפני שעוברים לתכונות התקדמות.</li>
 <li>להריץ סימולציה לפני אימות מלא.</li>
 </ul>
 </div>
@@ -1301,7 +1307,7 @@ state:  y=0  y=1  y=2  y=3  y=4  y=5
 - החשיבה הנכונה היא תמיד:
   מהו המצב? מהו יחס המעבר? אילו הנחות סביבה? ואיזו תכונה באמת נרצה לבדוק?
 - דוגמאות קטנות כמו רמזור, סמפור, ארביטר ומונה כבר מראות את רוב האתגרים האמיתיים:
-  בטיחות, לייבנס, הגינות, ואבחון עקבות נגדיות.
+  בטיחות, התקדמות, הגינות, ואבחון עקבות נגדיות.
 
 <div class="mt-6 bg-slate-50 p-3 rounded border border-slate-200 text-[13px]">
 מקורות רשמיים עיקריים: <span dir="ltr">NuSMV 2.7.0 article</span>, אתר הבית של
@@ -1341,8 +1347,55 @@ state:  y=0  y=1  y=2  y=3  y=4  y=5
 }
 
 .small-code :is(pre, code) {
+  text-align: left !important;
+}
+
+.english-code-block {
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 0.72rem;
   line-height: 1.25;
+  margin: 0.75rem 0 0 0;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.4rem;
+  background: #f5f5f5;
+  overflow-x: auto;
+}
+
+.english-code-lines {
+  direction: ltr;
+  text-align: left !important;
+  unicode-bidi: isolate;
+  font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  width: 100%;
+  margin-top: 0.75rem;
+  white-space: nowrap;
+}
+
+.spec-snippet {
+  direction: ltr;
+  unicode-bidi: bidi-override;
+  display: table;
+  width: max-content;
+  max-width: 100%;
+  margin-top: 0.75rem;
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left !important;
+  font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.spec-snippet-line {
+  display: block;
+  width: 100%;
+  text-align: left !important;
+  white-space: nowrap;
 }
 
 .symbolic-backward-note {
