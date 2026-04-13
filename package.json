@@ -36,5 +36,11 @@
     },
     "devDependencies": {
         "playwright-chromium": "latest"
-    }
+    },
+    "version": "1.0.0",
+    "description": "Interactive slide decks for the Formal Verification Methods course content, built with [Slidev](https://sli.dev/).",
+    "main": "build-all.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
 }
