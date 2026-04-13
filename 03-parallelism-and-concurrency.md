@@ -451,11 +451,11 @@ $$\alpha \equiv x := 2x \hspace{1cm} \beta \equiv x := x+1$$
 
 # הגדרה פורמלית: שזירה של גרפי תוכנית
 
-יהיו $PG_i = (Loc_i, Act_i, Effect_i, \rightarrow_i, Loc_{0,i}, g_{0,i})$ עבור $i=1, 2$ שני גרפי תוכנית מעל משתנים $Var_i$. 
+יהיו $PG_i = \langle Loc_i, Act_i, Effect_i, \rightarrow_i, Loc_{0,i}, g_{0,i} \rangle$ עבור $i=1, 2$ שני גרפי תוכנית מעל משתנים $Var_i$. 
 
 גרף התוכנית $PG_1 \,|||\, PG_2$ מעל $Var_1 \cup Var_2$ מוגדר ע"י:
 
-$$PG_1 \,|||\, PG_2 = (Loc_1 \times Loc_2, Act_1 \uplus Act_2, Effect, \rightarrow, Loc_{0,1} \times Loc_{0,2}, g_{0,1} \land g_{0,2})$$
+$$PG_1 \,|||\, PG_2 = \langle Loc_1 \times Loc_2, Act_1 \uplus Act_2, Effect, \rightarrow, Loc_{0,1} \times Loc_{0,2}, g_{0,1} \land g_{0,2} \rangle$$
 
 כאשר $\rightarrow$ מוגדר ע"י חוקי הגזירה:
 

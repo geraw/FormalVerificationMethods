@@ -137,9 +137,9 @@ $$x := v$$
 
 # הגדרה פורמלית: מערכת ערוצים 
 
-**גרף תוכנית מעל $(Var, Chan)$** הוא סדורה:
+**גרף תוכנית מעל $\langle Var, Chan \rangle$** הוא סדורה:
 
-$$PG = (Loc,\ Act,\ Effect,\ \rightarrow,\ Loc_0,\ g_0)$$
+$$PG = \langle Loc,\ Act,\ Effect,\ \rightarrow,\ Loc_0,\ g_0 \rangle$$
 
 כמו בהגדרה של גרף תוכנית רגיל, עם ההבדל שיחס המעברים מורחב לכלול פעולות תקשורת:
 
@@ -147,7 +147,7 @@ $$\rightarrow\ \subseteq\ Loc \times \big(Cond(Var) \times (Act \cup {\color{red
 
 <div class="mt-6 bg-blue-50 p-4 rounded border border-blue-200">
 
-**מערכת ערוצים** $CS$ מעל $(Var, Chan)$ מורכבת מגרפי תוכנית $PG_i$ מעל $(Var_i, Chan)$ כאשר $Var = \bigcup_{1 \leq i \leq n} Var_i$:
+**מערכת ערוצים** $CS$ מעל $\langle Var, Chan \rangle$ מורכבת מגרפי תוכנית $PG_i$ מעל $\langle Var_i, Chan \rangle$ כאשר $Var = \bigcup_{1 \leq i \leq n} Var_i$:
 
 $$CS = [PG_1 \mid \ldots \mid PG_n]$$
 
@@ -297,10 +297,10 @@ $$len(\varepsilon) = 0$$
 
 $$
 CS = [PG_1 \mid \ldots \mid PG_n], \qquad
-PG_i = (Loc_i, Act_i, Effect_i, \to_i, Loc_{0,i}, g_{0,i})
+PG_i = \langle Loc_i, Act_i, Effect_i, \to_i, Loc_{0,i}, g_{0,i} \rangle
 $$
 
-$$TS(CS) = (S, Act, \to, I, AP, L)$$
+$$TS(CS) = \langle S, Act, \to, I, AP, L \rangle$$
 
 </div>
 
