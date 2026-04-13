@@ -638,6 +638,74 @@ $PG_2$
 
 ---
 
+## בדוגמה הזו: $TS(PG_1)\,|||\,TS(PG_2) \neq TS(PG_1 \,|||\, PG_2)$
+
+<div class="grid grid-cols-2 gap-8 scale-[0.78] origin-top mt-2">
+
+<div class="flex flex-col items-center">
+<h4 class="font-bold text-rose-700 mb-2">
+
+$TS(PG_1)\,|||\,TS(PG_2)$
+</h4>
+<TransitionSystemD3
+  :width="360" :height="220"
+  :states="[
+    { id: 'p33', text: '$x{=}3, x{=}3$', initial: true, initialDirection: 'top', x: 180, y: 20, width: 105, rx: 10 },
+    { id: 'p63', text: '$x{=}6, x{=}3$', x: 70, y: 95, width: 105, rx: 10 },
+    { id: 'p34', text: '$x{=}3, x{=}4$', x: 290, y: 95, width: 105, rx: 10 },
+    { id: 'p64', text: '$x{=}6, x{=}4$', x: 180, y: 170, width: 105, rx: 10, stroke: 'red', strokeWidth: 3 }
+  ]"
+  :transitions="[
+    { source: 'p33', target: 'p63', action: '$x := 2 \\cdot x$', actionX: -34 },
+    { source: 'p33', target: 'p34', action: '$x := x+1$', actionX: 34 },
+    { source: 'p63', target: 'p64', action: '$x := x+1$', actionX: -34 },
+    { source: 'p34', target: 'p64', action: '$x := 2 \\cdot x$', actionX: 34 }
+  ]"
+/>
+<div class="mt-3 text-sm bg-rose-50 border-r-4 border-rose-500 text-rose-900 p-3 rounded">
+
+כאן כל רכיב שומר עותק נפרד של $x$, ולכן מתקבל מצב לא-עקבי כמו $x{=}6, x{=}4$.
+</div>
+</div>
+
+<div class="flex flex-col items-center">
+<h4 class="font-bold text-emerald-700 mb-2">
+
+$TS(PG_1 \,|||\, PG_2)$
+</h4>
+<TransitionSystemD3
+  :width="360" :height="220"
+  :states="[
+    { id: 'q3', text: '$\\langle \\ell_1, \\ell_2 \\rangle, x{=}3$', initial: true, initialDirection: 'top', x: 180, y: 20, width: 125, rx: 10 },
+    { id: 'q6', text: '$\\langle \\ell_1\', \\ell_2 \\rangle, x{=}6$', x: 70, y: 95, width: 125, rx: 10 },
+    { id: 'q4', text: '$\\langle \\ell_1, \\ell_2\' \\rangle, x{=}4$', x: 290, y: 95, width: 125, rx: 10 },
+    { id: 'q7', text: '$\\langle \\ell_1\', \\ell_2\' \\rangle, x{=}7$', x: 70, y: 170, width: 125, rx: 10 },
+    { id: 'q8', text: '$\\langle \\ell_1\', \\ell_2\' \\rangle, x{=}8$', x: 290, y: 170, width: 125, rx: 10 }
+  ]"
+  :transitions="[
+    { source: 'q3', target: 'q6', action: '$x := 2 \\cdot x$', actionX: -34 },
+    { source: 'q3', target: 'q4', action: '$x := x+1$', actionX: 34 },
+    { source: 'q6', target: 'q7', action: '$x := x+1$', actionX: -34 },
+    { source: 'q4', target: 'q8', action: '$x := 2 \\cdot x$', actionX: 34 }
+  ]"
+/>
+<div class="mt-3 text-sm bg-emerald-50 border-r-4 border-emerald-500 text-emerald-900 p-3 rounded">
+
+כאן יש משתנה משותף יחיד $x$, ולכן מתקבלות רק שתי תוצאות חוקיות: $x=7$ או $x=8$.
+</div>
+</div>
+
+</div>
+
+<div class="-mt-20 text-sm bg-slate-50 border border-slate-300 rounded p-1">
+
+המסקנה: כאשר יש משתנים משותפים, לא נכון קודם לפרוס כל גרף תוכנית למערכת מעברים ואז לשזור.
+<br>
+ צריך קודם לבנות את $PG_1 \,|||\, PG_2$, ורק אחר כך לקחת את $TS(PG_1 \,|||\, PG_2)$.
+</div>
+
+---
+
 # פעולות קריטיות לעומת לא קריטיות
 
 ההבחנה בין משתנים מקומיים למשותפים משפיעה על סיווג הפעולות ב-$PG_1 \,|||\, PG_2$:
@@ -883,6 +951,125 @@ $PG_1$
 />
 </div>
 
+</div>
+
+---
+
+# המצבים הנגישים של TS(PG1 ||| PG2)
+
+<script setup>
+const semaphoreReachableStates = [
+  {
+    id: 'nn1',
+    text: '$\\langle n_1, n_2, 1 \\rangle$',
+    initial: true,
+    initialDirection: 'top',
+    x: 450,
+    y: 40,
+    width: 130,
+    rx: 8,
+    color: '#ecfdf5',
+  },
+  {
+    id: 'wn1',
+    text: '$\\langle w_1, n_2, 1 \\rangle$',
+    x: 370,
+    y: 130,
+    width: 130,
+    rx: 8,
+    color: '#ecfdf5',
+  },
+  {
+    id: 'nw1',
+    text: '$\\langle n_1, w_2, 1 \\rangle$',
+    x: 530,
+    y: 130,
+    width: 130,
+    rx: 8,
+    color: '#ecfdf5',
+  },
+  {
+    id: 'cn0',
+    text: '$\\langle c_1, n_2, 0 \\rangle$',
+    x: 250,
+    y: 250,
+    width: 130,
+    rx: 8,
+    color: '#fffbeb',
+  },
+  {
+    id: 'ww1',
+    text: '$\\langle w_1, w_2, 1 \\rangle$',
+    x: 450,
+    y: 250,
+    width: 130,
+    rx: 8,
+    color: '#ecfdf5',
+  },
+  {
+    id: 'nc0',
+    text: '$\\langle n_1, c_2, 0 \\rangle$',
+    x: 650,
+    y: 250,
+    width: 130,
+    rx: 8,
+    color: '#fffbeb',
+  },
+  {
+    id: 'wc0',
+    text: '$\\langle w_1, c_2, 0 \\rangle$',
+    x: 350,
+    y: 360,
+    width: 130,
+    rx: 8,
+    color: '#fffbeb',
+  },
+  {
+    id: 'cw0',
+    text: '$\\langle c_1, w_2, 0 \\rangle$',
+    x: 550,
+    y: 360,
+    width: 130,
+    rx: 8,
+    color: '#fffbeb',
+  },
+]
+
+const semaphoreReachableTransitions = [
+  { source: 'nn1', target: 'wn1', action: 'req1', stroke: '#64748b', actionWidth: 42, actionFontSize: 10, actionX: -22, actionY: -6 },
+  { source: 'nn1', target: 'nw1', action: 'req2', stroke: '#64748b', actionWidth: 42, actionFontSize: 10, actionX: 22, actionY: -6 },
+  { source: 'wn1', target: 'ww1', action: 'req2', stroke: '#64748b', actionWidth: 42, actionFontSize: 10, actionX: -10, actionY: -10 },
+  { source: 'nw1', target: 'ww1', action: 'req1', stroke: '#64748b', actionWidth: 42, actionFontSize: 10, actionX: 10, actionY: -10 },
+  { source: 'wn1', target: 'cn0', action: 'enter1', stroke: '#d97706', actionWidth: 52, actionFontSize: 10, actionX: -26 },
+  { source: 'nw1', target: 'nc0', action: 'enter2', stroke: '#d97706', actionWidth: 52, actionFontSize: 10, actionX: 26 },
+  { source: 'ww1', target: 'wc0', action: 'enter2', stroke: '#d97706', actionWidth: 52, actionFontSize: 10, actionX: -20, actionY: 4 },
+  { source: 'ww1', target: 'cw0', action: 'enter1', stroke: '#d97706', actionWidth: 52, actionFontSize: 10, actionX: 20, actionY: 4 },
+  { source: 'cn0', target: 'cw0', action: 'req2', stroke: '#64748b', actionWidth: 42, actionFontSize: 10, actionX: 18, actionY: 6 },
+  { source: 'nc0', target: 'wc0', action: 'req1', stroke: '#64748b', actionWidth: 42, actionFontSize: 10, actionX: -18, actionY: 6 },
+  { source: 'cn0', target: 'nn1', action: 'rel1', stroke: '#059669', curve: -0.34, actionWidth: 42, actionFontSize: 10, actionX: -36, actionY: -10 },
+  { source: 'nc0', target: 'nn1', action: 'rel2', stroke: '#059669', curve: 0.34, actionWidth: 42, actionFontSize: 10, actionX: 36, actionY: -10 },
+  { source: 'wc0', target: 'wn1', action: 'rel2', stroke: '#059669', curve: 0, actionWidth: 42, actionFontSize: 10, actionX: -14, actionY: -6 },
+  { source: 'cw0', target: 'nw1', action: 'rel1', stroke: '#059669', curve: 0, actionWidth: 42, actionFontSize: 10, actionX: 12, actionY: -6 },
+]
+</script>
+
+<div class="text-sm mb-2">
+
+מרחב המצבים המלא כולל 18 מצבים אפשריים, אבל מן המצב ההתחלתי נגישים רק 8 מהם. התרשים הבא מציג רק את תת-הגרף הנגיש.
+</div>
+
+<div class="flex justify-center scale-[0.8] origin-top -mt-1">
+  <TransitionSystemD3
+    :width="900"
+    :height="420"
+    :states="semaphoreReachableStates"
+    :transitions="semaphoreReachableTransitions"
+  />
+</div>
+
+<div class="-mt-30 text-sm bg-slate-50 border border-slate-300 rounded p-3">
+
+רקע ירקרק: $y=1$. רקע צהבהב: $y=0$. אפור: מעבר בקשת לא-קריטית. כתום: כניסה לקטע קריטי וצמצום הסמפור מ-1 ל-0. ירוק: שחרור והחזרת הסמפור מ-0 ל-1. המצבים שאינם מופיעים כאן שייכים למרחב המצבים התיאורטי, אבל אינם נגישים מן ההתחלה.
 </div>
 
 ---
@@ -1329,7 +1516,7 @@ $$
 <div>
 
 
-**תהליך $T_i$ (עבור $i \in \{1,2ew\}$):**
+**תהליך $T_i$ (עבור $i \in \{1,2\}$):**
 
 <div class="grid grid-rows-2 gap-0 -mt-15">
 
