@@ -785,14 +785,14 @@ $$
 </div>
 
 <div class="flex flex-col items-center scale-[0.9] origin-top -mt-1">
-<h4 class="font-bold text-slate-500 -mb-3">
+<h4 class="font-bold text-slate-500 -mb-1">
 
 $PG_i$:
 </h4>
 <TransitionSystemD3  
   :width="230" :height="220"
   :states="[
-    { id: 'ni', text: '$noncrit_i$', initial: true, initialDirection: 'top', x: 115, y: 20, width: 110, rx:10 },
+    { id: 'ni', text: '$noncrit_i$', initial: true, initialDirection: 'top', initialText: '$y=1$', initialTextWidth: 40, initialTextHeight: 20, x: 115, y: 20, width: 110, rx:10 },
     { id: 'wi', text: '$wait_i$', x: 115, y: 100, width: 80, rx:10 },
     { id: 'ci', text: '$crit_i$', x: 115, y: 210, width: 80, rx:10 }
   ]"
@@ -822,7 +822,7 @@ $PG_1$:
 <TransitionSystemD3  
   :width="250" :height="220"
   :states="[
-    { id: 'n1', text: '$noncrit_1$', initial: true, initialDirection: 'top', x: 125, y: 20, width: 100, rx:10 },
+    { id: 'n1', text: '$noncrit_1$', initial: true, initialDirection: 'top', initialText: '$y=1$', initialTextWidth: 40, initialTextHeight: 20, x: 125, y: 20, width: 100, rx:10 },
     { id: 'w1', text: '$wait_1$', x: 125, y: 100, width: 80, rx:10 },
     { id: 'c1', text: '$crit_1$', x: 125, y: 190, width: 80, rx:10 }
   ]"
@@ -843,7 +843,7 @@ $PG_2$:
 <TransitionSystemD3  
   :width="250" :height="220"
   :states="[
-    { id: 'n2', text: '$noncrit_2$', initial: true, initialDirection: 'top', x: 125, y: 20, width: 100, rx:10 },
+    { id: 'n2', text: '$noncrit_2$', initial: true, initialDirection: 'top', initialText: '$y=1$', initialTextWidth: 40, initialTextHeight: 20, x: 125, y: 20, width: 100, rx:10 },
     { id: 'w2', text: '$wait_2$', x: 125, y: 100, width: 80, rx:10 },
     { id: 'c2', text: '$crit_2$', x: 125, y: 190, width: 80, rx:10 }
   ]"
@@ -878,7 +878,7 @@ $PG_2$
 <TransitionSystemD3  
   :width="150" :height="350"
   :states="[
-    { id: 'n2', text: '$noncrit_2$', initial: true, initialDirection: 'top', x: 75, y: 0, width: 110, rx:8, color: '#fffde7' },
+    { id: 'n2', text: '$noncrit_2$', initial: true, initialDirection: 'top', initialText: '$y=1$', initialTextWidth: 40, initialTextHeight: 20, x: 75, y: 0, width: 110, rx:8, color: '#fffde7' },
     { id: 'w2', text: '$wait_2$', x: 75, y: 160-50, width: 100, rx:8, color: '#fffde7' },
     { id: 'c2', text: '$crit_2$', x: 75, y: 270-50, width: 100, rx:8, color: '#fffde7' }
   ]"
@@ -899,7 +899,7 @@ $PG_1 \,|||\, PG_2$
 <TransitionSystemD3  
   :width="800" :height="500"
   :states="[
-    { id: 'nn', text: '$\\langle n_1, n_2 \\rangle$', initial: true, initialDirection: 'top', x: 400, y: 0, width: 100, rx:8, color: '#fffde7' },
+    { id: 'nn', text: '$\\langle n_1, n_2 \\rangle$', initial: true, initialDirection: 'top', initialText: '$y=1$', initialTextWidth: 40, initialTextHeight: 20, x: 400, y: 0, width: 100, rx:8, color: '#fffde7' },
     { id: 'wn', text: '$\\langle w_1, n_2 \\rangle$', x: 280, y: 150-50, width: 90, rx:8, color: '#fffde7' },
     { id: 'nw', text: '$\\langle n_1, w_2 \\rangle$', x: 520, y: 150-50, width: 90, rx:8, color: '#fffde7' },
     { id: 'cn', text: '$\\langle c_1, n_2 \\rangle$', x: 180, y: 260-50, width: 90, rx:8, color: '#fffde7' },
@@ -939,7 +939,7 @@ $PG_1$
 <TransitionSystemD3  
   :width="150" :height="350"
   :states="[
-    { id: 'n1', text: '$noncrit_1$', initial: true, initialDirection: 'top', x: 75, y: 0, width: 110, rx:8, color: '#fffde7' },
+    { id: 'n1', text: '$noncrit_1$', initial: true, initialDirection: 'top', initialText: '$y=1$', initialTextWidth: 40, initialTextHeight: 20, x: 75, y: 0, width: 110, rx:8, color: '#fffde7' },
     { id: 'w1', text: '$wait_1$', x: 75, y: 160-50, width: 100, rx:8, color: '#fffde7' },
     { id: 'c1', text: '$crit_1$', x: 75, y: 270-50, width: 100, rx:8, color: '#fffde7' }
   ]"
@@ -1036,20 +1036,20 @@ const semaphoreReachableStates = [
 ]
 
 const semaphoreReachableTransitions = [
-  { source: 'nn1', target: 'wn1', action: 'req1', stroke: '#64748b', actionWidth: 42, actionFontSize: 10, actionX: -22, actionY: -6 },
-  { source: 'nn1', target: 'nw1', action: 'req2', stroke: '#64748b', actionWidth: 42, actionFontSize: 10, actionX: 22, actionY: -6 },
-  { source: 'wn1', target: 'ww1', action: 'req2', stroke: '#64748b', actionWidth: 42, actionFontSize: 10, actionX: -10, actionY: -10 },
-  { source: 'nw1', target: 'ww1', action: 'req1', stroke: '#64748b', actionWidth: 42, actionFontSize: 10, actionX: 10, actionY: -10 },
-  { source: 'wn1', target: 'cn0', action: 'enter1', stroke: '#d97706', actionWidth: 52, actionFontSize: 10, actionX: -26 },
-  { source: 'nw1', target: 'nc0', action: 'enter2', stroke: '#d97706', actionWidth: 52, actionFontSize: 10, actionX: 26 },
-  { source: 'ww1', target: 'wc0', action: 'enter2', stroke: '#d97706', actionWidth: 52, actionFontSize: 10, actionX: -20, actionY: 4 },
-  { source: 'ww1', target: 'cw0', action: 'enter1', stroke: '#d97706', actionWidth: 52, actionFontSize: 10, actionX: 20, actionY: 4 },
-  { source: 'cn0', target: 'cw0', action: 'req2', stroke: '#64748b', actionWidth: 42, actionFontSize: 10, actionX: 18, actionY: 6 },
-  { source: 'nc0', target: 'wc0', action: 'req1', stroke: '#64748b', actionWidth: 42, actionFontSize: 10, actionX: -18, actionY: 6 },
-  { source: 'cn0', target: 'nn1', action: 'rel1', stroke: '#059669', curve: -0.34, actionWidth: 42, actionFontSize: 10, actionX: -36, actionY: -10 },
-  { source: 'nc0', target: 'nn1', action: 'rel2', stroke: '#059669', curve: 0.34, actionWidth: 42, actionFontSize: 10, actionX: 36, actionY: -10 },
-  { source: 'wc0', target: 'wn1', action: 'rel2', stroke: '#059669', curve: 0, actionWidth: 42, actionFontSize: 10, actionX: -14, actionY: -6 },
-  { source: 'cw0', target: 'nw1', action: 'rel1', stroke: '#059669', curve: 0, actionWidth: 42, actionFontSize: 10, actionX: 12, actionY: -6 },
+  { source: 'nn1', target: 'wn1', stroke: '#64748b' },
+  { source: 'nn1', target: 'nw1', stroke: '#64748b' },
+  { source: 'wn1', target: 'ww1', stroke: '#64748b' },
+  { source: 'nw1', target: 'ww1', stroke: '#64748b' },
+  { source: 'wn1', target: 'cn0', stroke: '#d97706' },
+  { source: 'nw1', target: 'nc0', stroke: '#d97706' },
+  { source: 'ww1', target: 'wc0', stroke: '#d97706' },
+  { source: 'ww1', target: 'cw0', stroke: '#d97706' },
+  { source: 'cn0', target: 'cw0', stroke: '#64748b' },
+  { source: 'nc0', target: 'wc0', stroke: '#64748b' },
+  { source: 'cn0', target: 'nn1', stroke: '#059669', curve: -0.34 },
+  { source: 'nc0', target: 'nn1', stroke: '#059669', curve: 0.34 },
+  { source: 'wc0', target: 'wn1', stroke: '#059669', curve: 0 },
+  { source: 'cw0', target: 'nw1', stroke: '#059669', curve: 0 },
 ]
 </script>
 
