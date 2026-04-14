@@ -169,22 +169,22 @@ strong {
 }
 
 /* Custom Code Sizes */
-:where(.slidev-layout) :is(.small-code, .tiny-code) {
-  direction: ltr;
-  text-align: left;
+:is(.small-code, .tiny-code) {
+  direction: ltr !important;
+  text-align: left !important;
 }
 
-:where(.slidev-layout) .small-code {
-  --code-font-size: 0.72rem;
-  --code-line-height: 1.25;
+.small-code {
+  --code-font-size: 0.72rem !important;
+  --code-line-height: 1.25 !important;
 }
 
-:where(.slidev-layout) .tiny-code {
-  --code-font-size: 0.62rem;
-  --code-line-height: 1.15;
+.tiny-code {
+  --code-font-size: 0.62rem !important;
+  --code-line-height: 1.15 !important;
 }
 
-:where(.slidev-layout) :is(.small-code, .tiny-code) :is(pre, code, .shiki, .shiki code, .slidev-code, .slidev-code-wrapper, .slidev-code code, .slidev-code code .line) {
+:is(.small-code, .tiny-code) :is(pre, code, .shiki, .shiki code, .slidev-code, .slidev-code-wrapper, .slidev-code code, .slidev-code code .line) {
   direction: ltr !important;
   text-align: left !important;
   unicode-bidi: isolate !important;
@@ -192,7 +192,7 @@ strong {
   line-height: var(--code-line-height) !important;
 }
 
-:where(.slidev-layout) :is(.small-code, .tiny-code) :is(.slidev-code-wrapper, .slidev-code, pre.shiki) {
+:is(.small-code, .tiny-code) :is(.slidev-code-wrapper, .slidev-code, pre.shiki) {
   display: block !important;
   width: 100% !important;
   margin-left: 0 !important;
@@ -259,4 +259,30 @@ strong {
   top: 10px;
   right: 10px;
   width: 80px;
+}
+
+/* Tighten the formal handshaking definition slide so the full content fits */
+:where(.slidev-layout.handshaking-formal-slide) {
+  font-size: 0.88rem;
+  line-height: 1.2;
+}
+
+:where(.slidev-layout.handshaking-formal-slide) h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.35rem;
+}
+
+:where(.slidev-layout.handshaking-formal-slide) :is(p, ul, ol) {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+:where(.slidev-layout.handshaking-formal-slide) li {
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+
+:where(.slidev-layout.handshaking-formal-slide) :is(.katex-display, .math) {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
 }

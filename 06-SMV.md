@@ -937,7 +937,7 @@ LTLSPEC G F heartbeat
 # דוגמה 1: רמזור דו-כיווני
 
 <div class="grid grid-cols-2 gap-4 mt-2 items-start">
-<div dir="ltr" >
+<div dir="ltr">
 
 ```text
 MODULE main
@@ -1050,7 +1050,7 @@ SPEC AG (p1.st = wait -> AF p1.st = critical)
 
 ---
 
-# דוגמה 3: ארביטר דו-לקוחות
+# דוגמה 3: בורר בין שני לקוחות
 
 <div class="grid grid-cols-2 gap-4 mt-2 items-start">
 <div dir="ltr" >
@@ -1119,13 +1119,41 @@ LTLSPEC G (y = 4 -> X y = 6)
 LTLSPEC G F (y = 2)
 ```
 
+<div class="flex justify-center mt-2 scale-85">
+<TransitionSystemD3 
+  :states="[
+    { id: '0', text: '000', initial: true, x: 140, y: 30, initialDirection: 'top' },
+    { id: '1', text: '001', x: 218, y: 62 },
+    { id: '2', text: '010', x: 250, y: 140 },
+    { id: '3', text: '011', x: 218, y: 218 },
+    { id: '4', text: '100', x: 140, y: 250 },
+    { id: '5', text: '101', x: 62, y: 218 },
+    { id: '6', text: '110', x: 30, y: 140 },
+    { id: '7', text: '111', x: 62, y: 62 }
+  ]"
+  :transitions="[
+    { source: '0', target: '1' },
+    { source: '1', target: '2' },
+    { source: '2', target: '3' },
+    { source: '3', target: '4' },
+    { source: '4', target: '5' },
+    { source: '5', target: '6' },
+    { source: '6', target: '7' },
+    { source: '7', target: '0' }
+  ]"
+  :width="280"
+  :height="280"
+  :auto="false"
+/>
+</div>
+
 </div>
 
 <div class="text-right text-[14px] leading-snug">
 <div class="bg-purple-50 p-3 rounded border border-purple-200">
 <div class="font-bold mb-2">למה זו דוגמה קלאסית?</div>
 <ul class="list-disc pr-5 space-y-2">
-<li>הנוסחה הראשונה שקרית, ולכן <span dir="ltr">BMC</span> ימצא נגד-דוגמה קצרה.</li>
+<li>הנוסחה הראשונה שקרית, ולכן <span dir="ltr">BMC</span> ימצא דוגמה נגדית קצרה.</li>
 <li>הנוסחה השנייה נכונה, אבל אם נחפש את שלילתה ב-<span dir="ltr">BMC</span> נקבל חשיבות לייצוג של <b>לולאה</b>.</li>
 </ul>
 </div>

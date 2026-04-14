@@ -934,6 +934,7 @@ $PG_1$
 ### משתנים משותפים:
 - $b_1, b_2$ (Boolean): $b_i$ מסמן ש-$P_i$ מעוניין להיכנס לקטע הקריטי.
 - $x \in \{1, 2\}$: קובע למי התור להיכנס במקרה של תחרות.
+- **תנאי התחלה**: בתחילת הריצה $b_1 = b_2 = F$, ולכן בהרכבת התוכניות מתחילים מן $\langle n_1, n_2 \rangle$ עם התנאי ההתחלתי $g_0 = \neg b_1 \land \neg b_2$.
 
 <br> 
 
@@ -1062,7 +1063,8 @@ $n_i \Rightarrow F$, ואילו $w_i, c_i \Rightarrow T$. -->
 <div class="relative h-[152px] mt-0.5">
 <div v-if="$clicks === 0" class="absolute inset-0 text-[12px] leading-tight bg-sky-50 px-2 py-1 rounded border border-sky-200 [&_.katex-display]:my-1">
 
-<b>עומק 0</b>: מתחילים משני המצבים ההתחלתיים.
+<b>עומק 0</b>: מתחילים מן $\langle n_1, n_2 \rangle$ עם התנאי ההתחלתי $\neg b_1 \land \neg b_2$.
+מאחר ש-$x$ יכול להתחיל ב-$1$ או ב-$2$, מתקבלים שני המצבים ההתחלתיים.
 </div>
 <div v-if="$clicks === 1" class="absolute inset-0 text-[12px] leading-tight bg-emerald-50 px-2 py-1 rounded border border-emerald-200 [&_.katex-display]:my-1">
 
@@ -1256,6 +1258,35 @@ $$
 </div>
 
 <img src="/handshaking_robots_comic.png" class="absolute top-30 left-10 w-60" />
+
+---
+class: handshaking-formal-slide
+---
+
+# הגדרה פורמלית: לחיצת יד
+
+יהיו $TS_1, TS_2$ שתי מערכות מעברים, ותהי $H \subseteq Act_1 \cap Act_2$ קבוצת פעולות המחייבות סנכרון.
+מערכת המעברים המייצגת את ההרכבה עם לחיצת יד, $TS_1 \parallel_H TS_2$, מוגדרת כך:
+
+- **מצבים**: $S = S_1 \times S_2$. המצבים הגלובליים הם זוגות $\langle s_1, s_2 \rangle$.
+- **פעולות**: $Act = Act_1 \cup Act_2$.
+- **מצבים התחלתיים**: $I = I_1 \times I_2$.
+- **פסוקים אטומיים**: $AP = AP_1 \cup AP_2$.
+- **פונקציית התיוג**: $L(\langle s_1, s_2 \rangle) = L_1(s_1) \cup L_2(s_2)$.
+
+- **יחס המעברים** $\to$ מוגדר על ידי הכללים הבאים:
+
+$$
+\frac{s_1 \xrightarrow{\alpha}_1 s_1' \quad \alpha \notin H}{\langle s_1, s_2 \rangle \xrightarrow{\alpha} \langle s_1', s_2 \rangle}
+\hspace{2cm}
+\frac{s_2 \xrightarrow{\alpha}_2 s_2' \quad \alpha \notin H}{\langle s_1, s_2 \rangle \xrightarrow{\alpha} \langle s_1, s_2' \rangle}
+$$
+
+$$
+\frac{s_1 \xrightarrow{h}_1 s_1' \quad s_2 \xrightarrow{h}_2 s_2' \quad h \in H}{\langle s_1, s_2 \rangle \xrightarrow{h} \langle s_1', s_2' \rangle}
+$$
+
+כלומר, פעולות שאינן ב-$H$ מתבצעות בשזירה רגילה, ואילו פעולה ב-$H$ יכולה להתבצע רק כאשר שני הרכיבים מוכנים לבצע אותה יחד.
 
 ---
 
