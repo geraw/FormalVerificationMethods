@@ -607,7 +607,10 @@ clicks: 1
 
 <div class="grid grid-cols-2 gap-8 items-start scale-[0.82] origin-top" dir="ltr">
 <div class="flex flex-col items-center">
-<div class="font-bold text-slate-500 -mb-4">P</div>
+<div class="font-bold text-slate-500 -mb-4">
+
+$P$
+</div>
 <TransitionSystemD3 :width="180" :height="140"
   :states="[
     { id: 'c1p0', text: '$p_0$', initial: true, initialDirection: 'top', x: 90, y: 30, width: 44 },
@@ -619,7 +622,10 @@ clicks: 1
 />
 </div>
 <div class="flex flex-col items-center">
-<div class="font-bold text-slate-500 -mb-4">R</div>
+<div class="font-bold text-slate-500 -mb-4">
+
+$R$
+</div>
 <TransitionSystemD3 :width="180" :height="140"
   :states="[
     { id: 'c1r0', text: '$r_0$', initial: true, initialDirection: 'top', x: 90, y: 30, width: 44 },
@@ -735,9 +741,9 @@ $P$
 </div>
 <TransitionSystemD3 :width="250" :height="110"
   :states="[
-    { id: 'c3p0', text: '$p_0$', initial: true, initialDirection: 'top', x: 40, y: 45, width: 26 },
-    { id: 'c3p1', text: '$p_1$', x: 125, y: 45, width: 26 },
-    { id: 'c3p2', text: '$p_2$', x: 210, y: 45, width: 26 }
+    { id: 'c3p0', text: '$p_0$', initial: true, initialDirection: 'top', x: 40, y: 45, width: 44 },
+    { id: 'c3p1', text: '$p_1$', x: 40+1*95, y: 45, width: 44 },
+    { id: 'c3p2', text: '$p_2$', x: 40+2*95, y: 45, width: 44 }
   ]"
   :transitions="[
     { source: 'c3p0', target: 'c3p1', action: '$a!1$', actionY: -12 },
@@ -752,8 +758,8 @@ $Q$
 </div>
 <TransitionSystemD3 :width="170" :height="110"
   :states="[
-    { id: 'c3q0', text: '$q_0$', initial: true, initialDirection: 'top', x: 45, y: 45, width: 26 },
-    { id: 'c3q1', text: '$q_1$', x: 125, y: 45, width: 26 }
+    { id: 'c3q0', text: '$q_0$', initial: true, initialDirection: 'top', x: 45, y: 45, width: 44 },
+    { id: 'c3q1', text: '$q_1$', x: 45+1*95, y: 45, width: 44 }
   ]"
   :transitions="[
     { source: 'c3q0', target: 'c3q1', action: '$b!3$', actionY: -12 }
@@ -767,9 +773,9 @@ $R$
 </div>
 <TransitionSystemD3 :width="250" :height="110"
   :states="[
-    { id: 'c3r0', text: '$r_0$', initial: true, initialDirection: 'top', x: 40, y: 45, width: 26 },
-    { id: 'c3r1', text: '$r_1$', x: 125, y: 45, width: 26 },
-    { id: 'c3r2', text: '$r_2$', x: 210, y: 45, width: 26 }
+    { id: 'c3r0', text: '$r_0$', initial: true, initialDirection: 'top', x: 40, y: 45, width: 44 },
+    { id: 'c3r1', text: '$r_1$', x: 40+1*95, y: 45, width: 44 },
+    { id: 'c3r2', text: '$r_2$', x: 40+2*95, y: 45, width: 44 }
   ]"
   :transitions="[
     { source: 'c3r0', target: 'c3r1', action: '$a?x$', actionY: -12 },
