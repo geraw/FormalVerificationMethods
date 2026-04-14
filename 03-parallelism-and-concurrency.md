@@ -1461,11 +1461,15 @@ class: handshaking-formal-slide
 - **פסוקים אטומיים**: $AP = AP_1 \cup AP_2$.
 - **פונקציית התיוג**: $L(\langle s_1, s_2 \rangle) = L_1(s_1) \cup L_2(s_2)$.
 
-- **יחס המעברים** $\to$ מוגדר על ידי הכללים הבאים:
+- **יחס המעברים** $\to$ מוגדר על ידי הכללים:
+
+<!-- Adjust --rules-top / --rules-left / --rules-width / --rules-scale to move and scale the formula box -->
+<div class="handshaking-transition-rules"
+     style="--rules-top: 25rem; --rules-left: 12rem; --rules-width: 28rem; --rules-scale: 0.8;">
 
 $$
 \frac{s_1 \xrightarrow{\alpha}_1 s_1' \quad \alpha \notin H}{\langle s_1, s_2 \rangle \xrightarrow{\alpha} \langle s_1', s_2 \rangle}
-\hspace{2cm}
+\hspace{1.2cm}
 \frac{s_2 \xrightarrow{\alpha}_2 s_2' \quad \alpha \notin H}{\langle s_1, s_2 \rangle \xrightarrow{\alpha} \langle s_1, s_2' \rangle}
 $$
 
@@ -1473,7 +1477,16 @@ $$
 \frac{s_1 \xrightarrow{h}_1 s_1' \quad s_2 \xrightarrow{h}_2 s_2' \quad h \in H}{\langle s_1, s_2 \rangle \xrightarrow{h} \langle s_1', s_2' \rangle}
 $$
 
+</div>
+
+
+
+<div class="text-xs leading-snug mt-23">
+
 כלומר, פעולות שאינן ב-$H$ מתבצעות בשזירה רגילה, ואילו פעולה ב-$H$ יכולה להתבצע רק כאשר שני הרכיבים מוכנים לבצע אותה יחד.
+
+</div>
+
 
 ---
 

@@ -263,8 +263,9 @@ strong {
 
 /* Tighten the formal handshaking definition slide so the full content fits */
 :where(.slidev-layout.handshaking-formal-slide) {
-  font-size: 0.88rem;
-  line-height: 1.2;
+  position: relative;
+  font-size: 0.9rem;
+  line-height: 1.18;
 }
 
 :where(.slidev-layout.handshaking-formal-slide) h1 {
@@ -272,7 +273,12 @@ strong {
   margin-bottom: 0.35rem;
 }
 
-:where(.slidev-layout.handshaking-formal-slide) :is(p, ul, ol) {
+:where(.slidev-layout.handshaking-formal-slide) > :is(p, ul, ol) {
+  width: auto;
+  max-width: none;
+  margin-right: 0;
+  margin-left: 0;
+  text-align: right;
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
 }
@@ -282,7 +288,37 @@ strong {
   margin-bottom: 0.1rem;
 }
 
-:where(.slidev-layout.handshaking-formal-slide) :is(.katex-display, .math) {
-  margin-top: 0.35rem;
-  margin-bottom: 0.35rem;
+:where(.slidev-layout.handshaking-formal-slide) > ul {
+  padding-right: 1.3rem;
+}
+
+:where(.slidev-layout.handshaking-formal-slide) > p:last-of-type {
+  margin-top: 0.8rem;
+  padding: 0.45rem 0.7rem;
+  background: #eff6ff;
+  border-right: 4px solid #60a5fa;
+  border-radius: 0.6rem;
+}
+
+:where(.slidev-layout.handshaking-formal-slide) .handshaking-transition-rules {
+  position: absolute;
+  top: var(--rules-top, 0.9rem);
+  left: var(--rules-left, 0.2rem);
+  width: var(--rules-width, 38rem);
+  max-width: var(--rules-max-width, calc(100% - 0.5rem));
+  padding: 0.55rem 0.75rem;
+  background: rgba(248, 250, 252, 0.96);
+  border: 1px solid #bfdbfe;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  direction: ltr;
+  text-align: center;
+  transform: translate(var(--rules-translate-x, 0), var(--rules-translate-y, 0)) scale(var(--rules-scale, 1));
+  transform-origin: var(--rules-origin, top left);
+  z-index: 10;
+}
+
+:where(.slidev-layout.handshaking-formal-slide) .handshaking-transition-rules :is(p, .katex-display, .math) {
+  width: auto;
+  margin: 0.25rem 0;
 }
