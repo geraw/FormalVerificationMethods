@@ -22,3 +22,6 @@ slidev-preview*.log
 *.fls
 *.fdb_latexmk
 *.xdv
+package-lock.json
+package.json
+public/__pycache__/pg_to_ts_lib.cpython-312.pyc

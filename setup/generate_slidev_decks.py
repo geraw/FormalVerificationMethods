@@ -30,7 +30,7 @@ class Lecture:
 
 
 LECTURES: list[Lecture] = [
-    Lecture(10, "PowerPointSlides/l10.pptx", "PowerPointSlides/l10.pdf", "10-state-explosion.md", "State Explosion Problem", "Principles of Model Checking, Section 2.3"),
+    Lecture(10, "PowerPointSlides/l10.pptx", "PowerPointSlides/l10.pdf", "07-state-explosion.md", "State Explosion Problem", "Principles of Model Checking, Section 2.3"),
     Lecture(11, "PowerPointSlides/l11.pptx", "PowerPointSlides/l11.pdf", "11-linear-time-properties.md", "Linear-Time Properties", "Principles of Model Checking, Section 3.2"),
     Lecture(12, "PowerPointSlides/l12.pptx", "PowerPointSlides/l12.pdf", "12-invariant-properties.md", "Invariant Properties", "Principles of Model Checking, Section 3.3.1"),
     Lecture(13, "PowerPointSlides/l13.pptx", "PowerPointSlides/l13.pdf", "13-safety-properties.md", "Safety Properties", "Principles of Model Checking, Section 3.3.2"),

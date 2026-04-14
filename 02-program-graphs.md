@@ -417,12 +417,12 @@ $\eta_1 = \{ bit \mapsto 1 \}$
 />
 
 <div dir="ltr" class="mt-1 rounded-lg bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 px-2 py-1.5 text-[9.5px] leading-4 text-left font-mono">
-PG = ⟨Loc, Act, →, Loc₀, g₀⟩<br>
+$PG = \langle Loc, Act, \to, Loc_0, g_0 \rangle$<br>
 Loc = {ℓ₀, ℓ₁}<br>
 Act = {inc, done}<br>
-→ = {⟨ℓ₀, x&lt;2, inc, ℓ₁⟩, ⟨ℓ₁, true, done, ℓ₀⟩}<br>
-Loc₀ = {ℓ₀}<br>
-g₀ = (x = 0)
+$\to = \{\langle \ell_0, x&lt;2, inc, \ell_1 \rangle, \langle \ell_1, true, done, \ell_0 \rangle\}$<br>
+$Loc_0 = \{\ell_0\}$<br>
+$g_0 = (x = 0)$
 </div>
 </div>
 
