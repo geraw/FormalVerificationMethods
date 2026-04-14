@@ -1639,9 +1639,9 @@ $$
   ]"
 />
 </div>
-  <div class="text-4xl font-mono text-slate-400">
+<div class="text-4xl font-mono text-slate-400">
   
-  $T_1 \,|||\, T_2 \,\, =$
+  $T_1 \parallel_{\emptyset} T_2 \,\, =$
   </div>
 
 
@@ -1672,7 +1672,7 @@ $$
 </div>
 <div class="text-2xl font-mono text-slate-400">
   
-  $(T_1 \,|||\, T_2) \parallel Arbiter \,\, =$
+  $(T_1 \parallel_{\emptyset} T_2) \parallel_H Arbiter \,\, =$
 </div>
 
 </div>
@@ -1685,6 +1685,88 @@ $$
 
 <div class="absolute bottom-5 left-10">
   <img src="/images/happy_tester.png" class="w-40" />
+</div>
+
+---
+
+# אותם רכיבים, סוגריים אחרים
+
+אם מזיזים רק את הסוגריים, ומחברים קודם את $T_2$ לבורר באמצעות לחיצת יד, מתקבלת מערכת אחרת:
+
+$$
+T_1 \parallel_{\emptyset} (T_2 \parallel_H Arbiter)
+\qquad \text{כאשר } H = \{request, release\}
+$$
+
+כאן רק $T_2$ מסונכרן עם הבורר. ההרכבה החיצונית היא עדיין שזירה רגילה, ולכן $T_1$ כבר אינו חייב לקבל רשות מן הבורר.
+
+<div class="flex items-center justify-center gap-8 mt-4">
+<div class="scale-[0.95]">
+<TransitionSystemD3
+  :width="560" :height="290"
+  :states="[
+    { id: 'nnu', text: '$n_1, n_2, unlock$', initial: true, initialDirection: 'top', x: 280, y: 45, color: '#f8fafc', width:150 },
+    { id: 'cnu', text: '$c_1, n_2, unlock$', x: 120, y: 150, color: '#f3e8ff', width:145 },
+    { id: 'ncl', text: '$n_1, c_2, lock$', x: 440, y: 150, color: '#dbeafe', width:135 },
+    { id: 'ccl', text: '$c_1, c_2, lock$', x: 280, y: 250, color: '#fee2e2', stroke: '#dc2626', strokeWidth: 3, width:135 }
+  ]"
+  :transitions="[
+    { source: 'nnu', target: 'cnu', action: 'request', stroke: '#7c3aed', type: 'curved', curve: 0.2, actionX: -18 },
+    { source: 'cnu', target: 'nnu', action: 'release', stroke: '#7c3aed', type: 'curved', curve: 0.2, actionX: -18 },
+    { source: 'nnu', target: 'ncl', action: 'request', stroke: '#2563eb', type: 'curved', curve: -0.2, actionX: 18 },
+    { source: 'ncl', target: 'nnu', action: 'release', stroke: '#2563eb', type: 'curved', curve: -0.2, actionX: 18 },
+    { source: 'cnu', target: 'ccl', action: 'request', stroke: '#2563eb', type: 'curved', curve: 0.15, actionX: -12 },
+    { source: 'ncl', target: 'ccl', action: 'request', stroke: '#7c3aed', type: 'curved', curve: -0.15, actionX: 12 },
+    { source: 'ccl', target: 'ncl', action: 'release', stroke: '#7c3aed', type: 'curved', curve: -0.15, actionX: -20, actionY: -8 },
+    { source: 'ccl', target: 'cnu', action: 'release', stroke: '#2563eb', type: 'curved', curve: 0.15, actionX: 20, actionY: -8 }
+  ]"
+/>
+</div>
+
+<div class="text-sm text-right max-w-[22rem] space-y-0">
+  <div class="bg-blue-50 border-r-4 border-blue-500 rounded p-3 text-blue-900">
+
+  קשתות כחולות: $T_2$ והבורר מבצעים <b>יחד</b> את <span dir="ltr">request/release</span>.
+  </div>
+  <div class="bg-purple-50 border-r-4 border-purple-500 rounded p-3 text-purple-900">
+
+  קשתות סגולות: $T_1$ פועל לבד בשזירה רגילה, בלי סנכרון עם הבורר.
+  </div>
+  <div class="bg-red-50 border-r-4 border-red-500 rounded p-3 text-red-900 font-bold">
+
+  לכן המצב $\langle c_1, c_2, lock \rangle$ נגיש.
+  </div>
+</div>
+</div>
+
+<div class="mt-5 text-center bg-slate-50 border border-slate-300 rounded p-3 text-sm">
+מתקבל ש-
+$(T_1 \parallel_{\emptyset} T_2) \parallel_H Arbiter \neq T_1 \parallel_{\emptyset} (T_2 \parallel_H Arbiter)$.
+כלומר, לא שינינו את הרכיבים ולא את סדרם, אלא רק את מיקום הסוגריים.
+זו דוגמה לכך שמשפחת האופרטורים $\parallel_H$ אינה אסוציאטיבית כאשר לא משתמשים באותה קבוצת סנכרון בכל שלב
+($\parallel_{\emptyset}$ בהרכבה אחת, ו-$\parallel_H$ בהרכבה השנייה).
+</div>
+
+---
+
+# מסקנה משני השקפים הקודמים
+
+יכול להיות ש-
+
+$$
+(T_1 \parallel_{\emptyset} T_2) \parallel_H Arbiter
+\neq
+T_1 \parallel_{\emptyset} (T_2 \parallel_H Arbiter)
+$$
+
+למרות שמדובר בדיוק באותם שלושה רכיבים ובאותו סדר.
+
+- אם בכל שלבי ההרכבה משתמשים באותו אופרטור $\parallel_H$ עם אותה קבוצת סנכרון $H$, האופרטור אסוציאטיבי.
+- אבל כאשר בשלב אחד משתמשים ב-$\parallel_{\emptyset}$ ובשלב אחר ב-$\parallel_H$, אין אסוציאטיביות כללית.
+- לכן במצבים כאלה אסור להשמיט סוגריים: הם חלק מהגדרת המערכת.
+
+<div class="mt-6 text-center bg-amber-50 border border-amber-300 rounded p-3 text-amber-900">
+מסקנה מעשית: כאשר קבוצת הסנכרון משתנה בין שלבי ההרכבה, צריך לכתוב במפורש גם את הסוגריים וגם את תת-הסימן של האופרטור.
 </div>
 
 ---
@@ -1871,5 +1953,4 @@ BP ↔ Printer : {prt_cmd}
 <i>(בהמשך הקורס נלמד איך למדל אילוצי זמן אמת כאלו)</i>
 </div>
 
----
 
