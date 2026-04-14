@@ -256,7 +256,7 @@ $$
 
 # מצבים התחלתיים ופעולות של $TS(CS)$
 
-<div class="grid grid-cols-2 gap-6 mt-4 items-start">
+<div class="grid grid-cols-2 gap-6 mt-2 items-start">
 <div>
 
 מצב התחלתי של $TS(CS)$ חייב לקיים שלושה תנאים:
@@ -293,18 +293,15 @@ $$len(\varepsilon) = 0$$
 
 <div class="text-[13px] leading-snug">
 
-<div class="bg-slate-50 px-4 py-3 rounded border border-slate-200 mt-2">
-
+<div class="bg-slate-50 px-4 py-3 rounded border border-slate-200 -mt-2">
 $$
 CS = [PG_1 \mid \ldots \mid PG_n], \qquad
 PG_i = \langle Loc_i, Act_i, Effect_i, \to_i, Loc_{0,i}, g_{0,i} \rangle
 $$
-
-$$TS(CS) = \langle S, Act, \to, I, AP, L \rangle$$
-
+$$TS(CS) = \langle S, Act, \to, I, AP, L \rangle$$ 
 </div>
 
-<div class="grid grid-cols-2 gap-4 mt-4">
+<div class="grid grid-cols-2 gap-4 mt-2">
 <div class="bg-blue-50 p-3 rounded border border-blue-200">
 
 <div class="font-bold mb-1">מרחב המצבים והפעולות</div>
@@ -324,7 +321,7 @@ $$
 </div>
 <div class="bg-orange-50 p-3 rounded border border-orange-200">
 
-<div class="font-bold mb-1">מצבים התחלתיים ואטומים</div>
+<div class="font-bold mb-1">מצבים התחלתיים ופסוקים אטומים</div>
 
 $$
 \begin{aligned}
@@ -341,7 +338,7 @@ $$
 </div>
 </div>
 
-<div class="mt-4 bg-purple-50 p-3 rounded border border-purple-200">
+<div class="mt-2 bg-purple-50 p-3 rounded border border-purple-200">
 
 <div class="font-bold mb-1">פונקציית התיוג</div>
 
@@ -497,7 +494,7 @@ $$
 $
 CS = [P \mid S \mid R \mid T \mid U]
 $
-עם ערוץ אגירה $a$ שעבורו $cap(a)=2$ וערוץ סינכרוני $h$ שעבורו $cap(h)=0$.
+עם ערוץ  $a$ שעבורו $cap(a)=2$ וערוץ  $h$ שעבורו $cap(h)=0$.
 
 $$
 \begin{aligned}
@@ -599,6 +596,127 @@ $$
 </div>
 
 </div>
+
+---
+clicks: 1
+---
+
+# אתגר 1: מה יהיה הערך של $x$?
+
+> הערוץ מתחיל ריק, ו-$x$ אינו מאותחל מראש. עוצרים ברגע שמגיעים למצב ללא מוצא.
+
+$$
+\begin{aligned}
+P&: p_0 \xrightarrow{a!4} p_1 \\
+R&: r_0 \xrightarrow{a?x} r_1
+\end{aligned}
+\qquad cap(a)=1
+$$
+
+מה יהיה הערך של $x$ בסוף הריצה?
+
+<v-click>
+
+**תשובה:** בהכרח $x=4$.
+
+יש רק הודעה אחת שנשלחת, ו-$R$ קורא בדיוק אותה לפני שמגיעים למצב ללא מוצא.
+
+</v-click>
+
+---
+clicks: 1
+---
+
+# אתגר 2: יותר מאפשרות אחת
+
+> הערוץ מתחיל ריק, ו-$x$ אינו מאותחל מראש. עוצרים ברגע שמגיעים למצב ללא מוצא.
+
+$$
+\begin{aligned}
+S_1&: s_0 \xrightarrow{a!1} s_1 \\
+S_2&: t_0 \xrightarrow{a!2} t_1 \\
+R&: r_0 \xrightarrow{a?x} r_1
+\end{aligned}
+\qquad cap(a)=1
+$$
+
+אילו ערכים יכולים להיות ל-$x$ בסוף הריצה?
+
+<v-click>
+
+**תשובה:** $x \in \{1,2\}$.
+
+השולח שמצליח ראשון להכניס הודעה לערוץ קובע מה $R$ יקרא,
+ואחר כך השולח השני עוד יכול להיתקע עם הודעה שלא תיקרא.
+
+</v-click>
+
+---
+clicks: 1
+---
+
+# אתגר 3: שלושה תהליכים
+
+> הערוצים מתחילים ריקים, ו-$x$ אינו מאותחל מראש. עוצרים ברגע שמגיעים למצב ללא מוצא.
+
+$$
+\begin{aligned}
+P&: p_0 \xrightarrow{a!1} p_1 \xrightarrow{b!2} p_2 \\
+Q&: q_0 \xrightarrow{b!3} q_1 \\
+R&: r_0 \xrightarrow{a?x} r_1 \xrightarrow{b?x} r_2
+\end{aligned}
+\qquad cap(a)=cap(b)=1
+$$
+
+אילו ערכים יכולים להיות ל-$x$ בסוף הריצה?
+
+<v-click>
+
+**תשובה:** $x \in \{2,3\}$.
+
+אמנם הקריאה הראשונה של $R$ קובעת זמנית $x=1$, אבל הקריאה השנייה מ-$b$ דורסת את הערך הזה.
+לכן $1$ אינו יכול להיות הערך הסופי, וההכרעה היא מי יכניס ראשון ל-$b$: הרכיב $P$ עם $2$ או הרכיב $Q$ עם $3$.
+
+</v-click>
+
+---
+clicks: 1
+---
+
+# אתגר 4: שאלה קומבינטורית
+
+> הערוץ מתחיל ריק. המשתנים $x,z$ מתחילים ב-$0$. עוצרים ברגע שמגיעים למצב ללא מוצא.
+
+<div class="text-[13px] leading-tight">
+
+$$
+\begin{aligned}
+S_0&: s_0 \xrightarrow{a!0} s_1 \xrightarrow{a!0} s_2 \xrightarrow{a!0} s_3 \\
+S_1&: t_0 \xrightarrow{a!1} t_1 \xrightarrow{a!1} t_2 \xrightarrow{a!1} t_3 \\
+R&: r_0 \xrightarrow{a?y} r_1 \\
+&\phantom{: } r_1 \xrightarrow{y=0:\alpha_0} r_0
+\qquad Effect(\alpha_0,\eta)=\eta[z:=z+1] \\
+&\phantom{: } r_1 \xrightarrow{y=1:\alpha_1} r_0
+\qquad Effect(\alpha_1,\eta)=\eta[x:=x+z]
+\end{aligned}
+\qquad cap(a)=1
+$$
+
+</div>
+
+אילו ערכים יכולים להיות ל-$x$ בסוף הריצה?
+
+<v-click>
+
+**תשובה:** $x \in \{0,1,\dots,9\}$.
+
+בסוף הריצה $x$ סופר בדיוק את מספר הזוגות מסוג "0 לפני 1" במילה שהתקבלה:
+כל פעם שנקלטת $1$, מוסיפים ל-$x$ את מספר האפסים שכבר נקלטו.
+
+כל שזירה של שלושה אפסים ושלוש יחידות אפשרית כאן, ולכן אפשר לקבל כל מספר
+בין $0$ לבין $3 \cdot 3 = 9$.
+
+</v-click>
 
 ---
 
