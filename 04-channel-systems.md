@@ -605,13 +605,37 @@ clicks: 1
 
 > הערוץ מתחיל ריק, ו-$x$ אינו מאותחל מראש. עוצרים ברגע שמגיעים למצב ללא מוצא.
 
-$$
-\begin{aligned}
-P&: p_0 \xrightarrow{a!4} p_1 \\
-R&: r_0 \xrightarrow{a?x} r_1
-\end{aligned}
-\qquad cap(a)=1
-$$
+<div class="grid grid-cols-2 gap-8 items-start scale-[0.82] origin-top" dir="ltr">
+<div class="flex flex-col items-center">
+<div class="font-bold text-slate-500 -mb-4">P</div>
+<TransitionSystemD3 :width="180" :height="140"
+  :states="[
+    { id: 'c1p0', text: '$p_0$', initial: true, initialDirection: 'top', x: 90, y: 30, width: 44 },
+    { id: 'c1p1', text: '$p_1$', x: 90, y: 110, width: 44 }
+  ]"
+  :transitions="[
+    { source: 'c1p0', target: 'c1p1', action: '$a!4$', actionX: 28 }
+  ]"
+/>
+</div>
+<div class="flex flex-col items-center">
+<div class="font-bold text-slate-500 -mb-4">R</div>
+<TransitionSystemD3 :width="180" :height="140"
+  :states="[
+    { id: 'c1r0', text: '$r_0$', initial: true, initialDirection: 'top', x: 90, y: 30, width: 44 },
+    { id: 'c1r1', text: '$r_1$', x: 90, y: 110, width: 44 }
+  ]"
+  :transitions="[
+    { source: 'c1r0', target: 'c1r1', action: '$a?x$', actionX: 28 }
+  ]"
+/>
+</div>
+</div>
+
+<div class="-mt-4 text-center">
+
+$cap(a)=1$
+</div>
 
 מה יהיה הערך של $x$ בסוף הריצה?
 
@@ -631,14 +655,58 @@ clicks: 1
 
 > הערוץ מתחיל ריק, ו-$x$ אינו מאותחל מראש. עוצרים ברגע שמגיעים למצב ללא מוצא.
 
-$$
-\begin{aligned}
-S_1&: s_0 \xrightarrow{a!1} s_1 \\
-S_2&: t_0 \xrightarrow{a!2} t_1 \\
-R&: r_0 \xrightarrow{a?x} r_1
-\end{aligned}
-\qquad cap(a)=1
-$$
+<div class="grid grid-cols-3 gap-3 items-start scale-[0.74] origin-top" dir="ltr">
+<div class="flex flex-col items-center">
+<div class="font-bold text-slate-500 -mb-4">
+
+$S_1$
+</div>
+<TransitionSystemD3 :width="160" :height="140"
+  :states="[
+    { id: 'c2s10', text: '$s_0$', initial: true, initialDirection: 'top', x: 80, y: 30, width: 44 },
+    { id: 'c2s11', text: '$s_1$', x: 80, y: 110, width: 44 }
+  ]"
+  :transitions="[
+    { source: 'c2s10', target: 'c2s11', action: '$a!1$', actionX: 28 }
+  ]"
+/>
+</div>
+<div class="flex flex-col items-center">
+<div class="font-bold text-slate-500 -mb-4">
+
+$S_2$
+</div>
+<TransitionSystemD3 :width="160" :height="140"
+  :states="[
+    { id: 'c2s20', text: '$t_0$', initial: true, initialDirection: 'top', x: 80, y: 30, width: 44 },
+    { id: 'c2s21', text: '$t_1$', x: 80, y: 110, width: 44 }
+  ]"
+  :transitions="[
+    { source: 'c2s20', target: 'c2s21', action: '$a!2$', actionX: 28 }
+  ]"
+/>
+</div>
+<div class="flex flex-col items-center">
+<div class="font-bold text-slate-500 -mb-4">
+
+$R$
+</div>
+<TransitionSystemD3 :width="160" :height="140"
+  :states="[
+    { id: 'c2r0', text: '$r_0$', initial: true, initialDirection: 'top', x: 80, y: 30, width: 44 },
+    { id: 'c2r1', text: '$r_1$', x: 80, y: 110, width: 44 }
+  ]"
+  :transitions="[
+    { source: 'c2r0', target: 'c2r1', action: '$a?x$', actionX: 28 }
+  ]"
+/>
+</div>
+</div>
+
+<div class="-mt-6 text-center">
+
+$cap(a)=1$
+</div>
 
 אילו ערכים יכולים להיות ל-$x$ בסוף הריצה?
 
@@ -659,14 +727,62 @@ clicks: 1
 
 > הערוצים מתחילים ריקים, ו-$x$ אינו מאותחל מראש. עוצרים ברגע שמגיעים למצב ללא מוצא.
 
-$$
-\begin{aligned}
-P&: p_0 \xrightarrow{a!1} p_1 \xrightarrow{b!2} p_2 \\
-Q&: q_0 \xrightarrow{b!3} q_1 \\
-R&: r_0 \xrightarrow{a?x} r_1 \xrightarrow{b?x} r_2
-\end{aligned}
-\qquad cap(a)=cap(b)=1
-$$
+<div class="grid grid-cols-3 gap-3 items-start scale-[0.72] origin-top" dir="ltr">
+<div class="flex flex-col items-center">
+<div class="font-bold text-slate-500 -mb-4">
+
+$P$
+</div>
+<TransitionSystemD3 :width="250" :height="110"
+  :states="[
+    { id: 'c3p0', text: '$p_0$', initial: true, initialDirection: 'top', x: 40, y: 45, width: 26 },
+    { id: 'c3p1', text: '$p_1$', x: 125, y: 45, width: 26 },
+    { id: 'c3p2', text: '$p_2$', x: 210, y: 45, width: 26 }
+  ]"
+  :transitions="[
+    { source: 'c3p0', target: 'c3p1', action: '$a!1$', actionY: -12 },
+    { source: 'c3p1', target: 'c3p2', action: '$b!2$', actionY: -12 }
+  ]"
+/>
+</div>
+<div class="flex flex-col items-center">
+<div class="font-bold text-slate-500 -mb-4">
+
+$Q$
+</div>
+<TransitionSystemD3 :width="170" :height="110"
+  :states="[
+    { id: 'c3q0', text: '$q_0$', initial: true, initialDirection: 'top', x: 45, y: 45, width: 26 },
+    { id: 'c3q1', text: '$q_1$', x: 125, y: 45, width: 26 }
+  ]"
+  :transitions="[
+    { source: 'c3q0', target: 'c3q1', action: '$b!3$', actionY: -12 }
+  ]"
+/>
+</div>
+<div class="flex flex-col items-center">
+<div class="font-bold text-slate-500 -mb-4">
+
+$R$
+</div>
+<TransitionSystemD3 :width="250" :height="110"
+  :states="[
+    { id: 'c3r0', text: '$r_0$', initial: true, initialDirection: 'top', x: 40, y: 45, width: 26 },
+    { id: 'c3r1', text: '$r_1$', x: 125, y: 45, width: 26 },
+    { id: 'c3r2', text: '$r_2$', x: 210, y: 45, width: 26 }
+  ]"
+  :transitions="[
+    { source: 'c3r0', target: 'c3r1', action: '$a?x$', actionY: -12 },
+    { source: 'c3r1', target: 'c3r2', action: '$b?x$', actionY: -12 }
+  ]"
+/>
+</div>
+</div>
+
+<div class="-mt-6 text-center">
+
+$cap(a)=cap(b)=1$
+</div>
 
 אילו ערכים יכולים להיות ל-$x$ בסוף הריצה?
 
@@ -687,21 +803,69 @@ clicks: 1
 
 > הערוץ מתחיל ריק. המשתנים $x,z$ מתחילים ב-$0$. עוצרים ברגע שמגיעים למצב ללא מוצא.
 
-<div class="text-[13px] leading-tight">
+<div class="grid grid-cols-2 gap-4 items-start scale-[0.74] origin-top" dir="ltr">
+<div class="flex flex-col gap-2">
+<div class="flex flex-col items-center">
+<!-- <div class="font-bold text-slate-500 -mb-4">
 
-$$
-\begin{aligned}
-S_0&: s_0 \xrightarrow{a!0} s_1 \xrightarrow{a!0} s_2 \xrightarrow{a!0} s_3 \\
-S_1&: t_0 \xrightarrow{a!1} t_1 \xrightarrow{a!1} t_2 \xrightarrow{a!1} t_3 \\
-R&: r_0 \xrightarrow{a?y} r_1 \\
-&\phantom{: } r_1 \xrightarrow{y=0:\alpha_0} r_0
-\qquad Effect(\alpha_0,\eta)=\eta[z:=z+1] \\
-&\phantom{: } r_1 \xrightarrow{y=1:\alpha_1} r_0
-\qquad Effect(\alpha_1,\eta)=\eta[x:=x+z]
-\end{aligned}
-\qquad cap(a)=1
-$$
+$S_0$ 
+</div> -->
+<TransitionSystemD3 :width="260" :height="90"
+  :states="[
+    { id: 'c4s00', text: '$s_0$', initial: true, initialDirection: 'top', x: 30, y: 40, width: 44 },
+    { id: 'c4s01', text: '$s_1$', x: 30+1*95, y: 40, width: 44 },
+    { id: 'c4s02', text: '$s_2$', x: 30+2*95, y: 40, width: 44 },
+    { id: 'c4s03', text: '$s_3$', x: 30+3*95, y: 40, width: 44 }
+  ]"
+  :transitions="[
+    { source: 'c4s00', target: 'c4s01', action: '$a!0$', actionY: -12 },
+    { source: 'c4s01', target: 'c4s02', action: '$a!0$', actionY: -12 },
+    { source: 'c4s02', target: 'c4s03', action: '$a!0$', actionY: -12 }
+  ]"
+/>
+</div>
+<div class="flex flex-col items-center">
+<!-- <div class="font-bold text-slate-500 -mb-4">
 
+$S_1$
+</div> -->
+<TransitionSystemD3 :width="260" :height="90"
+  :states="[
+    { id: 'c4s10', text: '$t_0$', initial: true, initialDirection: 'top', x: 30, y: 40, width: 44 },
+    { id: 'c4s11', text: '$t_1$', x: 30+1*95, y: 40, width: 44 },
+    { id: 'c4s12', text: '$t_2$', x: 30+2*95, y: 40, width: 44 },
+    { id: 'c4s13', text: '$t_3$', x: 30+3*95, y: 40, width: 44 }
+  ]"
+  :transitions="[
+    { source: 'c4s10', target: 'c4s11', action: '$a!1$', actionY: -12 },
+    { source: 'c4s11', target: 'c4s12', action: '$a!1$', actionY: -12 },
+    { source: 'c4s12', target: 'c4s13', action: '$a!1$', actionY: -12 }
+  ]"
+/>
+</div>
+</div>
+<div class="flex flex-col items-center">
+<!-- <div class="font-bold text-slate-500 -mb-10">
+
+$R$
+</div> -->
+<TransitionSystemD3 :width="360" :height="190"
+  :states="[
+    { id: 'c4r0', text: '$r_0$', initial: true, initialDirection: 'top', x: 80, y: 95, width: 44, initialText: '$x =0 \\land z=0$' },
+    { id: 'c4r1', text: '$r_1$', x: 370, y: 95, width: 44 }
+  ]"
+  :transitions="[
+    { source: 'c4r0', target: 'c4r1', action: '$a?y$', actionY: -12 },
+    { source: 'c4r1', target: 'c4r0', action: '$y=0 : z:=z+1$', curve: -0.35, actionY: 25, actionWidth: 130, actionFontSize: 13 },
+    { source: 'c4r1', target: 'c4r0', action: '$y=1 : x:=x+z$', curve: 0.35, actionY: -25, actionWidth: 130, actionFontSize: 13 }
+  ]"
+/>
+</div>
+</div>
+
+<div class="-mt-20 text-center">
+
+$cap(a)=1$
 </div>
 
 אילו ערכים יכולים להיות ל-$x$ בסוף הריצה?
