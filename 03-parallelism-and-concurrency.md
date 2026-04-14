@@ -1121,7 +1121,7 @@ const semaphoreReachableTransitions = [
 ### משתנים משותפים:
 - $b_1, b_2$ (Boolean): $b_i$ מסמן ש-$P_i$ מעוניין להיכנס לקטע הקריטי.
 - $x \in \{1, 2\}$: קובע למי התור להיכנס במקרה של תחרות.
-- **תנאי התחלה**: בתחילת הריצה $b_1 = b_2 = F$, ולכן בהרכבת התוכניות מתחילים מן $\langle n_1, n_2 \rangle$ עם התנאי ההתחלתי $g_0 = \neg b_1 \land \neg b_2$.
+- **תנאי התחלה**: בתחילת הריצה $b_1 = b_2 = F$, ואילו $x$ אינו מאותחל.
 
 <br> 
 
@@ -1150,14 +1150,14 @@ $P_1$ ייכנס לקטע הקריטי רק אם $P_2$ לא מעוניין ($\ne
 
 <div class="flex justify-around gap-2 scale-[0.9] origin-bottom mt-auto">
 <div class="flex flex-col items-center ml-15">
-<h4 class="font-bold text-slate-500 mb-2 -mt-8 mr-0">      
+<h4 class="font-bold text-slate-500 mb-4 -mt-8 mr-0">      
 
 $PG_1$
 </h4>
     <TransitionSystemD3  
       :width="200" :height="120"
       :states="[
-        { id: 'n1', text: '$n_1$', initial: true, initialDirection: 'top', x: 100, y: 0, width: 80, rx:8, color: '#e3f2fd' },
+        { id: 'n1', text: '$n_1$', initial: true, initialDirection: 'top', initialText: '$\\neg b_1$', initialTextWidth: 60, initialTextHeight: 20, x: 100, y: 0, width: 80, rx:8, color: '#e3f2fd' },
         { id: 'w1', text: '$w_1$', x: 100, y: 120-30, width: 80, rx:8, color: '#e3f2fd' },
         { id: 'c1', text: '$c_1$', x: 100, y: 210-30, width: 80, rx:8, color: '#e3f2fd' }
       ]"
@@ -1169,14 +1169,14 @@ $PG_1$
     />
   </div>
   <div class="flex flex-col items-center">
-    <h4 class="font-bold text-slate-500 mb-2 -mt-8">
+    <h4 class="font-bold text-slate-500 mb-4 -mt-8">
     
 $PG_2$ 
 </h4>
     <TransitionSystemD3  
       :width="200" :height="120"
       :states="[
-        { id: 'n2', text: '$n_2$', initial: true, initialDirection: 'top', x: 100, y: 0, width: 80, rx:8, color: '#f3e5f5' },
+        { id: 'n2', text: '$n_2$', initial: true, initialDirection: 'top', initialText: '$\\neg b_2$', initialTextWidth: 60, initialTextHeight: 20, x: 100, y: 0, width: 80, rx:8, color: '#f3e5f5' },
         { id: 'w2', text: '$w_2$', x: 100, y: 120-30, width: 80, rx:8, color: '#f3e5f5' },
         { id: 'c2', text: '$c_2$', x: 100, y: 210-30, width: 80, rx:8, color: '#f3e5f5' }
       ]"
@@ -1202,7 +1202,7 @@ $PG_2$
 <TransitionSystemD3  
   :width="900" :height="620"
   :states="[
-    { id: 'nn', text: '$\\langle n_1, n_2 \\rangle$', initial: true, initialDirection: 'top', x: 140, y: 70, width: 120, rx:8, color: '#fffde7' },
+    { id: 'nn', text: '$\\langle n_1, n_2 \\rangle$', initial: true, initialDirection: 'top', initialText: '$\\neg b_1 \\land \\neg b_2$', initialTextWidth: 132, initialTextHeight: 20, x: 140, y: 70, width: 120, rx:8, color: '#fffde7' },
     { id: 'nw', text: '$\\langle n_1, w_2 \\rangle$', x: 450, y: 70, width: 120, rx:8, color: '#fffde7' },
     { id: 'nc', text: '$\\langle n_1, c_2 \\rangle$', x: 760, y: 70, width: 120, rx:8, color: '#fffde7' },
     { id: 'wn', text: '$\\langle w_1, n_2 \\rangle$', x: 140, y: 260, width: 120, rx:8, color: '#fffde7' },
