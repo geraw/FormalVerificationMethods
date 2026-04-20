@@ -7,7 +7,7 @@ dir: rtl
 ---
 
 <a href="https://in.bgu.ac.il/" target="_blank">
-  <img src="https://in.bgu.ac.il/marketing/DocLib/Pages/graphics/just-logo.png" class="bgu-logo w-10    " />
+  <img src="/bgu-logo.png" class="bgu-logo w-10    " />
 </a>
 
 

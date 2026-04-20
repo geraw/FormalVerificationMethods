@@ -22,7 +22,60 @@ info: |
 
 **גרא וייס**
 
-<img src="https://in.bgu.ac.il/marketing/DocLib/Pages/graphics/just-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+
+---
+
+# מחסנית שפות המידול עד עכשיו
+
+<div class="text-[11px] leading-snug">
+
+<div class="bg-amber-50 px-4 py-2 rounded border border-amber-200 mt-1 text-right">
+במהלך הקורס בנינו שכבות תיאור שהולכות ונעשות קרובות יותר לשפת מפרט,
+אבל בסוף כולן מתורגמות אל <b>מערכת מעברים</b> שעליה אנחנו יודעים להפעיל אימות פורמלי.
+</div>
+
+<div class="relative mx-auto -mt-4 h-[380px] max-w-[800px] scale-80">
+  <div class="absolute top-0 left-[35px] flex h-[82px] w-[750px] items-center justify-center rounded-2xl border border-amber-300 bg-[#b49d78] px-6 text-center text-[34px] text-white shadow-[0_6px_18px_rgba(15,23,42,0.16)]">
+    מערכת מעברים
+  </div>
+
+  <div class="absolute top-[102px] left-[35px] flex h-[82px] w-[430px] items-center justify-center rounded-2xl border border-stone-400 bg-[#a79b9f] px-6 text-center text-[31px] text-white shadow-[0_6px_16px_rgba(15,23,42,0.14)]">
+    גרף תוכנית
+  </div>
+
+  <div class="absolute top-[102px] left-[478px] flex h-[82px] w-[142px] items-center justify-center rounded-2xl border border-stone-400 bg-[#a79b9f] px-3 text-center text-[20px] leading-tight text-white shadow-[0_6px_16px_rgba(15,23,42,0.14)]">
+    שזירת מערכות מעברים
+  </div>
+
+  <div class="absolute top-[102px] left-[633px] flex h-[82px] w-[152px] items-center justify-center rounded-2xl border border-stone-400 bg-[#a79b9f] px-3 text-center text-[22px] leading-tight text-white shadow-[0_6px_16px_rgba(15,23,42,0.14)]">
+    מעגל חומרה
+  </div>
+
+  <div class="absolute top-[208px] left-[35px] flex h-[82px] w-[140px] items-center justify-center rounded-2xl border border-rose-300 bg-[#b18689] px-3 text-center text-[23px] leading-tight text-white shadow-[0_6px_16px_rgba(15,23,42,0.14)]">
+    מערכת ערוצים
+  </div>
+
+  <div class="absolute top-[208px] left-[183px] flex h-[82px] w-[140px] items-center justify-center rounded-2xl border border-rose-300 bg-[#b18689] px-3 text-center text-[20px] leading-tight text-white shadow-[0_6px_16px_rgba(15,23,42,0.14)]">
+    שזירה עם תקשורת סנכרונית
+  </div>
+
+  <div class="absolute top-[208px] left-[330px] flex h-[82px] w-[140px] items-center justify-center rounded-2xl border border-rose-300 bg-[#b18689] px-3 text-center text-[20px] leading-tight text-white shadow-[0_6px_16px_rgba(15,23,42,0.14)]">
+    שזירה בלי תקשורת
+  </div>
+
+  <div class="absolute top-[314px] left-[35px] flex h-[82px] w-[138px] items-center justify-center rounded-2xl border border-orange-300 bg-[#dc4f14] px-3 text-center text-[22px] text-white shadow-[0_6px_16px_rgba(15,23,42,0.14)]">
+    Nano <br> Promela
+  </div>
+</div>
+
+<div class="mt-2 bg-blue-50 px-4 py-2 rounded border border-blue-200 text-right">
+ההרצאה הנוכחית מוסיפה את שכבת <span dir="ltr">NanoPromela</span>, שממנה נגזור
+<span dir="ltr">Channel System</span>, אחר כך <span dir="ltr">Program Graph</span>,
+ולבסוף <span dir="ltr">Transition System</span>.
+</div>
+
+</div>
 
 ---
 
