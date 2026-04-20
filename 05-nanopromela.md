@@ -645,14 +645,16 @@ od
 
 # הדגמה: סמנטיקה של פקודות תנאי
 
-נבחן שתי פקודות תנאי שרצות במקביל, כדי לראות שילוב של בחירה לא דטרמיניסטית בענף ובשיבוץ
 
 <div class="grid grid-cols-[1fr_1.2fr] gap-4 mt-2">
 
-<div>
+<div class="space-y-3">
 
 
-<div class="relative bg-slate-50 px-3 py-2 rounded border border-slate-200 text-sm ml-8" align="left" dir="ltr">
+<div class="rounded-xl border border-blue-200 bg-blue-50 px-3 py-2">
+<div class="mb-2 text-right text-[13px] font-bold text-blue-900">תוכנית 1</div>
+
+<div class="relative bg-white px-3 py-2 rounded border border-slate-200 text-sm ml-8" align="left" dir="ltr">
   <div class="absolute top-1.5 -left-8 bg-white border border-slate-300 px-1.5 py-0.5 text-xs rounded shadow-sm flex items-center justify-center font-math z-10 w-6 h-6">
       <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-slate-300"></div>
       <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[5px] border-l-white z-10"></div>
@@ -672,9 +674,13 @@ fi
 ```
 
 </div>
+</div>
 
 
-<div class="relative bg-slate-50 mt-2 px-3 py-2 rounded border border-slate-200 text-sm ml-8" align="left" dir="ltr">
+<div class="rounded-xl border border-rose-200 bg-rose-50 px-3 py-2">
+<div class="mb-2 text-right text-[13px] font-bold text-rose-900">תוכנית 2</div>
+
+<div class="relative bg-white px-3 py-2 rounded border border-slate-200 text-sm ml-8" align="left" dir="ltr">
   <div class="absolute top-1.5 -left-8 bg-white border border-slate-300 px-1.5 py-0.5 text-xs rounded shadow-sm flex items-center justify-center font-math z-10 w-6 h-6">
       <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-slate-300"></div>
       <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[5px] border-l-white z-10"></div>
@@ -694,6 +700,7 @@ if
 fi 
   ```
 
+</div>
 </div>
 
 </div>
@@ -729,11 +736,10 @@ fi
 
 <div class="mt-4 text-[14px] leading-snug">
 
-- ב־$l_1, l_1$ שתי האפשרויות מאופשרות, לכן אפשר להגיע ל־$x = 3$ וגם ל־$x = 4$.
-
-- אם מגיעים ל־$l_1, l_2$ עם $x = 3$, רק ה־guard $x > 2$ מאופשר ולכן חייבים לקבל $y = 2$ ומגיעים למצב הסיום $l_2, l_2$.
-- אם מגיעים ל־$l_1, l_2$ עם $x = 4$, שני ה־guards מאופשרים ולכן אפשר לקבל גם $y = 1$ וגם $y = 2$ ומגיעים למצב הסיום $l_2, l_2$ בכל מקרה.
-- כלומר, ה־`if-fi` הראשון מייצר אי־דטרמיניזם, והשני עלול להוסיף עליו אי־דטרמיניזם נוסף.
+- בתוכנית 1, ב־$l_1$ שתי האפשרויות מאופשרות, לכן אפשר להגיע ל־$x = 3$ וגם ל־$x = 4$.
+- בתוכנית 2, אם מגיעים ל־$l_1$ עם $x = 3$, רק ה־guard $x > 2$ מאופשר ולכן חייבים לקבל $y = 2$.
+- בתוכנית 2, אם מגיעים ל־$l_1$ עם $x = 4$, שני ה־guards מאופשרים ולכן אפשר לקבל גם $y = 1$ וגם $y = 2$.
+- כלומר, בתוכנית 1 האי־דטרמיניזם נובע מבחירה בין שני ענפים מאופשרים תמיד, ובתוכנית 2 הוא תלוי גם בערך שאליו הגענו קודם.
 
 </div>
 
@@ -742,13 +748,15 @@ fi
 
 # הדגמה: סמנטיקה של לולאות
 
-השקפים מדגישים שתי התנהגויות שונות של `do-od`: לולאה שיכולה להסתיים, ולולאה שאין לה מצב יציאה.
 
 <div class="grid grid-cols-[1fr_1.2fr] gap-4 mt-2">
 
-<div>
+<div class="space-y-3">
 
-<div class="relative bg-slate-50 px-3 py-2 rounded border border-slate-200 text-sm ml-8" align="left" dir="ltr">
+<div class="rounded-xl border border-blue-200 bg-blue-50 px-3 py-2">
+<div class="mb-2 text-right text-[13px] font-bold text-blue-900">תוכנית 1</div>
+
+<div class="relative bg-white px-3 py-2 rounded border border-slate-200 text-sm ml-8" align="left" dir="ltr">
   <div class="absolute top-1.5 -left-8 bg-white border border-slate-300 px-1.5 py-0.5 text-xs rounded shadow-sm flex items-center justify-center font-math z-10 w-6 h-6">
       <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-slate-300"></div>
       <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[5px] border-l-white z-10"></div>
@@ -767,8 +775,12 @@ od
   ```
 
 </div>
+</div>
 
-<div class="relative bg-slate-50 mt-2 px-3 py-2 rounded border border-slate-200 text-sm ml-8" align="left" dir="ltr">
+<div class="rounded-xl border border-rose-200 bg-rose-50 px-3 py-2">
+<div class="mb-2 text-right text-[13px] font-bold text-rose-900">תוכנית 2</div>
+
+<div class="relative bg-white px-3 py-2 rounded border border-slate-200 text-sm ml-8" align="left" dir="ltr">
   <div class="absolute top-1.5 -left-8 bg-white border border-slate-300 px-1.5 py-0.5 text-xs rounded shadow-sm flex items-center justify-center font-math z-10 w-6 h-6">
       <div class="absolute -right-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-slate-300"></div>
       <div class="absolute -right-1.5 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[5px] border-l-white z-10"></div>
@@ -788,6 +800,7 @@ od
   ```
 
 </div>
+</div>
 
 </div>
 
@@ -797,13 +810,13 @@ od
 
 <TransitionSystemD3
   :width="640"
-  :height="380"
+  :height="270"
   :scale="80"
   :states="[
-  { id: 's1_0', text: '$l_1, l_1, x \\mapsto 0$', x: 350, y: 50,  width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37', initial: true, initialDirection: 'top' },
-  { id: 's1_3', text: '$l_1, l_1, x \\mapsto 3$', x: 350, y: 170, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
-  { id: 's2_3', text: '$l_2, l_1, x \\mapsto 3$', x: 350, y: 300, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
-  { id: 's2_0', text: '$l_2, l_1, x \\mapsto 0$', x: 90, y: 300, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' }
+  { id: 's1_0', text: '$l_1, l_1, x \\mapsto 0$', x: 350, y: 50  - 60,  width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37', initial: true, initialDirection: 'top' },
+  { id: 's1_3', text: '$l_1, l_1, x \\mapsto 3$', x: 350, y: 170 - 60, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
+  { id: 's2_3', text: '$l_2, l_1, x \\mapsto 3$', x: 350, y: 300 - 60, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
+  { id: 's2_0', text: '$l_2, l_1, x \\mapsto 0$', x: 90,  y: 300 - 60, width: 120, color: '#FEF08A', rx: 0, stroke: '#d4af37' }
   ]"  
   :transitions="[
   { source: 's1_0', target: 's1_3', action: 'x:=3', stroke: '#A1824A', strokeWidth: 2, actionX: 28 },
@@ -825,9 +838,9 @@ od
 
 <div class="mt-4 text-[14px] leading-snug">
 
-- אם $x < 3$, הלולאה הראשונה יכולה לבצע צעד $skip$ ולהישאר במקום.
-- אם $x \ge 3$, אין אף guard מאופשר והלולאה הראשונה מסתיימת (מעבר $nothing$ מהמיקום הראשון לשני).
-- בלולאה השנייה תמיד קיים guard מאופשר ($true$), ולכן היא אינה מסתיימת לעולם.
+- בתוכנית 1, אם $x < 3$, הלולאה יכולה לבצע צעד $skip$ ולהישאר במקום.
+- בתוכנית 1, אם $x \ge 3$, אין אף guard מאופשר ולכן הלולאה מסתיימת.
+- בתוכנית 2, תמיד קיים guard מאופשר ($true$), ולכן הלולאה אינה מסתיימת לעולם.
 - המסר העיקרי: לולאות ב־`nanoPromela` אינן נתקעות. הן ממשיכות לרוץ כל עוד יש guard מאופשר, ויוצאות ברגע שכולם שקריים.
 
 </div>
