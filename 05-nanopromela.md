@@ -876,6 +876,20 @@ $$
 ---
 
 
+# איך נגדיר סמנטיקה פורמלית?
+
+<div class="text-[14px] leading-snug">
+
+
+<div class="mt-4">
+  <img src="./images/nanoPromelaSemantics2.jfif" alt="איור קומי של תרגום NanoPromela לגרף תוכנית, מערכת ערוצים ומערכת מעברים" class="mx-auto w-[760px] max-w-full rounded-2xl border border-slate-200 shadow-sm" />
+</div>
+
+</div>
+
+---
+
+
 # הדגמה חיה: תרגום ננו-פרומלה לגרף תוכנית
 
 <script setup>
