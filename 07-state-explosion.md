@@ -18,7 +18,8 @@ info: |
 
 # בעיית פיצוץ המצבים
 
-## לפי *Principles of Model Checking*<br>וסעיף 2.3: *The State-Space Explosion Problem*
+##   הרצאה בקורס מבוא לאימות תוכנה בשיטות פורמליות
+
 הפקולטה למדעי המחשב והמידע | אוניברסיטת בן-גוריון
 
 **גרא וייס**
@@ -144,7 +145,7 @@ $$
 </div>
 
 <div class="bg-amber-50 border border-amber-200 rounded p-4">
-<div class="font-bold mb-2">דוגמה מן הספר</div>
+<div class="font-bold mb-2">דוגמה</div>
 
 גרף תוכנית עם:
 
@@ -297,7 +298,7 @@ $$
 
 ---
 
-# דוגמת הספר: Alternating Bit Protocol
+# דוגמה: Alternating Bit Protocol
 
 <div class="grid grid-cols-2 gap-6 mt-6 items-start text-right">
 <div class="bg-slate-50 border border-slate-200 rounded p-5">
@@ -366,7 +367,7 @@ $$
 # איך מתמודדים?
 
 <div class="text-right text-[15px] leading-snug">
-בסוף סעיף 2.3 הספר מדגיש שלא מסתפקים במודל המפורש כפי שהוא. בהמשך הספר והקורס מוצגות כמה משפחות של פתרונות:
+לא מסתפקים במודל המפורש כפי שהוא. קיימות כמה משפחות של פתרונות:
 </div>
 
 <div class="grid grid-cols-3 gap-5 mt-8 text-right">

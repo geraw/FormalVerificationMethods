@@ -7,9 +7,14 @@
         "build:all": "node build-all.js",
         "dev": "slidev index.md --open",
         "dev:intro": "slidev 00-intro.md --open",
+        "dev:00": "slidev 00-intro.md --open",
         "dev:01": "slidev 01-transition-systems.md --open",
         "dev:02": "slidev 02-program-graphs.md --open",
         "dev:03": "slidev 03-parallelism-and-concurrency.md --open",
+        "dev:04": "slidev 04-channel-systems.md --open",
+        "dev:05": "slidev 05-nanopromela.md --open",
+        "dev:06": "slidev 06-SMV.md --open",
+        "dev:07": "slidev 07-state-explosion.md --open",
         "dev:z3": "concurrently \"node runner-server.js\" \"slidev z3.md --open\""
     },
     "dependencies": {

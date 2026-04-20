@@ -31,6 +31,7 @@ npm run dev
 
 # Course Introduction
 npm run dev:intro
+npm run dev:00
 
 # Module 01 - Transition Systems
 npm run dev:01
@@ -40,6 +41,18 @@ npm run dev:02
 
 # Module 03 - Parallelism and Concurrency
 npm run dev:03
+
+# Module 04 - Channel Systems
+npm run dev:04
+
+# Module 05 - NanoPromela
+npm run dev:05
+
+# Module 06 - SMV
+npm run dev:06
+
+# Module 07 - State Explosion
+npm run dev:07
 ```
 
 ## 📦 Deployment
