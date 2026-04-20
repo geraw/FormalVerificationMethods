@@ -640,6 +640,22 @@ od
 - אם אין מעבר חוקי, הלולאה מסתיימת.
 - אם מתחילים ב־`pos = 1`, אז לאורך כל ריצה מתקיים תמיד `pos ∈ {1,2,3,4,6,7,9}`.
 
+
+---
+
+
+# איך נגדיר סמנטיקה פורמלית?
+
+<div class="text-[14px] leading-snug">
+  
+
+<div class="mt-4">
+  <img src="./images/nanoPromelaSemantics2.jfif" alt="איור קומי של תרגום NanoPromela לגרף תוכנית, מערכת ערוצים ומערכת מעברים" class="mx-auto w-[760px] max-w-full rounded-2xl border border-slate-200 shadow-sm" />
+</div>
+
+</div>
+
+
 ---
 
 
@@ -873,19 +889,6 @@ $$
 
 <img src=".\images\location_is_todo.png" alt="איור קומי המסביר שמקום בתוכנית הוא פשוט רשימת המשימות שנותרו" class="absolute bottom-2 left-60 w-50 transform -rotate-1 hover:rotate-10 transition-transform" />
 
----
-
-
-# איך נגדיר סמנטיקה פורמלית?
-
-<div class="text-[14px] leading-snug">
-
-
-<div class="mt-4">
-  <img src="./images/nanoPromelaSemantics2.jfif" alt="איור קומי של תרגום NanoPromela לגרף תוכנית, מערכת ערוצים ומערכת מעברים" class="mx-auto w-[760px] max-w-full rounded-2xl border border-slate-200 shadow-sm" />
-</div>
-
-</div>
 
 ---
 
