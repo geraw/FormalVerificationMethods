@@ -36,7 +36,7 @@ info: |
   <template #ts>מערכת מעברים</template>
   <template #pg>גרף תוכנית</template>
   <template #ts-weave>שזירת מערכות מעברים</template>
-  <template #circuit>מעגל חומרה</template>
+  <template #circuit>שערים לוגיים</template>
   <template #channels>מערכת ערוצים</template>
   <template #sync>שזירה עם תקשורת סנכרונית</template>
   <template #async>שזירה בלי תקשורת</template>
@@ -707,7 +707,7 @@ fi
   :height="100"
   :scale="70"
   :states="[
-  { id: 's1', text: '$l_1, l_1, x \\mapsto 0, y \\mapsto 0$',     x: 300, y: 50 -140, width: 220, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
+  { id: 's1', text: '$l_1, l_1, x \\mapsto 0, y \\mapsto 0$',     x: 300, y: 50 -140, width: 220, color: '#FEF08A', rx: 0, stroke: '#d4af37', initial: true, initialDirection: 'top' },
   { id: 's2_3', text: '$l_1, l_2, x \\mapsto 3, y \\mapsto 0$',   x: 130, y: 150-140, width: 220, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
   { id: 's2_4', text: '$l_1, l_2, x \\mapsto 4, y \\mapsto 0$',   x: 470, y: 150-140, width: 220, color: '#FEF08A', rx: 0, stroke: '#d4af37' },
   { id: 's3_3_2', text: '$l_2, l_2, x \\mapsto 3, y \\mapsto 2$', x: 130, y: 250-140, width: 220, color: '#FEF08A', rx: 0, stroke: '#d4af37' },

@@ -112,6 +112,18 @@ const uniqueColors = computed(() => {
 
 function getInitialArrowColor(state: State) {
     if (state.initialStroke) return state.initialStroke;
+    const outgoingColors = new Set(
+        props.transitions
+            .filter(t => t.source === state.id)
+            .map(t => t.stroke || '#333')
+    );
+    if (outgoingColors.size === 1) return Array.from(outgoingColors)[0];
+
+    const allTransitionColors = new Set(
+        props.transitions.map(t => t.stroke || '#333')
+    );
+    if (allTransitionColors.size === 1) return Array.from(allTransitionColors)[0];
+
     return '#333';
 }
 
