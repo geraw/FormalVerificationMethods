@@ -40,7 +40,7 @@
     \node[nodebox] (a20) at (0,.85) {$p_0$};
     \node[nodebox] (a21) at (2,.85) {$p_1$};
     \initarrow{(-.65,.85)}{a20.west}
-    \draw[edge] (a20) -- node[labelbox,above] {\scriptsize $a$} (a21);
+    \draw[edge,bend left=25] (a20) to node[labelbox,above] {\scriptsize $a$} (a21);
     \draw[edge,bend left=25] (a21) to node[labelbox,below] {\scriptsize $b$} (a20);
     \node at (-1.5,-.95) {$B_2$};
     \node[nodebox] (b20) at (0,-.95) {$q_0$};
