@@ -1,0 +1,145 @@
+﻿\documentclass[tikz,border=6pt]{standalone}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\makeatletter
+\AtBeginDocument{\global\let\pgf@selectfontorig\relax}
+\makeatother
+
+\tikzset{
+  nodebox/.style={draw=black, rounded corners=4pt, very thick, fill=gray!4,
+    minimum width=8mm, minimum height=6mm, align=center, inner sep=1.5pt},
+  finalnode/.style={nodebox},
+  initial/.style={-Latex, very thick},
+  edge/.style={-Latex, thick, shorten >=2pt, shorten <=2pt, auto},
+  labelbox/.style={inner sep=3pt, font=\scriptsize, align=center},
+  title/.style={font=\bfseries\large},
+  graphframe/.style={draw=black!45, rounded corners=5pt, thick},
+}
+
+\newcommand{\initarrow}[2]{\draw[initial,auto] #1 -- node[labelbox,auto] {$x{=}0\land y{=}0\land z{=}0$} (#2);}
+\newcommand{\selfloop}[3]{\draw[edge,loop above,looseness=7] (#1) to node[labelbox] {#2} (#3);}
+\newcommand{\graphframe}[1]{
+  \draw[graphframe] (-3.65,3.15) rectangle (6.65,-3.75);
+  \node[title, anchor=west, fill=white, inner sep=2pt] at (-3.35,2.85) {#1};
+}
+
+\newcommand{\correctgraph}[1]{
+  \graphframe{#1}
+  \node[nodebox] (l0) at (0,0) {$\ell_0$};
+  \node[nodebox] (l1) at (5,0) {$\ell_1$};
+  \node[nodebox] (l2) at (4,-3) {$\ell_2$};
+  \node[nodebox] (l3) at (-1,-1.5) {$\ell_3$};
+  \node[finalnode] (lend) at (-2,-3) {$\ell_4$};
+  \initarrow{(-3.1,0)}{l0.west}
+  \draw[edge] (l0) -- node[labelbox] {$x<2:x:=x+1$} (l1);
+  \draw[edge,bend left=14] (l1) to node[labelbox] {$y=0:y:=1$} (l0);
+  \draw[edge] (l1) -- node[labelbox] {$y=1:y:=0$} (l2);
+  \draw[edge] (l2) -- node[labelbox] {$\mathit{true}:z:=z+1$} (l0);
+  \draw[edge,loop above,looseness=7] (l0) to node[labelbox] {$x=2:y:=1;x:=x+1$} (l0);
+  \draw[edge] (l0) -- node[labelbox] {$x>2:\mathrm{skip}$} (l3);
+  \draw[edge] (l3) -- node[labelbox] {$\mathit{true}:z:=z+1$} (lend);
+}
+
+\newcommand{\splitguardgraph}[1]{
+  \graphframe{#1}
+  \node[nodebox] (l0) at (0,0) {$\ell_0$};
+  \node[nodebox] (l1) at (3,0) {$\ell_1$};
+  \node[nodebox] (l2) at (6,0) {$\ell_2$};
+  \node[nodebox] (l4) at (3,-3) {$\ell_4$};
+  \node[nodebox] (l3) at (-2,-1.5) {$\ell_3$};
+  \node[finalnode] (lend) at (-3,-3) {$\ell_5$};
+  \initarrow{(-3.1,0)}{l0.west}
+  \draw[edge] (l0) -- node[labelbox] {$x<2:\mathrm{skip}$} (l1);
+  \draw[edge] (l1) -- node[labelbox] {$\mathit{true}:x:=x+1$} (l2);
+  \draw[edge,bend left=14] (l2) to node[labelbox] {$y=0:y:=1$} (l0);
+  \draw[edge] (l2) -- node[labelbox] {$y=1:y:=0$} (l4);
+  \draw[edge] (l4) -- node[labelbox] {$\mathit{true}:z:=z+1$} (l0);
+  \draw[edge,loop above,looseness=7] (l0) to node[labelbox] {$x=2:y:=1;x:=x+1$} (l0);
+  \draw[edge] (l0) -- node[labelbox] {$x>2:\mathrm{skip}$} (l3);
+  \draw[edge] (l3) -- node[labelbox] {$\mathit{true}:z:=z+1$} (lend);
+}
+
+\newcommand{\overatomicgraph}[1]{
+  \graphframe{#1}
+  \node[nodebox] (l0) at (0,0) {$\ell_0$};
+  \node[nodebox] (l1) at (5,0) {$\ell_1$};
+  \node[nodebox] (l3) at (-1,-1.5) {$\ell_3$};
+  \node[finalnode] (lend) at (-2,-3) {$\ell_4$};
+  \initarrow{(-3.1,0)}{l0.west}
+  \draw[edge] (l0) -- node[labelbox] {$x<2:x:=x+1$} (l1);
+  \draw[edge,bend left=15] (l1) to node[labelbox] {$y=0:y:=1$} (l0);
+  \draw[edge,bend right=15] (l1) to node[labelbox, above] {$y=1:y:=0;z:=z+1$} (l0);
+  \draw[edge,loop above,looseness=7] (l0) to node[labelbox] {$x=2:y:=1;x:=x+1$} (l0);
+  \draw[edge] (l0) -- node[labelbox] {$x>2:\mathrm{skip}$} (l3);
+  \draw[edge] (l3) -- node[labelbox] {$\mathit{true}:z:=z+1$} (lend);
+}
+
+\newcommand{\splitatomicgraph}[1]{
+  \graphframe{#1}
+  \node[nodebox] (l0) at (0,0) {$\ell_0$};
+  \node[nodebox] (l1) at (5,0) {$\ell_1$};
+  \node[nodebox] (l2) at (5,-3) {$\ell_2$};
+  \node[nodebox] (l4) at (0,2) {$\ell_4$};
+  \node[nodebox] (l3) at (-2,-1.5) {$\ell_3$};
+  \node[finalnode] (lend) at (-3,-3) {$\ell_5$};
+  \initarrow{(-3.1,0)}{l0.west}
+  \draw[edge,bend left=14] (l0) to node[labelbox] {$x<2:x:=x+1$} (l1);
+  \draw[edge,bend left=14] (l1) to node[labelbox] {$y=0:y:=1$} (l0);
+  \draw[edge] (l1) -- node[labelbox] {$y=1:y:=0$} (l2);
+  \draw[edge] (l2) -- node[labelbox] {$\mathit{true}:z:=z+1$} (l0);
+  \draw[edge,bend left=14] (l0) to node[labelbox] {$x=2:y:=1$} (l4);
+  \draw[edge,bend left=14] (l4) to node[labelbox] {$\mathit{true}:x:=x+1$} (l0);
+  \draw[edge] (l0) -- node[labelbox] {$x>2:\mathrm{skip}$} (l3);
+  \draw[edge] (l3) -- node[labelbox] {$\mathit{true}:z:=z+1$} (lend);
+}
+
+\newcommand{\badexitgraph}[1]{
+  \graphframe{#1}
+  \node[nodebox] (l0) at (0,0) {$\ell_0$};
+  \node[nodebox] (l1) at (5,0) {$\ell_1$};
+  \node[nodebox] (l2) at (5,-2) {$\ell_2$};
+  \node[nodebox] (l3) at (0,-2) {$\ell_3$};
+  \node[finalnode] (lend) at (-3,-2) {$\ell_4$};
+  \initarrow{(-3.1,0)}{l0.west}
+  \draw[edge] (l0) -- node[labelbox] {$x<2:x:=x+1$} (l1);
+  \draw[edge] (l1) -- node[labelbox] {$y=0:y:=1$} (l3);
+  \draw[edge] (l1) -- node[labelbox] {$y=1:y:=0$} (l2);
+  \draw[edge] (l2) -- node[labelbox] {$\mathit{true}:z:=z+1$} (l3);
+  \draw[edge,loop above,looseness=7] (l0) to node[labelbox] {$x=2:y:=1;x:=x+1$} (l0);
+  \draw[edge] (l3) -- node[labelbox] {$\mathit{true}:z:=z+1$} (lend);
+}
+
+\newcommand{\noexitgraph}[1]{
+  \graphframe{#1}
+  \node[nodebox] (l0) at (0,0) {$\ell_0$};
+  \node[nodebox] (l1) at (5,0) {$\ell_1$};
+  \node[nodebox] (l2) at (2.5,-2) {$\ell_2$};
+  \initarrow{(-3.1,0)}{l0.west}
+  \draw[edge] (l0) -- node[labelbox] {$x<2:x:=x+1$} (l1);
+  \draw[edge,bend left=14] (l1) to node[labelbox] {$y=0:y:=1$} (l0);
+  \draw[edge] (l1) -- node[labelbox] {$y=1:y:=0$} (l2);
+  \draw[edge] (l2) -- node[labelbox] {$\mathit{true}:z:=z+1$} (l0);
+  \draw[edge,loop above,looseness=7] (l0) to node[labelbox] {$x=2:y:=1;x:=x+1$} (l0);
+}
+
+\begin{document}
+\begin{tikzpicture}[scale=.92, transform shape]
+  \begin{scope}[shift={(0,0)}]
+    \splitguardgraph{$PG_1$}
+  \end{scope}
+  \begin{scope}[shift={(0,-7.6)}]
+    \correctgraph{$PG_2$}
+  \end{scope}
+  \begin{scope}[shift={(0,-15.2)}]
+    \overatomicgraph{$PG_3$}
+  \end{scope}
+  \begin{scope}[shift={(0,-22.8)}]
+    \splitatomicgraph{$PG_4$}
+  \end{scope}
+  \begin{scope}[shift={(0,-30.4)}]
+    \badexitgraph{$PG_5$}
+  \end{scope}
+  \begin{scope}[shift={(0,-38.0)}]
+    \noexitgraph{$PG_6$}
+  \end{scope}
+\end{tikzpicture}
+\end{document}
