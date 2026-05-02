@@ -1,0 +1,92 @@
+\documentclass[11pt,a4paper]{article}
+
+% Hebrew and UTF-8 optimization
+\usepackage{polyglossia}
+\setmainlanguage[numerals=arabic]{hebrew}
+\setotherlanguage{english}
+\newfontfamily\hebrewfont[Script=Hebrew,Language=Hebrew]{David CLM}
+\newfontfamily\englishfont{Arial}
+
+% Packages for computer science and mathematics
+\usepackage{listings}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata,positioning}
+
+\XeTeXgenerateactualtext 1 % Fix mirroring/copy-paste
+\newcommand{\RLM}{\char"200F}
+\newcommand{\LRM}{\char"200E}
+\setcounter{secnumdepth}{-1} % Disable section numbering
+
+\title{תרגיל בית: יסודות האימות הפורמלי (TS, PG, Concurrency)}
+\author{קורס שיטות אימות פורמליות}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{שאלה 1: מערכות מעברים ונגישיות}
+נתונה מערכת מעברים $TS = \langle S, Act, \to, I, AP, L \rangle$ הממדלת מונה מודולו-4 עם אפשרות לאיפוס \textenglish{(Reset)}:
+\begin{itemize}
+    \item $S = \{0, 1, 2, 3\}$
+    \item $I = \{0\}$
+    \item $Act = \{inc, res\}$
+    \item יחס המעברים: $s \xrightarrow{inc} (s+1) \pmod 4$ לכל $s$, וכן $s \xrightarrow{res} 0$ לכל $s$.
+\end{itemize}
+
+\subsection{מטלה}
+\begin{enumerate}
+    \item ציירו את גרף מערכת המעברים.
+    \item מצאו את קבוצת המצבים הנגישים $Reach(TS)$.
+    \item האם המערכת דטרמיניסטית על פי פעולות? נמקו.
+\end{enumerate}
+
+\section{שאלה 2: פריסת גרף תוכנית (PG Unfolding)}
+נתון גרף התוכנית $PG = \langle Loc, Act, \to, Loc_0, g_0 \rangle$ מעל משתנה יחיד $x \in \{0, 1, 2\}$:
+\begin{itemize}
+    \item $Loc = \{\ell_0, \ell_1\}$
+    \item $Loc_0 = \{\ell_0\}$
+    \item $g_0 = (x = 0)$
+    \item מעברים: 
+    \begin{itemize}
+        \item $\ell_0 \xrightarrow{x < 2 : x := x+1} \ell_0$
+        \item $\ell_0 \xrightarrow{x = 2 : x := 0} \ell_1$
+    \end{itemize}
+\end{itemize}
+
+\subsection{מטלה}
+פרסו את גרף התוכנית למערכת מעברים $TS(PG)$ שקולה. פרטו את קבוצת המצבים $S$, המצבים ההתחלתיים $I$ ויחס המעברים $\to$.
+
+\section{שאלה 3: הרכבה מקבילית ושזירה}
+יהיו $TS_1, TS_2$ שתי מערכות מעברים המייצגות שני תהליכים עצמאיים. לכל תהליך מצב התחלה $s_i$ ומעבר יחיד $s_i \xrightarrow{\alpha_i} s_i'$.\RLM
+
+\subsection{מטלה}
+\begin{enumerate}
+    \item הגדירו את מערכת המעברים המאוחדת $TS_1 \,|||\, TS_2$ על פי חוקי השזירה.
+    \item הראו כי במערכת המאוחדת קיימות שתי ריצות (Runs) שונות, ותארו אותן כמחרוזות של פעולות ומצבים.
+    \item הסבירו מדוע במקרה של משתנים משותפים, שזירה ברמת ה-TS עלולה להוביל לתוצאות לא עקביות.
+\end{enumerate}
+
+\section{שאלה 4: תרגום NanoPromela לגרף תוכנית}
+נתון קטע הקוד הבא ב-NanoPromela:
+\begin{lstlisting}
+do
+  :: x > 0 -> x := x - 1
+  :: x = 0 -> if :: y > 0 -> y := y - 1 fi
+od
+\end{lstlisting}
+
+\subsection{מטלה}
+בנו את גרף התוכנית (PG) המתאים לקטע הקוד. הקפידו לסמן את המיקומים \textenglish{(Locations)} ואת השומרים \textenglish{(Guards)} על הקשתות.\RLM
+
+\section{שאלה 5: מעגלי לוגיקה למערכות מעברים}
+נתון מעגל לוגי סינכרוני עם אוגר $r$ וקלט $x$. פונקציית עדכון האוגר היא $\delta_r = x \oplus r$ \textenglish{(XOR)}.\RLM
+
+\subsection{מטלה}
+בנו את מערכת המעברים הממדלת את המעגל. הניחו כי $I = \{ \langle x=0, r=0 \rangle, \langle x=1, r=0 \rangle \}$.
+
+\end{document}
