@@ -1,0 +1,26 @@
+\documentclass[tikz,border=6pt]{standalone}
+\usetikzlibrary{arrows.meta,positioning,calc,fit}
+\makeatletter
+\AtBeginDocument{\global\let\pgf@selectfontorig\relax}
+\makeatother
+
+\tikzset{
+  state/.style={
+    draw=black,
+    rounded corners=4pt,
+    very thick,
+    fill=white,
+    minimum width=8.5mm,
+    minimum height=7mm,
+    align=center,
+    inner sep=1.6pt,
+    font=\scriptsize
+  },
+  initial/.style={-Latex, very thick},
+  edge/.style={-Latex, thick, shorten >=2pt, shorten <=2pt},
+  labelbox/.style={inner sep=3pt, font=\tiny, scale=0.62, transform shape, align=center},
+  panel/.style={draw=gray!70, rounded corners=6pt, very thick}
+}
+
+\newcommand{\initarrow}[2]{\draw[initial] #1 to (#2);}
+\newcommand{\panel}{\draw[panel] (-1.65,-2.65) rectangle (5.85,2.25);}

@@ -1,0 +1,613 @@
+% !TeX program = lualatex
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1.55cm]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{hebrew}
+\setotherlanguage{english}
+\setmainfont{Times New Roman}
+\newfontfamily\hebrewfont{Times New Roman}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{parskip}
+
+\pagenumbering{gobble}
+\newcounter{qnum}
+
+\tikzset{
+  st/.style={draw=black, rounded corners=3pt, thick, minimum width=9mm,
+    minimum height=6mm, inner sep=2pt, font=\scriptsize},
+  circst/.style={draw=black, rounded corners=3pt, thick, minimum width=9mm,
+    minimum height=6mm, inner sep=2pt,
+    font=\scriptsize},
+  arr/.style={-Latex, thick},
+  lab/.style={font=\scriptsize, inner sep=2pt},
+  tinylabel/.style={font=\tiny, inner sep=1pt}
+}
+
+\newcommand{\question}[2]{%
+  \stepcounter{qnum}
+  {\Large\bfseries שאלה $\arabic{qnum}$ #1}\par
+  #2\medskip}
+
+\newcommand{\answersix}[6]{%
+  \par\smallskip
+  \noindent\textbf{א.} #1\par
+  \noindent\textbf{ב.} #2\par
+  \noindent\textbf{ג.} #3\par
+  \noindent\textbf{ד.} #4\par
+  \noindent\textbf{ה.} #5\par
+  \noindent\textbf{ו.} #6\par
+  \medskip}
+
+\newcommand{\answerfour}[4]{%
+  \par\smallskip
+  \noindent\textbf{א.} #1\par
+  \noindent\textbf{ב.} #2\par
+  \noindent\textbf{ג.} #3\par
+  \noindent\textbf{ד.} #4\par
+  \medskip}
+
+\begin{document}
+
+{\LARGE\bfseries שאלות הכנה: התאמות בין ייצוגים}\par
+בכל שאלה בחרו תשובה אחת. מטרת השאלות היא לתרגל את סוג ההתאמות שיופיעו בבוחן.
+
+\question{מערכות מעברים וגרפי תוכנית}{
+התאימו בין כל מערכת מעברים לבין גרף התוכנית שממנו היא מתקבלת. בגרפי התוכנית כל מעבר מסומן בצורה שומר:פעולה.
+
+\begin{center}
+\begin{tikzpicture}[x=0.92cm,y=0.92cm]
+  \node[font=\bfseries] at (0,2.2) {$PG_1$};
+  \node[st] (p10) at (-1,1.2) {$\ell_0$};
+  \node[st] (p11) at (1,1.2) {$\ell_1$};
+  \draw[arr] (-1.8,1.2) -- node[tinylabel,above] {$x=0$} (p10);
+  \draw[arr] (p10) to[bend left=15] node[tinylabel,above] {$x<2:\mathrm{skip}$} (p11);
+  \draw[arr] (p11) to[bend left=15] node[tinylabel,below] {$true:x:=x+1$} (p10);
+  \draw[arr] (p10) to[loop above] node[tinylabel] {$x=2:\mathrm{skip}$} (p10);
+
+  \node[font=\bfseries] at (4,2.2) {$PG_2$};
+  \node[st] (p20) at (3,1.2) {$\ell_0$};
+  \node[st] (p21) at (5,1.9) {$\ell_1$};
+  \node[st] (p22) at (5,0.5) {$\ell_2$};
+  \draw[arr] (2.2,1.2) -- node[tinylabel,above] {$g_0$} (p20);
+  \draw[arr] (p20) -- node[tinylabel,above,sloped] {$g:a$} (p21);
+  \draw[arr] (p20) -- node[tinylabel,below,sloped] {$\neg g:\mathrm{skip}$} (p22);
+  \draw[arr] (p21) -- node[tinylabel,right] {$true:b$} (p22);
+  \draw[arr] (p22) -- node[tinylabel,below,sloped] {$true:c$} (p20);
+
+  \node[font=\bfseries] at (8,2.2) {$PG_3$};
+  \node[st] (p30) at (7,1.2) {$\ell_0$};
+  \node[st] (p31) at (9,1.2) {$\ell_1$};
+  \draw[arr] (6.2,1.2) -- node[tinylabel,above] {$true$} (p30);
+  \draw[arr] (p30) -- node[tinylabel,above] {$true:a$} (p31);
+  \draw[arr] (p31) to[loop right] node[tinylabel] {$true:b$} (p31);
+
+  \node[font=\bfseries] at (0,-0.6) {$TS_1$};
+  \node[st] (t10) at (-1,-1.4) {$s_0$};
+  \node[st] (t11) at (1,-1.4) {$s_1$};
+  \draw[arr] (-1.8,-1.4) -- (t10);
+  \draw[arr] (t10) -- (t11);
+  \draw[arr] (t11) to[loop right] (t11);
+
+  \node[font=\bfseries] at (4,-0.6) {$TS_2$};
+  \node[st] (t20) at (3,-1.4) {$q_0$};
+  \node[st] (t21) at (5,-0.8) {$q_1$};
+  \node[st] (t22) at (5,-2.0) {$q_2$};
+  \draw[arr] (2.2,-1.4) -- (t20);
+  \draw[arr] (t20) -- (t21);
+  \draw[arr] (t20) -- (t22);
+  \draw[arr] (t21) -- (t22);
+  \draw[arr] (t22) -- (t20);
+
+  \node[font=\bfseries] at (8,-0.6) {$TS_3$};
+  \node[st] (t30) at (7,-1.4) {$r_0$};
+  \node[st] (t31) at (9,-1.4) {$r_1$};
+  \draw[arr] (6.2,-1.4) -- (t30);
+  \draw[arr] (t30) to[bend left=15] (t31);
+  \draw[arr] (t31) to[bend left=15] (t30);
+  \draw[arr] (t30) to[loop above] (t30);
+\end{tikzpicture}
+\end{center}
+
+\answersix
+  {$TS_1\leftrightarrow PG_3,\ TS_2\leftrightarrow PG_2,\ TS_3\leftrightarrow PG_1$}
+  {$TS_1\leftrightarrow PG_1,\ TS_2\leftrightarrow PG_2,\ TS_3\leftrightarrow PG_3$}
+  {$TS_1\leftrightarrow PG_2,\ TS_2\leftrightarrow PG_3,\ TS_3\leftrightarrow PG_1$}
+  {$TS_1\leftrightarrow PG_3,\ TS_2\leftrightarrow PG_1,\ TS_3\leftrightarrow PG_2$}
+  {$TS_1\leftrightarrow PG_2,\ TS_2\leftrightarrow PG_1,\ TS_3\leftrightarrow PG_3$}
+  {$TS_1\leftrightarrow PG_1,\ TS_2\leftrightarrow PG_3,\ TS_3\leftrightarrow PG_2$}
+}
+
+\newpage
+\question{שזירה עם פעולות משותפות}{
+בכל סעיף נתונות שתי מערכות והרכבה עם קבוצת פעולות משותפות $H$. התאימו כל הרכבה לתוצאה הנכונה.
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (0,2.2) {$I_1$};
+  \node[circst] (a0) at (-1,1.4) {$p_0$};
+  \node[circst] (a1) at (0.5,1.4) {$p_1$};
+  \node[circst] (b0) at (-1,0.3) {$q_0$};
+  \node[circst] (b1) at (0.5,0.3) {$q_1$};
+  \draw[arr] (-1.7,1.4) -- (a0);
+  \draw[arr] (-1.7,0.3) -- (b0);
+  \draw[arr] (a0) -- node[lab,above] {$a$} (a1);
+  \draw[arr] (b0) -- node[lab,below] {$a$} (b1);
+  \node[lab] at (-0.25,-0.4) {$H=\{a\}$};
+
+  \node[font=\bfseries] at (4.5,2.2) {$I_2$};
+  \node[circst] (c0) at (3.5,1.4) {$p_0$};
+  \node[circst] (c1) at (5.0,1.4) {$p_1$};
+  \node[circst] (d0) at (3.5,0.3) {$q_0$};
+  \node[circst] (d1) at (5.0,0.3) {$q_1$};
+  \draw[arr] (2.8,1.4) -- (c0);
+  \draw[arr] (2.8,0.3) -- (d0);
+  \draw[arr] (c0) -- node[lab,above] {$a$} (c1);
+  \draw[arr] (d0) -- node[lab,below] {$b$} (d1);
+  \node[lab] at (4.25,-0.4) {$H=\emptyset$};
+
+  \node[font=\bfseries] at (9,2.2) {$I_3$};
+  \node[circst] (e0) at (8,1.4) {$p_0$};
+  \node[circst] (e1) at (9.5,1.4) {$p_1$};
+  \node[circst] (f0) at (8,0.3) {$q_0$};
+  \node[circst] (f1) at (9.5,0.3) {$q_1$};
+  \draw[arr] (7.3,1.4) -- (e0);
+  \draw[arr] (7.3,0.3) -- (f0);
+  \draw[arr] (e0) -- node[lab,above] {$a$} (e1);
+  \draw[arr] (f0) -- node[lab,below] {$b$} (f1);
+  \node[lab] at (8.75,-0.4) {$H=\{a\}$};
+
+  \node[font=\bfseries] at (0,-0.95) {$R_1$};
+  \node[st] (r10) at (-1,-2.15) {$00$};
+  \node[st] (r11) at (0.75,-2.15) {$11$};
+  \draw[arr] (-1.8,-2) -- (r10);
+  \draw[arr] (r10) -- node[lab,above] {$a$} (r11);
+
+  \node[font=\bfseries] at (4.9,-0.95) {$R_2$};
+  \node[st] (r20) at (3.3,-2.15) {$00$};
+  \node[st] (r21) at (4.9,-1.45) {$10$};
+  \node[st] (r22) at (4.9,-2.85) {$01$};
+  \node[st] (r23) at (6.6,-2.15) {$11$};
+  \draw[arr] (2.45,-2.15) -- (r20);
+  \draw[arr] (r20) -- node[lab,above] {$a$} (r21);
+  \draw[arr] (r20) -- node[lab,below] {$b$} (r22);
+  \draw[arr] (r21) -- node[lab,above] {$b$} (r23);
+  \draw[arr] (r22) -- node[lab,below] {$a$} (r23);
+
+  \node[font=\bfseries] at (9.4,-0.95) {$R_3$};
+  \node[st] (r30) at (8.4,-2.15) {$00$};
+  \node[st] (r31) at (10.1,-2.15) {$10$};
+  \draw[arr] (7.6,-2.15) -- (r30);
+  \draw[arr] (r30) -- node[lab,above] {$a$} (r31);
+\end{tikzpicture}
+\end{center}
+
+\answersix
+  {$I_1\leftrightarrow R_1,\ I_2\leftrightarrow R_2,\ I_3\leftrightarrow R_3$}
+  {$I_1\leftrightarrow R_2,\ I_2\leftrightarrow R_1,\ I_3\leftrightarrow R_3$}
+  {$I_1\leftrightarrow R_3,\ I_2\leftrightarrow R_2,\ I_3\leftrightarrow R_1$}
+  {$I_1\leftrightarrow R_1,\ I_2\leftrightarrow R_3,\ I_3\leftrightarrow R_2$}
+  {$I_1\leftrightarrow R_2,\ I_2\leftrightarrow R_3,\ I_3\leftrightarrow R_1$}
+  {$I_1\leftrightarrow R_3,\ I_2\leftrightarrow R_1,\ I_3\leftrightarrow R_2$}
+}
+
+\newpage
+\question{בחירת גרף תוכנית עבור קוד}{
+נתון קטע קוד בננו־פרומלה. בחרו את גרף התוכנית המתאים.
+
+\begin{flushleft}
+\begin{english}
+\ttfamily
+if\\
+:: x = 0 -> y := 1; z := z + 1\\
+:: x > 0 -> y := 2\\
+fi; w := w + 1
+\end{english}
+\end{flushleft}
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (-3.8,1.6) {א};
+  \node[st] (a0) at (-3.2,0.6) {$\ell_0$};
+  \node[st] (a1) at (-0.5,1.2) {$\ell_1$};
+  \node[st] (a2) at (-0.5,0.0) {$\ell_2$};
+  \node[st] (a3) at (2.6,0.6) {$\ell_3$};
+  \draw[arr] (-4.0,0.6) -- (a0);
+  \draw[arr] (a0) -- node[tinylabel,above,sloped] {$x=0:y:=1;z:=z+1$} (a1);
+  \draw[arr] (a0) -- node[tinylabel,below,sloped] {$x>0:y:=2$} (a2);
+  \draw[arr] (a1) -- node[tinylabel,above,sloped] {$true:w:=w+1$} (a3);
+  \draw[arr] (a2) -- node[tinylabel,below,sloped] {$true:w:=w+1$} (a3);
+\end{tikzpicture}
+
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (-3.8,1.0) {ב};
+  \node[st] (b0) at (-3.2,0) {$\ell_0$};
+  \node[st] (b1) at (-0.7,0) {$\ell_1$};
+  \draw[arr] (-4,0) -- (b0);
+  \draw[arr] (b0) -- node[lab,above] {$x=0:y:=1$} (b1);
+  \draw[arr] (b1) to[loop right] node[lab] {$w:=w+1$} (b1);
+
+  \node[font=\bfseries] at (2.2,1.0) {ג};
+  \node[st] (c0) at (2.8,0) {$\ell_0$};
+  \node[st] (c1) at (4.8,0) {$\ell_1$};
+  \node[st] (c2) at (6.8,0) {$\ell_2$};
+  \draw[arr] (2,0) -- (c0);
+  \draw[arr] (c0) -- node[lab,above] {$x=0$} (c1);
+  \draw[arr] (c1) -- node[lab,above] {$x>0$} (c2);
+\end{tikzpicture}
+
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (-1.8,0.9) {ד};
+  \node[st] (d0) at (-1.2,0) {$\ell_0$};
+  \node[st] (d1) at (1.2,0) {$\ell_1$};
+  \draw[arr] (-2,0) -- (d0);
+  \draw[arr] (d0) to[bend left=15] node[lab,above] {$x=0$} (d1);
+  \draw[arr] (d1) to[bend left=15] node[lab,below] {$x>0$} (d0);
+\end{tikzpicture}
+\end{center}
+}
+
+\newpage
+\question{התאמת תכונות להרכבה}{
+נתונות שתי מערכות מעברים והקבוצה $H=\{\langle a,b\rangle\}$. בחרו את הטענה הנכונה על ההרכבה לפי כללי זוג פעולות.
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (0,1.5) {$TS_1$};
+  \node[st] (p0) at (-1,0.5) {$p_0$};
+  \node[st] (p1) at (1,0.5) {$p_1$};
+  \draw[arr] (-1.8,0.5) -- (p0);
+  \draw[arr] (p0) -- node[lab,above] {$a$} (p1);
+  \draw[arr] (p1) to[loop right] node[lab] {$c$} (p1);
+
+  \node[font=\bfseries] at (5,1.5) {$TS_2$};
+  \node[st] (q0) at (4,0.5) {$q_0$};
+  \node[st] (q1) at (6,0.5) {$q_1$};
+  \draw[arr] (3.2,0.5) -- (q0);
+  \draw[arr] (q0) -- node[lab,above] {$b$} (q1);
+  \draw[arr] (q1) to[loop right] node[lab] {$d$} (q1);
+\end{tikzpicture}
+\end{center}
+
+\answerfour
+  {מן המצב $\langle p_0,q_0\rangle$ יש צעד מסונכרן אל $\langle p_1,q_1\rangle$ עם התווית $\langle a,b\rangle$.}
+  {מן המצב $\langle p_0,q_0\rangle$ חייבים לבצע קודם צעד אינטרליבינג על $a$ בלבד.}
+  {ההרכבה ריקה כי $a$ ו-$b$ אינן אותה פעולה.}
+  {בכל מצב חייבים לסנכרן גם את $c$ עם $d$, אף ש-$\langle c,d\rangle\notin H$.}
+}
+
+\newpage
+\question{בחירת תוצר של שזירה}{
+נתונות שתי מערכות המעברים הבאות ו-$H=\{a\}$. בחרו את מערכת המעברים של $TS_1\parallel_H TS_2$ לפי כללי השזירה הרגילים.
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (-1,1.4) {$TS_1$};
+  \node[st] (p0) at (-2,0.4) {$p_0$};
+  \node[st] (p1) at (0,0.4) {$p_1$};
+  \draw[arr] (-2.8,0.4) -- (p0);
+  \draw[arr] (p0) -- node[lab,above] {$a$} (p1);
+  \draw[arr] (p1) to[loop right] node[lab] {$c$} (p1);
+
+  \node[font=\bfseries] at (4,1.4) {$TS_2$};
+  \node[st] (q0) at (3,0.4) {$q_0$};
+  \node[st] (q1) at (5,0.4) {$q_1$};
+  \draw[arr] (2.2,0.4) -- (q0);
+  \draw[arr] (q0) -- node[lab,above] {$a$} (q1);
+  \draw[arr] (q1) to[loop right] node[lab] {$d$} (q1);
+\end{tikzpicture}
+
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (-3.4,1.7) {א};
+  \node[st] (a00) at (-2.4,0.7) {$\langle p_0,q_0\rangle$};
+  \node[st] (a11) at (0.4,0.7) {$\langle p_1,q_1\rangle$};
+  \draw[arr] (-3.4,0.7) -- (a00);
+  \draw[arr] (a00) -- node[lab,above] {$a$} (a11);
+  \draw[arr] (a11) to[loop above] node[lab] {$c$} (a11);
+  \draw[arr] (a11) to[loop right] node[lab] {$d$} (a11);
+
+  \node[font=\bfseries] at (3.0,1.7) {ב};
+  \node[st] (b00) at (4,0.7) {$\langle p_0,q_0\rangle$};
+  \node[st] (b10) at (6.7,1.2) {$\langle p_1,q_0\rangle$};
+  \node[st] (b01) at (6.7,0.2) {$\langle p_0,q_1\rangle$};
+  \draw[arr] (3,0.7) -- (b00);
+  \draw[arr] (b00) -- node[lab,above] {$a$} (b10);
+  \draw[arr] (b00) -- node[lab,below] {$a$} (b01);
+
+  \node[font=\bfseries] at (-3.4,-0.8) {ג};
+  \node[st] (c00) at (-2.4,-1.8) {$\langle p_0,q_0\rangle$};
+  \node[st] (c11) at (0.4,-1.8) {$\langle p_1,q_1\rangle$};
+  \draw[arr] (-3.4,-1.8) -- (c00);
+  \draw[arr] (c00) -- node[lab,above] {$\langle a,a\rangle$} (c11);
+  \draw[arr] (c11) to[loop right] node[lab] {$c,d$} (c11);
+
+  \node[font=\bfseries] at (3.0,-0.8) {ד};
+  \node[st] (d00) at (4,-1.8) {$\langle p_0,q_0\rangle$};
+  \node[st] (d11) at (6.7,-1.8) {$\langle p_1,q_1\rangle$};
+  \draw[arr] (3,-1.8) -- (d00);
+  \draw[arr] (d00) -- node[lab,above] {$a$} (d11);
+\end{tikzpicture}
+\end{center}
+}
+
+\newpage
+\question{גרף תוכנית ומערכת מעברים}{
+נתון גרף תוכנית עם תחום ערכים $x\in\{0,1\}$. מצב במערכת המעברים הוא זוג $\langle \ell,x\rangle$. בחרו את מערכת המעברים הנגישה.
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (0,2.55) {$PG$};
+  \node[st] (l0) at (-1,1.2) {$\ell_0$};
+  \node[st] (l1) at (1.5,1.2) {$\ell_1$};
+  \draw[arr] (-1.9,1.2) -- node[lab,above] {$x=0$} (l0);
+  \draw[arr] (l0) -- node[lab,above] {$x=0:x:=1$} (l1);
+  \draw[arr] (l1) to[bend left=18] node[lab,below] {$x=1:x:=0$} (l0);
+  \draw[arr] (l0) to[loop above, looseness=5] node[tinylabel,above=3pt] {$x=1:\mathrm{skip}$} (l0);
+
+  \node[font=\bfseries] at (5.4,2.2) {א};
+  \node[st] (a0) at (4.1,1.2) {$\ell_0,0$};
+  \node[st] (a1) at (6.7,1.2) {$\ell_1,1$};
+  \draw[arr] (3.2,1.2) -- (a0);
+  \draw[arr] (a0) -- (a1);
+  \draw[arr] (a1) to[bend left=18] (a0);
+
+  \node[font=\bfseries] at (0,-0.4) {ב};
+  \node[st] (b0) at (-1,-1.4) {$\ell_0,0$};
+  \node[st] (b1) at (1.5,-1.4) {$\ell_1,0$};
+  \draw[arr] (-1.9,-1.4) -- (b0);
+  \draw[arr] (b0) -- (b1);
+
+  \node[font=\bfseries] at (5.4,-0.4) {ג};
+  \node[st] (c0) at (4.1,-1.4) {$\ell_0,0$};
+  \node[st] (c1) at (6.7,-1.4) {$\ell_1,1$};
+  \draw[arr] (3.2,-1.4) -- (c0);
+  \draw[arr] (c0) -- (c1);
+  \draw[arr] (c0) to[loop above] (c0);
+
+  \node[font=\bfseries] at (0,-2.8) {ד};
+  \node[st] (d0) at (-1,-3.8) {$\ell_0,1$};
+  \node[st] (d1) at (1.5,-3.8) {$\ell_1,0$};
+  \draw[arr] (-1.9,-3.8) -- (d0);
+  \draw[arr] (d0) -- (d1);
+\end{tikzpicture}
+\end{center}
+}
+
+\newpage
+\question{בחירת גרף תוכנית ללולאת do}{
+נתון קטע הקוד הבא. בחרו את גרף התוכנית המתאים לפי הסמנטיקה של ננו־פרומלה.
+
+\begin{flushleft}
+\begin{english}
+\ttfamily
+do\\
+:: x < 2 -> x := x + 1\\
+:: x = 2 -> y := 1\\
+od
+\end{english}
+\end{flushleft}
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (-3.4,1.3) {א};
+  \node[st] (a0) at (-2.6,0.3) {$\ell_0$};
+  \draw[arr] (-3.5,0.3) -- (a0);
+  \draw[arr] (a0) to[loop above, looseness=5] node[tinylabel,above=3pt] {$\begin{array}{c}x<2\\[-2pt]x:=x+1\end{array}$} (a0);
+  \draw[arr] (a0) to[loop below, looseness=5] node[tinylabel,below=3pt] {$\begin{array}{c}x=2\\[-2pt]y:=1\end{array}$} (a0);
+
+  \node[font=\bfseries] at (3.4,1.3) {ב};
+  \node[st] (b0) at (2.5,0.3) {$\ell_0$};
+  \node[st] (b1) at (5.1,0.3) {$\ell_1$};
+  \draw[arr] (1.6,0.3) -- (b0);
+  \draw[arr] (b0) -- node[tinylabel,above] {$\begin{array}{c}x<2\\[-2pt]x:=x+1\end{array}$} (b1);
+  \draw[arr] (b1) to[loop right, looseness=5] node[tinylabel,right=3pt] {$\begin{array}{c}x=2\\[-2pt]y:=1\end{array}$} (b1);
+
+  \node[font=\bfseries] at (-3.4,-1.3) {ג};
+  \node[st] (c0) at (-2.6,-2.3) {$\ell_0$};
+  \node[st] (c1) at (0,-2.3) {$\ell_1$};
+  \draw[arr] (-3.5,-2.3) -- (c0);
+  \draw[arr] (c0) to[bend left=12] node[tinylabel,above] {$\begin{array}{c}x<2\\[-2pt]x:=x+1\end{array}$} (c1);
+  \draw[arr] (c1) to[bend left=12] node[tinylabel,below] {$\begin{array}{c}x=2\\[-2pt]y:=1\end{array}$} (c0);
+
+  \node[font=\bfseries] at (3.4,-1.3) {ד};
+  \node[st] (d0) at (2.5,-2.3) {$\ell_0$};
+  \node[st] (d1) at (5.1,-2.3) {$\ell_1$};
+  \draw[arr] (1.6,-2.3) -- (d0);
+  \draw[arr] (d0) to[bend left=12] node[tinylabel,above] {$x<2$} (d1);
+  \draw[arr] (d1) to[bend left=12] node[tinylabel,below] {$x:=x+1$} (d0);
+\end{tikzpicture}
+\end{center}
+}
+
+\newpage
+\question{התאמת דיאגרמה לשישייה}{
+התאימו בין כל דיאגרמה לבין השישייה המתמטית המתאימה. בכל השישיות $L_\emptyset(s)=\emptyset$ לכל מצב $s$.
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (0,1.5) {$T_1$};
+  \node[st] (a0) at (-1,0.4) {$s_0$};
+  \node[st] (a1) at (1,0.4) {$s_1$};
+  \draw[arr] (-1.8,0.4) -- (a0);
+  \draw[arr] (a0) -- node[lab,above] {$a$} (a1);
+
+  \node[font=\bfseries] at (4,1.5) {$T_2$};
+  \node[st] (b0) at (3,0.4) {$s_0$};
+  \node[st] (b1) at (5,0.4) {$s_1$};
+  \draw[arr] (2.2,0.4) -- (b0);
+  \draw[arr] (b0) -- node[lab,above] {$a$} (b1);
+  \draw[arr] (b1) to[loop right] node[lab] {$b$} (b1);
+
+  \node[font=\bfseries] at (8,1.5) {$T_3$};
+  \node[st] (c0) at (7,0.4) {$s_0$};
+  \node[st] (c1) at (9,0.4) {$s_1$};
+  \draw[arr] (6.2,0.4) -- (c0);
+  \draw[arr] (c0) to[bend left=16] node[lab,above] {$a$} (c1);
+  \draw[arr] (c1) to[bend left=16] node[lab,below] {$b$} (c0);
+\end{tikzpicture}
+\end{center}
+
+\[
+\begin{aligned}
+M_1 &= (\{s_0,s_1\},\{a\},\{(s_0,a,s_1)\},\{s_0\},\emptyset,L_\emptyset)\\
+M_2 &= (\{s_0,s_1\},\{a,b\},\{(s_0,a,s_1),(s_1,b,s_1)\},\{s_0\},\emptyset,L_\emptyset)\\
+M_3 &= (\{s_0,s_1\},\{a,b\},\{(s_0,a,s_1),(s_1,b,s_0)\},\{s_0\},\emptyset,L_\emptyset)
+\end{aligned}
+\]
+
+\answersix
+  {$T_1\leftrightarrow M_1,\ T_2\leftrightarrow M_2,\ T_3\leftrightarrow M_3$}
+  {$T_1\leftrightarrow M_3,\ T_2\leftrightarrow M_1,\ T_3\leftrightarrow M_2$}
+  {$T_1\leftrightarrow M_2,\ T_2\leftrightarrow M_3,\ T_3\leftrightarrow M_1$}
+  {$T_1\leftrightarrow M_1,\ T_2\leftrightarrow M_3,\ T_3\leftrightarrow M_2$}
+  {$T_1\leftrightarrow M_3,\ T_2\leftrightarrow M_2,\ T_3\leftrightarrow M_1$}
+  {$T_1\leftrightarrow M_2,\ T_2\leftrightarrow M_1,\ T_3\leftrightarrow M_3$}
+}
+
+\newpage
+\question{שזירה ללא פעולות משותפות}{
+נתונות שתי מערכות ללא פעולות משותפות. בחרו את התוצר הנכון.
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (-1,1.3) {$TS_1$};
+  \node[st] (p0) at (-2,0.4) {$p_0$};
+  \node[st] (p1) at (0,0.4) {$p_1$};
+  \draw[arr] (-2.8,0.4) -- (p0);
+  \draw[arr] (p0) -- node[lab,above] {$a$} (p1);
+  \node[font=\bfseries] at (4,1.3) {$TS_2$};
+  \node[st] (q0) at (3,0.4) {$q_0$};
+  \node[st] (q1) at (5,0.4) {$q_1$};
+  \draw[arr] (2.2,0.4) -- (q0);
+  \draw[arr] (q0) -- node[lab,above] {$b$} (q1);
+
+  \node[font=\bfseries] at (-3,-1.0) {א};
+  \node[st] (a00) at (-2,-2) {$00$};
+  \node[st] (a10) at (0,-1.3) {$10$};
+  \node[st] (a01) at (0,-2.7) {$01$};
+  \node[st] (a11) at (2,-2) {$11$};
+  \draw[arr] (-2.9,-2) -- (a00);
+  \draw[arr] (a00) -- node[lab,above] {$a$} (a10);
+  \draw[arr] (a00) -- node[lab,below] {$b$} (a01);
+  \draw[arr] (a10) -- node[lab,above] {$b$} (a11);
+  \draw[arr] (a01) -- node[lab,below] {$a$} (a11);
+
+  \node[font=\bfseries] at (5,-1.0) {ב};
+  \node[st] (b00) at (6,-2) {$00$};
+  \node[st] (b11) at (8.5,-2) {$11$};
+  \draw[arr] (5.1,-2) -- (b00);
+  \draw[arr] (b00) -- node[lab,above] {$a,b$} (b11);
+\end{tikzpicture}
+\end{center}
+
+\answerfour
+  {מערכת א}
+  {מערכת ב}
+  {שתי המערכות נכונות}
+  {אף אחת מהמערכות אינה נכונה}
+}
+
+\newpage
+\question{מערכת ערוצים א־סינכרונית}{
+בערוץ $c$ יש קיבולת 1 והוא מתחיל ריק. תהליך אחד מבצע $c!1;c!2$ ותהליך שני מבצע $c?x$. בחרו את האפשרות המתארת ריצה אפשרית.
+
+\answerfour
+  {השליחה הראשונה יכולה להתבצע, אחריה הקריאה מקבלת $1$, ואז השליחה השנייה יכולה להתבצע.}
+  {שתי השליחות חייבות להתבצע לפני כל קריאה, אף שהקיבולת היא 1.}
+  {הקריאה הראשונה יכולה לקבל $2$ לפני שנשלח $2$.}
+  {המערכת חייבת להיתקע לפני השליחה הראשונה כי הערוץ ריק.}
+}
+
+\newpage
+\question{הרכבה מתחלפת של מערכות מעברים}{
+נתונות שתי מערכות מעברים $TS_1=(S_1,Act_1,\to_1,I_1,AP_1,L_1)$ ו-$TS_2=(S_2,Act_2,\to_2,I_2,AP_2,L_2)$.
+
+\[
+\begin{gathered}
+TS_1\parallel_{\mathrm{alt}} TS_2 =
+(S_1\times S_2\times\{1,2\},\ Act_1\cup Act_2,\ \to,\ I_1\times I_2\times\{1\},\ AP_1\cup AP_2,\ L)\\
+L(\langle s_1,s_2,i\rangle)=L_1(s_1)\cup L_2(s_2)
+\end{gathered}
+\]
+
+\[
+\frac{s_1 \xrightarrow{a}_1 t_1}
+     {\langle s_1,s_2,1\rangle \xrightarrow{a} \langle t_1,s_2,2\rangle}
+\qquad
+\frac{s_2 \xrightarrow{b}_2 t_2}
+     {\langle s_1,s_2,2\rangle \xrightarrow{b} \langle s_1,t_2,1\rangle}
+\]
+
+בחרו את מערכת המעברים המתקבלת מן שתי המערכות הבאות. באפשרויות הבחירה שמות המצבים מוסתרים.
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (-1.2,1.3) {$TS_1$};
+  \node[st] (p0) at (-2.4,0.4) {$p_0$};
+  \node[st] (p1) at (-0.6,0.4) {$p_1$};
+  \node[st] (p2) at (1.2,0.4) {$p_2$};
+  \draw[arr] (-3.1,0.4) -- (p0);
+  \draw[arr] (p0) -- node[lab,above] {$a$} (p1);
+  \draw[arr] (p1) -- node[lab,above] {$c$} (p2);
+
+  \node[font=\bfseries] at (5.0,1.3) {$TS_2$};
+  \node[st] (q0) at (3.8,0.4) {$q_0$};
+  \node[st] (q1) at (5.6,0.4) {$q_1$};
+  \node[st] (q2) at (7.4,0.4) {$q_2$};
+  \draw[arr] (3.1,0.4) -- (q0);
+  \draw[arr] (q0) -- node[lab,above] {$b$} (q1);
+  \draw[arr] (q1) -- node[lab,above] {$d$} (q2);
+\end{tikzpicture}
+
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[font=\bfseries] at (-3.5,1.4) {א};
+  \node[st] (a0) at (-2.9,0.4) {\phantom{$p_0q_0,1$}};
+  \node[st] (a1) at (-1.1,0.4) {\phantom{$p_0q_0,1$}};
+  \node[st] (a2) at (0.7,0.4) {\phantom{$p_0q_0,1$}};
+  \node[st] (a3) at (2.5,0.4) {\phantom{$p_0q_0,1$}};
+  \node[st] (a4) at (4.3,0.4) {\phantom{$p_0q_0,1$}};
+  \draw[arr] (-3.7,0.4) -- (a0);
+  \draw[arr] (a0) -- node[tinylabel,above] {$a$} (a1);
+  \draw[arr] (a1) -- node[tinylabel,above] {$b$} (a2);
+  \draw[arr] (a2) -- node[tinylabel,above] {$c$} (a3);
+  \draw[arr] (a3) -- node[tinylabel,above] {$d$} (a4);
+
+  \node[font=\bfseries] at (-3.5,-1.0) {ב};
+  \node[st] (b0) at (-2.9,-2.0) {\phantom{$p_0q_0,1$}};
+  \node[st] (b1) at (-1.1,-2.0) {\phantom{$p_0q_0,1$}};
+  \node[st] (b2) at (0.7,-2.0) {\phantom{$p_0q_0,1$}};
+  \node[st] (b3) at (2.5,-2.0) {\phantom{$p_0q_0,1$}};
+  \draw[arr] (-3.7,-2.0) -- (b0);
+  \draw[arr] (b0) -- node[tinylabel,above] {$b$} (b1);
+  \draw[arr] (b1) -- node[tinylabel,above] {$a$} (b2);
+  \draw[arr] (b2) -- node[tinylabel,above] {$d$} (b3);
+
+  \node[font=\bfseries] at (-3.5,-3.4) {ג};
+  \node[st] (c0) at (-2.9,-4.4) {\phantom{$p_0q_0,1$}};
+  \node[st] (c1) at (-1.1,-4.4) {\phantom{$p_0q_0,1$}};
+  \node[st] (c2) at (0.7,-4.4) {\phantom{$p_0q_0,1$}};
+  \node[st] (c3) at (2.5,-4.4) {\phantom{$p_0q_0,1$}};
+  \draw[arr] (-3.7,-4.4) -- (c0);
+  \draw[arr] (c0) -- node[tinylabel,above] {$a$} (c1);
+  \draw[arr] (c1) -- node[tinylabel,above] {$c$} (c2);
+  \draw[arr] (c2) -- node[tinylabel,above] {$b$} (c3);
+
+  \node[font=\bfseries] at (-3.5,-5.8) {ד};
+  \node[st] (d0) at (-2.9,-6.8) {\phantom{$p_0q_0,1$}};
+  \node[st] (d1) at (-1.1,-6.8) {\phantom{$p_0q_0,1$}};
+  \node[st] (d2) at (0.7,-6.8) {\phantom{$p_0q_0,1$}};
+  \node[st] (d3) at (2.5,-6.8) {\phantom{$p_0q_0,1$}};
+  \node[st] (d4) at (4.3,-6.8) {\phantom{$p_0q_0,1$}};
+  \draw[arr] (-3.7,-6.8) -- (d0);
+  \draw[arr] (d0) -- node[tinylabel,above] {$a$} (d1);
+  \draw[arr] (d1) -- node[tinylabel,above] {$c$} (d2);
+  \draw[arr] (d2) -- node[tinylabel,above] {$b$} (d3);
+  \draw[arr] (d3) -- node[tinylabel,above] {$d$} (d4);
+\end{tikzpicture}
+\end{center}
+}
+
+\end{document}

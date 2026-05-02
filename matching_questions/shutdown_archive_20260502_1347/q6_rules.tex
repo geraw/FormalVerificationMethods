@@ -1,0 +1,58 @@
+\documentclass[border=6pt]{standalone}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+\begin{minipage}{15.2cm}
+\small
+\begin{align*}
+  \operatorname{sub}_{\mathrm{alt}}(stmt_1;stmt_2)
+  &=
+  \{\, stmt_1;s' \mid s' \in
+  \operatorname{sub}_{\mathrm{alt}}(stmt_2)\setminus\{\mathrm{exit}\}\,\}
+  \cup
+  \operatorname{sub}_{\mathrm{alt}}(stmt_1)
+\end{align*}
+
+\begin{align*}
+  &\operatorname{sub}_{\mathrm{alt}}
+  (\mathbf{do}\ ::\ g_1 \to stmt_1\ \cdots\ ::\ g_n \to stmt_n\ \mathbf{od})
+  \\[-1mm]
+  &\qquad =
+  \{\mathrm{loop\mbox{-}cmd},\mathrm{exit}\}
+  \cup
+  \bigcup_i
+  \{\,\mathrm{loop\mbox{-}cmd};s'
+  \mid
+  s' \in \operatorname{sub}_{\mathrm{alt}}(stmt_i)\setminus\{\mathrm{exit}\}\,\}
+\end{align*}
+
+\[
+  \frac{
+    stmt_2 \xrightarrow{g:\alpha} stmt_2'
+    \qquad
+    stmt_2' \neq \mathrm{exit}
+  }{
+    stmt_1;stmt_2 \xrightarrow{g:\alpha} stmt_1;stmt_2'
+  }
+  \qquad
+  \frac{
+    stmt_2 \xrightarrow{g:\alpha} \mathrm{exit}
+  }{
+    stmt_1;stmt_2 \xrightarrow{g:\alpha} stmt_1
+  }
+\]
+
+\[
+  \frac{
+    stmt_i \xrightarrow{h:\alpha} stmt_i'
+    \qquad
+    stmt_i' \neq \mathrm{exit}
+  }{
+    \mathrm{loop\mbox{-}cmd}
+    \xrightarrow{(g_i \land h):\alpha}
+    \mathrm{loop\mbox{-}cmd};stmt_i'
+  }
+\]
+\end{minipage}
+\end{document}

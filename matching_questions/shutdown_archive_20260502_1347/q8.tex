@@ -1,0 +1,60 @@
+\documentclass[tikz,border=6pt]{standalone}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\makeatletter
+\AtBeginDocument{\global\let\pgf@selectfontorig\relax}
+\makeatother
+
+\tikzset{
+  nodebox/.style={draw=black, rounded corners=4pt, very thick, fill=gray!4,
+    minimum width=10mm, minimum height=7mm, align=center, inner sep=2pt},
+  initial/.style={-Latex, very thick},
+  edge/.style={-Latex, thick, shorten >=1pt, shorten <=1pt},
+  labelbox/.style={fill=white, inner sep=1.2pt, font=\scriptsize},
+}
+
+\newcommand{\initarrow}[2]{\draw[initial] #1 -- (#2);}
+
+% =====================================================================
+% Neither -- Variant B:  "Three-state rotation that mirrors the
+%                         canonical six-state controller".
+%
+%   H = { alpha_{i,1}, alpha_{i,4}  |  i = 1, 2, 3 }
+%
+%   The controller cycles alpha_{1,1} -> alpha_{2,1} -> alpha_{3,1} in
+%   three states, suggesting a fair round robin.  But because
+%   alpha_{i,4} is in H yet absent from every controller edge, those
+%   actions are dead in the product.
+%
+%   Safety   : NO.   alpha_{i,1} fires for each i in turn, but A_i
+%                    autonomously advances o_i -> g_i -> y_i (those
+%                    actions are not in H).  After the three starts,
+%                    multiple lights may sit in g simultaneously.
+%
+%     Path:
+%       (r,r,r,c1) -alpha_{1,1}-> (o,r,r,c2) -alpha_{1,2}->
+%       (g,r,r,c2) -alpha_{2,1}-> (g,o,r,c3) -alpha_{2,2}->
+%       (g,g,r,c3)               <-- |{i : d_i in L}| = 2  (unsafe)
+%
+%   Liveness : NO.   After one full lap, every A_i is stuck in y_i
+%                    (alpha_{i,4} is in H but never enabled by the
+%                    controller), so alpha_{i,1} is no longer enabled
+%                    in the product -> deadlock; no infinite path
+%                    satisfies "d_i holds infinitely often".
+% =====================================================================
+\begin{document}
+\begin{tikzpicture}[scale=1, transform shape]
+
+  \node[font=\bfseries\large] at (0, 2.4) {$C$};
+
+  \node[nodebox] (b1) at ( 0,    1.4) {$c_1$};
+  \node[nodebox] (b2) at ( 1.4, -0.8) {$c_2$};
+  \node[nodebox] (b3) at (-1.4, -0.8) {$c_3$};
+
+  \initarrow{(-0.9, 2.0)}{b1.north west}
+
+  \draw[edge] (b1) -- node[labelbox, sloped, above] {$\alpha_{1,1}$} (b2);
+  \draw[edge] (b2) -- node[labelbox, below] {$\alpha_{2,1}$} (b3);
+  \draw[edge] (b3) -- node[labelbox, sloped, above] {$\alpha_{3,1}$} (b1);
+
+\end{tikzpicture}
+\end{document}

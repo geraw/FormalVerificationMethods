@@ -1,0 +1,29 @@
+{
+  "files.exclude": {
+    "**/*.aux": true,
+    "**/*.log": true,
+    "**/*.out": true,
+    "**/*.toc": true,
+    "**/*.lof": true,
+    "**/*.lot": true,
+    "**/*.fls": true,
+    "**/*.fdb_latexmk": true,
+    "**/*.synctex.gz": true,
+    "**/*.synctex(busy)": true,
+    "**/*.bbl": true,
+    "**/*.blg": true,
+    "**/*.idx": true,
+    "**/*.ind": true,
+    "**/*.ilg": true,
+    "**/*.nav": true,
+    "**/*.snm": true,
+    "**/*.vrb": true,
+    "**/*.bcf": true,
+    "**/*.run.xml": true,
+    "**/_minted-*": true,
+    "**/matching_diagrams_matrix.pdf": true,
+    "**/matching_diagrams_matrix.png": true,
+    "**/interleaving_question_matrix.pdf": true,
+    "**/interleaving_question_matrix.png": true
+  }
+}

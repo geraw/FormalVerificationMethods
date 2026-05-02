@@ -1,0 +1,74 @@
+\documentclass[tikz,border=6pt]{standalone}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\makeatletter
+\AtBeginDocument{\global\let\pgf@selectfontorig\relax}
+\makeatother
+
+\tikzset{
+  nb/.style={draw=black, rounded corners=3pt, thick, fill=gray!4,
+    minimum width=15mm, minimum height=6mm, align=center, inner sep=1.5pt,
+    font=\scriptsize},
+  initial/.style={-Latex, thick},
+  edge/.style={-Latex, thick, shorten >=1pt, shorten <=1pt},
+  wrongedge/.style={-Latex, thick, shorten >=1pt, shorten <=1pt},
+  lb/.style={fill=white, inner sep=0.8pt, font=\tiny},
+}
+
+\newcommand{\initarrow}[2]{\draw[initial] #1 -- (#2);}
+\newcommand{\states}{
+  \node[nb] (s00) at (0,0) {$\langle p_0,q_0\rangle$};
+  \node[nb] (s10) at (4.0,0) {$\langle p_1,q_0\rangle$};
+  \node[nb] (s01) at (0,-2.4) {$\langle p_0,q_1\rangle$};
+  \node[nb] (s11) at (4.0,-2.4) {$\langle p_1,q_1\rangle$};
+  \initarrow{(-1.25,0)}{s00.west}
+}
+\newcommand{\interleavingedges}{
+  \draw[edge] (s00) -- node[lb, above] {$a$} (s10);
+  \draw[edge, bend right=10] (s00) to node[lb, left] {$b$} (s01);
+  \draw[edge, bend left=12] (s10) to node[lb, above] {$c$} (s00);
+  \draw[edge, bend left=10] (s10) to node[lb, right] {$b$} (s11);
+  \draw[edge] (s01) -- node[lb, below] {$a$} (s11);
+  \draw[edge, bend right=10] (s01) to node[lb, right] {$d$} (s00);
+  \draw[edge] (s11) -- node[lb, below] {$c$} (s01);
+  \draw[edge, bend left=10] (s11) to node[lb, left] {$d$} (s10);
+}
+\newcommand{\syncab}{\draw[edge] (s00) -- node[lb, sloped, above] {$\langle a,b\rangle$} (s11);}
+\newcommand{\wrongcd}{\draw[wrongedge, bend right=18] (s11) to node[lb, sloped, below] {$\langle c,d\rangle$} (s00);}
+\newcommand{\wrongac}{\draw[wrongedge, bend left=18] (s01) to node[lb, sloped, above] {$\langle a,d\rangle$} (s10);}
+\newcommand{\wrongloop}{\draw[wrongedge, loop above] (s00) to node[lb] {$\langle a,b\rangle$} (s00);}
+\newcommand{\qNineOptionBEdges}{
+  \syncab
+  \draw[edge, bend left=12] (s10) to node[lb, above] {$c$} (s00);
+  \draw[edge, bend left=10] (s10) to node[lb, right] {$b$} (s11);
+  \draw[edge] (s01) -- node[lb, below] {$a$} (s11);
+  \draw[edge, bend right=10] (s01) to node[lb, right] {$d$} (s00);
+  \draw[edge] (s11) -- node[lb, below] {$c$} (s01);
+  \draw[edge, bend left=10] (s11) to node[lb, left] {$d$} (s10);
+}
+\newcommand{\optiongraph}[3]{
+  \begin{scope}[shift={#1}, scale=0.78, transform shape]
+    \node[font=\bfseries\large, anchor=west] at (-1.25,0.85) {#2};
+    \begin{scope}[shift={(0,0)}]
+      \states
+      #3
+    \end{scope}
+  \end{scope}
+}
+
+\begin{document}
+\ifdefined\OptionEdges
+\begin{tikzpicture}[scale=1, transform shape]
+  \states
+  \OptionEdges
+\end{tikzpicture}
+\else
+\begin{tikzpicture}
+  \optiongraph{(0,0)}{A}{\interleavingedges\syncab}
+  \optiongraph{(5.5,0)}{B}{\qNineOptionBEdges}
+  \optiongraph{(0,-3.7)}{C}{\interleavingedges}
+  \optiongraph{(5.5,-3.7)}{D}{\interleavingedges\syncab\wrongcd}
+  \optiongraph{(0,-7.4)}{E}{\interleavingedges\wrongloop}
+  \optiongraph{(5.5,-7.4)}{F}{\interleavingedges\syncab\wrongac}
+\end{tikzpicture}
+\fi
+\end{document}

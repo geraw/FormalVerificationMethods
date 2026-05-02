@@ -1,0 +1,25 @@
+\input{q06_option_preamble.tex}
+\begin{document}
+\begin{tikzpicture}[scale=0.91, transform shape]
+  \begin{scope}[shift={(.5,0)}]
+    \node[state] (p20) at (0,0) {$\ell_0$};
+    \node[state] (p21) at (1,1.3) {$\ell_1$};
+    \node[state] (p22) at (3,1.3) {$\ell_2$};
+    \node[state] (p23) at (4.35,0) {$\ell_3$};
+    \node[state] (p24) at (3,-2) {$\ell_4$};
+    \node[state] (p25) at (-1.2,-2) {$\ell_5$};
+    \node[state] (p26) at (1,-2) {$\ell_6$};
+    \initarrow{(-1.0,0)}{p20.west}
+    \draw[edge]                (p20) to node[labelbox, left] {$x<2\land y=0:x:=x+1$} (p21);
+    \draw[edge]                (p21) to node[labelbox, above] {$\mathrm{true}:y:=1$} (p22);
+    \draw[edge]                (p22) to node[labelbox, above, sloped] {$\mathrm{true}:z:=z+1$} (p20);
+    \draw[edge, bend right=8]  (p20) to node[labelbox, below] {$x<2\land y=1:y:=0$} (p23);
+    \draw[edge, bend right=8]  (p23) to node[labelbox, above] {$\mathrm{true}:z:=z+1$} (p20);
+    \draw[edge, bend right=12] (p20) to node[labelbox, below, sloped] {$x=2:y:=1$} (p24);
+    \draw[edge, bend right=12] (p24) to node[labelbox, above, sloped] {$\mathrm{true}:x:=x+1$} (p20);
+    \draw[edge]                (p20) to node[labelbox, left] {$x>2:\mathrm{skip}$} (p25);
+    \draw[edge]                (p25) to node[labelbox, above] {$\mathrm{true}:w:=w+1$} (p26);
+  \end{scope}
+  \panel
+\end{tikzpicture}
+\end{document}

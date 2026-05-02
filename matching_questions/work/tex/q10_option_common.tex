@@ -1,0 +1,94 @@
+\documentclass[tikz,border=6pt]{standalone}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\makeatletter
+\AtBeginDocument{\global\let\pgf@selectfontorig\relax}
+\makeatother
+
+\tikzset{
+  nb/.style={draw=black, rounded corners=3pt, thick, fill=gray!4,
+    minimum width=15mm, minimum height=6mm, align=center, inner sep=1.5pt,
+    font=\scriptsize},
+  initial/.style={-Latex, thick},
+  edge/.style={-Latex, thick, shorten >=1pt, shorten <=1pt},
+  wrongedge/.style={-Latex, thick, shorten >=1pt, shorten <=1pt},
+  lb/.style={inner sep=3pt, font=\tiny},
+  slb/.style={inner sep=3pt, font=\tiny, align=center},
+}
+
+\newcommand{\hlabel}{$\langle\langle a,c\rangle,\langle b,d\rangle\rangle$} 
+\newcommand{\initarrow}[2]{\draw[initial] #1 -- (#2);}
+\newcommand{\states}{
+  \node[nb] (s00) at (0,0) {$\langle p_0,q_0\rangle$};
+  \node[nb] (s10) at (4.0,0) {$\langle p_1,q_0\rangle$};
+  \node[nb] (s01) at (0,-2.4) {$\langle p_0,q_1\rangle$};
+  \node[nb] (s11) at (4.0,-2.4) {$\langle p_1,q_1\rangle$};
+  \initarrow{(-1.25,0)}{s00.west}
+}
+\newcommand{\interleavingedges}{
+  \draw[edge] (s00) -- node[lb, above] {$a$} (s10);
+  \draw[edge] (s00) -- node[lb, left] {$b$} (s01);
+  \draw[edge, loop above] (s10) to node[lb] {$a$} (s10);
+  \draw[edge, loop right, looseness=4] (s10) to node[lb] {$c$} (s10);
+  \draw[edge] (s10) -- node[lb, left] {$b$} (s11);
+  \draw[edge] (s01) -- node[lb, below] {$a$} (s11);
+  \draw[edge, loop left] (s01) to node[lb] {$b$} (s01);
+  \draw[edge, loop below] (s01) to node[lb] {$d$} (s01);
+  \draw[edge, out=32, in=-32, looseness=4.7] (s11) to node[lb, right] {$a$} (s11);
+  \draw[edge, out=-58, in=-122, looseness=4.7] (s11) to node[lb, below] {$b$} (s11);
+  \draw[edge, out=122, in=58, looseness=4.7] (s11) to node[lb, above] {$c$} (s11);
+  \draw[edge, out=212, in=148, looseness=4.7] (s11) to node[lb, left] {$d$} (s11);
+}
+\newcommand{\syncCorrect}{
+  \draw[edge, bend left=12] (s00) to node[slb, sloped, above] {\hlabel} (s11);
+  \draw[edge, bend left=16] (s10) to node[slb, sloped, above] {\hlabel} (s11);
+  \draw[edge, bend right=14] (s01) to node[slb, sloped, below] {\hlabel} (s11);
+  \draw[edge, loop below] (s11) to node[slb] {\hlabel} (s11);
+}
+\newcommand{\syncOnlyInitial}{
+  \draw[wrongedge, bend left=12] (s00) to node[slb, sloped, above] {\hlabel} (s11);
+}
+\newcommand{\syncNoFinalLoop}{
+  \draw[wrongedge, bend left=12] (s00) to node[slb, sloped, above] {\hlabel} (s11);
+  \draw[wrongedge, bend left=16] (s10) to node[slb, sloped, above] {\hlabel} (s11);
+  \draw[wrongedge, bend right=14] (s01) to node[slb, sloped, below] {\hlabel} (s11);
+}
+\newcommand{\syncFirstOnly}{
+  \draw[wrongedge, bend left=18] (s00) to node[slb, sloped, above] {\hlabel} (s10);
+  \draw[wrongedge, bend right=16] (s00) to node[slb, sloped, below] {\hlabel} (s01);
+}
+\newcommand{\syncReverse}{
+  \draw[wrongedge, loop below] (s11) to node[slb] {\hlabel} (s11);
+}
+\newcommand{\syncBadLoop}{
+  \draw[wrongedge, loop above] (s00) to node[slb] {\hlabel} (s00);
+  \draw[wrongedge, bend left=12] (s00) to node[slb, sloped, above] {\hlabel} (s11);
+}
+\newcommand{\optiongraph}[3]{
+  \begin{scope}[shift={#1}, scale=0.74, transform shape]
+    \node[font=\bfseries\large, anchor=west] at (-1.25,0.85) {#2};
+    \begin{scope}[shift={(0,0)}]
+      \states
+      \interleavingedges
+      #3
+    \end{scope}
+  \end{scope}
+}
+
+\begin{document}
+\ifdefined\OptionSync
+\begin{tikzpicture}[scale=1, transform shape]
+  \states
+  \interleavingedges
+  \OptionSync
+\end{tikzpicture}
+\else
+\begin{tikzpicture}
+  \optiongraph{(0,0)}{A}{\syncCorrect}
+  \optiongraph{(6.3,0)}{B}{\syncOnlyInitial}
+  \optiongraph{(0,-4.15)}{C}{\syncNoFinalLoop}
+  \optiongraph{(6.3,-4.15)}{D}{\syncFirstOnly}
+  \optiongraph{(0,-8.3)}{E}{\syncReverse}
+  \optiongraph{(6.3,-8.3)}{F}{\syncBadLoop}
+\end{tikzpicture}
+\fi
+\end{document}
