@@ -29,7 +29,7 @@
   \draw[edge, bend left=10] (s10) to node[lb, right] {$b$} (s11);
   \draw[edge] (s01) -- node[lb, below] {$a$} (s11);
   \draw[edge, bend right=10] (s01) to node[lb, right] {$d$} (s00);
-  \draw[edge] (s11) -- node[lb, below] {$c$} (s01);
+  \draw[edge, bend left=12] (s11) to node[lb, below] {$c$} (s01);
   \draw[edge, bend left=10] (s11) to node[lb, left] {$d$} (s10);
 }
 \newcommand{\syncab}{\draw[edge] (s00) -- node[lb, sloped, above] {$\langle a,b\rangle$} (s11);}
@@ -42,7 +42,7 @@
   \draw[edge, bend left=10] (s10) to node[lb, right] {$b$} (s11);
   \draw[edge] (s01) -- node[lb, below] {$a$} (s11);
   \draw[edge, bend right=10] (s01) to node[lb, right] {$d$} (s00);
-  \draw[edge] (s11) -- node[lb, below] {$c$} (s01);
+  \draw[edge, bend left=12] (s11) to node[lb, below] {$c$} (s01);
   \draw[edge, bend left=10] (s11) to node[lb, left] {$d$} (s10);
 }
 \newcommand{\optiongraph}[3]{

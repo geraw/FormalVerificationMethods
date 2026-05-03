@@ -122,7 +122,7 @@
 <use xlink:href="#glyph-4-0" x="103.944656" y="124.952023"/>
 </g>
 <g fill="rgb(32.499695%, 32.499695%, 32.499695%)" fill-opacity="1">
-<use xlink:href="#glyph-3-1" x="108.010769" y="124.952023"/>
+<use xlink:href="#glyph-3-1" x="108.011003" y="124.952023"/>
 </g>
 <g fill="rgb(32.499695%, 32.499695%, 32.499695%)" fill-opacity="1">
 <use xlink:href="#glyph-5-0" x="112.143098" y="125.944204"/>
@@ -150,7 +150,7 @@
 <use xlink:href="#glyph-5-1" x="73.11236" y="48.140692"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-6-0" x="75.386536" y="48.140692"/>
+<use xlink:href="#glyph-6-0" x="75.386584" y="48.140692"/>
 </g>
 <path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 70.868377 -11.51535 L 70.868377 -36.164556 " transform="matrix(0.996165, 0, 0, -0.996165, 36.985402, 50.692868)"/>
 <path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 4.535074 0.00137662 C 3.978251 0.138622 1.531369 0.918958 -0.00185416 1.773798 L -0.00185416 -1.771045 C 1.531369 -0.920126 3.978251 -0.13979 4.535074 0.00137662 Z M 4.535074 0.00137662 " transform="matrix(0, 0.996165, 0.996165, 0, 107.58066, 86.720597)"/>
@@ -163,7 +163,7 @@
 <use xlink:href="#glyph-5-1" x="116.975518" y="79.027799"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-6-1" x="119.249694" y="79.027799"/>
+<use xlink:href="#glyph-6-1" x="119.249742" y="79.027799"/>
 </g>
 <path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 55.100884 -53.8574 L 21.942487 -53.8574 " transform="matrix(0.996165, 0, 0, -0.996165, 36.985402, 50.692868)"/>
 <path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 4.534869 -0.00135037 C 3.978047 0.139816 1.531164 0.920152 0.00186253 1.771071 L 0.00186253 -1.773772 C 1.531164 -0.918931 3.978047 -0.138595 4.534869 -0.00135037 Z M 4.534869 -0.00135037 " transform="matrix(-0.996165, 0, 0, 0.996165, 58.845605, 104.345095)"/>
@@ -176,7 +176,7 @@
 <use xlink:href="#glyph-5-1" x="73.11236" y="109.915902"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-6-2" x="75.386536" y="109.915902"/>
+<use xlink:href="#glyph-6-2" x="75.386584" y="109.915902"/>
 </g>
 <path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M -0.00103066 -42.344503 L -0.00103066 -17.691376 " transform="matrix(0.996165, 0, 0, -0.996165, 36.985402, 50.692868)"/>
 <path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 4.533951 0.00103066 C 3.977128 0.138276 1.530246 0.918612 0.000943912 1.773452 L 0.000943912 -1.771391 C 1.530246 -0.920472 3.977128 -0.136214 4.533951 0.00103066 Z M 4.533951 0.00103066 " transform="matrix(0, -0.996165, -0.996165, 0, 36.985402, 68.317347)"/>
@@ -189,7 +189,7 @@
 <use xlink:href="#glyph-5-1" x="29.250198" y="79.027799"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-6-3" x="31.524374" y="79.027799"/>
+<use xlink:href="#glyph-6-3" x="31.524423" y="79.027799"/>
 </g>
 <path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(75%, 75%, 75%)" stroke-opacity="1" stroke-dasharray="2.98883 2.98883" stroke-miterlimit="10" d="M 113.386884 42.519975 L 113.386884 -68.03285 " transform="matrix(0.996165, 0, 0, -0.996165, 36.985402, 50.692868)"/>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
@@ -243,10 +243,10 @@
 <use xlink:href="#glyph-6-0" x="271.999763" y="77.527574"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-5-1" x="275.377035" y="77.527574"/>
+<use xlink:href="#glyph-5-1" x="275.376764" y="77.527574"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-6-0" x="277.651211" y="77.527574"/>
+<use xlink:href="#glyph-6-0" x="277.651009" y="77.527574"/>
 </g>
 <path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 256.435408 -46.026591 C 243.440265 -51.277193 232.78613 -51.277193 225.519987 -48.34015 " transform="matrix(0.996165, 0, 0, -0.996165, 36.985402, 50.692868)"/>
 <path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 4.532398 0.000553648 C 3.977051 0.139915 1.530624 0.919409 0.00144028 1.77341 L -0.000237075 -1.77135 C 1.529653 -0.920692 3.975826 -0.139709 4.532398 0.000553648 Z M 4.532398 0.000553648 " transform="matrix(-0.923635, -0.373134, -0.373134, 0.923635, 261.639612, 98.846929)"/>
@@ -258,10 +258,10 @@
 <use xlink:href="#glyph-6-0" x="271.999763" y="105.942197"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-5-1" x="275.377035" y="105.942197"/>
+<use xlink:href="#glyph-5-1" x="275.376764" y="105.942197"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-6-3" x="277.651211" y="105.942197"/>
+<use xlink:href="#glyph-6-3" x="277.651009" y="105.942197"/>
 </g>
 <path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 188.401091 -46.026591 C 175.409869 -51.277193 164.751813 -51.277193 157.48567 -48.34015 " transform="matrix(0.996165, 0, 0, -0.996165, 36.985402, 50.692868)"/>
 <path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 4.534389 0.00135797 C 3.975407 0.13925 1.528979 0.918744 -0.000204574 1.772746 L -0.00188193 -1.772014 C 1.528008 -0.921356 3.977817 -0.138904 4.534389 0.00135797 Z M 4.534389 0.00135797 " transform="matrix(-0.923635, -0.373134, -0.373134, 0.923635, 193.868313, 98.846929)"/>
@@ -273,10 +273,10 @@
 <use xlink:href="#glyph-6-1" x="204.22963" y="105.942197"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-5-1" x="207.606902" y="105.942197"/>
+<use xlink:href="#glyph-5-1" x="207.606631" y="105.942197"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-6-0" x="209.881078" y="105.942197"/>
+<use xlink:href="#glyph-6-0" x="209.880876" y="105.942197"/>
 </g>
 <path fill="none" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 151.760592 -33.345151 C 164.751813 -28.094549 175.409869 -28.094549 182.676013 -31.031592 " transform="matrix(0.996165, 0, 0, -0.996165, 36.985402, 50.692868)"/>
 <path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="1" stroke-width="0.79701" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(0%, 0%, 0%)" stroke-opacity="1" stroke-miterlimit="10" d="M 4.534756 0.000403947 C 3.975773 0.138296 1.527876 0.921426 0.000162027 1.771792 L -0.00151533 -1.772968 C 1.528375 -0.92231 3.976715 -0.136222 4.534756 0.000403947 Z M 4.534756 0.000403947 " transform="matrix(0.923635, 0.373134, 0.373134, -0.923635, 218.959829, 81.605178)"/>
@@ -288,9 +288,9 @@
 <use xlink:href="#glyph-6-1" x="204.22963" y="77.527574"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-5-1" x="207.606902" y="77.527574"/>
+<use xlink:href="#glyph-5-1" x="207.606631" y="77.527574"/>
 </g>
 <g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
-<use xlink:href="#glyph-6-3" x="209.881078" y="77.527574"/>
+<use xlink:href="#glyph-6-3" x="209.880876" y="77.527574"/>
 </g>
 </svg>
