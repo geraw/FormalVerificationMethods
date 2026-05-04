@@ -35,12 +35,17 @@
         "monaco-editor": "latest",
         "slidev-addon-python-runner": "^0.1.3",
         "slidev-theme-academic": "latest",
-        "slidev-theme-frankfurt": "latest",
+        "slidev-theme-frankfurt": "1.0.4",
         "three": "^0.182.0",
         "venn.js": "^0.2.20"
     },
     "devDependencies": {
         "playwright-chromium": "latest"
+    },
+    "overrides": {
+        "venn.js": {
+            "fmin": "0.0.4"
+        }
     },
     "version": "1.0.0",
     "description": "Interactive slide decks for the Formal Verification Methods course content, built with [Slidev](https://sli.dev/).",
