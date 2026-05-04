@@ -67,7 +67,7 @@ info: |
 </div>
 
 <div class="flex justify-center mt-4">
-  <img src="../images/path.jfif" class="rounded shadow-lg" style="height: 180px;" />
+  <img src="/images/path.jfif" class="rounded shadow-lg" style="height: 180px;" />
 </div>
 
 </div>
@@ -1003,7 +1003,7 @@ LTLSPEC G F heartbeat
   </div>
 </div>
 
-<img src="../images/trafficlight.jfif" alt="traffic light" style="position: absolute; bottom: 26px; left: 250px; width: 300px; border-radius: 14px; box-shadow: 0 6px 18px rgba(0,0,0,0.22); z-index: 25;" />
+<img src="/images/trafficlight.jfif" alt="traffic light" style="position: absolute; bottom: 26px; left: 250px; width: 300px; border-radius: 14px; box-shadow: 0 6px 18px rgba(0,0,0,0.22); z-index: 25;" />
 
 ---
 
