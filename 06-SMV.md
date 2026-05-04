@@ -139,6 +139,70 @@ info: |
 
 ---
 
+# התקנת NuSMV
+
+<div class="grid grid-cols-2 gap-4 mt-2 items-start">
+<div class="text-right text-[13px] leading-snug">
+
+<div class="bg-blue-50 p-3 rounded border border-blue-200">
+<div class="font-bold mb-2">Windows</div>
+<ul class="list-disc pr-5 space-y-2">
+<li>להוריד את <span dir="ltr"><code>NuSMV-2.7.0-win64.zip</code></span> מדף ההורדות הרשמי.</li>
+<li>לחלץ לתיקיה קבועה, למשל <span dir="ltr"><code>C:\tools\NuSMV</code></span>.</li>
+<li>להוסיף את <span dir="ltr"><code>bin</code></span> ל-<span dir="ltr"><code>PATH</code></span> כדי שאפשר יהיה להריץ מכל טרמינל.</li>
+<li>בדיקת תקינות ראשונה: <span dir="ltr"><code>NuSMV.exe -int short.smv</code></span>.</li>
+</ul>
+</div>
+
+<div class="bg-green-50 p-3 rounded border border-green-200 mt-3">
+<div class="font-bold mb-2">Linux / macOS</div>
+<ul class="list-disc pr-5 space-y-2">
+<li>ב-<span dir="ltr">Linux</span> להוריד את <span dir="ltr"><code>NuSMV-2.7.0-linux64.tar.xz</code></span>, וב-<span dir="ltr">macOS</span> את <span dir="ltr"><code>NuSMV-2.7.0-macos-universal.tar.xz</code></span>.</li>
+<li>ב-<span dir="ltr">macOS</span> נדרשים גם <span dir="ltr"><code>Command Line Tools</code></span> ו-<span dir="ltr"><code>gmp</code></span>.</li>
+<li>אפשר להוסיף את תיקיית <span dir="ltr"><code>bin</code></span> ל-<span dir="ltr"><code>PATH</code></span> או להריץ ישירות מתוך התיקיה שחולצה.</li>
+<li>גם כאן בדיקת העשן הפשוטה היא <span dir="ltr"><code>NuSMV -int short.smv</code></span>.</li>
+</ul>
+</div>
+
+</div>
+
+<div dir="ltr" class="small-code">
+
+```sh
+# Linux
+wget https://nusmv.fbk.eu/distrib/2.7.0/NuSMV-2.7.0-linux64.tar.xz
+tar -xf NuSMV-2.7.0-linux64.tar.xz
+export PATH="$PWD/NuSMV-2.7.0-linux64/bin:$PATH"
+NuSMV -int short.smv
+
+
+# macOS
+xcode-select --install
+brew install gmp
+curl -LO https://nusmv.fbk.eu/distrib/2.7.0/NuSMV-2.7.0-macos-universal.tar.xz
+tar -xf NuSMV-2.7.0-macos-universal.tar.xz
+export PATH="$PWD/NuSMV-2.7.0-macos-universal/bin:$PATH"
+NuSMV -int short.smv
+
+
+# Windows PowerShell
+Invoke-WebRequest https://nusmv.fbk.eu/distrib/2.7.0/NuSMV-2.7.0-win64.zip -OutFile .\NuSMV-2.7.0-win64.zip
+Expand-Archive .\NuSMV-2.7.0-win64.zip C:\tools\NuSMV
+$env:Path += ";C:\tools\NuSMV\bin"
+NuSMV.exe -int short.smv
+
+
+```
+
+<!-- <div class="mt-3 bg-amber-50 p-3 rounded border border-amber-200 text-right text-[12px] leading-snug">
+מומלץ להוריד תמיד את הגרסה העדכנית ביותר מתוך דף ההורדות הרשמי, ולא להסתמך על קישור ישן.
+</div> -->
+
+</div>
+</div>
+
+---
+
 # דוגמה: ניתוח סימבולי אחורה
 
 <div class="text-[13px] leading-snug text-right">
@@ -432,70 +496,6 @@ $$
 </div>
 </div>
 
-</div>
-
----
-
-# התקנת NuSMV
-
-<div class="grid grid-cols-2 gap-4 mt-2 items-start">
-<div class="text-right text-[13px] leading-snug">
-
-<div class="bg-blue-50 p-3 rounded border border-blue-200">
-<div class="font-bold mb-2">Windows</div>
-<ul class="list-disc pr-5 space-y-2">
-<li>להוריד את <span dir="ltr"><code>NuSMV-2.7.0-win64.zip</code></span> מדף ההורדות הרשמי.</li>
-<li>לחלץ לתיקיה קבועה, למשל <span dir="ltr"><code>C:\tools\NuSMV</code></span>.</li>
-<li>להוסיף את <span dir="ltr"><code>bin</code></span> ל-<span dir="ltr"><code>PATH</code></span> כדי שאפשר יהיה להריץ מכל טרמינל.</li>
-<li>בדיקת תקינות ראשונה: <span dir="ltr"><code>NuSMV.exe -int short.smv</code></span>.</li>
-</ul>
-</div>
-
-<div class="bg-green-50 p-3 rounded border border-green-200 mt-3">
-<div class="font-bold mb-2">Linux / macOS</div>
-<ul class="list-disc pr-5 space-y-2">
-<li>ב-<span dir="ltr">Linux</span> להוריד את <span dir="ltr"><code>NuSMV-2.7.0-linux64.tar.xz</code></span>, וב-<span dir="ltr">macOS</span> את <span dir="ltr"><code>NuSMV-2.7.0-macos-universal.tar.xz</code></span>.</li>
-<li>ב-<span dir="ltr">macOS</span> נדרשים גם <span dir="ltr"><code>Command Line Tools</code></span> ו-<span dir="ltr"><code>gmp</code></span>.</li>
-<li>אפשר להוסיף את תיקיית <span dir="ltr"><code>bin</code></span> ל-<span dir="ltr"><code>PATH</code></span> או להריץ ישירות מתוך התיקיה שחולצה.</li>
-<li>גם כאן בדיקת העשן הפשוטה היא <span dir="ltr"><code>NuSMV -int short.smv</code></span>.</li>
-</ul>
-</div>
-
-</div>
-
-<div dir="ltr" class="small-code">
-
-```sh
-# Linux
-wget https://nusmv.fbk.eu/distrib/2.7.0/NuSMV-2.7.0-linux64.tar.xz
-tar -xf NuSMV-2.7.0-linux64.tar.xz
-export PATH="$PWD/NuSMV-2.7.0-linux64/bin:$PATH"
-NuSMV -int short.smv
-
-
-# macOS
-xcode-select --install
-brew install gmp
-curl -LO https://nusmv.fbk.eu/distrib/2.7.0/NuSMV-2.7.0-macos-universal.tar.xz
-tar -xf NuSMV-2.7.0-macos-universal.tar.xz
-export PATH="$PWD/NuSMV-2.7.0-macos-universal/bin:$PATH"
-NuSMV -int short.smv
-
-
-# Windows PowerShell
-Invoke-WebRequest https://nusmv.fbk.eu/distrib/2.7.0/NuSMV-2.7.0-win64.zip -OutFile .\NuSMV-2.7.0-win64.zip
-Expand-Archive .\NuSMV-2.7.0-win64.zip C:\tools\NuSMV
-$env:Path += ";C:\tools\NuSMV\bin"
-NuSMV.exe -int short.smv
-
-
-```
-
-<!-- <div class="mt-3 bg-amber-50 p-3 rounded border border-amber-200 text-right text-[12px] leading-snug">
-מומלץ להוריד תמיד את הגרסה העדכנית ביותר מתוך דף ההורדות הרשמי, ולא להסתמך על קישור ישן.
-</div> -->
-
-</div>
 </div>
 
 ---
