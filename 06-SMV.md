@@ -416,8 +416,7 @@ $$
 
 ---
 
-# דוגמה: לבנות מערכת מעברים מ-Init/Trans/Bad
-
+# הצגת מערכת מעברים באמצעות נוסחאות לוגיות
 <div class="text-[13px] leading-snug text-right">
 
 <div class="grid grid-cols-3 gap-4 mt-2">
@@ -431,7 +430,7 @@ $$
 <div class="bg-green-50 p-2.5 rounded border border-green-200">
 <div class="font-bold mb-2"><span dir="ltr">Trans((x,y),(x',y'))</span></div>
 $$
-y' \leftrightarrow \neg y,\qquad x' \leftrightarrow (x \oplus y)
+y' \leftrightarrow \neg y \,\, \land \,\, x' \leftrightarrow (x \oplus y)
 $$
 </div>
 
@@ -452,7 +451,7 @@ $$
     { id: '00', text: '00', initial: true, x: 140, y: 25, initialDirection: 'top' },
     { id: '01', text: '01', x: 250, y: 135 },
     { id: '10', text: '10', x: 140, y: 245 },
-    { id: '11', text: '11', x: 30, y: 135 }
+    { id: '11', text: '11', x: 30, y: 135, color: '#fecaca', stroke: '#b91c1c' }
   ]"
   :transitions="[
     { source: '00', target: '01' },
@@ -477,7 +476,9 @@ $$
 </ul>
 
 <div class="mt-2 text-[12px] text-slate-700" dir="ltr">
-00 \rightarrow 01 \rightarrow 10 \rightarrow 11 \rightarrow 00
+
+$$00 \rightarrow 01 \rightarrow 10 \rightarrow 11 \rightarrow 00$$
+
 </div>
 </div>
 </div>
@@ -486,7 +487,7 @@ $$
 
 ---
 
-# איך NuSMV משתמש בזה?
+# איך NuSMV משתמש בכל זה?
 
 <div class="text-[13px] leading-snug text-right">
 
