@@ -47,6 +47,52 @@ info: |
 
 ---
 
+# איפה אנחנו במסלול הקורס?
+
+<div class="text-[13px] leading-snug text-right">
+
+<div class="bg-yellow-50 border border-yellow-200 rounded-xl p-3 mb-3">
+עד עכשיו למדנו איך <b>למדל מערכות</b> בעזרת <b>מערכות מעברים</b> ו-<b dir="ltr">(Nano)Promela</b>.
+עכשיו אנחנו עושים <b>תחנת ביניים קצרה</b>: בוחן והיכרות עם כלי נוסף שממדל מערכות מעברים בצורה קצת אחרת.
+בשיעור הבא נמשיך עם אימות אוטומטי של דרישות.
+</div>
+
+<div class="grid grid-cols-4 gap-3" dir="ltr">
+  <div class="bg-sky-50 border-2 border-sky-200 rounded-xl p-3 shadow-sm">
+    <div class="text-3xl mb-1">🧩</div>
+    <div class="font-bold text-sky-800 text-[12px]">מה שכבר עשינו</div>
+    <div class="text-[11px] text-slate-700 mt-1" dir="rtl">מערכות מעברים + פרומלה</div>
+    <div class="mt-2 text-[10px] bg-white/80 border border-sky-100 rounded p-1" dir="rtl">"אני יודע לתאר מערכת פורמלית"</div>
+  </div>
+
+  <div class="bg-amber-50 border-2 border-amber-200 rounded-xl p-3 shadow-sm">
+    <div class="text-3xl mb-1">☕📝</div>
+    <div class="font-bold text-amber-800 text-[12px]">תחנת ביניים</div>
+    <div class="text-[11px] text-slate-700 mt-1" dir="rtl">הפסקה לבוחן + שיעור על כלי חדש</div>
+    <div class="mt-2 text-[10px] bg-white/80 border border-amber-100 rounded p-1" dir="rtl">"אותו רעיון, כלי עבודה אחר"</div>
+  </div>
+
+  <div class="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-3 shadow-sm">
+    <div class="text-3xl mb-1">🏠💻</div>
+    <div class="font-bold text-emerald-800 text-[12px]">תרגול עצמי</div>
+    <div class="text-[11px] text-slate-700 mt-1" dir="rtl">תרגיל בית לעבודה עצמית עם הכלי</div>
+    <div class="mt-2 text-[10px] bg-white/80 border border-emerald-100 rounded p-1" dir="rtl">"עכשיו מתנסים לבד"</div>
+  </div>
+
+  <div class="bg-violet-50 border-2 border-violet-200 rounded-xl p-3 shadow-sm">
+    <div class="text-3xl mb-1">🔍✅</div>
+    <div class="font-bold text-violet-800 text-[12px]">המשך הקורס</div>
+    <div class="text-[11px] text-slate-700 mt-1" dir="rtl">סוגי תכונות ואימות אוטומטי של דרישות</div>
+    <div class="mt-2 text-[10px] bg-white/80 border border-violet-100 rounded p-1" dir="rtl">"לא רק לבנות מודל, גם לבדוק אותו"</div>
+  </div>
+</div>
+
+<div class="text-center text-2xl mt-2" dir="ltr">🧩 ➜ ☕📝 ➜ 🏠💻 ➜ 🔍✅</div>
+
+</div>
+
+---
+
 # מהו NuSMV?
 
 <div class="text-[14px] leading-snug">
