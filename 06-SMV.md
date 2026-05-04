@@ -35,7 +35,7 @@ info: |
 
 - להבין איך מתרגמים מודל של מערכת תגובתית ליחס מעברים פורמלי.
 - לראות את אבני הבניין של שפת <span dir="ltr">SMV</span>: משתנים, טיפוסים, <span dir="ltr">MODULE</span>, השמות, <span dir="ltr">DEFINE</span>, <span dir="ltr">INIT/TRANS</span>, ותכונות.
-- להבין את זרימת העבודה: סימולציה, בדיקת <span dir="ltr">CTL</span>, בדיקת <span dir="ltr">LTL</span>, ו-<span dir="ltr">Bounded Model Checking</span>.
+- להבין את זרימת העבודה: סימולציה, בדיקת <span dir="ltr">INVARSPEC</span>, בדיקת <span dir="ltr">LTL</span>, ו-<span dir="ltr">Bounded Model Checking</span>.
 - לעבוד דרך דוגמאות של מערכות תגובתיות מעניינות: בקר פשוט, רמזור, סמפור, ארביטר ומונה מודולו.
 
 </div>
@@ -57,7 +57,7 @@ info: |
 בשיעור הבא נמשיך עם אימות אוטומטי של דרישות.
 </div>
 
-<div class="grid grid-cols-4 gap-3" dir="ltr">
+<div class="grid grid-cols-4 gap-3" dir="rtl">
   <div class="bg-sky-50 border-2 border-sky-200 rounded-xl p-3 shadow-sm">
     <div class="text-3xl mb-1">🧩</div>
     <div class="font-bold text-sky-800 text-[12px]">מה שכבר עשינו</div>
@@ -82,12 +82,14 @@ info: |
   <div class="bg-violet-50 border-2 border-violet-200 rounded-xl p-3 shadow-sm">
     <div class="text-3xl mb-1">🔍✅</div>
     <div class="font-bold text-violet-800 text-[12px]">המשך הקורס</div>
-    <div class="text-[11px] text-slate-700 mt-1" dir="rtl">סוגי תכונות ואימות אוטומטי של דרישות</div>
+    <div class="text-[11px] text-slate-700 mt-1" dir="rtl">סוגי תכונות ואימות אוטומטי</div>
     <div class="mt-2 text-[10px] bg-white/80 border border-violet-100 rounded p-1" dir="rtl">"לא רק לבנות מודל, גם לבדוק אותו"</div>
   </div>
 </div>
 
-<div class="text-center text-2xl mt-2" dir="ltr">🧩 ➜ ☕📝 ➜ 🏠💻 ➜ 🔍✅</div>
+<div class="flex justify-center mt-4">
+  <img src="../images/path.jfif" class="rounded shadow-lg" style="height: 180px;" />
+</div>
 
 </div>
 
@@ -97,27 +99,38 @@ info: |
 
 <div class="text-[14px] leading-snug">
 
-<div class="bg-slate-50 px-4 py-3 rounded border border-slate-200 mt-2 text-right"> <b>NuSMV</b> הוא מימוש מחדש והרחבה של <b>SMV</b>, כלי האימות הסימבולי הראשון שהתבסס על <span dir="ltr">BDD</span>. הכלי מיועד לאימות פורמלי של <b>מערכות סופיות ומערכות תגובתיות</b>.
+<div class="bg-slate-50 px-4 py-3 rounded border border-slate-200 mt-2 text-right"> <b>NuSMV</b> הוא מימוש מחדש והרחבה של <b>SMV</b>, כלי האימות הסימבולי הראשון שהתבסס על <span dir="ltr">BDD</span>. הכלי מיועד לאימות פורמלי של <b>מערכות תגובתיות בעלות מספר סופי של מצבים.</b>.
 </div>
 
 <div class="grid grid-cols-2 gap-4 mt-4 text-right">
-<div class="bg-blue-50 p-3 rounded border border-blue-200 text-left">
+<div class="bg-blue-50 p-3 rounded border border-blue-200 ">
 <div class="font-bold mb-2">מה הכלי יודע לעשות?</div>
 <ul class="list-disc pr-5 space-y-2">
 <li>לנתח מודלים סינכרוניים וא-סינכרוניים.</li>
-<li>לבדוק <span dir="ltr">Invariants</span>, נוסחאות <span dir="ltr">CTL</span> ו-<span dir="ltr">LTL</span>.</li>
-<li>להציג עקבות נגדיות כאשר תכונה נכשלת.</li>
-<li>לתמוך גם ב-<span dir="ltr">BDD-based model checking</span> וגם ב-<span dir="ltr">SAT-based BMC</span>.</li>
+<li>
+לבדוק תכונות מורכבות של מערכות מעברים גדולות.
+</li>
+<li>להציג דוגמאות נגדיות כאשר תכונה נכשלת.
+</li>
+<li>
+הכלי משתמש בשפה קצת שונה מפרומלה המאפשרת ניתוח סימבולי (נראה מיד מה זה אומר..)
+</li>
 </ul>
 </div>
 
 <div class="bg-green-50 p-3 rounded border border-green-200">
 <div class="font-bold mb-2">למה זה מתאים לקורס?</div>
 <ul class="list-disc pr-5 space-y-2">
-<li>השפה קרובה לרעיון של מערכת מעברים.</li>
-<li>אפשר לכתוב מודלים קטנים אבל לא טריוויאליים.</li>
+ <li>
+ הכלי מדגים שימוש מעניין במערכות מעברים.
+ </li>
+<li>
+מאפשר להתנסות בתהליך של אימות פורמלי.
+</li>
 <li>קל לראות את הקשר בין המודל, הלוגיקה והתוצאה.</li>
-<li>הכלי מייצר <b>counterexample</b>, כלומר ריצה שמפריכה את התכונה.</li>
+<li>
+מאפשר התנסות בלימוד עצמי בתחום.
+</li>
 </ul>
 </div>
 </div>
@@ -245,8 +258,8 @@ info: |
 את <span dir="ltr"><code>Pre</code></span>.
 
 <div class="mt-2">
-כאן יש <span dir="ltr"><code>4 · 10 · 10 = 400</code></span> מצבים. אם היינו מכפילים את כל הקבועים פי 10,
-היינו מגיעים לכ-<span dir="ltr"><code>4 · 100 · 100 = 40{,}000</code></span> מצבים, כלומר
+כאן יש <span dir="ltr"><code>4·10·10 = 400</code></span> מצבים. אם היינו מכפילים את כל הקבועים פי 10,
+היינו מגיעים לכ-<span dir="ltr"><code>4·100·100 = 40,000</code></span> מצבים, כלומר
 <b>פי 100 יותר מצבים</b>.
 </div>
 
@@ -542,7 +555,7 @@ $$
 <li><span dir="ltr"><code>ASSIGN</code></span> – הַשָּׂמוֹת למצב נוכחי, התחלתי והבא.</li>
 <li><span dir="ltr"><code>DEFINE</code></span> – קיצור שמחושב פונקציונלית ואינו מגדיל את מרחב המצבים.</li>
 <li><span dir="ltr"><code>INIT</code></span>, <span dir="ltr"><code>TRANS</code></span>, <span dir="ltr"><code>INVAR</code></span> – תיאור ישיר של ה-<span dir="ltr">FSM</span>.</li>
-<li><span dir="ltr"><code>SPEC</code></span>, <span dir="ltr"><code>INVARSPEC</code></span>, <span dir="ltr"><code>LTLSPEC</code></span> – תכונות לאימות.</li>
+<li><span dir="ltr"><code>INVARSPEC</code></span>, <span dir="ltr"><code>LTLSPEC</code></span> – תכונות לאימות.</li>
 </ul>
 </div>
 
@@ -943,26 +956,26 @@ INVARSPEC !(p0_crit & p1_crit)
 
 </div>
 
-זה שקול ל-<span dir="ltr"><code>SPEC AG ...</code></span>, אבל נבדק באלגוריתם ייעודי.
+זה שקול ל-<span dir="ltr"><code>LTLSPEC G ...</code></span>, אבל נבדק באלגוריתם ייעודי.
 </div>
 
 <div class="bg-blue-50 p-3 rounded border border-blue-200">
-<div class="font-bold mb-2"><span dir="ltr">SPEC</span> עבור CTL</div>
-מדבר על כל המסלולים או קיום מסלול.
+<div class="font-bold mb-2"><span dir="ltr">LTLSPEC</span> לתכונות זמן</div>
+מדבר על ריצות לינאריות לאורך זמן.
 
 <div dir="ltr" class="text-left">
 
 ```text
-SPEC AG (request -> AF grant)
-SPEC EF error
-SPEC AG !(red_ns & red_ew)
+LTLSPEC G (request -> F grant)
+LTLSPEC F error
+LTLSPEC G !(red_ns & red_ew)
 ```
 
 </div>
 </div>
 
 <div class="bg-purple-50 p-3 rounded border border-purple-200">
-<div class="font-bold mb-2"><span dir="ltr">LTLSPEC</span></div>
+<div class="font-bold mb-2"><span dir="ltr">LTLSPEC</span> (דוגמאות נוספות)</div>
 מדבר על ריצות לינאריות.
 
 <div dir="ltr" class="text-left">
@@ -977,6 +990,20 @@ LTLSPEC G F heartbeat
 
 </div>
 </div>
+
+<div class="ltl-comic-panel mt-3">
+  <div class="ltl-comic-title">איך קוראים סמנטיקה של <span dir="ltr">LTL</span> על ריצה?</div>
+  <div class="ltl-comic-subtitle">עוברים מצב-מצב לאורך ציר הזמן, ובודקים מה נכון <b>עכשיו</b>, מה נכון <b>בהמשך</b>, ומה נשאר נכון <b>תמיד</b>.</div>
+  <br>
+  <div class="ltl-bubbles" dir="rtl">
+    <div class="ltl-bubble"><b>X φ</b>: מה נכון בצעד הבא?</div>
+    <div class="ltl-bubble"><b>F φ</b>: האם φ יופיע מתישהו?</div>
+    <div class="ltl-bubble"><b>G φ</b>: האם φ נכון בכל הצעדים?</div>
+    <div class="ltl-bubble"><b>φ U ψ</b>: φ נכון עד ש-ψ נהיה נכון.</div>
+  </div>
+</div>
+
+<img src="../images/trafficlight.jfif" alt="traffic light" style="position: absolute; bottom: 26px; left: 250px; width: 300px; border-radius: 14px; box-shadow: 0 6px 18px rgba(0,0,0,0.22); z-index: 25;" />
 
 ---
 
@@ -994,6 +1021,7 @@ VAR
 
 ASSIGN
   init(phase) := ns_green;
+  
   next(phase) := case
     phase = ns_green  : ns_yellow;
     phase = ns_yellow : ns_red_wait;
@@ -1079,8 +1107,8 @@ FAIRNESS running
 
 ```text
 INVARSPEC !(p0.st = critical & p1.st = critical)
-SPEC AG (p0.st = wait -> AF p0.st = critical)
-SPEC AG (p1.st = wait -> AF p1.st = critical)
+LTLSPEC G (p0.st = wait -> F p0.st = critical)
+LTLSPEC G (p1.st = wait -> F p1.st = critical)
 ```
 
 </div>
@@ -1228,8 +1256,7 @@ NuSMV > check_ltlspec_bmc_onepb -k 9 -l 1
 <div class="font-bold mb-2">כאשר תכונה נכשלת</div>
 <ul class="list-disc pr-5 space-y-2">
 <li>הכלי מציג <b>trace</b> – רצף של מצבים.</li>
-<li>ב-<span dir="ltr">CTL</span> זו עדות למסלול שמפריך את הנוסחה.</li>
-<li>ב-<span dir="ltr">LTL</span> ייתכן שנראה גם מצבי עזר של הטאבלו.</li>
+<li>ב-<span dir="ltr">LTL</span> זו עדות לריצה שמפריכה את הנוסחה, ולעתים נראה גם מצבי עזר של הטאבלו.</li>
 <li>ב-<span dir="ltr">BMC</span> ייתכן שתופיע גם אינדיקציה ל-<b>loop starts here</b>.</li>
 </ul>
 </div>
@@ -1377,7 +1404,7 @@ state:  y=0  y=1  y=2  y=3  y=4  y=5
 <div class="text-right text-[15px] leading-snug">
 
 - <span dir="ltr">SMV</span> היא שפת מידול של <b>מכונות מצבים סופיות</b> עבור מערכות תגובתיות.
-- <span dir="ltr">NuSMV</span> מוסיף סביבת עבודה פרקטית: סימולציה, אימות <span dir="ltr">CTL</span>, אימות <span dir="ltr">LTL</span> ו-<span dir="ltr">BMC</span>.
+- <span dir="ltr">NuSMV</span> מוסיף סביבת עבודה פרקטית: סימולציה, אימות <span dir="ltr">INVARSPEC</span>, אימות <span dir="ltr">LTL</span> ו-<span dir="ltr">BMC</span>.
 - החשיבה הנכונה היא תמיד:
   מהו המצב? מהו יחס המעבר? אילו הנחות סביבה? ואיזו תכונה באמת נרצה לבדוק?
 - דוגמאות קטנות כמו רמזור, סמפור, ארביטר ומונה כבר מראות את רוב האתגרים האמיתיים:
