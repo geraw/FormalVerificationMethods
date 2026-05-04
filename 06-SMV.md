@@ -416,6 +416,76 @@ $$
 
 ---
 
+# דוגמה: לבנות מערכת מעברים מ-Init/Trans/Bad
+
+<div class="text-[13px] leading-snug text-right">
+
+<div class="grid grid-cols-3 gap-4 mt-2">
+<div class="bg-blue-50 p-2.5 rounded border border-blue-200">
+<div class="font-bold mb-2"><span dir="ltr">Init(x,y)</span></div>
+$$
+\neg x \land \neg y
+$$
+</div>
+
+<div class="bg-green-50 p-2.5 rounded border border-green-200">
+<div class="font-bold mb-2"><span dir="ltr">Trans((x,y),(x',y'))</span></div>
+$$
+y' \leftrightarrow \neg y,\qquad x' \leftrightarrow (x \oplus y)
+$$
+</div>
+
+<div class="bg-rose-50 p-2.5 rounded border border-rose-200">
+<div class="font-bold mb-2"><span dir="ltr">Bad(x,y)</span></div>
+$$
+x \land y
+$$
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-3 items-center">
+<div class="bg-slate-50 p-3 rounded border border-slate-200">
+<div class="font-bold mb-2">מערכת המעברים שמתקבלת</div>
+<div class="flex justify-center scale-90">
+<TransitionSystemD3
+  :states="[
+    { id: '00', text: '00', initial: true, x: 140, y: 25, initialDirection: 'top' },
+    { id: '01', text: '01', x: 250, y: 135 },
+    { id: '10', text: '10', x: 140, y: 245 },
+    { id: '11', text: '11', x: 30, y: 135 }
+  ]"
+  :transitions="[
+    { source: '00', target: '01' },
+    { source: '01', target: '10' },
+    { source: '10', target: '11' },
+    { source: '11', target: '00' }
+  ]"
+  :width="280"
+  :height="280"
+  :auto="false"
+/>
+</div>
+</div>
+
+<div class="bg-amber-50 p-3 rounded border border-amber-200">
+<div class="font-bold mb-2">איך קוראים את זה?</div>
+<ul class="list-disc pr-5 space-y-2">
+<li><span dir="ltr">Init</span> בוחר את מצב ההתחלה היחיד: <span dir="ltr">00</span>.</li>
+<li><span dir="ltr">Trans</span> מגדיר פונקציית מעבר דטרמיניסטית: בכל מצב יש יורש יחיד.</li>
+<li><span dir="ltr">Bad</span> מסמן את המצב <span dir="ltr">11</span> כמצב "רע".</li>
+<li>בבדיקת תכונות בטיחות, נחפש האם אפשר להגיע מ-<span dir="ltr">Init</span> ל-<span dir="ltr">Bad</span>.</li>
+</ul>
+
+<div class="mt-2 text-[12px] text-slate-700" dir="ltr">
+00 \rightarrow 01 \rightarrow 10 \rightarrow 11 \rightarrow 00
+</div>
+</div>
+</div>
+
+</div>
+
+---
+
 # איך NuSMV משתמש בזה?
 
 <div class="text-[13px] leading-snug text-right">
