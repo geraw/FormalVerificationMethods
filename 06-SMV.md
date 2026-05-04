@@ -26,27 +26,6 @@ info: |
 
 ---
 
-# מטרות ההרצאה
-
-<div class="grid grid-cols-2 gap-6 mt-4 items-center">
-<div class="text-[15px] leading-snug text-right">
-
-- להכיר את <span dir="ltr">SMV / NuSMV</span> ככלי מעשי לניתוח מערכות סופיות.
-
-- להבין איך מתרגמים מודל של מערכת תגובתית ליחס מעברים פורמלי.
-- לראות את אבני הבניין של שפת <span dir="ltr">SMV</span>: משתנים, טיפוסים, <span dir="ltr">MODULE</span>, השמות, <span dir="ltr">DEFINE</span>, <span dir="ltr">INIT/TRANS</span>, ותכונות.
-- להבין את זרימת העבודה: סימולציה, בדיקת <span dir="ltr">INVARSPEC</span>, בדיקת <span dir="ltr">LTL</span>, ו-<span dir="ltr">Bounded Model Checking</span>.
-- לעבוד דרך דוגמאות של מערכות תגובתיות מעניינות: בקר פשוט, רמזור, סמפור, ארביטר ומונה מודולו.
-
-</div>
-<div class="flex justify-center">
-  <img src="/images/engineer_model.png" class="rounded shadow-lg" style="height: 320px;" />
-</div>
-</div>
-
-
----
-
 # איפה אנחנו במסלול הקורס?
 
 <div class="text-[13px] leading-snug text-right">
@@ -92,6 +71,27 @@ info: |
 </div>
 
 </div>
+
+---
+
+# מטרות ההרצאה
+
+<div class="grid grid-cols-2 gap-6 mt-4 items-center">
+<div class="text-[15px] leading-snug text-right">
+
+- להכיר את <span dir="ltr">SMV / NuSMV</span> ככלי מעשי לניתוח מערכות סופיות.
+
+- להבין איך מתרגמים מודל של מערכת תגובתית ליחס מעברים פורמלי.
+- לראות את אבני הבניין של שפת <span dir="ltr">SMV</span>: משתנים, טיפוסים, <span dir="ltr">MODULE</span>, השמות, <span dir="ltr">DEFINE</span>, <span dir="ltr">INIT/TRANS</span>, ותכונות.
+- להבין את זרימת העבודה: סימולציה, בדיקת <span dir="ltr">INVARSPEC</span>, בדיקת <span dir="ltr">LTL</span>, ו-<span dir="ltr">Bounded Model Checking</span>.
+- לעבוד דרך דוגמאות של מערכות תגובתיות מעניינות: בקר פשוט, רמזור, סמפור, ארביטר ומונה מודולו.
+
+</div>
+<div class="flex justify-center">
+  <img src="/images/engineer_model.png" class="rounded shadow-lg" style="height: 320px;" />
+</div>
+</div>
+
 
 ---
 
