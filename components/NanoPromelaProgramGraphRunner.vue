@@ -3,6 +3,25 @@
     <div class="runner-grid">
       <div class="runner-panel">
         <div class="runner-header">NanoPromela</div>
+
+        <div class="runner-controls">
+          <button class="runner-button" @click="run" :disabled="loading || running || !helperReady">
+            {{ loading ? 'Loading Pyodide + Lark...' : running ? 'Running...' : 'Run' }}
+          </button>
+
+          <label class="runner-toggle">
+            <input v-model="compactNames" type="checkbox">
+            <span>Short location names</span>
+          </label>
+
+          <label class="runner-toggle">
+            <input v-model="showCodeMarkers" type="checkbox">
+            <span>Show code markers</span>
+          </label>
+
+          <div class="runner-summary" v-if="summaryText">{{ summaryText }}</div>
+        </div>
+
         <div class="editor-shell">
           <div class="runner-overlay" aria-hidden="true">
             <div class="runner-overlay-content" :style="overlayContentStyle">
@@ -25,24 +44,6 @@
             wrap="off"
             @scroll="syncOverlayScroll"
           />
-        </div>
-
-        <div class="runner-controls">
-          <button class="runner-button" @click="run" :disabled="loading || running || !helperReady">
-            {{ loading ? 'Loading Pyodide + Lark...' : running ? 'Running...' : 'Run' }}
-          </button>
-
-          <label class="runner-toggle">
-            <input v-model="compactNames" type="checkbox">
-            <span>Short location names</span>
-          </label>
-
-          <label class="runner-toggle">
-            <input v-model="showCodeMarkers" type="checkbox">
-            <span>Show code markers</span>
-          </label>
-
-          <div class="runner-summary" v-if="summaryText">{{ summaryText }}</div>
         </div>
 
         <pre v-if="errorText" class="runner-error">{{ errorText }}</pre>
@@ -446,7 +447,7 @@ onMounted(() => {
 
 .runner-textarea {
   width: 100%;
-  min-height: 360px;
+  min-height: 280px;
   resize: vertical;
   border: none;
   background: #0f172a;
@@ -464,7 +465,8 @@ onMounted(() => {
 }
 
 .runner-controls {
-  margin-top: 8px;
+  margin-top: 2px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
   gap: 12px;
