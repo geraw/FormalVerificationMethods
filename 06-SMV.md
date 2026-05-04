@@ -653,6 +653,7 @@ ASSIGN
     x = 3               : idle;
     TRUE                : mode;
   esac;
+INVAR x >= 0 & x <= 3
 INVARSPEC !(busy & x = 0)
 LTLSPEC G (start -> F busy)
 ```
