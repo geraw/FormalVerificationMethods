@@ -389,11 +389,8 @@ $TS =  Phil_0  \; \|_H \;  Stick_0 \;\|_H\;  \dots \;\|_H\;  Phil_3   \;\|_H\;  
 כלומר, במקום שהשכנים יחכו עיוור ל"תורם", המידע על מצב החשיבה מאפשר לעקוף חסימה מיותרת.
 </div>
 
-<div class="-mt-6 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[16px]">
-
-המודל כאן הוא כבר גרף תוכנית,
-והמערכת השלמה מתקבלת כ־מערכת ערוצים עם פעולות
-handshaking באמצעות ערוצים בקיבולת $0$.
+<div class="-mt-4 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[16px]">
+זאת כבר מערכת ערוצים עם תקשורת סנכרונית באמצעות ערוצים עם קיבולת אפס.
 </div>
 
 <img

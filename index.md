@@ -25,6 +25,7 @@ dir: rtl
     <li><b>05 - NanoPromela:</b> פתיחה ל־Promela ול־NanoPromela, לקראת הרחבה בהמשך. <a href="./05-nanopromela/#1" target="_blank">[מצגת]</a></li>
     <li><b>06 - SMV:</b> NuSMV, שפת SMV, סימולציה ואימות תכונות של מערכות תגובתיות. <a href="./06-SMV/#1" target="_blank">[מצגת]</a></li>
     <li><b>07 - פיצוץ מצבים:</b> בעיית פיצוץ המצבים והשלכותיה על אימות מודלים. <a href="./07-state-explosion/#1" target="_blank">[מצגת]</a></li>
+    <li><b>08 - קיפאון:</b> קיפאון במערכות מקביליות, זיהוי, מניעה וטיפול. <a href="./08-deadlock/#1" target="_blank">[מצגת]</a></li>
     <li><b>11 - תכונות זמן לינארי:</b> תכונות זמן לינארי והגדרתן מעל ריצות של מערכות. <a href="./11-linear-time-properties/#1" target="_blank">[מצגת]</a></li>
     <li><b>12 - תכונות שמורה:</b> תכונות שמורה, הוכחות והפרכות באמצעות מצבי מערכת. <a href="./12-invariant-properties/#1" target="_blank">[מצגת]</a></li>
     <li><b>13 - תכונות בטיחות:</b> תכונות בטיחות, bad prefixes וקשר לשמורות. <a href="./13-safety-properties/#1" target="_blank">[מצגת]</a></li>
