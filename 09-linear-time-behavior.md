@@ -30,11 +30,6 @@ info: |
 
 # מטרות ההרצאה
 
-<img
-  src="/linear-time-goals-illustration.png"
-  alt="איור של מעבר ממערכת מעברים לעקבה ולתכונת זמן לינארי"
-  class="absolute top-28 left-6 w-62 opacity-95 pointer-events-none"
-/>
 
 <div class="grid grid-cols-2 gap-6 mt-8 text-right">
 <div class="bg-slate-50 border border-slate-200 rounded p-4">
@@ -62,7 +57,7 @@ info: |
 
 # מקטעי מסלול
 
-<div class="mt-8 space-y-6 text-right max-w-3xl mx-auto">
+<div class="mt-8 grid grid-cols-2 gap-6 text-right">
 <div class="bg-slate-50 border border-slate-200 rounded p-5 text-[16px]">
 <div class="font-bold mb-3">מקטע מסלול סופי</div>
 
@@ -276,26 +271,54 @@ $$
 
 <div class="mt-8 bg-green-50 border border-green-200 rounded p-4 text-right text-[16px]">
 
-העקבה משאירה רק את המידע הדרוש להגדרת התכונה, ומתעלמת מהמשתנה $y$ ומשמות המצבים.
+העקבה משאירה רק את המידע הדרוש להגדרת התכונה, ומתעלמת מהמשתנה $y$ ומשמות המקומות.
 </div>
 
 ---
 
 # תכונת זמן לינארי
 
-<div class="mt-8 text-center">
 
-$$
-P \subseteq (2^{AP})^\omega
-$$
+<div class="mt-6 grid grid-cols-[1fr_auto_1.2fr_auto_1fr] gap-3 items-center text-center">
+<div class="bg-slate-50 border border-slate-200 rounded p-4">
+<div class="font-bold mb-2">מערכת</div>
+<div dir="ltr">
 
+$TS$
+</div>
 </div>
 
-<div class="grid grid-cols-2 gap-8 mt-8 items-start text-right">
+
+<div class="text-2xl font-bold">⟵</div>
+
+<div class="bg-amber-50 border-2 border-amber-300 rounded p-4">
+<div class="font-bold mb-2">ממשק האימות</div>
+<div dir="ltr">
+
+$\operatorname{Traces}(TS)$
+</div>
+<div class="text-[13px] mt-1">מה שהבודק רואה</div>
+</div>
+
+<div class="text-2xl font-bold">⟶</div>
+
+<div class="bg-blue-50 border border-blue-200 rounded p-4">
+<div class="font-bold mb-2">תכונה</div>
+<div dir="ltr">
+
+$P$
+</div>
+</div>
+</div>
+
+<div class="grid grid-cols-2 gap-8 mt-6 items-start text-right">
 <div class="bg-slate-50 border border-slate-200 rounded p-5">
 <div class="font-bold mb-3">הגדרה</div>
 
-תכונת זמן לינארי היא קבוצה של מילים אינסופיות מעל $2^{AP}$.
+תכונת זמן לינארי
+ $P \subseteq (2^{AP})^\omega$.
+ היא קבוצה של מילים אינסופיות מעל 
+ $2^{AP}$.
 </div>
 
 <div class="bg-blue-50 border border-blue-200 rounded p-5">
@@ -307,7 +330,7 @@ TS \models P
 \operatorname{Traces}(TS) \subseteq P
 $$
 
-כל עקבה שהמערכת מייצרת חייבת להיות חוקית לפי $P$.
+כל עקבה שהמערכת מייצרת חייבת להיות ב-$P$.
 </div>
 </div>
 
@@ -319,23 +342,57 @@ $$
 
 $$
 P=
-\{A_0A_1A_2\dots \mid green_1 \in A_i \text{ עבור אינסוף } i\}
+\{\sigma \in (2^{AP})^\omega \mid \underset{\infty}{\exists} i( green \in \sigma[i]) \}
 $$
 
 </div>
 
-<div class="grid grid-cols-2 gap-6 mt-8 text-right">
+<div class="grid grid-cols-2 gap-6 -mt-1 text-right text-[12px]">
 <div class="bg-green-50 border border-green-200 rounded p-4">
 <div class="font-bold mb-2">שייכות</div>
 
-עקבה שבה $green_1$ מופיע שוב ושוב לאורך הריצה.
+עקבה שבה $green$ מופיע שוב ושוב לאורך הריצה.
+
+$$
+\sigma =
+\{green\}\emptyset\{green\}\emptyset\{green\}\emptyset\dots
+$$
 </div>
 
-<div class="bg-red-50 border border-red-200 rounded p-4">
+<div class="bg-red-50 border border-red-200 rounded p-4 text-[12px]">
 <div class="font-bold mb-2">אי-שייכות</div>
 
-עקבה שבה אחרי זמן מסוים $green_1$ מפסיק להופיע.
+עקבה שבה אחרי זמן מסוים $green$ מפסיק להופיע.
+
+$$
+\sigma =
+\{green\}\{green\}\emptyset\emptyset\emptyset\dots
+$$
 </div>
+</div>
+
+<div class="mt-2 bg-amber-50 border border-amber-200 rounded p-4 text-right text-[12px]">
+
+<div class="font-bold mb-2">
+
+גם עקבות לא הגיוניות לרמזור הן מילים מעל $2^{AP}$
+
+</div>
+
+למשל, אם $AP$ כולל גם $yellow,red$, אז העקבה הבאה שייכת ל־$P$ למרות שהיא אינה מתארת רמזור תקין:
+
+$$
+\sigma =
+\{green,yellow,red\}\{green,red\}\{green,yellow\}\dots
+$$
+
+והעקבה הבאה אינה שייכת ל־$P$, גם אם היא עדיין מכילה צירופים לא הגיוניים:
+
+$$
+\sigma =
+\{green,red\}\{yellow,red\}\{yellow,red\}\dots
+$$
+
 </div>
 
 ---
@@ -346,9 +403,9 @@ $$
 
 $$
 P'=
-\{A_0A_1A_2\dots \mid
+\{\sigma \in (2^{AP})^\omega \mid
 \forall i \ge 0.\;
-green_1 \notin A_i \vee green_2 \notin A_i
+green_1 \notin \sigma[i] \vee green_2 \notin \sigma[i]
 \}
 $$
 
@@ -356,6 +413,30 @@ $$
 
 <div class="mt-8 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[15px]">
 זו תכונה שאוסרת התנהגות לא רצויה: בכל רגע לפחות אחד משני הרמזורים אינו ירוק.
+</div>
+
+<div class="grid grid-cols-2 gap-6 mt-5 text-right text-[12px]">
+<div class="bg-green-50 border border-green-200 rounded p-4">
+<div class="font-bold mb-2">שייכות</div>
+
+$$
+\sigma =
+\{green_1\}\{green_2\}\emptyset\{green_1\}\dots
+$$
+
+בכל מקום לכל היותר רמזור אחד ירוק.
+</div>
+
+<div class="bg-red-50 border border-red-200 rounded p-4">
+<div class="font-bold mb-2">אי-שייכות</div>
+
+$$
+\sigma =
+\{green_1\}\{green_1,green_2\}\emptyset\dots
+$$
+
+במקום השני שני הרמזורים ירוקים יחד.
+</div>
 </div>
 
 ---
@@ -380,6 +461,30 @@ $$
 כלומר, אף פעם לא נראה בעקבה מצב שבו שני התהליכים בקטע הקריטי בו־זמנית.
 </div>
 
+<div class="grid grid-cols-2 gap-6 mt-5 text-right text-[12px]">
+<div class="bg-green-50 border border-green-200 rounded p-4">
+<div class="font-bold mb-2">שייכות</div>
+
+$$
+\sigma =
+\emptyset\{crit_1\}\emptyset\{crit_2\}\emptyset\dots
+$$
+
+הכניסות לקטע הקריטי מתחלפות, אבל אין חפיפה.
+</div>
+
+<div class="bg-red-50 border border-red-200 rounded p-4">
+<div class="font-bold mb-2">אי-שייכות</div>
+
+$$
+\sigma =
+\emptyset\{crit_1,crit_2\}\emptyset\dots
+$$
+
+יש רגע שבו שני התהליכים בקטע הקריטי יחד.
+</div>
+</div>
+
 ---
 
 # דוגמה: חוסר הרעבה
@@ -391,9 +496,9 @@ $$
 <div class="mt-8 text-center">
 
 $$
-(\exists^\infty j.\; wait_i \in \sigma[j])
+(\underset{\infty}{\exists} j.\; wait_i \in \sigma[j])
 \Rightarrow
-(\exists^\infty j.\; crit_i \in \sigma[j])
+(\underset{\infty}{\exists} j.\; crit_i \in \sigma[j])
 $$
 
 לכל $i \in \{1,2\}$.
@@ -402,6 +507,30 @@ $$
 
 <div class="mt-8 bg-red-50 border border-red-200 rounded p-4 text-right text-[15px]">
 זו דוגמה לתכונה שמסתכלת על כל הריצה האינסופית, ולא רק על מצב בודד.
+</div>
+
+<div class="grid grid-cols-2 gap-6 mt-5 text-right text-[12px]">
+<div class="bg-green-50 border border-green-200 rounded p-4">
+<div class="font-bold mb-2">שייכות</div>
+
+$$
+\sigma =
+\{wait_i\}\{crit_i\}\{wait_i\}\{crit_i\}\dots
+$$
+
+אם יש אינסוף המתנות, יש גם אינסוף כניסות לקטע הקריטי.
+</div>
+
+<div class="bg-red-50 border border-red-200 rounded p-4">
+<div class="font-bold mb-2">אי-שייכות</div>
+
+$$
+\sigma =
+\{wait_i\}\{wait_i\}\{wait_i\}\{wait_i\}\dots
+$$
+
+התהליך מחכה אינסוף פעמים, אבל אף פעם לא נכנס לקטע הקריטי.
+</div>
 </div>
 
 ---
