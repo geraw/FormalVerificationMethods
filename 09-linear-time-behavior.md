@@ -229,6 +229,7 @@ $$
 <div class="mt-8 bg-amber-50 border border-amber-200 rounded p-4 text-right text-[16px]">
 
 עקבה היא מילה מעל האלפבית $2^{AP}$, כי בכל שלב רואים תת־קבוצה של הפסוקים האטומיים.
+
 </div>
 
 ---
@@ -238,6 +239,7 @@ $$
 <div class="text-right text-[15px] leading-snug mt-2">
 
 נניח $AP=\{crit_1,crit_2\}$, כאשר $crit_i$ מציין שתהליך $i$ בקטע הקריטי.
+
 </div>
 
 <div class="mt-8 text-center" dir="ltr">
@@ -272,6 +274,7 @@ $$
 <div class="mt-8 bg-green-50 border border-green-200 rounded p-4 text-right text-[16px]">
 
 העקבה משאירה רק את המידע הדרוש להגדרת התכונה, ומתעלמת מהמשתנה $y$ ומשמות המקומות.
+
 </div>
 
 ---
@@ -319,6 +322,7 @@ $P$
  $P \subseteq (2^{AP})^\omega$.
  היא קבוצה של מילים אינסופיות מעל 
  $2^{AP}$.
+
 </div>
 
 <div class="bg-blue-50 border border-blue-200 rounded p-5">
@@ -331,6 +335,7 @@ TS \models P
 $$
 
 כל עקבה שהמערכת מייצרת חייבת להיות ב-$P$.
+
 </div>
 </div>
 
@@ -342,7 +347,7 @@ $$
 
 $$
 P=
-\{\sigma \in (2^{AP})^\omega \mid \underset{\infty}{\exists} i( green \in \sigma[i]) \}
+\{\sigma \in (2^{AP})^\omega \mid \underset{\infty}{\exists} i \left( green \in \sigma[i] \right) \}
 $$
 
 </div>
@@ -357,6 +362,7 @@ $$
 \sigma =
 \{green\}\emptyset\{green\}\emptyset\{green\}\emptyset\dots
 $$
+
 </div>
 
 <div class="bg-red-50 border border-red-200 rounded p-4 text-[12px]">
@@ -368,6 +374,7 @@ $$
 \sigma =
 \{green\}\{green\}\emptyset\emptyset\emptyset\dots
 $$
+
 </div>
 </div>
 
@@ -404,15 +411,17 @@ $$
 $$
 P'=
 \{\sigma \in (2^{AP})^\omega \mid
-\forall i \ge 0.\;
+\forall i \ge 0 \left(
 green_1 \notin \sigma[i] \vee green_2 \notin \sigma[i]
-\}
+\right)\}
 $$
 
 </div>
 
 <div class="mt-8 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[15px]">
+
 זו תכונה שאוסרת התנהגות לא רצויה: בכל רגע לפחות אחד משני הרמזורים אינו ירוק.
+
 </div>
 
 <div class="grid grid-cols-2 gap-6 mt-5 text-right text-[12px]">
@@ -425,6 +434,7 @@ $$
 $$
 
 בכל מקום לכל היותר רמזור אחד ירוק.
+
 </div>
 
 <div class="bg-red-50 border border-red-200 rounded p-4">
@@ -436,6 +446,7 @@ $$
 $$
 
 במקום השני שני הרמזורים ירוקים יחד.
+
 </div>
 </div>
 
@@ -444,7 +455,9 @@ $$
 # דוגמה: מניעה הדדית
 
 <div class="text-right text-[15px] leading-snug mt-2">
+
 אם $AP=\{crit_1,crit_2\}$, אפשר לנסח את תכונת המניעה ההדדית כך:
+
 </div>
 
 <div class="mt-8 text-center">
@@ -452,13 +465,15 @@ $$
 $$
 P_{mutex}=
 \{\sigma \in (2^{AP})^\omega \mid
-\forall i.\; \{crit_1,crit_2\} \nsubseteq \sigma[i]\}
+\forall i \left( \{crit_1,crit_2\} \nsubseteq \sigma[i] \right)\}
 $$
 
 </div>
 
 <div class="mt-8 bg-blue-50 border border-blue-200 rounded p-4 text-right text-[15px]">
+
 כלומר, אף פעם לא נראה בעקבה מצב שבו שני התהליכים בקטע הקריטי בו־זמנית.
+
 </div>
 
 <div class="grid grid-cols-2 gap-6 mt-5 text-right text-[12px]">
@@ -471,6 +486,7 @@ $$
 $$
 
 הכניסות לקטע הקריטי מתחלפות, אבל אין חפיפה.
+
 </div>
 
 <div class="bg-red-50 border border-red-200 rounded p-4">
@@ -482,6 +498,7 @@ $$
 $$
 
 יש רגע שבו שני התהליכים בקטע הקריטי יחד.
+
 </div>
 </div>
 
@@ -490,15 +507,17 @@ $$
 # דוגמה: חוסר הרעבה
 
 <div class="text-right text-[15px] leading-snug mt-2">
+
 אם $AP=\{wait_1,crit_1,wait_2,crit_2\}$, דרישה טבעית היא:
+
 </div>
 
 <div class="mt-8 text-center">
 
 $$
-(\underset{\infty}{\exists} j.\; wait_i \in \sigma[j])
+\underset{\infty}{\exists} j \left( wait_i \in \sigma[j] \right)
 \Rightarrow
-(\underset{\infty}{\exists} j.\; crit_i \in \sigma[j])
+\underset{\infty}{\exists} j \left( crit_i \in \sigma[j] \right)
 $$
 
 לכל $i \in \{1,2\}$.
@@ -506,7 +525,9 @@ $$
 </div>
 
 <div class="mt-8 bg-red-50 border border-red-200 rounded p-4 text-right text-[15px]">
+
 זו דוגמה לתכונה שמסתכלת על כל הריצה האינסופית, ולא רק על מצב בודד.
+
 </div>
 
 <div class="grid grid-cols-2 gap-6 mt-5 text-right text-[12px]">
@@ -519,6 +540,7 @@ $$
 $$
 
 אם יש אינסוף המתנות, יש גם אינסוף כניסות לקטע הקריטי.
+
 </div>
 
 <div class="bg-red-50 border border-red-200 rounded p-4">
@@ -530,6 +552,7 @@ $$
 $$
 
 התהליך מחכה אינסוף פעמים, אבל אף פעם לא נכנס לקטע הקריטי.
+
 </div>
 </div>
 
@@ -539,11 +562,12 @@ $$
 
 <div class="grid grid-cols-2 gap-8 mt-8 items-start text-right">
 <div class="bg-red-50 border border-red-200 rounded p-5">
-<div class="font-bold mb-3">מאפיין שאינו LT</div>
+<div class="font-bold mb-3">מאפיין שאינו תכונת זמן לינארי</div>
 
 "לכל מצב יש עוקב שתיוגו $a$"
 
 זהו מאפיין מבני של גרף המצבים.
+
 </div>
 
 <div class="bg-slate-50 border border-slate-200 rounded p-5">
@@ -551,6 +575,7 @@ $$
 
 תכונות זמן לינארי תלויות רק בקבוצת העקבות.  
 אם שתי מערכות שקולות־עקבות, שום תכונת זמן לינארי לא תבדיל ביניהן, גם אם מבנה הגרף שונה.
+
 </div>
 </div>
 
@@ -574,7 +599,9 @@ $$
 </div>
 
 <div class="mt-8 bg-green-50 border border-green-200 rounded p-4 text-right text-[15px]">
+
 אם $TS$ הוא ריפיינמנט של $TS'$ במובן של הכלת עקבות, אז כל תכונת זמן לינארי שהוכחה עבור $TS'$ נשמרת גם ב־$TS$.
+
 </div>
 
 ---
