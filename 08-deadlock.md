@@ -399,7 +399,7 @@ handshaking באמצעות ערוצים בקיבולת $0$.
 <img
   src="./images/fault_tolerant_dining_philosophers.png"
   alt="איור של גרסת הפילוסופים הסבילה לתקלות"
-  class="absolute top-60 w-80 "
+  class="absolute top-70 w-60 right-30"
 />
 
 
