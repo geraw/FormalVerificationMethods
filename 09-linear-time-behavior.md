@@ -558,29 +558,6 @@ $$
 
 ---
 
-# לא כל מאפיין הוא תכונת זמן לינארי
-
-<div class="grid grid-cols-2 gap-8 mt-8 items-start text-right">
-<div class="bg-red-50 border border-red-200 rounded p-5">
-<div class="font-bold mb-3">מאפיין שאינו תכונת זמן לינארי</div>
-
-"לכל מצב יש עוקב שתיוגו $a$"
-
-זהו מאפיין מבני של גרף המצבים.
-
-</div>
-
-<div class="bg-slate-50 border border-slate-200 rounded p-5">
-<div class="font-bold mb-3">למה לא?</div>
-
-תכונות זמן לינארי תלויות רק בקבוצת העקבות.  
-אם שתי מערכות שקולות־עקבות, שום תכונת זמן לינארי לא תבדיל ביניהן, גם אם מבנה הגרף שונה.
-
-</div>
-</div>
-
----
-
 # הכלת עקבות ותכונות זמן לינארי
 
 <div class="mt-8 text-center">
@@ -592,15 +569,206 @@ $$
 אם ורק אם
 
 $$
-\forall P:\;
-TS' \models P \Rightarrow TS \models P
+\forall P \subseteq (2^{AP})^\omega \; \bigl(
+TS' \models P \;\Rightarrow\; TS \models P \bigr)
 $$
 
 </div>
 
-<div class="mt-8 bg-green-50 border border-green-200 rounded p-4 text-right text-[15px]">
+<div class="grid grid-cols-2 gap-6 mt-1 text-right text-[12px]">
+<div class="bg-slate-50 border border-slate-200 rounded p-4">
+<div class="font-bold mb-2">כיוון ראשון</div>
 
-אם $TS$ הוא ריפיינמנט של $TS'$ במובן של הכלת עקבות, אז כל תכונת זמן לינארי שהוכחה עבור $TS'$ נשמרת גם ב־$TS$.
+נניח
+$\operatorname{Traces}(TS) \subseteq \operatorname{Traces}(TS')$
+וגם
+$TS' \models P$.
+
+אז
+
+$$
+\operatorname{Traces}(TS)
+\subseteq
+\operatorname{Traces}(TS')
+\subseteq P
+$$
+
+ולכן $TS \models P$.
+
+</div>
+
+<div class="bg-blue-50 border border-blue-200 rounded p-4">
+<div class="font-bold mb-2">כיוון שני</div>
+
+נניח שכל תכונת זמן לינארי שנשמרת ב־$TS'$ נשמרת גם ב־$TS$.
+
+נבחר
+$P=\operatorname{Traces}(TS')$.
+אז $TS' \models P$, ולכן גם $TS \models P$.
+
+מכאן:
+
+$$
+\operatorname{Traces}(TS)
+\subseteq
+\operatorname{Traces}(TS')
+$$
+
+</div>
+</div>
+
+<div class="mt-1 bg-green-50 border border-green-200 rounded p-4 text-right text-[15px]">
+
+אם $TS$ הוא עידון של $TS'$ במובן של הכלת עקבות, אז כל תכונת זמן לינארי שהוכחה עבור $TS'$ נשמרת גם ב־$TS$.
+
+</div>
+
+---
+
+# דוגמה: אפשרות להגיע ל־good אינה תכונת זמן לינארי
+
+<div class="text-right text-[15px] leading-snug mt-2">
+
+נבחן את המאפיין: קיימת ריצה המגיעה למצב שמתוייג $good$ - 
+$\exists \sigma \in \operatorname{Traces}(TS) \; \exists j \in \mathbb{N} \; (good \in \sigma[j])$.
+
+</div>
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-right text-[12px]">
+<div class="bg-green-50 border border-green-200 rounded p-4">
+<div class="font-bold mb-2">מערכת גדולה: המאפיין מתקיים</div>
+
+<div class="-mt-7 -mb-7" dir="ltr">
+
+<TransitionSystemD3 :width="320" :height="210" :auto="false"
+  :states="[
+    { id: 'big_s', text: '$s$', label: '$\\{\\}$', initial: true, x: 100, y: 100, width: 46 },
+    { id: 'big_b', text: '$b$', label: '$\\{\\}$', x: 255, y: 140, width: 46 },
+    { id: 'big_g', text: '$g$', label: '$\\{good\\}$', x: 255, y: 40, width: 46, color: '#dcfce7', stroke: '#16a34a' }
+  ]"
+  :transitions="[
+    { source: 'big_s', target: 'big_b', curve: 0.25 },
+    { source: 'big_b', target: 'big_b', loopDirection: '90deg', loopRadius: 74, loopLabelRadius: 30 },
+    { source: 'big_s', target: 'big_g', curve: -0.25 },
+    { source: 'big_g', target: 'big_g', loopDirection: '90deg', loopRadius: 74, loopLabelRadius: 30 }
+  ]"
+/>
+
+</div>
+
+יש בחירה שמובילה ל־$g$, ולכן יש ריצה שמגיעה ל־$good$.
+
+</div>
+
+<div class="bg-red-50 border border-red-200 rounded p-4">
+<div class="font-bold mb-2">מערכת קטנה: המאפיין נכשל</div>
+
+<div class="-mt-7 -mb-7" dir="ltr">
+
+<TransitionSystemD3 :width="320" :height="155" :auto="false"
+  :states="[
+    { id: 'small_s', text: '$s$', label: '$\\{\\}$', initial: true, x: 95, y: 78, width: 46 },
+    { id: 'small_b', text: '$b$', label: '$\\{\\}$', x: 210, y: 78, width: 46, color: '#fee2e2', stroke: '#dc2626' }
+  ]"
+  :transitions="[
+    { source: 'small_s', target: 'small_b' },
+    { source: 'small_b', target: 'small_b', loopDirection: '-90deg', loopRadius: 72, loopLabelRadius: 32 }
+  ]"
+/>
+
+</div>
+
+אין אף ריצה שמגיעה ל־$good$.
+
+אבל:
+
+$$
+\operatorname{Traces}(TS_{small})
+\subseteq
+\operatorname{Traces}(TS_{big})
+$$
+
+</div>
+</div>
+
+<div class="mt-4 bg-amber-50 border border-amber-200 rounded p-4 text-right text-[13px]">
+
+אם המאפיין היה תכונת זמן לינארי, הוא היה נשמר במעבר מהמערכת הגדולה למערכת הקטנה. הוא לא נשמר, ולכן אינו תכונת זמן לינארי.
+
+</div>
+
+---
+
+# דוגמה: <a href="https://www.sefaria.org/Pirkei_Avot.3.15?lang=he" target="_blank">הכל צפוי והרשות נתונה</a>
+
+
+<div class="text-right text-[15px] leading-snug mt-2">
+
+נבחן את המאפיין: מכל מצב אפשר להגיע למצב שמתוייג $good$.
+
+</div>
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-right text-[12px]">
+<div class="bg-red-50 border border-red-200 rounded p-4">
+<div class="font-bold mb-2">מערכת א: המאפיין נכשל</div>
+
+<div class="-mt-7 -mb-7" dir="ltr">
+
+<TransitionSystemD3 :width="320" :height="150" :auto="false"
+  :states="[
+    { id: 'eq1_s', text: '$s$', label: '$\\{\\}$', initial: true, x: 50+100, y: 78, width: 46, initialDirection: 'bottom' },
+    { id: 'eq1_b', text: '$b$', label: '$\\{\\}$', x: 50+0, y: 78, width: 46 },
+    { id: 'eq1_g', text: '$g$', label: '$\\{good\\}$', x: 50+200, y: 78, width: 46, color: '#dcfce7', stroke: '#16a34a' }
+  ]"
+  :transitions="[
+    { source: 'eq1_s', target: 'eq1_g' },
+    { source: 'eq1_s', target: 'eq1_b' },
+    { source: 'eq1_g', target: 'eq1_g', loopDirection: '-90deg', loopRadius: 72, loopLabelRadius: 32 },
+    { source: 'eq1_b', target: 'eq1_b', loopDirection: '-90deg', loopRadius: 72, loopLabelRadius: 32 },
+    { source: 'eq1_s', target: 'eq1_s', loopDirection: '-90deg', loopRadius: 72, loopLabelRadius: 32 }
+  ]"
+/>
+
+</div>
+
+מהמצב $b$ אי אפשר להגיע ל־$good$.
+
+</div>
+
+<div class="bg-green-50 border border-green-200 rounded p-4">
+<div class="font-bold mb-2">מערכת ב: המאפיין מתקיים</div>
+
+<div class="-mt-7 -mb-7" dir="ltr">
+
+<TransitionSystemD3 :width="320" :height="150" :auto="false"
+  :states="[
+    { id: 'eq1_s', text: '$s$', label: '$\\{\\}$', initial: true, x: 95, y: 78, width: 46 },
+    { id: 'eq1_g', text: '$g$', label: '$\\{good\\}$', x: 210, y: 78, width: 46, color: '#dcfce7', stroke: '#16a34a' },
+  ]"
+  :transitions="[
+    { source: 'eq1_s', target: 'eq1_g' },
+    { source: 'eq1_g', target: 'eq1_g', loopDirection: '-90deg', loopRadius: 72, loopLabelRadius: 32 },
+    { source: 'eq1_s', target: 'eq1_s', loopDirection: '-90deg', loopRadius: 72, loopLabelRadius: 32 }
+  ]"
+/>
+</div>
+
+מכל מצב יש רשות לבחור מסלול שמגיע ל־$good$.
+
+</div>
+</div>
+
+<div class="mt-4 bg-amber-50 border border-amber-200 rounded p-4 text-right text-[13px]">
+
+בשתי המערכות קבוצת העקבות היא אותה קבוצה:
+
+$$
+\operatorname{Traces}(TS_1)=\operatorname{Traces}(TS_2)
+= \{\}^*\{good\}^\omega
+$$
+
+אבל המאפיין מקבל בהן ערך שונה. לכן, לפי משפט שקילות העקבות, הוא אינו תכונת זמן לינארי.
+
 
 </div>
 
@@ -616,9 +784,10 @@ $$
 
 אם ורק אם
 
-$$
-TS \text{ ו־} TS' \text{ מקיימות את אותן תכונות זמן לינארי}
-$$
+$TS$
+ו-$TS'$
+מקיימות את אותן תכונות זמן לינארי
+
 
 </div>
 
@@ -662,3 +831,4 @@ $$
 מכאן אפשר לעבור למחלקות חשובות של תכונות זמן לינארי:  
 שמורות, תכונות בטיחות, ותכונות חיות.
 </div>
+
