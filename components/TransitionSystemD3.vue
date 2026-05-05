@@ -49,10 +49,16 @@ interface State {
   stroke?: string;
   strokeWidth?: number;
   color?: string;
+  opacity?: number;
+  textColor?: string;
+  highlightStroke?: string;
+  highlightStrokeWidth?: number;
+  highlightFill?: string;
   rx?: number;
 }
 
 interface Transition {
+  id?: string;
   source: string;
   target: string;
   action?: string;
@@ -69,6 +75,19 @@ interface Transition {
   midPoints?: { x: number; y: number }[];
   stroke?: string;
   strokeWidth?: number;
+  opacity?: number;
+  dasharray?: string;
+  labelColor?: string;
+  highlightStroke?: string;
+  highlightStrokeWidth?: number;
+}
+
+interface StateMarker {
+  stateId: string;
+  color?: string;
+  offsetX?: number;
+  offsetY?: number;
+  radius?: number;
 }
 
 interface Props {
@@ -79,6 +98,13 @@ interface Props {
   auto?: boolean;
   zoomable?: boolean;
   showZoomControls?: boolean;
+  highlightedStateIds?: string[];
+  highlightedTransitionIds?: string[];
+  fadeUnhighlighted?: boolean;
+  pulseHighlights?: boolean;
+  highlightColor?: string;
+  highlightFill?: string | null;
+  markers?: StateMarker[];
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -87,6 +113,13 @@ const props = withDefaults(defineProps<Props>(), {
   auto: true,
   zoomable: false,
   showZoomControls: false,
+  highlightedStateIds: () => [],
+  highlightedTransitionIds: () => [],
+  fadeUnhighlighted: false,
+  pulseHighlights: true,
+  highlightColor: '#ea580c',
+  highlightFill: null,
+  markers: () => [],
 });
 
 const svgRef = ref<SVGSVGElement | null>(null);
@@ -97,21 +130,38 @@ const markerIdBase = `arrowhead-ts-d3-${Math.random().toString(36).slice(2, 11)}
 const getMarkerId = (color: string) => `${markerIdBase}-${color.replace('#', '')}`;
 const zoomable = computed(() => props.zoomable);
 const showZoomControls = computed(() => props.showZoomControls);
+const highlightedStateIdSet = computed(() => new Set(props.highlightedStateIds));
+const highlightedTransitionIdSet = computed(() => new Set(props.highlightedTransitionIds));
+const hasStateHighlights = computed(() => highlightedStateIdSet.value.size > 0);
+const hasTransitionHighlights = computed(() => highlightedTransitionIdSet.value.size > 0);
+const markersByStateId = computed(() => {
+    const map = new Map<string, StateMarker[]>();
+    props.markers.forEach(marker => {
+        const existing = map.get(marker.stateId) || [];
+        existing.push(marker);
+        map.set(marker.stateId, existing);
+    });
+    return map;
+});
 
 const uniqueColors = computed(() => {
     const set = new Set<string>();
     set.add('#333'); // Default
+    set.add(props.highlightColor);
     props.transitions.forEach(t => {
         if (t.stroke) set.add(t.stroke);
+        if (t.highlightStroke) set.add(t.highlightStroke);
     });
     props.states.forEach(s => {
         if (s.initialStroke) set.add(s.initialStroke);
+        if (s.highlightStroke) set.add(s.highlightStroke);
     });
     return Array.from(set);
 });
 
-function getInitialArrowColor(state: State) {
+function getInitialArrowColor(state: State & { __highlighted?: boolean; __renderStroke?: string }) {
     if (state.initialStroke) return state.initialStroke;
+    if (state.__highlighted && state.__renderStroke) return state.__renderStroke;
     const outgoingColors = new Set(
         props.transitions
             .filter(t => t.source === state.id)
@@ -127,8 +177,9 @@ function getInitialArrowColor(state: State) {
     return '#333';
 }
 
-function getInitialArrowStrokeWidth(state: State) {
+function getInitialArrowStrokeWidth(state: State & { __highlighted?: boolean; __renderStrokeWidth?: number }) {
     if (state.initialStrokeWidth !== undefined) return state.initialStrokeWidth;
+    if (state.__highlighted && state.__renderStrokeWidth !== undefined) return state.__renderStrokeWidth;
 
     const outgoingWidths = new Set(
         props.transitions
@@ -278,13 +329,36 @@ const render = () => {
     const rectH = 40;
 
     // Prepare data
-    const nodes = props.states.map(s => ({ 
-        ...s, 
-        x: s.x ?? undefined, 
-        y: s.y ?? undefined,
-        fx: s.x, 
-        fy: s.y
-    }));
+    const nodes = props.states.map(s => {
+        const highlighted = highlightedStateIdSet.value.has(s.id);
+        const baseStroke = s.stroke || "#000";
+        const baseStrokeWidth = s.strokeWidth !== undefined ? s.strokeWidth : 2;
+        const dimmed = props.fadeUnhighlighted && hasStateHighlights.value && !highlighted;
+        const renderStroke = highlighted ? (s.highlightStroke || props.highlightColor) : baseStroke;
+        const renderFill =
+            highlighted && (s.highlightFill || props.highlightFill)
+                ? (s.highlightFill || props.highlightFill)
+                : (s.color || "#FFF59D");
+
+        return {
+            ...s,
+            __highlighted: highlighted,
+            __renderStroke: renderStroke,
+            __renderStrokeWidth: highlighted
+                ? (s.highlightStrokeWidth !== undefined
+                    ? s.highlightStrokeWidth
+                    : Math.max(baseStrokeWidth + 1.5, 4))
+                : baseStrokeWidth,
+            __renderFill: renderFill,
+            __renderOpacity: s.opacity !== undefined ? s.opacity : (dimmed ? 0.38 : 1),
+            __renderTextColor: s.textColor || "#111827",
+            __markers: markersByStateId.value.get(s.id) || [],
+            x: s.x ?? undefined,
+            y: s.y ?? undefined,
+            fx: s.x,
+            fy: s.y,
+        };
+    });
     
     // Initial positions
     nodes.forEach(n => {
@@ -292,7 +366,27 @@ const render = () => {
         if (n.y === undefined) n.y = props.height/2 + (Math.random()-0.5)*50;
     });
 
-    const links = props.transitions.map(t => ({ ...t }));
+    const links = props.transitions.map(t => {
+        const highlighted = !!t.id && highlightedTransitionIdSet.value.has(t.id);
+        const baseStroke = t.stroke || "#333";
+        const baseStrokeWidth = t.strokeWidth !== undefined ? t.strokeWidth : 2;
+        const dimmed = props.fadeUnhighlighted && hasTransitionHighlights.value && !highlighted;
+        const renderStroke = highlighted ? (t.highlightStroke || props.highlightColor) : baseStroke;
+
+        return {
+            ...t,
+            __highlighted: highlighted,
+            __renderStroke: renderStroke,
+            __renderStrokeWidth: highlighted
+                ? (t.highlightStrokeWidth !== undefined
+                    ? t.highlightStrokeWidth
+                    : Math.max(baseStrokeWidth + 1.5, 4))
+                : baseStrokeWidth,
+            __renderOpacity: t.opacity !== undefined ? t.opacity : (dimmed ? 0.28 : 1),
+            __renderLabelColor: highlighted ? renderStroke : (t.labelColor || baseStroke),
+            __renderLabelBackground: highlighted ? "rgba(255,247,237,0.96)" : "white",
+        };
+    });
 
     function centeredCurveValues(count: number, step = 0.18) {
         if (count <= 1) return [0];
@@ -443,13 +537,17 @@ const render = () => {
         .data(links)
         .enter()
         .append("g")
-        .attr("class", "link-group");
+        .attr("class", (d: any) =>
+            `link-group${d.__highlighted ? " is-highlighted" : ""}${props.pulseHighlights && d.__highlighted ? " pulse" : ""}`
+        )
+        .style("opacity", (d: any) => d.__renderOpacity);
 
         const paths = linkSelection.append("path")
-        .attr("stroke", (d: any) => d.stroke || "#333")
-        .attr("stroke-width", (d: any) => d.strokeWidth || 2)
+        .attr("stroke", (d: any) => d.__renderStroke)
+        .attr("stroke-width", (d: any) => d.__renderStrokeWidth)
+        .attr("stroke-dasharray", (d: any) => d.dasharray || null)
         .attr("fill", "none")
-        .attr("marker-end", (d: any) => `url(#${getMarkerId(d.stroke || "#333")})`);
+        .attr("marker-end", (d: any) => `url(#${getMarkerId(d.__renderStroke)})`);
 
     // Link Labels (foreignObject) - keep reference to foreignObject for positioning
     const linkLabelFOs = linkSelection.append("foreignObject")
@@ -466,7 +564,10 @@ const render = () => {
         .style("height", "100%")
         .style("font-size", (d: any) => `${d.actionFontSize || 12}px`)
         .style("padding", "0")
-        .html((d: any) => d.action ? `<span style="background:white; padding:1px 3px; border-radius:2px; color: ${d.stroke || 'inherit'}">${renderMath(d.action, true)}</span>` : "");
+        .html((d: any) => d.action
+            ? `<span style="background:${d.__renderLabelBackground}; padding:1px 4px; border-radius:999px; color:${d.__renderLabelColor}; border:1px solid rgba(148,163,184,0.18)">${renderMath(d.action, true)}</span>`
+            : ""
+        );
 
     // Draw Nodes
     const nodeGroup = layer.select(".nodes");
@@ -474,7 +575,10 @@ const render = () => {
         .data(nodes)
         .enter()
         .append("g")
-        .attr("class", "node-group")
+        .attr("class", (d: any) =>
+            `node-group${d.__highlighted ? " is-highlighted" : ""}${props.pulseHighlights && d.__highlighted ? " pulse" : ""}`
+        )
+        .style("opacity", (d: any) => d.__renderOpacity)
         .call(dragBehavior);
     
 
@@ -486,9 +590,9 @@ const render = () => {
         .attr("y", -rectH / 2)
         .attr("rx", (d: any) => d.rx !== undefined ? d.rx : 5)
         .attr("ry", (d: any) => d.rx !== undefined ? d.rx : 5)
-        .attr("fill", (d: any) => d.color || "#FFF59D")
-        .attr("stroke", (d: any) => d.stroke || "#000")
-        .attr("stroke-width", (d: any) => d.strokeWidth !== undefined ? d.strokeWidth : 2)
+        .attr("fill", (d: any) => d.__renderFill)
+        .attr("stroke", (d: any) => d.__renderStroke)
+        .attr("stroke-width", (d: any) => d.__renderStrokeWidth)
         .style("cursor", "grab")
         .on("contextmenu", printCoordinates);
 
@@ -542,6 +646,7 @@ const render = () => {
         .style("width", "100%")
         .style("height", "100%")
         .style("font-weight", "bold")
+        .style("color", (d: any) => d.__renderTextColor)
         .style("pointer-events", "none")
         .html((d: any) => renderMath(d.text || d.name || d.id));
 
@@ -563,6 +668,27 @@ const render = () => {
         .style("font-size", "12px")
         .style("color", "#555")
         .html((d: any) => d.label ? renderMath(d.label) : "");
+
+    const markerGroups = nodeSelection.selectAll<SVGGElement, any>("g.state-marker-group")
+        .data((d: any) => d.__markers || [])
+        .enter()
+        .append("g")
+        .attr("class", "state-marker-group");
+
+    markerGroups.append("circle")
+        .attr("class", () => `state-marker${props.pulseHighlights ? " pulse" : ""}`)
+        .attr("cx", function(this: SVGCircleElement, marker: StateMarker, index: number) {
+            const nodeData = (this.parentNode as any).__data__ as any;
+            const nodeWidth = nodeData.width || rectW;
+            const stackOffset = index * 12;
+            return nodeWidth / 2 - 9 + (marker.offsetX || 0) - stackOffset;
+        })
+        .attr("cy", (marker: StateMarker) => -rectH / 2 + 9 + (marker.offsetY || 0))
+        .attr("r", (marker: StateMarker) => marker.radius || 5.5)
+        .attr("fill", (marker: StateMarker) => marker.color || props.highlightColor)
+        .attr("stroke", "#fff")
+        .attr("stroke-width", 2.2)
+        .style("pointer-events", "none");
 
     // Tick function
     const tick = () => {
@@ -792,7 +918,20 @@ onBeforeUnmount(() => {
    }
 });
 
-watch(() => [props.states, props.transitions, props.width, props.height, props.zoomable], () => {
+watch(() => [
+    props.states,
+    props.transitions,
+    props.width,
+    props.height,
+    props.zoomable,
+    props.highlightedStateIds,
+    props.highlightedTransitionIds,
+    props.fadeUnhighlighted,
+    props.pulseHighlights,
+    props.highlightColor,
+    props.highlightFill,
+    props.markers,
+], () => {
    render();
 }, { deep: true });
 </script>
@@ -841,5 +980,26 @@ watch(() => [props.states, props.transitions, props.width, props.height, props.z
 }
 .transition-system-container .node-group:active {
   cursor: grabbing;
+}
+.transition-system-container .node-group.is-highlighted rect {
+  filter: drop-shadow(0 0 7px rgba(249, 115, 22, 0.22));
+}
+.transition-system-container .link-group.is-highlighted path {
+  filter: drop-shadow(0 0 5px rgba(249, 115, 22, 0.18));
+}
+.transition-system-container .state-marker {
+  filter: drop-shadow(0 0 5px rgba(15, 23, 42, 0.18));
+}
+.transition-system-container .pulse {
+  animation: ts-highlight-pulse 1.35s ease-in-out infinite;
+  transform-origin: center;
+}
+@keyframes ts-highlight-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.72;
+  }
 }
 </style>

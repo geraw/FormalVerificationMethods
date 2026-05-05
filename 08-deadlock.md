@@ -250,123 +250,79 @@ $$
 
 ---
 
-# המודל הנאיבי
+# תיאור כהרכבה של מערכות מעברים עם סנכרון
 
 <div class="grid grid-cols-2 gap-8 mt-6 items-start">
 <div class="flex flex-col items-center">
-<div class="font-bold mb-2">התנהגות פילוסוף $Phil_i$</div>
+<div class="font-bold mb-2">
+
+התנהגות פילוסוף $Phil_i$
+</div>
 <TransitionSystemD3
   :width="360" :height="260"
   :states="[
-    { id: 'think', text: 'think', initial: true, initialDirection: 'top', x: 180, y: 20, width: 90, color: '#e3f2fd' },
-    { id: 'wait', text: 'wait for right', x: 180, y: 105, width: 130, color: '#fff8e1' },
-    { id: 'eat', text: 'eat', x: 180, y: 190, width: 80, color: '#e8f5e9' }
+    { id: 'think', text: 'think', initial: true, initialDirection: 'top', x: 210, y: 20, width: 90, color: '#e3f2fd' },
+    { id: 'waitL', text: 'wait for left', x: 50, y: 105, width: 130, color: '#fff8e1' },
+    { id: 'eat', text: 'eat', x: 210, y: 190, width: 80, color: '#e8f5e9' },
+    { id: 'waitR', text: 'wait for right', x: 360, y: 105, width: 130, color: '#fff8e1' },
   ]"
   :transitions="[
-    { source: 'think', target: 'wait', action: '$request_{i,i}$', actionY: -6 },
-    { source: 'wait', target: 'eat', action: '$request_{i-1,i}$', actionY: -6 },
-    { source: 'eat', target: 'think', action: '$release_{i-1,i},\\; release_{i,i}$', curve: 0.45, actionY: 12 }
+    { source: 'think', target: 'waitL', action: '$request_{i-1,i}$', curve:0.3, actionY: 0 },
+    { source: 'waitL', target: 'eat', action: '$request_{i,i}$', curve: 0.3, actionY: 0 },
+    { source: 'think', target: 'waitR', action: '$request_{i,i}$', curve: -0.3, actionY: 0 },
+    { source: 'waitR', target: 'eat', action: '$request_{i-1,i}$', curve: -0.3, actionY: 0 },
+    { source: 'eat', target: 'think', action: '$release_{i-1,i},\\; release_{i,i}$', curve: 0, actionY: 12 }
   ]"
 />
 </div>
 
 <div class="flex flex-col items-center">
-<div class="font-bold mb-2">התנהגות מקל $Stick_i$</div>
+<div class="font-bold mb-2">
+
+התנהגות מקל $Stick_i$
+</div>
 <TransitionSystemD3
   :width="360" :height="260"
   :states="[
-    { id: 'avail', text: 'available', initial: true, initialDirection: 'top', x: 180, y: 20, width: 100, color: '#e8f5e9' },
-    { id: 'occi', text: '$occupied_i$', x: 85, y: 180, width: 95, color: '#fff8e1' },
-    { id: 'occn', text: '$occupied_{i+1}$', x: 275, y: 180, width: 120, color: '#fff8e1' }
+    { id: 'avail', text: 'available', initial: true, initialDirection: 'top', x: 180, y: 20, width: 120, color: '#e8f5e9' },
+    { id: 'occi', text: 'Occupied by right',x: 295, y: 190, width: 180, color: '#fff8e1' },
+    { id: 'occn', text: 'Occupied by left', x: 65,  y: 190, width: 180, color: '#fff8e1' }
   ]"
   :transitions="[
-    { source: 'avail', target: 'occi', action: '$request_{i,i}$', curve: 0.1, actionX: -18 },
-    { source: 'avail', target: 'occn', action: '$request_{i,i+1}$', curve: -0.1, actionX: 18 },
-    { source: 'occi', target: 'avail', action: '$release_{i,i}$', curve: 0.25, actionX: -18 },
-    { source: 'occn', target: 'avail', action: '$release_{i,i+1}$', curve: -0.25, actionX: 18 }
+    { source: 'avail', target: 'occi', action: '$request_{i,i}$', curve: 0.2,    actionX: 0 },
+    { source: 'avail', target: 'occn', action: '$request_{i,i+1}$', curve: -0.2, actionX: 0 },
+    { source: 'occi', target: 'avail', action: '$release_{i,i}$', curve: 0.4,    actionX: 0 },
+    { source: 'occn', target: 'avail', action: '$release_{i,i+1}$', curve: -.4,  actionX: 0 }
   ]"
 />
 </div>
 </div>
 
-<div class="mt-6 bg-red-50 border border-red-200 rounded p-4 text-right text-[15px]">
-הסימטריה כאן היא הבעיה: כולם עובדים בדיוק באותה צורה, ולכן כולם עלולים "להיתקע" באותו שלב.
+<div class="-mt-6 bg-red-50 border border-red-200 rounded  text-right text-[15px]">
+
+פעולות החשבון הן מודולו-4.
+$H =\{request_{i,i+1}, request_{i,i}, release_{i,i+1}, release_{i,i}\ \mid i,j \in \{0,\dots,3\} \}$. 
+
+והמערכת המשולבת מתקבלת מההרכבה:
+$TS =  Phil_0  \; \|_H \;  Stick_0 \;\|_H\;  \dots \;\|_H\;  Phil_3   \;\|_H\;  Stick_3$
 </div>
 
 ---
 
 # ריצת קיפאון אופיינית
 
-<div class="text-right text-[15px] leading-snug mt-2">
-אם כל הפילוסופים מרימים קודם את המקל השמאלי, מתקבל רצף הפעולות:
-</div>
-
-<div class="mt-4 text-center">
-
-$$
-request_4 \;\; request_3 \;\; request_2 \;\; request_1 \;\; request_0
-$$
-
-</div>
-
-<div class="grid grid-cols-5 gap-3 mt-6 text-[13px]">
-<div class="bg-red-50 border border-red-200 rounded p-3">
-<div class="font-bold mb-1">$P_4$</div>
-ממתין ל־$S_0$
-</div>
-<div class="bg-red-50 border border-red-200 rounded p-3">
-<div class="font-bold mb-1">$P_3$</div>
-ממתין ל־$S_4$
-</div>
-<div class="bg-red-50 border border-red-200 rounded p-3">
-<div class="font-bold mb-1">$P_2$</div>
-ממתין ל־$S_3$
-</div>
-<div class="bg-red-50 border border-red-200 rounded p-3">
-<div class="font-bold mb-1">$P_1$</div>
-ממתין ל־$S_2$
-</div>
-<div class="bg-red-50 border border-red-200 rounded p-3">
-<div class="font-bold mb-1">$P_0$</div>
-ממתין ל־$S_1$
-</div>
-</div>
-
-<div class="grid grid-cols-5 gap-3 mt-3 text-[13px]">
-<div class="bg-slate-50 border border-slate-200 rounded p-3">
-<div class="font-bold mb-1">$S_4$</div>
-מוחזק בידי $P_4$
-</div>
-<div class="bg-slate-50 border border-slate-200 rounded p-3">
-<div class="font-bold mb-1">$S_3$</div>
-מוחזק בידי $P_3$
-</div>
-<div class="bg-slate-50 border border-slate-200 rounded p-3">
-<div class="font-bold mb-1">$S_2$</div>
-מוחזק בידי $P_2$
-</div>
-<div class="bg-slate-50 border border-slate-200 rounded p-3">
-<div class="font-bold mb-1">$S_1$</div>
-מוחזק בידי $P_1$
-</div>
-<div class="bg-slate-50 border border-slate-200 rounded p-3">
-<div class="font-bold mb-1">$S_0$</div>
-מוחזק בידי $P_0$
-</div>
-</div>
-
-<div class="mt-6 bg-amber-50 border border-amber-200 rounded p-4 text-right text-[15px]">
-כעת אין אף פעולה מאופשרת שתוביל לאכילה או לשחרור. כל פילוסוף מחכה לשכן שלו,
-ולכן המצב הגלובלי הוא טרמינלי: זהו <span dir="ltr">deadlock</span>.
-</div>
+<DiningPhilosophersDeadlockAnimation :count="4" class="mt-2" />
 
 ---
 
-# הרעיון של הפתרון המשופר
+# פתרון באמצעות קביעת פרוטוקול
 
 <div class="grid grid-cols-2 gap-8 mt-6 items-start">
 <div class="flex flex-col items-center">
-<div class="font-bold mb-2">מקל משופר $Stick_i$</div>
+<div class="font-bold mb-2">
+
+מקל משופר $Stick_i$
+</div>
 <TransitionSystemD3
   :width="380" :height="270"
   :states="[
@@ -377,14 +333,14 @@ $$
   ]"
   :transitions="[
     { source: 'ai', target: 'oi', action: '$request_{i,i}$' },
-    { source: 'oi', target: 'ai1', action: '$release_{i,i}$' },
+    { source: 'oi', target: 'ai1', action: '$release_{i,i}$', actionY: 30, actionX: -40 },
     { source: 'ai1', target: 'oi1', action: '$request_{i,i+1}$' },
-    { source: 'oi1', target: 'ai', action: '$release_{i,i+1}$' }
+    { source: 'oi1', target: 'ai', action: '$release_{i,i+1}$', actionY: 30, actionX: 40 }
   ]"
 />
 </div>
 
-<div class="bg-blue-50 border border-blue-200 rounded p-5 text-right">
+<div class="bg-blue-50 border border-blue-200 rounded p-5 text-right text-[12px] mt-10">
 <div class="font-bold mb-3">מה השתנה?</div>
 
 - המקל אינו "נייטרלי" לגמרי, אלא מציין למי הוא זמין כרגע.
@@ -399,40 +355,53 @@ $$
 </div>
 </div>
 
-<div class="mt-6 bg-green-50 border border-green-200 rounded p-4 text-right text-[15px]">
+<div class="-mt-3 bg-green-50 border border-green-200 rounded p-4 text-right text-[15px]">
 אפשר לאמת שהפתרון הזה הוא גם <span dir="ltr">deadlock-free</span> וגם חופשי מרעב אישי.
 </div>
 
 ---
 
-# וריאנט סביל לתקלות
+# גרסא סבילה לתקלות
 
-<div class="grid grid-cols-2 gap-8 mt-8 text-right items-start">
-<div class="bg-slate-50 border border-slate-200 rounded p-5">
+<div class="grid grid-cols-2 gap-6 mt-8 text-right items-start">
+<div class="bg-slate-50 border border-slate-200 rounded p-5 text-[16px]">
 <div class="font-bold mb-3">מה רוצים להבטיח?</div>
 
 - שגם אם פילוסוף אחד "נתקע" לנצח במצב <span dir="ltr">think</span>, המערכת לא תיכנס לקיפאון.
 - כלומר, שכנים עדיין יוכלו להמשיך להתקדם.
 </div>
 
-<div class="bg-blue-50 border border-blue-200 rounded p-5">
+<div class="bg-blue-50 border border-blue-200 rounded p-5 text-[16px] leading-snug">
 <div class="font-bold mb-3">רעיון המודל</div>
+
+<div class="grid grid-cols-[1.05fr,0.95fr] gap-3 items-start">
+<div>
 
 - מוסיפים לכל פילוסוף משתנה בוליאני $x_i$.
 - $x_i = true$ אם ורק אם פילוסוף $i$ נמצא במצב <span dir="ltr">think</span>.
 - מקל $i$ יכול להיות זמין לשכן גם אם "הכיוון הרשמי" כרגע הפוך, כל עוד הפילוסוף האחר רק חושב ואינו זקוק למקל.
 </div>
 </div>
+</div>
+</div>
 
-<div class="mt-8 bg-amber-50 border border-amber-200 rounded p-4 text-right text-[15px]">
+<div class="mt-30 bg-amber-50 border border-amber-200 rounded p-4 text-right text-[16px]">
 כלומר, במקום שהשכנים יחכו עיוור ל"תורם", המידע על מצב החשיבה מאפשר לעקוף חסימה מיותרת.
 </div>
 
-<div class="mt-6 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[14px]">
-המודל המלא כאן כבר נתפס ברמת <span dir="ltr">program graphs</span>,
-והמערכת השלמה מתקבלת כ־<span dir="ltr">channel system</span> עם פעולות
-<span dir="ltr">request</span>/<span dir="ltr">release</span> כ־handshaking על ערוץ בקיבולת $0$.
+<div class="-mt-6 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[16px]">
+
+המודל כאן הוא כבר גרף תוכנית,
+והמערכת השלמה מתקבלת כ־מערכת ערוצים עם פעולות
+handshaking באמצעות ערוצים בקיבולת $0$.
 </div>
+
+<img
+  src="./images/fault_tolerant_dining_philosophers.png"
+  alt="איור של גרסת הפילוסופים הסבילה לתקלות"
+  class="absolute top-60 w-80 "
+/>
+
 
 ---
 
