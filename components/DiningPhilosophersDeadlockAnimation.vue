@@ -49,8 +49,8 @@
 
           <div class="diagram-shell phil-diagram">
             <TransitionSystemD3
-              :width="192"
-              :height="108"
+              :width="360"
+              :height="260"
               :auto="false"
               :states="philosopherStates"
               :transitions="philosopherTransitions(phil)"
@@ -84,8 +84,8 @@
 
           <div class="diagram-shell stick-diagram">
             <TransitionSystemD3
-              :width="192"
-              :height="92"
+              :width="360"
+              :height="260"
               :auto="false"
               :states="stickStates"
               :transitions="stickTransitions(stick)"
@@ -189,36 +189,36 @@ const philosopherStates = [
     text: 'think',
     initial: true,
     initialDirection: 'top' as const,
-    x: 96,
-    y: 16,
-    width: 56,
+    x: 210,
+    y: 20,
+    width: 90,
     color: '#e0f2fe',
     stroke: '#2563eb',
   },
   {
     id: 'waitL',
-    text: 'waitL',
-    x: 34,
-    y: 60,
-    width: 62,
+    text: 'wait for left',
+    x: 50,
+    y: 105,
+    width: 130,
     color: '#f8fafc',
     stroke: '#94a3b8',
   },
   {
     id: 'waitR',
-    text: 'waitR',
-    x: 158,
-    y: 60,
-    width: 62,
+    text: 'wait for right',
+    x: 360,
+    y: 105,
+    width: 130,
     color: '#f8fafc',
     stroke: '#94a3b8',
   },
   {
     id: 'eat',
     text: 'eat',
-    x: 96,
-    y: 100,
-    width: 44,
+    x: 210,
+    y: 190,
+    width: 80,
     color: '#dcfce7',
     stroke: '#15803d',
   },
@@ -227,30 +227,30 @@ const philosopherStates = [
 const stickStates = [
   {
     id: 'avail',
-    text: 'avail',
+    text: 'available',
     initial: true,
     initialDirection: 'top' as const,
-    x: 96,
-    y: 16,
-    width: 64,
+    x: 180,
+    y: 20,
+    width: 120,
     color: '#dcfce7',
     stroke: '#15803d',
   },
   {
     id: 'occn',
-    text: '$occ_{i+1}$',
-    x: 34,
-    y: 66,
-    width: 62,
+    text: 'Occupied by left',
+    x: 65,
+    y: 190,
+    width: 180,
     color: '#f8fafc',
     stroke: '#94a3b8',
   },
   {
     id: 'occi',
-    text: '$occ_i$',
-    x: 158,
-    y: 66,
-    width: 58,
+    text: 'Occupied by right',
+    x: 295,
+    y: 190,
+    width: 180,
     color: '#f8fafc',
     stroke: '#94a3b8',
   },
@@ -650,11 +650,11 @@ function goTo(index: number) {
 }
 
 .phil-diagram {
-  height: 74px;
+  height: 118px;
 }
 
 .stick-diagram {
-  height: 62px;
+  height: 104px;
 }
 
 .card-caption {
@@ -670,12 +670,12 @@ function goTo(index: number) {
 }
 
 .phil-diagram :deep(.transition-system-container svg) {
-  transform: scale(0.72);
+  transform: translate(-14px, 17px) scale(0.42);
   transform-origin: top center;
 }
 
 .stick-diagram :deep(.transition-system-container svg) {
-  transform: scale(0.72);
+  transform: translate(0, 8px) scale(0.42);
   transform-origin: top center;
 }
 </style>
