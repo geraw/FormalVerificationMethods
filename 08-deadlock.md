@@ -376,7 +376,7 @@ $TS =  Phil_0  \; \|_H \;  Stick_0 \;\|_H\;  \dots \;\|_H\;  Phil_3   \;\|_H\;  
 
 ---
 
-# גרסא סבילה לתקלות
+# גרסא עמידה לתקלות
 
 <div class="grid grid-cols-2 gap-6 mt-8 text-right items-start">
 <div class="bg-slate-50 border border-slate-200 rounded p-5 text-[16px]">
@@ -410,7 +410,7 @@ $TS =  Phil_0  \; \|_H \;  Stick_0 \;\|_H\;  \dots \;\|_H\;  Phil_3   \;\|_H\;  
 
 <img
   src="./images/fault_tolerant_dining_philosophers.png"
-  alt="איור של גרסת הפילוסופים הסבילה לתקלות"
+  alt="איור של גרסת הפילוסופים העמידה לתקלות"
   class="absolute top-70 w-60 right-30"
 />
 
