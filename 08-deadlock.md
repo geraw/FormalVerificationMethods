@@ -417,6 +417,72 @@ $TS =  Phil_0  \; \|_H \;  Stick_0 \;\|_H\;  \dots \;\|_H\;  Phil_3   \;\|_H\;  
 
 ---
 
+# קוד Promela לגרסא עמידה לתקלות
+
+<div class="text-right text-[15px] leading-snug mt-2">
+
+נייצג כל פעולה במערכת המעברים כערוץ סינכרוני בגודל אפס. ב־SPIN הערוץ חייב לשאת שדה הודעה, ולכן נשלח ערך דמה $0$.
+</div>
+
+<div dir="ltr" align="left" class="text-[11px] leading-tight mt-4">
+
+<pre><code>#define REQ(p,s) req[(p)*4+(s)]
+#define REL(p,s) rel[(p)*4+(s)]
+
+chan req[16] = [0] of { bit };
+chan rel[16] = [0] of { bit };
+bool x[4];</code></pre>
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-3" dir="ltr">
+<div align="left" class="text-[10px] leading-tight">
+
+<pre><code>proctype Phil(byte i) {
+  do
+  :: x[i] := true;
+     skip;                 /* think */
+     x[i] := false;
+
+     REQ(i,i)!0;            /* request right stick */
+     REQ((i+3)%4,i)!0;      /* request left stick */
+
+     skip;                 /* eat */
+
+     REL(i,i)!0;            /* release right stick */
+     REL((i+3)%4,i)!0;      /* release left stick */
+  od
+}</code></pre>
+</div>
+
+<div align="left" class="text-[10px] leading-tight">
+
+<pre><code>proctype Stick(byte i) {
+  do
+  :: REQ(i,i)?0;
+     REL(i,i)?0
+  :: x[(i+1)%4] == true -&gt;
+     REQ(i,(i+1)%4)?0;
+     REL(i,(i+1)%4)?0
+  od
+}
+
+init {
+  x[0] = true; x[1] = true; x[2] = true; x[3] = true;
+
+  run Stick(0); run Stick(1); run Stick(2); run Stick(3);
+  run Phil(0);  run Phil(1);  run Phil(2);  run Phil(3);
+}</code></pre>
+</div>
+</div>
+
+<div class="mt-4 bg-amber-50 border border-amber-200 rounded p-4 text-right text-[12px]">
+
+הענף השני של <span dir="ltr">Stick(i)</span> הוא החלק העמיד לתקלות: אם הפילוסוף השכן רק חושב, המקל מסונכרן עם הפילוסוף האחר במקום לחסום את המערכת.
+</div>
+
+
+---
+
 # אלגוריתם לבדיקת היעדר קיפאון
 
 <div class="grid grid-cols-2 gap-6 mt-8 text-right items-start">
