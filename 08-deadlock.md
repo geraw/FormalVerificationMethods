@@ -125,7 +125,10 @@ $$
 
 <div class="grid grid-cols-3 gap-4 mt-6 items-start">
 <div class="flex flex-col items-center">
-<div class="font-bold mb-2"><span dir="ltr">TrLight₁</span></div>
+<div class="font-bold mb-2">
+
+$TrLight_1$
+</div>
 <TransitionSystemD3
   :width="220" :height="180"
   :states="[
@@ -140,7 +143,10 @@ $$
 </div>
 
 <div class="flex flex-col items-center">
-<div class="font-bold mb-2"><span dir="ltr">TrLight₂</span></div>
+<div class="font-bold mb-2">
+
+$$TrLight_2$$
+</div>
 <TransitionSystemD3
   :width="220" :height="180"
   :states="[
@@ -155,7 +161,11 @@ $$
 </div>
 
 <div class="flex flex-col items-center">
-<div class="font-bold mb-2"><span dir="ltr">TrLight₁ || TrLight₂</span></div>
+<div class="font-bold mb-2">
+
+
+$$TrLight_1 \;\vert\!\vert\!\vert_{\{\alpha,\beta\}}\; TrLight_2$$
+</div>
 <TransitionSystemD3
   :width="260" :height="180"
   :states="[
