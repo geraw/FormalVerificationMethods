@@ -269,19 +269,24 @@ $$TrLight_1 \;\vert\!\vert\!\vert_{\{\alpha,\beta\}}\; TrLight_2$$
 התנהגות פילוסוף $Phil_i$
 </div>
 <TransitionSystemD3
-  :width="360" :height="260"
+  :width="400" :height="260"
   :states="[
-    { id: 'think', text: 'think', initial: true, initialDirection: 'top', x: 210, y: 20, width: 90, color: '#e3f2fd' },
-    { id: 'waitL', text: 'wait for left', x: 50, y: 105, width: 130, color: '#fff8e1' },
-    { id: 'eat', text: 'eat', x: 210, y: 190, width: 80, color: '#e8f5e9' },
-    { id: 'waitR', text: 'wait for right', x: 360, y: 105, width: 130, color: '#fff8e1' },
+    { id: 'think', text: 'think', textFontSize: 12, initial: true, initialDirection: 'top', x: 210, y: 18, width: 88, color: '#e3f2fd' },
+    { id: 'waitL', text: 'wait for<br>left stick', textFontSize: 11, x: 110, y: 112, width: 100, height: 52, color: '#fff8e1' },
+    { id: 'waitR', text: 'wait for<br>right stick', textFontSize: 11, x: 270, y: 112, width: 100, height: 52, color: '#fff8e1' },
+    { id: 'eat',   text: 'eat', textFontSize: 12, x: 210, y: 196, width: 72, color: '#e8f5e9' },
+    { id: 'retL', text: 'return the<br>left stick', textFontSize: 10, x: 10, y: 196, width: 100, height: 52, color: '#fff8e1' },
+    { id: 'retR', text: 'return the<br>right stick', textFontSize: 10, x: 400, y: 196, width: 100, height: 52, color: '#fff8e1' },
   ]"
   :transitions="[
-    { source: 'think', target: 'waitL', action: '$request_{i-1,i}$', curve:0.3, actionY: 0 },
-    { source: 'waitL', target: 'eat', action: '$request_{i,i}$', curve: 0.3, actionY: 0 },
-    { source: 'think', target: 'waitR', action: '$request_{i,i}$', curve: -0.3, actionY: 0 },
-    { source: 'waitR', target: 'eat', action: '$request_{i-1,i}$', curve: -0.3, actionY: 0 },
-    { source: 'eat', target: 'think', action: '$release_{i-1,i},\\; release_{i,i}$', curve: 0, actionY: 12 }
+    { source: 'think', target: 'waitL', action: '$request_{i-1,i}$', curve: 0.18,  actionX:   0, actionY:0 },
+    { source: 'think', target: 'waitR', action: '$request_{i,i}$',   curve: -0.18, actionX:   0, actionY:0 },
+    { source: 'waitL', target: 'eat',   action: '$request_{i,i}$',   curve: 0.12,  actionX: -10, actionY:-10 },
+    { source: 'waitR', target: 'eat',   action: '$request_{i-1,i}$', curve: -0.12, actionX:  10, actionY:-10 },
+    { source: 'eat',   target: 'retL',  action: '$release_{i,i}$',   curve: 0,     actionX:  10, actionY:0 },
+    { source: 'eat',   target: 'retR',  action: '$release_{i-1,i}$', curve: 0,     actionX: -10, actionY:0 },
+    { source: 'retL',  target: 'think', action: '$release_{i-1,i}$', curve: -0.5,  actionX: -10, actionY:0 },
+    { source: 'retR',  target: 'think', action: '$release_{i,i}$',   curve: 0.5,   actionX:  10, actionY:0 }
   ]"
 />
 </div>
@@ -292,11 +297,11 @@ $$TrLight_1 \;\vert\!\vert\!\vert_{\{\alpha,\beta\}}\; TrLight_2$$
 התנהגות מקל $Stick_i$
 </div>
 <TransitionSystemD3
-  :width="360" :height="260"
+  :width="400" :height="100"
   :states="[
-    { id: 'avail', text: 'available', initial: true, initialDirection: 'top', x: 180, y: 20, width: 120, color: '#e8f5e9' },
-    { id: 'occi', text: 'Occupied by right',x: 295, y: 190, width: 180, color: '#fff8e1' },
-    { id: 'occn', text: 'Occupied by left', x: 65,  y: 190, width: 180, color: '#fff8e1' }
+    { id: 'avail', text: 'available', textFontSize: 12, initial: true, initialDirection: 'top', x: 180, y: 20, width: 120, color: '#e8f5e9' },
+    { id: 'occi', text: 'Occupied by the <br> right philosopher', textFontSize: 10, x: 295, y: 196, width: 180, color: '#fff8e1' },
+    { id: 'occn', text: 'Occupied by the <br> left philosopher', textFontSize: 10, x: 65,  y: 196, width: 180, color: '#fff8e1' }
   ]"
   :transitions="[
     { source: 'avail', target: 'occi', action: '$request_{i,i}$', curve: 0.2,    actionX: 0 },

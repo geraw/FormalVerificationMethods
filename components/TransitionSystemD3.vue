@@ -36,6 +36,7 @@ interface State {
   label?: string; // Atomic Propositions (below right)
   name?: string;  // Inside the rectangle
   text?: string;  // Alias for name
+  textFontSize?: number;
   width?: number; // Custom width override
   initial?: boolean;
   initialDirection?: 'left' | 'right' | 'top' | 'bottom';
@@ -645,10 +646,13 @@ const render = () => {
         .style("align-items", "center")
         .style("width", "100%")
         .style("height", "100%")
+        .style("font-size", (d: any) => `${d.textFontSize || 14}px`)
         .style("font-weight", "bold")
         .style("color", (d: any) => d.__renderTextColor)
+        .style("text-align", "center")
+        .style("line-height", "1.1")
         .style("pointer-events", "none")
-        .html((d: any) => renderMath(d.text || d.name || d.id));
+        .html((d: any) => renderMath(d.text || d.name || d.id, true));
 
     // Label (Propositions - Below Right or custom)
     nodeSelection.append("foreignObject")
