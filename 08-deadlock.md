@@ -412,6 +412,40 @@ $TS =  Phil_0  \; \|_H \;  Stick_0 \;\|_H\;  \dots \;\|_H\;  Phil_3   \;\|_H\;  
 
 ---
 
+# אלגוריתם לבדיקת היעדר קיפאון
+
+<div class="grid grid-cols-2 gap-6 mt-8 text-right items-start">
+<div class="bg-slate-50 border border-slate-200 rounded p-5">
+<div class="font-bold mb-3">מה בודקים?</div>
+
+- מריצים סריקה של כל המצבים הנגישים מן המצבים ההתחלתיים.
+- בכל מצב $s$ שבודקים, שואלים האם יש לו מעבר יוצא.
+- אם נמצא מצב נגיש ללא עוקבים, מצאנו קיפאון.
+- אם הסריקה הסתיימה בלי מצב כזה, המערכת היא <span dir="ltr">deadlock-free</span>.
+</div>
+
+<div class="bg-blue-50 border border-blue-200 rounded p-5">
+<div class="font-bold mb-3">האלגוריתם</div>
+
+1. אתחל מחסנית או תור עם כל המצבים ב־$I$.
+2. סמן כל מצב שנשלף כדי לא לבקר בו פעמיים.
+3. אם ל־$s$ אין מעבר ב־$\to$, החזר "יש קיפאון".
+4. אחרת, הכנס את כל העוקבים של $s$ שעדיין לא בוקרו.
+5. אם התור התרוקן, החזר "אין קיפאון נגיש".
+</div>
+</div>
+
+<div class="mt-8 bg-amber-50 border border-amber-200 rounded p-4 text-right text-[15px]">
+זהו בדיוק חיפוש נגישות רגיל על גרף המצבים.  
+העלות היא לינארית בגודל המודל המפורש:
+
+$$
+O(|S| + |\to|)
+$$
+</div>
+
+---
+
 # סיכום
 
 <div class="grid grid-cols-2 gap-6 mt-8 text-right">
