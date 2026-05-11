@@ -36,6 +36,7 @@ info: |
 
 <div class="bg-slate-50 border border-slate-200 rounded p-4 mt-6">
 <div class="font-bold mb-2">דוגמה 1: כספומט (ATM)</div>
+
 הדרישה: "ניתן למשוך כסף רק אם קודם לכן הוקלד קוד סודי (PIN) נכון".
 זו אינה שמורה, כי המצב שבו יוצא כסף אינו "רע" בפני עצמו - הוא תלוי במה שקרה קודם. 
 עם זאת, זו עדיין תכונת בטיחות: אם משכנו כסף בלי קוד, עשינו מעשה רע **בזמן סופי**.
@@ -77,11 +78,12 @@ $$ P_{safe} \cap \{ \sigma' \in (2^{AP})^\omega \mid \rho \prec \sigma' \} = \em
 
 # המחשת הרישא הרעה
 
-<div class="flex flex-col items-center justify-center mt-10">
+<div class="flex flex-col items-center justify-center -mt-30 relative">
 
-<img src="/bad_prefix_concept.png" class="w-1/2 rounded-lg shadow-xl border border-slate-200" />
+<img src="/bad_prefix_concept.png" class="w-1/2 z--1" />
 
 <div class="mt-6 text-right w-2/3 text-[14px]">
+
 ברגע שהמסלול מבצע צעד "אסור" (הנקודה האדומה), התכונה מופרת באופן בלתי הפיך וזוהי בעצם הרישא הרעה ($\rho$). 
 העתיד של המסלול (החלק המעומעם) כבר לא יכול "לתקן" את המצב.
 </div>
