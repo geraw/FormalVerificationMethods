@@ -118,34 +118,32 @@ $$ \Phi = \neg wait_0 \lor \neg wait_1 \lor \dots \lor \neg wait_4 $$
 
 # דוגמה: חידת הכדורים
 
-<div class="grid grid-cols-[1fr_.5fr] gap-8 mt-4 text-right">
+<div class="grid grid-cols-[1fr_.8fr] gap-8 mt-4 text-right items-center">
 
 <div>
 
 - בשק יש 2026 כדורים שחורים ו-2026 כדורים לבנים.
 - בכל צעד מוציאים שני כדורים:
-  - אם הם בצבעים שונים מחזירים כדור שחור.
   - אם שניהם באותו הצבע מחזירים כדור לבן.
+  - אם הם בצבעים שונים מחזירים כדור שחור.
 - **השאלה:** מה צבע הכדור האחרון?
+
+<div class="bg-blue-50 border border-blue-200 rounded p-4 text-[15px] mt-6">
+
+**מידול כמערכת מעברים:**
+- מצב: מילה $w \in \{B, W\}^*$
+- התחלתי: מילה עם 2026 'B' ו-2026 'W'
+- מעברים (בחירה מכל מקום, החזרה לראש):
+  - $u B v B w \to W u v w$
+  - $u W v W w \to W u v w$
+  - $u B v W w \to B u v w$
 
 </div>
 
-<div class="bg-blue-50 border border-blue-200 rounded p-4 text-[14px]">
+</div>
 
-**מידול ראשוני כמערכת מעברים:**
-- מצב: מילה $w \in \{B, W\}^*$
-- התחלתי: מילה עם 2026 'B' ו-2026 'W'
-- מעברים (תת-מחרוזות):
-  - $uBBv \to uWv$
-  - $uWWv \to uWv$
-  - $uBWv \to uBv$
-
-**מידול מופשט (ספירת כדורים):**
-מכיוון שסדר הכדורים אינו משנה, נעבור למצב $\langle b, w \rangle$:
-- `BB`: $\langle b,w \rangle \to \langle b-2, w+1 \rangle$
-- `WW`: $\langle b,w \rangle \to \langle b, w-1 \rangle$
-- `BW`: $\langle b,w \rangle \to \langle b, w-1 \rangle$
-
+<div class="flex justify-center">
+  <img src="./images/balls_puzzle_student.png" class="rounded-3xl shadow-2xl border-4 border-white/50 w-full max-w-[400px]" />
 </div>
 
 </div>
@@ -154,25 +152,27 @@ $$ \Phi = \neg wait_0 \lor \neg wait_1 \lor \dots \lor \neg wait_4 $$
 
 # פתרון דרך שמורות
 
-<div class="mt-8 text-right">
+<div class="text-right">
 
-נחפש תכונה שנשמרת (Invariant) לאורך כל צעדי המערכת.
-
-<div class="bg-amber-50 border border-amber-200 rounded p-6 mt-6">
-<div class="font-bold text-lg mb-4">תצפית על מספר הכדורים השחורים ($b$):</div>
+<div class="bg-amber-50 border border-amber-200 rounded p-6 mt-3">
+<div class="font-bold text-lg mb-4">
+הבחנה על מספר הכדורים השחורים:
+</div>
 
 - בכל אחד מהמעברים (`BB`, `WW`, `BW`), מספר הכדורים השחורים או שנשאר ללא שינוי, או שקטן ב-2.
+
 - **מסקנה:** הזוגיות (Parity) של מספר הכדורים השחורים היא **שמורה**!
 
 </div>
 
-<div class="mt-6">
+<div class="mt-0">
 
 - התחלנו עם 2026 כדורים שחורים (מספר זוגי).
-- לכן, בכל מצב נגיש $\langle b, w \rangle \in Reach(TS)$, מספר הכדורים השחורים $b$ חייב להיות זוגי.
-- בסוף התהליך נשאר כדור אחד (או $\langle 1, 0 \rangle$ או $\langle 0, 1 \rangle$).
-- כיוון ש-1 הוא אי-זוגי, המצב $\langle 1, 0 \rangle$ אינו נגיש.
-- **מסקנה סופית:** הכדור האחרון חייב להיות לבן.
+
+- לכן, בכל מילה נגישה $w \in Reach(TS)$, מספר ה-'B' במילה חייב להיות זוגי.
+- בסוף התהליך נשאר כדור אחד, כלומר המילה היא או `"B"` או `"W"`.
+- כיוון שבמילה `"B"` יש מספר אי-זוגי של כדורים שחורים (1), מצב זה אינו נגיש.
+- **מסקנה:** הכדור האחרון חייב להיות לבן.
 
 </div>
 
@@ -182,14 +182,15 @@ $$ \Phi = \neg wait_0 \lor \neg wait_1 \lor \dots \lor \neg wait_4 $$
 
 # איך בודקים אם שמורה מתקיימת?
 
-<div class="mt-8 text-right">
+<div class="mt-2 text-right">
 
-מכיוון ששמורה היא תנאי על מצבים, הבדיקה שלה שקולה ל**בדיקת נגישות** (Reachability Analysis) בגרף המצבים של המערכת.
+מכיוון ששמורה היא תנאי על מצבים, הבדיקה שלה שקולה ל**בדיקת נגישות** (Reachability Analysis).
 
 <div class="bg-blue-50 border border-blue-200 rounded p-4 mt-6">
 <div class="font-bold mb-2">אלגוריתם בסיסי: סריקת מצבים</div>
 
 1. התחל מקבוצת המצבים ההתחלתיים $I$.
+
 2. בצע סריקת עומק (DFS) או סריקת רוחב (BFS) על גרף המצבים.
 3. עבור כל מצב $s$ שנצפה, בדוק האם $L(s) \models \Phi$.
 4. אם כן - המשך. אם לא - השמורה **הופרה**.
@@ -199,6 +200,57 @@ $$ \Phi = \neg wait_0 \lor \neg wait_1 \lor \dots \lor \neg wait_4 $$
 זוהי סריקה *קדימה* (Forward Search). ניתן לבצע גם סריקה *אחורה* (Backward Search): להתחיל מהמצבים שבהם $\Phi$ אינו מתקיים, ולבדוק האם קיים מסלול הפוך המגיע למצב התחלתי.
 
 </div>
+
+---
+class: text-right
+
+---
+
+# פסאודו-קוד: בדיקת שמורה
+
+<div class="w-full scale-80 mt-2" dir="ltr" style="text-align: left;">
+
+<div class="shiki-high-contrast">
+
+```javascript
+Algorithm CheckInvariant(TS, Φ)
+  Visited = ∅
+  Worklist = TS.I
+  
+  for each s in TS.I {
+    if (s ⊭ Φ) return "Violation at initial state: " + s
+    Visited.add(s)
+  }
+  
+  while (Worklist is not empty) {
+    s = Worklist.pop()
+    for each s' in Post(s) {
+      if (s' ∉ Visited) {
+        if (s' ⊭ Φ) return "Violation at state: " + s'
+        Visited.add(s')
+        Worklist.push(s')
+      }
+    }
+  }
+  return "Invariant Holds"
+```
+
+</div>
+
+</div>
+
+<div class="-mt-4 text-right text-[14px]">
+
+- **Worklist**: יכול להיות מחסנית (עבור DFS) או תור (עבור BFS).
+- **Visited**: קבוצה השומרת את כל המצבים שכבר נסרקו כדי למנוע לולאות אינסופיות.
+</div>
+
+<style>
+.shiki-high-contrast span {
+  filter: brightness(0.8) saturate(2);
+  font-weight: 500;
+}
+</style>
 
 ---
 
@@ -217,7 +269,7 @@ $$ s_0 \to s_1 \to s_2 \to \dots \to s_n $$
 
 <div class="bg-amber-50 border border-amber-200 rounded p-4 mt-4">
 <div class="font-bold mb-2">הפקת הדוגמה הנגדית ב-DFS:</div>
-כאשר משתמשים בחיפוש לעומק (DFS), תכולת המחסנית ברגע גילוי המצב הבעייתי $s_n$ מהווה בדיוק את המסלול מהמצב ההתחלתי אל אותו מצב (בסדר הפוך).
+כאשר משתמשים בחיפוש לעומק (DFS), תכולת המחסנית ברגע גילוי המצב הבעייתי מהווה בדיוק את המסלול מהמצב ההתחלתי אל אותו מצב (בסדר הפוך).
 </div>
 
 </div>
