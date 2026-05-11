@@ -279,7 +279,7 @@ $$
 
 ---
 
-# תכונת זמן לינארי
+# הגדרה: תכונת זמן לינארי
 
 
 <div class="mt-6 grid grid-cols-[1fr_auto_1.2fr_auto_1fr] gap-3 items-center text-center">
@@ -341,12 +341,12 @@ $$
 
 ---
 
-# דוגמה: הרמזור הראשון ירוק אינסוף פעמים
+# דוגמה ($P_{\text{live}}$): הרמזור הראשון ירוק אינסוף פעמים
 
 <div class="mt-8 text-center">
 
 $$
-P=
+P_{\text{live}}=
 \{\sigma \in (2^{AP})^\omega \mid \underset{\infty}{\exists} i \left( green \in \sigma[i] \right) \}
 $$
 
@@ -386,14 +386,14 @@ $$
 
 </div>
 
-למשל, אם $AP$ כולל גם $yellow,red$, אז העקבה הבאה שייכת ל־$P$ למרות שהיא אינה מתארת רמזור תקין:
+למשל, אם $AP$ כולל גם $yellow,red$, אז העקבה הבאה שייכת ל־$P_{\text{live}}$ למרות שהיא אינה מתארת רמזור תקין:
 
 $$
 \sigma =
 \{green,yellow,red\}\{green,red\}\{green,yellow\}\dots
 $$
 
-והעקבה הבאה אינה שייכת ל־$P$, גם אם היא עדיין מכילה צירופים לא הגיוניים:
+והעקבה הבאה אינה שייכת ל־$P_{\text{live}}$, גם אם היא עדיין מכילה צירופים לא הגיוניים:
 
 $$
 \sigma =
@@ -404,12 +404,12 @@ $$
 
 ---
 
-# דוגמה: לעולם לא שני ירוקים יחד
+# דוגמה ($P_{\text{safe}}$): לעולם לא שני ירוקים יחד
 
 <div class="mt-8 text-center">
 
 $$
-P'=
+P_{\text{safe}}=
 \{\sigma \in (2^{AP})^\omega \mid
 \forall i \ge 0 \left(
 green_1 \notin \sigma[i] \vee green_2 \notin \sigma[i]
@@ -504,7 +504,7 @@ $$
 
 ---
 
-# דוגמה: חוסר הרעבה
+# דוגמה ($P_{\text{nostarve}}$): חוסר הרעבה
 
 <div class="text-right text-[15px] leading-snug mt-2">
 
@@ -515,12 +515,12 @@ $$
 <div class="mt-8 text-center">
 
 $$
-\underset{\infty}{\exists} j \left( wait_i \in \sigma[j] \right)
-\Rightarrow
-\underset{\infty}{\exists} j \left( crit_i \in \sigma[j] \right)
+P_{\text{nostarve}}=
+\left\{ \sigma \in (2^{AP})^\omega \;\middle|\;
+\forall i \in \{1,2\} 
+\left( \underset{\infty}{\exists} j \bigl( wait_i \in \sigma[j] \bigr) \Rightarrow \underset{\infty}{\exists} j \bigl( crit_i \in \sigma[j] \bigr) \right)
+\right\}
 $$
-
-לכל $i \in \{1,2\}$.
 
 </div>
 
@@ -630,7 +630,7 @@ $$
 <div class="text-right text-[15px] leading-snug mt-2">
 
 נבחן את המאפיין: קיימת ריצה המגיעה למצב שמתוייג $good$ - 
-$\exists \sigma \in \operatorname{Traces}(TS) \; \exists j \in \mathbb{N} \; (good \in \sigma[j])$.
+$\exists \sigma \in \operatorname{Traces}(TS) \; \bigl( \exists j \in \mathbb{N} \; (good \in \sigma[j]) \bigr)$.
 
 </div>
 
