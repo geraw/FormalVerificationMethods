@@ -67,12 +67,30 @@ $$ (\forall s \in \operatorname{Reach}(TS)) (L(s) \models \Phi) $$
 
 ---
 
-# דוגמאות לשמורות
+# פירוש של נוסחה על מצב יחיד
 
 <div class="mt-8 text-right">
 
-<div class="grid grid-cols-2 gap-8">
-<div>
+כדי לקבוע אם מצב מקיים שמורה המוגדרת על ידי התנאי $\Phi$, אנו בודקים האם המצב הבודד $s$ מקיים את $\Phi$. 
+הפירוש מסתמך על פונקציית התיוג $L(s)$, אשר מחזירה את קבוצת הפסוקים האטומיים שמתקיימים במצב $s$.
+
+<div class="bg-blue-50 border border-blue-200 rounded p-6 mt-6">
+<div class="font-bold text-lg mb-4">יחס הסיפוק $s \models \Phi$ מוגדר בצורה רקורסיבית (אינדוקציה מבנית):</div>
+
+- **פסוק אטומי:** $s \models a \iff a \in L(s)$
+- **שלילה (Not):** $s \models \neg \Phi \iff s \not\models \Phi$
+- **וגם (And):** $s \models \Phi_1 \land \Phi_2 \iff s \models \Phi_1 \text{ וגם } s \models \Phi_2$
+- **או (Or):** $s \models \Phi_1 \lor \Phi_2 \iff s \models \Phi_1 \text{ או } s \models \Phi_2$
+
+</div>
+
+</div>
+
+---
+
+# דוגמאות לשמורות
+
+<div class="mt-8 text-right">
 
 ### מניעה הדדית (Mutual Exclusion)
 התכונה "תמיד לכל היותר תהליך אחד נמצא בקטע הקריטי".
@@ -83,25 +101,6 @@ $$ \Phi = \neg crit_1 \lor \neg crit_2 $$
 לפילוסופים הסועדים, קיפאון מתרחש כאשר כולם מחכים למקל השני (נמצאים במצב $wait$). 
 תנאי השמורה לחסינות מקיפאון יבטיח שלפחות פילוסוף אחד *לא* ממתין:
 $$ \Phi = \neg wait_0 \lor \neg wait_1 \lor \dots \lor \neg wait_4 $$
-
-</div>
-<div class="flex items-center justify-center bg-slate-100 rounded-lg p-4">
-
-```mermaid
-graph TD
-    S0((think, think)) --> S1((wait, think))
-    S1 --> S2((crit, think))
-    S2 --> S0
-    S0 --> S3((think, wait))
-    S3 --> S4((think, crit))
-    S4 --> S0
-    
-    style S2 fill:#dcfce7,stroke:#16a34a
-    style S4 fill:#dcfce7,stroke:#16a34a
-```
-
-</div>
-</div>
 
 </div>
 
