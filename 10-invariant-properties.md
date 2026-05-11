@@ -132,13 +132,19 @@ $$ \Phi = \neg wait_0 \lor \neg wait_1 \lor \dots \lor \neg wait_4 $$
 
 <div class="bg-blue-50 border border-blue-200 rounded p-4 text-[14px]">
 
-**מידול כמערכת מעברים:**
-- מצב: $\langle b, w \rangle$
-- התחלתי: $\langle 2026, 2026 \rangle$
-- פעולות:
-  - `BB`: $\langle b,w \rangle \to \langle b-2, w+1 \rangle$
-  - `WW`: $\langle b,w \rangle \to \langle b, w-1 \rangle$
-  - `BW`: $\langle b,w \rangle \to \langle b, w-1 \rangle$
+**מידול ראשוני כמערכת מעברים:**
+- מצב: מילה $w \in \{B, W\}^*$
+- התחלתי: מילה עם 2026 'B' ו-2026 'W'
+- מעברים (תת-מחרוזות):
+  - $uBBv \to uWv$
+  - $uWWv \to uWv$
+  - $uBWv \to uBv$
+
+**מידול מופשט (ספירת כדורים):**
+מכיוון שסדר הכדורים אינו משנה, נעבור למצב $\langle b, w \rangle$:
+- `BB`: $\langle b,w \rangle \to \langle b-2, w+1 \rangle$
+- `WW`: $\langle b,w \rangle \to \langle b, w-1 \rangle$
+- `BW`: $\langle b,w \rangle \to \langle b, w-1 \rangle$
 
 </div>
 
