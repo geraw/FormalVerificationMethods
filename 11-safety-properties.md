@@ -151,15 +151,38 @@ $$ TS \models P_{safe} \iff Traces_{fin}(TS) \cap \operatorname{BadPref}(P_{safe
 
 <div class="bg-slate-50 border border-slate-200 rounded p-4 mt-6">
 <div class="font-bold mb-2">הגדרה: סגור של תכונה</div>
+
 הסגור של תכונה $P$ הוא קבוצת כל העקבות האינסופיות ש**כל הרישות שלהן** שייכים לקבוצת הרישות של $P$:
 $$ \operatorname{closure}(P) = \{ \sigma \in (2^{AP})^\omega \mid \operatorname{pref}(\sigma) \subseteq \operatorname{pref}(P) \} $$
 </div>
 
 <div class="bg-blue-50 border border-blue-200 rounded p-4 mt-6">
 <div class="font-bold mb-2">משפט: אפיון אלטרנטיבי לתכונות בטיחות</div>
+
 תכונת זמן לינארי $P$ היא תכונת בטיחות **אם ורק אם** היא שווה לסגור שלה: 
-$$ P = \operatorname{closure}(P) $$
+$P = \operatorname{closure}(P)$
 </div>
+
+</div>
+
+---
+
+# הוכחת משפט הסגור
+
+<div class="mt-8 text-right text-[15px]">
+
+**כיוון ראשון ($\implies$):** נניח ש-$P$ היא תכונת בטיחות. עלינו להראות ש-$P = \operatorname{closure}(P)$.
+- ההכלה $P \subseteq \operatorname{closure}(P)$ נובעת ישירות מההגדרה (כל רישא של $\sigma \in P$ שייך ל-$\operatorname{pref}(P)$).
+- עבור ההכלה השנייה: יהי $\sigma \in \operatorname{closure}(P)$. נניח בשלילה ש-$\sigma \notin P$. 
+- כיוון ש-$P$ תכונת בטיחות, קיים ל-$\sigma$ **רישא רעה** $\rho \prec \sigma$. 
+- מצד שני, כיוון ש-$\sigma \in \operatorname{closure}(P)$, כל הרישות שלו שייכים ל-$\operatorname{pref}(P)$, ולכן $\rho \in \operatorname{pref}(P)$. 
+- משמעות הדבר היא שקיים $\sigma' \in P$ כך ש-$\rho \prec \sigma'$, בסתירה לכך ש-$\rho$ היא רישא רעה. לכן $\sigma \in P$.
+
+**כיוון שני ($\impliedby$):** נניח ש-$P = \operatorname{closure}(P)$. נראה ש-$P$ תכונת בטיחות.
+- יהי $\sigma \notin P$. כיוון ש-$P = \operatorname{closure}(P)$, הרי ש-$\sigma \notin \operatorname{closure}(P)$.
+- לפי הגדרת הסגור, קיים ל-$\sigma$ רישא סופית $\rho \prec \sigma$ כך ש-$\rho \notin \operatorname{pref}(P)$.
+- המשמעות היא שלא קיימת אף מילה $\sigma'$ המקיימת $\rho \prec \sigma'$ ושייכת ל-$P$.
+- לכן $\rho$ היא **רישא רעה** עבור $\sigma$, ומכאן ש-$P$ היא תכונת בטיחות.
 
 </div>
 
