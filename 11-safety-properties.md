@@ -142,15 +142,15 @@ $$ TS \models P_{safe} \iff Traces_{fin}(TS) \cap \operatorname{BadPref}(P_{safe
 
 ---
 
-# סגר (Closure)
+# סגור (Closure)
 
 <div class="mt-8 text-right">
 
-דרך מתמטית אלגנטית נוספת לאפיין תכונות בטיחות היא דרך המושג "סגר" (Closure).
+דרך מתמטית אלגנטית נוספת לאפיין תכונות בטיחות היא דרך המושג "סגור" (Closure).
 עבור עקבה $\sigma$, נסמן ב-$\operatorname{pref}(\sigma)$ את קבוצת כל הרישות הסופיות שלה. באופן דומה עבור תכונה $P$, נסמן את אוסף הרישות שלה ב-$\operatorname{pref}(P)$.
 
 <div class="bg-slate-50 border border-slate-200 rounded p-4 mt-6">
-<div class="font-bold mb-2">הגדרה: סגר של תכונה</div>
+<div class="font-bold mb-2">הגדרה: סגור של תכונה</div>
 הסגור של תכונה $P$ הוא קבוצת כל העקבות האינסופיות ש**כל הרישות שלהן** שייכים לקבוצת הרישות של $P$:
 $$ \operatorname{closure}(P) = \{ \sigma \in (2^{AP})^\omega \mid \operatorname{pref}(\sigma) \subseteq \operatorname{pref}(P) \} $$
 </div>
@@ -196,7 +196,7 @@ $$ P = \operatorname{closure}(P) $$
 - מאופיינות על ידי האמירה "משהו רע לעולם לא יקרה".
 - אם תכונה הופרה, יש לכך עדות ב**זמן סופי** (רישא רעה).
 - שמורות הן מקרה פרטי של תכונות בטיחות (התלויות רק במצב בודד).
-- ניתן לאפיין תכונות בטיחות באמצעות מושג הסגר ($\operatorname{closure}$).
+- ניתן לאפיין תכונות בטיחות באמצעות מושג הסגור ($\operatorname{closure}$).
 </div>
 
 <div class="bg-blue-50 border border-blue-200 rounded p-6">
