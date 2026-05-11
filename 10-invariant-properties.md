@@ -54,13 +54,13 @@ info: |
 <div class="font-bold mb-2 text-lg">הגדרה</div>
 
 תהי $\Phi$ נוסחה בלוגיקה פסוקית מעל קבוצת הפסוקים האטומיים $AP$.
-תכונת זמן לינארי $P_{inv}(\Phi)$ נקראת **שמורה** אם:
-$$P_{inv}(\Phi) = \left\{ \sigma \in (2^{AP})^\omega \;\middle|\; (\forall j \ge 0) (\sigma[j] \models \Phi) \right\}$$
+תכונת זמן לינארי $P_{inv(\Phi)}$ נקראת **שמורה** אם:
+$$P_{inv(\Phi)} = \left\{ \sigma \in (2^{AP})^\omega \;\middle|\; (\forall j \ge 0) (\sigma[j] \models \Phi) \right\}$$
 
 הנוסחה $\Phi$ נקראת **תנאי השמורה** (Invariant Condition).
 </div>
 
-לכן, מערכת מקיימת שמורה ($TS \models P_{inv}(\Phi)$) אם ורק אם התנאי $\Phi$ מתקיים ב**כל המצבים הנגישים** במערכת:
+לכן, מערכת מקיימת שמורה ($TS \models P_{inv(\Phi)}$) אם ורק אם התנאי $\Phi$ מתקיים ב**כל המצבים הנגישים** במערכת:
 $$ (\forall s \in \operatorname{Reach}(TS)) (L(s) \models \Phi) $$
 
 </div>
