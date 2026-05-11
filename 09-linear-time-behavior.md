@@ -558,7 +558,7 @@ $$
 
 ---
 
-# הכלת עקבות ותכונות זמן לינארי
+# משפט: הכלת עקבות ותכונות זמן לינארי
 
 <div class="mt-8 text-center">
 
@@ -636,7 +636,7 @@ $\exists \sigma \in \operatorname{Traces}(TS) \; \bigl( \exists j \in \mathbb{N}
 
 <div class="grid grid-cols-2 gap-6 mt-4 text-right text-[12px]">
 <div class="bg-green-50 border border-green-200 rounded p-4">
-<div class="font-bold mb-2">מערכת גדולה: המאפיין מתקיים</div>
+<div class="font-bold mb-2">מערכת עם יותר עקבות: המאפיין מתקיים</div>
 
 <div class="-mt-7 -mb-7" dir="ltr">
 
@@ -661,7 +661,7 @@ $\exists \sigma \in \operatorname{Traces}(TS) \; \bigl( \exists j \in \mathbb{N}
 </div>
 
 <div class="bg-red-50 border border-red-200 rounded p-4">
-<div class="font-bold mb-2">מערכת קטנה: המאפיין נכשל</div>
+<div class="font-bold mb-2">מערכת עם פחות עקבות: המאפיין נכשל</div>
 
 <div class="-mt-7 -mb-7" dir="ltr">
 
@@ -693,8 +693,41 @@ $$
 
 <div class="mt-4 bg-amber-50 border border-amber-200 rounded p-4 text-right text-[13px]">
 
-אם המאפיין היה תכונת זמן לינארי, הוא היה נשמר במעבר מהמערכת הגדולה למערכת הקטנה. הוא לא נשמר, ולכן אינו תכונת זמן לינארי.
+אם המאפיין היה תכונת זמן לינארי, הוא היה נשמר במעבר ממערכת עם יותר עקבות למערכת עם פחות עקבות. הוא לא נשמר, ולכן אינו תכונת זמן לינארי.
 
+</div>
+
+---
+
+# משפט: שקילות עקבות
+
+<div class="mt-8 text-center">
+
+$$
+\operatorname{Traces}(TS)=\operatorname{Traces}(TS')
+$$
+
+אם ורק אם
+
+$TS$
+ו-$TS'$
+מקיימות את אותן תכונות זמן לינארי
+
+
+</div>
+
+<div class="grid grid-cols-2 gap-6 mt-8 text-right">
+<div class="bg-slate-50 border border-slate-200 rounded p-4">
+<div class="font-bold mb-2">מסקנה</div>
+
+אין תכונת זמן לינארי שיכולה להבדיל בין מערכות שקולות־עקבות.
+</div>
+
+<div class="bg-blue-50 border border-blue-200 rounded p-4">
+<div class="font-bold mb-2">דוגמה</div>
+
+שתי מכונות שתייה עם מבנה פנימי שונה יכולות להיות שקולות מבחינת כל התכונות הלינאריות.
+</div>
 </div>
 
 ---
@@ -772,38 +805,6 @@ $$
 
 </div>
 
----
-
-# שקילות עקבות
-
-<div class="mt-8 text-center">
-
-$$
-\operatorname{Traces}(TS)=\operatorname{Traces}(TS')
-$$
-
-אם ורק אם
-
-$TS$
-ו-$TS'$
-מקיימות את אותן תכונות זמן לינארי
-
-
-</div>
-
-<div class="grid grid-cols-2 gap-6 mt-8 text-right">
-<div class="bg-slate-50 border border-slate-200 rounded p-4">
-<div class="font-bold mb-2">מסקנה</div>
-
-אין תכונת זמן לינארי שיכולה להבדיל בין מערכות שקולות־עקבות.
-</div>
-
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
-<div class="font-bold mb-2">דוגמה</div>
-
-שתי מכונות שתייה עם מבנה פנימי שונה יכולות להיות שקולות מבחינת כל התכונות הלינאריות.
-</div>
-</div>
 
 ---
 
