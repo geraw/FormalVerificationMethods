@@ -810,7 +810,7 @@ $$
 
 # מה לקחת מכאן?
 
-<div class="grid grid-cols-2 gap-6 mt-8 text-right">
+<div class="grid grid-cols-[1fr_1fr_0.8fr] gap-4 mt-8 text-right items-stretch">
 <div class="bg-slate-50 border border-slate-200 rounded p-4">
 <div class="font-bold mb-3">שפת העבודה החדשה</div>
 
@@ -825,6 +825,10 @@ $$
 - הכלת עקבות שומרת תכונות זמן לינארי.
 - שוויון עקבות אומר שקילות בכל תכונת זמן לינארי.
 - לא כל מאפיין של מערכת הוא תכונה לינארית.
+</div>
+
+<div class="flex items-center justify-center">
+<img src="/summary_illustration.png" class="rounded shadow border border-slate-200 object-cover" />
 </div>
 </div>
 
