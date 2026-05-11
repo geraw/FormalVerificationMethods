@@ -58,7 +58,7 @@ info: |
 תכונת בטיחות כללית מוגדרת על ידי העובדה ש**כל הפרה שלה ניתן לזהות על ידי רצף סופי**.
 
 <div class="bg-blue-50 border border-blue-200 rounded p-6 mt-6">
-<div class="font-bold text-lg mb-2 underline">הגדרה 3.22: תכונת בטיחות ורישא רע</div>
+<div class="font-bold text-lg mb-2 underline">הגדרה: תכונת בטיחות ורישא רע</div>
 
 תכונת זמן לינארי $P_{safe}$ מעל $AP$ נקראת **תכונת בטיחות** (Safety Property) אם לכל מילה אינסופית $\sigma \in (2^{AP})^\omega \setminus P_{safe}$ שמפרה את התכונה, קיים **רישא סופי** (prefix) $\hat{\sigma} \prec \sigma$ כך ש:
 $$ P_{safe} \cap \{ \sigma' \in (2^{AP})^\omega \mid \hat{\sigma} \prec \sigma' \} = \emptyset $$
@@ -90,14 +90,14 @@ $$ P_{safe} \cap \{ \sigma' \in (2^{AP})^\omega \mid \hat{\sigma} \prec \sigma' 
 
 ---
 
-# דוגמה 3.23: רמזור (סדר מופעים)
+# דוגמה: רמזור (סדר מופעים)
 
 <div class="mt-8 text-right">
 
-נניח שקבוצת הפרופוזיציות היא $AP = \{red, yellow, green\}$.
+נניח שקבוצת הפסוקים האטומיים היא $AP = \{red, yellow, green\}$.
 נדרוש את התכונה הבאה: **"מופע של אור אדום חייב לבוא מיד אחרי מופע של אור צהוב"**.
 
-התכונה הפורמלית: אוסף כל העקבות $\sigma = A_0 A_1 \dots$ כך שאם $red \in A_i$, אזי בהכרח $i > 0$ וגם $yellow \in A_{i-1}$.
+התכונה הפורמלית: אוסף כל העקבות $\sigma$ כך שאם $red \in \sigma[i]$, אזי בהכרח $i > 0$ וגם $yellow \in \sigma[i-1]$.
 
 ### דוגמאות לרישות רעים מינימליים (Minimal Bad Prefixes):
 1. **$\emptyset \{red\}$**: הרמזור התחיל כבוי (או לא מוגדר) ועבר לאדום.
@@ -119,7 +119,7 @@ $$ P_{safe} \cap \{ \sigma' \in (2^{AP})^\omega \mid \hat{\sigma} \prec \sigma' 
 כיצד בודקים האם מערכת תלוית-מצב מקיימת תכונת בטיחות כללית? הקישור נעשה באמצעות קבוצת העקבות ה**סופיות** של המערכת.
 
 <div class="bg-green-50 border border-green-200 rounded p-6 mt-6">
-<div class="font-bold text-lg mb-2 underline">למה 3.25 (Satisfaction Relation)</div>
+<div class="font-bold text-lg mb-2 underline">למה (Satisfaction Relation)</div>
 
 עבור מערכת תלוית-מצב $TS$ ללא מצבי קצה סופיים, ותכונת בטיחות $P_{safe}$:
 $$ TS \models P_{safe} \iff Traces_{fin}(TS) \cap \operatorname{BadPref}(P_{safe}) = \emptyset $$
@@ -143,13 +143,13 @@ $$ TS \models P_{safe} \iff Traces_{fin}(TS) \cap \operatorname{BadPref}(P_{safe
 עבור עקבה $\sigma$, נסמן ב-$\operatorname{pref}(\sigma)$ את קבוצת כל הרישות הסופיים שלה. באופן דומה עבור תכונה $P$, נסמן את אוסף הרישות שלה ב-$\operatorname{pref}(P)$.
 
 <div class="bg-slate-50 border border-slate-200 rounded p-4 mt-6">
-<div class="font-bold mb-2">הגדרה 3.26: סגור של תכונה</div>
+<div class="font-bold mb-2">הגדרה: סגור של תכונה</div>
 הסגור של תכונה $P$ הוא קבוצת כל העקבות האינסופיות ש**כל הרישות שלהן** שייכים לקבוצת הרישות של $P$:
 $$ \operatorname{closure}(P) = \{ \sigma \in (2^{AP})^\omega \mid \operatorname{pref}(\sigma) \subseteq \operatorname{pref}(P) \} $$
 </div>
 
 <div class="bg-blue-50 border border-blue-200 rounded p-4 mt-6">
-<div class="font-bold mb-2">למה 3.27: אפיון אלטרנטיבי לתכונות בטיחות</div>
+<div class="font-bold mb-2">משפט: אפיון אלטרנטיבי לתכונות בטיחות</div>
 תכונת זמן לינארי $P$ היא תכונת בטיחות **אם ורק אם** היא שווה לסגור שלה: 
 $$ P = \operatorname{closure}(P) $$
 </div>
@@ -167,9 +167,9 @@ $$ P = \operatorname{closure}(P) $$
 ראינו קודם ש**הכלת עקבות אינסופיות** שומרת על *כל* תכונות הזמן הלינארי. תכונות בטיחות דורשות פחות מזה:
 
 <div class="bg-slate-50 border border-slate-200 rounded p-6 mt-6">
-<div class="font-bold text-lg mb-2 underline">משפט 3.28: בטיחות והכלת עקבות סופיות</div>
+<div class="font-bold text-lg mb-2 underline">משפט: בטיחות והכלת עקבות סופיות</div>
 
-יהיו $TS$ ו-$TS'$ שתי מערכות ללא מצבי סיום, מעל אותה קבוצת פרופוזיציות $AP$. התנאים הבאים שקולים:
+יהיו $TS$ ו-$TS'$ שתי מערכות ללא מצבי סיום, מעל אותה קבוצת פסוקים אטומיים $AP$. התנאים הבאים שקולים:
 1. $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
 2. לכל תכונת בטיחות $P_{safe}$: אם $TS' \models P_{safe}$ אזי $TS \models P_{safe}$
 </div>

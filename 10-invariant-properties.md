@@ -51,17 +51,17 @@ info: |
 כדי להגדיר שמורה באופן פורמלי בתור תכונת זמן לינארי (קבוצה של עקבות), נשתמש בלוגיקה פסוקית (Propositional Logic).
 
 <div class="bg-slate-50 border border-slate-200 rounded p-4 mt-6">
-<div class="font-bold mb-2 text-lg">הגדרה 3.20 (Baier & Katoen)</div>
+<div class="font-bold mb-2 text-lg">הגדרה</div>
 
-תהי $\Phi$ נוסחה בלוגיקה פסוקית מעל קבוצת הפרופוזיציות האטומיות $AP$.
-תכונת זמן לינארי $P_{inv}$ נקראת **שמורה** אם:
-$$P_{inv} = \left\{ A_0 A_1 A_2 \dots \in (2^{AP})^\omega \;\middle|\; \forall j \ge 0. A_j \models \Phi \right\}$$
+תהי $\Phi$ נוסחה בלוגיקה פסוקית מעל קבוצת הפסוקים האטומיים $AP$.
+תכונת זמן לינארי $P_{inv}(\Phi)$ נקראת **שמורה** אם:
+$$P_{inv}(\Phi) = \left\{ \sigma \in (2^{AP})^\omega \;\middle|\; (\forall j \ge 0) (\sigma[j] \models \Phi) \right\}$$
 
 הנוסחה $\Phi$ נקראת **תנאי השמורה** (Invariant Condition).
 </div>
 
-לכן, מערכת מקיימת שמורה ($TS \models P_{inv}$) אם ורק אם התנאי $\Phi$ מתקיים ב**כל המצבים הנגישים** במערכת:
-$$ \forall s \in \operatorname{Reach}(TS). L(s) \models \Phi $$
+לכן, מערכת מקיימת שמורה ($TS \models P_{inv}(\Phi)$) אם ורק אם התנאי $\Phi$ מתקיים ב**כל המצבים הנגישים** במערכת:
+$$ (\forall s \in \operatorname{Reach}(TS)) (L(s) \models \Phi) $$
 
 </div>
 
@@ -139,7 +139,7 @@ graph TD
 $$ s_0 \to s_1 \to s_2 \to \dots \to s_n $$
 כך ש:
 1. $s_0 \in I$ (מצב התחלתי)
-2. לכל $0 \le i < n$ מתקיים $L(s_i) \models \Phi$
+2. $(\forall 0 \le i < n) (L(s_i) \models \Phi)$
 3. $L(s_n) \not\models \Phi$ (במצב האחרון השמורה מופרת)
 
 <div class="bg-amber-50 border border-amber-200 rounded p-4 mt-4">
@@ -158,7 +158,7 @@ $$ s_0 \to s_1 \to s_2 \to \dots \to s_n $$
 מהי העלות החישובית של וידוא שמורות?
 
 <div class="bg-green-50 border border-green-200 rounded p-6 mt-6">
-<div class="font-bold text-lg mb-2 underline">משפט 3.21 (סיבוכיות זמן)</div>
+<div class="font-bold text-lg mb-2 underline">משפט (סיבוכיות זמן)</div>
 
 סיבוכיות הזמן של אלגוריתם בדיקת שמורות מבוסס DFS היא:
 $$ O\bigl( N \cdot (1 + |\Phi|) + M \bigr) $$
