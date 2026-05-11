@@ -69,20 +69,30 @@ $$ (\forall s \in \operatorname{Reach}(TS)) (L(s) \models \Phi) $$
 
 # פירוש של נוסחה על מצב יחיד
 
-<div class="mt-8 text-right">
+<div class="text-right">
 
 כדי לקבוע אם מצב מקיים שמורה המוגדרת על ידי התנאי $\Phi$, אנו בודקים האם המצב הבודד $s$ מקיים את $\Phi$. 
 הפירוש מסתמך על פונקציית התיוג $L(s)$, אשר מחזירה את קבוצת הפסוקים האטומיים שמתקיימים במצב $s$.
 
 <div class="bg-blue-50 border border-blue-200 rounded p-6 mt-6">
-<div class="font-bold text-lg mb-4">יחס הסיפוק $s \models \Phi$ מוגדר בצורה רקורסיבית (אינדוקציה מבנית):</div>
+<div class="font-bold text-lg mb-4">
+
+יחס הסיפוק $s \models \Phi$ מוגדר בצורה רקורסיבית (אינדוקציה מבנית):
+</div>
 
 - **פסוק אטומי:** $s \models a \iff a \in L(s)$
+
 - **שלילה (Not):** $s \models \neg \Phi \iff s \not\models \Phi$
 - **וגם (And):** $s \models \Phi_1 \land \Phi_2 \iff s \models \Phi_1 \text{ וגם } s \models \Phi_2$
 - **או (Or):** $s \models \Phi_1 \lor \Phi_2 \iff s \models \Phi_1 \text{ או } s \models \Phi_2$
 
 </div>
+
+</div>
+
+<div class="bg-red-50 border border-red-200 rounded p-1">
+
+אינטואיציה: פסוק אטומי מקבל ערך אמת אם ורק אם הוא ב-$L(s)$, וקשרים מפורשים כפי שלמדנו בקורסים קודמים
 
 </div>
 
@@ -101,6 +111,64 @@ $$ \Phi = \neg crit_1 \lor \neg crit_2 $$
 לפילוסופים הסועדים, קיפאון מתרחש כאשר כולם מחכים למקל השני (נמצאים במצב $wait$). 
 תנאי השמורה לחסינות מקיפאון יבטיח שלפחות פילוסוף אחד *לא* ממתין:
 $$ \Phi = \neg wait_0 \lor \neg wait_1 \lor \dots \lor \neg wait_4 $$
+
+</div>
+
+---
+
+# דוגמה: חידת הכדורים
+
+<div class="grid grid-cols-[1fr_.5fr] gap-8 mt-4 text-right">
+
+<div>
+
+- בשק יש 2026 כדורים שחורים ו-2026 כדורים לבנים.
+- בכל צעד מוציאים שני כדורים:
+  - אם הם בצבעים שונים מחזירים כדור שחור.
+  - אם שניהם באותו הצבע מחזירים כדור לבן.
+- **השאלה:** מה צבע הכדור האחרון?
+
+</div>
+
+<div class="bg-blue-50 border border-blue-200 rounded p-4 text-[14px]">
+
+**מידול כמערכת מעברים:**
+- מצב: $\langle b, w \rangle$
+- התחלתי: $\langle 2026, 2026 \rangle$
+- פעולות:
+  - `BB`: $\langle b,w \rangle \to \langle b-2, w+1 \rangle$
+  - `WW`: $\langle b,w \rangle \to \langle b, w-1 \rangle$
+  - `BW`: $\langle b,w \rangle \to \langle b, w-1 \rangle$
+
+</div>
+
+</div>
+
+---
+
+# פתרון דרך שמורות
+
+<div class="mt-8 text-right">
+
+נחפש תכונה שנשמרת (Invariant) לאורך כל צעדי המערכת.
+
+<div class="bg-amber-50 border border-amber-200 rounded p-6 mt-6">
+<div class="font-bold text-lg mb-4">תצפית על מספר הכדורים השחורים ($b$):</div>
+
+- בכל אחד מהמעברים (`BB`, `WW`, `BW`), מספר הכדורים השחורים או שנשאר ללא שינוי, או שקטן ב-2.
+- **מסקנה:** הזוגיות (Parity) של מספר הכדורים השחורים היא **שמורה**!
+
+</div>
+
+<div class="mt-6">
+
+- התחלנו עם 2026 כדורים שחורים (מספר זוגי).
+- לכן, בכל מצב נגיש $\langle b, w \rangle \in Reach(TS)$, מספר הכדורים השחורים $b$ חייב להיות זוגי.
+- בסוף התהליך נשאר כדור אחד (או $\langle 1, 0 \rangle$ או $\langle 0, 1 \rangle$).
+- כיוון ש-1 הוא אי-זוגי, המצב $\langle 1, 0 \rangle$ אינו נגיש.
+- **מסקנה סופית:** הכדור האחרון חייב להיות לבן.
+
+</div>
 
 </div>
 
