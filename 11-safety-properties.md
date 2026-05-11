@@ -51,38 +51,38 @@ info: |
 
 ---
 
-# תכונות בטיחות ורישות רעים
+# תכונות בטיחות ורישות רעות
 
 <div class="mt-8 text-right">
 
 תכונת בטיחות כללית מוגדרת על ידי העובדה ש**כל הפרה שלה ניתן לזהות על ידי רצף סופי**.
 
 <div class="bg-blue-50 border border-blue-200 rounded p-6 mt-6">
-<div class="font-bold text-lg mb-2 underline">הגדרה: תכונת בטיחות ורישא רע</div>
+<div class="font-bold text-lg mb-2 underline">הגדרה: תכונת בטיחות ורישא רעה</div>
 
-תכונת זמן לינארי $P_{safe}$ מעל $AP$ נקראת **תכונת בטיחות** (Safety Property) אם לכל מילה אינסופית $\sigma \in (2^{AP})^\omega \setminus P_{safe}$ שמפרה את התכונה, קיים **רישא סופי** (prefix) $\hat{\sigma} \prec \sigma$ כך ש:
-$$ P_{safe} \cap \{ \sigma' \in (2^{AP})^\omega \mid \hat{\sigma} \prec \sigma' \} = \emptyset $$
+תכונת זמן לינארי $P_{safe}$ מעל $AP$ נקראת **תכונת בטיחות** (Safety Property) אם לכל מילה אינסופית $\sigma \in (2^{AP})^\omega \setminus P_{safe}$ שמפרה את התכונה, קיימת **רישא סופית** (prefix) $\rho \prec \sigma$ כך ש:
+$$ P_{safe} \cap \{ \sigma' \in (2^{AP})^\omega \mid \rho \prec \sigma' \} = \emptyset $$
 </div>
 
-- רישא סופי כזה $\hat{\sigma}$ נקרא **רישא רע** (Bad Prefix). ברגע שהוא מתרחש, לא משנה מה יקרה בעתיד, העקבה כולה לעולם לא תקיים את התכונה.
-- אוסף כל הרישות הרעים של תכונה מסומן ב-**$\operatorname{BadPref}(P_{safe})$**.
+- רישא סופית כזו $\rho$ נקראת **רישא רעה** (Bad Prefix). ברגע שהיא מתרחשת, לא משנה מה יקרה בעתיד, העקבה כולה לעולם לא תקיים את התכונה.
+- אוסף כל הרישות הרעות של תכונה מסומן ב-**$\operatorname{BadPref}(P_{safe})$**.
 
 <div class="mt-4 text-sm font-bold text-blue-700">
-כל שמורה (Invariant) היא מקרה פרטי של תכונת בטיחות! הרישא הרע שלה מסתיים במצב שמפר את תנאי השמורה.
+כל שמורה (Invariant) היא מקרה פרטי של תכונת בטיחות! הרישא הרעה שלה מסתיימת במצב שמפר את תנאי השמורה.
 </div>
 
 </div>
 
 ---
 
-# המחשת הרישא הרע
+# המחשת הרישא הרעה
 
 <div class="flex flex-col items-center justify-center mt-10">
 
 <img src="/bad_prefix_concept.png" class="w-1/2 rounded-lg shadow-xl border border-slate-200" />
 
 <div class="mt-6 text-right w-2/3 text-[14px]">
-ברגע שהמסלול מבצע צעד "אסור" (הנקודה האדומה), התכונה מופרת באופן בלתי הפיך וזהו בעצם הרישא הרע ($\hat{\sigma}$). 
+ברגע שהמסלול מבצע צעד "אסור" (הנקודה האדומה), התכונה מופרת באופן בלתי הפיך וזוהי בעצם הרישא הרעה ($\rho$). 
 העתיד של המסלול (החלק המעומעם) כבר לא יכול "לתקן" את המצב.
 </div>
 
@@ -99,13 +99,13 @@ $$ P_{safe} \cap \{ \sigma' \in (2^{AP})^\omega \mid \hat{\sigma} \prec \sigma' 
 
 התכונה הפורמלית: אוסף כל העקבות $\sigma$ כך שאם $red \in \sigma[i]$, אזי בהכרח $i > 0$ וגם $yellow \in \sigma[i-1]$.
 
-### דוגמאות לרישות רעים מינימליים (Minimal Bad Prefixes):
+### דוגמאות לרישות רעות מינימליות (Minimal Bad Prefixes):
 1. **$\emptyset \{red\}$**: הרמזור התחיל כבוי (או לא מוגדר) ועבר לאדום.
 2. **$\{green\} \{red\}$**: הרמזור עבר מירוק ישר לאדום.
 
 <div class="mt-6 text-[15px]">
-רישות אלו הם "מינימליים" כיוון שאין להם רישא שהוא בעצמו רע. 
-לעומת זאת, $\dots \{yellow\} \{yellow\} \{red\} \{red\} \emptyset \{red\}$ אינו מינימלי כי חלק ממנו מפר את התכונה מוקדם יותר.
+רישות אלו הן "מינימליות" כיוון שאין להן רישא שהיא בעצמה רעה. 
+לעומת זאת, $\dots \{yellow\} \{yellow\} \{red\} \{red\} \emptyset \{red\}$ אינה מינימלית כי חלק ממנה מפר את התכונה מוקדם יותר.
 </div>
 
 </div>
@@ -127,8 +127,8 @@ $$ TS \models P_{safe} \iff Traces_{fin}(TS) \cap \operatorname{BadPref}(P_{safe
 
 **הוכחה (רעיון מרכזי):** 
 - אם המערכת מפרה את התכונה ($TS \not\models P_{safe}$), יש לה עקבה אינסופית $\sigma \notin P_{safe}$. 
-- לפי ההגדרה, ל-$\sigma$ יש רישא רע $\hat{\sigma}$. 
-- כיוון ש-$\hat{\sigma}$ הוא רישא של עקבה במערכת, הוא בהכרח עקבה סופית של המערכת, כלומר נמצא ב-$Traces_{fin}(TS)$. 
+- לפי ההגדרה, ל-$\sigma$ יש רישא רעה $\rho$. 
+- כיוון ש-$\rho$ היא רישא של עקבה במערכת, היא בהכרח עקבה סופית של המערכת, כלומר נמצאת ב-$Traces_{fin}(TS)$. 
 - לכן החיתוך אינו ריק. ההיקש ההפוך פועל באופן דומה.
 
 </div>
@@ -140,7 +140,7 @@ $$ TS \models P_{safe} \iff Traces_{fin}(TS) \cap \operatorname{BadPref}(P_{safe
 <div class="mt-8 text-right">
 
 דרך מתמטית אלגנטית נוספת לאפיין תכונות בטיחות היא דרך המושג "סגור" (Closure).
-עבור עקבה $\sigma$, נסמן ב-$\operatorname{pref}(\sigma)$ את קבוצת כל הרישות הסופיים שלה. באופן דומה עבור תכונה $P$, נסמן את אוסף הרישות שלה ב-$\operatorname{pref}(P)$.
+עבור עקבה $\sigma$, נסמן ב-$\operatorname{pref}(\sigma)$ את קבוצת כל הרישות הסופיות שלה. באופן דומה עבור תכונה $P$, נסמן את אוסף הרישות שלה ב-$\operatorname{pref}(P)$.
 
 <div class="bg-slate-50 border border-slate-200 rounded p-4 mt-6">
 <div class="font-bold mb-2">הגדרה: סגור של תכונה</div>
@@ -187,7 +187,7 @@ $$ P = \operatorname{closure}(P) $$
 <div class="font-bold mb-4 text-blue-700 text-lg">תכונות בטיחות</div>
 
 - מאופיינות על ידי האמירה "משהו רע לעולם לא יקרה".
-- אם תכונה הופרה, יש לכך עדות ב**זמן סופי** (רישא רע).
+- אם תכונה הופרה, יש לכך עדות ב**זמן סופי** (רישא רעה).
 - שמורות הן מקרה פרטי של תכונות בטיחות (התלויות רק במצב בודד).
 - ניתן לאפיין תכונות בטיחות באמצעות מושג הסגור ($\operatorname{closure}$).
 </div>
