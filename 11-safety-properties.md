@@ -12,23 +12,17 @@ htmlAttrs:
 drawings:
   enabled: true
 info: |
-  ## תכונות בטיחות (Safety Properties)
+  ## תכונות בטיחות
   הרצאה בקורס מבוא לאימות תוכנה בשיטות פורמליות
-  מבוסס על "Principles of Model Checking", סעיף 3.3.2.
 ---
 
 # תכונות בטיחות
-(Safety Properties)
 
-<div class="mt-12 text-xl">
-הרצאה 11: מחלקות של תכונות זמן לינארי
-</div>
+## הרצאה בקורס מבוא לאימות תוכנה בשיטות פורמליות
 
-<div class="mt-20 text-sm opacity-70">
-מבוסס על סעיפים 3.3.2 ו-3.3.3 בספר: <br>
-<b>Principles of Model Checking</b> <br>
-Christel Baier and Joost-Pieter Katoen
-</div>
+הפקולטה למדעי המחשב והמידע | אוניברסיטת בן-גוריון
+
+**גרא וייס**
 
 ---
 

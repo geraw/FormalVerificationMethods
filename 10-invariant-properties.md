@@ -12,23 +12,17 @@ htmlAttrs:
 drawings:
   enabled: true
 info: |
-  ## שמורות (Invariants)
+  ## תכונות שמורה
   הרצאה בקורס מבוא לאימות תוכנה בשיטות פורמליות
-  מבוסס על "Principles of Model Checking", סעיף 3.3.1.
 ---
 
-# שמורות
-(Invariant Properties)
+# תכונות שמורה
 
-<div class="mt-12 text-xl">
-הרצאה 10: מחלקות של תכונות זמן לינארי
-</div>
+## הרצאה בקורס מבוא לאימות תוכנה בשיטות פורמליות
 
-<div class="mt-20 text-sm opacity-70">
-מבוסס על פרק 3.3.1 בספר: <br>
-<b>Principles of Model Checking</b> <br>
-Christel Baier and Joost-Pieter Katoen
-</div>
+הפקולטה למדעי המחשב והמידע | אוניברסיטת בן-גוריון
+
+**גרא וייס**
 
 ---
 
