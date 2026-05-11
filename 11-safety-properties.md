@@ -97,13 +97,15 @@ $$ P_{safe} \cap \{ \sigma' \in (2^{AP})^\omega \mid \rho \prec \sigma' \} = \em
 נניח שקבוצת הפסוקים האטומיים היא $AP = \{red, yellow, green\}$.
 נדרוש את התכונה הבאה: **"מופע של אור אדום חייב לבוא מיד אחרי מופע של אור צהוב"**.
 
-התכונה הפורמלית: אוסף כל העקבות $\sigma$ כך שאם $red \in \sigma[i]$, אזי בהכרח $i > 0$ וגם $yellow \in \sigma[i-1]$.
+התכונה הפורמלית:
+$$ P_{traffic} = \{ \sigma \in (2^{AP})^\omega \mid \forall i \ge 0, (red \in \sigma[i] \implies i > 0 \land yellow \in \sigma[i-1]) \} $$
 
 ### דוגמאות לרישות רעות מינימליות (Minimal Bad Prefixes):
 1. **$\emptyset \{red\}$**: הרמזור התחיל כבוי (או לא מוגדר) ועבר לאדום.
 2. **$\{green\} \{red\}$**: הרמזור עבר מירוק ישר לאדום.
 
 <div class="mt-6 text-[15px]">
+
 רישות אלו הן "מינימליות" כיוון שאין להן רישא שהיא בעצמה רעה. 
 לעומת זאת, $\dots \{yellow\} \{yellow\} \{red\} \{red\} \emptyset \{red\}$ אינה מינימלית כי חלק ממנה מפר את התכונה מוקדם יותר.
 </div>
@@ -111,6 +113,9 @@ $$ P_{safe} \cap \{ \sigma' \in (2^{AP})^\omega \mid \rho \prec \sigma' \} = \em
 </div>
 
 ---
+---
+
+<div class="transform scale-90 origin-top-right">
 
 # סיפוק תכונות בטיחות (Satisfaction)
 
@@ -133,17 +138,19 @@ $$ TS \models P_{safe} \iff Traces_{fin}(TS) \cap \operatorname{BadPref}(P_{safe
 
 </div>
 
+</div>
+
 ---
 
-# סגירות (Closure)
+# סגר (Closure)
 
 <div class="mt-8 text-right">
 
-דרך מתמטית אלגנטית נוספת לאפיין תכונות בטיחות היא דרך המושג "סגור" (Closure).
+דרך מתמטית אלגנטית נוספת לאפיין תכונות בטיחות היא דרך המושג "סגר" (Closure).
 עבור עקבה $\sigma$, נסמן ב-$\operatorname{pref}(\sigma)$ את קבוצת כל הרישות הסופיות שלה. באופן דומה עבור תכונה $P$, נסמן את אוסף הרישות שלה ב-$\operatorname{pref}(P)$.
 
 <div class="bg-slate-50 border border-slate-200 rounded p-4 mt-6">
-<div class="font-bold mb-2">הגדרה: סגור של תכונה</div>
+<div class="font-bold mb-2">הגדרה: סגר של תכונה</div>
 הסגור של תכונה $P$ הוא קבוצת כל העקבות האינסופיות ש**כל הרישות שלהן** שייכים לקבוצת הרישות של $P$:
 $$ \operatorname{closure}(P) = \{ \sigma \in (2^{AP})^\omega \mid \operatorname{pref}(\sigma) \subseteq \operatorname{pref}(P) \} $$
 </div>
@@ -189,7 +196,7 @@ $$ P = \operatorname{closure}(P) $$
 - מאופיינות על ידי האמירה "משהו רע לעולם לא יקרה".
 - אם תכונה הופרה, יש לכך עדות ב**זמן סופי** (רישא רעה).
 - שמורות הן מקרה פרטי של תכונות בטיחות (התלויות רק במצב בודד).
-- ניתן לאפיין תכונות בטיחות באמצעות מושג הסגור ($\operatorname{closure}$).
+- ניתן לאפיין תכונות בטיחות באמצעות מושג הסגר ($\operatorname{closure}$).
 </div>
 
 <div class="bg-blue-50 border border-blue-200 rounded p-6">
