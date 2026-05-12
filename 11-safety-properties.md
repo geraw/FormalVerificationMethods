@@ -194,14 +194,16 @@ $\sigma'[..i] = \sigma[..i] \;\Rightarrow\; \sigma' \notin P$
 
 <div class="mt-10 text-left text-[22px] leading-[4.2]" dir="ltr">
 
-$P_1 = \{\sigma \in (2^{AP})^\omega : \forall i.\; \sigma[i] \models p \to (q \lor \neg r)\}$
+$P_1 = \{\sigma \in (2^{AP})^\omega \mid \forall i \geq 0 ( \sigma[i] \models p \to (q \lor \neg r))\}$
 <br/><br/>
 
-$P_2 = \{\sigma \in (2^{AP})^\omega : p \in \sigma[0] \to \forall i.\; p \in \sigma[i]\}$
+$P_2 = \{\sigma \in (2^{AP})^\omega \mid \forall i \geq 0(p \in \sigma[0] \to p \in \sigma[i])\}$
+<br/><br/>
 
-$P_3 = \{\sigma \in (2^{AP})^\omega : p \in \sigma[2i] \to p \in \sigma[i]\}$
+$P_3 = \{\sigma \in (2^{AP})^\omega \mid \forall i \geq 0(p \in \sigma[2i] \to p \in \sigma[i])\}$
+<br/><br/>
 
-$P_4 = \{\sigma \in (2^{AP})^\omega : \exists i \text{ such that } p \in \sigma[i]\}$
+$P_4 = \{\sigma \in (2^{AP})^\omega \mid \exists i \geq 0 (p \in \sigma[i])\}$
 
 </div>
 
@@ -288,6 +290,76 @@ $P = \{\sigma \in (2^{AP})^\omega \mid \exists i \geq 0 (p \in \sigma[i])\}$
 
 </div>
 
+<div class="relative mx-auto -mt-5 w-[82%] h-[125px] scale-60" dir="ltr">
+  <svg class="absolute inset-0 w-full h-full overflow-visible" viewBox="0 0 900 135" aria-hidden="true">
+    <defs>
+      <marker id="good-suffix-arrow" markerWidth="6" markerHeight="6" refX="5.5" refY="3" orient="auto">
+        <path d="M 0 0 L 6 3 L 0 6 z" fill="#2f6b08" />
+      </marker>
+      <marker id="bad-base-arrow" markerWidth="6" markerHeight="6" refX="5.5" refY="3" orient="auto">
+        <path d="M 0 0 L 6 3 L 0 6 z" fill="#9a3412" />
+      </marker>
+    </defs>
+    <path d="M 20 52 C 115 74, 220 72, 330 70 S 535 66, 655 72 S 790 46, 880 62"
+          fill="none" stroke="#9a3412" stroke-width="5" stroke-linecap="round" marker-end="url(#bad-base-arrow)" />
+    <circle cx="135" cy="64" r="7" fill="#2f6b08" />
+    <circle cx="225" cy="68" r="7" fill="#2f6b08" />
+    <circle cx="355" cy="69" r="7" fill="#2f6b08" />
+    <circle cx="585" cy="70" r="7" fill="#2f6b08" />
+    <circle cx="635" cy="70" r="7" fill="#2f6b08" />
+    <path d="M 135 64 C 210 120, 280 106, 360 110 S 510 180, 880 170"
+          fill="none" stroke="#2f6b08" stroke-width="5" stroke-linecap="round" marker-end="url(#good-suffix-arrow)" />
+    <path d="M 225 68 C 305 18, 390 45, 465 30 S 610 8, 880 -10"
+          fill="none" stroke="#2f6b08" stroke-width="5" stroke-linecap="round" marker-end="url(#good-suffix-arrow)" />
+    <path d="M 355 69 C 430 100, 500 90, 570 110 S 735 140, 880 140"
+          fill="none" stroke="#2f6b08" stroke-width="5" stroke-linecap="round" marker-end="url(#good-suffix-arrow)" />
+    <path d="M 585 70 C 650 100, 705 112, 790 104 S 845 98, 880 100"
+          fill="none" stroke="#2f6b08" stroke-width="5" stroke-linecap="round" marker-end="url(#good-suffix-arrow)" />
+    <path d="M 635 70 C 675 28, 725 42, 765 30 S 835 24, 880 28"
+          fill="none" stroke="#2f6b08" stroke-width="5" stroke-linecap="round" marker-end="url(#good-suffix-arrow)" />
+  </svg>
+  <div class="absolute left-[0%] top-[2%] text-[#5f1f1a] text-[22px] font-bold">
+
+  $\sigma \notin P$
+
+
+  </div>
+
+  <div class="absolute -left-[10%] top-[48%] text-[#5f1f1a] text-[22px] font-bold" dir="rtl">
+  מילה רעה<br/> בלי רישא רעה
+  </div>
+
+
+</div>
+
+---
+
+# היחס בין תכונות בטיחות ותכונות שמורה?
+
+<div class="mt-5 text-center text-[30px] leading-relaxed">
+משפט: כל <span class="text-blue-700 font-bold">תכונת שמורה</span> היא גם <span class="text-red-600 font-bold">תכונת בטיחות</span>
+</div>
+
+<div class="relative mx-auto mt-7 w-[78%] h-[300px]" dir="rtl">
+  <div class="absolute inset-x-0 bottom-2 mx-auto w-full h-[250px] rounded-[50%] bg-[#a45237] border-2 border-[#d98a73] shadow-lg"></div>
+  <div class="absolute left-[12%] right-[12%] bottom-[48px] h-[165px] rounded-[50%] bg-[#5aa0a7] border-2 border-[#b5e4e7] shadow-lg"></div>
+  <div class="absolute left-[28%] right-[28%] bottom-[83px] h-[82px] rounded-[50%] bg-[#9a8f93] border-2 border-[#d8cfd2] shadow-lg"></div>
+
+  <div class="absolute top-[42px] inset-x-0 text-white text-[24px] font-bold text-center">
+    תכונות זמן לינארי
+  </div>
+  <div class="absolute top-[100px] inset-x-0 text-white text-[24px] font-bold text-center">
+    תכונות בטיחות
+  </div>
+  <div class="absolute top-[160px] inset-x-0 text-white text-[23px] font-bold text-center">
+    תכונות שמורה
+  </div>
+</div>
+
+<div class="mt-1 text-center text-[30px]">
+הוכחה?
+</div>
+
 ---
 
 # דוגמה: רמזור (סדר מופעים)
@@ -321,12 +393,12 @@ $$ P_{traffic} = \{ \sigma \in (2^{AP})^\omega \mid \forall i \ge 0 (red \in \si
 
 <div class="mt-8 text-right">
 
-כיצד בודקים האם מערכת תלוית-מצב מקיימת תכונת בטיחות כללית? הקישור נעשה באמצעות קבוצת העקבות ה**סופיות** של המערכת.
+כיצד בודקים האם מערכת מעברים מקיימת תכונת בטיחות כללית? הקישור נעשה באמצעות קבוצת העקבות ה**סופיות** של המערכת.
 
 <div class="bg-green-50 border border-green-200 rounded p-6 mt-6">
 <div class="font-bold text-lg mb-2 underline">למה (Satisfaction Relation)</div>
 
-עבור מערכת תלוית-מצב $TS$ ללא מצבי קצה סופיים, ותכונת בטיחות $P_{safe}$:
+עבור מערכת מעברים $TS$ ללא מצבים סופניים, ותכונת בטיחות $P_{safe}$:
 $$ TS \models P_{safe} \iff Traces_{fin}(TS) \cap \operatorname{BadPref}(P_{safe}) = \emptyset $$
 </div>
 
@@ -399,12 +471,150 @@ $P = \operatorname{closure}(P)$
 <div class="bg-slate-50 border border-slate-200 rounded p-6 mt-6">
 <div class="font-bold text-lg mb-2 underline">משפט: בטיחות והכלת עקבות סופיות</div>
 
-יהיו $TS$ ו-$TS'$ שתי מערכות ללא מצבי סיום, מעל אותה קבוצת פסוקים אטומיים $AP$. התנאים הבאים שקולים:
+יהיו $TS$ ו-$TS'$ שתי מערכות מעברים ללא מצבים סופניים, מעל אותה קבוצת פסוקים אטומיים $AP$. התנאים הבאים שקולים:
 1. $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
 2. לכל תכונת בטיחות $P_{safe}$: אם $TS' \models P_{safe}$ אזי $TS \models P_{safe}$
 </div>
 
 המשמעות: כדי לשמר תכונות בטיחות, מספיק להראות שהמערכת המפורטת $TS$ לא יכולה לייצר אף עקבה **סופית** שלא הייתה אפשרית במערכת האבסטרקטית $TS'$.
+
+</div>
+
+---
+
+# תכונות בטיחות למכונת המשקאות
+
+<div class="mt-5 text-right text-[23px]">
+
+- דרישה טבעית:
+
+<div class="mx-auto my-4 w-[88%] bg-white shadow-md p-3 text-center text-red-600 text-[27px]">
+"מספר המטבעות שהוכנסו הוא לפחות מספר המשקאות שניתנו"
+</div>
+
+- לכל $i \ge 0$:
+
+<div class="mx-auto my-4 w-[82%] bg-white shadow-md p-3 text-center" dir="ltr">
+$|\{0 \le j \le i : drink \in A_j\}| \le |\{0 \le j \le i : pay \in A_j\}|$
+</div>
+
+- רישות רעות:
+
+<div class="mt-3 text-left text-[24px] leading-[2.2]" dir="ltr">
+$\emptyset\ \{pay\}\ \{drink\}\ \{drink\}$
+
+$\emptyset\ \{pay\}\ \{drink\}\ \emptyset\ \{pay\}\ \{drink\}\ \{drink\}$
+</div>
+
+</div>
+
+<div class="mt-4 text-right text-[22px]">
+- קל לבדוק שכל הגרסאות שהצגנו למכונות מכירת השתייה עומדות בדרישה.
+- זאת דוגמה ל<span class="text-blue-700 font-bold">תכונת בטיחות</span> שלא ניתן לבטא את הרישות הרעות שלה כשפה רגולרית.
+</div>
+
+---
+
+# הגדרה: תכונות בטיחות רגולריות
+
+<div class="mt-5 text-right text-[25px]">
+תכונה שקבוצת הרישות הרעות המינימליות שלה היא שפה רגולרית
+</div>
+
+<div class="mt-7 text-right text-[23px]">
+כל תכונת שמורה היא תכונת בטיחות רגולרית:
+</div>
+
+<div class="grid grid-cols-[0.9fr_1.5fr] gap-8 mt-6 items-center">
+
+<AutomatonD3 :width="260" :height="150"
+  :states="[
+    { id: 'ok', x: 90, y: 75, label: ' ', initial: true, r: 36 },
+    { id: 'bad', x: 198, y: 75, label: ' ', r: 36 }
+  ]"
+  :transitions="[
+    { source: 'ok', target: 'ok', label: '$\\varphi$', loopDirection: '-90deg', loopRadius: 56, labelY: 20 },
+    { source: 'ok', target: 'bad', label: '$\\neg\\varphi$', labelY: 50 }
+  ]"
+/>
+
+<div class="text-right text-[24px] leading-relaxed">
+אם $\varphi$ היא תנאי השמורה, האוטומט שקורא את הרישא עובר למצב כישלון ברגע הראשון שבו מתקיים $\neg\varphi$.
+</div>
+
+</div>
+
+<div class="relative mx-auto mt-5 w-[82%] h-[260px]" dir="rtl">
+  <div class="absolute inset-x-0 bottom-0 mx-auto w-full h-[230px] rounded-[50%] bg-red-300/60 border border-red-500 shadow-lg"></div>
+  <div class="absolute left-[9%] right-[9%] bottom-[35px] h-[165px] rounded-[50%] bg-red-300/55 border border-red-500 shadow-lg"></div>
+  <div class="absolute left-[14%] right-[14%] bottom-[58px] h-[125px] rounded-[50%] bg-red-300/65 border border-red-500 shadow-lg"></div>
+  <div class="absolute left-[28%] right-[28%] bottom-[80px] h-[72px] rounded-[50%] bg-red-100/80 border border-red-400 shadow-lg"></div>
+
+  <div class="absolute top-[22px] inset-x-0 text-[#6b2f1f] text-[22px] font-bold text-center">תכונות זמן לינארי</div>
+  <div class="absolute top-[95px] inset-x-0 text-[#6b2f1f] text-[22px] font-bold text-center">תכונות בטיחות</div>
+  <div class="absolute top-[135px] inset-x-0 text-[#6b2f1f] text-[21px] font-bold text-center">תכונות בטיחות רגולריות</div>
+  <div class="absolute top-[184px] inset-x-0 text-[#6b2f1f] text-[21px] font-bold text-center">תכונות שמורה</div>
+</div>
+
+---
+
+# תכונות חיות מול תכונות בטיחות
+
+<div class="mt-10 text-right text-[30px] leading-relaxed">
+
+- <span class="text-red-600 font-bold">תכונות בטיחות</span> מבטאות דרישה ש<span class="text-red-600 font-bold">"משהו רע לא יקרה"</span>.
+
+- אפשר לעמוד בדרישה אם לא עושים כלום:
+
+<div class="mx-auto my-4 w-[50%] bg-white shadow-md p-3 text-center text-[26px]">
+"כך, אף פעם לא נגיע למצב רע"
+</div>
+
+- לכן נוסיף גם <span class="text-blue-700 font-bold">תכונות חַיּוּת</span> כדי לדרוש שתהיה <span class="text-blue-700 font-bold">"התקדמות"</span>.
+
+- דרישות חיות אומרות:
+
+<div class="mx-auto mt-4 w-[74%] bg-white shadow-md p-3 text-center text-[27px]" dir="rtl">
+בסופו של דבר יקרה "משהו טוב" [Lamport 1977]
+</div>
+
+</div>
+
+---
+
+# המחשה
+
+<div class="grid grid-cols-2 gap-10 mt-8 text-center">
+
+<div>
+  <div class="h-[230px] bg-white border border-slate-200 flex items-center justify-center">
+    <div class="relative w-[78%] h-[150px]">
+      <div class="absolute left-[5%] top-[55%] w-[34%] h-[44%] bg-red-600 rounded border-2 border-red-800"></div>
+      <div class="absolute right-[5%] top-[18%] w-[56%] h-[72%] bg-stone-500 rounded border-4 border-stone-700"></div>
+      <div class="absolute left-[20%] top-[35%] right-[25%] h-2 bg-red-500"></div>
+    </div>
+  </div>
+  <div class="mt-5 text-blue-700 text-[28px]">תכונות בטיחות</div>
+  <div class="mt-8 text-[27px]">"משהו רע לא יקרה"</div>
+  <div class="mt-6 text-red-600 text-[29px] leading-snug">לא ניתן לתקן את<br/>הדבר הרע</div>
+</div>
+
+<div>
+  <div class="h-[230px] bg-white border border-slate-200 flex items-center justify-center">
+    <div class="relative w-[86%] h-[170px] bg-slate-100">
+      <div class="absolute inset-0 grid grid-cols-4 grid-rows-3 gap-2 p-2">
+        <div class="bg-slate-400"></div><div class="bg-slate-300"></div><div class="bg-slate-400"></div><div class="bg-slate-300"></div>
+        <div class="bg-slate-300"></div><div class="bg-slate-400"></div><div class="bg-slate-300"></div><div class="bg-slate-400"></div>
+        <div class="bg-slate-400"></div><div class="bg-slate-300"></div><div class="bg-slate-400"></div><div class="bg-slate-300"></div>
+      </div>
+      <div class="absolute left-[8%] top-[35%] w-[28%] h-[18%] bg-blue-700"></div>
+      <div class="absolute right-[10%] top-[42%] w-[34%] h-[16%] bg-orange-500"></div>
+    </div>
+  </div>
+  <div class="mt-5 text-blue-700 text-[28px]">תכונות חַיּוּת</div>
+  <div class="mt-8 text-[27px]">"משהו טוב יקרה"</div>
+  <div class="mt-6 text-red-600 text-[29px] leading-snug">תמיד יכול להיות<br/>שהדבר הטוב יקרה</div>
+</div>
 
 </div>
 
