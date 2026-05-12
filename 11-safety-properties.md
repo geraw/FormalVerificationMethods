@@ -272,7 +272,7 @@ $P = \{\sigma \in (2^{AP})^\omega :  \forall i \geq 0 ((p \in \sigma[2i]) \to (p
 
 <div class="mt-3 text-center" dir="ltr">
 
-$P = \{\sigma \in (2^{AP})^\omega : \exists i \text{ such that } p \in \sigma[i]\}$
+$P = \{\sigma \in (2^{AP})^\omega \mid \exists i \geq 0 (p \in \sigma[i])\}$
 </div>
 
 <div class="mt-5">
