@@ -698,6 +698,160 @@ const traceExTransitions = [
 
 ---
 
+# משפט: עקבות סופיים מול אינסופיים
+
+<div class="mt-8 text-right text-[18px] leading-relaxed">
+
+עבור $TS$ **ללא מצבים סופניים** ו-$TS'$ בעלת מספר **סופי** של מצבים:
+
+<div class="flex justify-center my-10" v-click>
+<div class="bg-blue-50 border border-blue-300 rounded-lg p-6 shadow-sm text-center text-[22px] w-3/4">
+
+$Traces(TS) \subseteq Traces(TS')$<br>
+<div class="my-3 font-bold text-blue-700 text-[18px]">אם ורק אם</div>
+
+$Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
+</div>
+</div>
+
+<div v-click class="bg-amber-50 border border-amber-300 rounded p-0 -mt-6 shadow-sm text-[17px]">
+<div class="font-bold mb-2 text-amber-800">🤔 הוכיחו או הפריכו:</div>
+
+קיימת תכונת זמן לינארי שמערכת $TS'$ מקיימת ומערכת $TS$ לא מקיימת, אם ורק אם קיימת תכונת בטיחות שמערכת $TS'$ מקיימת ומערכת $TS$ לא מקיימת.
+</div>
+
+</div>
+
+---
+
+# הוכחת המשפט
+
+<div class="mt-6 text-right leading-relaxed text-[17px]">
+
+<div class="font-bold text-blue-700 text-lg mb-2">
+
+כיוון ראשון ($\implies$):
+</div>
+
+אם $Traces(TS) \subseteq Traces(TS')$ אזי $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
+
+<ul class="list-disc list-inside mb-8 mt-2">
+  <li>תרגיל קל (נובע ישירות מהגדרת רישות של עקבה).</li>
+</ul>
+
+<div v-click>
+<div class="font-bold text-blue-700 text-lg mb-2">
+
+כיוון שני ($\impliedby$):
+</div>
+
+נניח $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$ ונוכיח $Traces(TS) \subseteq Traces(TS')$.
+</div>
+
+<v-clicks>
+
+- תהי $\sigma \in Traces(TS)$. עלינו למצוא מסלול $s_0 s_1 \dots$ של $TS'$ שאלו עקבותיו.
+- ע"פ ההנחה: לכל $m$ קיים מסלול $\pi_m$ של $TS'$ כך ש- $trace(\pi_m) = \sigma[..m]$.
+- למרות ש-$\sigma[..m]$ היא רֵישָׁא של $\sigma[..m+1]$, **לא ברור** ש-$\pi_m$ הוא רֵישָׁא של $\pi_{m+1}$.
+- בזכות **הסופיות** של $TS'$, קיימת תת-סדרה $\pi_{s_1}, \pi_{s_2}, \dots$ של $\pi_1, \pi_2, \dots$ כך ש-$\pi_{s_i}$ ו-$\pi_{s_{i+1}}$ **מסכימות על $i$ האינדקסים הראשונים**.
+- ניקח את המסלול שבו המצב במקום ה-$i$ הוא המצב ה-$i$ של $\pi_{s_i}$. (ראו דוגמה נגדית בשקף הקודם למערכת ללא סופיות!)
+
+</v-clicks>
+
+</div>
+
+---
+
+# המחשה גרפית: בניית המסלול ב- $TS'$
+
+
+<div class="mt-4 flex justify-center w-full" dir="ltr">
+  <table class="text-center border-collapse text-[16px] w-full max-w-4xl bg-white shadow-sm rounded">
+    <thead>
+      <tr class="border-b-2 border-slate-300 font-bold bg-slate-50">
+        <th class="p-2 w-32 border-r border-slate-200 text-right" dir="rtl">ריצה של <i class="font-serif">TS</i> &rarr;</th>
+        <th class="p-2 w-16"><i class="font-serif">q</i><sub>1</sub></th>
+        <th class="p-2 w-16"><i class="font-serif">q</i><sub>2</sub></th>
+        <th class="p-2 w-16"><i class="font-serif">q</i><sub>3</sub></th>
+        <th class="p-2 w-16"><i class="font-serif">q</i><sub>4</sub></th>
+        <th class="p-2 w-16"><i class="font-serif">q</i><sub>5</sub></th>
+        <th class="p-2">&hellip;</th>
+      </tr>
+      <tr class="border-b-4 border-slate-400 font-bold bg-blue-50 text-blue-800">
+        <th class="p-2 border-r border-slate-200 text-right" dir="rtl">תיוגים &rarr;</th>
+        <th class="p-2"><i class="font-serif">L</i>(<i class="font-serif">q</i><sub>1</sub>)</th>
+        <th class="p-2"><i class="font-serif">L</i>(<i class="font-serif">q</i><sub>2</sub>)</th>
+        <th class="p-2"><i class="font-serif">L</i>(<i class="font-serif">q</i><sub>3</sub>)</th>
+        <th class="p-2"><i class="font-serif">L</i>(<i class="font-serif">q</i><sub>4</sub>)</th>
+        <th class="p-2"><i class="font-serif">L</i>(<i class="font-serif">q</i><sub>5</sub>)</th>
+        <th class="p-2">&hellip;</th>
+      </tr>
+    </thead>
+    <tbody class="font-mono text-[14px]">
+      <tr class="border-b border-slate-100 transition-opacity duration-500" :class="{ 'opacity-20': $slidev.nav.clicks >= 1 }">
+        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">ריצה לרישא 1:</td>
+        <td class="p-2 bg-red-100 text-red-800"><i class="font-serif">q</i><sub>1,1</sub></td>
+        <td class="p-2"></td><td class="p-2"></td><td class="p-2"></td><td class="p-2"></td><td class="p-2"></td>
+      </tr>
+      <tr class="border-b border-slate-100 transition-opacity duration-500" :class="{ 'opacity-20': $slidev.nav.clicks >= 2 }">
+        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">ריצה לרישא 2:</td>
+        <td class="p-2 bg-green-100 text-green-900 border-2" :class="$slidev.nav.clicks >= 1 ? 'border-green-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>2,1</sub></td>
+        <td class="p-2 bg-yellow-100 text-yellow-800"><i class="font-serif">q</i><sub>2,2</sub></td>
+        <td class="p-2"></td><td class="p-2"></td><td class="p-2"></td><td class="p-2"></td>
+      </tr>
+      <tr class="border-b border-slate-100 transition-opacity duration-500" :class="{ 'opacity-20': $slidev.nav.clicks >= 1 }">
+        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">ריצה לרישא 3:</td>
+        <td class="p-2 bg-red-100 text-red-800"><i class="font-serif">q</i><sub>3,1</sub></td>
+        <td class="p-2 bg-slate-100"><i class="font-serif">q</i><sub>3,2</sub></td>
+        <td class="p-2 bg-slate-100"><i class="font-serif">q</i><sub>3,3</sub></td>
+        <td class="p-2"></td><td class="p-2"></td><td class="p-2"></td>
+      </tr>
+      <tr class="border-b border-slate-100 transition-opacity duration-500">
+        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">ריצה לרישא 4:</td>
+        <td class="p-2 bg-green-100 text-green-900 border-2" :class="$slidev.nav.clicks >= 1 ? 'border-green-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>4,1</sub></td>
+        <td class="p-2 bg-purple-100 text-purple-900 border-2" :class="$slidev.nav.clicks >= 2 ? 'border-purple-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>4,2</sub></td>
+        <td class="p-2 bg-slate-100"><i class="font-serif">q</i><sub>4,3</sub></td>
+        <td class="p-2 bg-slate-100"><i class="font-serif">q</i><sub>4,4</sub></td>
+        <td class="p-2"></td><td class="p-2"></td>
+      </tr>
+      <tr class="border-b border-slate-100 transition-opacity duration-500" :class="{ 'opacity-20': $slidev.nav.clicks >= 2 }">
+        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">ריצה לרישא 5:</td>
+        <td class="p-2 bg-green-100 text-green-900 border-2" :class="$slidev.nav.clicks >= 1 ? 'border-green-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>5,1</sub></td>
+        <td class="p-2 bg-yellow-100 text-yellow-800"><i class="font-serif">q</i><sub>5,2</sub></td>
+        <td class="p-2 bg-slate-100"><i class="font-serif">q</i><sub>5,3</sub></td>
+        <td class="p-2 bg-slate-100"><i class="font-serif">q</i><sub>5,4</sub></td>
+        <td class="p-2 bg-slate-100"><i class="font-serif">q</i><sub>5,5</sub></td>
+        <td class="p-2"></td>
+      </tr>
+      <tr class="border-b border-slate-100 transition-opacity duration-500">
+        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">ריצה לרישא 6:</td>
+        <td class="p-2 bg-green-100 text-green-900 border-2" :class="$slidev.nav.clicks >= 1 ? 'border-green-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>6,1</sub></td>
+        <td class="p-2 bg-purple-100 text-purple-900 border-2" :class="$slidev.nav.clicks >= 2 ? 'border-purple-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>6,2</sub></td>
+        <td class="p-2 bg-blue-100 text-blue-900 border-2" :class="$slidev.nav.clicks >= 3 ? 'border-blue-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>6,3</sub></td>
+        <td class="p-2 bg-slate-100"><i class="font-serif">q</i><sub>6,4</sub></td>
+        <td class="p-2 bg-slate-100"><i class="font-serif">q</i><sub>6,5</sub></td>
+        <td class="p-2 font-bold">&hellip;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="mt-6 text-right text-[16px] font-bold text-slate-700 bg-slate-50 p-4 rounded-lg border border-slate-200 min-h-[90px] shadow-sm flex items-center justify-center transition-all duration-500">
+  <div v-if="$slidev.nav.clicks === 0">שלב 0: נתונות כל הריצות ב-$TS'$ שיוצרות רישות סופיות של התיוגים.</div>
+  <div v-else-if="$slidev.nav.clicks === 1" class="text-green-700">שלב 1: ע"פ שובך היונים ($TS'$ סופית), קיים מצב בעמודה 1 החוזר אינסוף פעמים. נשמור רק את השורות האלו!</div>
+  <div v-else-if="$slidev.nav.clicks === 2" class="text-purple-700">שלב 2: מתוך השורות שנותרו, מצב כלשהו חייב לחזור אינסוף פעמים גם בעמודה 2. נסנן שוב!</div>
+  <div v-else class="text-blue-700">שלב 3: וכך הלאה... באלכסון המודגש נבנית ריצה אינסופית חוקית ב-$TS'$ שתיוגיה הם בדיוק תיוגי $\sigma$!</div>
+</div>
+
+<v-clicks>
+  <div class="hidden">Click 1</div>
+  <div class="hidden">Click 2</div>
+  <div class="hidden">Click 3</div>
+</v-clicks>
+
+
+---
+
 # סגור (Closure)
 
 
