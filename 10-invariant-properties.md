@@ -55,15 +55,16 @@ info: |
 
 תהי $\Phi$ נוסחה בלוגיקה פסוקית מעל קבוצת הפסוקים האטומיים $AP$.
 תכונת זמן לינארי $P_{inv(\Phi)}$ נקראת **שמורה** אם:
-$$P_{inv(\Phi)} = \left\{ \sigma \in (2^{AP})^\omega \;\middle|\; (\forall j \ge 0) (\sigma[j] \models \Phi) \right\}$$
+$$P_{inv(\Phi)} = \left\{ \sigma \in (2^{AP})^\omega \;\middle|\; \forall j \ge 0 (\sigma[j] \models \Phi) \right\}$$
 
 הנוסחה $\Phi$ נקראת **תנאי השמורה** (Invariant Condition).
 </div>
 
 לכן, מערכת מקיימת שמורה ($TS \models P_{inv(\Phi)}$) אם ורק אם התנאי $\Phi$ מתקיים ב**כל המצבים הנגישים** במערכת:
-$$ (\forall s \in \operatorname{Reach}(TS)) (L(s) \models \Phi) $$
+$$ \forall s \in \operatorname{Reach}(TS) (L(s) \models \Phi) $$
 
 </div>
+
 
 ---
 
@@ -116,6 +117,64 @@ $$ \Phi = \neg wait_0 \lor \neg wait_1 \lor \dots \lor \neg wait_4 $$
 
 ---
 
+# איך מוכיחים שתכונה נתונה אינה תכונת שמורה?
+
+<div class="text-right">
+
+נבחן את התכונה הבאה מעל $AP = \{p, q\}$: **"כל המצבים במסלול חייבים להיות זהים למצב ההתחלתי"**.
+פורמלית: $P = \{ \sigma \in (2^{AP})^\omega \mid \forall i \ge 0 (\sigma[i] = \sigma[0]) \}$.
+
+<div class="bg-amber-50 border border-amber-200 rounded">
+
+**הוכחה בשלילה:**
+נניח בשלילה שקיימת נוסחה $\Phi$ המגדירה את $P$ כשמורה, כלומר $P = \{ \sigma \mid \forall i \ge 0 (\sigma[i] \models \Phi) \}$.
+
+1. נסתכל על העקבה $\sigma = \{p\} \{p\} \{p\} \dots$. ברור ש-$\sigma \in P$ כיוון שכל המצבים זהים לראשון.
+   לפי הנחת השלילה, כל המצבים ב-$\sigma$ מקיימים את $\Phi$, ובפרט המצב הראשון: **$\{p\} \models \Phi$**.
+
+2. נסתכל על העקבה $\sigma' = \{q\} \{q\} \{q\} \dots$. גם כאן $\sigma' \in P$.
+   לפי הנחת השלילה, כל המצבים ב-$\sigma'$ מקיימים את $\Phi$, ובפרט המצב הראשון: **$\{q\} \models \Phi$**.
+3. כעת, נבנה עקבה חדשה $\tau = \{p\} \{q\} \{q\} \{q\} \dots$.
+   ראינו ש-$\{p\} \models \Phi$ וגם $\{q\} \models \Phi$, ולכן **כל מצב ב-$\tau$ מקיים את $\Phi$**.
+   לפי הנחת השלילה $P = Inv(\Phi)$, נובע ש-$\tau \in P$.
+4. **סתירה:** לפי הגדרת $P$, כל המצבים ב-$\tau$ חייבים להיות זהים ל-$\tau[0]$.
+   אך במקרה שלנו $\tau[1] = \{q\} \neq \{p\} = \tau[0]$.
+
+**מסקנה:** לא קיימת נוסחה $\Phi$ המגדירה את $P$. התכונה $P$ תלויה ב*קשר* בין מצבים (היסטוריה) ולא רק בכל מצב בנפרד.
+</div>
+
+</div>
+
+---
+
+# איך מוכיחים שתכונה היא תכונת שמורה?
+
+<div class="text-right">
+
+נבחן את התכונה הבאה: **"הפסוק $p$ מתקיים במצב ההתחלתי, ואם הוא מתקיים בזמן מסוים הוא יתקיים גם בזמן הבא"**.
+פורמלית: $P = \{ \sigma \in (2^{AP})^\omega \mid p \in \sigma[0] \land \forall i \ge 0 (p \in \sigma[i] \implies p \in \sigma[i+1]) \}$.
+
+<div class="bg-green-50 border border-green-200 rounded p-4 mt-4">
+
+נראה ש-$P = \{ \sigma \mid \forall i \ge 0 (p \in \sigma[i]) \}$.
+
+**הוכחה (באינדוקציה על $i$):**
+תהי $\sigma \in P$. נראה ש-$p \in \sigma[i]$ לכל $i \ge 0$:
+1. **בסיס ($i=0$):** לפי הגדרת $P$, מתקיים $p \in \sigma[0]$.
+
+2. **צעד האינדוקציה:** נניח ש-$p \in \sigma[i]$. לפי הגדרת $P$, מתקיים $p \in \sigma[i] \implies p \in \sigma[i+1]$.
+   לכן, מהנחת האינדוקציה נובע ש-$p \in \sigma[i+1]$.
+
+מכאן ש-$\forall i \ge 0 (p \in \sigma[i])$.
+הכיוון ההפוך (אם $\forall i \ge 0 (p \in \sigma[i])$ אז $\sigma \in P$) הוא מיידי.
+
+**מסקנה:** התכונה $P$ היא שמורה המוגדרת על ידי התנאי $\Phi = p$.
+</div>
+
+</div>
+
+---
+
 # דוגמה: חידת הכדורים
 
 <div class="grid grid-cols-[1fr_.8fr] gap-8 mt-4 text-right items-center">
@@ -134,9 +193,9 @@ $$ \Phi = \neg wait_0 \lor \neg wait_1 \lor \dots \lor \neg wait_4 $$
 - מצב: מילה $w \in \{B, W\}^*$
 - התחלתי: מילה עם 2026 'B' ו-2026 'W'
 - מעברים (בחירה מכל מקום, החזרה לראש):
-  - $u B v B w \to W u v w$
-  - $u W v W w \to W u v w$
-  - $u B v W w \to B u v w$
+  - $\{ u B v B w \to W u v w \mid u,v,w \in \{B,W\}^*\}$
+  - $\{ u W v W w \to W u v w \mid u,v,w \in\{B,W\}^*\}$
+  - $\{ u B v W w \to B u v w \mid u,v,w \in \{B,W\}^*\}$
 
 </div>
 
@@ -264,7 +323,7 @@ Algorithm CheckInvariant(TS, Φ)
 $$ s_0 \to s_1 \to s_2 \to \dots \to s_n $$
 כך ש:
 1. $s_0 \in I$ (מצב התחלתי)
-2. $(\forall 0 \le i < n) (L(s_i) \models \Phi)$
+2. $\forall 0 \le i < n (L(s_i) \models \Phi)$
 3. $L(s_n) \not\models \Phi$ (במצב האחרון השמורה מופרת)
 
 <div class="bg-amber-50 border border-amber-200 rounded p-4 mt-4">

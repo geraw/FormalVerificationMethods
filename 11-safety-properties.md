@@ -100,7 +100,7 @@ $$ P_{safe} \cap \{ \sigma' \in (2^{AP})^\omega \mid \rho \prec \sigma' \} = \em
 נדרוש את התכונה הבאה: **"מופע של אור אדום חייב לבוא מיד אחרי מופע של אור צהוב"**.
 
 התכונה הפורמלית:
-$$ P_{traffic} = \{ \sigma \in (2^{AP})^\omega \mid \forall i \ge 0, (red \in \sigma[i] \implies i > 0 \land yellow \in \sigma[i-1]) \} $$
+$$ P_{traffic} = \{ \sigma \in (2^{AP})^\omega \mid \forall i \ge 0 (red \in \sigma[i] \implies i > 0 \land yellow \in \sigma[i-1]) \} $$
 
 ### דוגמאות לרישות רעות מינימליות (Minimal Bad Prefixes):
 1. **$\emptyset \{red\}$**: הרמזור התחיל כבוי (או לא מוגדר) ועבר לאדום.
