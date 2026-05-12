@@ -606,24 +606,35 @@ $$ TS \models P_{safe} \iff Traces_{fin}(TS) \cap \operatorname{BadPref}(P_{safe
 
 <script setup>
 const traceExStates = [
-  { id: 'ts_label', x: 120, y: 50, text: 'TS', color: 'transparent', stroke: 'none', textFontSize: 24 },
-  { id: 'ts_s', x: 120, y: 240, label: '{}', color: '#fee2e2', stroke: '#dc2626', rx: 0, width: 50 },
-  { id: 'ts_text', x: 120, y: 400, text: 'עקבה אינסופית: {}^ω', color: 'transparent', stroke: 'none', textFontSize: 18 },
-  { id: 'tsp_label', x: 500, y: 50, text: 'TS-prime', color: 'transparent', stroke: 'none', textFontSize: 24 },
-  { id: 'tsp_init', x: 380, y: 240, initial: true, initialDirection: 'top', color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
-  { id: 'b1',   text: ' ', x: 750, y: 60, label: '{b}', rx: 0, width: 50 },
-  { id: 'e2_1', text: ' ', x: 565, y: 150, label: '{}', rx: 0, width: 50 },
-  { id: 'b2',   text: ' ', x: 750, y: 150, label: '{b}', rx: 0, width: 50 },
-  { id: 'e3_1', text: ' ', x: 505, y: 240, label: '{}', rx: 0, width: 50 },
-  { id: 'e3_2', text: ' ', x: 625, y: 240, label: '{}', rx: 0, width: 50 },
-  { id: 'b3',   text: ' ', x: 750, y: 240, label: '{b}', rx: 0, width: 50 },
-  { id: 'e4_1', text: ' ', x: 475, y: 330, label: '{}', rx: 0, width: 50 },
-  { id: 'e4_2', text: ' ', x: 565, y: 330, label: '{}', rx: 0, width: 50 },
-  { id: 'e4_3', text: ' ', x: 655, y: 330, label: '{}', rx: 0, width: 50 },
-  { id: 'b4',   text: ' ', x: 750, y: 330, label: '{b}', rx: 0, width: 50 },
-  { id: 'dots', x: 380, y: 420, text: '...', color: 'transparent', stroke: 'none', textFontSize: 30 }
-];
+  // TS (Left)
+  { id: 'ts_label', x: 100, y: 5, text: 'TS', color: 'transparent', stroke: 'none', textFontSize: 24 },
+  { id: 'ts_s', text: ' ', x: 100, y: 145, label: '{}', labelFontSize: 20, color: '#fee2e2', stroke: '#dc2626', rx: 0, width: 50, initial: true, initialDirection: 'left' },
 
+  // TS' (Right)
+  { id: 'tsp_label', x: 550, y: 5, text: 'TS\'', color: 'transparent', stroke: 'none', textFontSize: 24 },
+  { id: 'tsp_init', text: ' ', x: 550, y: 145, initial: true, initialDirection: 'left', color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
+  
+  // Branch 1
+  { id: 'b1', text: ' ', x: 670, y: 40, label: '{b}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
+  
+  // Branch 2
+  { id: 'e2_1', text: ' ', x: 670, y: 110, label: '{}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
+  { id: 'b2', text: ' ', x: 770, y: 110, label: '{b}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
+  
+  // Branch 3
+  { id: 'e3_1', text: ' ', x: 670, y: 180, label: '{}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
+  { id: 'e3_2', text: ' ', x: 770, y: 180, label: '{}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
+  { id: 'b3', text: ' ', x: 870, y: 180, label: '{b}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
+
+  // Branch 4
+  { id: 'e4_1', text: ' ', x: 670, y: 250, label: '{}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
+  { id: 'e4_2', text: ' ', x: 770, y: 250, label: '{}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
+  { id: 'e4_3', text: ' ', x: 870, y: 250, label: '{}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
+  { id: 'b4', text: ' ', x: 970, y: 250, label: '{b}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
+
+  // Dots
+  { id: 'dots', x: 670, y: 320, text: '$\\vdots$', color: 'transparent', stroke: 'none', textFontSize: 26 }
+];
 
 const traceExTransitions = [
   { source: 'ts_s', target: 'ts_s', loopDirection: '-90deg', loopRadius: 70, loopSpread: 0.15 },
@@ -637,59 +648,51 @@ const traceExTransitions = [
   { source: 'e4_1', target: 'e4_2' },
   { source: 'e4_2', target: 'e4_3' },
   { source: 'e4_3', target: 'b4' },
+  { source: 'tsp_init', target: 'dots' },
   { source: 'b1', target: 'b1', loopDirection: '0deg', loopRadius: 70, loopSpread: 0.15 },
   { source: 'b2', target: 'b2', loopDirection: '0deg', loopRadius: 70, loopSpread: 0.15 },
   { source: 'b3', target: 'b3', loopDirection: '0deg', loopRadius: 70, loopSpread: 0.15 },
   { source: 'b4', target: 'b4', loopDirection: '0deg', loopRadius: 70, loopSpread: 0.15 }
 ];
-
-
 </script>
 
 # דוגמה: הכלת עקבות $\neq$ הכלת עקבות סופיים
 
-<div class="mt-8 grid grid-cols-[1fr_1.5fr] gap-10 items-center">
-
-<div class="text-right text-[22px] leading-relaxed">
+<div class="text-right leading-relaxed text-[15px] mt-2">
 
 נשים לב שהתנאי להכלת תכונות בטיחות הוא **הכלת עקבות סופיות**, וזהו תנאי חלש יותר מהכלת עקבות אינסופיות.
-
-<div class="mt-6 bg-blue-50 border border-blue-200 rounded p-4 text-[18px]">
-
-- המערכת $TS$ מייצרת את העקבה האינסופית $\emptyset^\omega$.
-- המערכת $TS'$ **לא** מייצרת את $\emptyset^\omega$ (בכל מסלול מגיעים בסוף ל-$b$).
-- לכן: $Traces(TS) \not\subseteq Traces(TS')$.
 </div>
 
-<div class="mt-4 bg-green-50 border border-green-200 rounded p-4 text-[18px]">
+<div class="grid grid-cols-2 gap-4 mt-3">
+<div class="bg-blue-50 border border-blue-200 rounded p-3 text-[14px]">
+    
+<div class="font-bold mb-1 text-blue-800">הכלת עקבות אינסופיות:</div>
 
-- אבל כל רֵישָׁא סופית של $\emptyset^\omega$ היא מהצורה $\emptyset^n$.
+- המערכת $TS$ מייצרת את $\emptyset^\omega$.
+- המערכת $TS'$ **לא** מייצרת את $\emptyset^\omega$.
+- לכן: $Traces(TS) \not\subseteq Traces(TS')$.
+
+</div>
+
+<div class="bg-green-50 border border-green-200 rounded p-3 text-[14px]">
+    
+<div class="font-bold mb-1 text-green-800">הכלת עקבות סופיות:</div>
+
+- כל רֵישָׁא סופית של $\emptyset^\omega$ היא $\emptyset^n$.
 - לכל $n$, קיימת עקבה ב-$TS'$ שמתחילה ב-$\emptyset^n$.
 - לכן: $Traces_{fin}(TS) \subset Traces_{fin}(TS')$.
-</div>
 
 </div>
+</div>
 
-<div class="flex flex-col items-center">
-  <div class="relative bg-white border border-slate-200 rounded-xl shadow-lg p-4" dir="ltr">
-    <TransitionSystemD3 :width="850" :height="480" :auto="false" 
+<div class="flex justify-center mt-1 h-[270px] w-full">
+  <div class="relative bg-white border border-slate-200 rounded-xl shadow-lg p-2" dir="ltr" style="transform: scale(0.68); transform-origin: top center; width: 1100px; height: 390px;">
+    <TransitionSystemD3 :width="1100" :height="380" :auto="false" 
       :states="traceExStates" 
-      :transitions="traceExTransitions" />
-
-
+      :transitions="traceExTransitions" 
+    />
     
-    <div class="absolute bottom-[5%] left-[10%] flex gap-12 font-bold text-[24px]">
-      <div class="bg-white/80 px-4 py-2 border rounded shadow-sm text-red-600">
-        $Traces(TS) \not\subseteq Traces(TS')$
-      </div>
-      <div class="bg-white/80 px-4 py-2 border rounded shadow-sm text-blue-700">
-        $Traces_{fin}(TS) \subset Traces_{fin}(TS')$
-      </div>
-    </div>
-  </div>
 </div>
-
-
 </div>
 
 

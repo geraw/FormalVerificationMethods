@@ -669,7 +669,7 @@ const render = () => {
         .style("align-items", "center")
         .style("width", "100%")
         .style("height", "100%")
-        .style("font-size", "12px")
+        .style("font-size", (d: any) => d.labelFontSize ? `${d.labelFontSize}px` : "12px")
         .style("color", "#555")
         .html((d: any) => d.label ? renderMath(d.label) : "");
 
