@@ -715,7 +715,7 @@ $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
 </div>
 
 <div v-click class="bg-amber-50 border border-amber-300 rounded p-0 -mt-6 shadow-sm text-[17px]">
-<div class="font-bold mb-2 text-amber-800">🤔 הוכיחו או הפריכו:</div>
+<div class="font-bold -mb-2 text-amber-800">💡 הוכיחו או הפריכו:</div>
 
 קיימת תכונת זמן לינארי שמערכת $TS'$ מקיימת ומערכת $TS$ לא מקיימת, אם ורק אם קיימת תכונת בטיחות שמערכת $TS'$ מקיימת ומערכת $TS$ לא מקיימת.
 </div>
@@ -769,7 +769,7 @@ $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
   <table class="text-center border-collapse text-[16px] w-full max-w-4xl bg-white shadow-sm rounded">
     <thead>
       <tr class="border-b-2 border-slate-300 font-bold bg-slate-50">
-        <th class="p-2 w-32 border-r border-slate-200 text-right" dir="rtl">ריצה של <i class="font-serif">TS</i> &rarr;</th>
+        <th class="p-2 w-32 border-r border-slate-200 text-right" dir="rtl">&rarr; ריצה של <i class="font-serif">TS</i></th>
         <th class="p-2 w-16"><i class="font-serif">q</i><sub>1</sub></th>
         <th class="p-2 w-16"><i class="font-serif">q</i><sub>2</sub></th>
         <th class="p-2 w-16"><i class="font-serif">q</i><sub>3</sub></th>
@@ -778,7 +778,7 @@ $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
         <th class="p-2">&hellip;</th>
       </tr>
       <tr class="border-b-4 border-slate-400 font-bold bg-blue-50 text-blue-800">
-        <th class="p-2 border-r border-slate-200 text-right" dir="rtl">תיוגים &rarr;</th>
+        <th class="p-2 border-r border-slate-200 text-right" dir="rtl">&rarr; תיוגים</th>
         <th class="p-2"><i class="font-serif">L</i>(<i class="font-serif">q</i><sub>1</sub>)</th>
         <th class="p-2"><i class="font-serif">L</i>(<i class="font-serif">q</i><sub>2</sub>)</th>
         <th class="p-2"><i class="font-serif">L</i>(<i class="font-serif">q</i><sub>3</sub>)</th>
@@ -789,25 +789,25 @@ $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
     </thead>
     <tbody class="font-mono text-[14px]">
       <tr class="border-b border-slate-100 transition-opacity duration-500" :class="{ 'opacity-20': $slidev.nav.clicks >= 1 }">
-        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">ריצה לרישא 1:</td>
+        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">&rarr; ריצה לרישא 1</td>
         <td class="p-2 bg-red-100 text-red-800"><i class="font-serif">q</i><sub>1,1</sub></td>
         <td class="p-2"></td><td class="p-2"></td><td class="p-2"></td><td class="p-2"></td><td class="p-2"></td>
       </tr>
       <tr class="border-b border-slate-100 transition-opacity duration-500" :class="{ 'opacity-20': $slidev.nav.clicks >= 2 }">
-        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">ריצה לרישא 2:</td>
+        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">&rarr; ריצה לרישא 2</td>
         <td class="p-2 bg-green-100 text-green-900 border-2" :class="$slidev.nav.clicks >= 1 ? 'border-green-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>2,1</sub></td>
         <td class="p-2 bg-yellow-100 text-yellow-800"><i class="font-serif">q</i><sub>2,2</sub></td>
         <td class="p-2"></td><td class="p-2"></td><td class="p-2"></td><td class="p-2"></td>
       </tr>
       <tr class="border-b border-slate-100 transition-opacity duration-500" :class="{ 'opacity-20': $slidev.nav.clicks >= 1 }">
-        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">ריצה לרישא 3:</td>
+        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">&rarr; ריצה לרישא 3</td>
         <td class="p-2 bg-red-100 text-red-800"><i class="font-serif">q</i><sub>3,1</sub></td>
         <td class="p-2 bg-slate-100"><i class="font-serif">q</i><sub>3,2</sub></td>
         <td class="p-2 bg-slate-100"><i class="font-serif">q</i><sub>3,3</sub></td>
         <td class="p-2"></td><td class="p-2"></td><td class="p-2"></td>
       </tr>
       <tr class="border-b border-slate-100 transition-opacity duration-500">
-        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">ריצה לרישא 4:</td>
+        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">&rarr; ריצה לרישא 4</td>
         <td class="p-2 bg-green-100 text-green-900 border-2" :class="$slidev.nav.clicks >= 1 ? 'border-green-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>4,1</sub></td>
         <td class="p-2 bg-purple-100 text-purple-900 border-2" :class="$slidev.nav.clicks >= 2 ? 'border-purple-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>4,2</sub></td>
         <td class="p-2 bg-slate-100"><i class="font-serif">q</i><sub>4,3</sub></td>
@@ -815,7 +815,7 @@ $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
         <td class="p-2"></td><td class="p-2"></td>
       </tr>
       <tr class="border-b border-slate-100 transition-opacity duration-500" :class="{ 'opacity-20': $slidev.nav.clicks >= 2 }">
-        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">ריצה לרישא 5:</td>
+        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">&rarr; ריצה לרישא 5</td>
         <td class="p-2 bg-green-100 text-green-900 border-2" :class="$slidev.nav.clicks >= 1 ? 'border-green-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>5,1</sub></td>
         <td class="p-2 bg-yellow-100 text-yellow-800"><i class="font-serif">q</i><sub>5,2</sub></td>
         <td class="p-2 bg-slate-100"><i class="font-serif">q</i><sub>5,3</sub></td>
@@ -824,7 +824,7 @@ $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
         <td class="p-2"></td>
       </tr>
       <tr class="border-b border-slate-100 transition-opacity duration-500">
-        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">ריצה לרישא 6:</td>
+        <td class="p-2 border-r border-slate-200 font-sans text-right bg-slate-50" dir="rtl">&rarr; ריצה לרישא 6</td>
         <td class="p-2 bg-green-100 text-green-900 border-2" :class="$slidev.nav.clicks >= 1 ? 'border-green-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>6,1</sub></td>
         <td class="p-2 bg-purple-100 text-purple-900 border-2" :class="$slidev.nav.clicks >= 2 ? 'border-purple-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>6,2</sub></td>
         <td class="p-2 bg-blue-100 text-blue-900 border-2" :class="$slidev.nav.clicks >= 3 ? 'border-blue-500 font-bold' : 'border-transparent'"><i class="font-serif">q</i><sub>6,3</sub></td>
@@ -903,19 +903,21 @@ $P = \operatorname{closure}(P)$
 
 <div class="grid grid-cols-2 gap-8 mt-10 text-right">
 <div class="bg-slate-50 border border-slate-200 rounded p-6">
-<div class="font-bold mb-4 text-blue-700 text-lg">תכונות בטיחות</div>
+<div class="font-bold mb-4 text-blue-700 text-lg">מהות הבטיחות (Safety)</div>
 
-- מאופיינות על ידי האמירה "משהו רע לעולם לא יקרה".
-- אם תכונה הופרה, יש לכך עדות ב**זמן סופי** (רֵישָׁא רעה).
-- שמורות הן מקרה פרטי של תכונות בטיחות (התלויות רק במצב בודד).
-- ניתן לאפיין תכונות בטיחות באמצעות מושג הסגור ($\operatorname{closure}$).
+- **אינטואיציה:** "משהו רע לעולם לא יקרה". הפרה מזוהה ב**זמן סופי** ע"י **רֵישָׁא רעה**.
+- **אפיון מתמטי:** $P$ היא תכונת בטיחות אם ורק אם $P = \operatorname{closure}(P)$.
+- **סוגים:** 
+  - **רגולריות:** ניתן לזהות רֵישָׁא רעה ע"י אוטומט סופי (למשל: רמזור).
+  - **לא רגולריות:** דורשות זיכרון אינסופי (למשל: מכונת משקאות).
 </div>
 
 <div class="bg-blue-50 border border-blue-200 rounded p-6">
-<div class="font-bold mb-4 text-blue-700 text-lg">שקילות והכלה</div>
+<div class="font-bold mb-4 text-blue-700 text-lg">אימות ושימור</div>
 
-- סיפוק תכונת בטיחות תלוי רק ב**עקבות הסופיות** של המערכת.
-- אם מערכת $TS$ מכילה את העקבות הסופיות של מערכת $TS'$ (הכלה), היא "יורשת" ממנה את כל תכונות הבטיחות.
-- בהרצאה הבאה: **תכונות חַיּוּת** (Liveness), שמבטיחות ש"משהו טוב יקרה בסופו של דבר".
+- **סיפוק התכונה:** $TS \models P_{safe}$ אם ורק אם אף עקבה סופית של המערכת אינה רֵישָׁא רעה.
+- **שימור בעידון:** הכלת עקבות סופיות ($Traces_{fin} \subseteq Traces'_{fin}$) מספיקה כדי לשמר את כל תכונות הבטיחות.
+- **סופיות המערכת:** במערכות סופיות, הכלת עקבות סופיות שקולה להכלת עקבות אינסופיות.
+- **המשך:** בהרצאה הבאה נכיר תכונות **חַיּוּת** (Liveness).
 </div>
 </div>
