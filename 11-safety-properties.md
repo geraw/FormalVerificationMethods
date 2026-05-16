@@ -852,25 +852,25 @@ $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
 
 ---
 
-# סגור (Closure)
+# סְגוֹר (Closure)
 
 
 <div class="mt-8 text-right">
 
-דרך מתמטית אלגנטית נוספת לאפיין תכונות בטיחות היא דרך המושג "סגור" (Closure).
+דרך מתמטית אלגנטית נוספת לאפיין תכונות בטיחות היא דרך המושג "סְגוֹר" (Closure).
 עבור עקבה $\sigma$, נסמן ב-$\operatorname{pref}(\sigma)$ את קבוצת כל הרישות הסופיות שלה. באופן דומה עבור תכונה $P$, נסמן את אוסף הרישות שלה ב-$\operatorname{pref}(P)$.
 
 <div class="bg-slate-50 border border-slate-200 rounded p-4 mt-6">
-<div class="font-bold mb-2">הגדרה: סגור של תכונה</div>
+<div class="font-bold mb-2">הגדרה: סְגוֹר של תכונה</div>
 
-הסגור של תכונה $P$ הוא קבוצת כל העקבות האינסופיות ש**כל הרישות שלהן** שייכים לקבוצת הרישות של $P$:
+הַסְּגוֹר של תכונה $P$ הוא קבוצת כל העקבות האינסופיות ש**כל הרישות שלהן** שייכים לקבוצת הרישות של $P$:
 $$ \operatorname{closure}(P) = \{ \sigma \in (2^{AP})^\omega \mid \operatorname{pref}(\sigma) \subseteq \operatorname{pref}(P) \} $$
 </div>
 
 <div class="bg-blue-50 border border-blue-200 rounded p-4 mt-6">
 <div class="font-bold mb-2">משפט: אפיון אלטרנטיבי לתכונות בטיחות</div>
 
-תכונת זמן לינארי $P$ היא תכונת בטיחות **אם ורק אם** היא שווה לסגור שלה: 
+תכונת זמן לינארי $P$ היא תכונת בטיחות **אם ורק אם** היא שווה לַסְּגוֹר שלה: 
 $P = \operatorname{closure}(P)$
 </div>
 
@@ -878,7 +878,56 @@ $P = \operatorname{closure}(P)$
 
 ---
 
-# הוכחת משפט הסגור
+# סְגוֹר של תכונה
+
+<div class="mt-4 text-right text-[28px] leading-relaxed">
+
+הגדרה שקולה: <span class="text-red-600 font-bold">הַסְּגוֹר</span> של תכונת זמן לינארי <KatexInline math="P" /> היא קבוצת המילים האינסופיות שכל רישא סופית שלהן אפשר להמשיך למילה המקיימת את התכונה:
+
+</div>
+
+<div class="mx-auto mt-4 bg-white border border-slate-200 shadow-md px-5 py-2 text-[27px] text-center" dir="ltr">
+
+<KatexInline
+  math="\textcolor{blue}{\mathit{closure}(P)} = \{\sigma:\ \forall \rho \sqsubset \sigma\ \exists \sigma''\ \text{such that}\ \rho\sigma'' \in P\}"
+/>
+
+</div>
+
+<div class="relative mx-auto mt-8 w-[52%] h-[204px]" dir="ltr">
+  <svg class="absolute inset-0 w-full h-full overflow-visible" viewBox="0 0 900 340" aria-hidden="true">
+    <!-- The red word sigma is not in P; each green branch is a finite prefix extended into P. -->
+    <path d="M 45 210 C 90 170, 115 215, 160 212 S 225 188, 260 205 S 315 224, 355 205 S 410 217, 455 202 S 505 186, 540 203 S 610 190, 650 182 S 695 176, 750 148"
+      fill="none" stroke="#ff0000" stroke-width="6" stroke-linecap="round" />
+    <path d="M 750 148 C 780 154, 805 120, 845 136"
+      fill="none" stroke="#ff0000" stroke-width="6" stroke-linecap="round" stroke-dasharray="4 9" />
+    <path d="M 222 202 C 245 214, 235 258, 255 269 S 315 254, 340 276 S 382 272, 420 311"
+      fill="none" stroke="#008a12" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 420 311 C 442 325, 468 322, 496 334"
+      fill="none" stroke="#008a12" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 10" />
+    <path d="M 338 205 C 360 160, 395 178, 420 178 S 462 184, 486 143 S 510 111, 512 72 S 548 61, 575 63"
+      fill="none" stroke="#008a12" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 575 63 C 592 47, 615 64, 642 43"
+      fill="none" stroke="#008a12" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 10" />
+    <path d="M 585 202 C 580 236, 614 236, 618 262 S 651 270, 669 299"
+      fill="none" stroke="#008a12" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 669 299 C 703 317, 746 306, 778 332"
+      fill="none" stroke="#008a12" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 10" />
+  </svg>
+
+  <div class="absolute left-[8%] top-[55%] text-[20px] text-red-600"><KatexInline math="\rho_{10}" /></div>
+  <div class="absolute left-[21%] top-[39%] text-[20px] text-red-600"><KatexInline math="\rho_{20}" /></div>
+  <div class="absolute left-[48%] top-[59%] text-[20px] text-red-600"><KatexInline math="\rho_{60}" /></div>
+
+  <div class="absolute left-[39%] top-[80%] text-[20px] text-green-700"><KatexInline math="\sigma''_{10}" /></div>
+  <div class="absolute left-[48%] top-[14%] text-[20px] text-green-700"><KatexInline math="\sigma''_{20}" /></div>
+  <div class="absolute left-[66%] top-[78%] text-[20px] text-green-700"><KatexInline math="\sigma''_{60}" /></div>
+  <div class="absolute -right-[13%] top-[26%] text-[20px] text-red-600"><KatexInline math="\sigma \in \mathit{closure}(P) \setminus P" /></div>
+</div>
+
+---
+
+# הוכחת משפט הַסְּגוֹר
 
 <div class="mt-8 text-right text-[15px]">
 
@@ -891,7 +940,7 @@ $P = \operatorname{closure}(P)$
 
 **כיוון שני ($\impliedby$):** נניח ש-$P = \operatorname{closure}(P)$. נראה ש-$P$ תכונת בטיחות.
 - יהי $\sigma \notin P$. כיוון ש-$P = \operatorname{closure}(P)$, הרי ש-$\sigma \notin \operatorname{closure}(P)$.
-- לפי הגדרת הסגור, קיים ל-$\sigma$ רֵישָׁא סופית $\rho \prec \sigma$ כך ש-$\rho \notin \operatorname{pref}(P)$.
+- לפי הגדרת הַסְּגוֹר, קיים ל-$\sigma$ רֵישָׁא סופית $\rho \prec \sigma$ כך ש-$\rho \notin \operatorname{pref}(P)$.
 - המשמעות היא שלא קיימת אף מילה $\sigma'$ המקיימת $\rho \prec \sigma'$ ושייכת ל-$P$.
 - לכן $\rho$ היא **רֵישָׁא רעה** עבור $\sigma$, ומכאן ש-$P$ היא תכונת בטיחות.
 
