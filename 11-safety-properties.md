@@ -196,16 +196,16 @@ $\sigma'[..i] = \sigma[..i] \;\Rightarrow\; \sigma' \notin P$
 
 <div class="mt-10 text-left text-[22px] leading-[4.2]" dir="ltr">
 
-$P_1 = \{\sigma \in (2^{AP})^\omega \mid \forall i \geq 0 ( \sigma[i] \models p \to (q \lor \neg r))\}$
+$P_1 = \{\sigma \in (2^{AP})^\omega \mid \forall i \geq 0\ \left(\sigma[i] \models p \to (q \lor \neg r)\right)\}$
 <br/><br/>
 
-$P_2 = \{\sigma \in (2^{AP})^\omega \mid \forall i \geq 0(p \in \sigma[0] \to p \in \sigma[i])\}$
+$P_2 = \{\sigma \in (2^{AP})^\omega \mid \forall i \geq 0\ \left(p \in \sigma[0] \to p \in \sigma[i]\right)\}$
 <br/><br/>
 
-$P_3 = \{\sigma \in (2^{AP})^\omega \mid \forall i \geq 0(p \in \sigma[2i] \to p \in \sigma[i])\}$
+$P_3 = \{\sigma \in (2^{AP})^\omega \mid \forall i \geq 0\ \left(p \in \sigma[2i] \to p \in \sigma[i]\right)\}$
 <br/><br/>
 
-$P_4 = \{\sigma \in (2^{AP})^\omega \mid \exists i \geq 0 (p \in \sigma[i])\}$
+$P_4 = \{\sigma \in (2^{AP})^\omega \mid \exists i \geq 0\ \left(p \in \sigma[i]\right)\}$
 
 </div>
 
@@ -275,7 +275,7 @@ $P_4 = \{\sigma \in (2^{AP})^\omega \mid \exists i \geq 0 (p \in \sigma[i])\}$
 
 <div class="mt-3 text-center" dir="ltr">
 
-$P = \{\sigma \in (2^{AP})^\omega :  \forall i \geq 0 ((p \in \sigma[2i]) \to (p \in \sigma[i]))\}$
+$P = \{\sigma \in (2^{AP})^\omega :  \forall i \geq 0\ \left((p \in \sigma[2i]) \to (p \in \sigma[i])\right)\}$
 </div>
 
 <div class="-mt-0">
@@ -331,7 +331,7 @@ $P = \{\sigma \in (2^{AP})^\omega :  \forall i \geq 0 ((p \in \sigma[2i]) \to (p
 
 <div class="mt-3 text-center" dir="ltr">
 
-$P = \{\sigma \in (2^{AP})^\omega \mid \exists i \geq 0 (p \in \sigma[i])\}$
+$P = \{\sigma \in (2^{AP})^\omega \mid \exists i \geq 0\ \left(p \in \sigma[i]\right)\}$
 </div>
 
 <div class="mt-5">
@@ -463,7 +463,7 @@ $P = \{\sigma \in (2^{AP})^\omega \mid \exists i \geq 0 (p \in \sigma[i])\}$
 נדרוש את התכונה הבאה: **"מופע של אור אדום חייב לבוא מיד אחרי מופע של אור צהוב"**.
 
 התכונה הפורמלית:
-$$ P_{traffic} = \{ \sigma \in (2^{AP})^\omega \mid \forall i \ge 0 (red \in \sigma[i] \implies i > 0 \land yellow \in \sigma[i-1]) \} $$
+$$ P_{traffic} = \{ \sigma \in (2^{AP})^\omega \mid \forall i \ge 0\ \left(red \in \sigma[i] \implies i > 0 \land yellow \in \sigma[i-1]\right) \} $$
 
 ### דוגמאות לרישות רעות:
 1. **$\emptyset \{red\}$**: הרמזור התחיל כבוי (או לא מוגדר) ועבר לאדום.
@@ -891,7 +891,7 @@ $P = \operatorname{closure}(P)$
 <div class="mx-auto mt-4 bg-white border border-slate-200 shadow-md px-5 py-2 text-[27px] text-center" dir="ltr">
 
 <KatexInline
-  math="\textcolor{blue}{\mathit{closure}(P)} = \{\sigma:\ \forall \rho \sqsubset \sigma\ \exists \sigma''\ \text{such that}\ \rho\sigma'' \in P\}"
+  math="\textcolor{blue}{\mathit{closure}(P)} = \{\sigma:\ \forall \rho \sqsubset \sigma\ \left(\exists \sigma''\ \left(\rho\sigma'' \in P\right)\right)\}"
 />
 
 </div>
@@ -1034,7 +1034,7 @@ $P = \operatorname{closure}(P)$
 <div class="mt-7 text-center text-[28px]" dir="ltr">
 
 <KatexInline
-  math="\textcolor{blue}{\mathit{closure}(S) = \{x:\ \forall \varepsilon > 0\ \exists s \in S\ \text{such that}\ d(x,s) \le \varepsilon\}}"
+  math="\textcolor{blue}{\mathit{closure}(S) = \{x:\ \forall \varepsilon > 0\ \left(\exists s \in S\ \left(d(x,s) \le \varepsilon\right)\right)\}}"
 />
 
 </div>

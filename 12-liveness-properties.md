@@ -125,7 +125,70 @@ info: |
 </div>
 
 <div class="mt-8 text-center text-[26px]" dir="ltr">
-<KatexInline math="P \text{ is live} \iff \forall \rho \in (2^{AP})^*.\ \exists \tau \in (2^{AP})^\omega.\ \rho\tau \in P" />
+<KatexInline math="P \text{ is live} \iff \forall \rho \in (2^{AP})^*\ \left(\exists \tau \in (2^{AP})^\omega\ \left(\rho\tau \in P\right)\right)" />
+</div>
+
+---
+
+# תרשים רצף: איך מוכיחים חַיּוּת?
+
+<div class="relative mx-auto mt-2 h-[440px] w-[720px]" dir="ltr">
+  <svg class="absolute inset-0 h-full w-full" viewBox="0 0 7ז20 440" aria-hidden="true">
+    <defs>
+      <marker id="liveness-seq-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8b5a44" />
+      </marker>
+      <linearGradient id="seq-photo-grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#1e3a8a" />
+        <stop offset="45%" stop-color="#2563eb" />
+        <stop offset="46%" stop-color="#f97316" />
+        <stop offset="100%" stop-color="#facc15" />
+      </linearGradient>
+      <filter id="seq-shadow" x="-15%" y="-15%" width="130%" height="130%">
+        <feDropShadow dx="0" dy="6" stdDeviation="4" flood-color="#000000" flood-opacity="0.22" />
+      </filter>
+    </defs>
+
+  <rect x="240" y="78" width="240" height="106" rx="5" fill="#f8fafc" stroke="#b45309" stroke-width="2" filter="url(#seq-shadow)" />
+  <rect x="248" y="86" width="224" height="90" rx="3" fill="url(#seq-photo-grad)" opacity="0.88" />
+  <path d="M 248 146 H 472" stroke="#fed7aa" stroke-width="3" opacity="0.8" />
+  <path d="M 360 86 V 176" stroke="#fed7aa" stroke-width="2" opacity="0.55" />
+  <circle cx="360" cy="132" r="24" fill="none" stroke="#fed7aa" stroke-width="2" opacity="0.75" />
+  <circle cx="336" cy="128" r="13" fill="#f97316" stroke="#7c2d12" stroke-width="2" />
+  <path d="M 328 128 H 344 M 336 120 V 136 M 329 121 C 337 127, 342 130, 344 136 M 343 120 C 335 127, 330 130, 328 136" fill="none" stroke="#7c2d12" stroke-width="1" />
+  <path d="M 294 158 L 326 132 L 346 160" fill="none" stroke="#0f172a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="318" cy="111" r="13" fill="#1d4ed8" stroke="#dbeafe" stroke-width="2" />
+  <path d="M 406 160 L 430 118 L 454 160" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="430" cy="101" r="13" fill="#e5e7eb" stroke="#64748b" stroke-width="2" />
+</svg>
+
+  <div class="absolute top-[105px] left-[170px] h-[277px] w-[5px] bg-[#8b5a44] shadow-sm z-20"></div>
+  <div class="absolute top-[105px] left-[550px] h-[277px] w-[5px] bg-[#8b5a44] shadow-sm z-20"></div>
+
+  <div class="absolute top-[233px] left-[184px] h-[5px] w-[360px] bg-[#8b5a44] origin-left rotate-[5deg] z-30">
+    <div class="absolute right-[-2px] top-[-7px] h-0 w-0 border-y-[9px] border-y-transparent border-l-[15px] border-l-[#8b5a44]"></div>
+  </div>
+  <div class="absolute top-[335px] left-[180px] h-[5px] w-[360px] bg-[#8b5a44] origin-left -rotate-[6deg] z-30">
+    <div class="absolute left-[-2px] top-[-7px] h-0 w-0 border-y-[9px] border-y-transparent border-r-[15px] border-r-[#8b5a44]"></div>
+  </div>
+
+  <div class="absolute left-[2%] top-[0%] w-[250px] text-center text-[18px] leading-snug">
+    מתמטיקאי שמוכיח<br/>ש־<KatexInline math="P" /> אינה חַיּוּת
+  </div>
+  <div class="absolute right-[2%] top-[0%] w-[250px] text-center text-[18px] leading-snug">
+    מתמטיקאי שמוכיח<br/>ש־<KatexInline math="P" /> היא תכונת חַיּוּת
+  </div>
+
+  <div class="absolute left-[43%] top-[47%] -rotate-[-5deg] text-[22px] text-[#8b5a44]" dir="ltr">
+    <KatexInline math="\rho \in (2^{AP})^*" />
+  </div>
+  <div class="absolute left-[30%] top-[75%] -rotate-[6deg] text-[22px] text-[#8b5a44] whitespace-nowrap" dir="ltr">
+    <KatexInline math="\rho\tau \in P\ \text{ for some }\tau \in (2^{AP})^\omega" />
+  </div>
+</div>
+
+<div class="text-center text-[24px] -mt-12">
+מראים שלכל רישא שהיריב בוחר, יש המשך שמציל אותה ומכניס את המילה ל־<KatexInline math="P" />.
 </div>
 
 ---
@@ -140,7 +203,7 @@ info: |
 </div>
 
 <div class="text-center text-[28px] mt-3" dir="ltr">
-<KatexInline math="P = \{\sigma \mid \exists j \ge 0.\ \sigma[j] \models p\}" />
+<KatexInline math="P = \{\sigma \mid \exists j \ge 0\ \left(\sigma[j] \models p\right)\}" />
 </div>
 
 <div class="mt-7 text-right text-[21px] leading-relaxed">
@@ -151,7 +214,7 @@ info: |
 </div>
 
 <div class="text-center text-[28px] mt-3" dir="ltr">
-<KatexInline math="P = \{\sigma \mid \forall i \ge 0.\ \exists j > i.\ \sigma[j] \models p\}" />
+<KatexInline math="P = \{\sigma \mid \forall i \ge 0\ \left(\exists j > i\ \left(\sigma[j] \models p\right)\right)\}" />
 </div>
 
 <div class="mt-7 text-right text-[21px] leading-relaxed">
@@ -162,7 +225,7 @@ info: |
 </div>
 
 <div class="text-center text-[25px] mt-3" dir="ltr">
-<KatexInline math="P = \{\sigma \mid \exists i > 0.\ \forall j > i.\ \sigma[j] \models p \Rightarrow \sigma[j+1] \models q\}" />
+<KatexInline math="P = \{\sigma \mid \exists i > 0\ \left(\forall j > i\ \left(\sigma[j] \models p \Rightarrow \sigma[j+1] \models q\right)\right)\}" />
 </div>
 
 ---
@@ -212,7 +275,7 @@ info: |
 </div>
 
 <div class="text-center text-[28px] mt-5" dir="ltr">
-<KatexInline math="P = \{\sigma \mid \forall i > 0.\ \sigma[2i] \models p\}" />
+<KatexInline math="P = \{\sigma \mid \forall i > 0\ \left(\sigma[2i] \models p\right)\}" />
 </div>
 
 <div class="mt-7 text-right text-[21px] leading-relaxed">
@@ -258,7 +321,7 @@ info: |
 </div>
 
 <div class="mt-8 text-center text-[25px]" dir="ltr">
-<KatexInline math="\forall i \ge 0.\ \sigma[i] \models wait_k \Rightarrow \exists j \ge i.\ \sigma[j] \models crit_k" />
+<KatexInline math="\forall i \ge 0\ \left(\sigma[i] \models wait_k \Rightarrow \exists j \ge i\ \left(\sigma[j] \models crit_k\right)\right)" />
 </div>
 
 ---
@@ -314,67 +377,6 @@ info: |
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
 חַיּוּת אומרת: אין אף רישא שאסור להתחיל ממנו.
 </div>
-</div>
-
----
-
-# מפת תכונות: בטיחות וחַיּוּת
-
-<div class="relative mt-2 h-[430px]" dir="ltr">
-  <svg class="absolute inset-0 w-full h-full" viewBox="0 0 900 430" aria-hidden="true">
-    <defs>
-      <radialGradient id="class-ellipse" cx="50%" cy="40%" r="70%">
-        <stop offset="0%" stop-color="#b7a7aa" />
-        <stop offset="100%" stop-color="#74696b" />
-      </radialGradient>
-      <filter id="soft-shadow" x="-15%" y="-15%" width="130%" height="135%">
-        <feDropShadow dx="0" dy="8" stdDeviation="5" flood-color="#000000" flood-opacity="0.25" />
-      </filter>
-    </defs>
-
-    <ellipse cx="245" cy="245" rx="235" ry="125" fill="url(#class-ellipse)" stroke="#665c60" stroke-width="2" filter="url(#soft-shadow)" />
-    <ellipse cx="320" cy="245" rx="178" ry="76" fill="url(#class-ellipse)" stroke="#756a6d" stroke-width="2" filter="url(#soft-shadow)" />
-    <ellipse cx="430" cy="245" rx="72" ry="34" fill="url(#class-ellipse)" stroke="#756a6d" stroke-width="2" filter="url(#soft-shadow)" />
-    <ellipse cx="675" cy="245" rx="220" ry="120" fill="url(#class-ellipse)" stroke="#665c60" stroke-width="2" filter="url(#soft-shadow)" />
-
-    <circle cx="132" cy="172" r="4" fill="#dc2626" />
-    <circle cx="335" cy="172" r="4" fill="#dc2626" />
-    <circle cx="410" cy="268" r="4" fill="#dc2626" />
-    <circle cx="498" cy="245" r="4" fill="#dc2626" />
-    <circle cx="690" cy="185" r="4" fill="#dc2626" />
-    <circle cx="705" cy="390" r="5" fill="#1d4ed8" />
-
-    <path d="M 158 38 L 134 164" stroke="#ef4444" stroke-width="2" />
-    <path d="M 354 72 L 336 164" stroke="#ef4444" stroke-width="2" />
-    <path d="M 398 390 L 409 276" stroke="#ef4444" stroke-width="2" />
-    <path d="M 496 322 L 498 253" stroke="#ef4444" stroke-width="2" />
-    <path d="M 706 72 L 692 177" stroke="#ef4444" stroke-width="2" />
-    <path d="M 665 374 L 700 392" stroke="#2563eb" stroke-width="2" />
-
-    <text x="58" y="256" fill="#ffffff" font-size="26" text-anchor="middle">בטיחות</text>
-    <text x="245" y="256" fill="#ffffff" font-size="26" text-anchor="middle">בטיחות רגולרית</text>
-    <text x="430" y="256" fill="#ffffff" font-size="24" text-anchor="middle">שמורה</text>
-    <text x="675" y="256" fill="#ffffff" font-size="26" text-anchor="middle">חַיּוּת</text>
-  </svg>
-
-  <div class="absolute left-[1%] top-[0%] text-[20px] text-red-600" dir="ltr">
-    <KatexInline math="P=\{\sigma \mid \operatorname{pref}(\sigma)\cap BadPref=\{\}\}" />
-  </div>
-  <div class="absolute left-[29%] top-[10%] text-[22px] text-red-600" dir="rtl">
-    רגולרית <KatexInline math="BadPref" />
-  </div>
-  <div class="absolute left-[63%] top-[8%] text-[22px] text-red-600" dir="ltr">
-    <KatexInline math="\operatorname{pref}(P)=(2^{AP})^*" />
-  </div>
-  <div class="absolute left-[27%] top-[90%] text-[20px] text-red-600" dir="ltr">
-    <KatexInline math="P=\{\sigma \mid \forall i.\ \sigma[i]\models\Phi\}" />
-  </div>
-  <div class="absolute left-[43%] top-[70%] text-[20px] text-red-600" dir="ltr">
-    <KatexInline math="P=(2^{AP})^\omega" />
-  </div>
-  <div class="absolute left-[55%] top-[83%] text-[20px] text-blue-700" dir="ltr">
-    <KatexInline math="P=P_{live}\cap P_{safe}" />
-  </div>
 </div>
 
 ---
@@ -609,7 +611,7 @@ info: |
 </div>
 
 <div class="mt-5 text-center text-[24px]" dir="ltr">
-<KatexInline math="P = \{\sigma \mid \exists i \ge 0.\ \sigma[i] \models \Phi_2 \land \forall 0 \le j \le i.\ \sigma[j] \models \Phi_1\}" />
+<KatexInline math="P = \{\sigma \mid \exists i \ge 0\ \left(\sigma[i] \models \Phi_2 \land \forall 0 \le j \le i\ \left(\sigma[j] \models \Phi_1\right)\right)\}" />
 </div>
 
 <div class="mt-7 text-[28px] font-bold text-blue-700">
@@ -623,7 +625,7 @@ info: |
 </div>
 
 <div class="mt-5 text-center text-[25px]" dir="ltr">
-<KatexInline math="\operatorname{closure}(P) = P \cup \{\sigma \mid \forall i \ge 0.\ \sigma[i] \models \Phi_1\}" />
+<KatexInline math="\operatorname{closure}(P) = P \cup \{\sigma \mid \forall i \ge 0\ \left(\sigma[i] \models \Phi_1\right)\}" />
 </div>
 
 <div class="mt-7 bg-amber-50 border border-amber-200 rounded p-4 text-[20px] leading-relaxed">
@@ -643,7 +645,7 @@ info: |
 </div>
 
 <div class="mt-7 text-center text-[30px]" dir="ltr">
-<KatexInline display math="P_{safe} \subseteq \operatorname{closure}(P)" />
+<KatexInline display math=" \operatorname{closure}(P) \subseteq P_{safe}" />
 </div>
 
 <div class="mt-5 text-center text-[30px]" dir="ltr">
@@ -664,20 +666,58 @@ info: |
 
 # סיווג תכונות זמן ליניארי
 
-<div class="relative mt-3 h-[420px]" dir="ltr">
-  <svg class="absolute inset-0 w-full h-full" viewBox="0 0 900 420" aria-hidden="true">
-    <ellipse cx="335" cy="205" rx="250" ry="145" fill="#fee2e2" stroke="#dc2626" stroke-width="3" />
-    <ellipse cx="565" cy="205" rx="250" ry="145" fill="#dcfce7" stroke="#16a34a" stroke-width="3" />
-    <ellipse cx="450" cy="205" rx="70" ry="90" fill="#dbeafe" stroke="#2563eb" stroke-width="3" />
-    <rect x="120" y="335" width="660" height="55" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" />
+<div class="relative mt-1 h-[455px]" dir="ltr">
+  <div class="absolute left-[2%] top-[28%] h-[240px] w-[470px] rounded-[50%] border-2 border-[#6f6366] bg-[radial-gradient(circle_at_45%_35%,#b8a5a8_0%,#88777b_70%,#6f6366_100%)] shadow-xl z-0"></div>
+  <div class="absolute left-[23%] top-[38%] h-[130px] w-[280px] rounded-[50%] border-2 border-[#776b6e] bg-[radial-gradient(circle_at_45%_35%,#c9babd_0%,#7d7073_100%)] shadow-xl z-10"></div>
+  <div class="absolute left-[40%] top-[45%] h-[68px] w-[136px] rounded-[50%] border-2 border-[#776b6e] bg-[radial-gradient(circle_at_45%_35%,#c9babd_0%,#7d7073_100%)] shadow-xl z-20"></div>
+  <div class="absolute left-[55%] top-[29%] h-[240px] w-[445px] rounded-[50%] border-2 border-[#6f6366] bg-[radial-gradient(circle_at_45%_35%,#b8a5a8_0%,#88777b_70%,#6f6366_100%)] shadow-xl z-0"></div>
+
+  <div class="absolute left-[10%] top-[50%] text-[26px] text-white z-30">בטיחות</div>
+  <div class="absolute left-[29%] top-[45%] text-[25px] text-white z-30">בטיחות  <br> רגולרית</div>
+  <div class="absolute left-[45%] top-[50%] text-[24px] text-white z-30">שמורה</div>
+  <div class="absolute left-[73%] top-[50%] text-[26px] text-white z-30">חַיּוּת</div>
+
+  <div class="absolute left-[12.6%] top-[33.2%] h-[10px] w-[10px] rounded-full bg-red-600 shadow-md z-40"></div>
+  <div class="absolute left-[38%] top-[42%] h-[10px] w-[10px] rounded-full bg-red-600 shadow-md z-40"></div>
+  <div class="absolute left-[43.2%] top-[53%] h-[10px] w-[10px] rounded-full bg-red-600 shadow-md z-40"></div>
+  <div class="absolute left-[55%] top-[53%] h-[10px] w-[10px] rounded-full bg-red-600 shadow-md z-40"></div>
+  <div class="absolute left-[74.5%] top-[34.5%] h-[10px] w-[10px] rounded-full bg-red-600 shadow-md z-40"></div>
+  <div class="absolute left-[76%] top-[85.5%] h-[12px] w-[12px] rounded-full bg-blue-700 shadow-md z-40"></div>
+
+  <svg class="absolute inset-0 w-full h-full z-30 pointer-events-none" viewBox="0 0 900 455" aria-hidden="true">
+    <defs>
+      <marker id="class-red-arrow-html" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 Z" fill="#ef4444" />
+      </marker>
+      <marker id="class-blue-arrow-html" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2563eb" />
+      </marker>
+    </defs>
+    <path d="M 145 40 L 120 144" stroke="#ef4444" stroke-width="2" marker-end="url(#class-red-arrow-html)" />
+    <path d="M 360 79 L 348 185" stroke="#ef4444" stroke-width="2" marker-end="url(#class-red-arrow-html)" />
+    <path d="M 401 375 L 396 255" stroke="#ef4444" stroke-width="2" marker-end="url(#class-red-arrow-html)" />
+    <path d="M 496 333 L 500 250" stroke="#ef4444" stroke-width="2" marker-end="url(#class-red-arrow-html)" />
+    <path d="M 700 72 L 678 150" stroke="#ef4444" stroke-width="2" marker-end="url(#class-red-arrow-html)" />
+    <!-- <path d="M 610 407 L 690 392" stroke="#2563eb" stroke-width="2.5" marker-end="url(#class-blue-arrow-html)" /> -->
   </svg>
-  <div class="absolute left-[20%] top-[18%] text-[25px] text-red-700">תכונות בטיחות</div>
-  <div class="absolute left-[58%] top-[18%] text-[25px] text-emerald-700">תכונות חַיּוּת</div>
-  <div class="absolute left-[42%] top-[40%] text-[21px] text-blue-700 leading-snug">
-    גם וגם:<br/><KatexInline math="(2^{AP})^\omega" />
+
+  <div class="absolute left-[0%] top-[0%] text-[21px] text-red-600" dir="ltr">
+    <KatexInline math="P=\{\sigma \mid \operatorname{pref}(\sigma)\cap BadPref=\emptyset\}" />
   </div>
-  <div class="absolute left-[23%] top-[82%] text-[22px] text-slate-700">
-    יש תכונות שאינן בטיחות ואינן חַיּוּת, אך הן חיתוך של שתיהן
+  <div class="absolute left-[30%] top-[12%] text-[22px] text-red-600" dir="rtl">
+    רגולרית <KatexInline math="BadPref" />
+  </div>
+  <div class="absolute left-[63%] top-[7%] text-[22px] text-red-600" dir="ltr">
+    <KatexInline math="\operatorname{pref}(P)=(2^{AP})^*" />
+  </div>
+  <div class="absolute left-[28%] top-[83%] text-[21px] text-red-600" dir="ltr">
+    <KatexInline math="P=\{\sigma \mid \forall i\ \left(\sigma[i]\models\Phi\right)\}" />
+  </div>
+  <div class="absolute left-[47%] top-[74%] text-[21px] text-red-600" dir="ltr">
+    <KatexInline math="P=(2^{AP})^\omega" />
+  </div>
+  <div class="absolute left-[74%] top-[90%] text-[21px] text-blue-700" dir="ltr">
+    <KatexInline math="P=P_{live}\cap P_{safe}" />
   </div>
 </div>
 
