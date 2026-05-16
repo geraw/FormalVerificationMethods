@@ -27,6 +27,7 @@ dir: rtl
     <li><b>09 - התנהגות זמן לינארי:</b> מסלולים, עקבות, תכונות זמן לינארי, הכלת עקבות ושקילות עקבות. <a href="./09-linear-time-behavior/#1" target="_blank">[מצגת]</a></li>
     <li><b>10 - שמורות:</b> הגדרת שמורות, אלגוריתמי בדיקה והפקת דוגמאות נגדיות. <a href="./10-invariant-properties/#1" target="_blank">[מצגת]</a></li>
     <li><b>11 - תכונות בטיחות:</b> רישות רעות, סגור (closure), שקילות והכלת עקבות סופיות. <a href="./11-safety-properties/#1" target="_blank">[מצגת]</a></li>
+    <li><b>12 - תכונות חַיּוּת:</b> הגדרת חיות, דוגמאות, היחס לבטיחות ומשפט הפירוק. <a href="./12-liveness-properties/#1" target="_blank">[מצגת]</a></li>
     <li><b>14 - סגור של תכונה:</b> סגור של תכונה, קירובים ותכונות נגזרות. <a href="./14-property-closure/#1" target="_blank">[מצגת]</a></li>
     <li><b>15 - תכונות חיות:</b> תכונות חיות והבחנה בין הבטחות עתידיות לבטיחות. <a href="./15-liveness-properties/#1" target="_blank">[מצגת]</a></li>
     <li><b>16 - הוגנות:</b> הנחות הוגנות וריצות שמכבדות תזמון הוגן. <a href="./16-fairness/#1" target="_blank">[מצגת]</a></li>
