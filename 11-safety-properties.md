@@ -946,6 +946,126 @@ $P = \operatorname{closure}(P)$
 
 </div>
 
+<!-- Floating proof illustration: tune left/top/w/h to place it on the slide. -->
+<div class="absolute left-[4%] top-[53%] w-[34%] h-[220px]" dir="ltr">
+  <svg class="absolute inset-0 w-full h-full overflow-visible" viewBox="0 0 560 260" aria-hidden="true">
+    <defs>
+      <linearGradient id="closure-proof-outer" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#f8d7d1" />
+        <stop offset="100%" stop-color="#d88f82" />
+      </linearGradient>
+      <linearGradient id="closure-proof-inner" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#e7dddd" />
+        <stop offset="100%" stop-color="#cfc0c0" />
+      </linearGradient>
+      <filter id="closure-proof-shadow" x="-20%" y="-20%" width="140%" height="150%">
+        <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.28" />
+      </filter>
+      <marker id="closure-proof-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef1b16" />
+      </marker>
+    </defs>
+    <ellipse cx="280" cy="132" rx="245" ry="104" fill="url(#closure-proof-outer)" stroke="#6b5b5b" stroke-width="1.3" filter="url(#closure-proof-shadow)" />
+    <ellipse cx="292" cy="160" rx="112" ry="62" fill="url(#closure-proof-inner)" stroke="#555" stroke-width="1.1" filter="url(#closure-proof-shadow)" />
+    <circle cx="470" cy="120" r="8" fill="#ff2a16" stroke="#d10d07" stroke-width="1.4" filter="url(#closure-proof-shadow)" />
+    <path d="M 525 260 C 528 214, 500 166, 490 145" fill="none" stroke="#ef1b16" stroke-width="4" stroke-linecap="round" marker-end="url(#closure-proof-arrow)" />
+  </svg>
+  <div class="absolute left-[32%] top-[25%] text-[20px]"><KatexInline math="\mathit{closure}(P)" /></div>
+  <div class="absolute left-[51%] top-[48%] text-[20px]"><KatexInline math="P" /></div>
+  <div class="absolute left-[93%] top-[85%] text-[20px] text-red-600"><KatexInline math="\sigma" /></div>
+</div>
+
+---
+
+# דוגמה לשאלה בנושא
+
+<div class="mt-12 text-right text-[27px] leading-relaxed">
+
+הוכיחו שלכל זוג תכונות זמן ליניארי <KatexInline math="P_1" /> ו־<KatexInline math="P_2" /> מתקיים:
+
+</div>
+
+<div class="mt-10 text-center text-[32px]" dir="ltr">
+
+<KatexInline
+  math="\textcolor{blue}{\mathit{closure}(P_1 \cup P_2)} = \textcolor{red}{\mathit{closure}(P_1) \cup \mathit{closure}(P_2)}"
+/>
+
+</div>
+
+<div class="mt-12 text-right text-[28px] leading-relaxed">
+
+</div>
+
+<div class="mt-8 text-right text-[23px] leading-relaxed">
+
+<span class="text-blue-700 font-bold">כיוון אחד קל:</span>
+ברור שמילה שאת כל הרישות שלה אפשר להמשיך למילים ב־<KatexInline math="P_1" />,
+למשל, היא גם מילה שאת כל הרישות שלה אפשר להמשיך למילים ב־<KatexInline math="P_1 \cup P_2" />.
+
+</div>
+
+<div class="mt-8 text-right text-[23px] leading-relaxed">
+
+<span class="text-red-600 font-bold">בכיוון השני צריך להיזהר:</span>
+איך אנחנו יודעים שכל מילה שאת כל הרישות שלה אפשר להמשיך למילים ב־<KatexInline math="P_1 \cup P_2" />
+היא גם מילה שאת כל הרישות שלה אפשר להמשיך למילים ב־<KatexInline math="P_1" />
+או שאת כל הרישות שלה אפשר להמשיך למילים ב־<KatexInline math="P_2" />?
+
+</div>
+
+<div class="mt-5 text-right text-[20px] leading-relaxed text-slate-700">
+
+
+</div>
+
+---
+
+# על השימוש במילה "סְגוֹר"
+
+<div class="mt-14 text-right text-[25px] leading-relaxed">
+
+כשיש פונקציית מרחק <KatexInline math="d" /> <span class="text-red-600">(מרחבים מטריים)</span>, מגדירים <span class="font-bold">סְגוֹר</span> של קבוצה <KatexInline math="S" />:
+
+</div>
+
+<div class="mt-7 text-center text-[28px]" dir="ltr">
+
+<KatexInline
+  math="\textcolor{blue}{\mathit{closure}(S) = \{x:\ \forall \varepsilon > 0\ \exists s \in S\ \text{such that}\ d(x,s) \le \varepsilon\}}"
+/>
+
+</div>
+
+<div class="mt-14 text-right text-[25px] leading-relaxed">
+
+אם נגדיר מרחק בין מילים ע"י:
+
+</div>
+
+<div class="relative mt-8 h-[105px]" dir="ltr">
+  <div class="absolute left-[6%] -top-[60%] bg-amber-50 border border-amber-300 rounded-md shadow-md px-4 py-2 text-[19px] text-amber-950 text-center leading-snug" dir="rtl">
+    מרחק קטן = יש רישא<br/>משותפת ארוכה
+  </div>
+  <svg class="absolute left-[22%] top-[40%] w-[12%] h-[44px] overflow-visible" viewBox="0 0 140 44" aria-hidden="true">
+    <defs>
+      <marker id="metric-note-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+        <path d="M 0 0 L 8 4 L 0 8 z" fill="#b45309" />
+      </marker>
+    </defs>
+    <path d="M 70 -86 C 140 -70, 200 -50, 250 -30" fill="none" stroke="#b45309" stroke-width="3" stroke-linecap="round" marker-end="url(#metric-note-arrow)" />
+  </svg>
+  <div class="absolute left-[28%] top-[26%] text-[28px]">
+    <KatexInline math="\textcolor{blue}{d(\sigma_1,\sigma_2) := 2^{-\max\{i:\ \sigma_1[..i]=\sigma_2[..i]\}}}" />
+  </div>
+</div>
+
+<div class="-mt-0 bg-white shadow-md border border-slate-200 px-2 py-0 text-center text-[24px] text-red-600 leading-tight">
+
+נקבל שההגדרה למעלה שקולה להגדרה שהגדרנו קודם
+
+</div>
+
 ---
 
 # סיכום
