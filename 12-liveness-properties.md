@@ -616,7 +616,7 @@ info: |
 
 <div class="mt-7 text-right text-[21px] leading-relaxed">
 
-כלומר, <KatexInline math="\Phi_1" /> חייב להתקיים עד לרגע הראשון שבו <KatexInline math="\Phi_2" /> מופיע.
+כלומר, <KatexInline math="\Phi_1" /> חייב להתקיים עד לרגע הראשון שבו <KatexInline math="\Phi_2" /> מופיע, ו־<KatexInline math="\Phi_2" /> חייב להופיע מתישהו.
 
 </div>
 
@@ -630,9 +630,7 @@ info: |
 <div dir="ltr" class="text-[14px] leading-snug">
 <KatexInline math="P_{live} = P \cup \left((2^{AP})^\omega \setminus P_{safe}\right)" />
 <br>
-<KatexInline math="= P \cup \left((2^{AP})^\omega \setminus \left(P \cup \{\sigma \mid \forall i \ge 0\ (\sigma[i] \models \Phi_1)\}\right)\right)" />
-<br>
-<KatexInline math="= P \cup \left\{\sigma \mid \exists i \ge 0\ \left(\sigma[i] \not\models \Phi_1 \land \forall 0 \le j \le i\ \left(\sigma[j] \not\models \Phi_2\right)\right)\right\}" />
+<KatexInline math="= \{\sigma \mid \exists i \ge 0\ (\sigma[i] \models \Phi_2)\}" />
 </div>
 </div>
 </div>
