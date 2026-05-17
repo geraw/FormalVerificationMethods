@@ -111,7 +111,7 @@ info: |
 <div class="font-bold text-[24px] mb-4 text-emerald-700">כדי להוכיח חַיּוּת</div>
 <div class="text-[20px] leading-relaxed">
 לוקחים רישא סופית שרירותית <KatexInline math="\rho" /> ובונים לה המשך אינסופי
-<KatexInline math="\tau" /> כך שהמילה <KatexInline math="\rho\tau" /> תקיים את <KatexInline math="P" />.
+<KatexInline math="\sigma" /> כך שהמילה <KatexInline math="\rho\sigma" /> תקיים את <KatexInline math="P" />.
 </div>
 </div>
 
@@ -119,13 +119,13 @@ info: |
 <div class="font-bold text-[24px] mb-4 text-red-700">כדי להפריך חַיּוּת</div>
 <div class="text-[20px] leading-relaxed">
 מספיק למצוא רישא אחת <KatexInline math="\rho" /> שאי אפשר להציל:
-לכל המשך אינסופי <KatexInline math="\tau" />, מתקיים <KatexInline math="\rho\tau \notin P" />.
+לכל המשך אינסופי <KatexInline math="\sigma" />, מתקיים <KatexInline math="\rho\sigma \notin P" />.
 </div>
 </div>
 </div>
 
 <div class="mt-8 text-center text-[26px]" dir="ltr">
-<KatexInline math="P \text{ is live} \iff \forall \rho \in (2^{AP})^*\ \left(\exists \tau \in (2^{AP})^\omega\ \left(\rho\tau \in P\right)\right)" />
+<KatexInline math="P \text{ is live} \iff \forall \rho \in (2^{AP})^*\ \left(\exists \sigma \in (2^{AP})^\omega\ \left(\rho\sigma \in P\right)\right)" />
 </div>
 
 ---
@@ -133,44 +133,17 @@ info: |
 # תרשים רצף: איך מוכיחים חַיּוּת?
 
 <div class="relative mx-auto mt-2 h-[440px] w-[720px]" dir="ltr">
-  <svg class="absolute inset-0 h-full w-full" viewBox="0 0 7ז20 440" aria-hidden="true">
+  <svg class="absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 720 440" aria-hidden="true">
     <defs>
-      <marker id="liveness-seq-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <marker id="liveness-seq-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
         <path d="M 0 0 L 10 5 L 0 10 Z" fill="#8b5a44" />
       </marker>
-      <linearGradient id="seq-photo-grad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#1e3a8a" />
-        <stop offset="45%" stop-color="#2563eb" />
-        <stop offset="46%" stop-color="#f97316" />
-        <stop offset="100%" stop-color="#facc15" />
-      </linearGradient>
-      <filter id="seq-shadow" x="-15%" y="-15%" width="130%" height="130%">
-        <feDropShadow dx="0" dy="6" stdDeviation="4" flood-color="#000000" flood-opacity="0.22" />
-      </filter>
     </defs>
-
-  <rect x="240" y="78" width="240" height="106" rx="5" fill="#f8fafc" stroke="#b45309" stroke-width="2" filter="url(#seq-shadow)" />
-  <rect x="248" y="86" width="224" height="90" rx="3" fill="url(#seq-photo-grad)" opacity="0.88" />
-  <path d="M 248 146 H 472" stroke="#fed7aa" stroke-width="3" opacity="0.8" />
-  <path d="M 360 86 V 176" stroke="#fed7aa" stroke-width="2" opacity="0.55" />
-  <circle cx="360" cy="132" r="24" fill="none" stroke="#fed7aa" stroke-width="2" opacity="0.75" />
-  <circle cx="336" cy="128" r="13" fill="#f97316" stroke="#7c2d12" stroke-width="2" />
-  <path d="M 328 128 H 344 M 336 120 V 136 M 329 121 C 337 127, 342 130, 344 136 M 343 120 C 335 127, 330 130, 328 136" fill="none" stroke="#7c2d12" stroke-width="1" />
-  <path d="M 294 158 L 326 132 L 346 160" fill="none" stroke="#0f172a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
-  <circle cx="318" cy="111" r="13" fill="#1d4ed8" stroke="#dbeafe" stroke-width="2" />
-  <path d="M 406 160 L 430 118 L 454 160" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
-  <circle cx="430" cy="101" r="13" fill="#e5e7eb" stroke="#64748b" stroke-width="2" />
-</svg>
-
-  <div class="absolute top-[105px] left-[170px] h-[277px] w-[5px] bg-[#8b5a44] shadow-sm z-20"></div>
-  <div class="absolute top-[105px] left-[550px] h-[277px] w-[5px] bg-[#8b5a44] shadow-sm z-20"></div>
-
-  <div class="absolute top-[233px] left-[184px] h-[5px] w-[360px] bg-[#8b5a44] origin-left rotate-[5deg] z-30">
-    <div class="absolute right-[-2px] top-[-7px] h-0 w-0 border-y-[9px] border-y-transparent border-l-[15px] border-l-[#8b5a44]"></div>
-  </div>
-  <div class="absolute top-[335px] left-[180px] h-[5px] w-[360px] bg-[#8b5a44] origin-left -rotate-[6deg] z-30">
-    <div class="absolute left-[-2px] top-[-7px] h-0 w-0 border-y-[9px] border-y-transparent border-r-[15px] border-r-[#8b5a44]"></div>
-  </div>
+    <line x1="170" y1="96" x2="170" y2="382" stroke="#8b5a44" stroke-width="3" stroke-dasharray="10 10" />
+    <line x1="550" y1="96" x2="550" y2="382" stroke="#8b5a44" stroke-width="3" stroke-dasharray="10 10" />
+    <path d="M 170 175 L 550 175" fill="none" stroke="#8b5a44" stroke-width="4" stroke-linecap="round" marker-end="url(#liveness-seq-arrow)" />
+    <path d="M 550 315 L 170 315" fill="none" stroke="#8b5a44" stroke-width="4" stroke-linecap="round" marker-end="url(#liveness-seq-arrow)" />
+  </svg>
 
   <div class="absolute left-[2%] top-[0%] w-[250px] text-center text-[18px] leading-snug">
     מתמטיקאי שמוכיח<br/>ש־<KatexInline math="P" /> אינה חַיּוּת
@@ -179,11 +152,11 @@ info: |
     מתמטיקאי שמוכיח<br/>ש־<KatexInline math="P" /> היא תכונת חַיּוּת
   </div>
 
-  <div class="absolute left-[43%] top-[47%] -rotate-[-5deg] text-[22px] text-[#8b5a44]" dir="ltr">
+  <div class="absolute left-1/2 top-[28%] -translate-x-1/2 text-center text-[22px] text-[#8b5a44]" dir="ltr">
     <KatexInline math="\rho \in (2^{AP})^*" />
   </div>
-  <div class="absolute left-[30%] top-[75%] -rotate-[6deg] text-[22px] text-[#8b5a44] whitespace-nowrap" dir="ltr">
-    <KatexInline math="\rho\tau \in P\ \text{ for some }\tau \in (2^{AP})^\omega" />
+  <div class="absolute left-1/2 top-[60%] -translate-x-1/2 text-center text-[22px] text-[#8b5a44] whitespace-nowrap" dir="ltr">
+    <KatexInline math="\rho\sigma \in P\ \text{ for some }\sigma \in (2^{AP})^\omega" />
   </div>
 </div>
 
@@ -283,7 +256,7 @@ info: |
 הרישא
 <span dir="ltr"><KatexInline math="\rho = \{\}\ \{\}\ \{\}" /></span>
 כבר קובעת שבמקום <KatexInline math="2" /> אין <KatexInline math="p" />.
-לכן לכל המשך <KatexInline math="\tau" /> מתקיים <KatexInline math="\rho\tau \notin P" />.
+לכן לכל המשך <KatexInline math="\sigma" /> מתקיים <KatexInline math="\rho\sigma \notin P" />.
 
 </div>
 
@@ -536,9 +509,9 @@ info: |
 </div>
 
 <div class="text-center text-[24px] -mt-5">
-<KatexInline math="P_{live}" /> כולל את <KatexInline math="P" /> ואת כל מה שמחוץ לסְגוֹר.
+<KatexInline math="P_{live}" /> כולל את <KatexInline math="P" /> ואת כל מה שמחוץ ל־<KatexInline math="\operatorname{closure}(P)" />.
 <br>
-<KatexInline math="P_{safe}" /> כולל רק את לסְגוֹר.
+<KatexInline math="P_{safe}" /> הוא בדיוק <KatexInline math="\operatorname{closure}(P)" />.
 </div>
 
 ---
@@ -554,7 +527,7 @@ info: |
 <div class="grid grid-cols-2 gap-6 mt-8 text-right text-[20px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
 <div class="font-bold text-blue-700 mb-3">מקרה א': <KatexInline math="\rho \in \operatorname{pref}(P)" /></div>
-קיימת מילה <KatexInline math="\rho\tau \in P" />.
+קיימת מילה <KatexInline math="\rho\sigma \in P" />.
 מכיוון ש־<KatexInline math="P \subseteq P_{live}" />,
 קיבלנו המשך טוב.
 </div>
