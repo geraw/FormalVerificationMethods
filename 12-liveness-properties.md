@@ -244,20 +244,24 @@ info: |
 
 <div class="mt-6 bg-red-50 border border-red-200 rounded p-4 text-right text-[21px] leading-relaxed">
 <span class="font-bold">דוגמה:</span>
-בכל מקום זוגי חיובי צריך להתקיים <KatexInline math="p" />:
+עד ש־<KatexInline math="q" /> מופיע, <KatexInline math="p" /> חייב להתקיים; ו־<KatexInline math="q" /> חייב להופיע מתישהו:
 </div>
 
 <div class="text-center text-[28px] mt-5" dir="ltr">
-<KatexInline math="P = \{\sigma \mid \forall i > 0\ \left(\sigma[2i] \models p\right)\}" />
+<KatexInline math="P = \{\sigma \mid \exists i \ge 0\ \left(\sigma[i] \models q \land \forall 0 \le j < i\ \left(\sigma[j] \models p\right)\right)\}" />
 </div>
 
 <div class="mt-7 text-right text-[21px] leading-relaxed">
 
 הרישא
-<span dir="ltr"><KatexInline math="\rho = \{\}\ \{\}\ \{\}" /></span>
-כבר קובעת שבמקום <KatexInline math="2" /> אין <KatexInline math="p" />.
+<span dir="ltr"><KatexInline math="\rho = \{\}" /></span>
+כבר קובעת שבזמן <KatexInline math="0" /> אין <KatexInline math="p" /> וגם אין <KatexInline math="q" />.
 לכן לכל המשך <KatexInline math="\sigma" /> מתקיים <KatexInline math="\rho\sigma \notin P" />.
 
+</div>
+
+<div class="mt-4 text-right text-[19px] leading-relaxed text-slate-700">
+זו גם אינה תכונת בטיחות: אם <KatexInline math="p" /> ממשיך להתקיים ו־<KatexInline math="q" /> לא מופיע לעולם, אין רישא סופית שמכריעה את ההפרה.
 </div>
 
 <div class="mt-7 text-[24px] text-red-700 font-bold">
