@@ -328,7 +328,7 @@ info: |
 
 ---
 
-# גם בטיחות וגם חַיּוּת?
+#  האם יש תכונה שהיא גם תכונת בטיחות וגם תכונת חַיּוּת?
 
 <div class="mt-8 text-right text-[24px] leading-relaxed">
 
@@ -400,20 +400,20 @@ info: |
 </div>
 
 <div class="mt-5 bg-slate-50 border border-slate-200 rounded p-5 text-[26px] leading-relaxed">
-“המכונה נותנת בירה אינסוף פעמים, לאחר שבהתחלה נתנה סודה שלוש פעמים ברצף”
+“המכונה מתחילה בשלושה צעדי אתחול, ומפיקה תוצר מתישהו”
 </div>
 
 <div class="grid grid-cols-2 gap-6 mt-7 text-right text-[20px] leading-relaxed">
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
 <div class="font-bold text-emerald-700 mb-2">רכיב חַיּוּת</div>
-דורשים שבירה תופיע אינסוף פעמים.
-אי אפשר להכריע זאת לפי רישא סופית.
+דורשים שהמכונה תפיק תוצר מתישהו.
+אי אפשר לקבוע שהתכונה לא מתקיימת לפי רישא סופית.
 </div>
 
 <div class="bg-red-50 border border-red-200 rounded p-4">
 <div class="font-bold text-red-700 mb-2">רכיב בטיחות</div>
-שלושת המשקאות הראשונים חייבים להיות סודה.
-אם אחד מהם בירה, יש רישא רעה.
+שלושת הצעדים הראשונים חייבים להיות צעדי אתחול.
+אם אחד מהם אינו צעד אתחול, יש רישא רעה.
 </div>
 </div>
 
@@ -434,7 +434,7 @@ info: |
 <div class="grid grid-cols-2 gap-7 mt-8 text-[22px] leading-relaxed">
 <div class="bg-slate-50 border border-slate-200 rounded p-5">
 <div class="font-bold mb-3">האם בטיחות וחַיּוּת שונות?</div>
-כן. החיתוך שלהן הוא רק <KatexInline math="(2^{AP})^\omega" />.
+כן. החיתוך שלהן הוא רק <KatexInline math="\{(2^{AP})^\omega\}" />.
 </div>
 
 <div class="bg-slate-50 border border-slate-200 rounded p-5">
@@ -443,8 +443,14 @@ info: |
 </div>
 </div>
 
-<div class="mt-8 bg-blue-50 border border-blue-200 rounded p-5 text-[23px] leading-relaxed">
-אבל כל תכונת זמן ליניארי ניתנת לכתיבה כחיתוך של תכונת בטיחות ותכונת חַיּוּת.
+<div class="mt-8 bg-blue-50 border border-blue-200 rounded p-1 text-[23px] leading-relaxed">
+
+אבל כל תכונת זמן ליניארי ניתנת לכתיבה כ**חיתוך** של תכונת בטיחות ותכונת חַיּוּת.
+</div>
+
+
+<div class="mt-5 bg-amber-50 border border-amber-300 rounded px-5 py-3 text-[19px] leading-relaxed text-amber-950">
+💡 כאן המילה <span class="font-bold">חיתוך</span> היא בעצם “וגם”, כי מדובר בחיתוך של קבוצות המילים המקיימות את התכונה.
 </div>
 
 ---
@@ -522,13 +528,17 @@ info: |
 
 # למה <KatexInline math="P_{live}" /> היא תכונת חַיּוּת?
 
-<div class="mt-7 text-right text-[22px] leading-relaxed">
+<div class="mt-5 bg-amber-50 border border-amber-300 rounded p-3 text-center text-[22px]" dir="ltr">
+<KatexInline math="P_{live} = P \cup \left((2^{AP})^\omega \setminus \operatorname{closure}(P)\right)" />
+</div>
+
+<div class="mt-5 text-right text-[22px] leading-relaxed">
 
 צריך להראות שלכל רישא סופית <KatexInline math="\rho" /> יש המשך שנמצא ב־<KatexInline math="P_{live}" />.
 
 </div>
 
-<div class="grid grid-cols-2 gap-6 mt-8 text-right text-[20px] leading-relaxed">
+<div class="grid grid-cols-2 gap-6 mt-6 text-right text-[20px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
 <div class="font-bold text-blue-700 mb-3">מקרה א': <KatexInline math="\rho \in \operatorname{pref}(P)" /></div>
 קיימת מילה <KatexInline math="\rho\sigma \in P" />.
@@ -543,13 +553,17 @@ info: |
 </div>
 </div>
 
-<div class="mt-8 text-center text-[27px]" dir="ltr">
+<div class="mt-8 bg-orange-50 border border-orange-300 rounded p-4 text-center text-[23px] text-orange-950" dir="rtl">
+מסקנה:
+<span dir="ltr">
 <KatexInline math="\operatorname{pref}(P_{live}) = (2^{AP})^*" />
+</span>
+ולכן <KatexInline math="P_{live}" /> היא תכונת חַיּוּת לפי ההגדרה.
 </div>
 
 ---
 
-# דוגמה: הרבה <KatexInline math="a" /> ואז <KatexInline math="a,b" />
+# דוגמה: הרבה <KatexInline math="\{a\}" />, אחר כך <KatexInline math="\{a,b\}" />, ואז <KatexInline math="\{b\}" /> אינסוף פעמים
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
 
@@ -558,23 +572,32 @@ info: |
 </div>
 
 <div class="mt-5 text-center text-[26px]" dir="ltr">
-<KatexInline math="P = \{a\}^* \cdot \{a,b\} \cdot (2^{AP})^\omega" />
+<KatexInline math="P = \{a\}^* \cdot \{a,b\} \cdot \{\sigma \mid \forall i \ge 0\ \exists j > i\ \left(b \in \sigma[j]\right)\}" />
 </div>
 
 <div class="mt-7 text-right text-[21px] leading-relaxed">
 
 כלומר, בהתחלה מופיע <KatexInline math="a" /> בלבד מספר סופי של פעמים,
-ואז מופיע מצב שבו גם <KatexInline math="a" /> וגם <KatexInline math="b" /> נכונים.
+אחר כך מופיע מצב שבו גם <KatexInline math="a" /> וגם <KatexInline math="b" /> נכונים,
+ובהמשך <KatexInline math="b" /> מופיע אינסוף פעמים.
 
 </div>
 
-<div class="mt-7 text-center text-[26px]" dir="ltr">
-<KatexInline math="\operatorname{closure}(P) = P \cup \{a\}^\omega" />
+<div class="grid grid-cols-2 gap-5 mt-5 text-center text-[20px] leading-relaxed">
+<div class="bg-red-50 border border-red-200 rounded p-3">
+<div class="font-bold text-red-700 mb-2">רכיב בטיחות</div>
+<div dir="ltr"><KatexInline math="P_{safe} = \operatorname{closure}(P) = P \cup \{\{a\}^\omega\}" /></div>
 </div>
-
-<div class="mt-7 bg-slate-50 border border-slate-200 rounded p-4 text-[21px] leading-relaxed">
-הריצה <KatexInline math="\{a\}^\omega" /> נמצאת בסְגוֹר: כל רישא שלה עדיין יכולה להמשיך ל־<KatexInline math="P" />,
-אבל היא עצמה איננה ב־<KatexInline math="P" />.
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
+<div class="font-bold text-emerald-700 mb-2">רכיב חַיּוּת</div>
+<div dir="ltr" class="text-[18px] leading-relaxed">
+<KatexInline math="P_{live} = P \cup \left((2^{AP})^\omega \setminus P_{safe}\right)" />
+<br>
+<KatexInline math="= P \cup \left((2^{AP})^\omega \setminus \left(P \cup \{\{a\}^\omega\}\right)\right)" />
+<br>
+<KatexInline math="= (2^{AP})^\omega \setminus \{\{a\}^\omega\}" />
+</div>
+</div>
 </div>
 
 ---
