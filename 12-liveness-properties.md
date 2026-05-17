@@ -563,7 +563,7 @@ info: |
 
 ---
 
-# דוגמה: הרבה <KatexInline math="\{a\}" />, אחר כך <KatexInline math="\{a,b\}" />, ואז <KatexInline math="\{b\}" /> אינסוף פעמים
+# דוגמה: הרבה <KatexInline math="\{a\}" />, אחר כך <KatexInline math="\{a,b\}" />, ואז <KatexInline math="b" /> אינסוף פעמים
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
 
@@ -606,7 +606,7 @@ info: |
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
 
-יהיו <KatexInline math="\Phi_1" /> ו־<KatexInline math="\Phi_2" /> פסוקי מצב. התכונה:
+יהיו <KatexInline math="\Phi_1" /> ו־<KatexInline math="\Phi_2" /> פסוקי מצב. ניקח את התכונה:
 
 </div>
 
@@ -614,22 +614,31 @@ info: |
 <KatexInline math="P = \{\sigma \mid \exists i \ge 0\ \left(\sigma[i] \models \Phi_2 \land \forall 0 \le j \le i\ \left(\sigma[j] \models \Phi_1\right)\right)\}" />
 </div>
 
-<div class="mt-7 text-[28px] font-bold text-blue-700">
-<KatexInline math="\Phi_1\ \mathsf{until}\ \Phi_2" />
-</div>
-
 <div class="mt-7 text-right text-[21px] leading-relaxed">
 
-גם כאן יש רכיב בטיחות ורכיב חַיּוּת:
+כלומר, <KatexInline math="\Phi_1" /> חייב להתקיים עד לרגע הראשון שבו <KatexInline math="\Phi_2" /> מופיע.
 
 </div>
 
-<div class="mt-5 text-center text-[25px]" dir="ltr">
-<KatexInline math="\operatorname{closure}(P) = P \cup \{\sigma \mid \forall i \ge 0\ \left(\sigma[i] \models \Phi_1\right)\}" />
+<div class="grid grid-cols-2 gap-5 mt-5 text-center">
+<div class="bg-red-50 border border-red-200 rounded p-3 text-[15px] leading-snug">
+<div class="font-bold text-red-700 mb-1 text-[14px]">רכיב בטיחות</div>
+<div dir="ltr"><KatexInline math="P_{safe} = \operatorname{closure}(P) = P \cup \{\sigma \mid \forall i \ge 0\ \left(\sigma[i] \models \Phi_1\right)\}" /></div>
+</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-[15px] leading-snug">
+<div class="font-bold text-emerald-700 mb-1 text-[14px]">רכיב חַיּוּת</div>
+<div dir="ltr" class="text-[14px] leading-snug">
+<KatexInline math="P_{live} = P \cup \left((2^{AP})^\omega \setminus P_{safe}\right)" />
+<br>
+<KatexInline math="= P \cup \left((2^{AP})^\omega \setminus \left(P \cup \{\sigma \mid \forall i \ge 0\ (\sigma[i] \models \Phi_1)\}\right)\right)" />
+<br>
+<KatexInline math="= P \cup \left\{\sigma \mid \exists i \ge 0\ \left(\sigma[i] \not\models \Phi_1 \land \forall 0 \le j \le i\ \left(\sigma[j] \not\models \Phi_2\right)\right)\right\}" />
+</div>
+</div>
 </div>
 
 <div class="mt-7 bg-amber-50 border border-amber-200 rounded p-4 text-[20px] leading-relaxed">
-הריצה שבה <KatexInline math="\Phi_1" /> מתקיים תמיד ו־<KatexInline math="\Phi_2" /> לעולם לא מגיע נמצאת בסְגוֹר,
+הריצה שבה <KatexInline math="\Phi_1" /> מתקיים תמיד ו־<KatexInline math="\Phi_2" /> לעולם לא מגיעה נמצאת בסְגוֹר,
 אבל לא בתכונה עצמה.
 </div>
 
