@@ -32,7 +32,7 @@ info: |
 
 <div class="mt-8 text-right">
 
-בהרצאה הקודמת הכרנו את ה**שמורות** (Invariants) כתכונות שתלויות רק ב*מצב הנוכחי* של המערכת. 
+בהרצאה הקודמת הכרנו את ה**שמורות** (Invariants) כתכונות שתלויות רק ב*מצב הנוכחי* של המערכת.
 
 אך קיימות דרישות טבעיות למערכות שהן יותר מורכבות, ועדיין נחשבות לתכונות בטיחות:
 
@@ -40,7 +40,7 @@ info: |
 <div class="font-bold mb-2">דוגמה 1: כספומט (ATM)</div>
 
 הדרישה: "ניתן למשוך כסף רק אם קודם לכן הוקלד קוד סודי (PIN) נכון".
-זו אינה שמורה, כי המצב שבו יוצא כסף אינו "רע" בפני עצמו - הוא תלוי במה שקרה קודם. 
+זו אינה שמורה, כי המצב שבו יוצא כסף אינו "רע" בפני עצמו - הוא תלוי במה שקרה קודם.
 עם זאת, זו עדיין תכונת בטיחות: אם משכנו כסף בלי קוד, עשינו מעשה רע **בזמן סופי**.
 </div>
 
@@ -67,7 +67,7 @@ info: |
 
 - "תהליך 1 נמצא בקטע הקריטי"
 
-- "המצב $s$ מקיים את הפסוק $p \lor q$"  <br/> (מסומן ב-$s \models p \lor q$).   
+- "המצב $s$ מקיים את הפסוק $p \lor q$"  <br/> (מסומן ב-$s \models p \lor q$).
 
 </div>
 
@@ -235,7 +235,7 @@ $P_4 = \{\sigma \in (2^{AP})^\omega \mid \exists i \geq 0\ \left(p \in \sigma[i]
 <div class="mx-auto w-[95%]">
 <div class="mx-auto w-[98%] relative">
   <img src="/safety_property_basketball.png" class="w-full rounded-xl shadow-2xl border border-slate-800" />
-  
+
   <!-- Opponent label -->
   <div class="absolute top-[1%] -left-[10%] w-[35%] bg-gradient-to-r from-amber-900/90 to-amber-800/80 text-white p-3 rounded-lg text-[16px] font-bold shadow-lg flex items-center gap-3 backdrop-blur-sm border border-amber-700/50">
     <div class="shrink-0 w-0 h-0 border-y-[12px] border-y-transparent border-r-[18px] border-r-amber-400"></div>
@@ -275,7 +275,7 @@ $P_4 = \{\sigma \in (2^{AP})^\omega \mid \exists i \geq 0\ \left(p \in \sigma[i]
 
 <div class="mt-3 text-center" dir="ltr">
 
-$P = \{\sigma \in (2^{AP})^\omega :  \forall i \geq 0\ \left((p \in \sigma[2i]) \to (p \in \sigma[i])\right)\}$
+$P = \{\sigma \in (2^{AP})^\omega \mid \forall i \geq 0\ \left((p \in \sigma[2i]) \to (p \in \sigma[i])\right)\}$
 </div>
 
 <div class="-mt-0">
@@ -526,7 +526,7 @@ $$ P_{traffic} = \{ \sigma \in (2^{AP})^\omega \mid \forall i \ge 0\ \left(red \
 
 לכל $i \ge 0$:
 
-$$|\{0 \le j \le i : drink \in A_j\}| \le |\{0 \le j \le i : pay \in A_j\}|$$
+$$|\{0 \le j \le i \mid drink \in A_j\}| \le |\{0 \le j \le i \mid pay \in A_j\}|$$
 
 - רישות רעות:
 
@@ -615,14 +615,14 @@ const traceExStates = [
   // TS' (Right)
   { id: 'tsp_label', x: 550, y: 5, text: 'TS\'', color: 'transparent', stroke: 'none', textFontSize: 24 },
   { id: 'tsp_init', text: ' ', x: 550, y: 145, initial: true, initialDirection: 'left', color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
-  
+
   // Branch 1
   { id: 'b1', text: ' ', x: 670, y: 40, label: '{b}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
-  
+
   // Branch 2
   { id: 'e2_1', text: ' ', x: 670, y: 110, label: '{}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
   { id: 'b2', text: ' ', x: 770, y: 110, label: '{b}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
-  
+
   // Branch 3
   { id: 'e3_1', text: ' ', x: 670, y: 180, label: '{}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
   { id: 'e3_2', text: ' ', x: 770, y: 180, label: '{}', labelFontSize: 20, color: '#e0f2fe', stroke: '#0284c7', rx: 0, width: 50 },
@@ -667,7 +667,7 @@ const traceExTransitions = [
 
 <div class="grid grid-cols-2 gap-4 mt-3">
 <div class="bg-blue-50 border border-blue-200 rounded p-3 text-[14px]">
-    
+
 <div class="font-bold mb-1 text-blue-800">הכלת עקבות אינסופיות:</div>
 
 - המערכת $TS$ מייצרת את $\emptyset^\omega$.
@@ -677,7 +677,7 @@ const traceExTransitions = [
 </div>
 
 <div class="bg-green-50 border border-green-200 rounded p-3 text-[14px]">
-    
+
 <div class="font-bold mb-1 text-green-800">הכלת עקבות סופיות:</div>
 
 - כל רֵישָׁא סופית של $\emptyset^\omega$ היא $\emptyset^n$.
@@ -689,11 +689,11 @@ const traceExTransitions = [
 
 <div class="flex justify-center mt-1 h-[270px] w-full">
   <div class="relative bg-white border border-slate-200 rounded-xl shadow-lg p-2" dir="ltr" style="transform: scale(0.68); transform-origin: top center; width: 1100px; height: 390px;">
-    <TransitionSystemD3 :width="1100" :height="380" :auto="false" 
-      :states="traceExStates" 
-      :transitions="traceExTransitions" 
+    <TransitionSystemD3 :width="1100" :height="380" :auto="false"
+      :states="traceExStates"
+      :transitions="traceExTransitions"
     />
-    
+
 </div>
 </div>
 
@@ -732,7 +732,7 @@ $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
 
 <div class="font-bold text-blue-700 text-lg mb-2">
 
-כיוון ראשון ($\implies$):
+כיוון ראשון (<KatexInline math="\Longrightarrow" />):
 </div>
 
 אם $Traces(TS) \subseteq Traces(TS')$ אזי $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
@@ -744,7 +744,7 @@ $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$
 <div v-click>
 <div class="font-bold text-blue-700 text-lg mb-2">
 
-כיוון שני ($\impliedby$):
+כיוון שני (<KatexInline math="\Longleftarrow" />):
 </div>
 
 נניח $Traces_{fin}(TS) \subseteq Traces_{fin}(TS')$ ונוכיח $Traces(TS) \subseteq Traces(TS')$.
@@ -872,7 +872,7 @@ $$ \operatorname{closure}(P) = \{ \sigma \in (2^{AP})^\omega \mid \operatorname{
 <div class="bg-blue-50 border border-blue-200 rounded p-4 mt-6">
 <div class="font-bold mb-2">משפט: אפיון אלטרנטיבי לתכונות בטיחות</div>
 
-תכונת זמן לינארי $P$ היא תכונת בטיחות **אם ורק אם** היא שווה לַסְּגוֹר שלה: 
+תכונת זמן לינארי $P$ היא תכונת בטיחות **אם ורק אם** היא שווה לַסְּגוֹר שלה:
 $P = \operatorname{closure}(P)$
 </div>
 
@@ -891,7 +891,7 @@ $P = \operatorname{closure}(P)$
 <div class="mx-auto mt-4 bg-white border border-slate-200 shadow-md px-5 py-2 text-[27px] text-center" dir="ltr">
 
 <KatexInline
-  math="\textcolor{blue}{\mathit{closure}(P)} = \{\sigma:\ \forall \rho \sqsubset \sigma\ \left(\exists \sigma''\ \left(\rho\sigma'' \in P\right)\right)\}"
+  math="\textcolor{blue}{\mathit{closure}(P)} = \{\sigma \mid \forall \rho \prec \sigma\ \left(\exists \sigma''\ \left(\rho\sigma'' \in P\right)\right)\}"
 />
 
 </div>
@@ -933,11 +933,12 @@ $P = \operatorname{closure}(P)$
 
 <div class="mt-8 text-right text-[15px]">
 
-**כיוון ראשון ($\implies$):** נניח ש-$P$ היא תכונת בטיחות. עלינו להראות ש-$P = \operatorname{closure}(P)$.
+**כיוון ראשון ($\implies$):** נניח ש-$P$ היא תכונת בטיחות.
+ עלינו להראות ש-$P = \operatorname{closure}(P)$.
 - ההכלה $P \subseteq \operatorname{closure}(P)$ נובעת ישירות מההגדרה (כל רֵישָׁא של $\sigma \in P$ שייך ל-$\operatorname{pref}(P)$).
-- עבור ההכלה השנייה: יהי $\sigma \in \operatorname{closure}(P)$. נניח בשלילה ש-$\sigma \notin P$. 
-- כיוון ש-$P$ תכונת בטיחות, קיים ל-$\sigma$ **רֵישָׁא רעה** $\rho \prec \sigma$. 
-- מצד שני, כיוון ש-$\sigma \in \operatorname{closure}(P)$, כל הרישות שלו שייכים ל-$\operatorname{pref}(P)$, ולכן $\rho \in \operatorname{pref}(P)$. 
+- עבור ההכלה השנייה: יהי $\sigma \in \operatorname{closure}(P)$. נניח בשלילה ש-$\sigma \notin P$.
+- כיוון ש-$P$ תכונת בטיחות, קיים ל-$\sigma$ **רֵישָׁא רעה** $\rho \prec \sigma$.
+- מצד שני, כיוון ש-$\sigma \in \operatorname{closure}(P)$, כל הרישות שלו שייכים ל-$\operatorname{pref}(P)$, ולכן $\rho \in \operatorname{pref}(P)$.
 - משמעות הדבר היא שקיים $\sigma' \in P$ כך ש-$\rho \prec \sigma'$, בסתירה לכך ש-$\rho$ היא רֵישָׁא רעה. לכן $\sigma \in P$.
 
 **כיוון שני ($\impliedby$):** נניח ש-$P = \operatorname{closure}(P)$. נראה ש-$P$ תכונת בטיחות.
@@ -948,8 +949,50 @@ $P = \operatorname{closure}(P)$
 
 </div>
 
-<!-- Floating proof illustration: tune left/top/w/h to place it on the slide. -->
-<div class="absolute left-[4%] top-[53%] w-[34%] h-[220px]" dir="ltr">
+---
+
+# הוכחה: אפיון באמצעות סגור
+
+<div class="text-right leading-relaxed mt-2 text-[15px]">
+
+נרצה להוכיח ש-$P$ היא תכונת בטיחות $\iff P = \operatorname{closure}(P)$.
+
+<div v-click class="mt-4">
+
+<span class="font-bold text-blue-700 text-[18px]">כיוון ראשון (<KatexInline math="\Longrightarrow" />): </span>
+נניח ש-<KatexInline math="P" /> היא תכונת בטיחות.
+</div>
+
+
+<v-clicks>
+
+- ההכלה $P \subseteq \operatorname{closure}(P)$ נובעת ישירות מהגדרת הסגור.
+- נניח בשלילה שקיים $\sigma \in \operatorname{closure}(P)$ כך ש-$\sigma \notin P$.
+- כיוון ש-$P$ בטיחות, ל-$\sigma$ יש **רֵישָׁא רעה** $\rho \prec \sigma$.
+- מצד שני, כיוון ש-$\sigma \in \operatorname{closure}(P)$, כל הרישות שלו (ובפרט $\rho$) שייכות ל-$\operatorname{pref}(P)$.
+- זה אומר שקיים $\sigma' \in P$ הממשיך את $\rho$, **בסתירה** לכך ש-$\rho$ היא רֵישָׁא רעה.
+- לכן $\sigma \in P$ וההכלות שוות.
+
+</v-clicks>
+
+<div v-click class="mt-4">
+<span class="font-bold text-blue-700 text-[18px]">כיוון שני (<KatexInline math="\Longleftarrow" />):</span> נניח ש-<KatexInline math="P = \operatorname{closure}(P)" />.
+</div>
+
+<v-clicks>
+
+- נראה ש-$P$ תכונת בטיחות: תהי $\sigma \notin P$.
+- כיוון ש-$P = \operatorname{closure}(P)$, הרי ש-$\sigma \notin \operatorname{closure}(P)$.
+- לפי הגדרת הסגור, קיים ל-$\sigma$ רֵישָׁא סופית $\rho \prec \sigma$ כך ש-$\rho \notin \operatorname{pref}(P)$.
+- משמעות הדבר היא ש**שום** המשך של $\rho$ לא יכול להיות ב-$P$.
+- לכן $\rho$ היא רֵישָׁא רעה ל-$\sigma$, ו-$P$ היא תכונת בטיחות.
+
+</v-clicks>
+
+</div>
+
+<!-- Floating proof illustration: groups appear with the first bullet; sigma appears with the contradiction assumption. -->
+<div class="absolute left-[4%] top-[16%] w-[34%] h-[190px]" dir="ltr">
   <svg class="absolute inset-0 w-full h-full overflow-visible" viewBox="0 0 560 260" aria-hidden="true">
     <defs>
       <linearGradient id="closure-proof-outer" x1="0" y1="0" x2="0" y2="1">
@@ -967,15 +1010,21 @@ $P = \operatorname{closure}(P)$
         <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef1b16" />
       </marker>
     </defs>
-    <ellipse cx="280" cy="132" rx="245" ry="104" fill="url(#closure-proof-outer)" stroke="#6b5b5b" stroke-width="1.3" filter="url(#closure-proof-shadow)" />
-    <ellipse cx="292" cy="160" rx="112" ry="62" fill="url(#closure-proof-inner)" stroke="#555" stroke-width="1.1" filter="url(#closure-proof-shadow)" />
-    <circle cx="470" cy="120" r="8" fill="#ff2a16" stroke="#d10d07" stroke-width="1.4" filter="url(#closure-proof-shadow)" />
-    <path d="M 525 260 C 528 214, 500 166, 490 145" fill="none" stroke="#ef1b16" stroke-width="4" stroke-linecap="round" marker-end="url(#closure-proof-arrow)" />
+    <g v-click="2" class="transition-opacity duration-300">
+      <ellipse cx="280" cy="132" rx="245" ry="104" fill="url(#closure-proof-outer)" stroke="#6b5b5b" stroke-width="1.3" filter="url(#closure-proof-shadow)" />
+      <ellipse cx="292" cy="160" rx="112" ry="62" fill="url(#closure-proof-inner)" stroke="#555" stroke-width="1.1" filter="url(#closure-proof-shadow)" />
+    </g>
+    <g v-click="3" class="transition-opacity duration-300">
+      <circle cx="470" cy="120" r="8" fill="#ff2a16" stroke="#d10d07" stroke-width="1.4" filter="url(#closure-proof-shadow)" />
+      <path d="M 525 260 C 528 214, 500 166, 490 145" fill="none" stroke="#ef1b16" stroke-width="4" stroke-linecap="round" marker-end="url(#closure-proof-arrow)" />
+    </g>
   </svg>
-  <div class="absolute left-[32%] top-[25%] text-[20px]"><KatexInline math="\mathit{closure}(P)" /></div>
-  <div class="absolute left-[51%] top-[48%] text-[20px]"><KatexInline math="P" /></div>
-  <div class="absolute left-[93%] top-[85%] text-[20px] text-red-600"><KatexInline math="\sigma" /></div>
+  <div v-click="2" class="absolute left-[32%] top-[25%] text-[20px] transition-opacity duration-300"><KatexInline math="\mathit{closure}(P)" /></div>
+  <div v-click="2" class="absolute left-[51%] top-[48%] text-[20px] transition-opacity duration-300"><KatexInline math="P" /></div>
+  <div v-click="3" class="absolute left-[93%] top-[85%] text-[20px] text-red-600 transition-opacity duration-300"><KatexInline math="\sigma" /></div>
 </div>
+
+
 
 ---
 
@@ -1034,7 +1083,7 @@ $P = \operatorname{closure}(P)$
 <div class="mt-7 text-center text-[28px]" dir="ltr">
 
 <KatexInline
-  math="\textcolor{blue}{\mathit{closure}(S) = \{x:\ \forall \varepsilon > 0\ \left(\exists s \in S\ \left(d(x,s) \le \varepsilon\right)\right)\}}"
+  math="\textcolor{blue}{\mathit{closure}(S) = \{x \mid \forall \varepsilon > 0\ \left(\exists s \in S\ \left(d(x,s) \le \varepsilon\right)\right)\}}"
 />
 
 </div>
@@ -1058,7 +1107,7 @@ $P = \operatorname{closure}(P)$
     <path d="M 70 -86 C 140 -70, 200 -50, 250 -30" fill="none" stroke="#b45309" stroke-width="3" stroke-linecap="round" marker-end="url(#metric-note-arrow)" />
   </svg>
   <div class="absolute left-[28%] top-[26%] text-[28px]">
-    <KatexInline math="\textcolor{blue}{d(\sigma_1,\sigma_2) := 2^{-\max\{i:\ \sigma_1[..i]=\sigma_2[..i]\}}}" />
+    <KatexInline math="\textcolor{blue}{d(\sigma_1,\sigma_2) := 2^{-\max\{i \mid \sigma_1[..i]=\sigma_2[..i]\}}}" />
   </div>
 </div>
 
@@ -1078,7 +1127,7 @@ $P = \operatorname{closure}(P)$
 
 - **אינטואיציה:** "משהו רע לעולם לא יקרה". הפרה מזוהה ב**זמן סופי** ע"י **רֵישָׁא רעה**.
 - **אפיון מתמטי:** $P$ היא תכונת בטיחות אם ורק אם $P = \operatorname{closure}(P)$.
-- **סוגים:** 
+- **סוגים:**
   - **רגולריות:** ניתן לזהות רֵישָׁא רעה ע"י אוטומט סופי (למשל: רמזור).
   - **לא רגולריות:** דורשות זיכרון אינסופי (למשל: מכונת משקאות).
 </div>
