@@ -223,7 +223,7 @@ info: |
 </div>
 
 <div class="bg-slate-50 border border-slate-200 rounded p-4">
-<div class="font-bold mb-3">לבסוף <KatexInline math="p \Rightarrow \bigcirc q" /></div>
+<div class="font-bold mb-3">לבסוף: <KatexInline math="p" /> גורר <KatexInline math="q" /> בצעד הבא</div>
 נמשיך ב־<KatexInline math="\{\}^\omega" />, ולכן התנאי מתקיים באופן ריק.
 </div>
 </div>
