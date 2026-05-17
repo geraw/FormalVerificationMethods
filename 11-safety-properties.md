@@ -547,8 +547,6 @@ $\emptyset\ \{pay\}\ \{drink\}\ \emptyset\ \{pay\}\ \{drink\}\ \{drink\}$
   ז"א תכונת בטיחות שאינה תכונת בטיחות רגולרית.
 </div>
 
-
-
 ---
 
 <div class="transform scale-90 origin-top-right">
@@ -931,31 +929,9 @@ $P = \operatorname{closure}(P)$
 
 # הוכחת משפט הַסְּגוֹר
 
-<div class="mt-8 text-right text-[15px]">
-
-**כיוון ראשון ($\implies$):** נניח ש-$P$ היא תכונת בטיחות.
- עלינו להראות ש-$P = \operatorname{closure}(P)$.
-- ההכלה $P \subseteq \operatorname{closure}(P)$ נובעת ישירות מההגדרה (כל רֵישָׁא של $\sigma \in P$ שייך ל-$\operatorname{pref}(P)$).
-- עבור ההכלה השנייה: יהי $\sigma \in \operatorname{closure}(P)$. נניח בשלילה ש-$\sigma \notin P$.
-- כיוון ש-$P$ תכונת בטיחות, קיים ל-$\sigma$ **רֵישָׁא רעה** $\rho \prec \sigma$.
-- מצד שני, כיוון ש-$\sigma \in \operatorname{closure}(P)$, כל הרישות שלו שייכים ל-$\operatorname{pref}(P)$, ולכן $\rho \in \operatorname{pref}(P)$.
-- משמעות הדבר היא שקיים $\sigma' \in P$ כך ש-$\rho \prec \sigma'$, בסתירה לכך ש-$\rho$ היא רֵישָׁא רעה. לכן $\sigma \in P$.
-
-**כיוון שני ($\impliedby$):** נניח ש-$P = \operatorname{closure}(P)$. נראה ש-$P$ תכונת בטיחות.
-- יהי $\sigma \notin P$. כיוון ש-$P = \operatorname{closure}(P)$, הרי ש-$\sigma \notin \operatorname{closure}(P)$.
-- לפי הגדרת הַסְּגוֹר, קיים ל-$\sigma$ רֵישָׁא סופית $\rho \prec \sigma$ כך ש-$\rho \notin \operatorname{pref}(P)$.
-- המשמעות היא שלא קיימת אף מילה $\sigma'$ המקיימת $\rho \prec \sigma'$ ושייכת ל-$P$.
-- לכן $\rho$ היא **רֵישָׁא רעה** עבור $\sigma$, ומכאן ש-$P$ היא תכונת בטיחות.
-
-</div>
-
----
-
-# הוכחה: אפיון באמצעות סגור
-
 <div class="text-right leading-relaxed mt-2 text-[15px]">
 
-נרצה להוכיח ש-$P$ היא תכונת בטיחות $\iff P = \operatorname{closure}(P)$.
+נרצה להוכיח ש-$P$ היא תכונת בטיחות אם ורק אם $P = \operatorname{closure}(P)$.
 
 <div v-click class="mt-4">
 
@@ -966,12 +942,12 @@ $P = \operatorname{closure}(P)$
 
 <v-clicks>
 
-- ההכלה $P \subseteq \operatorname{closure}(P)$ נובעת ישירות מהגדרת הסגור.
+- ההכלה $P \subseteq \operatorname{closure}(P)$ נובעת ישירות מהגדרת הַסְּגוֹר.
 - נניח בשלילה שקיים $\sigma \in \operatorname{closure}(P)$ כך ש-$\sigma \notin P$.
 - כיוון ש-$P$ בטיחות, ל-$\sigma$ יש **רֵישָׁא רעה** $\rho \prec \sigma$.
 - מצד שני, כיוון ש-$\sigma \in \operatorname{closure}(P)$, כל הרישות שלו (ובפרט $\rho$) שייכות ל-$\operatorname{pref}(P)$.
 - זה אומר שקיים $\sigma' \in P$ הממשיך את $\rho$, **בסתירה** לכך ש-$\rho$ היא רֵישָׁא רעה.
-- לכן $\sigma \in P$ וההכלות שוות.
+- לכן $\sigma \in P$ והקבוצות שוות. כלומר $P = \operatorname{closure}(P)$.
 
 </v-clicks>
 
@@ -983,7 +959,7 @@ $P = \operatorname{closure}(P)$
 
 - נראה ש-$P$ תכונת בטיחות: תהי $\sigma \notin P$.
 - כיוון ש-$P = \operatorname{closure}(P)$, הרי ש-$\sigma \notin \operatorname{closure}(P)$.
-- לפי הגדרת הסגור, קיים ל-$\sigma$ רֵישָׁא סופית $\rho \prec \sigma$ כך ש-$\rho \notin \operatorname{pref}(P)$.
+- לפי הגדרת הַסְּגוֹר, קיים ל-$\sigma$ רֵישָׁא סופית $\rho \prec \sigma$ כך ש-$\rho \notin \operatorname{pref}(P)$.
 - משמעות הדבר היא ש**שום** המשך של $\rho$ לא יכול להיות ב-$P$.
 - לכן $\rho$ היא רֵישָׁא רעה ל-$\sigma$, ו-$P$ היא תכונת בטיחות.
 
@@ -992,7 +968,7 @@ $P = \operatorname{closure}(P)$
 </div>
 
 <!-- Floating proof illustration: groups appear with the first bullet; sigma appears with the contradiction assumption. -->
-<div class="absolute left-[4%] top-[16%] w-[34%] h-[190px]" dir="ltr">
+<div class="absolute left-[4%] top-[16%] w-[34%] h-[190px] transition-opacity duration-300" :class="{ 'opacity-0': $slidev.nav.clicks >= 8 }" dir="ltr">
   <svg class="absolute inset-0 w-full h-full overflow-visible" viewBox="0 0 560 260" aria-hidden="true">
     <defs>
       <linearGradient id="closure-proof-outer" x1="0" y1="0" x2="0" y2="1">
@@ -1022,6 +998,55 @@ $P = \operatorname{closure}(P)$
   <div v-click="2" class="absolute left-[32%] top-[25%] text-[20px] transition-opacity duration-300"><KatexInline math="\mathit{closure}(P)" /></div>
   <div v-click="2" class="absolute left-[51%] top-[48%] text-[20px] transition-opacity duration-300"><KatexInline math="P" /></div>
   <div v-click="3" class="absolute left-[93%] top-[85%] text-[20px] text-red-600 transition-opacity duration-300"><KatexInline math="\sigma" /></div>
+</div>
+
+<div v-click="6" class="absolute left-[4%] top-[48%] w-[31%] h-[92px] transition-opacity duration-300" :class="{ 'opacity-0': $slidev.nav.clicks >= 8 }" dir="ltr">
+  <svg class="absolute inset-0 w-full h-full overflow-visible" viewBox="0 0 620 150" aria-hidden="true">
+    <defs>
+      <marker id="prefix-branch-red-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" />
+      </marker>
+      <marker id="prefix-branch-green-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a" />
+      </marker>
+    </defs>
+    <path d="M 35 75 L 260 75" fill="none" stroke="#334155" stroke-width="5" stroke-linecap="round" />
+    <path d="M 260 75 C 355 60, 440 40, 565 38" fill="none" stroke="#dc2626" stroke-width="5" stroke-linecap="round" marker-end="url(#prefix-branch-red-arrow)" />
+    <path d="M 260 75 C 355 90, 440 115, 565 118" fill="none" stroke="#16a34a" stroke-width="5" stroke-linecap="round" marker-end="url(#prefix-branch-green-arrow)" />
+    <circle cx="260" cy="75" r="6" fill="#334155" />
+  </svg>
+  <div class="absolute left-[22%] top-[16%] text-[18px] text-slate-700"><KatexInline math="\rho" /></div>
+  <div class="absolute left-[92%] top-[4%] text-[18px] text-red-600"><KatexInline math="\sigma" /></div>
+  <div class="absolute left-[92%] top-[64%] text-[18px] text-green-700"><KatexInline math="\sigma'" /></div>
+</div>
+
+<div v-click="9" class="absolute left-[4%] top-[58%] w-[30%] h-[165px] transition-opacity duration-300" dir="ltr">
+  <svg class="absolute inset-0 w-full h-full overflow-visible" viewBox="0 0 620 360" aria-hidden="true">
+    <defs>
+      <marker id="protocol-arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" />
+      </marker>
+      <marker id="protocol-arrow-slate" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569" />
+      </marker>
+    </defs>
+    <line x1="95" y1="28" x2="95" y2="330" stroke="#111827" stroke-width="3" stroke-dasharray="12 12" />
+    <line x1="520" y1="28" x2="520" y2="330" stroke="#111827" stroke-width="3" stroke-dasharray="12 12" />
+    <g class="transition-opacity duration-300" :class="{ 'opacity-0': $slidev.nav.clicks < 9 }">
+      <path d="M 96 86 L 518 122" fill="none" stroke="#dc2626" stroke-width="4" marker-end="url(#protocol-arrow-red)" />
+    </g>
+    <g class="transition-opacity duration-300" :class="{ 'opacity-0': $slidev.nav.clicks < 11 }">
+      <path d="M 520 190 L 98 210" fill="none" stroke="#475569" stroke-width="4" marker-end="url(#protocol-arrow-slate)" />
+    </g>
+    <g class="transition-opacity duration-300" :class="{ 'opacity-0': $slidev.nav.clicks < 12 }">
+      <path d="M 98 285 L 518 314" fill="none" stroke="#dc2626" stroke-width="4" marker-end="url(#protocol-arrow-red)" />
+    </g>
+  </svg>
+  <div class="absolute left-[-4%] top-[-9%] w-[42%] text-center text-[11px] text-slate-700 leading-tight" dir="rtl">יריב שמנסה <br> לאתגר אותנו</div>
+  <div class="absolute left-[60%] top-[-9%] w-[42%] text-center text-[11px] text-slate-700 leading-tight" dir="rtl">אנחנו מנסים <br> להוכיח בטיחות</div>
+  <div class="absolute left-[33%] top-[8%] text-[20px] text-red-700 transition-opacity duration-300" :class="{ 'opacity-0': $slidev.nav.clicks < 9 }"><KatexInline math="\sigma \notin P" /></div>
+  <div class="absolute left-[35%] top-[36%] text-[20px] text-slate-700 transition-opacity duration-300" :class="{ 'opacity-0': $slidev.nav.clicks < 11 }"><KatexInline math="\rho \prec \sigma" /></div>
+  <div class="absolute left-[28%] top-[66%] text-[18px] text-red-600 transition-opacity duration-300" :class="{ 'opacity-0': $slidev.nav.clicks < 12 }"><KatexInline math="\sigma''\ \mathrm{s.t.}\ \rho\sigma'' \in P" /></div>
 </div>
 
 
