@@ -36,7 +36,7 @@ info: |
 <div class="bg-slate-50 border border-slate-200 rounded p-4">
 <div class="font-bold mb-3">למה צריך הוֹגְנוּת?</div>
 
-- נבין מדוע תכונות חיות רבות אינן ניתנות להוכחה בלי הנחות נוספות.
+- נבין מדוע תכונות חַיּוּת רבות אינן ניתנות להוכחה בלי הנחות נוספות.
 - נראה כיצד אי-דטרמיניזם במודל עלול לייצר ריצות לא מציאותיות.
 - נבחין בין תכונה שרוצים להוכיח לבין הנחה שמגבילה את המודל.
 </div>
@@ -57,7 +57,7 @@ info: |
 
 <div class="mt-7 text-right text-[23px] leading-relaxed">
 
-במערכות מקביליות, תכונת חיות כמו "בסוף תהליך 2 ירוץ" אינה נובעת רק ממבנה התוכנית.
+במערכות מקביליות, תכונת חַיּוּת כמו "בסוף תהליך 2 ירוץ" אינה נובעת רק ממבנה התוכנית.
 צריך גם לומר משהו על מנגנון השיבוץ.
 
 </div>
@@ -462,26 +462,26 @@ info: |
 
 # סיכום...
 
-<div class="text-right text-[22px] leading-relaxed mt-2">
+<div class="text-center text-[22px] leading-relaxed mt-2 space-y-4">
 נגדיר:
 
-<div class="mt-4 text-center" dir="ltr">
-<KatexInline display math="P=\text{``each process enters its critical section infinitely often''}" />
+<div dir="ltr">
+<KatexInline display math="P=\{\sigma\in(2^{AP})^\omega\mid \forall i\ge 0\ \exists j\ge i\ \left(c_1\in\sigma_j\right)\land \forall i\ge 0\ \exists j\ge i\ \left(c_2\in\sigma_j\right)\}" />
 </div>
 
-<div class="mt-4 bg-red-50 border border-red-200 rounded p-4 text-[19px] leading-relaxed">
+<div class="bg-red-50 border border-red-200 rounded p-4 text-[19px] leading-relaxed">
 <span dir="ltr"><KatexInline math="\mathcal{F}=\langle\emptyset,\emptyset,\emptyset\rangle" /></span>
 <br>
 ללא אילוצי הוֹגְנוּת: <span dir="ltr"><KatexInline math="TS\not\models_{\mathcal{F}} P" /></span>
 </div>
 
-<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-4 text-[19px] leading-relaxed">
+<div class="bg-amber-50 border border-amber-200 rounded p-4 text-[19px] leading-relaxed">
 <span dir="ltr"><KatexInline math="\mathcal{F}'=\langle\emptyset,\{\{enter_1\},\{enter_2\}\},\emptyset\rangle" /></span>
 <br>
 רק הוֹגְנוּת חזקה על <span dir="ltr"><KatexInline math="enter_i" /></span>: עדיין <span dir="ltr"><KatexInline math="TS\not\models_{\mathcal{F}'} P" /></span>
 </div>
 
-<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-4 text-[19px] leading-relaxed">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-[19px] leading-relaxed">
 <span dir="ltr"><KatexInline math="\mathcal{F}''=\langle\emptyset,\{\{enter_1\},\{enter_2\}\},\{\{req_1\},\{req_2\}\}\rangle" /></span>
 <br>
 עם הוֹגְנוּת חלשה על <span dir="ltr"><KatexInline math="req_i" /></span>: <span dir="ltr"><KatexInline math="TS\models_{\mathcal{F}''} P" /></span>
@@ -497,7 +497,7 @@ info: |
 </div>
 
 <div class="mt-7 text-center text-[31px]" dir="ltr">
-<KatexInline display math="\forall s\in Reach(TS).\quad FairPaths_{\mathcal{F}}(s)\neq\emptyset" />
+<KatexInline display math="\forall s\in Reach(TS)\ \left(FairPaths_{\mathcal{F}}(s)\neq\emptyset\right)" />
 </div>
 
 <div class="mt-8 bg-blue-50 border border-blue-200 rounded p-5 text-[22px] leading-relaxed">
@@ -609,7 +609,7 @@ const unrealizableFairnessTransitions = [
 
 <div class="grid grid-cols-2 gap-4 -mt-10 text-[20px] leading-relaxed">
   <div class="text-right">תכונת בטיחות (שְׁמוּרָה):</div>
-  <div class="text-left" dir="ltr"><KatexInline math="P=\{\sigma\in(2^{AP})^\omega\mid \forall i\ge 0\ (p\notin\sigma_i)\}" /></div>
+  <div class="text-left" dir="ltr"><KatexInline math="P=\{\sigma\in(2^{AP})^\omega\mid \forall i\ge 0\ \left(p\notin\sigma_i\right)\}" /></div>
 
   <div class="text-right">הנחת הוֹגְנוּת בלתי מותנית:</div>
   <div class="text-left" dir="ltr"><KatexInline math="\mathcal{F}=\langle\{\{\alpha\}\},\emptyset,\emptyset\rangle" /></div>
@@ -633,7 +633,7 @@ const unrealizableFairnessTransitions = [
 <div class="mt-8 text-right text-[22px] leading-relaxed">
 
 - הוֹגְנוּת פוסלת ריצות לא מציאותיות שנוצרות מאי-דטרמיניזם.
-- בדרך כלל צריך הוֹגְנוּת כדי להוכיח תכונות חיות, במיוחד מניעת הרעבה והתקדמות.
+- בדרך כלל צריך הוֹגְנוּת כדי להוכיח תכונות חַיּוּת, במיוחד מניעת הרעבה והתקדמות.
 - שלושת האילוצים המרכזיים הם הוֹגְנוּת בלתי מותנית, חזקה וחלשה.
 - הנחת הוֹגְנוּת <KatexInline math="\mathcal{F}" /> מגדירה אילוצים שונים על קבוצות פעולות שונות.
 - תחת הוֹגְנוּת בודקים רק עקבות הוֹגְנוֹת:
