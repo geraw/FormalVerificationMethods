@@ -522,52 +522,108 @@ info: |
 
 ---
 
+<script setup>
+const unrealizableFairnessStates = [
+  {
+    id: 'left',
+    text: ' ',
+    label: '$\\{\\}$',
+    labelFontSize: 20,
+    labelX: 25,
+    labelY: 26,
+    x: 210,
+    y: 86,
+    width: 78,
+    rx: 0,
+    color: '#fff200',
+    stroke: '#111827',
+    strokeWidth: 1.8,
+    initial: true,
+    initialDirection: 'top',
+  },
+  {
+    id: 'right',
+    text: ' ',
+    label: '$\\{p\\}$',
+    labelFontSize: 20,
+    labelX: 25,
+    labelY: 26,
+    x: 410,
+    y: 86,
+    width: 78,
+    rx: 0,
+    color: '#fff200',
+    stroke: '#111827',
+    strokeWidth: 1.8,
+  },
+];
+
+const unrealizableFairnessTransitions = [
+  {
+    source: 'left',
+    target: 'left',
+    action: '$\\alpha$',
+    actionFontSize: 20,
+    loopDirection: '160deg',
+    loopRadius: 88,
+    loopLabelRadius: 77,
+    actionX: 0,
+    actionY: 0,
+  },
+  {
+    source: 'left',
+    target: 'right',
+    action: '$\\beta$',
+    actionFontSize: 20,
+    actionY: 0,
+  },
+  {
+    source: 'right',
+    target: 'right',
+    action: '$\\beta$',
+    actionFontSize: 20,
+    loopDirection: '-30deg',
+    loopRadius: 88,
+    loopLabelRadius: 77,
+    actionX: 0,
+    actionY: 0,
+  },
+];
+</script>
+
 # כשההנחה אינה בת מימוש
 
 <div class="mt-1 text-right text-[22px] leading-relaxed text-slate-700">
 הנחות הוֹגְנוּת שאינן בנות מימוש עלולות לפגוע גם בתכונות בטיחות.
 </div>
 
-<div class="mt-2 relative h-[215px]" dir="ltr">
-  <svg class="absolute inset-0 h-full w-full" viewBox="0 0 620 215" aria-hidden="true">
-    <defs>
-      <marker id="fairness-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-        <path d="M 0 0 L 10 5 L 0 10 Z" fill="#111827" />
-      </marker>
-    </defs>
-
-    <rect x="190" y="54" width="95" height="44" rx="3" fill="#fff200" stroke="#111827" stroke-width="2" />
-    <rect x="390" y="54" width="95" height="44" rx="3" fill="#fff200" stroke="#111827" stroke-width="2" />
-
-    <path d="M 238 54 L 238 25" stroke="#111827" stroke-width="2" marker-end="url(#fairness-arrow)" />
-    <path d="M 285 76 L 390 76" stroke="#111827" stroke-width="2" marker-end="url(#fairness-arrow)" />
-    <path d="M 190 76 L 150 76 L 150 136 L 238 136 L 238 98" fill="none" stroke="#111827" stroke-width="2" marker-end="url(#fairness-arrow)" />
-    <path d="M 485 76 L 525 76 L 525 140 L 437 140 L 437 98" fill="none" stroke="#111827" stroke-width="2" marker-end="url(#fairness-arrow)" />
-
-    <text x="338" y="69" text-anchor="middle" font-size="20" fill="#111827">β</text>
-    <text x="183" y="154" text-anchor="middle" font-size="20" fill="#111827">α</text>
-    <text x="444" y="154" text-anchor="middle" font-size="20" fill="#111827">β</text>
-    <text x="280" y="117" text-anchor="middle" font-size="21" fill="#111827">∅</text>
-    <text x="452" y="117" text-anchor="middle" font-size="21" fill="#111827">{ p }</text>
-  </svg>
+<div class="-mt-10 flex justify-center h-[225px]" dir="ltr">
+  <TransitionSystemD3
+    :width="620"
+    :height="215"
+    :auto="false"
+    :states="unrealizableFairnessStates"
+    :transitions="unrealizableFairnessTransitions"
+  />
 </div>
 
-<div class="grid grid-cols-2 gap-4 mt-1 text-[20px] leading-relaxed">
-  <div class="text-right">תכונה:</div>
-  <div class="text-right" dir="ltr"><KatexInline math="P=\text{``never }p\text{''}" /></div>
+<div class="grid grid-cols-2 gap-4 -mt-10 text-[20px] leading-relaxed">
+  <div class="text-right">תכונת בטיחות (שְׁמוּרָה):</div>
+  <div class="text-left" dir="ltr"><KatexInline math="P=\{\sigma\in(2^{AP})^\omega\mid \forall i\ge 0\ (p\notin\sigma_i)\}" /></div>
 
   <div class="text-right">הנחת הוֹגְנוּת בלתי מותנית:</div>
-  <div class="text-right" dir="ltr"><KatexInline math="\mathcal{F}=\langle\{\{\alpha\}\},\emptyset,\emptyset\rangle" /></div>
+  <div class="text-left" dir="ltr"><KatexInline math="\mathcal{F}=\langle\{\{\alpha\}\},\emptyset,\emptyset\rangle" /></div>
 </div>
 
-<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[20px] leading-relaxed text-right text-blue-800 font-semibold">
+<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[20px] leading-relaxed text-right text-blue-800 ">
 הנחה זו אינה בת מימוש כיוון שהמצב הימני נגיש אבל חסר ריצות הוֹגְנוֹת.
 </div>
 
-<div class="mt-3 bg-slate-50 border border-slate-300 rounded p-2 text-center text-[31px]" dir="ltr">
-<span class="text-red-600"><KatexInline math="TS\models_{\mathcal{F}} P" /></span>
-<span class="mx-10 text-red-600">אבל</span>
-<span class="text-red-600"><KatexInline math="TS\not\models P" /></span>
+<div class="mt-3 bg-slate-50 border border-slate-300 rounded p-2 text-center text-[20px] text-red-600" dir="ltr">
+<KatexInline math="TS\models_{\mathcal{F}} P" />
+<span class="mx-8">אבל</span>
+<KatexInline math="TS\not\models P" />
+<div class="mt-1" dir="rtl">גם עבור תכונת בטיחות</div>
 </div>
 
 ---
