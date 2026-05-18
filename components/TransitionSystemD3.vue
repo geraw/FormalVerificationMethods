@@ -385,7 +385,6 @@ const render = () => {
                 : baseStrokeWidth,
             __renderOpacity: t.opacity !== undefined ? t.opacity : (dimmed ? 0.28 : 1),
             __renderLabelColor: highlighted ? renderStroke : (t.labelColor || baseStroke),
-            __renderLabelBackground: highlighted ? "rgba(255,247,237,0.96)" : "white",
         };
     });
 
@@ -566,7 +565,7 @@ const render = () => {
         .style("font-size", (d: any) => `${d.actionFontSize || 12}px`)
         .style("padding", "0")
         .html((d: any) => d.action
-            ? `<span style="background:${d.__renderLabelBackground}; padding:1px 4px; border-radius:999px; color:${d.__renderLabelColor}; border:1px solid rgba(148,163,184,0.18)">${renderMath(d.action, true)}</span>`
+            ? `<span style="color:${d.__renderLabelColor}">${renderMath(d.action, true)}</span>`
             : ""
         );
 

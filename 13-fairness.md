@@ -342,6 +342,74 @@ info: |
 
 ---
 
+
+<script setup>
+const fairnessQuizStates = [
+  { id: 'q0', text: ' ', x: 120, y: 92, width: 50, rx: 0, color: '#fff200', stroke: '#111827', strokeWidth: 1.8, initial: true, initialDirection: 'left' },
+  { id: 'q1', text: ' ', x: 240, y: 92, width: 50, rx: 0, color: '#fff200', stroke: '#111827', strokeWidth: 1.8 },
+  { id: 'q2', text: ' ', x: 360, y: 92, width: 50, rx: 0, color: '#fff200', stroke: '#111827', strokeWidth: 1.8 },
+];
+
+const fairnessQuizTransitions = [
+  { source: 'q0', target: 'q1', action: '$\\alpha_1$', actionFontSize: 18, stroke: '#dc2626', strokeWidth: 3, labelColor: '#dc2626', actionY: -12 },
+  { source: 'q1', target: 'q2', action: '$\\alpha_3$', actionFontSize: 18, stroke: '#dc2626', strokeWidth: 3, labelColor: '#dc2626', actionY: -12 },
+  { source: 'q2', target: 'q0', action: '$\\alpha_4$', actionFontSize: 18, stroke: '#dc2626', strokeWidth: 3, labelColor: '#dc2626', curve: -0.35, actionY: 18 },
+  { source: 'q0', target: 'q0', action: '$\\alpha_7$', actionFontSize: 17, loopDirection: '-120deg', loopRadius: 85, loopLabelRadius: 65, actionY: -5 },
+  { source: 'q1', target: 'q2', action: '$\\alpha_6$', actionFontSize: 17, curve: -0.35, actionY: -20 },
+  { source: 'q2', target: 'q0', action: '$\\alpha_7$', actionFontSize: 17, curve: 0.55, actionX: 0, actionY: -20 },
+];
+</script>
+
+# חידון: האם הריצה הוגנת?
+
+<div class="mt-1 text-center text-[20px]" dir="ltr">
+<KatexInline math="\mathcal{F}=\langle" />
+<span class="text-blue-700"><KatexInline math="\{\{\alpha_1,\alpha_2\},\{\alpha_2,\alpha_3\}\}" /></span>,
+<span class="text-red-600"><KatexInline math="\{\{\alpha_4,\alpha_5\},\{\alpha_5,\alpha_6\}\}" /></span>,
+<span class="text-slate-800"><KatexInline math="\{\{\alpha_6,\alpha_7\},\{\alpha_7,\alpha_8\}\}" /></span>
+<KatexInline math="\rangle" />
+</div>
+
+<div class="mt-1 pr-16 pl-36 text-center text-[20px]" dir="ltr">
+  <div class="inline-grid grid-cols-6 gap-[5.54rem]">
+    <div v-click class="text-emerald-600">✓</div>
+    <div v-click class="text-emerald-600">✓</div>
+    <div v-click class="text-emerald-600">✓</div>
+    <div v-click class="text-red-600">✗</div>
+    <div v-click class="text-red-600">✗</div>
+    <div v-click class="text-emerald-600">✓</div>
+  </div>
+</div>
+
+<div class="mt-1 mb-6 text-flex justify-center" dir="ltr">
+  <TransitionSystemD3
+    :width="480"
+    :height="185"
+    :auto="false"
+    :states="fairnessQuizStates"
+    :transitions="fairnessQuizTransitions"
+  />
+</div>
+
+<div class="-mt-4 space-y-3 text-center text-[16px] leading-relaxed">
+<div>
+כל אחת מהקבוצות <span dir="ltr" class="text-blue-700"><KatexInline math="\{\alpha_1,\alpha_2\},\{\alpha_2,\alpha_3\}" /></span>
+צריכה להיבחר אינסוף פעמים.
+</div>
+
+<div>
+לגבי כל אחת מהקבוצות <span dir="ltr" class="text-red-600"><KatexInline math="\{\alpha_4,\alpha_5\},\{\alpha_5,\alpha_6\}" /></span>:
+אם היא מאופשרת אינסוף פעמים, היא צריכה להיבחר אינסוף פעמים.
+</div>
+
+<div>
+לגבי כל אחת מהקבוצות <span dir="ltr"><KatexInline math="\{\alpha_6,\alpha_7\},\{\alpha_7,\alpha_8\}" /></span>:
+אם היא מאופשרת ברצף מזמן מסוים, היא צריכה להיבחר אינסוף פעמים.
+</div>
+</div>
+
+---
+
 # דוגמה להנחת הוֹגְנוּת
 
 <div class="mt-5 text-center text-[26px]" dir="ltr">
