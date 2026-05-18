@@ -302,32 +302,42 @@ info: |
 </div>
 </div>
 
-<div class="mt-8 bg-red-50 border border-red-200 rounded p-5 text-[21px] leading-relaxed">
+<div class="grid grid-cols-[1fr_180px] gap-6 mt-8 items-center">
+<div class="bg-red-50 border border-red-200 rounded p-5 text-[21px] leading-relaxed">
 אילוץ חזק מדי עלול לפסול התנהגויות אמיתיות; אילוץ חלש מדי עלול להשאיר דוגמאות נגדיות לא מציאותיות.
+</div>
+
+<div>
+<img src="/pregnancy_test_fairness.png" class="w-full rounded-lg shadow-md" alt="Pregnancy test illustration" />
+</div>
 </div>
 
 ---
 
 # הנחת הוֹגְנוּת
 
-<div class="mt-6 text-right text-[22px] leading-relaxed">
+<div class="mt-4 text-right text-[20px] leading-relaxed">
 הנחת הוֹגְנוּת עבור קבוצת פעולות <KatexInline math="Act" /> היא שלישייה:
 </div>
 
-<div class="mt-5 text-center text-[31px]" dir="ltr">
-<KatexInline display math="\mathcal{F}=\langle\mathcal{F}_{uncond},\mathcal{F}_{strong},\mathcal{F}_{weak}\rangle" />
+<div class="mt-3 text-center text-[28px]" dir="ltr">
+<KatexInline display math="\mathcal{F}=\langle\mathcal{F}_{uncond},\mathcal{F}_{strong},\mathcal{F}_{weak}\rangle  \subseteq  2^{Act} \times 2^{Act} \times 2^{Act}" /> 
 </div>
 
-<div class="mt-6 text-right text-[21px] leading-relaxed">
-כאשר כל רכיב הוא אוסף של קבוצות פעולות:
+<div class="mt-4 text-right text-[19px] leading-relaxed">
+כלומר: כל רכיב הוא אוסף של קבוצות פעולות
 </div>
 
-<div class="mt-4 text-center text-[27px]" dir="ltr">
-<KatexInline display math="\mathcal{F}_{uncond},\mathcal{F}_{strong},\mathcal{F}_{weak}\subseteq 2^{Act}" />
-</div>
+נגד
+<div class="mt-0 bg-slate-50 border border-slate-200 rounded p-0 text-[18px] leading-relaxed">
 
-<div class="mt-6 bg-slate-50 border border-slate-200 rounded p-5 text-[21px] leading-relaxed">
-ריצה היא <KatexInline math="\mathcal{F}" />-הוגנת אם היא מקיימת את כל אילוצי ההוֹגְנוּת שבשלושת האוספים.
+ריצה תיקרא **<KatexInline math="\mathcal{F}" />-הוגנת** אם היא מקיימת בו-זמנית את  כל התנאים הבאים:
+
+- **הוֹגְנוּת בלתי מותנית** עבור כל קבוצת פעולות ב-<KatexInline math="\mathcal{F}_{uncond}" />.
+
+- **הוֹגְנוּת חזקה** עבור כל קבוצת פעולות ב-<KatexInline math="\mathcal{F}_{strong}" />.
+- **הוֹגְנוּת חלשה** עבור כל קבוצת פעולות ב-<KatexInline math="\mathcal{F}_{weak}" />.
+
 </div>
 
 ---
@@ -376,7 +386,7 @@ info: |
 
 ---
 
-# קיום תכונה תחת הוֹגְנוּת
+# הגדרה: קיום תכונה תחת הוֹגְנוּת
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
 בלי הנחות הוֹגְנוֹת, מערכת <KatexInline math="TS" /> מקיימת תכונת זמן ליניארי <KatexInline math="P" /> אם:
@@ -400,29 +410,81 @@ info: |
 
 ---
 
-# מניעת הרעבה תחת הוֹגְנוּת
+# הוגנות למניעת הרעבה: שלב 1
 
-<div class="grid grid-cols-[1.05fr_0.95fr] gap-6 mt-2 items-center">
-<img src="/slide-reference/16-fairness/slide-042.png" class="w-full rounded border border-slate-200" />
+<div class="-mt-3 text-center text-[23px]" dir="ltr">
+<KatexInline display math="\mathcal{F}=\langle\emptyset,\emptyset,\emptyset\rangle" />
+</div>
 
-<div class="text-right text-[22px] leading-relaxed">
+<div class="-mt-14 mb-1 -translate-x-2 scale-[0.78]" dir="ltr">
+  <SemaphoreMutexTs :width="460" :height="300" highlight-starvation />
+</div>
+
+<div class="mt-12 bg-red-50 border border-red-200 rounded p-3 text-[15px] leading-relaxed text-right">
+ללא אילוצי הוֹגְנוּת מתקבלת דוגמה נגדית הנובעת מהרעבה לא רצופה של <span dir="ltr"><KatexInline math="enter_2" /></span>
+. 
+</div>
+
+---
+
+# הוגנות למניעת הרעבה: שלב 2
+
+<div class="mt-0 text-center text-[23px]" dir="ltr">
+<KatexInline display math="\mathcal{F}'=\langle\emptyset,\{\{enter_1\},\{enter_2\}\},\emptyset\rangle" />
+</div>
+
+<div class="-mt-14 mb-1 -translate-x-2 scale-[0.78]" dir="ltr">
+  <SemaphoreMutexTs :width="460" :height="300" highlight-problematic-run />
+</div>
+
+<div class="mt-10 bg-amber-50 border border-amber-200 rounded p-3 text-[15px] leading-relaxed text-right">
+הוספת הוֹגְנוּת זאת לא מספיקה: עדיין קיימת הרעבה בעייתית
+והחיצים הכחולים מסמנים הזדמנות רצופה ל-<span dir="ltr"><KatexInline math="req_2" /></span> שלא נבחרת.
+</div>
+
+---
+
+# הוגנות למניעת הרעבה: שלב 3
+
+<div class="mt-0 text-center text-[23px]" dir="ltr">
+<KatexInline display math="\mathcal{F}''=\langle\emptyset,\{\{enter_1\},\{enter_2\}\},\{\{req_1\},\{req_2\}\}\rangle" />
+</div>
+
+<div class="-mt-14 mb-1 -translate-x-2 scale-[0.78]" dir="ltr">
+  <SemaphoreMutexTs :width="460" :height="300" />
+</div>
+
+<div class="mt-12 bg-emerald-50 border border-emerald-200 rounded p-3 text-[15px] leading-relaxed text-right">
+לאחר חיזוק באילוצי הוֹגְנוּת חלשה על <span dir="ltr"><KatexInline math="req_1, req_2" /></span>, הריצה המדוברת נפסלת ואין דוגמה נגדית מתאימה.
+</div>
+
+---
+
+# סיכום...
+
+<div class="text-right text-[22px] leading-relaxed mt-2">
 נגדיר:
 
 <div class="mt-4 text-center" dir="ltr">
 <KatexInline display math="P=\text{``each process enters its critical section infinitely often''}" />
 </div>
 
-<div class="mt-5 bg-slate-50 border border-slate-200 rounded p-4">
-ללא הוֹגְנוּת: <span dir="ltr"><KatexInline math="TS\not\models P" /></span>
+<div class="mt-4 bg-red-50 border border-red-200 rounded p-4 text-[19px] leading-relaxed">
+<span dir="ltr"><KatexInline math="\mathcal{F}=\langle\emptyset,\emptyset,\emptyset\rangle" /></span>
+<br>
+ללא אילוצי הוֹגְנוּת: <span dir="ltr"><KatexInline math="TS\not\models_{\mathcal{F}} P" /></span>
 </div>
 
-<div class="mt-4 bg-slate-50 border border-slate-200 rounded p-4">
-עם הנחה חלשה מדי: עדיין מקבלים דוגמה נגדית.
+<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-4 text-[19px] leading-relaxed">
+<span dir="ltr"><KatexInline math="\mathcal{F}'=\langle\emptyset,\{\{enter_1\},\{enter_2\}\},\emptyset\rangle" /></span>
+<br>
+רק הוֹגְנוּת חזקה על <span dir="ltr"><KatexInline math="enter_i" /></span>: עדיין <span dir="ltr"><KatexInline math="TS\not\models_{\mathcal{F}'} P" /></span>
 </div>
 
-<div class="mt-4 bg-emerald-50 border border-emerald-200 rounded p-4">
-עם הנחה מתאימה: <span dir="ltr"><KatexInline math="TS\models_{\mathcal{F}}P" /></span>
-</div>
+<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-4 text-[19px] leading-relaxed">
+<span dir="ltr"><KatexInline math="\mathcal{F}''=\langle\emptyset,\{\{enter_1\},\{enter_2\}\},\{\{req_1\},\{req_2\}\}\rangle" /></span>
+<br>
+עם הוֹגְנוּת חלשה על <span dir="ltr"><KatexInline math="req_i" /></span>: <span dir="ltr"><KatexInline math="TS\models_{\mathcal{F}''} P" /></span>
 </div>
 </div>
 

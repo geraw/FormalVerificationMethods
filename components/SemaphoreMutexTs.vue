@@ -23,11 +23,13 @@ const props = withDefaults(defineProps<{
   height?: number;
   highlightStarvation?: boolean;
   highlightEnter2Opportunity?: boolean;
+  highlightProblematicRun?: boolean;
 }>(), {
   width: 620,
   height: 430,
   highlightStarvation: false,
   highlightEnter2Opportunity: false,
+  highlightProblematicRun: false,
 });
 
 const stateStyle = {
@@ -42,13 +44,32 @@ const starvationTransitionIds = new Set(['req2', 'req1FromW2', 'enter1FromBoth',
 const enter2OpportunityTransitionIds = new Set(['enter2FromW2', 'enter2FromBoth']);
 const enter2OpportunityColor = '#2563eb';
 
+// Dedicated stage-2 run: red problematic cycle + blue missed opportunities.
+const problematicRunStateIds = ['free', 'w1n2', 'c1n2'];
+const problematicRunRedTransitionIds = new Set([
+  'req1',
+  'enter1FromW1',
+  'rel1',
+]);
+const problematicRunBlueTransitionIds = new Set([
+  'req2',
+  'req2FromW1',
+  'req2InCrit1',
+]);
+
 const highlightedTransitionIds = computed(() => [
+  ...(props.highlightProblematicRun
+    ? [
+        ...Array.from(problematicRunRedTransitionIds),
+        ...Array.from(problematicRunBlueTransitionIds),
+      ]
+    : []),
   ...(props.highlightStarvation ? Array.from(starvationTransitionIds) : []),
   ...(props.highlightEnter2Opportunity ? Array.from(enter2OpportunityTransitionIds) : []),
 ]);
 
 const baseStates = [
-  { id: 'free', text: '$n_1,n_2,y=1$', initial: true, initialDirection: 'top', x: 320, y: 50, ...stateStyle },
+  { id: 'free', text: '$n_1,n_2,y=1$', initial: true, initialDirection: 'top' as const, x: 320, y: 50, ...stateStyle },
   { id: 'w1n2', text: '$w_1,n_2,y=1$', x: 205, y: 145, ...stateStyle },
   { id: 'n1w2', text: '$n_1,w_2,y=1$', x: 435, y: 145, ...stateStyle },
   { id: 'c1n2', text: '$c_1,n_2,y=0$', x: 78, y: 260, ...stateStyle },
@@ -76,6 +97,15 @@ const baseTransitions = [
 ];
 
 const states = computed(() => baseStates.map(state => {
+  if (props.highlightProblematicRun && problematicRunStateIds.includes(state.id)) {
+    return {
+      ...state,
+      textColor: '#dc2626',
+      highlightStroke: '#dc2626',
+      highlightStrokeWidth: 3.2,
+    };
+  }
+
   if (!props.highlightStarvation || !starvationStateIds.includes(state.id)) {
     return state;
   }
@@ -89,6 +119,28 @@ const states = computed(() => baseStates.map(state => {
 }));
 
 const transitions = computed(() => baseTransitions.map(transition => {
+  if (props.highlightProblematicRun && problematicRunBlueTransitionIds.has(transition.id)) {
+    return {
+      ...transition,
+      stroke: enter2OpportunityColor,
+      strokeWidth: 3,
+      labelColor: enter2OpportunityColor,
+      highlightStroke: enter2OpportunityColor,
+      highlightStrokeWidth: 3.2,
+    };
+  }
+
+  if (props.highlightProblematicRun && problematicRunRedTransitionIds.has(transition.id)) {
+    return {
+      ...transition,
+      stroke: '#dc2626',
+      strokeWidth: 3,
+      labelColor: '#dc2626',
+      highlightStroke: '#dc2626',
+      highlightStrokeWidth: 3.2,
+    };
+  }
+
   if (props.highlightEnter2Opportunity && enter2OpportunityTransitionIds.has(transition.id)) {
     return {
       ...transition,
