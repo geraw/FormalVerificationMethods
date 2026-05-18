@@ -73,7 +73,7 @@ info: |
 נרצה להוכיח שמנקודה מסוימת ואילך תמיד <KatexInline math="x=1" />:
 
 <div class="mt-3 text-center" dir="ltr">
-<KatexInline display math="P=\{\sigma\in(2^{AP})^\omega \mid \exists i\ge 0.\ \forall j>i.\ \sigma[j]\models x=1\}" />
+<KatexInline display math="P=\{\sigma\in(2^{AP})^\omega \mid \exists i\ge 0\ \left(\forall j>i\ \left(\sigma[j]\models x=1\right)\right)\}" />
 </div>
 </div>
 
@@ -225,7 +225,7 @@ info: |
 # סימון פורמלי
 
 <div class="mt-6 text-right text-[22px] leading-relaxed">
-נכתוב ריצה אינסופית במערכת מעברים כך:
+נתמקד בריצה אינסופית מסויימת של מערכת המעברים:
 </div>
 
 <div class="mt-4 text-center text-[28px]" dir="ltr">
@@ -238,7 +238,7 @@ info: |
 
 <div class="grid grid-cols-2 gap-6 mt-5 text-[21px]">
 <div class="bg-slate-50 border border-slate-200 rounded p-4" dir="ltr">
-<KatexInline display math="\exists^\infty i.\ \alpha_i\in A" />
+<KatexInline display math="\underset{\infty}{\exists} i\ \left(\alpha_i\in A\right)" />
 <div class="text-right mt-2" dir="rtl">נבחרת פעולה מ-<KatexInline math="A" /> אינסוף פעמים.</div>
 </div>
 
@@ -250,7 +250,7 @@ info: |
 
 ---
 
-# הגדרות: הוֹגְנוּת ביחס לקבוצת פעולות
+# הגדרות: הוֹגְנוּת של ריצה ביחס לקבוצת פעולות
 
 <div class="mt-3 text-right text-[20px] leading-relaxed">
 ריצה <KatexInline math="\rho" /> היא:
@@ -260,37 +260,31 @@ info: |
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
 <span class="font-bold text-blue-700">הוגנת ללא תנאי ביחס ל-<KatexInline math="A" /></span>
 אם:
-<span dir="ltr"><KatexInline math="\exists^\infty i.\ \alpha_i\in A" /></span>
+<span dir="ltr"><KatexInline math="\underset{\infty}{\exists} i\ \left(\alpha_i\in A\right)" /></span>
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
 <span class="font-bold text-emerald-700">הוגנת חזק ביחס ל-<KatexInline math="A" /></span>
 אם:
-<span dir="ltr"><KatexInline math="\left(\exists^\infty i.\ Post(s_i,A)\neq\emptyset\right)\Rightarrow\left(\exists^\infty i.\ \alpha_i\in A\right)" /></span>
+<span dir="ltr"><KatexInline math="\left(\underset{\infty}{\exists} i\ \left(Post(s_i,A)\neq\emptyset\right)\right)\Rightarrow\left(\underset{\infty}{\exists} i\ \left(\alpha_i\in A\right)\right)" /></span>
 </div>
 
 <div class="bg-amber-50 border border-amber-200 rounded p-4">
 <span class="font-bold text-amber-700">הוגנת חלש ביחס ל-<KatexInline math="A" /></span>
 אם:
-<span dir="ltr"><KatexInline math="\left(\exists j.\ \forall i>j.\ Post(s_i,A)\neq\emptyset\right)\Rightarrow\left(\exists^\infty i.\ \alpha_i\in A\right)" /></span>
+<span dir="ltr"><KatexInline math="\left(\exists j\ \left(\forall i>j\ \left(Post(s_i,A)\neq\emptyset\right)\right)\right)\Rightarrow\left(\underset{\infty}{\exists} i\ \left(\alpha_i\in A\right)\right)" /></span>
 </div>
 </div>
 
----
 
-# יחסים בין סוגי ההוֹגְנוּת
-
-<div class="mt-8 text-center text-[31px]" dir="ltr">
-<KatexInline display math="\text{unconditional } A\text{-fair}" />
-<div class="my-2">⇓</div>
-<KatexInline display math="\text{strong } A\text{-fair}" />
-<div class="my-2">⇓</div>
-<KatexInline display math="\text{weak } A\text{-fair}" />
+<div class="bg-red-100 border border-red-200 mt-8 text-center text-[20px] leading-relaxed flex items-center justify-center gap-4">
+<div>הוגנת ללא תנאי</div>
+<div class="text-[20px]" dir="ltr"><KatexInline display math="\Leftarrow" /></div>
+<div>הוגנת חזקה</div>
+<div class="text-[20px]" dir="ltr"><KatexInline display math="\Leftarrow" /></div>
+<div>הוגנת חלשה</div>
 </div>
 
-<div class="mt-8 text-right text-[22px] leading-relaxed bg-slate-50 border border-slate-200 rounded p-5">
-ההכלה היא חד-כיוונית: ריצה יכולה להיות הוגנת חלש אבל לא הוגנת חזק, או הוגנת חזק אבל לא הוגנת ללא תנאי.
-</div>
 
 ---
 
@@ -321,7 +315,7 @@ info: |
 </div>
 
 <div class="mt-5 text-center text-[31px]" dir="ltr">
-<KatexInline display math="\mathcal{F}=(\mathcal{F}_{uncond},\mathcal{F}_{strong},\mathcal{F}_{weak})" />
+<KatexInline display math="\mathcal{F}=\langle\mathcal{F}_{uncond},\mathcal{F}_{strong},\mathcal{F}_{weak}\rangle" />
 </div>
 
 <div class="mt-6 text-right text-[21px] leading-relaxed">
@@ -341,7 +335,7 @@ info: |
 # דוגמה להנחת הוֹגְנוּת
 
 <div class="mt-5 text-center text-[26px]" dir="ltr">
-<KatexInline display math="\mathcal{F}=(\emptyset,\{\{enter_1\},\{enter_2\}\},\{\{req_1\},\{req_2\}\})" />
+<KatexInline display math="\mathcal{F}=\langle\emptyset,\{\{enter_1\},\{enter_2\}\},\{\{req_1\},\{req_2\}\}\rangle" />
 </div>
 
 <div class="grid grid-cols-2 gap-6 mt-7 text-right text-[21px] leading-relaxed">
