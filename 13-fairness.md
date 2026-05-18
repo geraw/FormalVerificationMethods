@@ -509,7 +509,7 @@ info: |
 # האם הוֹגְנוּת משפיעה על בטיחות?
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
-לפי סעיף 3.5.3 בספר, הנחות הוֹגְנוֹת בנות מימוש אינן משנות אימות של תכונות בטיחות.
+הנחות הוֹגְנוֹת בנות מימוש אינן משנות אימות של תכונות בטיחות.
 </div>
 
 <div class="mt-7 text-center text-[30px]" dir="ltr">
@@ -524,32 +524,50 @@ info: |
 
 # כשההנחה אינה בת מימוש
 
-<div class="grid grid-cols-[0.95fr_1.05fr] gap-6 mt-7 items-center">
-<div class="text-right text-[22px] leading-relaxed">
-הנחת הוֹגְנוּת שאינה בת מימוש עלולה למחוק את כל ההמשכים האפשריים אחרי מצב נגיש מסוים.
-
-<div class="mt-5 bg-red-50 border border-red-200 rounded p-4">
-במצב כזה אפשר "להוכיח" תכונת בטיחות רק כי כל הריצות הבעייתיות נפסלו באופן לא לגיטימי.
-</div>
+<div class="mt-1 text-right text-[22px] leading-relaxed text-slate-700">
+הנחות הוֹגְנוּת שאינן בנות מימוש עלולות לפגוע גם בתכונות בטיחות.
 </div>
 
-<div class="relative h-[260px]" dir="ltr">
-  <svg class="absolute inset-0 h-full w-full" viewBox="0 0 520 260" aria-hidden="true">
+<div class="mt-2 relative h-[215px]" dir="ltr">
+  <svg class="absolute inset-0 h-full w-full" viewBox="0 0 620 215" aria-hidden="true">
     <defs>
-      <marker id="fairness-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
-        <path d="M 0 0 L 10 5 L 0 10 Z" fill="#334155" />
+      <marker id="fairness-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 Z" fill="#111827" />
       </marker>
     </defs>
-    <circle cx="140" cy="125" r="44" fill="#f8fafc" stroke="#334155" stroke-width="3" />
-    <circle cx="380" cy="125" r="44" fill="#dbeafe" stroke="#2563eb" stroke-width="3" />
-    <path d="M 184 125 L 336 125" stroke="#334155" stroke-width="4" marker-end="url(#fairness-arrow)" />
-    <path d="M 380 81 C 430 35 485 80 430 125" fill="none" stroke="#334155" stroke-width="4" marker-end="url(#fairness-arrow)" />
-    <text x="140" y="134" text-anchor="middle" font-size="28" fill="#111827">∅</text>
-    <text x="380" y="134" text-anchor="middle" font-size="28" fill="#111827">{p}</text>
-    <text x="252" y="106" text-anchor="middle" font-size="24" fill="#111827">α</text>
-    <text x="448" y="67" text-anchor="middle" font-size="24" fill="#111827">β</text>
+
+    <rect x="190" y="54" width="95" height="44" rx="3" fill="#fff200" stroke="#111827" stroke-width="2" />
+    <rect x="390" y="54" width="95" height="44" rx="3" fill="#fff200" stroke="#111827" stroke-width="2" />
+
+    <path d="M 238 54 L 238 25" stroke="#111827" stroke-width="2" marker-end="url(#fairness-arrow)" />
+    <path d="M 285 76 L 390 76" stroke="#111827" stroke-width="2" marker-end="url(#fairness-arrow)" />
+    <path d="M 190 76 L 150 76 L 150 136 L 238 136 L 238 98" fill="none" stroke="#111827" stroke-width="2" marker-end="url(#fairness-arrow)" />
+    <path d="M 485 76 L 525 76 L 525 140 L 437 140 L 437 98" fill="none" stroke="#111827" stroke-width="2" marker-end="url(#fairness-arrow)" />
+
+    <text x="338" y="69" text-anchor="middle" font-size="20" fill="#111827">β</text>
+    <text x="183" y="154" text-anchor="middle" font-size="20" fill="#111827">α</text>
+    <text x="444" y="154" text-anchor="middle" font-size="20" fill="#111827">β</text>
+    <text x="280" y="117" text-anchor="middle" font-size="21" fill="#111827">∅</text>
+    <text x="452" y="117" text-anchor="middle" font-size="21" fill="#111827">{ p }</text>
   </svg>
 </div>
+
+<div class="grid grid-cols-2 gap-4 mt-1 text-[20px] leading-relaxed">
+  <div class="text-right">תכונה:</div>
+  <div class="text-right" dir="ltr"><KatexInline math="P=\text{``never }p\text{''}" /></div>
+
+  <div class="text-right">הנחת הוֹגְנוּת בלתי מותנית:</div>
+  <div class="text-right" dir="ltr"><KatexInline math="\mathcal{F}=\langle\{\{\alpha\}\},\emptyset,\emptyset\rangle" /></div>
+</div>
+
+<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[20px] leading-relaxed text-right text-blue-800 font-semibold">
+הנחה זו אינה בת מימוש כיוון שהמצב הימני נגיש אבל חסר ריצות הוֹגְנוֹת.
+</div>
+
+<div class="mt-3 bg-slate-50 border border-slate-300 rounded p-2 text-center text-[31px]" dir="ltr">
+<span class="text-red-600"><KatexInline math="TS\models_{\mathcal{F}} P" /></span>
+<span class="mx-10 text-red-600">אבל</span>
+<span class="text-red-600"><KatexInline math="TS\not\models P" /></span>
 </div>
 
 ---
