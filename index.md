@@ -30,14 +30,6 @@ dir: rtl
     <li><b>12 - תכונות חַיּוּת:</b> הגדרת חיות, דוגמאות, היחס לבטיחות ומשפט הפירוק. <a href="./12-liveness-properties/#1" target="_blank">[מצגת]</a></li>
     <li><b>13 - הוֹגְנוּת:</b> אילוצי הוֹגְנוּת, הנחות הוֹגְנוֹת, עקבות הוֹגְנוֹת והקשר לתכונות בטיחות. <a href="./13-fairness/#1" target="_blank">[מצגת]</a></li>
     <li><b>14 - בדיקת תכונות בטיחות רגולריות:</b> בדיקת תכונות בטיחות רגולריות באמצעות אוטומטים. <a href="./14-model-checking-regular-safety-properties/#1" target="_blank">[מצגת]</a></li>
-    <li><b>15 - תכונות חיות:</b> תכונות חיות והבחנה בין הבטחות עתידיות לבטיחות. <a href="./15-liveness-properties/#1" target="_blank">[מצגת]</a></li>
-    <li><b>17 - חזרה על אוטומטים:</b> חזרה על אוטומטים ושפות פורמליות כהכנה להמשך. <a href="./17-automata-and-formal-languages-review/#1" target="_blank">[מצגת]</a></li>
-    <li><b>18 - בטיחות רגולרית:</b> בדיקת תכונות בטיחות רגולריות באמצעות אוטומטים. <a href="./18-regular-safety-properties/#1" target="_blank">[מצגת]</a></li>
-    <li><b>19 - שפות אומגה-רגולריות:</b> שפות אומגה-רגולריות, קבלה אינסופית וייצוגים. <a href="./19-omega-regular-languages/#1" target="_blank">[מצגת]</a></li>
-    <li><b>20 - אוטומטי Büchi:</b> אוטומטי Büchi דטרמיניסטיים ומוכללים. <a href="./20-deterministic-and-generalized-buchi-automata/#1" target="_blank">[מצגת]</a></li>
-    <li><b>21 - אימות אומגה-רגולרי:</b> אימות תכונות אומגה-רגולריות על מערכות מעבר. <a href="./21-verification-of-omega-regular-properties/#1" target="_blank">[מצגת]</a></li>
-    <li><b>22 - LTL:</b> לוגיקת זמנים לינארית, תחביר וסמנטיקה. <a href="./22-ltl/#1" target="_blank">[מצגת]</a></li>
-    <li><b>23 - בדיקת מודלים ל-LTL:</b> בדיקת מודלים עבור נוסחאות LTL באמצעות אוטומטים. <a href="./23-ltl-model-checking/#1" target="_blank">[מצגת]</a></li>
-    <li><b>24 - CTL:</b> לוגיקת ענפים חישוביים והבדלים מ-LTL. <a href="./24-ctl/#1" target="_blank">[מצגת]</a></li>
+    <li><b>15 - שפות ω-רגולריות:</b> שפות ω-רגולריות, אוטומטי Büchi והקשר לתכונות זמן לינארי. <a href="./15-omega-regular-languages/#1" target="_blank">[מצגת]</a></li>
   </ul>
 </div>
