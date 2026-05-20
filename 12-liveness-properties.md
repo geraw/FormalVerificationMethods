@@ -80,6 +80,8 @@ info: |
 
 # הגדרה: תכונת חַיּוּת
 
+<img src="/images/liveness_prefix_extension_comic_he.png" style="position: absolute; bottom: 40px; left: 30px; width: 250px; z-index: 10; border-radius: 8px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); border: 1px solid #cbd5e1;" />
+
 <div class="mt-8 text-right text-[24px] leading-relaxed">
 
 תכונת זמן ליניארי <KatexInline math="P" /> מעל <KatexInline math="AP" /> היא <span class="font-bold">תכונת חַיּוּת</span> אם:
@@ -106,31 +108,41 @@ info: |
 
 # דרך עבודה עם ההגדרה
 
-<div class="grid grid-cols-2 gap-7 mt-8 text-right">
-<div class="bg-emerald-50 border border-emerald-200 rounded p-5">
-<div class="font-bold text-[24px] mb-4 text-emerald-700">כדי להוכיח חַיּוּת</div>
-<div class="text-[20px] leading-relaxed">
+<div class="grid grid-cols-2 gap-4 mt-4 text-right">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3.5">
+<div class="font-bold text-[21px] mb-2 text-emerald-700">כדי להוכיח חַיּוּת</div>
+<div class="text-[17px] leading-relaxed">
 לוקחים רישא סופית שרירותית <KatexInline math="\rho" /> ובונים לה המשך אינסופי
 <KatexInline math="\sigma" /> כך שהמילה <KatexInline math="\rho\sigma" /> תקיים את <KatexInline math="P" />.
 </div>
 </div>
 
-<div class="bg-red-50 border border-red-200 rounded p-5">
-<div class="font-bold text-[24px] mb-4 text-red-700">כדי להפריך חַיּוּת</div>
-<div class="text-[20px] leading-relaxed">
+<div class="bg-red-50 border border-red-200 rounded p-3.5">
+<div class="font-bold text-[21px] mb-2 text-red-700">כדי להפריך חַיּוּת</div>
+<div class="text-[17px] leading-relaxed">
 מספיק למצוא רישא אחת <KatexInline math="\rho" /> שאי אפשר להציל:
 לכל המשך אינסופי <KatexInline math="\sigma" />, מתקיים <KatexInline math="\rho\sigma \notin P" />.
 </div>
 </div>
 </div>
 
-<div class="mt-8 text-center text-[26px]" dir="ltr">
-<KatexInline math="P \text{ is live} \iff \forall \rho \in (2^{AP})^*\ \left(\exists \sigma \in (2^{AP})^\omega\ \left(\rho\sigma \in P\right)\right)" />
+<div class="grid grid-cols-2 gap-4 mt-3">
+<div class="flex justify-center">
+<img src="/images/liveness_prove_no_text.png" class="max-w-full h-[240px] object-contain rounded-lg border border-slate-200 shadow-md" />
+</div>
+
+<div class="flex justify-center">
+<img src="/images/liveness_disprove_no_text.png" class="max-w-full h-[240px] object-contain rounded-lg border border-slate-200 shadow-md" />
+</div>
+</div>
+
+<div class="mt-4 text-center text-[22px]" dir="ltr">
+<KatexInline math="\text{תכונת חַיּוּת } P \iff \forall \rho \in (2^{AP})^*\ \left(\exists \sigma \in (2^{AP})^\omega\ \left(\rho\sigma \in P\right)\right)" />
 </div>
 
 ---
 
-# תרשים רצף: איך מוכיחים חַיּוּת?
+# תרשים פרוטוקול: איך מוכיחים חַיּוּת?
 
 <div class="relative mx-auto mt-2 h-[440px] w-[720px]" dir="ltr">
   <svg class="absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 720 440" aria-hidden="true">

@@ -1,0 +1,56 @@
+=== SLIDE 29 DETAILS ===
+Text Box: דוגמה להרכבה של אוטומט ומערכת מעברים
+--------------------
+Text Box: {}
+--------------------
+Text Box: {}
+--------------------
+
+=== SHAPES ===
+Shape: Title 1
+  Text: דוגמה להרכבה של אוטומט ומערכת מעברים
+Shape: Date Placeholder 2
+Shape: Slide Number Placeholder 3
+Shape: Rectangle 5
+Shape: Rectangle 5
+Shape: Rectangle 6
+Shape: Rectangle 6
+Shape: Rectangle 7
+Shape: Rectangle 7
+Shape: Rectangle 8
+Shape: Rectangle 8
+Shape: TextBox 24
+  Text: {}
+Shape: TextBox 24
+Shape: TextBox 25
+  Text: {}
+Shape: TextBox 25
+Shape: TextBox 26
+Shape: TextBox 26
+Shape: TextBox 27
+Shape: TextBox 27
+Shape: Rectangle 35
+Shape: Rectangle 35
+Shape: Rectangle 36
+Shape: Rectangle 36
+Shape: Rectangle 38
+Shape: Rectangle 38
+Shape: Rectangle 39
+Shape: Rectangle 39
+Shape: Oval 4
+Shape: Oval 4
+Shape: Oval 29
+Shape: Oval 29
+Shape: Oval 30
+Shape: Oval 30
+Shape: TextBox 16
+Shape: TextBox 16
+Shape: TextBox 40
+Shape: TextBox 40
+Shape: TextBox 45
+Shape: TextBox 45
+Shape: TextBox 51
+Shape: TextBox 51
+Shape: TextBox 55
+Shape: TextBox 55
+Shape: Oval 57

@@ -596,178 +596,182 @@ info: |
 
 # דוגמה: מערכת בת 3 מצבים
 
-<div class="grid grid-cols-[1.1fr_0.9fr] gap-4 mt-2 items-start">
-  <div class="space-y-3">
-    <div class="bg-white border border-slate-300 rounded p-3 text-[14px] leading-relaxed shadow-sm" dir="ltr">
-      <div class="text-[18px] font-bold text-amber-700 mb-1 text-center">מערכת המעברים והאוטומט</div>
-      <div class="grid grid-cols-2 gap-2 text-right" dir="rtl">
-        <div>
-          <span class="font-bold text-blue-700">מערכת המעברים \(TS\):</span>
-          <KatexInline display math="S=\{0,1,2\}" />
-          <KatexInline display math="L(0)=L(1)=\emptyset,\ L(2)=\{X\}" />
-        </div>
-        <div>
-          <span class="font-bold text-amber-700">האוטומט \(\mathcal{A}\):</span>
-          <KatexInline display math="Q=\{q_0,q_1,q_2,q_3\}" />
-          <KatexInline display math="F=\{q_3\}" />
-        </div>
-      </div>
-    </div>
-    
-    <div class="bg-white border border-slate-300 rounded p-2 shadow-sm">
-      <TransitionSystemD3
-        :width="440" :height="125" :auto="false"
-        :states="[
-          { id: 't0', text: '$0$', label: '$\\emptyset$', initial: true, initialDirection: 'left', x: 60, y: 65, width: 52 },
-          { id: 't1', text: '$1$', label: '$\\emptyset$', x: 190, y: 65, width: 52 },
-          { id: 't2', text: '$2$', label: '$\\{X\\}$', x: 320, y: 65, width: 52 }
-        ]"
-        :transitions="[
-          { source: 't0', target: 't1', action: '$tick$', actionY: -12, actionWidth: 48 },
-          { source: 't1', target: 't2', action: '$tick$', actionY: -12, actionWidth: 48 },
-          { source: 't2', target: 't0', action: '$tick$', curve: -0.38, actionY: -34, actionWidth: 48 }
-        ]"
-      />
-    </div>
-    
-    <div class="bg-white border border-slate-300 rounded p-2 shadow-sm">
-      <AutomatonD3 variant="classic" :width="440" :height="160" :arrowSize="4" :stateLabelFontSize="13" :transitionLabelFontSize="12"
-        :states="[
-          { id: 'q0', x: 55, y: 80, label: '$q_0$', initial: true, initialDirection: 'left', r: 16, labelWidth: 48 },
-          { id: 'q1', x: 155, y: 80, label: '$q_1$', r: 16, labelWidth: 48 },
-          { id: 'q2', x: 255, y: 80, label: '$q_2$', r: 16, labelWidth: 48 },
-          { id: 'q3', x: 355, y: 80, label: '$q_3$', accepting: true, r: 16, labelWidth: 48 }
-        ]"
-        :transitions="[
-          { source: 'q0', target: 'q1', label: '$\\emptyset$', labelY: -13, labelWidth: 52 },
-          { source: 'q1', target: 'q2', label: '$\\emptyset$', labelY: -13, labelWidth: 52 },
-          { source: 'q2', target: 'q3', label: '$\\emptyset$', labelY: -13, labelWidth: 52 },
-          { source: 'q3', target: 'q3', label: '$\\emptyset$', loopDirection: '0deg', labelX: 22, labelWidth: 56 },
-          { source: 'q0', target: 'q0', label: '$\\{X\\}$', loopDirection: '180deg', labelX: -20, labelWidth: 48 },
-          { source: 'q1', target: 'q0', label: '$\\{X\\}$', curve: 0.24, labelY: 18, labelWidth: 48 },
-          { source: 'q2', target: 'q0', label: '$\\{X\\}$', curve: 0.42, labelY: 26, labelWidth: 48 },
-          { source: 'q3', target: 'q1', label: '$\\{X\\}$', curve: 0.36, labelY: 24, labelWidth: 48 }
-        ]"
-      />
-    </div>
-  </div>
+<div class="grid grid-cols-[1.15fr_0.85fr] gap-3 mt-1 items-start">
+<div class="space-y-1.5">
+<div class="bg-amber-50/60 border border-amber-200/80 rounded p-1.5 text-[12px] shadow-sm">
+<div class="font-bold text-amber-900 text-center mb-1">הגדרת המערכת והאוטומט</div>
+<div class="grid grid-cols-2 gap-2 text-right" dir="rtl">
+<div>
+<span class="font-bold text-blue-800">מערכת <KatexInline math="TS" />:</span>
+<span class="block text-[11px] font-mono mt-0.5"><KatexInline math="S=\{0,1,2\}" /></span>
+<span class="block text-[11px] font-mono"><KatexInline math="L(0)=L(1)=\emptyset,\ L(2)=\{X\}" /></span>
+</div>
+<div>
+<span class="font-bold text-amber-800">אוטומט <KatexInline math="\mathcal{A}" />:</span>
+<span class="block text-[11px] font-mono mt-0.5"><KatexInline math="Q=\{q_0,q_1,q_2,q_3\}" /></span>
+<span class="block text-[11px] font-mono"><KatexInline math="F=\{q_3\}" /></span>
+</div>
+</div>
+</div>
 
-  <div class="space-y-3">
-    <div class="bg-white border border-slate-300 rounded p-2.5 shadow-sm text-center">
-      <div class="text-[18px] font-bold text-emerald-700 mb-1" dir="ltr">TS × A</div>
-      <TransitionSystemD3
-        :width="360" :height="280" :auto="false"
-        :states="[
-          { id: 'p0', text: '$\\langle 0, q_1 \\rangle$', label: '$\\emptyset$', initial: true, initialDirection: 'top', x: 180, y: 70, width: 85, color: '#DCFCE7', stroke: '#15803D' },
-          { id: 'p1', text: '$\\langle 1, q_2 \\rangle$', label: '$\\emptyset$', x: 270, y: 200, width: 85, color: '#DCFCE7', stroke: '#15803D' },
-          { id: 'p2', text: '$\\langle 2, q_0 \\rangle$', label: '$\\{X\\}$', x: 90, y: 200, width: 85, color: '#DCFCE7', stroke: '#15803D' }
-        ]"
-        :transitions="[
-          { source: 'p0', target: 'p1', action: '$tick$', actionX: 10, actionY: -5 },
-          { source: 'p1', target: 'p2', action: '$tick$', actionY: 15 },
-          { source: 'p2', target: 'p0', action: '$tick$', actionX: -10, actionY: -5 }
-        ]"
-      />
-    </div>
-    
-    <div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-right text-[15px] leading-relaxed">
-      <div class="font-bold text-emerald-800 mb-1">התוצאה: התכונה מתקיימת!</div>
-      אף אחד מהמצבים הנגישים במערכת המכפלה אינו מכיל את המצב המקבל <KatexInline math="q_3" />. לכן <KatexInline math="TS \models P_{\text{safe}}" />.
-    </div>
-  </div>
+<div class="bg-white border border-slate-200 rounded p-1 shadow-sm text-center">
+<div class="text-[11px] font-bold text-blue-800 mb-0.5">מערכת המעברים <KatexInline math="TS" /></div>
+<TransitionSystemD3
+:width="440" :height="95" :auto="false"
+:states="[
+{ id: 't0', text: '$0$', label: '$\\emptyset$', initial: true, initialDirection: 'left', x: 60, y: 48, width: 44 },
+{ id: 't1', text: '$1$', label: '$\\emptyset$', x: 190, y: 48, width: 44 },
+{ id: 't2', text: '$2$', label: '$\\{X\\}$', x: 320, y: 48, width: 44 }
+]"
+:transitions="[
+{ source: 't0', target: 't1', action: '$tick$', actionY: -10, actionWidth: 40 },
+{ source: 't1', target: 't2', action: '$tick$', actionY: -10, actionWidth: 40 },
+{ source: 't2', target: 't0', action: '$tick$', curve: -0.35, actionY: -28, actionWidth: 40 }
+]"
+/>
+</div>
+
+<div class="bg-white border border-slate-200 rounded p-1 shadow-sm text-center">
+<div class="text-[11px] font-bold text-amber-800 mb-0.5">אוטומט הרישות הרעות <KatexInline math="\mathcal{A}" /></div>
+<AutomatonD3 variant="classic" :width="440" :height="120" :arrowSize="3.5" :stateLabelFontSize="12" :transitionLabelFontSize="11"
+:states="[
+{ id: 'q0', x: 50, y: 58, label: '$q_0$', initial: true, initialDirection: 'left', r: 14, labelWidth: 40 },
+{ id: 'q1', x: 145, y: 58, label: '$q_1$', r: 14, labelWidth: 40 },
+{ id: 'q2', x: 240, y: 58, label: '$q_2$', r: 14, labelWidth: 40 },
+{ id: 'q3', x: 335, y: 58, label: '$q_3$', accepting: true, r: 14, labelWidth: 40 }
+]"
+:transitions="[
+{ source: 'q0', target: 'q1', label: '$\\emptyset$', labelY: -10, labelWidth: 40 },
+{ source: 'q1', target: 'q2', label: '$\\emptyset$', labelY: -10, labelWidth: 40 },
+{ source: 'q2', target: 'q3', label: '$\\emptyset$', labelY: -10, labelWidth: 40 },
+{ source: 'q3', target: 'q3', label: '$\\emptyset$', loopDirection: '0deg', labelX: 20, labelWidth: 40 },
+{ source: 'q0', target: 'q0', label: '$\\{X\\}$', loopDirection: '180deg', labelX: -18, labelWidth: 40 },
+{ source: 'q1', target: 'q0', label: '$\\{X\\}$', curve: 0.22, labelY: 15, labelWidth: 40 },
+{ source: 'q2', target: 'q0', label: '$\\{X\\}$', curve: 0.38, labelY: 22, labelWidth: 40 },
+{ source: 'q3', target: 'q1', label: '$\\{X\\}$', curve: 0.32, labelY: 20, labelWidth: 40 }
+]"
+/>
+</div>
+</div>
+
+<div class="space-y-1.5">
+<div class="bg-white border border-slate-200 rounded p-1 shadow-sm text-center">
+<div class="text-[12px] font-bold text-emerald-800 mb-0.5"><KatexInline math="TS \times \mathcal{A}" /></div>
+<TransitionSystemD3
+:width="340" :height="190" :auto="false"
+:states="[
+{ id: 'p0', text: '$\\langle 0, q_1 \\rangle$', label: '$\\emptyset$', initial: true, initialDirection: 'top', x: 170, y: 45, width: 80, color: '#DCFCE7', stroke: '#15803D' },
+{ id: 'p1', text: '$\\langle 1, q_2 \\rangle$', label: '$\\emptyset$', x: 255, y: 140, width: 80, color: '#DCFCE7', stroke: '#15803D' },
+{ id: 'p2', text: '$\\langle 2, q_0 \\rangle$', label: '$\\{X\\}$', x: 85, y: 140, width: 80, color: '#DCFCE7', stroke: '#15803D' }
+]"
+:transitions="[
+{ source: 'p0', target: 'p1', action: '$tick$', actionX: 10, actionY: -5 },
+{ source: 'p1', target: 'p2', action: '$tick$', actionY: 12 },
+{ source: 'p2', target: 'p0', action: '$tick$', actionX: -10, actionY: -5 }
+]"
+/>
+</div>
+
+<div class="bg-emerald-50/70 border border-emerald-200/80 rounded p-2 text-right text-[13px] leading-snug">
+<div class="font-bold text-emerald-900 mb-0.5">התוצאה: התכונה מתקיימת!</div>
+אף מצב נגיש במערכת המכפלה אינו מכיל את המצב המקבל <KatexInline math="q_3" />, לכן <KatexInline math="TS \models P_{\text{safe}}" />.
+</div>
+</div>
 </div>
 
 ---
 
 # דוגמה: מערכת בת 4 מצבים
 
-<div class="grid grid-cols-[1.1fr_0.9fr] gap-4 mt-2 items-start">
-  <div class="space-y-3">
-    <div class="bg-white border border-slate-300 rounded p-3 text-[14px] leading-relaxed shadow-sm" dir="ltr">
-      <div class="text-[18px] font-bold text-amber-700 mb-1 text-center">מערכת המעברים והאוטומט</div>
-      <div class="grid grid-cols-2 gap-2 text-right" dir="rtl">
-        <div>
-          <span class="font-bold text-blue-700">מערכת המעברים \(TS\):</span>
-          <KatexInline display math="S=\{0,1,2,3\}" />
-          <KatexInline display math="L(0)=L(1)=L(2)=\emptyset,\ L(3)=\{X\}" />
-        </div>
-        <div>
-          <span class="font-bold text-amber-700">האוטומט \(\mathcal{A}\):</span>
-          <KatexInline display math="Q=\{q_0,q_1,q_2,q_3\}" />
-          <KatexInline display math="F=\{q_3\}" />
-        </div>
-      </div>
-    </div>
-    
-    <div class="bg-white border border-slate-300 rounded p-2 shadow-sm">
-      <TransitionSystemD3
-        :width="440" :height="125" :auto="false"
-        :states="[
-          { id: 't0', text: '$0$', label: '$\\emptyset$', initial: true, initialDirection: 'left', x: 50, y: 65, width: 52 },
-          { id: 't1', text: '$1$', label: '$\\emptyset$', x: 150, y: 65, width: 52 },
-          { id: 't2', text: '$2$', label: '$\\emptyset$', x: 250, y: 65, width: 52 },
-          { id: 't3', text: '$3$', label: '$\\{X\\}$', x: 350, y: 65, width: 52 }
-        ]"
-        :transitions="[
-          { source: 't0', target: 't1', action: '$tick$', actionY: -12, actionWidth: 48 },
-          { source: 't1', target: 't2', action: '$tick$', actionY: -12, actionWidth: 48 },
-          { source: 't2', target: 't3', action: '$tick$', actionY: -12, actionWidth: 48 },
-          { source: 't3', target: 't0', action: '$tick$', curve: -0.38, actionY: -34, actionWidth: 48 }
-        ]"
-      />
-    </div>
-    
-    <div class="bg-white border border-slate-300 rounded p-2 shadow-sm">
-      <AutomatonD3 variant="classic" :width="440" :height="160" :arrowSize="4" :stateLabelFontSize="13" :transitionLabelFontSize="12"
-        :states="[
-          { id: 'q0', x: 55, y: 80, label: '$q_0$', initial: true, initialDirection: 'left', r: 16, labelWidth: 48 },
-          { id: 'q1', x: 155, y: 80, label: '$q_1$', r: 16, labelWidth: 48 },
-          { id: 'q2', x: 255, y: 80, label: '$q_2$', r: 16, labelWidth: 48 },
-          { id: 'q3', x: 355, y: 80, label: '$q_3$', accepting: true, r: 16, labelWidth: 48 }
-        ]"
-        :transitions="[
-          { source: 'q0', target: 'q1', label: '$\\emptyset$', labelY: -13, labelWidth: 52 },
-          { source: 'q1', target: 'q2', label: '$\\emptyset$', labelY: -13, labelWidth: 52 },
-          { source: 'q2', target: 'q3', label: '$\\emptyset$', labelY: -13, labelWidth: 52 },
-          { source: 'q3', target: 'q3', label: '$\\emptyset$', loopDirection: '0deg', labelX: 22, labelWidth: 56 },
-          { source: 'q0', target: 'q0', label: '$\\{X\\}$', loopDirection: '180deg', labelX: -20, labelWidth: 48 },
-          { source: 'q1', target: 'q0', label: '$\\{X\\}$', curve: 0.24, labelY: 18, labelWidth: 48 },
-          { source: 'q2', target: 'q0', label: '$\\{X\\}$', curve: 0.42, labelY: 26, labelWidth: 48 },
-          { source: 'q3', target: 'q1', label: '$\\{X\\}$', curve: 0.36, labelY: 24, labelWidth: 48 }
-        ]"
-      />
-    </div>
-  </div>
+<div class="grid grid-cols-[1.15fr_0.85fr] gap-3 mt-1 items-start">
+<div class="space-y-1.5">
+<div class="bg-amber-50/60 border border-amber-200/80 rounded p-1.5 text-[12px] shadow-sm">
+<div class="font-bold text-amber-900 text-center mb-1">הגדרת המערכת והאוטומט</div>
+<div class="grid grid-cols-2 gap-2 text-right" dir="rtl">
+<div>
+<span class="font-bold text-blue-700">מערכת <KatexInline math="TS" />:</span>
+<span class="block text-[11px] font-mono mt-0.5"><KatexInline math="S=\{0,1,2,3\}" /></span>
+<span class="block text-[11px] font-mono"><KatexInline math="L(0)=L(1)=L(2)=\emptyset,\ L(3)=\{X\}" /></span>
+</div>
+<div>
+<span class="font-bold text-amber-800">אוטומט <KatexInline math="\mathcal{A}" />:</span>
+<span class="block text-[11px] font-mono mt-0.5"><KatexInline math="Q=\{q_0,q_1,q_2,q_3\}" /></span>
+<span class="block text-[11px] font-mono"><KatexInline math="F=\{q_3\}" /></span>
+</div>
+</div>
+</div>
 
-  <div class="space-y-3">
-    <div class="bg-white border border-slate-300 rounded p-2.5 shadow-sm text-center">
-      <div class="text-[18px] font-bold text-red-700 mb-1" dir="ltr">TS × A</div>
-      <TransitionSystemD3
-        :width="360" :height="280" :auto="false"
-        :states="[
-          { id: 'p0', text: '$\\langle 0, q_1 \\rangle$', label: '$\\emptyset$', initial: true, initialDirection: 'top', x: 60, y: 70, width: 85, color: '#DCFCE7', stroke: '#15803D' },
-          { id: 'p1', text: '$\\langle 1, q_2 \\rangle$', label: '$\\emptyset$', x: 60, y: 210, width: 85, color: '#DCFCE7', stroke: '#15803D' },
-          { id: 'p2', text: '$\\langle 2, q_3 \\rangle$', label: '$\\emptyset$', x: 180, y: 210, width: 85, color: '#FEE2E2', stroke: '#991B1B' },
-          { id: 'p3', text: '$\\langle 3, q_3 \\rangle$', label: '$\\{X\\}$', x: 300, y: 210, width: 85, color: '#FEE2E2', stroke: '#991B1B' },
-          { id: 'p4', text: '$\\langle 0, q_3 \\rangle$', label: '$\\emptyset$', x: 300, y: 70, width: 85, color: '#FEE2E2', stroke: '#991B1B' },
-          { id: 'p5', text: '$\\langle 1, q_3 \\rangle$', label: '$\\emptyset$', x: 180, y: 70, width: 85, color: '#FEE2E2', stroke: '#991B1B' }
-        ]"
-        :transitions="[
-          { source: 'p0', target: 'p1', action: '$tick$', actionX: -20 },
-          { source: 'p1', target: 'p2', action: '$tick$', actionY: 12 },
-          { source: 'p2', target: 'p3', action: '$tick$', actionY: 12 },
-          { source: 'p3', target: 'p4', action: '$tick$', actionX: 20 },
-          { source: 'p4', target: 'p5', action: '$tick$', actionY: -12 },
-          { source: 'p5', target: 'p2', action: '$tick$', actionX: -20 }
-        ]"
-      />
-    </div>
-    
-    <div class="bg-red-50 border border-red-200 rounded p-3 text-right text-[15px] leading-relaxed">
-      <div class="font-bold text-red-800 mb-1">התוצאה: התכונה מופרת!</div>
-      מערכת המכפלה מגיעה למצבים אדומים (המכילים את המצב המקבל <KatexInline math="q_3" />) ואף נכנסת ללולאה אינסופית בתוכם. לכן <KatexInline math="TS \not\models P_{\text{safe}}" />.
-    </div>
-  </div>
+<div class="bg-white border border-slate-200 rounded p-1 shadow-sm text-center">
+<div class="text-[11px] font-bold text-blue-800 mb-0.5">מערכת המעברים <KatexInline math="TS" /></div>
+<TransitionSystemD3
+:width="440" :height="95" :auto="false"
+:states="[
+{ id: 't0', text: '$0$', label: '$\\emptyset$', initial: true, initialDirection: 'left', x: 50, y: 48, width: 44 },
+{ id: 't1', text: '$1$', label: '$\\emptyset$', x: 145, y: 48, width: 44 },
+{ id: 't2', text: '$2$', label: '$\\emptyset$', x: 240, y: 48, width: 44 },
+{ id: 't3', text: '$3$', label: '$\\{X\\}$', x: 335, y: 48, width: 44 }
+]"
+:transitions="[
+{ source: 't0', target: 't1', action: '$tick$', actionY: -10, actionWidth: 40 },
+{ source: 't1', target: 't2', action: '$tick$', actionY: -10, actionWidth: 40 },
+{ source: 't2', target: 't3', action: '$tick$', actionY: -10, actionWidth: 40 },
+{ source: 't3', target: 't0', action: '$tick$', curve: -0.35, actionY: -28, actionWidth: 40 }
+]"
+/>
+</div>
+
+<div class="bg-white border border-slate-200 rounded p-1 shadow-sm text-center">
+<div class="text-[11px] font-bold text-amber-800 mb-0.5">אוטומט הרישות הרעות <KatexInline math="\mathcal{A}" /></div>
+<AutomatonD3 variant="classic" :width="440" :height="120" :arrowSize="3.5" :stateLabelFontSize="12" :transitionLabelFontSize="11"
+:states="[
+{ id: 'q0', x: 50, y: 58, label: '$q_0$', initial: true, initialDirection: 'left', r: 14, labelWidth: 40 },
+{ id: 'q1', x: 145, y: 58, label: '$q_1$', r: 14, labelWidth: 40 },
+{ id: 'q2', x: 240, y: 58, label: '$q_2$', r: 14, labelWidth: 40 },
+{ id: 'q3', x: 335, y: 58, label: '$q_3$', accepting: true, r: 14, labelWidth: 40 }
+]"
+:transitions="[
+{ source: 'q0', target: 'q1', label: '$\\emptyset$', labelY: -10, labelWidth: 40 },
+{ source: 'q1', target: 'q2', label: '$\\emptyset$', labelY: -10, labelWidth: 40 },
+{ source: 'q2', target: 'q3', label: '$\\emptyset$', labelY: -10, labelWidth: 40 },
+{ source: 'q3', target: 'q3', label: '$\\emptyset$', loopDirection: '0deg', labelX: 20, labelWidth: 40 },
+{ source: 'q0', target: 'q0', label: '$\\{X\\}$', loopDirection: '180deg', labelX: -18, labelWidth: 40 },
+{ source: 'q1', target: 'q0', label: '$\\{X\\}$', curve: 0.22, labelY: 15, labelWidth: 40 },
+{ source: 'q2', target: 'q0', label: '$\\{X\\}$', curve: 0.38, labelY: 22, labelWidth: 40 },
+{ source: 'q3', target: 'q1', label: '$\\{X\\}$', curve: 0.32, labelY: 20, labelWidth: 40 }
+]"
+/>
+</div>
+</div>
+
+<div class="space-y-1.5">
+<div class="bg-white border border-slate-200 rounded p-1 shadow-sm text-center">
+<div class="text-[12px] font-bold text-red-800 mb-0.5"><KatexInline math="TS \times \mathcal{A}" /></div>
+<TransitionSystemD3
+:width="340" :height="190" :auto="false"
+:states="[
+{ id: 'p0', text: '$\\langle 0, q_1 \\rangle$', label: '$\\emptyset$', initial: true, initialDirection: 'top', x: 55, y: 45, width: 80, color: '#DCFCE7', stroke: '#15803D' },
+{ id: 'p1', text: '$\\langle 1, q_2 \\rangle$', label: '$\\emptyset$', x: 55, y: 140, width: 80, color: '#DCFCE7', stroke: '#15803D' },
+{ id: 'p2', text: '$\\langle 2, q_3 \\rangle$', label: '$\\emptyset$', x: 170, y: 140, width: 80, color: '#FEE2E2', stroke: '#991B1B' },
+{ id: 'p3', text: '$\\langle 3, q_3 \\rangle$', label: '$\\{X\\}$', x: 285, y: 140, width: 80, color: '#FEE2E2', stroke: '#991B1B' },
+{ id: 'p4', text: '$\\langle 0, q_3 \\rangle$', label: '$\\emptyset$', x: 285, y: 45, width: 80, color: '#FEE2E2', stroke: '#991B1B' },
+{ id: 'p5', text: '$\\langle 1, q_3 \\rangle$', label: '$\\emptyset$', x: 170, y: 45, width: 80, color: '#FEE2E2', stroke: '#991B1B' }
+]"
+:transitions="[
+{ source: 'p0', target: 'p1', action: '$tick$', actionX: -18 },
+{ source: 'p1', target: 'p2', action: '$tick$', actionY: 10 },
+{ source: 'p2', target: 'p3', action: '$tick$', actionY: 10 },
+{ source: 'p3', target: 'p4', action: '$tick$', actionX: 18 },
+{ source: 'p4', target: 'p5', action: '$tick$', actionY: -10 },
+{ source: 'p5', target: 'p2', action: '$tick$', actionX: -18 }
+]"
+/>
+</div>
+
+<div class="bg-red-50/70 border border-red-200/80 rounded p-2 text-right text-[13px] leading-snug">
+<div class="font-bold text-red-900 mb-0.5">התוצאה: התכונה מופרת!</div>
+מערכת המכפלה מגיעה למצבים אדומים (המכילים את המצב המקבל <KatexInline math="q_3" />) ונכנסת ללולאה בתוכם. לכן <KatexInline math="TS \not\models P_{\text{safe}}" />.
+</div>
+</div>
 </div>
 
 ---

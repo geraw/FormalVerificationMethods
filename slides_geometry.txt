@@ -1,0 +1,533 @@
+
+================ SLIDE 21 ================
+Shape: Date Placeholder 2 | Type: unknown | Text: '' | Pos: None
+Shape: Slide Number Placeholder 3 | Type: unknown | Text: '' | Pos: None
+Shape: TextBox 8 | Type: rect | Text: '\t \n\t \n\t \n\t \n\t\n \n ' | Pos: {'x': 641364, 'y': 508277, 'cx': 3947160, 'cy': 2592248}
+Shape: TextBox 8 | Type: rect | Text: '\xa0' | Pos: {'x': 641364, 'y': 508277, 'cx': 3947160, 'cy': 2592248}
+Shape: TextBox 9 | Type: rect | Text: '\t\n \t  \n\t\n\t\n \t \n \t' | Pos: {'x': 639466, 'y': 3645305, 'cx': 3026416, 'cy': 2353658}
+Shape: TextBox 9 | Type: rect | Text: '\xa0' | Pos: {'x': 639466, 'y': 3645305, 'cx': 3026416, 'cy': 2353658}
+Shape: Rectangle 13 | Type: rect | Text: '' | Pos: {'x': 7664357, 'y': 2407022, 'cx': 775071, 'cy': 309482}
+Shape: Rectangle 13 | Type: rect | Text: '\xa0' | Pos: {'x': 7664357, 'y': 2407022, 'cx': 775071, 'cy': 309482}
+Shape: Rectangle 14 | Type: rect | Text: '' | Pos: {'x': 7664357, 'y': 3125146, 'cx': 775071, 'cy': 309482}
+Shape: Rectangle 14 | Type: rect | Text: '\xa0' | Pos: {'x': 7664357, 'y': 3125146, 'cx': 775071, 'cy': 309482}
+Shape: Rectangle 51 | Type: rect | Text: '' | Pos: {'x': 7664357, 'y': 3843270, 'cx': 775071, 'cy': 309482}
+Shape: Rectangle 51 | Type: rect | Text: '\xa0' | Pos: {'x': 7664357, 'y': 3843270, 'cx': 775071, 'cy': 309482}
+Shape: Rectangle 74 | Type: rect | Text: '0' | Pos: {'x': 4990822, 'y': 1313428, 'cx': 332757, 'cy': 347521}
+Shape: Rectangle 75 | Type: rect | Text: '1' | Pos: {'x': 5588795, 'y': 1313428, 'cx': 332757, 'cy': 347521}
+Shape: Rectangle 76 | Type: rect | Text: '2' | Pos: {'x': 6186768, 'y': 1313428, 'cx': 332757, 'cy': 347521}
+Shape: TextBox 100 | Type: rect | Text: '' | Pos: {'x': 5109960, 'y': 1612792, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 100 | Type: rect | Text: '\xa0' | Pos: {'x': 5109960, 'y': 1612792, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 101 | Type: rect | Text: '' | Pos: {'x': 5726046, 'y': 1612792, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 101 | Type: rect | Text: '\xa0' | Pos: {'x': 5726046, 'y': 1612792, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 103 | Type: rect | Text: '' | Pos: {'x': 6342132, 'y': 1637476, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 103 | Type: rect | Text: '\xa0' | Pos: {'x': 6342132, 'y': 1637476, 'cx': 283920, 'cy': 369332}
+Shape: Title 1 | Type: unknown | Text: 'דוגמה' | Pos: {'x': 4170424, 'y': -419100, 'cx': 4109090, 'cy': 1143000}
+Shape: TextBox 12 | Type: star32 | Text: '' | Pos: {'x': 4120794, 'y': 187187, 'cx': 935459, 'cy': 690801}
+Shape: TextBox 12 | Type: star32 | Text: '\xa0' | Pos: {'x': 4120794, 'y': 187187, 'cx': 935459, 'cy': 690801}
+Shape: TextBox 19 | Type: star32 | Text: '' | Pos: {'x': 3309755, 'y': 3251522, 'cx': 698311, 'cy': 690801}
+Shape: TextBox 19 | Type: star32 | Text: '\xa0' | Pos: {'x': 3309755, 'y': 3251522, 'cx': 698311, 'cy': 690801}
+Shape: TextBox 40 | Type: star32 | Text: '' | Pos: {'x': 5817947, 'y': 2672692, 'cx': 1836858, 'cy': 690801}
+Shape: TextBox 40 | Type: star32 | Text: '\xa0' | Pos: {'x': 5817947, 'y': 2672692, 'cx': 1836858, 'cy': 690801}
+Shape: Oval 5 | Type: ellipse | Text: ' ' | Pos: {'x': 4179052, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 5 | Type: ellipse | Text: '\xa0' | Pos: {'x': 4179052, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 6 | Type: ellipse | Text: '' | Pos: {'x': 4777025, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 6 | Type: ellipse | Text: '\xa0' | Pos: {'x': 4777025, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 7 | Type: ellipse | Text: '' | Pos: {'x': 5374998, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 7 | Type: ellipse | Text: '\xa0' | Pos: {'x': 5374998, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 15 | Type: ellipse | Text: '' | Pos: {'x': 5972970, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 15 | Type: ellipse | Text: '\xa0' | Pos: {'x': 5972970, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: TextBox 43 | Type: rect | Text: '' | Pos: {'x': 4462718, 'y': 4433092, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 29 | Type: rect | Text: '\xa0' | Pos: {'x': 4462718, 'y': 4433092, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 44 | Type: rect | Text: '' | Pos: {'x': 5078728, 'y': 4423922, 'cx': 265215, 'cy': 369332}
+Shape: TextBox 30 | Type: rect | Text: '\xa0' | Pos: {'x': 5078728, 'y': 4423922, 'cx': 265215, 'cy': 369332}
+Shape: TextBox 45 | Type: rect | Text: '' | Pos: {'x': 6342026, 'y': 5197032, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 31 | Type: rect | Text: '\xa0' | Pos: {'x': 6342026, 'y': 5197032, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 46 | Type: rect | Text: '' | Pos: {'x': 5683611, 'y': 4434917, 'cx': 265215, 'cy': 369332}
+Shape: TextBox 32 | Type: rect | Text: '\xa0' | Pos: {'x': 5683611, 'y': 4434917, 'cx': 265215, 'cy': 369332}
+Shape: TextBox 53 | Type: rect | Text: '' | Pos: {'x': 4863212, 'y': 5540379, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 53 | Type: rect | Text: '\xa0' | Pos: {'x': 4863212, 'y': 5540379, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 54 | Type: rect | Text: '' | Pos: {'x': 4409045, 'y': 5171757, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 54 | Type: rect | Text: '\xa0' | Pos: {'x': 4409045, 'y': 5171757, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 55 | Type: rect | Text: '' | Pos: {'x': 3874510, 'y': 4006495, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 39 | Type: rect | Text: '\xa0' | Pos: {'x': 3874510, 'y': 4006495, 'cx': 581419, 'cy': 369332}
+Shape: Rectangle 57 | Type: rect | Text: 'אוטומט לרישות הרעות' | Pos: {'x': 4503280, 'y': 3867218, 'cx': 2234907, 'cy': 338554}
+Shape: TextBox 58 | Type: rect | Text: '' | Pos: {'x': 1807287, 'y': 6182919, 'cx': 5757730, 'cy': 458652}
+Shape: TextBox 58 | Type: rect | Text: '\xa0' | Pos: {'x': 1807287, 'y': 6182919, 'cx': 5757730, 'cy': 458652}
+Connector: Straight Arrow Connector 16 | Pos: {'x': 8051893, 'y': 2716504, 'cx': 0, 'cy': 408642}
+Connector: Straight Arrow Connector 52 | Pos: {'x': 8051893, 'y': 3434628, 'cx': 0, 'cy': 408642}
+Connector: Straight Arrow Connector 64 | Pos: {'x': 8051892, 'y': 2238841, 'cx': 0, 'cy': 178593}
+Connector: Straight Arrow Connector 78 | Pos: {'x': 5323579, 'y': 1487189, 'cx': 265216, 'cy': 0}
+Connector: Straight Arrow Connector 81 | Pos: {'x': 5921552, 'y': 1487189, 'cx': 265216, 'cy': 0}
+Connector: Straight Arrow Connector 88 | Pos: {'x': 4831938, 'y': 1487189, 'cx': 158884, 'cy': 9278}
+Connector: Straight Arrow Connector 95 | Pos: {'x': 5157201, 'y': 1313428, 'cx': 1362324, 'cy': 173761}
+Connector: Connector: Elbow 10 | Pos: {'x': 7450165, 'y': 3163490, 'cx': 1590989, 'cy': 387535}
+Connector: Straight Arrow Connector 17 | Pos: {'x': 4522045, 'y': 4802425, 'cx': 265216, 'cy': 0}
+Connector: Straight Arrow Connector 18 | Pos: {'x': 5120018, 'y': 4802425, 'cx': 265216, 'cy': 0}
+Connector: Straight Arrow Connector 41 | Pos: {'x': 5717991, 'y': 4802425, 'cx': 265215, 'cy': 0}
+Connector: Straight Arrow Connector 42 | Pos: {'x': 4057322, 'y': 4929015, 'cx': 173459, 'cy': 159505}
+Connector: Connector: Elbow 47 | Pos: {'x': 4654653, 'y': 4682464, 'cx': 12700, 'cy': 597973}
+Connector: Connector: Elbow 48 | Pos: {'x': 4935782, 'y': 4326024, 'cx': 12205, 'cy': 1282216}
+Connector: Connector: Elbow 49 | Pos: {'x': 4179052, 'y': 4623399, 'cx': 176614, 'cy': 179026}
+Connector: Connector: Elbow 50 | Pos: {'x': 6148378, 'y': 4803631, 'cx': 179025, 'cy': 176614}
+
+================ SLIDE 22 ================
+Shape: Date Placeholder 2 | Type: unknown | Text: '' | Pos: None
+Shape: Slide Number Placeholder 3 | Type: unknown | Text: '' | Pos: None
+Shape: TextBox 8 | Type: rect | Text: '\t \n\t \n\t \n\t \n\t\n \n ' | Pos: {'x': 641364, 'y': 508277, 'cx': 3947160, 'cy': 2592248}
+Shape: TextBox 8 | Type: rect | Text: '\xa0' | Pos: {'x': 641364, 'y': 508277, 'cx': 3947160, 'cy': 2592248}
+Shape: TextBox 9 | Type: rect | Text: '\t\n \t  \n\t\n\t\n \t \n \t' | Pos: {'x': 639466, 'y': 3645305, 'cx': 3026416, 'cy': 2353658}
+Shape: TextBox 9 | Type: rect | Text: '\xa0' | Pos: {'x': 639466, 'y': 3645305, 'cx': 3026416, 'cy': 2353658}
+Shape: Rectangle 13 | Type: rect | Text: '' | Pos: {'x': 7911185, 'y': 1798257, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 13 | Type: rect | Text: '\xa0' | Pos: {'x': 7911185, 'y': 1798257, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 14 | Type: rect | Text: '' | Pos: {'x': 7911185, 'y': 2516381, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 14 | Type: rect | Text: '\xa0' | Pos: {'x': 7911185, 'y': 2516381, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 18 | Type: rect | Text: '' | Pos: {'x': 7911185, 'y': 3952629, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 18 | Type: rect | Text: '\xa0' | Pos: {'x': 7911185, 'y': 3952629, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 51 | Type: rect | Text: '' | Pos: {'x': 7911185, 'y': 3234505, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 51 | Type: rect | Text: '\xa0' | Pos: {'x': 7911185, 'y': 3234505, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 57 | Type: rect | Text: '' | Pos: {'x': 7911185, 'y': 4670753, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 57 | Type: rect | Text: '\xa0' | Pos: {'x': 7911185, 'y': 4670753, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 58 | Type: rect | Text: '' | Pos: {'x': 7911185, 'y': 5388877, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 58 | Type: rect | Text: '\xa0' | Pos: {'x': 7911185, 'y': 5388877, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 60 | Type: rect | Text: '' | Pos: {'x': 7911185, 'y': 6106998, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 60 | Type: rect | Text: '\xa0' | Pos: {'x': 7911185, 'y': 6106998, 'cx': 775071, 'cy': 288659}
+Shape: Rectangle 74 | Type: rect | Text: '0' | Pos: {'x': 3531210, 'y': 2342620, 'cx': 332757, 'cy': 347521}
+Shape: Rectangle 75 | Type: rect | Text: '1' | Pos: {'x': 4129183, 'y': 2342620, 'cx': 332757, 'cy': 347521}
+Shape: Rectangle 76 | Type: rect | Text: '2' | Pos: {'x': 4727156, 'y': 2342620, 'cx': 332757, 'cy': 347521}
+Shape: Rectangle 77 | Type: rect | Text: '3' | Pos: {'x': 5325128, 'y': 2342620, 'cx': 332757, 'cy': 347521}
+Shape: TextBox 100 | Type: rect | Text: '' | Pos: {'x': 3650348, 'y': 2641984, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 100 | Type: rect | Text: '\xa0' | Pos: {'x': 3650348, 'y': 2641984, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 101 | Type: rect | Text: '' | Pos: {'x': 4266434, 'y': 2641984, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 101 | Type: rect | Text: '\xa0' | Pos: {'x': 4266434, 'y': 2641984, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 102 | Type: rect | Text: '' | Pos: {'x': 4882520, 'y': 2641984, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 102 | Type: rect | Text: '\xa0' | Pos: {'x': 4882520, 'y': 2641984, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 103 | Type: rect | Text: '' | Pos: {'x': 5498605, 'y': 2641984, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 103 | Type: rect | Text: '\xa0' | Pos: {'x': 5498605, 'y': 2641984, 'cx': 283920, 'cy': 369332}
+Shape: Title 1 | Type: unknown | Text: 'דוגמה' | Pos: {'x': 4170424, 'y': -419100, 'cx': 4109090, 'cy': 1143000}
+Shape: TextBox 80 | Type: star32 | Text: '' | Pos: {'x': 4120794, 'y': 187187, 'cx': 935459, 'cy': 690801}
+Shape: TextBox 80 | Type: star32 | Text: '\xa0' | Pos: {'x': 4120794, 'y': 187187, 'cx': 935459, 'cy': 690801}
+Shape: TextBox 82 | Type: star32 | Text: '' | Pos: {'x': 5817947, 'y': 2672692, 'cx': 1836858, 'cy': 690801}
+Shape: TextBox 82 | Type: star32 | Text: '\xa0' | Pos: {'x': 5817947, 'y': 2672692, 'cx': 1836858, 'cy': 690801}
+Shape: TextBox 83 | Type: star32 | Text: '' | Pos: {'x': 3309755, 'y': 3251522, 'cx': 698311, 'cy': 690801}
+Shape: TextBox 83 | Type: star32 | Text: '\xa0' | Pos: {'x': 3309755, 'y': 3251522, 'cx': 698311, 'cy': 690801}
+Shape: Oval 32 | Type: ellipse | Text: ' ' | Pos: {'x': 4179052, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 32 | Type: ellipse | Text: '\xa0' | Pos: {'x': 4179052, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 33 | Type: ellipse | Text: '' | Pos: {'x': 4777025, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 33 | Type: ellipse | Text: '\xa0' | Pos: {'x': 4777025, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 34 | Type: ellipse | Text: '' | Pos: {'x': 5374998, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 34 | Type: ellipse | Text: '\xa0' | Pos: {'x': 5374998, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 35 | Type: ellipse | Text: '' | Pos: {'x': 5972970, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: Oval 35 | Type: ellipse | Text: '\xa0' | Pos: {'x': 5972970, 'y': 4623399, 'cx': 353228, 'cy': 358051}
+Shape: TextBox 40 | Type: rect | Text: '' | Pos: {'x': 4462718, 'y': 4433092, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 29 | Type: rect | Text: '\xa0' | Pos: {'x': 4462718, 'y': 4433092, 'cx': 283920, 'cy': 369332}
+Shape: TextBox 41 | Type: rect | Text: '' | Pos: {'x': 5078728, 'y': 4423922, 'cx': 265215, 'cy': 369332}
+Shape: TextBox 30 | Type: rect | Text: '\xa0' | Pos: {'x': 5078728, 'y': 4423922, 'cx': 265215, 'cy': 369332}
+Shape: TextBox 42 | Type: rect | Text: '' | Pos: {'x': 6342026, 'y': 5197032, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 31 | Type: rect | Text: '\xa0' | Pos: {'x': 6342026, 'y': 5197032, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 43 | Type: rect | Text: '' | Pos: {'x': 5683611, 'y': 4434917, 'cx': 265215, 'cy': 369332}
+Shape: TextBox 32 | Type: rect | Text: '\xa0' | Pos: {'x': 5683611, 'y': 4434917, 'cx': 265215, 'cy': 369332}
+Shape: TextBox 49 | Type: rect | Text: '' | Pos: {'x': 4863212, 'y': 5540379, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 49 | Type: rect | Text: '\xa0' | Pos: {'x': 4863212, 'y': 5540379, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 50 | Type: rect | Text: '' | Pos: {'x': 4409045, 'y': 5171757, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 50 | Type: rect | Text: '\xa0' | Pos: {'x': 4409045, 'y': 5171757, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 53 | Type: rect | Text: '' | Pos: {'x': 3874510, 'y': 4006495, 'cx': 581419, 'cy': 369332}
+Shape: TextBox 39 | Type: rect | Text: '\xa0' | Pos: {'x': 3874510, 'y': 4006495, 'cx': 581419, 'cy': 369332}
+Shape: Rectangle 54 | Type: rect | Text: 'אוטומט לרישות הרעות' | Pos: {'x': 4503280, 'y': 3867218, 'cx': 2234907, 'cy': 338554}
+Shape: TextBox 55 | Type: rect | Text: '' | Pos: {'x': 1807287, 'y': 6182919, 'cx': 5757730, 'cy': 458652}
+Shape: TextBox 55 | Type: rect | Text: '\xa0' | Pos: {'x': 1807287, 'y': 6182919, 'cx': 5757730, 'cy': 458652}
+Connector: Straight Arrow Connector 16 | Pos: {'x': 8298721, 'y': 2086916, 'cx': 0, 'cy': 429465}
+Connector: Straight Arrow Connector 47 | Pos: {'x': 8298721, 'y': 3523164, 'cx': 0, 'cy': 429465}
+Connector: Straight Arrow Connector 52 | Pos: {'x': 8298721, 'y': 2805040, 'cx': 0, 'cy': 429465}
+Connector: Straight Arrow Connector 56 | Pos: {'x': 8298721, 'y': 4241288, 'cx': 0, 'cy': 429465}
+Connector: Straight Arrow Connector 59 | Pos: {'x': 8298721, 'y': 4959412, 'cx': 0, 'cy': 429465}
+Connector: Straight Arrow Connector 61 | Pos: {'x': 8298721, 'y': 5677536, 'cx': 0, 'cy': 429462}
+Connector: Straight Arrow Connector 64 | Pos: {'x': 8298720, 'y': 1619664, 'cx': 0, 'cy': 178593}
+Connector: Connector: Elbow 68 | Pos: {'x': 8686256, 'y': 4096959, 'cx': 12700, 'cy': 2154369}
+Connector: Straight Arrow Connector 78 | Pos: {'x': 3863967, 'y': 2516381, 'cx': 265216, 'cy': 0}
+Connector: Straight Arrow Connector 81 | Pos: {'x': 4461940, 'y': 2516381, 'cx': 265216, 'cy': 0}
+Connector: Straight Arrow Connector 84 | Pos: {'x': 5059913, 'y': 2516381, 'cx': 265215, 'cy': 0}
+Connector: Straight Arrow Connector 88 | Pos: {'x': 3372326, 'y': 2516381, 'cx': 158884, 'cy': 9278}
+Connector: Straight Arrow Connector 95 | Pos: {'x': 3697589, 'y': 2342620, 'cx': 1960296, 'cy': 173761}
+Connector: Straight Arrow Connector 36 | Pos: {'x': 4522045, 'y': 4802425, 'cx': 265216, 'cy': 0}
+Connector: Straight Arrow Connector 37 | Pos: {'x': 5120018, 'y': 4802425, 'cx': 265216, 'cy': 0}
+Connector: Straight Arrow Connector 38 | Pos: {'x': 5717991, 'y': 4802425, 'cx': 265215, 'cy': 0}
+Connector: Straight Arrow Connector 39 | Pos: {'x': 4057322, 'y': 4929015, 'cx': 173459, 'cy': 159505}
+Connector: Connector: Elbow 44 | Pos: {'x': 4654653, 'y': 4682464, 'cx': 12700, 'cy': 597973}
+Connector: Connector: Elbow 45 | Pos: {'x': 4935782, 'y': 4326024, 'cx': 12205, 'cy': 1282216}
+Connector: Connector: Elbow 46 | Pos: {'x': 4179052, 'y': 4623399, 'cx': 176614, 'cy': 179026}
+Connector: Connector: Elbow 48 | Pos: {'x': 6148378, 'y': 4803631, 'cx': 179025, 'cy': 176614}
+
+================ SLIDE 23 ================
+Shape: Rectangle 84 | Type: rect | Text: '' | Pos: {'x': 2133600, 'y': 3928088, 'cx': 5105400, 'cy': 1931160}
+Shape: Title 1 | Type: unknown | Text: 'דוגמה' | Pos: None
+Shape: Date Placeholder 2 | Type: unknown | Text: '' | Pos: None
+Shape: Slide Number Placeholder 3 | Type: unknown | Text: '' | Pos: None
+Shape: Rectangle 7 | Type: rect | Text: '' | Pos: {'x': 2247900, 'y': 1219200, 'cx': 5105400, 'cy': 1931160}
+Shape: Oval 8 | Type: ellipse | Text: ' ' | Pos: {'x': 2584067, 'y': 1704733, 'cx': 525556, 'cy': 477147}
+Shape: Oval 8 | Type: ellipse | Text: '\xa0' | Pos: {'x': 2584067, 'y': 1704733, 'cx': 525556, 'cy': 477147}
+Shape: Rectangle 14 | Type: rect | Text: '' | Pos: {'x': 2504823, 'y': 1237712, 'cx': 644028, 'cy': 275319}
+Shape: Rectangle 14 | Type: rect | Text: '\xa0' | Pos: {'x': 2504823, 'y': 1237712, 'cx': 644028, 'cy': 275319}
+Shape: Oval 9 | Type: ellipse | Text: '' | Pos: {'x': 4291347, 'y': 2603500, 'cx': 533400, 'cy': 533400}
+Shape: Oval 15 | Type: ellipse | Text: '' | Pos: {'x': 4367547, 'y': 2679700, 'cx': 381000, 'cy': 381000}
+Shape: Oval 15 | Type: ellipse | Text: '\xa0' | Pos: {'x': 4367547, 'y': 2679700, 'cx': 381000, 'cy': 381000}
+Shape: Oval 18 | Type: ellipse | Text: '' | Pos: {'x': 3928151, 'y': 1704733, 'cx': 525556, 'cy': 477147}
+Shape: Oval 18 | Type: ellipse | Text: '\xa0' | Pos: {'x': 3928151, 'y': 1704733, 'cx': 525556, 'cy': 477147}
+Shape: Rectangle 32 | Type: rect | Text: '' | Pos: {'x': 3160965, 'y': 1700240, 'cx': 511356, 'cy': 275319}
+Shape: Rectangle 32 | Type: rect | Text: '\xa0' | Pos: {'x': 3160965, 'y': 1700240, 'cx': 511356, 'cy': 275319}
+Shape: Rectangle 37 | Type: rect | Text: '' | Pos: {'x': 3196872, 'y': 2321324, 'cx': 644028, 'cy': 275319}
+Shape: Rectangle 37 | Type: rect | Text: '\xa0' | Pos: {'x': 3196872, 'y': 2321324, 'cx': 644028, 'cy': 275319}
+Shape: Rectangle 38 | Type: rect | Text: '' | Pos: {'x': 4592164, 'y': 1699202, 'cx': 511356, 'cy': 275319}
+Shape: Rectangle 38 | Type: rect | Text: '\xa0' | Pos: {'x': 4592164, 'y': 1699202, 'cx': 511356, 'cy': 275319}
+Shape: Oval 40 | Type: ellipse | Text: ' ' | Pos: {'x': 5272235, 'y': 1694247, 'cx': 525556, 'cy': 477147}
+Shape: Oval 40 | Type: ellipse | Text: '\xa0' | Pos: {'x': 5272235, 'y': 1694247, 'cx': 525556, 'cy': 477147}
+Shape: Rectangle 53 | Type: rect | Text: '' | Pos: {'x': 5872870, 'y': 1667852, 'cx': 511356, 'cy': 275319}
+Shape: Rectangle 53 | Type: rect | Text: '\xa0' | Pos: {'x': 5872870, 'y': 1667852, 'cx': 511356, 'cy': 275319}
+Shape: Rectangle 58 | Type: rect | Text: '' | Pos: {'x': 3804947, 'y': 2791076, 'cx': 644028, 'cy': 275319}
+Shape: Rectangle 58 | Type: rect | Text: '\xa0' | Pos: {'x': 3804947, 'y': 2791076, 'cx': 644028, 'cy': 275319}
+Shape: Rectangle 80 | Type: rect | Text: '' | Pos: {'x': 5908107, 'y': 5134603, 'cx': 1204432, 'cy': 307777}
+Shape: Rectangle 80 | Type: rect | Text: '\xa0' | Pos: {'x': 5908107, 'y': 5134603, 'cx': 1204432, 'cy': 307777}
+Shape: Rectangle 81 | Type: rect | Text: '' | Pos: {'x': 2587480, 'y': 5090246, 'cx': 1205010, 'cy': 307777}
+Shape: Rectangle 81 | Type: rect | Text: '\xa0' | Pos: {'x': 2587480, 'y': 5090246, 'cx': 1205010, 'cy': 307777}
+Shape: Rectangle 82 | Type: rect | Text: '' | Pos: {'x': 4246039, 'y': 5111245, 'cx': 1457258, 'cy': 307777}
+Shape: Rectangle 82 | Type: rect | Text: '\xa0' | Pos: {'x': 4246039, 'y': 5111245, 'cx': 1457258, 'cy': 307777}
+Shape: Rectangle 64 | Type: rect | Text: ' ' | Pos: {'x': 3510576, 'y': 4641342, 'cx': 525556, 'cy': 477147}
+Shape: Rectangle 64 | Type: rect | Text: '\xa0' | Pos: {'x': 3510576, 'y': 4641342, 'cx': 525556, 'cy': 477147}
+Shape: Rectangle 65 | Type: rect | Text: '' | Pos: {'x': 4558308, 'y': 4641341, 'cx': 525556, 'cy': 477147}
+Shape: Rectangle 65 | Type: rect | Text: '\xa0' | Pos: {'x': 4558308, 'y': 4641341, 'cx': 525556, 'cy': 477147}
+Shape: Rectangle 66 | Type: rect | Text: '' | Pos: {'x': 5645329, 'y': 4657554, 'cx': 525556, 'cy': 477147}
+Shape: Rectangle 66 | Type: rect | Text: '\xa0' | Pos: {'x': 5645329, 'y': 4657554, 'cx': 525556, 'cy': 477147}
+Shape: TextBox 60 | Type: rect | Text: 'אסור שהאור האדום יודלק שלוש פעמים ברצף' | Pos: {'x': 2504823, 'y': 3179824, 'cx': 4334841, 'cy': 369332}
+Shape: TextBox 85 | Type: rect | Text: 'האם מערכת המעברים הזאת מקיימת את התכונה?' | Pos: {'x': 2280767, 'y': 5979076, 'cx': 4831772, 'cy': 369332}
+Shape: Rectangle 89 | Type: rect | Text: '' | Pos: {'x': 6576614, 'y': 1228253, 'cx': 586186, 'cy': 307777}
+Shape: Rectangle 89 | Type: rect | Text: '\xa0' | Pos: {'x': 6576614, 'y': 1228253, 'cx': 586186, 'cy': 307777}
+Connector: Elbow Connector 11 | Pos: {'x': 2584067, 'y': 1943307, 'cx': 12513, 'cy': 11361}
+Connector: Elbow Connector 26 | Pos: {'x': 2847421, 'y': 1588799, 'cx': 11361, 'cy': 371623}
+Connector: Straight Arrow Connector 28 | Pos: {'x': 3109622, 'y': 1943307, 'cx': 818528, 'cy': 0}
+Connector: Straight Arrow Connector 29 | Pos: {'x': 4453707, 'y': 1932820, 'cx': 818528, 'cy': 10487}
+Connector: Elbow Connector 26 | Pos: {'x': 3576853, 'y': 1567806, 'cx': 69877, 'cy': 1158272}
+Connector: Straight Arrow Connector 50 | Pos: {'x': 5797791, 'y': 1931186, 'cx': 818527, 'cy': 1634}
+Connector: Elbow Connector 26 | Pos: {'x': 4185686, 'y': 832553, 'cx': 10487, 'cy': 2688168}
+Connector: Straight Arrow Connector 69 | Pos: {'x': 4036132, 'y': 4879915, 'cx': 522176, 'cy': 1}
+Connector: Straight Arrow Connector 70 | Pos: {'x': 5082506, 'y': 4896128, 'cx': 562823, 'cy': 1}
+Connector: Elbow Connector 73 | Pos: {'x': 4832625, 'y': 4059219, 'cx': 16212, 'cy': 2134753}
+Connector: Straight Arrow Connector 75 | Pos: {'x': 3276600, 'y': 4879915, 'cx': 233976, 'cy': 1}
+Connector: Elbow Connector 76 | Pos: {'x': 4832624, 'y': 3582072, 'cx': 16212, 'cy': 2134753}
+Connector: Elbow Connector 26 | Pos: {'x': 6873916, 'y': 1579340, 'cx': 11361, 'cy': 371623}
+
+================ SLIDE 24 ================
+Shape: Title 1 | Type: unknown | Text: 'דוגמה' | Pos: None
+Shape: Date Placeholder 2 | Type: unknown | Text: '' | Pos: None
+Shape: Slide Number Placeholder 3 | Type: unknown | Text: '' | Pos: None
+Shape: Rectangle 13 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 13 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 71 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 71 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 72 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 72 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 74 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 74 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 77 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 3500673, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 77 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 3500673, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 78 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 4161073, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 78 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 4161073, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 79 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 4821473, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 79 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 4821473, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 83 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 5481873, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 83 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 5481873, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 86 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 86 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 87 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 87 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 88 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 88 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 89 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 89 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: TextBox 20 | Type: rect | Text: '' | Pos: {'x': 4422918, 'y': 1660042, 'cx': 413896, 'cy': 369332}
+Shape: TextBox 20 | Type: rect | Text: '\xa0' | Pos: {'x': 4422918, 'y': 1660042, 'cx': 413896, 'cy': 369332}
+Shape: Rectangle 25 | Type: rect | Text: '' | Pos: {'x': 4201105, 'y': 2914134, 'cx': 805029, 'cy': 369332}
+Shape: Rectangle 25 | Type: rect | Text: '\xa0' | Pos: {'x': 4201105, 'y': 2914134, 'cx': 805029, 'cy': 369332}
+
+================ SLIDE 25 ================
+Shape: Title 1 | Type: unknown | Text: 'דוגמה' | Pos: None
+Shape: Date Placeholder 2 | Type: unknown | Text: '' | Pos: None
+Shape: Slide Number Placeholder 3 | Type: unknown | Text: '' | Pos: None
+Shape: Rectangle 13 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 13 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 71 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 71 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 72 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 72 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 74 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 74 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 77 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 3500673, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 77 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 3500673, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 78 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 4161073, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 78 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 4161073, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 79 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 4821473, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 79 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 4821473, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 83 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 5481873, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 83 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 5481873, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 86 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 86 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 87 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 87 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 88 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 88 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 89 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 89 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 107 | Type: rect | Text: '' | Pos: {'x': 3461465, 'y': 170766, 'cx': 2373470, 'cy': 766685}
+Shape: Rectangle 107 | Type: rect | Text: '\xa0' | Pos: {'x': 3461465, 'y': 170766, 'cx': 2373470, 'cy': 766685}
+Shape: TextBox 108 | Type: rect | Text: '' | Pos: {'x': 4422918, 'y': 1660042, 'cx': 413896, 'cy': 369332}
+Shape: TextBox 108 | Type: rect | Text: '\xa0' | Pos: {'x': 4422918, 'y': 1660042, 'cx': 413896, 'cy': 369332}
+Connector: Elbow Connector 95 | Pos: {'x': 4718042, 'y': 4565642, 'cx': 12700, 'cy': 2603516}
+Connector: Straight Arrow Connector 19 | Pos: {'x': 3797284, 'y': 3691173, 'cx': 539758, 'cy': 4527}
+Connector: Straight Arrow Connector 22 | Pos: {'x': 3797284, 'y': 3877145, 'cx': 539758, 'cy': 283928}
+Connector: Straight Arrow Connector 24 | Pos: {'x': 3797284, 'y': 3877145, 'cx': 643968, 'cy': 944328}
+Connector: Straight Arrow Connector 27 | Pos: {'x': 5099042, 'y': 3877145, 'cx': 539758, 'cy': 283928}
+Connector: Straight Arrow Connector 29 | Pos: {'x': 5099042, 'y': 4533018, 'cx': 539758, 'cy': 283927}
+Connector: Straight Arrow Connector 37 | Pos: {'x': 5099042, 'y': 5184363, 'cx': 539758, 'cy': 350574}
+Connector: Elbow Connector 41 | Pos: {'x': 3035284, 'y': 3695700, 'cx': 3365516, 'cy': 660400}
+Connector: Elbow Connector 54 | Pos: {'x': 3035284, 'y': 4356100, 'cx': 3365516, 'cy': 660400}
+Connector: Elbow Connector 61 | Pos: {'x': 3035284, 'y': 5016500, 'cx': 3365516, 'cy': 660400}
+Connector: Straight Arrow Connector 96 | Pos: {'x': 3797284, 'y': 5672373, 'cx': 539758, 'cy': 4527}
+Connector: Straight Arrow Connector 97 | Pos: {'x': 5099042, 'y': 5672373, 'cx': 539758, 'cy': 4527}
+
+================ SLIDE 26 ================
+Shape: Title 1 | Type: unknown | Text: 'דוגמה' | Pos: None
+Shape: Date Placeholder 2 | Type: unknown | Text: '' | Pos: None
+Shape: Slide Number Placeholder 3 | Type: unknown | Text: '' | Pos: None
+Shape: Rectangle 13 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 13 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 71 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 71 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 72 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 72 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 74 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 74 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 77 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 3500673, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 77 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 3500673, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 78 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 4161073, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 78 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 4161073, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 79 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 4821473, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 79 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 4821473, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 83 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 5481873, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 83 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 5481873, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 86 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 86 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 87 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 87 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 88 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 88 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 89 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 89 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 44 | Type: rect | Text: '' | Pos: {'x': 3461465, 'y': 170766, 'cx': 2373470, 'cy': 766685}
+Shape: Rectangle 44 | Type: rect | Text: '\xa0' | Pos: {'x': 3461465, 'y': 170766, 'cx': 2373470, 'cy': 766685}
+Shape: TextBox 45 | Type: rect | Text: '' | Pos: {'x': 4422918, 'y': 1660042, 'cx': 413896, 'cy': 369332}
+Shape: TextBox 45 | Type: rect | Text: '\xa0' | Pos: {'x': 4422918, 'y': 1660042, 'cx': 413896, 'cy': 369332}
+Connector: Elbow Connector 95 | Pos: {'x': 4718042, 'y': 4565642, 'cx': 12700, 'cy': 2603516}
+Connector: Straight Arrow Connector 19 | Pos: {'x': 3797284, 'y': 3691173, 'cx': 539758, 'cy': 4527}
+Connector: Straight Arrow Connector 22 | Pos: {'x': 3797284, 'y': 3877145, 'cx': 539758, 'cy': 283928}
+Connector: Straight Arrow Connector 24 | Pos: {'x': 3797284, 'y': 3877145, 'cx': 643968, 'cy': 944328}
+Connector: Straight Arrow Connector 27 | Pos: {'x': 5099042, 'y': 3877145, 'cx': 539758, 'cy': 283928}
+Connector: Straight Arrow Connector 29 | Pos: {'x': 5099042, 'y': 4533018, 'cx': 539758, 'cy': 283927}
+Connector: Straight Arrow Connector 37 | Pos: {'x': 5099042, 'y': 5184363, 'cx': 539758, 'cy': 350574}
+Connector: Elbow Connector 41 | Pos: {'x': 3035284, 'y': 3695700, 'cx': 3365516, 'cy': 660400}
+Connector: Elbow Connector 54 | Pos: {'x': 3035284, 'y': 4356100, 'cx': 3365516, 'cy': 660400}
+Connector: Elbow Connector 61 | Pos: {'x': 3035284, 'y': 5016500, 'cx': 3365516, 'cy': 660400}
+Connector: Straight Arrow Connector 96 | Pos: {'x': 3797284, 'y': 5672373, 'cx': 539758, 'cy': 4527}
+Connector: Straight Arrow Connector 97 | Pos: {'x': 5099042, 'y': 5672373, 'cx': 539758, 'cy': 4527}
+Connector: Elbow Connector 5 | Pos: {'x': 4578342, 'y': 2724142, 'cx': 279400, 'cy': 2603516}
+Connector: Elbow Connector 34 | Pos: {'x': 4578342, 'y': 3384542, 'cx': 279400, 'cy': 2603516}
+Connector: Elbow Connector 36 | Pos: {'x': 4578342, 'y': 4044942, 'cx': 279400, 'cy': 2603516}
+Connector: Elbow Connector 39 | Pos: {'x': 4692250, 'y': 4445400, 'cx': 12700, 'cy': 2844000}
+
+================ SLIDE 27 ================
+Shape: Title 1 | Type: unknown | Text: 'דוגמה' | Pos: None
+Shape: Date Placeholder 2 | Type: unknown | Text: '' | Pos: None
+Shape: Slide Number Placeholder 3 | Type: unknown | Text: '' | Pos: None
+Shape: Rectangle 13 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 13 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 71 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 71 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 72 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 72 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 74 | Type: rect | Text: '' | Pos: {'x': 3035284, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 74 | Type: rect | Text: '\xa0' | Pos: {'x': 3035284, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 77 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 3500673, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 77 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 3500673, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 78 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 4161073, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 78 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 4161073, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 79 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 4821473, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 79 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 4821473, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 83 | Type: rect | Text: '' | Pos: {'x': 4337042, 'y': 5481873, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 83 | Type: rect | Text: '\xa0' | Pos: {'x': 4337042, 'y': 5481873, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 86 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 86 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 3505200, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 87 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 87 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 4165600, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 88 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 88 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 4826000, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 89 | Type: rect | Text: '' | Pos: {'x': 5638800, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 89 | Type: rect | Text: '\xa0' | Pos: {'x': 5638800, 'y': 5486400, 'cx': 762000, 'cy': 381000}
+Shape: Rectangle 44 | Type: rect | Text: '' | Pos: {'x': 3461465, 'y': 170766, 'cx': 2373470, 'cy': 766685}
+Shape: Rectangle 44 | Type: rect | Text: '\xa0' | Pos: {'x': 3461465, 'y': 170766, 'cx': 2373470, 'cy': 766685}
+Shape: TextBox 45 | Type: rect | Text: '' | Pos: {'x': 4422918, 'y': 1660042, 'cx': 413896, 'cy': 369332}
+Shape: TextBox 45 | Type: rect | Text: '\xa0' | Pos: {'x': 4422918, 'y': 1660042, 'cx': 413896, 'cy': 369332}
+Shape: TextBox 38 | Type: rect | Text: '\uf046' | Pos: {'x': 2154160, 'y': 3438131, 'cx': 981359, 'cy': 1107996}
+Connector: Elbow Connector 95 | Pos: {'x': 4718042, 'y': 4565642, 'cx': 12700, 'cy': 2603516}
+Connector: Straight Arrow Connector 19 | Pos: {'x': 3797284, 'y': 3691173, 'cx': 539758, 'cy': 4527}
+Connector: Straight Arrow Connector 22 | Pos: {'x': 3797284, 'y': 3877145, 'cx': 539758, 'cy': 283928}
+Connector: Straight Arrow Connector 24 | Pos: {'x': 3797284, 'y': 3877145, 'cx': 643968, 'cy': 944328}
+Connector: Straight Arrow Connector 27 | Pos: {'x': 5099042, 'y': 3877145, 'cx': 539758, 'cy': 283928}
+Connector: Straight Arrow Connector 29 | Pos: {'x': 5099042, 'y': 4533018, 'cx': 539758, 'cy': 283927}
+Connector: Straight Arrow Connector 37 | Pos: {'x': 5099042, 'y': 5184363, 'cx': 539758, 'cy': 350574}
+Connector: Elbow Connector 41 | Pos: {'x': 3035284, 'y': 3695700, 'cx': 3365516, 'cy': 660400}
+Connector: Elbow Connector 54 | Pos: {'x': 3035284, 'y': 4356100, 'cx': 3365516, 'cy': 660400}
+Connector: Elbow Connector 61 | Pos: {'x': 3035284, 'y': 5016500, 'cx': 3365516, 'cy': 660400}
+Connector: Straight Arrow Connector 96 | Pos: {'x': 3797284, 'y': 5672373, 'cx': 539758, 'cy': 4527}
+Connector: Straight Arrow Connector 97 | Pos: {'x': 5099042, 'y': 5672373, 'cx': 539758, 'cy': 4527}
+Connector: Elbow Connector 5 | Pos: {'x': 4578342, 'y': 2724142, 'cx': 279400, 'cy': 2603516}
+Connector: Elbow Connector 34 | Pos: {'x': 4578342, 'y': 3384542, 'cx': 279400, 'cy': 2603516}
+Connector: Elbow Connector 36 | Pos: {'x': 4578342, 'y': 4044942, 'cx': 279400, 'cy': 2603516}
+Connector: Elbow Connector 39 | Pos: {'x': 4692250, 'y': 4445400, 'cx': 12700, 'cy': 2844000}
+
+================ SLIDE 28 ================
+Shape: Title 1 | Type: unknown | Text: 'דוגמה' | Pos: {'x': 762000, 'y': -76200, 'cx': 7772400, 'cy': 1143000}
+Shape: Date Placeholder 2 | Type: unknown | Text: '' | Pos: None
+Shape: Slide Number Placeholder 3 | Type: unknown | Text: '' | Pos: None
+Shape: Oval 4 | Type: ellipse | Text: '' | Pos: {'x': 4505893, 'y': 2514600, 'cx': 533400, 'cy': 533400}
+Shape: Oval 4 | Type: ellipse | Text: '\xa0' | Pos: {'x': 4505893, 'y': 2514600, 'cx': 533400, 'cy': 533400}
+Shape: Oval 29 | Type: ellipse | Text: '' | Pos: {'x': 5638800, 'y': 2514600, 'cx': 533400, 'cy': 533400}
+Shape: Oval 29 | Type: ellipse | Text: '\xa0' | Pos: {'x': 5638800, 'y': 2514600, 'cx': 533400, 'cy': 533400}
+Shape: Oval 30 | Type: ellipse | Text: '' | Pos: {'x': 7924800, 'y': 2514600, 'cx': 533400, 'cy': 533400}
+Shape: Oval 30 | Type: ellipse | Text: '\xa0' | Pos: {'x': 7924800, 'y': 2514600, 'cx': 533400, 'cy': 533400}
+Shape: TextBox 40 | Type: rect | Text: '' | Pos: {'x': 5029200, 'y': 2362200, 'cx': 457200, 'cy': 369332}
+Shape: TextBox 40 | Type: rect | Text: '\xa0' | Pos: {'x': 5029200, 'y': 2362200, 'cx': 457200, 'cy': 369332}
+Shape: TextBox 45 | Type: rect | Text: '' | Pos: {'x': 5334000, 'y': 2895600, 'cx': 337815, 'cy': 369332}
+Shape: TextBox 45 | Type: rect | Text: '\xa0' | Pos: {'x': 5334000, 'y': 2895600, 'cx': 337815, 'cy': 369332}
+Shape: Oval 57 | Type: ellipse | Text: '' | Pos: {'x': 7991383, 'y': 2584176, 'cx': 410831, 'cy': 401619}
+Shape: Oval 48 | Type: ellipse | Text: '' | Pos: {'x': 6781800, 'y': 2514600, 'cx': 533400, 'cy': 533400}
+Shape: Oval 48 | Type: ellipse | Text: '\xa0' | Pos: {'x': 6781800, 'y': 2514600, 'cx': 533400, 'cy': 533400}
+Shape: TextBox 58 | Type: rect | Text: '' | Pos: {'x': 6162107, 'y': 2400300, 'cx': 457200, 'cy': 369332}
+Shape: TextBox 58 | Type: rect | Text: '\xa0' | Pos: {'x': 6162107, 'y': 2400300, 'cx': 457200, 'cy': 369332}
+Shape: TextBox 60 | Type: rect | Text: '' | Pos: {'x': 7305107, 'y': 2400300, 'cx': 457200, 'cy': 369332}
+Shape: TextBox 60 | Type: rect | Text: '\xa0' | Pos: {'x': 7305107, 'y': 2400300, 'cx': 457200, 'cy': 369332}
+Shape: TextBox 68 | Type: rect | Text: '' | Pos: {'x': 5671815, 'y': 3554201, 'cx': 337815, 'cy': 369332}
+Shape: TextBox 68 | Type: rect | Text: '\xa0' | Pos: {'x': 5671815, 'y': 3554201, 'cx': 337815, 'cy': 369332}
+Shape: TextBox 72 | Type: rect | Text: '' | Pos: {'x': 4419600, 'y': 1905000, 'cx': 337815, 'cy': 369332}
+Shape: TextBox 72 | Type: rect | Text: '\xa0' | Pos: {'x': 4419600, 'y': 1905000, 'cx': 337815, 'cy': 369332}
+Shape: TextBox 76 | Type: rect | Text: '' | Pos: {'x': 7772400, 'y': 1905000, 'cx': 609600, 'cy': 369332}
+Shape: TextBox 76 | Type: rect | Text: '\xa0' | Pos: {'x': 7772400, 'y': 1905000, 'cx': 609600, 'cy': 369332}
+Shape: Rectangle 6 | Type: rect | Text: '' | Pos: {'x': 623581, 'y': 2971046, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 6 | Type: rect | Text: '\xa0' | Pos: {'x': 623581, 'y': 2971046, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 7 | Type: rect | Text: '' | Pos: {'x': 2385123, 'y': 2971046, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 7 | Type: rect | Text: '\xa0' | Pos: {'x': 2385123, 'y': 2971046, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 8 | Type: rect | Text: '' | Pos: {'x': 1504352, 'y': 1905000, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 8 | Type: rect | Text: '\xa0' | Pos: {'x': 1504352, 'y': 1905000, 'cx': 1043877, 'cy': 434114}
+Shape: TextBox 27 | Type: rect | Text: '' | Pos: {'x': 544283, 'y': 3414227, 'cx': 428322, 'cy': 369332}
+Shape: TextBox 27 | Type: rect | Text: '\xa0' | Pos: {'x': 544283, 'y': 3414227, 'cx': 428322, 'cy': 369332}
+Shape: TextBox 103 | Type: rect | Text: '' | Pos: {'x': 2286000, 'y': 2362200, 'cx': 559384, 'cy': 369332}
+Shape: TextBox 103 | Type: rect | Text: '\xa0' | Pos: {'x': 2286000, 'y': 2362200, 'cx': 559384, 'cy': 369332}
+Shape: TextBox 104 | Type: rect | Text: '' | Pos: {'x': 3124200, 'y': 3429000, 'cx': 428322, 'cy': 369332}
+Shape: TextBox 104 | Type: rect | Text: '\xa0' | Pos: {'x': 3124200, 'y': 3429000, 'cx': 428322, 'cy': 369332}
+Shape: TextBox 107 | Type: rect | Text: '' | Pos: {'x': 990600, 'y': 1447800, 'cx': 7239000, 'cy': 444417}
+Shape: TextBox 107 | Type: rect | Text: '\xa0' | Pos: {'x': 990600, 'y': 1447800, 'cx': 7239000, 'cy': 444417}
+Shape: Rectangle 110 | Type: rect | Text: '' | Pos: {'x': 623581, 'y': 2971046, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 110 | Type: rect | Text: '\xa0' | Pos: {'x': 623581, 'y': 2971046, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 111 | Type: rect | Text: '' | Pos: {'x': 2576778, 'y': 2980113, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 111 | Type: rect | Text: '\xa0' | Pos: {'x': 2576778, 'y': 2980113, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 112 | Type: rect | Text: '' | Pos: {'x': 1507752, 'y': 1905000, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 112 | Type: rect | Text: '\xa0' | Pos: {'x': 1507752, 'y': 1905000, 'cx': 1043877, 'cy': 434114}
+Shape: TextBox 116 | Type: rect | Text: '' | Pos: {'x': 544283, 'y': 3414227, 'cx': 650884, 'cy': 369332}
+Shape: TextBox 116 | Type: rect | Text: '\xa0' | Pos: {'x': 544283, 'y': 3414227, 'cx': 650884, 'cy': 369332}
+Shape: TextBox 120 | Type: rect | Text: '' | Pos: {'x': 2248676, 'y': 2362200, 'cx': 656205, 'cy': 369332}
+Shape: TextBox 120 | Type: rect | Text: '\xa0' | Pos: {'x': 2248676, 'y': 2362200, 'cx': 656205, 'cy': 369332}
+Shape: TextBox 121 | Type: rect | Text: '' | Pos: {'x': 3124200, 'y': 3429000, 'cx': 650884, 'cy': 369332}
+Shape: TextBox 121 | Type: rect | Text: '\xa0' | Pos: {'x': 3124200, 'y': 3429000, 'cx': 650884, 'cy': 369332}
+Shape: Rectangle 124 | Type: rect | Text: '' | Pos: {'x': 1798246, 'y': 4011666, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 124 | Type: rect | Text: '\xa0' | Pos: {'x': 1798246, 'y': 4011666, 'cx': 1043877, 'cy': 434114}
+Shape: TextBox 131 | Type: rect | Text: '' | Pos: {'x': 2514020, 'y': 4469620, 'cx': 656205, 'cy': 369332}
+Shape: TextBox 131 | Type: rect | Text: '\xa0' | Pos: {'x': 2514020, 'y': 4469620, 'cx': 656205, 'cy': 369332}
+Connector: Straight Arrow Connector 49 | Pos: {'x': 4250000, 'y': 2969885, 'cx': 334008, 'cy': 230515}
+Connector: Straight Arrow Connector 32 | Pos: {'x': 5039293, 'y': 2781300, 'cx': 599507, 'cy': 0}
+Connector: Straight Arrow Connector 59 | Pos: {'x': 6172200, 'y': 2819400, 'cx': 599507, 'cy': 0}
+Connector: Straight Arrow Connector 61 | Pos: {'x': 7315200, 'y': 2819400, 'cx': 599507, 'cy': 0}
+Connector: Curved Connector 43 | Pos: {'x': 5394281, 'y': 2536782, 'cx': 78115, 'cy': 944322}
+Connector: Curved Connector 62 | Pos: {'x': 5910547, 'y': 1910047, 'cx': 12700, 'cy': 2275907}
+Connector: Curved Connector 69 | Pos: {'x': 4505893, 'y': 2514600, 'cx': 266700, 'cy': 266700}
+Connector: Curved Connector 73 | Pos: {'x': 8191500, 'y': 2514600, 'cx': 266700, 'cy': 266700}
+Connector: Elbow Connector 10 | Pos: {'x': 580055, 'y': 3181738, 'cx': 62219, 'cy': 12297}
+Connector: Shape 14 | Pos: {'x': 1145520, 'y': 2122056, 'cx': 358832, 'cy': 848989}
+Connector: Shape 21 | Pos: {'x': 1667458, 'y': 2339114, 'cx': 274320, 'cy': 848989}
+Connector: Shape 14 | Pos: {'x': 2548229, 'y': 2122057, 'cx': 358833, 'cy': 848989}
+Connector: Shape 21 | Pos: {'x': 2110803, 'y': 2339115, 'cx': 274320, 'cy': 848989}
+Connector: Shape 14 | Pos: {'x': 2026291, 'y': 2524389, 'cx': 12700, 'cy': 1761542}
+Connector: Elbow Connector 113 | Pos: {'x': 580055, 'y': 3181738, 'cx': 62219, 'cy': 12297}
+Connector: Shape 14 | Pos: {'x': 1145520, 'y': 2122056, 'cx': 362232, 'cy': 848989}
+Connector: Shape 21 | Pos: {'x': 1667458, 'y': 2339114, 'cx': 182880, 'cy': 848989}
+Connector: Shape 14 | Pos: {'x': 2551629, 'y': 2122057, 'cx': 547088, 'cy': 858056}
+Connector: Shape 21 | Pos: {'x': 2248676, 'y': 2362200, 'cx': 328102, 'cy': 834970}
+Connector: Shape 14 | Pos: {'x': 2563172, 'y': 3693178, 'cx': 814496, 'cy': 256594}
+Connector: Elbow Connector 128 | Pos: {'x': 1338662, 'y': 3030143, 'cx': 1672552, 'cy': 290494}
+
+================ SLIDE 29 ================
+Shape: Title 1 | Type: unknown | Text: 'דוגמה להרכבה של אוטומט ומערכת מעברים' | Pos: {'x': 471614, 'y': 37346, 'cx': 8229600, 'cy': 1143000}
+Shape: Date Placeholder 2 | Type: unknown | Text: '' | Pos: None
+Shape: Slide Number Placeholder 3 | Type: unknown | Text: '' | Pos: None
+Shape: Rectangle 5 | Type: rect | Text: '' | Pos: {'x': 1341246, 'y': 1958114, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 5 | Type: rect | Text: '\xa0' | Pos: {'x': 1341246, 'y': 1958114, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 6 | Type: rect | Text: '' | Pos: {'x': 623581, 'y': 2971046, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 6 | Type: rect | Text: '\xa0' | Pos: {'x': 623581, 'y': 2971046, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 7 | Type: rect | Text: '' | Pos: {'x': 2385123, 'y': 2971046, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 7 | Type: rect | Text: '\xa0' | Pos: {'x': 2385123, 'y': 2971046, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 8 | Type: rect | Text: '' | Pos: {'x': 1406489, 'y': 3983978, 'cx': 1043877, 'cy': 434114}
+Shape: Rectangle 8 | Type: rect | Text: '\xa0' | Pos: {'x': 1406489, 'y': 3983978, 'cx': 1043877, 'cy': 434114}
+Shape: TextBox 24 | Type: rect | Text: '{}' | Pos: {'x': 1073324, 'y': 1524000, 'cx': 769057, 'cy': 369332}
+Shape: TextBox 24 | Type: rect | Text: '\xa0' | Pos: {'x': 1073324, 'y': 1524000, 'cx': 769057, 'cy': 369332}
+Shape: TextBox 25 | Type: rect | Text: '{}' | Pos: {'x': 51630, 'y': 2621871, 'cx': 1093889, 'cy': 369332}
+Shape: TextBox 25 | Type: rect | Text: '\xa0' | Pos: {'x': 51630, 'y': 2621871, 'cx': 1093889, 'cy': 369332}
+Shape: TextBox 26 | Type: rect | Text: '' | Pos: {'x': 2450365, 'y': 2620363, 'cx': 428322, 'cy': 369332}
+Shape: TextBox 26 | Type: rect | Text: '\xa0' | Pos: {'x': 2450365, 'y': 2620363, 'cx': 428322, 'cy': 369332}
+Shape: TextBox 27 | Type: rect | Text: '' | Pos: {'x': 1536973, 'y': 3622217, 'cx': 428322, 'cy': 369332}
+Shape: TextBox 27 | Type: rect | Text: '\xa0' | Pos: {'x': 1536973, 'y': 3622217, 'cx': 428322, 'cy': 369332}
+Shape: Rectangle 35 | Type: rect | Text: '' | Pos: {'x': 3352800, 'y': 6096000, 'cx': 1219200, 'cy': 457200}
+Shape: Rectangle 35 | Type: rect | Text: '\xa0' | Pos: {'x': 3352800, 'y': 6096000, 'cx': 1219200, 'cy': 457200}
+Shape: Rectangle 36 | Type: rect | Text: '' | Pos: {'x': 3352800, 'y': 4838700, 'cx': 1219200, 'cy': 457200}
+Shape: Rectangle 36 | Type: rect | Text: '\xa0' | Pos: {'x': 3352800, 'y': 4838700, 'cx': 1219200, 'cy': 457200}
+Shape: Rectangle 38 | Type: rect | Text: '' | Pos: {'x': 5448300, 'y': 4838700, 'cx': 1219200, 'cy': 457200}
+Shape: Rectangle 38 | Type: rect | Text: '\xa0' | Pos: {'x': 5448300, 'y': 4838700, 'cx': 1219200, 'cy': 457200}
+Shape: Rectangle 39 | Type: rect | Text: '' | Pos: {'x': 5448300, 'y': 6096000, 'cx': 1219200, 'cy': 457200}
+Shape: Rectangle 39 | Type: rect | Text: '\xa0' | Pos: {'x': 5448300, 'y': 6096000, 'cx': 1219200, 'cy': 457200}
+Shape: Oval 4 | Type: ellipse | Text: '' | Pos: {'x': 4505893, 'y': 2514600, 'cx': 533400, 'cy': 533400}
+Shape: Oval 4 | Type: ellipse | Text: '\xa0' | Pos: {'x': 4505893, 'y': 2514600, 'cx': 533400, 'cy': 533400}
+Shape: Oval 29 | Type: ellipse | Text: '' | Pos: {'x': 6258493, 'y': 2491273, 'cx': 533400, 'cy': 533400}
+Shape: Oval 29 | Type: ellipse | Text: '\xa0' | Pos: {'x': 6258493, 'y': 2491273, 'cx': 533400, 'cy': 533400}
+Shape: Oval 30 | Type: ellipse | Text: '' | Pos: {'x': 8201593, 'y': 2481148, 'cx': 533400, 'cy': 533400}
+Shape: Oval 30 | Type: ellipse | Text: '\xa0' | Pos: {'x': 8201593, 'y': 2481148, 'cx': 533400, 'cy': 533400}
+Shape: TextBox 16 | Type: rect | Text: '' | Pos: {'x': 4648200, 'y': 1897619, 'cx': 1848986, 'cy': 369332}
+Shape: TextBox 16 | Type: rect | Text: '\xa0' | Pos: {'x': 4648200, 'y': 1897619, 'cx': 1848986, 'cy': 369332}
+Shape: TextBox 40 | Type: rect | Text: '' | Pos: {'x': 4628014, 'y': 3276600, 'cx': 1848986, 'cy': 369332}
+Shape: TextBox 40 | Type: rect | Text: '\xa0' | Pos: {'x': 4628014, 'y': 3276600, 'cx': 1848986, 'cy': 369332}
+Shape: TextBox 45 | Type: rect | Text: '' | Pos: {'x': 3777668, 'y': 3154919, 'cx': 1023615, 'cy': 369332}
+Shape: TextBox 45 | Type: rect | Text: '\xa0' | Pos: {'x': 3777668, 'y': 3154919, 'cx': 1023615, 'cy': 369332}
+Shape: TextBox 51 | Type: rect | Text: '' | Pos: {'x': 7066891, 'y': 2362291, 'cx': 1131848, 'cy': 369332}
+Shape: TextBox 51 | Type: rect | Text: '\xa0' | Pos: {'x': 7066891, 'y': 2362291, 'cx': 1131848, 'cy': 369332}
+Shape: TextBox 55 | Type: rect | Text: '' | Pos: {'x': 6513164, 'y': 1939879, 'cx': 1848986, 'cy': 369332}
+Shape: TextBox 55 | Type: rect | Text: '\xa0' | Pos: {'x': 6513164, 'y': 1939879, 'cx': 1848986, 'cy': 369332}
+Shape: Oval 57 | Type: ellipse | Text: '' | Pos: {'x': 8283986, 'y': 2560056, 'cx': 365760, 'cy': 365760}
+Connector: Elbow Connector 10 | Pos: {'x': 1928353, 'y': 4418166, 'cx': 1508, 'cy': 1360}
+Connector: Shape 14 | Pos: {'x': 1145519, 'y': 3405160, 'cx': 260969, 'cy': 795875}
+Connector: Shape 15 | Pos: {'x': 845445, 'y': 2475245, 'cx': 795875, 'cy': 195727}
+Connector: Shape 18 | Pos: {'x': 2385123, 'y': 2175171, 'cx': 521938, 'cy': 795875}
+Connector: Shape 21 | Pos: {'x': 2280776, 'y': 3574750, 'cx': 795875, 'cy': 456696}
+Connector: Elbow Connector 41 | Pos: {'x': 3352800, 'y': 5067300, 'cx': 1588, 'cy': 1588}
+Connector: Straight Arrow Connector 50 | Pos: {'x': 4572000, 'y': 5067300, 'cx': 876300, 'cy': 1588}
+Connector: Straight Arrow Connector 52 | Pos: {'x': 5657850, 'y': 5695950, 'cx': 800100, 'cy': 1588}
+Connector: Straight Arrow Connector 54 | Pos: {'x': 4572000, 'y': 6324600, 'cx': 876300, 'cy': 1588}
+Connector: Straight Arrow Connector 56 | Pos: {'x': 3562350, 'y': 5695950, 'cx': 800100, 'cy': 1588}
+Connector: Elbow Connector 11 | Pos: {'x': 5637230, 'y': 1626637, 'cx': 23327, 'cy': 1752600}
+Connector: Elbow Connector 19 | Pos: {'x': 5637230, 'y': 2160036, 'cx': 23327, 'cy': 1752600}
+Connector: Elbow Connector 42 | Pos: {'x': 4450658, 'y': 2836536, 'cx': 188585, 'cy': 78115}
+Connector: Elbow Connector 47 | Pos: {'x': 6613774, 'y': 2470342, 'cx': 89540, 'cy': 171657}
+Connector: Elbow Connector 46 | Pos: {'x': 6791893, 'y': 2747848, 'cx': 1409700, 'cy': 10125}
+Connector: Straight Arrow Connector 49 | Pos: {'x': 5953693, 'y': 2752347, 'cx': 304800, 'cy': 5626}
