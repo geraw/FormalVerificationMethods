@@ -542,7 +542,7 @@ info: |
 
 <div class="relative mt-2 mx-auto w-[96%] h-[560px] overflow-hidden">
   <div class="absolute top-[8px] left-1/2 -translate-x-1/2 w-[220px] h-[186px] overflow-hidden">
-    <img src="/slide-reference/18-regular-safety-properties/slide-036.png" class="w-[220px] h-[220px] object-cover object-top" style="clip-path: inset(0 0 34px 0);" />
+    <img src="/slide-reference/l18/image36.gif" class="w-[220px] h-[220px] object-cover object-top" style="clip-path: inset(0 0 34px 0);" />
   </div>
 
   <div class="absolute top-[206px] left-1/2 -translate-x-1/2 text-[27px]" dir="ltr">
