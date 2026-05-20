@@ -598,22 +598,6 @@ info: |
 
 <div class="grid grid-cols-[1.15fr_0.85fr] gap-3 mt-1 items-start">
 <div class="space-y-1.5">
-<div class="bg-amber-50/60 border border-amber-200/80 rounded p-1.5 text-[12px] shadow-sm">
-<div class="font-bold text-amber-900 text-center mb-1">הגדרת המערכת והאוטומט</div>
-<div class="grid grid-cols-2 gap-2 text-right" dir="rtl">
-<div>
-<span class="font-bold text-blue-800">מערכת <KatexInline math="TS" />:</span>
-<span class="block text-[11px] font-mono mt-0.5"><KatexInline math="S=\{0,1,2\}" /></span>
-<span class="block text-[11px] font-mono"><KatexInline math="L(0)=L(1)=\emptyset,\ L(2)=\{X\}" /></span>
-</div>
-<div>
-<span class="font-bold text-amber-800">אוטומט <KatexInline math="\mathcal{A}" />:</span>
-<span class="block text-[11px] font-mono mt-0.5"><KatexInline math="Q=\{q_0,q_1,q_2,q_3\}" /></span>
-<span class="block text-[11px] font-mono"><KatexInline math="F=\{q_3\}" /></span>
-</div>
-</div>
-</div>
-
 <div class="bg-white border border-slate-200 rounded p-1 shadow-sm text-center">
 <div class="text-[11px] font-bold text-blue-800 mb-0.5">מערכת המעברים <KatexInline math="TS" /></div>
 <TransitionSystemD3
@@ -685,22 +669,6 @@ info: |
 
 <div class="grid grid-cols-[1.15fr_0.85fr] gap-3 mt-1 items-start">
 <div class="space-y-1.5">
-<div class="bg-amber-50/60 border border-amber-200/80 rounded p-1.5 text-[12px] shadow-sm">
-<div class="font-bold text-amber-900 text-center mb-1">הגדרת המערכת והאוטומט</div>
-<div class="grid grid-cols-2 gap-2 text-right" dir="rtl">
-<div>
-<span class="font-bold text-blue-700">מערכת <KatexInline math="TS" />:</span>
-<span class="block text-[11px] font-mono mt-0.5"><KatexInline math="S=\{0,1,2,3\}" /></span>
-<span class="block text-[11px] font-mono"><KatexInline math="L(0)=L(1)=L(2)=\emptyset,\ L(3)=\{X\}" /></span>
-</div>
-<div>
-<span class="font-bold text-amber-800">אוטומט <KatexInline math="\mathcal{A}" />:</span>
-<span class="block text-[11px] font-mono mt-0.5"><KatexInline math="Q=\{q_0,q_1,q_2,q_3\}" /></span>
-<span class="block text-[11px] font-mono"><KatexInline math="F=\{q_3\}" /></span>
-</div>
-</div>
-</div>
-
 <div class="bg-white border border-slate-200 rounded p-1 shadow-sm text-center">
 <div class="text-[11px] font-bold text-blue-800 mb-0.5">מערכת המעברים <KatexInline math="TS" /></div>
 <TransitionSystemD3
