@@ -619,36 +619,36 @@ info: |
 <TransitionSystemD3
 :width="440" :height="95" :auto="false"
 :states="[
-{ id: 't0', text: '$0$', label: '$\\emptyset$', initial: true, initialDirection: 'left', x: 60, y: 48, width: 44 },
-{ id: 't1', text: '$1$', label: '$\\emptyset$', x: 190, y: 48, width: 44 },
+{ id: 't0', text: '$0$', label: '$\\{\\}$', initial: true, initialDirection: 'left', x: 60, y: 48, width: 44 },
+{ id: 't1', text: '$1$', label: '$\\{\\}$', x: 190, y: 48, width: 44 },
 { id: 't2', text: '$2$', label: '$\\{X\\}$', x: 320, y: 48, width: 44 }
 ]"
 :transitions="[
 { source: 't0', target: 't1', action: '$tick$', actionY: -10, actionWidth: 40 },
 { source: 't1', target: 't2', action: '$tick$', actionY: -10, actionWidth: 40 },
-{ source: 't2', target: 't0', action: '$tick$', curve: -0.35, actionY: -28, actionWidth: 40 }
+{ source: 't2', target: 't0', action: '$tick$', curve: 0.25, actionY: -14, actionWidth: 40 }
 ]"
 />
 </div>
 
 <div class="bg-white border border-slate-200 rounded p-1 shadow-sm text-center">
 <div class="text-[11px] font-bold text-amber-800 mb-0.5">אוטומט הרישות הרעות <KatexInline math="\mathcal{A}" /></div>
-<AutomatonD3 variant="classic" :width="440" :height="120" :arrowSize="3.5" :stateLabelFontSize="12" :transitionLabelFontSize="11"
+<AutomatonD3 variant="classic" :width="440" :height="120" :arrowSize="3.5" :stateLabelFontSize="10" :transitionLabelFontSize="10"
 :states="[
-{ id: 'q0', x: 50, y: 58, label: '$q_0$', initial: true, initialDirection: 'left', r: 14, labelWidth: 40 },
-{ id: 'q1', x: 145, y: 58, label: '$q_1$', r: 14, labelWidth: 40 },
-{ id: 'q2', x: 240, y: 58, label: '$q_2$', r: 14, labelWidth: 40 },
-{ id: 'q3', x: 335, y: 58, label: '$q_3$', accepting: true, r: 14, labelWidth: 40 }
+{ id: 'q0', x: 70, y: 58, label: '$q_0$', initial: true, initialDirection: 'top', r: 18 },
+{ id: 'q1', x: 165, y: 58, label: '$q_1$',                  r: 18 },
+{ id: 'q2', x: 260, y: 58, label: '$q_2$',                  r: 18 },
+{ id: 'q3', x: 355, y: 58, label: '$q_3$', accepting: true, r: 18}
 ]"
 :transitions="[
-{ source: 'q0', target: 'q1', label: '$\\emptyset$', labelY: -10, labelWidth: 40 },
-{ source: 'q1', target: 'q2', label: '$\\emptyset$', labelY: -10, labelWidth: 40 },
-{ source: 'q2', target: 'q3', label: '$\\emptyset$', labelY: -10, labelWidth: 40 },
-{ source: 'q3', target: 'q3', label: '$\\emptyset$', loopDirection: '0deg', labelX: 20, labelWidth: 40 },
-{ source: 'q0', target: 'q0', label: '$\\{X\\}$', loopDirection: '180deg', labelX: -18, labelWidth: 40 },
-{ source: 'q1', target: 'q0', label: '$\\{X\\}$', curve: 0.22, labelY: 15, labelWidth: 40 },
-{ source: 'q2', target: 'q0', label: '$\\{X\\}$', curve: 0.38, labelY: 22, labelWidth: 40 },
-{ source: 'q3', target: 'q1', label: '$\\{X\\}$', curve: 0.32, labelY: 20, labelWidth: 40 }
+{ source: 'q0', target: 'q1', label: '$\\{\\}$', labelY: -10 },
+{ source: 'q1', target: 'q2', label: '$\\{\\}$', labelY: -10 },
+{ source: 'q2', target: 'q3', label: '$\\{\\}$', labelY: -10 },
+{ source: 'q3', target: 'q3', label: '$\\{\\}$', loopDirection: '0deg', labelX: 20, loopRadius: 48 },
+{ source: 'q0', target: 'q0', label: '$\\{X\\}$',    loopDirection: '180deg', labelX: -18, loopRadius: 48 },
+{ source: 'q1', target: 'q0', label: '$\\{X\\}$', curve: -0.30, labelY: 15 },
+{ source: 'q2', target: 'q0', label: '$\\{X\\}$', curve: 0.30, labelY: -10 },
+{ source: 'q3', target: 'q1', label: '$\\{X\\}$', curve: -0.22, labelY: 15 }
 ]"
 />
 </div>
@@ -660,9 +660,9 @@ info: |
 <TransitionSystemD3
 :width="340" :height="190" :auto="false"
 :states="[
-{ id: 'p0', text: '$\\langle 0, q_1 \\rangle$', label: '$\\emptyset$', initial: true, initialDirection: 'top', x: 170, y: 45, width: 80, color: '#DCFCE7', stroke: '#15803D' },
-{ id: 'p1', text: '$\\langle 1, q_2 \\rangle$', label: '$\\emptyset$', x: 255, y: 140, width: 80, color: '#DCFCE7', stroke: '#15803D' },
-{ id: 'p2', text: '$\\langle 2, q_0 \\rangle$', label: '$\\{X\\}$', x: 85, y: 140, width: 80, color: '#DCFCE7', stroke: '#15803D' }
+{ id: 'p0', text: '$\\langle 0, q_1 \\rangle$', label: '$\\{\\}$', labelY: 12, initial: true, initialDirection: 'top', x: 170, y: 45, width: 80, color: '#DCFCE7', stroke: '#15803D' },
+{ id: 'p1', text: '$\\langle 1, q_2 \\rangle$', label: '$\\{\\}$', labelY: 12, x: 255, y: 140, width: 80, color: '#DCFCE7', stroke: '#15803D' },
+{ id: 'p2', text: '$\\langle 2, q_0 \\rangle$', label: '$\\{X\\}$', labelY: 12, x: 85, y: 140, width: 80, color: '#DCFCE7', stroke: '#15803D' }
 ]"
 :transitions="[
 { source: 'p0', target: 'p1', action: '$tick$', actionX: 10, actionY: -5 },
@@ -706,38 +706,38 @@ info: |
 <TransitionSystemD3
 :width="440" :height="95" :auto="false"
 :states="[
-{ id: 't0', text: '$0$', label: '$\\emptyset$', initial: true, initialDirection: 'left', x: 50, y: 48, width: 44 },
-{ id: 't1', text: '$1$', label: '$\\emptyset$', x: 145, y: 48, width: 44 },
-{ id: 't2', text: '$2$', label: '$\\emptyset$', x: 240, y: 48, width: 44 },
-{ id: 't3', text: '$3$', label: '$\\{X\\}$', x: 335, y: 48, width: 44 }
+{ id: 't0', text: '$0$', label: '$\\{\\}$', initial: true, initialDirection: 'left', x: 70, y: 48, width: 44 },
+{ id: 't1', text: '$1$', label: '$\\{\\}$', x: 165, y: 48, width: 44 },
+{ id: 't2', text: '$2$', label: '$\\{\\}$', x: 260, y: 48, width: 44 },
+{ id: 't3', text: '$3$', label: '$\\{X\\}$', x: 355, y: 48, width: 44 }
 ]"
 :transitions="[
 { source: 't0', target: 't1', action: '$tick$', actionY: -10, actionWidth: 40 },
 { source: 't1', target: 't2', action: '$tick$', actionY: -10, actionWidth: 40 },
 { source: 't2', target: 't3', action: '$tick$', actionY: -10, actionWidth: 40 },
-{ source: 't3', target: 't0', action: '$tick$', curve: -0.35, actionY: -28, actionWidth: 40 }
+{ source: 't3', target: 't0', action: '$tick$', curve: 0.25, actionY: -14, actionWidth: 40 }
 ]"
 />
 </div>
 
 <div class="bg-white border border-slate-200 rounded p-1 shadow-sm text-center">
 <div class="text-[11px] font-bold text-amber-800 mb-0.5">אוטומט הרישות הרעות <KatexInline math="\mathcal{A}" /></div>
-<AutomatonD3 variant="classic" :width="440" :height="120" :arrowSize="3.5" :stateLabelFontSize="12" :transitionLabelFontSize="11"
+<AutomatonD3 variant="classic" :width="440" :height="120" :arrowSize="3.5" :stateLabelFontSize="10" :transitionLabelFontSize="10"
 :states="[
-{ id: 'q0', x: 50, y: 58, label: '$q_0$', initial: true, initialDirection: 'left', r: 14, labelWidth: 40 },
-{ id: 'q1', x: 145, y: 58, label: '$q_1$', r: 14, labelWidth: 40 },
-{ id: 'q2', x: 240, y: 58, label: '$q_2$', r: 14, labelWidth: 40 },
-{ id: 'q3', x: 335, y: 58, label: '$q_3$', accepting: true, r: 14, labelWidth: 40 }
+{ id: 'q0', x: 70, y: 58, label: '$q_0$', initial: true, initialDirection: 'top', r: 18 },
+{ id: 'q1', x: 165, y: 58, label: '$q_1$',                  r: 18 },
+{ id: 'q2', x: 260, y: 58, label: '$q_2$',                  r: 18 },
+{ id: 'q3', x: 355, y: 58, label: '$q_3$', accepting: true, r: 18}
 ]"
 :transitions="[
-{ source: 'q0', target: 'q1', label: '$\\emptyset$', labelY: -10, labelWidth: 40 },
-{ source: 'q1', target: 'q2', label: '$\\emptyset$', labelY: -10, labelWidth: 40 },
-{ source: 'q2', target: 'q3', label: '$\\emptyset$', labelY: -10, labelWidth: 40 },
-{ source: 'q3', target: 'q3', label: '$\\emptyset$', loopDirection: '0deg', labelX: 20, labelWidth: 40 },
-{ source: 'q0', target: 'q0', label: '$\\{X\\}$', loopDirection: '180deg', labelX: -18, labelWidth: 40 },
-{ source: 'q1', target: 'q0', label: '$\\{X\\}$', curve: 0.22, labelY: 15, labelWidth: 40 },
-{ source: 'q2', target: 'q0', label: '$\\{X\\}$', curve: 0.38, labelY: 22, labelWidth: 40 },
-{ source: 'q3', target: 'q1', label: '$\\{X\\}$', curve: 0.32, labelY: 20, labelWidth: 40 }
+{ source: 'q0', target: 'q1', label: '$\\{\\}$', labelY: -10 },
+{ source: 'q1', target: 'q2', label: '$\\{\\}$', labelY: -10 },
+{ source: 'q2', target: 'q3', label: '$\\{\\}$', labelY: -10 },
+{ source: 'q3', target: 'q3', label: '$\\{\\}$', loopDirection: '0deg', labelX: 20, loopRadius: 48 },
+{ source: 'q0', target: 'q0', label: '$\\{X\\}$',    loopDirection: '180deg', labelX: -18, loopRadius: 48 },
+{ source: 'q1', target: 'q0', label: '$\\{X\\}$', curve: -0.30, labelY: 15 },
+{ source: 'q2', target: 'q0', label: '$\\{X\\}$', curve: 0.30, labelY: -10 },
+{ source: 'q3', target: 'q1', label: '$\\{X\\}$', curve: -0.22, labelY: 15 }
 ]"
 />
 </div>
@@ -749,12 +749,12 @@ info: |
 <TransitionSystemD3
 :width="340" :height="190" :auto="false"
 :states="[
-{ id: 'p0', text: '$\\langle 0, q_1 \\rangle$', label: '$\\emptyset$', initial: true, initialDirection: 'top', x: 55, y: 45, width: 80, color: '#DCFCE7', stroke: '#15803D' },
-{ id: 'p1', text: '$\\langle 1, q_2 \\rangle$', label: '$\\emptyset$', x: 55, y: 140, width: 80, color: '#DCFCE7', stroke: '#15803D' },
-{ id: 'p2', text: '$\\langle 2, q_3 \\rangle$', label: '$\\emptyset$', x: 170, y: 140, width: 80, color: '#FEE2E2', stroke: '#991B1B' },
-{ id: 'p3', text: '$\\langle 3, q_3 \\rangle$', label: '$\\{X\\}$', x: 285, y: 140, width: 80, color: '#FEE2E2', stroke: '#991B1B' },
-{ id: 'p4', text: '$\\langle 0, q_3 \\rangle$', label: '$\\emptyset$', x: 285, y: 45, width: 80, color: '#FEE2E2', stroke: '#991B1B' },
-{ id: 'p5', text: '$\\langle 1, q_3 \\rangle$', label: '$\\emptyset$', x: 170, y: 45, width: 80, color: '#FEE2E2', stroke: '#991B1B' }
+{ id: 'p0', text: '$\\langle 0, q_1 \\rangle$', label: '$\\{\\}$', labelY: 12, initial: true, initialDirection: 'top', x: 55, y: 45, width: 80, color: '#DCFCE7', stroke: '#15803D' },
+{ id: 'p1', text: '$\\langle 1, q_2 \\rangle$', label: '$\\{\\}$', labelY: 12, x: 55, y: 140, width: 80, color: '#DCFCE7', stroke: '#15803D' },
+{ id: 'p2', text: '$\\langle 2, q_3 \\rangle$', label: '$\\{\\}$', labelY: 12, x: 170, y: 140, width: 80, color: '#FEE2E2', stroke: '#991B1B' },
+{ id: 'p3', text: '$\\langle 3, q_3 \\rangle$', label: '$\\{X\\}$', labelY: 12, x: 285, y: 140, width: 80, color: '#FEE2E2', stroke: '#991B1B' },
+{ id: 'p4', text: '$\\langle 0, q_3 \\rangle$', label: '$\\{\\}$', labelY: 12, x: 285, y: 45, width: 80, color: '#FEE2E2', stroke: '#991B1B' },
+{ id: 'p5', text: '$\\langle 1, q_3 \\rangle$', label: '$\\{\\}$', labelY: 12, x: 170, y: 45, width: 80, color: '#FEE2E2', stroke: '#991B1B' }
 ]"
 :transitions="[
 { source: 'p0', target: 'p1', action: '$tick$', actionX: -18 },
