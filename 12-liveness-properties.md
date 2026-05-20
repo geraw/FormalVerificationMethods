@@ -760,3 +760,5 @@ info: |
 <div class="mt-8 bg-blue-50 border border-blue-200 rounded p-5 text-[24px]">
 השיעור הבא: הוגנות, כלומר אילו הנחות על התזמון נדרשות כדי שחַיּוּת תהיה סבירה במערכות מקביליות.
 </div>
+
+<!-- rebuild trigger: liveness deck -->

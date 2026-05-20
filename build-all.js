@@ -10,6 +10,17 @@ const PDF_EXPORT_ARGS = [
     "--wait", "1000",
     "--timeout", "120000",
 ];
+const GLOBAL_DEPENDENCY_PATHS = [
+    "build-all.js",
+    "package.json",
+    "package-lock.json",
+    "slidev.config.js",
+    "styles.css",
+    "components",
+    "public",
+    "images",
+    "setup",
+];
 
 /**
  * Calculates a content hash for the file.
@@ -18,6 +29,36 @@ const PDF_EXPORT_ARGS = [
 function getFileHash(filePath) {
     const content = fs.readFileSync(filePath);
     return crypto.createHash('sha1').update(content).digest('hex');
+}
+
+function listFilesRecursive(targetPath) {
+    if (!fs.existsSync(targetPath)) return [];
+
+    const stat = fs.statSync(targetPath);
+    if (stat.isFile()) return [targetPath];
+    if (!stat.isDirectory()) return [];
+
+    return fs
+        .readdirSync(targetPath, { withFileTypes: true })
+        .flatMap(entry => listFilesRecursive(path.join(targetPath, entry.name)))
+        .sort();
+}
+
+function getBuildHash(sourceFile) {
+    const files = [
+        sourceFile,
+        ...GLOBAL_DEPENDENCY_PATHS.flatMap(listFilesRecursive),
+    ];
+
+    const hash = crypto.createHash("sha1");
+    for (const file of [...new Set(files)].sort()) {
+        hash.update(path.relative(process.cwd(), file));
+        hash.update("\0");
+        hash.update(fs.readFileSync(file));
+        hash.update("\0");
+    }
+
+    return hash.digest("hex");
 }
 
 function quote(value) {
@@ -58,7 +99,7 @@ function needsRebuild(sourceFile, outputDir, targetFiles = []) {
         return { rebuild: true, reason: `Missing output file (${path.basename(missingTarget)})` };
     }
 
-    const currentHash = getFileHash(sourceFile);
+    const currentHash = getBuildHash(sourceFile);
     const savedHash = fs.readFileSync(signatureFile, 'utf8').trim();
     
     if (currentHash !== savedHash) {
@@ -73,7 +114,7 @@ function saveSignature(sourceFile, outputDir) {
         fs.mkdirSync(outputDir, { recursive: true });
     }
     const signatureFile = path.join(outputDir, ".build_hash");
-    const currentHash = getFileHash(sourceFile);
+    const currentHash = getBuildHash(sourceFile);
     fs.writeFileSync(signatureFile, currentHash);
 }
 
