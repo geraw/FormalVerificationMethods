@@ -188,13 +188,16 @@ info: |
 <div class="mt-6 bg-slate-50 border border-slate-200 rounded p-5 text-right text-[18px] leading-relaxed">
 <div class="font-bold text-slate-700 mb-4 text-[20px]">הסמנטיקה הפורמלית: השפה <KatexInline math="L(E) \subseteq \Sigma^*" /> מוגדרת באינדוקציה</div>
 
-<div class="grid grid-cols-2 gap-x-8 gap-y-3" dir="ltr">
-  <div><KatexInline display math="L(\emptyset) = \emptyset" /></div>
-  <div><KatexInline display math="L(E_1 + E_2) = L(E_1) \cup L(E_2)" /></div>
-  <div><KatexInline display math="L(\epsilon) = \{\epsilon\}" /></div>
-  <div><KatexInline display math="L(E_1 \cdot E_2) = L(E_1) \cdot L(E_2)" /></div>
-  <div><KatexInline math="L(a) = \{a\}" /> לכל <KatexInline math="a \in \Sigma" /></div>
-  <div><KatexInline display math="L(E^*) = (L(E))^*" /></div>
+<div class="grid grid-cols-2 gap-x-12 gap-y-4 text-left pl-8" dir="ltr">
+  <div class="flex items-center"><KatexInline math="L(\emptyset) = \emptyset" /></div>
+  <div class="flex items-center"><KatexInline math="L(E_1 + E_2) = L(E_1) \cup L(E_2)" /></div>
+  <div class="flex items-center"><KatexInline math="L(\epsilon) = \{\epsilon\}" /></div>
+  <div class="flex items-center"><KatexInline math="L(E_1 \cdot E_2) = L(E_1) \cdot L(E_2)" /></div>
+  <div class="flex items-center gap-1">
+    <KatexInline math="L(a) = \{a\}" />
+    <span dir="rtl" class="text-right text-[15px] text-slate-500 mr-2">(לכל <KatexInline math="a \in \Sigma" />)</span>
+  </div>
+  <div class="flex items-center"><KatexInline math="L(E^*) = (L(E))^*" /></div>
 </div>
 </div>
 
