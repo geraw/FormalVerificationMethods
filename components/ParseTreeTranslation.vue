@@ -109,131 +109,133 @@
         <KatexInline math="E = a \cdot b^* + c" />
       </div>
 
-      <svg viewBox="0 0 500 360" class="w-full h-auto max-h-[295px]">
-        <!-- Edges (Paths) -->
-        <g stroke-linecap="round">
-          <!-- Root to Concat -->
-          <line x1="250" y1="50" x2="150" y2="130" 
-                :stroke="clicks >= 4 ? '#e11d48' : (clicks >= 3 ? '#3b82f6' : '#cbd5e1')" 
-                :stroke-width="clicks >= 3 ? '4' : '2.5'" class="transition-all duration-500" />
-          <!-- Root to C -->
-          <line x1="250" y1="50" x2="350" y2="130" 
-                :stroke="clicks >= 4 ? '#e11d48' : '#cbd5e1'" 
-                :stroke-width="clicks >= 4 ? '4' : '2.5'" class="transition-all duration-500" />
-          <!-- Concat to A -->
-          <line x1="150" y1="130" x2="80" y2="210" 
-                :stroke="clicks >= 3 ? '#3b82f6' : '#cbd5e1'" 
-                :stroke-width="clicks >= 3 ? '4' : '2.5'" class="transition-all duration-500" />
-          <!-- Concat to Star -->
-          <line x1="150" y1="130" x2="220" y2="210" 
-                :stroke="clicks >= 3 ? '#3b82f6' : '#cbd5e1'" 
-                :stroke-width="clicks >= 3 ? '4' : '2.5'" class="transition-all duration-500" />
-          <!-- Star to B -->
-          <line x1="220" y1="210" x2="220" y2="290" 
-                :stroke="clicks >= 2 ? '#8b5cf6' : '#cbd5e1'" 
-                :stroke-width="clicks >= 2 ? '4' : '2.5'" class="transition-all duration-500" />
-        </g>
-
-        <!-- Nodes -->
-        <!-- Root node (+) -->
-        <g class="transition-all duration-500 transform origin-[250px_50px]" :class="{ 'scale-110': clicks >= 4 }">
-          <circle cx="250" cy="50" r="22" 
-                  :fill="clicks >= 4 ? '#ffe4e6' : '#f8fafc'" 
-                  :stroke="clicks >= 4 ? '#e11d48' : '#64748b'" 
-                  stroke-width="3" />
-          <text x="250" y="55" text-anchor="middle" font-weight="bold" font-size="16" :fill="clicks >= 4 ? '#e11d48' : '#475569'">+</text>
-          <!-- Set Value label -->
-          <g v-if="clicks >= 4" class="animate-fade-in">
-            <foreignObject x="282" y="30" width="210" height="40">
-              <div class="bg-rose-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-rose-500/30 flex items-center justify-center w-full h-full" dir="ltr">
-                <KatexInline math="L(E) = \{c, a, ab, abb, \dots\}" />
-              </div>
-            </foreignObject>
+      <svg viewBox="0 0 500 425" class="w-full h-auto max-h-[295px]">
+        <g transform="translate(0, 80)">
+          <!-- Edges (Paths) -->
+          <g stroke-linecap="round">
+            <!-- Root to Concat -->
+            <line x1="250" y1="50" x2="150" y2="130" 
+                  :stroke="clicks >= 4 ? '#e11d48' : (clicks >= 3 ? '#3b82f6' : '#cbd5e1')" 
+                  :stroke-width="clicks >= 3 ? '4' : '2.5'" class="transition-all duration-500" />
+            <!-- Root to C -->
+            <line x1="250" y1="50" x2="350" y2="130" 
+                  :stroke="clicks >= 4 ? '#e11d48' : '#cbd5e1'" 
+                  :stroke-width="clicks >= 4 ? '4' : '2.5'" class="transition-all duration-500" />
+            <!-- Concat to A -->
+            <line x1="150" y1="130" x2="80" y2="210" 
+                  :stroke="clicks >= 3 ? '#3b82f6' : '#cbd5e1'" 
+                  :stroke-width="clicks >= 3 ? '4' : '2.5'" class="transition-all duration-500" />
+            <!-- Concat to Star -->
+            <line x1="150" y1="130" x2="220" y2="210" 
+                  :stroke="clicks >= 3 ? '#3b82f6' : '#cbd5e1'" 
+                  :stroke-width="clicks >= 3 ? '4' : '2.5'" class="transition-all duration-500" />
+            <!-- Star to B -->
+            <line x1="220" y1="210" x2="220" y2="290" 
+                  :stroke="clicks >= 2 ? '#8b5cf6' : '#cbd5e1'" 
+                  :stroke-width="clicks >= 2 ? '4' : '2.5'" class="transition-all duration-500" />
           </g>
-        </g>
 
-        <!-- Concat node (·) -->
-        <g class="transition-all duration-500 transform origin-[150px_130px]" :class="{ 'scale-110': clicks >= 3 }">
-          <circle cx="150" cy="130" r="20" 
-                  :fill="clicks >= 3 ? '#dbeafe' : '#f8fafc'" 
-                  :stroke="clicks >= 3 ? '#2563eb' : '#64748b'" 
-                  stroke-width="2.5" />
-          <text x="150" y="135" text-anchor="middle" font-weight="bold" font-size="16" :fill="clicks >= 3 ? '#2563eb' : '#475569'">·</text>
-          <!-- Set Value label -->
-          <g v-if="clicks >= 3" class="animate-fade-in">
-            <foreignObject x="-20" y="110" width="165" height="40">
-              <div class="bg-blue-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-blue-500/30 flex items-center justify-center w-full h-full" dir="ltr">
-                <KatexInline math="L(a \cdot b^*) = \{a, ab, \dots\}" />
-              </div>
-            </foreignObject>
+          <!-- Nodes -->
+          <!-- Root node (+) -->
+          <g class="transition-all duration-500 transform origin-[250px_50px]" :class="{ 'scale-110': clicks >= 4 }">
+            <circle cx="250" cy="50" r="22" 
+                    :fill="clicks >= 4 ? '#ffe4e6' : '#f8fafc'" 
+                    :stroke="clicks >= 4 ? '#e11d48' : '#64748b'" 
+                    stroke-width="3" />
+            <text x="250" y="50" text-anchor="middle" dominant-baseline="central" font-weight="bold" font-size="16" :fill="clicks >= 4 ? '#e11d48' : '#475569'">+</text>
+            <!-- Set Value label -->
+            <g v-if="clicks >= 4" class="animate-fade-in">
+              <foreignObject x="282" y="30" width="210" height="40">
+                <div class="bg-rose-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-rose-500/30 flex items-center justify-center w-full h-full" dir="ltr">
+                  <KatexInline math="L(E) = \{c, a, ab, abb, \dots\}" />
+                </div>
+              </foreignObject>
+            </g>
           </g>
-        </g>
 
-        <!-- Node c -->
-        <g class="transition-all duration-500 transform origin-[350px_130px]" :class="{ 'scale-110': clicks >= 1 }">
-          <circle cx="350" cy="130" r="20" 
-                  :fill="clicks >= 1 ? '#dcfce7' : '#f8fafc'" 
-                  :stroke="clicks >= 1 ? '#16a34a' : '#64748b'" 
-                  stroke-width="2.5" />
-          <text x="350" y="134" text-anchor="middle" font-weight="bold" font-size="12" :fill="clicks >= 1 ? '#16a34a' : '#475569'">c</text>
-          <!-- Set Value label -->
-          <g v-if="clicks >= 1" class="animate-fade-in">
-            <foreignObject x="375" y="115" width="105" height="35">
-              <div class="bg-emerald-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-emerald-500/30 flex items-center justify-center w-full h-full" dir="ltr">
-                <KatexInline math="L(c) = \{c\}" />
-              </div>
-            </foreignObject>
+          <!-- Concat node (·) -->
+          <g class="transition-all duration-500 transform origin-[150px_130px]" :class="{ 'scale-110': clicks >= 3 }">
+            <circle cx="150" cy="130" r="20" 
+                    :fill="clicks >= 3 ? '#dbeafe' : '#f8fafc'" 
+                    :stroke="clicks >= 3 ? '#2563eb' : '#64748b'" 
+                    stroke-width="2.5" />
+            <text x="150" y="130" text-anchor="middle" dominant-baseline="central" font-weight="bold" font-size="16" :fill="clicks >= 3 ? '#2563eb' : '#475569'">·</text>
+            <!-- Set Value label -->
+            <g v-if="clicks >= 3" class="animate-fade-in">
+              <foreignObject x="-20" y="110" width="165" height="40">
+                <div class="bg-blue-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-blue-500/30 flex items-center justify-center w-full h-full" dir="ltr">
+                  <KatexInline math="L(a \cdot b^*) = \{a, ab, \dots\}" />
+                </div>
+              </foreignObject>
+            </g>
           </g>
-        </g>
 
-        <!-- Node a -->
-        <g class="transition-all duration-500 transform origin-[80px_210px]" :class="{ 'scale-110': clicks >= 1 }">
-          <circle cx="80" cy="210" r="20" 
-                  :fill="clicks >= 1 ? '#dcfce7' : '#f8fafc'" 
-                  :stroke="clicks >= 1 ? '#16a34a' : '#64748b'" 
-                  stroke-width="2.5" />
-          <text x="80" y="214" text-anchor="middle" font-weight="bold" font-size="12" :fill="clicks >= 1 ? '#16a34a' : '#475569'">a</text>
-          <!-- Set Value label -->
-          <g v-if="clicks >= 1" class="animate-fade-in">
-            <foreignObject x="0" y="228" width="105" height="35">
-              <div class="bg-emerald-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-emerald-500/30 flex items-center justify-center w-full h-full" dir="ltr">
-                <KatexInline math="L(a) = \{a\}" />
-              </div>
-            </foreignObject>
+          <!-- Node c -->
+          <g class="transition-all duration-500 transform origin-[350px_130px]" :class="{ 'scale-110': clicks >= 1 }">
+            <circle cx="350" cy="130" r="20" 
+                    :fill="clicks >= 1 ? '#dcfce7' : '#f8fafc'" 
+                    :stroke="clicks >= 1 ? '#16a34a' : '#64748b'" 
+                    stroke-width="2.5" />
+            <text x="350" y="130" text-anchor="middle" dominant-baseline="central" font-weight="bold" font-size="12" :fill="clicks >= 1 ? '#16a34a' : '#475569'">c</text>
+            <!-- Set Value label -->
+            <g v-if="clicks >= 1" class="animate-fade-in">
+              <foreignObject x="375" y="115" width="105" height="35">
+                <div class="bg-emerald-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-emerald-500/30 flex items-center justify-center w-full h-full" dir="ltr">
+                  <KatexInline math="L(c) = \{c\}" />
+                </div>
+              </foreignObject>
+            </g>
           </g>
-        </g>
 
-        <!-- Star node (*) -->
-        <g class="transition-all duration-500 transform origin-[220px_210px]" :class="{ 'scale-110': clicks >= 2 }">
-          <circle cx="220" cy="210" r="20" 
-                  :fill="clicks >= 2 ? '#f3e8ff' : '#f8fafc'" 
-                  :stroke="clicks >= 2 ? '#7c3aed' : '#64748b'" 
-                  stroke-width="2.5" />
-          <text x="220" y="215" text-anchor="middle" font-weight="bold" font-size="16" :fill="clicks >= 2 ? '#7c3aed' : '#475569'">*</text>
-          <!-- Set Value label -->
-          <g v-if="clicks >= 2" class="animate-fade-in">
-            <foreignObject x="245" y="193" width="160" height="38">
-              <div class="bg-purple-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-purple-500/30 flex items-center justify-center w-full h-full" dir="ltr">
-                <KatexInline math="L(b^*) = \{\epsilon, b, bb, \dots\}" />
-              </div>
-            </foreignObject>
+          <!-- Node a -->
+          <g class="transition-all duration-500 transform origin-[80px_210px]" :class="{ 'scale-110': clicks >= 1 }">
+            <circle cx="80" cy="210" r="20" 
+                    :fill="clicks >= 1 ? '#dcfce7' : '#f8fafc'" 
+                    :stroke="clicks >= 1 ? '#16a34a' : '#64748b'" 
+                    stroke-width="2.5" />
+            <text x="80" y="210" text-anchor="middle" dominant-baseline="central" font-weight="bold" font-size="12" :fill="clicks >= 1 ? '#16a34a' : '#475569'">a</text>
+            <!-- Set Value label -->
+            <g v-if="clicks >= 1" class="animate-fade-in">
+              <foreignObject x="0" y="228" width="105" height="35">
+                <div class="bg-emerald-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-emerald-500/30 flex items-center justify-center w-full h-full" dir="ltr">
+                  <KatexInline math="L(a) = \{a\}" />
+                </div>
+              </foreignObject>
+            </g>
           </g>
-        </g>
 
-        <!-- Node b -->
-        <g class="transition-all duration-500 transform origin-[220px_290px]" :class="{ 'scale-110': clicks >= 1 }">
-          <circle cx="220" cy="290" r="20" 
-                  :fill="clicks >= 1 ? '#dcfce7' : '#f8fafc'" 
-                  :stroke="clicks >= 1 ? '#16a34a' : '#64748b'" 
-                  stroke-width="2.5" />
-          <text x="220" y="294" text-anchor="middle" font-weight="bold" font-size="12" :fill="clicks >= 1 ? '#16a34a' : '#475569'">b</text>
-          <!-- Set Value label -->
-          <g v-if="clicks >= 1" class="animate-fade-in">
-            <foreignObject x="245" y="274" width="105" height="35">
-              <div class="bg-emerald-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-emerald-500/30 flex items-center justify-center w-full h-full" dir="ltr">
-                <KatexInline math="L(b) = \{b\}" />
-              </div>
-            </foreignObject>
+          <!-- Star node (*) -->
+          <g class="transition-all duration-500 transform origin-[220px_210px]" :class="{ 'scale-110': clicks >= 2 }">
+            <circle cx="220" cy="210" r="20" 
+                    :fill="clicks >= 2 ? '#f3e8ff' : '#f8fafc'" 
+                    :stroke="clicks >= 2 ? '#7c3aed' : '#64748b'" 
+                    stroke-width="2.5" />
+            <text x="220" y="210" text-anchor="middle" dominant-baseline="central" font-weight="bold" font-size="16" :fill="clicks >= 2 ? '#7c3aed' : '#475569'">*</text>
+            <!-- Set Value label -->
+            <g v-if="clicks >= 2" class="animate-fade-in">
+              <foreignObject x="245" y="193" width="160" height="38">
+                <div class="bg-purple-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-purple-500/30 flex items-center justify-center w-full h-full" dir="ltr">
+                  <KatexInline math="L(b^*) = \{\epsilon, b, bb, \dots\}" />
+                </div>
+              </foreignObject>
+            </g>
+          </g>
+
+          <!-- Node b -->
+          <g class="transition-all duration-500 transform origin-[220px_290px]" :class="{ 'scale-110': clicks >= 1 }">
+            <circle cx="220" cy="290" r="20" 
+                    :fill="clicks >= 1 ? '#dcfce7' : '#f8fafc'" 
+                    :stroke="clicks >= 1 ? '#16a34a' : '#64748b'" 
+                    stroke-width="2.5" />
+            <text x="220" y="290" text-anchor="middle" dominant-baseline="central" font-weight="bold" font-size="12" :fill="clicks >= 1 ? '#16a34a' : '#475569'">b</text>
+            <!-- Set Value label -->
+            <g v-if="clicks >= 1" class="animate-fade-in">
+              <foreignObject x="245" y="274" width="105" height="35">
+                <div class="bg-emerald-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-emerald-500/30 flex items-center justify-center w-full h-full" dir="ltr">
+                  <KatexInline math="L(b) = \{b\}" />
+                </div>
+              </foreignObject>
+            </g>
           </g>
         </g>
       </svg>
