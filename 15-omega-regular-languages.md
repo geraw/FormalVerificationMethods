@@ -358,7 +358,8 @@ info: |
 <KatexInline display math="\mathit{BadPref}(P).(2^{AP})^\omega" />
 </div>
 
-ומכאן <KatexInline math="P" /> עצמה <KatexInline math="\omega" />-רגולרית, כי <span class="text-red-600 font-bold">יש סגירות תחת משלים ⚠️</span>.
+ומכאן <KatexInline math="P" /> עצמה <KatexInline math="\omega" />-רגולרית, כי <span class="transition-all duration-300" :class="{ 'text-red-600 font-bold': $clicks >= 1 }">יש סגירות תחת משלים<span v-if="$clicks >= 1"> ⚠️</span></span>.
+<div v-click class="hidden"></div>
 </div>
 </div>
 
