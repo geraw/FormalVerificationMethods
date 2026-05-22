@@ -676,50 +676,50 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 # <span dir="ltr">NFA</span> מול <span dir="ltr">NBA</span>: שקילות סופית אינה שקילות <KatexInline math="\omega" />
 
-<div class="grid grid-cols-[0.95fr_1.05fr] gap-6 mt-5 items-center">
-<div class="text-right text-[20px] leading-relaxed">
+<div class="grid grid-cols-[0.95fr_1.05fr] gap-4 mt-3 items-center">
+<div class="text-right text-[18px] leading-snug">
 כאוטומטים סופיים, שני האוטומטים מקבלים את אותה שפה:
 
-<div class="mt-4 bg-purple-50 border border-purple-200 rounded p-4 text-center" dir="ltr">
+<div class="mt-2 bg-purple-50 border border-purple-200 rounded p-2 text-center" dir="ltr">
 <KatexInline display math="L(\mathcal{A}_1)=L(\mathcal{A}_2)=\{A\}^+" />
 </div>
 
-<div class="mt-4 bg-red-50 border border-red-200 rounded p-4">
+<div class="mt-2 bg-red-50 border border-red-200 rounded p-3">
 אבל כאוטומטי Büchi הם אינם שקולים.
 ב־<KatexInline math="\mathcal{A}_1" /> הריצה מגיעה למצב המקבל ונשארת בו.
 ב־<KatexInline math="\mathcal{A}_2" /> אין ריצה אינסופית שמבקרת במצב המקבל אינסוף פעמים.
 </div>
 
-<div class="mt-4 bg-slate-50 border border-slate-200 rounded p-4 text-center" dir="ltr">
+<div class="mt-2 bg-slate-50 border border-slate-200 rounded p-2 text-center" dir="ltr">
 <KatexInline display math="L_\omega(\mathcal{A}_1)=\{A^\omega\}\qquad L_\omega(\mathcal{A}_2)=\emptyset" />
 </div>
 </div>
 
-<div class="space-y-4">
+<div class="space-y-2">
 <div class="bg-white rounded border border-slate-200 shadow-sm">
-<div class="px-4 pt-3 font-bold text-blue-700" dir="ltr"><KatexInline math="\mathcal{A}_1" /></div>
-<AutomatonD3 variant="classic" :width="500" :height="170" :arrowSize="4.5" :stateLabelFontSize="16" :transitionLabelFontSize="14"
+<div class="px-4 pt-1 font-bold text-blue-700" dir="ltr"><KatexInline math="\mathcal{A}_1" /></div>
+<AutomatonD3 variant="classic" :width="500" :height="145" :arrowSize="4.5" :stateLabelFontSize="16" :transitionLabelFontSize="14"
   :states="[
-    { id: 'a1q0', x: 150, y: 90, label: '$q_0$', initial: true, initialDirection: 'left', r: 25, labelWidth: 70 },
-    { id: 'a1q1', x: 355, y: 90, label: '$q_1$', accepting: true, r: 25, labelWidth: 70 }
+    { id: 'a1q0', x: 150, y: 78, label: '$q_0$', initial: true, initialDirection: 'left', r: 25, labelWidth: 70 },
+    { id: 'a1q1', x: 355, y: 78, label: '$q_1$', accepting: true, r: 25, labelWidth: 70 }
   ]"
   :transitions="[
     { source: 'a1q0', target: 'a1q1', label: '$A$', labelY: -12, labelWidth: 50 },
-    { source: 'a1q1', target: 'a1q1', label: '$A$', loopDirection: '0deg', labelX: 42, labelWidth: 50 }
+    { source: 'a1q1', target: 'a1q1', label: '$A$', loopDirection: '0deg', labelX: 12, labelWidth: 50 }
   ]"
 />
 </div>
 
 <div class="bg-white rounded border border-slate-200 shadow-sm">
-<div class="px-4 pt-3 font-bold text-red-700" dir="ltr"><KatexInline math="\mathcal{A}_2" /></div>
-<AutomatonD3 variant="classic" :width="500" :height="170" :arrowSize="4.5" :stateLabelFontSize="16" :transitionLabelFontSize="14"
+<div class="px-4 pt-1 font-bold text-red-700" dir="ltr"><KatexInline math="\mathcal{A}_2" /></div>
+<AutomatonD3 variant="classic" :width="500" :height="145" :arrowSize="4.5" :stateLabelFontSize="16" :transitionLabelFontSize="14"
   :states="[
-    { id: 'a2q0', x: 150, y: 90, label: '$q_0$', initial: true, initialDirection: 'left', r: 25, labelWidth: 70 },
-    { id: 'a2q1', x: 355, y: 90, label: '$q_1$', accepting: true, r: 25, labelWidth: 70 }
+    { id: 'a2q0', x: 150, y: 78, label: '$q_0$', initial: true, initialDirection: 'top', r: 25, labelWidth: 70 },
+    { id: 'a2q1', x: 355, y: 78, label: '$q_1$', accepting: true, r: 25, labelWidth: 70 }
   ]"
   :transitions="[
-    { source: 'a2q0', target: 'a2q0', label: '$A$', loopDirection: '180deg', labelX: -42, labelWidth: 50 },
-    { source: 'a2q0', target: 'a2q1', label: '$A$', labelY: -12, labelWidth: 50 }
+    { source: 'a2q0', target: 'a2q0', label: '$A$', loopDirection: '180deg', labelX: -12, labelWidth: 50 },
+    { source: 'a2q0', target: 'a2q1', label: '$A$', labelY: -12, labelWidth: 30 }
   ]"
 />
 </div>
@@ -730,53 +730,53 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 # <span dir="ltr">DFA</span> מול <span dir="ltr">DBA</span>: שקילות <KatexInline math="\omega" /> אינה שקילות סופית
 
-<div class="grid grid-cols-[0.95fr_1.05fr] gap-6 mt-5 items-center">
-<div class="text-right text-[20px] leading-relaxed">
+<div class="grid grid-cols-[0.95fr_1.05fr] gap-4 mt-3 items-center">
+<div class="text-right text-[18px] leading-snug">
 כאן האוטומטים אינם שקולים כשקוראים מילים סופיות:
 
-<div class="mt-4 grid grid-cols-2 gap-3 text-center" dir="ltr">
-<div class="bg-blue-50 border border-blue-200 rounded p-3">
+<div class="mt-2 flex flex-col gap-1.5 text-center text-[15px]" dir="ltr">
+<div class="bg-blue-50 border border-blue-200 rounded px-2 py-1.5">
 <KatexInline display math="L(\mathcal{A}_1)=\{A^{2k+1}\mid k\ge 0\}" />
 </div>
-<div class="bg-red-50 border border-red-200 rounded p-3">
+<div class="bg-orange-50 border border-orange-200 rounded px-2 py-1.5">
 <KatexInline display math="L(\mathcal{A}_2)=\{A^{2k}\mid k\ge 0\}" />
 </div>
 </div>
 
-<div class="mt-4 bg-emerald-50 border border-emerald-200 rounded p-4">
+<div class="mt-2 bg-emerald-50 border border-emerald-200 rounded p-3">
 אבל על המילה האינסופית היחידה מעל האלפבית הזה, הריצה בשני האוטומטים מבקרת במצב מקבל אינסוף פעמים.
 </div>
 
-<div class="mt-4 bg-purple-50 border border-purple-200 rounded p-4 text-center" dir="ltr">
+<div class="mt-2 bg-purple-50 border border-purple-200 rounded p-2 text-center" dir="ltr">
 <KatexInline display math="L_\omega(\mathcal{A}_1)=L_\omega(\mathcal{A}_2)=\{A^\omega\}" />
 </div>
 </div>
 
-<div class="space-y-4">
+<div class="space-y-2">
 <div class="bg-white rounded border border-slate-200 shadow-sm">
-<div class="px-4 pt-3 font-bold text-blue-700" dir="ltr"><KatexInline math="\mathcal{A}_1" /></div>
-<AutomatonD3 variant="classic" :width="500" :height="170" :arrowSize="4.5" :stateLabelFontSize="16" :transitionLabelFontSize="14"
+<div class="px-4 pt-1 font-bold text-blue-700" dir="ltr"><KatexInline math="\mathcal{A}_1" /></div>
+<AutomatonD3 variant="classic" :width="500" :height="160" :arrowSize="4.5" :stateLabelFontSize="16" :transitionLabelFontSize="14"
   :states="[
-    { id: 'd1q0', x: 150, y: 90, label: '$q_0$', initial: true, initialDirection: 'left', r: 25, labelWidth: 70 },
-    { id: 'd1q1', x: 355, y: 90, label: '$q_1$', accepting: true, r: 25, labelWidth: 70 }
+    { id: 'd1q0', x: 150, y: 78, label: '$q_0$', initial: true, initialDirection: 'left', r: 25, labelWidth: 70 },
+    { id: 'd1q1', x: 355, y: 78, label: '$q_1$', accepting: true, r: 25, labelWidth: 70 }
   ]"
   :transitions="[
-    { source: 'd1q0', target: 'd1q1', label: '$A$', labelY: -28, labelWidth: 50, curve: -0.35 },
-    { source: 'd1q1', target: 'd1q0', label: '$A$', labelY: 28, labelWidth: 50, curve: -0.35 }
+    { source: 'd1q0', target: 'd1q1', label: '$A$', labelY: -12, labelWidth: 50, curve: -0.25 },
+    { source: 'd1q1', target: 'd1q0', label: '$A$', labelY: 15, labelWidth: 50, curve: -0.25 }
   ]"
 />
 </div>
 
 <div class="bg-white rounded border border-slate-200 shadow-sm">
-<div class="px-4 pt-3 font-bold text-red-700" dir="ltr"><KatexInline math="\mathcal{A}_2" /></div>
-<AutomatonD3 variant="classic" :width="500" :height="170" :arrowSize="4.5" :stateLabelFontSize="16" :transitionLabelFontSize="14"
+<div class="px-4 pt-1 font-bold text-red-700" dir="ltr"><KatexInline math="\mathcal{A}_2" /></div>
+<AutomatonD3 variant="classic" :width="500" :height="160" :arrowSize="4.5" :stateLabelFontSize="16" :transitionLabelFontSize="14"
   :states="[
-    { id: 'd2q0', x: 150, y: 90, label: '$q_0$', initial: true, initialDirection: 'left', accepting: true, r: 25, labelWidth: 70 },
-    { id: 'd2q1', x: 355, y: 90, label: '$q_1$', r: 25, labelWidth: 70 }
+    { id: 'd2q0', x: 150, y: 78, label: '$q_0$', initial: true, initialDirection: 'left', accepting: true, r: 25, labelWidth: 70 },
+    { id: 'd2q1', x: 355, y: 78, label: '$q_1$', r: 25, labelWidth: 70 }
   ]"
   :transitions="[
-    { source: 'd2q0', target: 'd2q1', label: '$A$', labelY: -28, labelWidth: 50, curve: -0.35 },
-    { source: 'd2q1', target: 'd2q0', label: '$A$', labelY: 28, labelWidth: 50, curve: -0.35 }
+    { source: 'd2q0', target: 'd2q1', label: '$A$', labelY: -10, labelWidth: 50, curve: -0.25 },
+    { source: 'd2q1', target: 'd2q0', label: '$A$', labelY: 15, labelWidth: 50, curve: -0.25 }
   ]"
 />
 </div>
