@@ -142,7 +142,11 @@
                     :fill="clicks >= 4 ? '#ffe4e6' : '#f8fafc'" 
                     :stroke="clicks >= 4 ? '#e11d48' : '#64748b'" 
                     stroke-width="3" />
-            <text x="250" y="50" text-anchor="middle" dominant-baseline="central" font-weight="bold" font-size="16" :fill="clicks >= 4 ? '#e11d48' : '#475569'">+</text>
+            <foreignObject x="228" y="28" width="44" height="44">
+              <div class="flex items-center justify-center w-full h-full text-[16px] font-bold select-none" :style="{ color: clicks >= 4 ? '#e11d48' : '#475569' }">
+                <KatexInline math="+" />
+              </div>
+            </foreignObject>
             <!-- Set Value label -->
             <g v-if="clicks >= 4" class="animate-fade-in">
               <foreignObject x="282" y="30" width="210" height="40">
@@ -159,7 +163,11 @@
                     :fill="clicks >= 3 ? '#dbeafe' : '#f8fafc'" 
                     :stroke="clicks >= 3 ? '#2563eb' : '#64748b'" 
                     stroke-width="2.5" />
-            <text x="150" y="130" text-anchor="middle" dominant-baseline="central" font-weight="bold" font-size="16" :fill="clicks >= 3 ? '#2563eb' : '#475569'">·</text>
+            <foreignObject x="130" y="110" width="40" height="40">
+              <div class="flex items-center justify-center w-full h-full text-[16px] font-bold select-none" :style="{ color: clicks >= 3 ? '#2563eb' : '#475569' }">
+                <KatexInline math="\cdot" />
+              </div>
+            </foreignObject>
             <!-- Set Value label -->
             <g v-if="clicks >= 3" class="animate-fade-in">
               <foreignObject x="-20" y="110" width="165" height="40">
@@ -176,7 +184,11 @@
                     :fill="clicks >= 1 ? '#dcfce7' : '#f8fafc'" 
                     :stroke="clicks >= 1 ? '#16a34a' : '#64748b'" 
                     stroke-width="2.5" />
-            <text x="350" y="130" text-anchor="middle" dominant-baseline="central" font-weight="bold" font-size="12" :fill="clicks >= 1 ? '#16a34a' : '#475569'">c</text>
+            <foreignObject x="330" y="110" width="40" height="40">
+              <div class="flex items-center justify-center w-full h-full text-[14px] font-bold select-none" :style="{ color: clicks >= 1 ? '#16a34a' : '#475569' }">
+                <KatexInline math="c" />
+              </div>
+            </foreignObject>
             <!-- Set Value label -->
             <g v-if="clicks >= 1" class="animate-fade-in">
               <foreignObject x="375" y="115" width="105" height="35">
@@ -193,7 +205,11 @@
                     :fill="clicks >= 1 ? '#dcfce7' : '#f8fafc'" 
                     :stroke="clicks >= 1 ? '#16a34a' : '#64748b'" 
                     stroke-width="2.5" />
-            <text x="80" y="210" text-anchor="middle" dominant-baseline="central" font-weight="bold" font-size="12" :fill="clicks >= 1 ? '#16a34a' : '#475569'">a</text>
+            <foreignObject x="60" y="190" width="40" height="40">
+              <div class="flex items-center justify-center w-full h-full text-[14px] font-bold select-none" :style="{ color: clicks >= 1 ? '#16a34a' : '#475569' }">
+                <KatexInline math="a" />
+              </div>
+            </foreignObject>
             <!-- Set Value label -->
             <g v-if="clicks >= 1" class="animate-fade-in">
               <foreignObject x="0" y="228" width="105" height="35">
@@ -210,7 +226,11 @@
                     :fill="clicks >= 2 ? '#f3e8ff' : '#f8fafc'" 
                     :stroke="clicks >= 2 ? '#7c3aed' : '#64748b'" 
                     stroke-width="2.5" />
-            <text x="220" y="210" text-anchor="middle" dominant-baseline="central" font-weight="bold" font-size="16" :fill="clicks >= 2 ? '#7c3aed' : '#475569'">*</text>
+            <foreignObject x="200" y="190" width="40" height="40">
+              <div class="flex items-center justify-center w-full h-full text-[16px] font-bold select-none" :style="{ color: clicks >= 2 ? '#7c3aed' : '#475569' }">
+                <KatexInline math="*" />
+              </div>
+            </foreignObject>
             <!-- Set Value label -->
             <g v-if="clicks >= 2" class="animate-fade-in">
               <foreignObject x="245" y="193" width="160" height="38">
@@ -227,7 +247,11 @@
                     :fill="clicks >= 1 ? '#dcfce7' : '#f8fafc'" 
                     :stroke="clicks >= 1 ? '#16a34a' : '#64748b'" 
                     stroke-width="2.5" />
-            <text x="220" y="290" text-anchor="middle" dominant-baseline="central" font-weight="bold" font-size="12" :fill="clicks >= 1 ? '#16a34a' : '#475569'">b</text>
+            <foreignObject x="200" y="270" width="40" height="40">
+              <div class="flex items-center justify-center w-full h-full text-[14px] font-bold select-none" :style="{ color: clicks >= 1 ? '#16a34a' : '#475569' }">
+                <KatexInline math="b" />
+              </div>
+            </foreignObject>
             <!-- Set Value label -->
             <g v-if="clicks >= 1" class="animate-fade-in">
               <foreignObject x="245" y="274" width="105" height="35">
