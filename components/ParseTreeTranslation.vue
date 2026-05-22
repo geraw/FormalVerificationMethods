@@ -109,7 +109,7 @@
         <KatexInline math="E = a \cdot b^* + c" />
       </div>
 
-      <svg viewBox="0 0 500 425" class="w-full h-auto max-h-[295px]">
+      <svg viewBox="-50 0 550 425" class="w-full h-auto max-h-[295px]">
         <g transform="translate(0, 80)">
           <!-- Edges (Paths) -->
           <g stroke-linecap="round">
@@ -170,7 +170,7 @@
             </foreignObject>
             <!-- Set Value label -->
             <g v-if="clicks >= 3" class="animate-fade-in">
-              <foreignObject x="-20" y="110" width="165" height="40">
+              <foreignObject x="-45" y="110" width="165" height="40">
                 <div class="bg-blue-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-blue-500/30 flex items-center justify-center w-full h-full" dir="ltr">
                   <KatexInline math="L(a \cdot b^*) = \{a, ab, \dots\}" />
                 </div>
