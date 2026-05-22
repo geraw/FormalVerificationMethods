@@ -1,20 +1,16 @@
 <template>
-  <div class="flex flex-col md:flex-row gap-6 items-center justify-between w-full h-full max-h-[460px]" dir="rtl">
+  <div class="flex flex-col md:flex-row gap-4 items-center justify-between w-full h-full max-h-[385px]" dir="rtl">
     <!-- Explanations and Steps (Right Side in Hebrew) -->
-    <div class="flex-1 flex flex-col gap-4 text-right min-w-[280px]">
-      <div class="text-[20px] font-bold text-slate-800">
-        תרגום אינדוקטיבי מביטוי לשפה
-      </div>
-      
-      <div class="text-[16px] text-slate-600 leading-relaxed">
+    <div class="flex-1 flex flex-col gap-2 text-right min-w-[280px]">
+      <div class="text-[13.5px] text-slate-600 leading-relaxed mb-1">
         התרגום של ביטוי רגולרי <KatexInline math="E" /> לשפה <KatexInline math="L(E)" /> נעשה מלמטה למעלה (מלמטה אל השורש):
       </div>
 
       <!-- Step items -->
-      <div class="flex flex-col gap-2.5">
+      <div class="flex flex-col gap-1.5">
         <!-- Step 1 -->
         <div 
-          class="p-2.5 border rounded-lg transition-all duration-300 flex items-start gap-3"
+          class="p-2 border rounded-lg transition-all duration-300 flex items-start gap-2.5"
           :class="[
             clicks >= 1 
               ? 'bg-blue-50/70 border-blue-200 text-blue-900 shadow-sm' 
@@ -22,14 +18,14 @@
           ]"
         >
           <div 
-            class="w-6 h-6 rounded-full flex items-center justify-center text-[12px] font-bold mt-0.5 shrink-0"
+            class="w-5 h-5 rounded-full flex items-center justify-center text-[10.5px] font-bold mt-0.5 shrink-0"
             :class="clicks >= 1 ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-500'"
           >
             1
           </div>
           <div>
-            <div class="font-bold text-[15px]">בסיס האינדוקציה (עלי השלד)</div>
-            <div class="text-[13px] mt-0.5 leading-snug" :class="clicks >= 1 ? 'text-blue-700' : 'text-slate-400'">
+            <div class="font-bold text-[13px]">בסיס האינדוקציה (עלי השלד)</div>
+            <div class="text-[11.5px] mt-0.5 leading-snug" :class="clicks >= 1 ? 'text-blue-700' : 'text-slate-400'">
               מתרגמים את אותיות האלפבית לקבוצות בסיס: <KatexInline math="L(a) = \{a\}" />, <KatexInline math="L(b) = \{b\}" />, <KatexInline math="L(c) = \{c\}" />.
             </div>
           </div>
@@ -37,7 +33,7 @@
 
         <!-- Step 2 -->
         <div 
-          class="p-2.5 border rounded-lg transition-all duration-300 flex items-start gap-3"
+          class="p-2 border rounded-lg transition-all duration-300 flex items-start gap-2.5"
           :class="[
             clicks >= 2 
               ? 'bg-blue-50/70 border-blue-200 text-blue-900 shadow-sm' 
@@ -45,14 +41,14 @@
           ]"
         >
           <div 
-            class="w-6 h-6 rounded-full flex items-center justify-center text-[12px] font-bold mt-0.5 shrink-0"
+            class="w-5 h-5 rounded-full flex items-center justify-center text-[10.5px] font-bold mt-0.5 shrink-0"
             :class="clicks >= 2 ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-500'"
           >
             2
           </div>
           <div>
-            <div class="font-bold text-[15px]">אופרטור כוכב (Kleene Star)</div>
-            <div class="text-[13px] mt-0.5 leading-snug" :class="clicks >= 2 ? 'text-blue-700' : 'text-slate-400'">
+            <div class="font-bold text-[13px]">אופרטור כוכב (Kleene Star)</div>
+            <div class="text-[11.5px] mt-0.5 leading-snug" :class="clicks >= 2 ? 'text-blue-700' : 'text-slate-400'">
               מחשבים את סגירת קלין של תת-העץ: <KatexInline math="L(b^*) = (L(b))^* = \{\epsilon, b, bb, bbb, \dots\}" />.
             </div>
           </div>
@@ -60,7 +56,7 @@
 
         <!-- Step 3 -->
         <div 
-          class="p-2.5 border rounded-lg transition-all duration-300 flex items-start gap-3"
+          class="p-2 border rounded-lg transition-all duration-300 flex items-start gap-2.5"
           :class="[
             clicks >= 3 
               ? 'bg-blue-50/70 border-blue-200 text-blue-900 shadow-sm' 
@@ -68,14 +64,14 @@
           ]"
         >
           <div 
-            class="w-6 h-6 rounded-full flex items-center justify-center text-[12px] font-bold mt-0.5 shrink-0"
+            class="w-5 h-5 rounded-full flex items-center justify-center text-[10.5px] font-bold mt-0.5 shrink-0"
             :class="clicks >= 3 ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-500'"
           >
             3
           </div>
           <div>
-            <div class="font-bold text-[15px]">אופרטור שרשור (Concatenation)</div>
-            <div class="text-[13px] mt-0.5 leading-snug" :class="clicks >= 3 ? 'text-blue-700' : 'text-slate-400'">
+            <div class="font-bold text-[13px]">אופרטור שרשור (Concatenation)</div>
+            <div class="text-[11.5px] mt-0.5 leading-snug" :class="clicks >= 3 ? 'text-blue-700' : 'text-slate-400'">
               משרשרים את השפה של <KatexInline math="L(a)" /> עם השפה של <KatexInline math="L(b^*)" />: <KatexInline math="L(a \cdot b^*) = L(a) \cdot L(b^*) = \{a, ab, abb, \dots\}" />.
             </div>
           </div>
@@ -83,7 +79,7 @@
 
         <!-- Step 4 -->
         <div 
-          class="p-2.5 border rounded-lg transition-all duration-300 flex items-start gap-3"
+          class="p-2 border rounded-lg transition-all duration-300 flex items-start gap-2.5"
           :class="[
             clicks >= 4 
               ? 'bg-blue-50/70 border-blue-200 text-blue-900 shadow-sm' 
@@ -91,14 +87,14 @@
           ]"
         >
           <div 
-            class="w-6 h-6 rounded-full flex items-center justify-center text-[12px] font-bold mt-0.5 shrink-0"
+            class="w-5 h-5 rounded-full flex items-center justify-center text-[10.5px] font-bold mt-0.5 shrink-0"
             :class="clicks >= 4 ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-500'"
           >
             4
           </div>
           <div>
-            <div class="font-bold text-[15px]">אופרטור איחוד (Union)</div>
-            <div class="text-[13px] mt-0.5 leading-snug" :class="clicks >= 4 ? 'text-blue-700' : 'text-slate-400'">
+            <div class="font-bold text-[13px]">אופרטור איחוד (Union)</div>
+            <div class="text-[11.5px] mt-0.5 leading-snug" :class="clicks >= 4 ? 'text-blue-700' : 'text-slate-400'">
               מבצעים איחוד של שני צידי עץ השורש: <KatexInline math="L(E) = L(a \cdot b^*) \cup L(c) = \{c, a, ab, abb, \dots\}" />.
             </div>
           </div>
@@ -107,13 +103,13 @@
     </div>
 
     <!-- Parse Tree Visual (Left Side) -->
-    <div class="flex-1 flex justify-center items-center bg-slate-50/30 border border-slate-100 rounded-xl p-4 min-w-[320px] relative">
+    <div class="flex-1 flex justify-center items-center bg-slate-50/30 border border-slate-100 rounded-xl p-3 min-w-[320px] relative">
       <!-- Title / Formula Badge -->
-      <div class="absolute top-3 right-3 bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-1 rounded border border-slate-200" dir="ltr">
+      <div class="absolute top-2 right-2 bg-slate-100 text-slate-700 text-xs font-semibold px-2 py-0.5 rounded border border-slate-200" dir="ltr">
         <KatexInline math="E = a \cdot b^* + c" />
       </div>
 
-      <svg viewBox="0 0 500 360" class="w-full h-auto max-h-[340px]">
+      <svg viewBox="0 0 500 360" class="w-full h-auto max-h-[295px]">
         <!-- Edges (Paths) -->
         <g stroke-linecap="round">
           <!-- Root to Concat -->
@@ -149,7 +145,7 @@
           <!-- Set Value label -->
           <g v-if="clicks >= 4" class="animate-fade-in">
             <foreignObject x="282" y="30" width="210" height="40">
-              <div class="bg-rose-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-rose-500/30 flex items-center justify-center" dir="ltr">
+              <div class="bg-rose-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-rose-500/30 flex items-center justify-center w-full h-full" dir="ltr">
                 <KatexInline math="L(E) = \{c, a, ab, abb, \dots\}" />
               </div>
             </foreignObject>
@@ -166,7 +162,7 @@
           <!-- Set Value label -->
           <g v-if="clicks >= 3" class="animate-fade-in">
             <foreignObject x="-20" y="110" width="165" height="40">
-              <div class="bg-blue-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-blue-500/30 flex items-center justify-center" dir="ltr">
+              <div class="bg-blue-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-blue-500/30 flex items-center justify-center w-full h-full" dir="ltr">
                 <KatexInline math="L(a \cdot b^*) = \{a, ab, \dots\}" />
               </div>
             </foreignObject>
@@ -183,7 +179,7 @@
           <!-- Set Value label -->
           <g v-if="clicks >= 1" class="animate-fade-in">
             <foreignObject x="375" y="115" width="105" height="35">
-              <div class="bg-emerald-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-emerald-500/30 flex items-center justify-center" dir="ltr">
+              <div class="bg-emerald-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-emerald-500/30 flex items-center justify-center w-full h-full" dir="ltr">
                 <KatexInline math="L(c) = \{c\}" />
               </div>
             </foreignObject>
@@ -200,7 +196,7 @@
           <!-- Set Value label -->
           <g v-if="clicks >= 1" class="animate-fade-in">
             <foreignObject x="0" y="228" width="105" height="35">
-              <div class="bg-emerald-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-emerald-500/30 flex items-center justify-center" dir="ltr">
+              <div class="bg-emerald-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-emerald-500/30 flex items-center justify-center w-full h-full" dir="ltr">
                 <KatexInline math="L(a) = \{a\}" />
               </div>
             </foreignObject>
@@ -217,7 +213,7 @@
           <!-- Set Value label -->
           <g v-if="clicks >= 2" class="animate-fade-in">
             <foreignObject x="245" y="193" width="160" height="38">
-              <div class="bg-purple-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-purple-500/30 flex items-center justify-center" dir="ltr">
+              <div class="bg-purple-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-purple-500/30 flex items-center justify-center w-full h-full" dir="ltr">
                 <KatexInline math="L(b^*) = \{\epsilon, b, bb, \dots\}" />
               </div>
             </foreignObject>
@@ -234,7 +230,7 @@
           <!-- Set Value label -->
           <g v-if="clicks >= 1" class="animate-fade-in">
             <foreignObject x="245" y="274" width="105" height="35">
-              <div class="bg-emerald-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-emerald-500/30 flex items-center justify-center" dir="ltr">
+              <div class="bg-emerald-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-emerald-500/30 flex items-center justify-center w-full h-full" dir="ltr">
                 <KatexInline math="L(b) = \{b\}" />
               </div>
             </foreignObject>
