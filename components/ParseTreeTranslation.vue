@@ -145,7 +145,7 @@
                   :fill="clicks >= 4 ? '#ffe4e6' : '#f8fafc'" 
                   :stroke="clicks >= 4 ? '#e11d48' : '#64748b'" 
                   stroke-width="3" />
-          <text x="250" y="56" text-anchor="middle" font-weight="bold" font-size="20" :fill="clicks >= 4 ? '#e11d48' : '#475569'">+</text>
+          <text x="250" y="55" text-anchor="middle" font-weight="bold" font-size="16" :fill="clicks >= 4 ? '#e11d48' : '#475569'">+</text>
           <!-- Set Value label -->
           <g v-if="clicks >= 4" class="animate-fade-in">
             <foreignObject x="282" y="30" width="210" height="40">
@@ -162,10 +162,10 @@
                   :fill="clicks >= 3 ? '#dbeafe' : '#f8fafc'" 
                   :stroke="clicks >= 3 ? '#2563eb' : '#64748b'" 
                   stroke-width="2.5" />
-          <text x="150" y="136" text-anchor="middle" font-weight="bold" font-size="20" :fill="clicks >= 3 ? '#2563eb' : '#475569'">·</text>
+          <text x="150" y="135" text-anchor="middle" font-weight="bold" font-size="16" :fill="clicks >= 3 ? '#2563eb' : '#475569'">·</text>
           <!-- Set Value label -->
           <g v-if="clicks >= 3" class="animate-fade-in">
-            <foreignObject x="0" y="110" width="135" height="40">
+            <foreignObject x="-20" y="110" width="165" height="40">
               <div class="bg-blue-600/95 text-white text-[11px] font-bold px-2 py-1 rounded shadow border border-blue-500/30 flex items-center justify-center" dir="ltr">
                 <KatexInline math="L(a \cdot b^*) = \{a, ab, \dots\}" />
               </div>
@@ -179,7 +179,7 @@
                   :fill="clicks >= 1 ? '#dcfce7' : '#f8fafc'" 
                   :stroke="clicks >= 1 ? '#16a34a' : '#64748b'" 
                   stroke-width="2.5" />
-          <text x="350" y="136" text-anchor="middle" font-weight="bold" font-size="16" :fill="clicks >= 1 ? '#16a34a' : '#475569'">c</text>
+          <text x="350" y="134" text-anchor="middle" font-weight="bold" font-size="12" :fill="clicks >= 1 ? '#16a34a' : '#475569'">c</text>
           <!-- Set Value label -->
           <g v-if="clicks >= 1" class="animate-fade-in">
             <foreignObject x="375" y="115" width="105" height="35">
@@ -196,7 +196,7 @@
                   :fill="clicks >= 1 ? '#dcfce7' : '#f8fafc'" 
                   :stroke="clicks >= 1 ? '#16a34a' : '#64748b'" 
                   stroke-width="2.5" />
-          <text x="80" y="216" text-anchor="middle" font-weight="bold" font-size="16" :fill="clicks >= 1 ? '#16a34a' : '#475569'">a</text>
+          <text x="80" y="214" text-anchor="middle" font-weight="bold" font-size="12" :fill="clicks >= 1 ? '#16a34a' : '#475569'">a</text>
           <!-- Set Value label -->
           <g v-if="clicks >= 1" class="animate-fade-in">
             <foreignObject x="0" y="228" width="105" height="35">
@@ -213,7 +213,7 @@
                   :fill="clicks >= 2 ? '#f3e8ff' : '#f8fafc'" 
                   :stroke="clicks >= 2 ? '#7c3aed' : '#64748b'" 
                   stroke-width="2.5" />
-          <text x="220" y="218" text-anchor="middle" font-weight="bold" font-size="22" :fill="clicks >= 2 ? '#7c3aed' : '#475569'">*</text>
+          <text x="220" y="215" text-anchor="middle" font-weight="bold" font-size="16" :fill="clicks >= 2 ? '#7c3aed' : '#475569'">*</text>
           <!-- Set Value label -->
           <g v-if="clicks >= 2" class="animate-fade-in">
             <foreignObject x="245" y="193" width="160" height="38">
@@ -230,7 +230,7 @@
                   :fill="clicks >= 1 ? '#dcfce7' : '#f8fafc'" 
                   :stroke="clicks >= 1 ? '#16a34a' : '#64748b'" 
                   stroke-width="2.5" />
-          <text x="220" y="296" text-anchor="middle" font-weight="bold" font-size="16" :fill="clicks >= 1 ? '#16a34a' : '#475569'">b</text>
+          <text x="220" y="294" text-anchor="middle" font-weight="bold" font-size="12" :fill="clicks >= 1 ? '#16a34a' : '#475569'">b</text>
           <!-- Set Value label -->
           <g v-if="clicks >= 1" class="animate-fade-in">
             <foreignObject x="245" y="274" width="105" height="35">
