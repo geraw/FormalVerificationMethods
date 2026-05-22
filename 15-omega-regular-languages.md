@@ -367,29 +367,25 @@ info: |
 
 # דוגמה: ביקור אינסופי ב־<span dir="ltr">crit</span>
 
-<div class="grid grid-cols-[1.15fr_0.85fr] gap-6 mt-4 items-center">
-<div class="text-right text-[20px] leading-relaxed">
+<div class="mt-5 text-right text-[21px] leading-relaxed max-w-2xl mx-auto">
 מעל <KatexInline math="AP=\{wait,crit\}" />, התכונה:
 
-<div class="mt-2 text-center text-[26px]" dir="ltr">
+<div class="mt-3 text-center text-[28px]" dir="ltr">
 <KatexInline display math="\text{Always Eventually }crit" />
 </div>
 
 מתוארת על ידי:
 
-<div class="mt-2 text-center text-[25px]" dir="ltr">
+<div class="mt-3 text-center text-[27px]" dir="ltr">
 <KatexInline display math="((\neg crit)^*.crit)^\omega" />
 </div>
 
-<div class="mt-4 text-right text-[17px] bg-slate-50 border border-slate-200 rounded p-3 leading-relaxed">
+<div class="mt-5 text-right text-[18px] bg-slate-50 border border-slate-200 rounded p-3.5 leading-relaxed">
 ניתן לפרק את המילה לשרשור של אינסוף מילים באורך סופי שכל אחת מהן מכילה אות המקיימת את <KatexInline math="crit" />.
 </div>
 </div>
 
-<div class="flex flex-col items-center justify-center bg-white border border-slate-200 rounded-xl p-3 shadow-sm">
-  <img src="/crit_decomposition_comic.png" class="max-h-[240px] rounded object-contain" />
-</div>
-</div>
+<img src="/crit_decomposition_comic.png" class="absolute bottom-6 left-8 w-60 object-contain pointer-events-none" />
 
 ---
 
