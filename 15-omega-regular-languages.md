@@ -387,8 +387,7 @@ info: |
 </div>
 
 <div class="flex flex-col items-center justify-center bg-white border border-slate-200 rounded-xl p-3 shadow-sm">
-  <img src="/crit_decomposition_comic.png" class="max-h-[220px] rounded object-contain" />
-  <div class="text-[12px] text-slate-500 mt-2 text-center">המחשה: שרשור אינסופי של בלוקים סופיים, כל אחד מכיל <KatexInline math="crit" /></div>
+  <img src="/crit_decomposition_comic.png" class="max-h-[240px] rounded object-contain" />
 </div>
 </div>
 
