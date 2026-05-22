@@ -385,7 +385,7 @@ info: |
 </div>
 </div>
 
-<img src="/crit_decomposition_comic.png" class="absolute bottom-6 left-8 w-60 object-contain pointer-events-none" />
+<img src="/crit_decomposition_comic.png" class="absolute bottom-16 left-8 w-60 object-contain pointer-events-none" />
 
 ---
 
