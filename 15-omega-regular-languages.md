@@ -244,7 +244,7 @@ info: |
 
 ---
 
-# סמנטיקה של <KatexInline math="L^\omega" /> <span class="text-sm bg-purple-100 text-purple-800 px-2 py-0.5 rounded mr-2 font-normal align-middle">משמעות</span>
+# קבוצת המילים (באורך אינסופי) המוגדרת על ידי ביטוי <KatexInline math="\omega" />-רגולרי <span class="text-sm bg-purple-100 text-purple-800 px-2 py-0.5 rounded mr-2 font-normal align-middle">משמעות</span>
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
 אם <KatexInline math="L\subseteq \Sigma^+" />, אז נגדיר:
