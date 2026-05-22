@@ -246,23 +246,23 @@ info: |
 
 # קבוצת המילים המוגדרת על ידי ביטוי <KatexInline math="\omega" />-רגולרי <span class="text-sm bg-purple-100 text-purple-800 px-2 py-0.5 rounded mr-2 font-normal align-middle">משמעות</span>
 
-<div class="mt-7 text-right text-[22px] leading-relaxed">
+<div class="mt-4 text-right text-[21px] leading-relaxed">
 אם <KatexInline math="L\subseteq \Sigma^+" />, אז נגדיר:
 </div>
 
-<div class="mt-5 text-center text-[30px]" dir="ltr">
+<div class="mt-2 text-center text-[28px]" dir="ltr">
 <KatexInline display math="L^\omega = \{w_1w_2w_3\cdots \mid \forall i\ge 1\ (w_i\in L)\}" />
 </div>
 
-<div class="mt-7 text-right text-[22px] leading-relaxed">
+<div class="mt-4 text-right text-[21px] leading-relaxed">
 ובאמצעות הגדרה זו נגדיר:
 </div>
 
-<div class="mt-5 text-center text-[30px]" dir="ltr">
+<div class="mt-2 text-center text-[28px]" dir="ltr">
 <KatexInline display math="L_\omega(G)=L(E_1).L(F_1)^\omega \cup \cdots \cup L(E_n).L(F_n)^\omega" />
 </div>
 
-<div class="mt-6 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[20px]">
+<div class="mt-4 bg-slate-50 border border-slate-200 rounded p-3 text-right text-[19px]">
 שני ביטויים שקולים אם הם מגדירים את אותה שפה של מילים אינסופיות.
 </div>
 
