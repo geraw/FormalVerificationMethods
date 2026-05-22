@@ -202,11 +202,9 @@ info: |
 
 # ביטויים <KatexInline math="\omega" />-רגולריים <span class="text-sm bg-blue-100 text-blue-800 px-2 py-0.5 rounded mr-2 font-normal align-middle">תחביר</span>
 
-<img src="https://i5.walmartimages.com/seo/Toy-Story-Infinity-Beyond-Quote-Cartoon-Decors-Wall-Sticker-Art-Design-Decal-Girls-Boys-Kids-Room-Bedroom-Nursery-Kindergarten-House-Fun-Home-Decor-S_ab981502-66fc-426b-9fe0-65d7a8ff4bf5.a57b8b9635572853d29ce8bf6890b552.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF" class="absolute top-2 left-12 w-40 rounded-lg" />
-<img src="/syntax_omega_expr.png" class="absolute top-44 left-12 w-40 rounded-lg shadow-sm border border-slate-100 bg-white" />
-<div class="absolute top-[345px] left-12 w-40 text-center text-xs text-slate-500 font-semibold">מבנה תחבירי (Syntax)</div>
+<img src="https://i5.walmartimages.com/seo/Toy-Story-Infinity-Beyond-Quote-Cartoon-Decors-Wall-Sticker-Art-Design-Decal-Girls-Boys-Kids-Room-Bedroom-Nursery-Kindergarten-House-Fun-Home-Decor-S_ab981502-66fc-426b-9fe0-65d7a8ff4bf5.a57b8b9635572853d29ce8bf6890b552.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF" class="absolute top-2 left-12 w-56 rounded-lg" />
 
-<div class="text-right text-[20px] leading-relaxed flex flex-col gap-4 mt-6 pl-60">
+<div class="text-right text-[20px] leading-relaxed flex flex-col gap-4 mt-6">
 <div>
 ביטוי <KatexInline math="\omega" />-רגולרי מעל אלפבית <KatexInline math="\Sigma" /> הוא ביטוי מהצורה:
 </div>
@@ -248,29 +246,24 @@ info: |
 
 # סמנטיקה של <KatexInline math="L^\omega" /> <span class="text-sm bg-purple-100 text-purple-800 px-2 py-0.5 rounded mr-2 font-normal align-middle">משמעות</span>
 
-<img src="/semantics_omega_expr.png" class="absolute top-16 left-12 w-52 rounded-lg shadow-sm border border-slate-100 bg-white" />
-<div class="absolute top-[285px] left-12 w-52 text-center text-xs text-slate-500 font-semibold">משמעות סמנטית (Semantics)</div>
-
-<div class="text-right flex flex-col gap-2 pl-72 mt-6">
-<div class="text-[22px] leading-relaxed">
+<div class="mt-7 text-right text-[22px] leading-relaxed">
 אם <KatexInline math="L\subseteq \Sigma^+" />, אז נגדיר:
 </div>
 
-<div class="text-center text-[30px]" dir="ltr">
+<div class="mt-5 text-center text-[30px]" dir="ltr">
 <KatexInline display math="L^\omega = \{w_1w_2w_3\cdots \mid \forall i\ge 1\ (w_i\in L)\}" />
 </div>
 
-<div class="text-[22px] leading-relaxed mt-2">
+<div class="mt-7 text-right text-[22px] leading-relaxed">
 ובאמצעות הגדרה זו נגדיר:
 </div>
 
-<div class="text-center text-[30px]" dir="ltr">
+<div class="mt-5 text-center text-[30px]" dir="ltr">
 <KatexInline display math="L_\omega(G)=L(E_1).L(F_1)^\omega \cup \cdots \cup L(E_n).L(F_n)^\omega" />
 </div>
 
-<div class="bg-slate-50 border border-slate-200 rounded p-4 text-[20px] mt-4">
+<div class="mt-6 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[20px]">
 שני ביטויים שקולים אם הם מגדירים את אותה שפה של מילים אינסופיות.
-</div>
 </div>
 
 ---
