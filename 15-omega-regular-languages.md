@@ -367,42 +367,21 @@ info: |
 
 # דוגמה: ביקור אינסופי ב־<span dir="ltr">crit</span>
 
-<div class="grid grid-cols-[0.85fr_1.15fr] gap-7 mt-6 items-center">
-<div class="text-right text-[22px] leading-relaxed">
+<div class="mt-10 text-right text-[22px] leading-relaxed max-w-2xl mx-auto">
 מעל <KatexInline math="AP=\{wait,crit\}" />, התכונה:
 
-<div class="mt-4 text-center text-[28px]" dir="ltr">
+<div class="mt-6 text-center text-[30px]" dir="ltr">
 <KatexInline display math="\text{Always Eventually }crit" />
 </div>
 
 מתוארת על ידי:
 
-<div class="mt-4 text-center text-[27px]" dir="ltr">
+<div class="mt-6 text-center text-[29px]" dir="ltr">
 <KatexInline display math="((\neg crit)^*.crit)^\omega" />
 </div>
 
-בכל בלוק סופי יש הופעה של <span dir="ltr">crit</span>.
-</div>
-
-<div class="bg-white border border-slate-200 rounded p-5">
-<div class="text-center text-[22px] mb-4">פירוק לעותקים של אותו דפוס</div>
-<div class="grid grid-cols-3 gap-4 text-center" dir="ltr">
-<div class="border border-emerald-300 rounded p-4 bg-emerald-50">
-<div class="text-[16px] text-slate-600">block 1</div>
-<div class="text-[24px] mt-2"><KatexInline math="(\neg crit)^*.crit" /></div>
-</div>
-<div class="border border-emerald-300 rounded p-4 bg-emerald-50">
-<div class="text-[16px] text-slate-600">block 2</div>
-<div class="text-[24px] mt-2"><KatexInline math="(\neg crit)^*.crit" /></div>
-</div>
-<div class="border border-emerald-300 rounded p-4 bg-emerald-50">
-<div class="text-[16px] text-slate-600">...</div>
-<div class="text-[24px] mt-2"><KatexInline math="(\neg crit)^*.crit" /></div>
-</div>
-</div>
-<div class="mt-6 text-center text-[28px]" dir="ltr">
-<KatexInline display math="((\neg crit)^*.crit)^\omega" />
-</div>
+<div class="mt-8 text-center text-[20px] bg-slate-50 border border-slate-200 rounded p-4">
+בכל בלוק סופי יש הופעה של <KatexInline math="crit" />.
 </div>
 </div>
 
