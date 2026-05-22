@@ -358,7 +358,7 @@ info: |
 <KatexInline display math="\mathit{BadPref}(P).(2^{AP})^\omega" />
 </div>
 
-ומכאן <KatexInline math="P" /> עצמה <KatexInline math="\omega" />-רגולרית, כי יש סגירות תחת משלים.
+ומכאן <KatexInline math="P" /> עצמה <KatexInline math="\omega" />-רגולרית, כי <span class="text-red-600 font-bold">יש סגירות תחת משלים ⚠️</span>.
 </div>
 </div>
 
