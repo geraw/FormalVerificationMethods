@@ -367,21 +367,21 @@ info: |
 
 # דוגמה: ביקור אינסופי ב־<span dir="ltr">crit</span>
 
-<div class="mt-10 text-right text-[22px] leading-relaxed max-w-2xl mx-auto">
+<div class="mt-5 text-right text-[21px] leading-relaxed max-w-2xl mx-auto">
 מעל <KatexInline math="AP=\{wait,crit\}" />, התכונה:
 
-<div class="mt-6 text-center text-[30px]" dir="ltr">
+<div class="mt-3 text-center text-[28px]" dir="ltr">
 <KatexInline display math="\text{Always Eventually }crit" />
 </div>
 
 מתוארת על ידי:
 
-<div class="mt-6 text-center text-[29px]" dir="ltr">
+<div class="mt-3 text-center text-[27px]" dir="ltr">
 <KatexInline display math="((\neg crit)^*.crit)^\omega" />
 </div>
 
-<div class="mt-8 text-center text-[20px] bg-slate-50 border border-slate-200 rounded p-4">
-בכל בלוק סופי יש הופעה של <KatexInline math="crit" />.
+<div class="mt-5 text-right text-[18px] bg-slate-50 border border-slate-200 rounded p-3.5 leading-relaxed">
+ניתן לפרק את המילה לשרשור של אינסוף מילים באורך סופי שכל אחת מהן מכילה אות המקיימת את <KatexInline math="crit" />.
 </div>
 </div>
 
