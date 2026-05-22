@@ -247,7 +247,7 @@ info: |
 # סמנטיקה של <KatexInline math="L^\omega" />
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
-אם <KatexInline math="L\subseteq \Sigma^+" />, אז:
+אם <KatexInline math="L\subseteq \Sigma^+" />, אז נגדיר:
 </div>
 
 <div class="mt-5 text-center text-[30px]" dir="ltr">
@@ -255,7 +255,7 @@ info: |
 </div>
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
-ולכן עבור ביטוי <KatexInline math="G" />:
+ובאמצעות הגדרה זו נגדיר:
 </div>
 
 <div class="mt-5 text-center text-[30px]" dir="ltr">
