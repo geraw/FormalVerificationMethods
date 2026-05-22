@@ -30,21 +30,27 @@ info: |
 
 # מטרות ההרצאה
 
-<div class="grid grid-cols-2 gap-6 mt-8 text-right">
-<div class="bg-slate-50 border border-slate-200 rounded p-5">
-<div class="font-bold mb-3">להרחיב רגולריות למילים אינסופיות</div>
+<div class="grid grid-cols-[1.15fr_0.85fr] gap-6 mt-4 items-center">
+<div class="flex flex-col gap-4 text-right">
+<div class="bg-slate-50 border border-slate-200 rounded p-4">
+<div class="font-bold mb-2">להרחיב רגולריות למילים אינסופיות</div>
 
 - ניזכר בשפות רגולריות מעל מילים סופיות.
 - נגדיר ביטויי <KatexInline math="\omega" />-רגולריים.
 - נתרגם תכונות זמן לינארי לשפות מעל <KatexInline math="2^{AP}" />.
 </div>
 
-<div class="bg-blue-50 border border-blue-200 rounded p-5">
-<div class="font-bold mb-3">להכיר אוטומטי Büchi</div>
+<div class="bg-blue-50 border border-blue-200 rounded p-4">
+<div class="font-bold mb-2">להכיר אוטומטי Büchi</div>
 
 - נגדיר ריצה מקבלת מעל מילה אינסופית.
 - נראה דוגמאות לתכונות חַיּוּת.
 - נציג את המשפט: <span dir="ltr">NBA</span> מקבלים בדיוק את השפות ה־<KatexInline math="\omega" />-רגולריות.
+</div>
+</div>
+
+<div class="flex justify-center">
+  <img src="/omega_goals_illustration.png" class="rounded-lg shadow-md border border-slate-200 max-h-[380px] w-full object-cover" />
 </div>
 </div>
 
@@ -57,7 +63,7 @@ info: |
 
 בשקפים הקודמים בדקנו:
 
-- <span class="font-bold">שמורות</span>: נוסחה על כל מצב נגיש.
+- <span class="font-bold">שְׁמוּרוֹת</span>: נוסחה על כל מצב נגיש.
 - <span class="font-bold">בטיחות רגולרית</span>: אוטומט שמזהה רישות רעות סופיות.
 
 אבל תכונות רבות אינן נחשפות על ידי רישא סופית:
@@ -71,7 +77,7 @@ info: |
 
 <div class="grid grid-cols-1 gap-4 text-right text-[19px] leading-relaxed">
 <div class="bg-white border border-slate-200 rounded p-4">
-<div class="font-bold mb-2">שמורה</div>
+<div class="font-bold mb-2">שְׁמוּרָה</div>
 חיפוש מצב נגיש שמפר נוסחה.
 </div>
 <div class="bg-white border border-slate-200 rounded p-4">
@@ -87,20 +93,35 @@ info: |
 
 ---
 
-# דוגמת מוטיבציה: Peterson
+# דוגמת מוטיבציה: מניעה הדדית
 
-<div class="mt-10 text-right text-[24px] leading-relaxed">
-<div class="text-right text-[23px] leading-relaxed">
+<div class="mt-4 text-right text-[20px] leading-relaxed">
 שאלת החַיּוּת:
 
-<div class="mt-4 text-center text-[21px] whitespace-nowrap" dir="ltr">
+<div class="mt-2 text-center text-[18px]" dir="ltr">
 <KatexInline display math="\text{Always }(wait_L \Rightarrow \text{Eventually }crit_L)\ \land\ \text{Always }(wait_R \Rightarrow \text{Eventually }crit_R)" />
 </div>
 
+<div class="mt-4 text-[19px]">
 האימות כבר אינו “האם מגיעים למצב רע”, אלא:
+</div>
 
-- האם קיימת ריצה אינסופית שבה בקשה נשארת ללא מענה?
-- האם במכפלה יש מחזור שמחזיק את ההפרה?
+<div class="grid grid-cols-[1fr_280px] gap-6 mt-4 items-center">
+  <div class="text-[19px] leading-relaxed">
+    <strong>בקשה ללא מענה:</strong> האם קיימת ריצה אינסופית שבה בקשה נשארת ללא מענה?
+  </div>
+  <div class="flex justify-center">
+    <img src="/unanswered_request_comic.png" class="rounded-lg shadow border border-slate-200 max-h-[130px] object-contain" />
+  </div>
+</div>
+
+<div class="grid grid-cols-[1fr_280px] gap-6 mt-4 items-center">
+  <div class="text-[19px] leading-relaxed">
+    <strong>מחזור מפר:</strong> האם במכפלה יש מחזור שמחזיק את ההפרה?
+  </div>
+  <div class="flex justify-center">
+    <img src="/violating_cycle_comic.png" class="rounded-lg shadow border border-slate-200 max-h-[130px] object-contain" />
+  </div>
 </div>
 </div>
 
@@ -108,27 +129,49 @@ info: |
 
 # המעבר ממילים סופיות לאינסופיות
 
-<div class="grid grid-cols-2 gap-6 mt-8 text-right text-[22px] leading-relaxed">
-<div class="bg-slate-50 border border-slate-200 rounded p-5">
-<div class="font-bold text-slate-700 mb-3">שפה רגולרית</div>
+<div class="grid grid-cols-2 gap-6 mt-3 text-right text-[19px] leading-relaxed">
+<div class="bg-slate-50 border border-slate-200 rounded p-3.5 flex flex-col justify-between">
+<div>
+<div class="font-bold text-slate-700 mb-1">שפה רגולרית</div>
 שפה של מילים סופיות:
-
-<div class="mt-4 text-center text-[30px]" dir="ltr">
+<div class="mt-1 mb-1 text-center text-[24px]" dir="ltr">
 <KatexInline display math="L \subseteq \Sigma^*" />
 </div>
-
 מתארת רישות, דוגמאות נגדיות סופיות, או התנהגויות עם סוף.
 </div>
 
-<div class="bg-blue-50 border border-blue-200 rounded p-5">
-<div class="font-bold text-blue-700 mb-3">שפה <KatexInline math="\omega" />-רגולרית</div>
-שפה של מילים אינסופיות:
-
-<div class="mt-4 text-center text-[30px]" dir="ltr">
-<KatexInline display math="L \subseteq \Sigma^\omega" />
+<div class="mt-2 pt-2 border-t border-slate-200 text-[15px]">
+<div class="font-bold text-slate-600 mb-1">דוגמה:</div>
+מילים המכילות אות עם אדום (<KatexInline math="r" />) שלא קדמה לה אות עם צהוב (<KatexInline math="y" />):
+<div class="mt-1 text-center text-[19px]" dir="ltr">
+<KatexInline display math="(\neg y)^* \cdot r \cdot \text{true}^*" />
+</div>
+<div class="text-[12px] text-slate-500 mt-0.5 text-right" dir="rtl">
+כאשר נוסחה מייצגת את קבוצת האותיות ב־<KatexInline math="\Sigma" /> שמספקות אותה.
+</div>
+</div>
 </div>
 
+<div class="bg-blue-50 border border-blue-200 rounded p-3.5 flex flex-col justify-between">
+<div>
+<div class="font-bold text-blue-700 mb-1">שפה <KatexInline math="\omega" />-רגולרית</div>
+שפה של מילים אינסופיות:
+<div class="mt-1 mb-1 text-center text-[24px]" dir="ltr">
+<KatexInline display math="L \subseteq \Sigma^\omega" />
+</div>
 מתארת עקבות מלאים של מערכות תגובתיות.
+</div>
+
+<div class="mt-2 pt-2 border-t border-blue-200 text-[15px]">
+<div class="font-bold text-blue-600 mb-1">דוגמה:</div>
+מילים שבהן אות עם ירוק (<KatexInline math="g" />) לא מופיעה אינסוף פעמים (מופיעה מספר סופי של פעמים בלבד):
+<div class="mt-1 text-center text-[19px]" dir="ltr">
+<KatexInline display math="\text{true}^* \cdot (\neg g)^\omega" />
+</div>
+<div class="text-[12px] text-blue-500/70 mt-0.5 text-right" dir="rtl">
+כאן <KatexInline math="\text{true}" /> מייצג את <KatexInline math="\Sigma" />, ו־<KatexInline math="\neg g" /> מייצג את האותיות ללא <KatexInline math="g" />.
+</div>
+</div>
 </div>
 </div>
 
@@ -136,49 +179,66 @@ info: |
 
 # תזכורת: ביטויים רגולריים
 
-<div class="mt-8 text-center text-[32px]" dir="ltr">
-<KatexInline display math="E ::= \emptyset \mid \epsilon \mid A \mid E+E' \mid E.E' \mid E^*" />
+ביטוי רגולרי מעל אלפבית <KatexInline math="\Sigma" /> מוגדר על ידי הסינטקס:
+<div class="mt-4 text-center text-[26px]" dir="ltr">
+<KatexInline display math="E ::= \emptyset \mid \epsilon \mid a \mid E_1 + E_2 \mid E_1 \cdot E_2 \mid E^*" />
 </div>
+כאשר <KatexInline math="a \in \Sigma" />.
 
-<div class="grid grid-cols-2 gap-6 mt-8 text-right text-[21px] leading-relaxed">
-<div class="bg-white border border-slate-200 rounded p-5">
-<div class="font-bold mb-2">סמנטיקה רגילה</div>
+<div class="mt-6 bg-slate-50 border border-slate-200 rounded p-5 text-right text-[18px] leading-relaxed">
+<div class="font-bold text-slate-700 mb-4 text-[20px]">הסמנטיקה הפורמלית: השפה <KatexInline math="L(E) \subseteq \Sigma^*" /> מוגדרת באינדוקציה</div>
 
-- <KatexInline math="+" /> הוא איחוד.
-- <KatexInline math="." /> הוא שרשור.
-- <KatexInline math="E^*" /> הוא מספר סופי כלשהו של חזרות.
-</div>
-
-<div class="bg-slate-50 border border-slate-200 rounded p-5">
-<div class="font-bold mb-2">דוגמה</div>
-
-<div class="text-center text-[29px]" dir="ltr">
-<KatexInline display math="A + B.C^*" />
-</div>
-
-מקבל את המילה <span dir="ltr">A</span>, או <span dir="ltr">B</span> ואחריה מספר סופי של <span dir="ltr">C</span>.
+<div class="grid grid-cols-2 gap-x-8 gap-y-3" dir="ltr">
+  <div><KatexInline display math="L(\emptyset) = \emptyset" /></div>
+  <div><KatexInline display math="L(E_1 + E_2) = L(E_1) \cup L(E_2)" /></div>
+  <div><KatexInline display math="L(\epsilon) = \{\epsilon\}" /></div>
+  <div><KatexInline display math="L(E_1 \cdot E_2) = L(E_1) \cdot L(E_2)" /></div>
+  <div><KatexInline math="L(a) = \{a\}" /> לכל <KatexInline math="a \in \Sigma" /></div>
+  <div><KatexInline display math="L(E^*) = (L(E))^*" /></div>
 </div>
 </div>
 
 ---
 
-# ביטויי <KatexInline math="\omega" />-רגולריים
+# ביטויים <KatexInline math="\omega" />-רגולריים
 
-<div class="mt-7 text-right text-[22px] leading-relaxed">
+<img src="https://i5.walmartimages.com/seo/Toy-Story-Infinity-Beyond-Quote-Cartoon-Decors-Wall-Sticker-Art-Design-Decal-Girls-Boys-Kids-Room-Bedroom-Nursery-Kindergarten-House-Fun-Home-Decor-S_ab981502-66fc-426b-9fe0-65d7a8ff4bf5.a57b8b9635572853d29ce8bf6890b552.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF" class="absolute top-2 left-12 w-56 rounded-lg" />
+
+<div class="text-right text-[20px] leading-relaxed flex flex-col gap-4 mt-6">
+<div>
 ביטוי <KatexInline math="\omega" />-רגולרי מעל אלפבית <KatexInline math="\Sigma" /> הוא ביטוי מהצורה:
 </div>
 
-<div class="mt-6 text-center text-[34px]" dir="ltr">
+<div class="text-center text-[30px]" dir="ltr">
 <KatexInline display math="G = E_1.F_1^\omega + \cdots + E_n.F_n^\omega" />
 </div>
 
-<div class="mt-8 grid grid-cols-2 gap-6 text-right text-[21px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-5">
-<KatexInline math="E_i" /> ו־<KatexInline math="F_i" /> הם ביטויים רגולריים רגילים מעל <KatexInline math="\Sigma" />.
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-blue-50 border border-blue-200 rounded p-3 text-[18px]">
+<KatexInline math="E_i" /> ו־<KatexInline math="F_i" /> הם ביטויים רגולריים רגילים מעל <KatexInline math="\Sigma" />, כך ש־<KatexInline math="\epsilon \notin L(F_i)" />.
 </div>
 
-<div class="bg-amber-50 border border-amber-200 rounded p-5">
+<div class="bg-amber-50 border border-amber-200 rounded p-3 text-[18px]">
 דורשים <KatexInline math="\epsilon \notin L(F_i)" /> כדי שכל חזרה תורמת קטע לא ריק, ולכן השרשור אינסופי באמת.
+</div>
+</div>
+
+<div class="mt-4 bg-slate-50 border border-slate-200 rounded p-3 text-[16px]">
+<div class="font-bold mb-2 text-right">דוגמאות:</div>
+<div class="grid grid-cols-3 gap-4" dir="rtl">
+<div class="border border-slate-200 rounded p-2 bg-white text-center">
+<div dir="ltr" class="font-bold mb-1"><KatexInline math="A^\omega" /></div>
+<div class="text-[14px] text-slate-600">רק מופעים של <KatexInline math="A" /></div>
+</div>
+<div class="border border-slate-200 rounded p-2 bg-white text-center">
+<div dir="ltr" class="font-bold mb-1"><KatexInline math="(A+B)^*.B^\omega" /></div>
+<div class="text-[14px] text-slate-600">מספר סופי של <KatexInline math="A" /></div>
+</div>
+<div class="border border-slate-200 rounded p-2 bg-white text-center">
+<div dir="ltr" class="font-bold mb-1"><KatexInline math="(B^*A)^\omega" /></div>
+<div class="text-[14px] text-slate-600">אינסוף מופעים של <KatexInline math="A" /></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -191,7 +251,7 @@ info: |
 </div>
 
 <div class="mt-5 text-center text-[30px]" dir="ltr">
-<KatexInline display math="L^\omega = \{w_1w_2w_3\cdots \mid \forall i\ge 1:\ w_i\in L\}" />
+<KatexInline display math="L^\omega = \{w_1w_2w_3\cdots \mid \forall i\ge 1\ (w_i\in L)\}" />
 </div>
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
@@ -264,11 +324,11 @@ info: |
 
 ---
 
-# שמורות ובטיחות רגולרית הן מקרים פרטיים
+# שְׁמוּרוֹת ובטיחות רגולרית הן מקרים פרטיים
 
 <div class="grid grid-cols-2 gap-6 mt-6 text-right text-[20px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-5">
-<div class="font-bold text-blue-700 mb-3">שמורה</div>
+<div class="font-bold text-blue-700 mb-3">שְׁמוּרָה</div>
 אם <KatexInline math="\Phi" /> היא נוסחת מצב, אז כל האותיות שמקיימות אותה יוצרות שפה:
 
 <div class="mt-4 text-center text-[28px]" dir="ltr">
@@ -371,7 +431,7 @@ info: |
 
 <div class="mt-7 bg-emerald-50 border border-emerald-200 rounded p-5 text-right text-[23px] leading-relaxed">
 הריצה <span class="font-bold">מקבלת</span> אם היא מבקרת במצבי <KatexInline math="F" /> אינסוף פעמים:
-<span dir="ltr"><KatexInline math="\exists^\infty i:\ q_i\in F" /></span>.
+<span dir="ltr"><KatexInline math="\exists^\infty i\ (q_i\in F)" /></span>.
 </div>
 
 ---
@@ -476,7 +536,7 @@ info: |
 </div>
 
 <div class="bg-blue-50 border border-blue-200 rounded p-5">
-<div class="font-bold text-blue-700 mb-3">האינטואיציה</div>
+<div class="font-bold text-blue-700 mb-3">הָאִינְטוּאִיצְיָה</div>
 באוטומט סופי מספיק להגיע פעם אחת למצב מקבל.
 באוטומט Büchi צריך לחזור למצבי קבלה אינסוף פעמים.
 </div>
@@ -702,7 +762,7 @@ info: |
 
 - מתארות עקבות אינסופיים.
 - נכתבות כביטויים <KatexInline math="E.F^\omega" /> ואיחודים שלהם.
-- כוללות שמורות ובטיחות רגולרית.
+- כוללות שְׁמוּרוֹת ובטיחות רגולרית.
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-5">
