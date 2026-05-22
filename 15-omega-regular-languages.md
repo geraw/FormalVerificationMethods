@@ -203,6 +203,17 @@ info: |
 
 ---
 
+# תרגום אינדוקטיבי של ביטוי רגולרי לשפה
+
+<ParseTreeTranslation :clicks="$clicks" />
+
+<div v-click></div>
+<div v-click></div>
+<div v-click></div>
+<div v-click></div>
+
+---
+
 # ביטויים <KatexInline math="\omega" />-רגולריים <span class="text-sm bg-blue-100 text-blue-800 px-2 py-0.5 rounded mr-2 font-normal align-middle">תחביר</span>
 
 <img src="https://i5.walmartimages.com/seo/Toy-Story-Infinity-Beyond-Quote-Cartoon-Decors-Wall-Sticker-Art-Design-Decal-Girls-Boys-Kids-Room-Bedroom-Nursery-Kindergarten-House-Fun-Home-Decor-S_ab981502-66fc-426b-9fe0-65d7a8ff4bf5.a57b8b9635572853d29ce8bf6890b552.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF" class="absolute top-2 left-12 w-56 rounded-lg" />
