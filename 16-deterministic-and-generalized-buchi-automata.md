@@ -917,10 +917,10 @@ info: |
   { id: 's11', x: 375, y: 195, label: '$⟨q_1,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb', innerStroke: '#dc2626' }
 ]"
 :transitions="[
-  { source: 's00', target: 's00', label: '$\\neg a \\land \\neg b$', loopDirection: '135deg', labelY: -10, labelWidth: 70 },
-  { source: 's10', target: 's10', label: '$a \\land \\neg b$', loopDirection: '45deg', labelY: -10, labelWidth: 70 },
-  { source: 's01', target: 's01', label: '$\\neg a \\land b$', loopDirection: '225deg', labelY: 10, labelWidth: 70 },
-  { source: 's11', target: 's11', label: '$a \\land b$', loopDirection: '315deg', labelY: 10, labelWidth: 70 },
+  { source: 's00', target: 's00', label: '$\\neg a \\land \\neg b$', loopDirection: '135deg', labelY: 12, labelWidth: 70 },
+  { source: 's10', target: 's10', label: '$a \\land \\neg b$', loopDirection: '45deg', labelY: 10, labelWidth: 70 },
+  { source: 's01', target: 's01', label: '$\\neg a \\land b$', loopDirection: '225deg', labelY: -10, labelWidth: 70 },
+  { source: 's11', target: 's11', label: '$a \\land b$', loopDirection: '315deg', labelY: -10, labelWidth: 70 },
   { source: 's00', target: 's10', label: '$a\\land \\neg b$', labelY: -8, labelWidth: 60, curve: -0.06 },
   { source: 's10', target: 's00', label: '$\\neg a\\land \\neg b$', labelY: 8, labelWidth: 70, curve: -0.06 },
   { source: 's00', target: 's01', label: '$\\neg a\\land b$', labelX: -16, labelWidth: 65, curve: 0.06 },
@@ -929,10 +929,10 @@ info: |
   { source: 's11', target: 's01', label: '$\\neg a\\land b$', labelY: -8, labelWidth: 65, curve: 0.06 },
   { source: 's10', target: 's11', label: '$a\\land b$', labelX: 16, labelWidth: 50, curve: -0.06 },
   { source: 's11', target: 's10', label: '$a\\land \\neg b$', labelX: -16, labelWidth: 60, curve: -0.06 },
-  { source: 's00', target: 's11', label: '$a\\land b$', labelY: 20, labelX: 50, labelWidth: 50, curve: -0.06 },
-  { source: 's11', target: 's00', label: '$\\neg a\\land \\neg b$', labelY: -20, labelX: -50, labelWidth: 70, curve: -0.06 },
-  { source: 's10', target: 's01', label: '$\\neg a\\land b$', labelY: 20, labelX: -50, labelWidth: 65, curve: -0.06 },
-  { source: 's01', target: 's10', label: '$a\\land \\neg b$', labelY: -20, labelX: 50, labelWidth: 60, curve: -0.06 }
+  { source: 's00', target: 's11', label: '$a\\land b$', labelY: 20, labelX: 60, labelWidth: 50, curve: -0.06 },
+  { source: 's11', target: 's00', label: '$\\neg a\\land \\neg b$', labelY: -20, labelX: -80, labelWidth: 70, curve: -0.06 },
+  { source: 's10', target: 's01', label: '$\\neg a\\land b$', labelY: 30, labelX: -50, labelWidth: 65, curve: -0.06 },
+  { source: 's01', target: 's10', label: '$a\\land \\neg b$', labelY: -30, labelX: 50, labelWidth: 60, curve: -0.06 }
 ]"
 />
 <div class="mt-2 text-[12px] text-gray-700 leading-tight">
