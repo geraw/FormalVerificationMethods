@@ -1047,7 +1047,6 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
     { id: 'g', x: 390, y: 202, label: '$g$', accepting: $clicks < 3, r: 23, labelWidth: 65, stroke: $clicks === 1 ? '#2563eb' : undefined }
   ]"
   :transitions="[
-    { source: 's', target: 's', label: '$C$', loopDirection: '180deg', labelX: -12, labelWidth: 40 },
     { source: 's', target: 'p', label: '$A$', labelY: -12, labelWidth: 40, curve: -0.18, stroke: $clicks === 1 ? '#2563eb' : undefined, strokeWidth: $clicks === 1 ? 3.2 : undefined, labelColor: $clicks === 1 ? '#2563eb' : undefined },
     { source: 'p', target: 'f', label: '$B$', labelY: -12, labelWidth: 40, curve: -0.14, stroke: $clicks === 1 ? '#2563eb' : undefined, strokeWidth: $clicks === 1 ? 3.2 : undefined, labelColor: $clicks === 1 ? '#2563eb' : undefined },
     { source: 'p', target: 'r', label: '$D$', labelX: -16, labelWidth: 40, curve: 0.18, stroke: $clicks === 1 ? '#2563eb' : undefined, strokeWidth: $clicks === 1 ? 3.2 : undefined, labelColor: $clicks === 1 ? '#2563eb' : undefined },
@@ -1066,36 +1065,128 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 ---
 
-# שרשור <span dir="ltr">NFA</span> ו־<span dir="ltr">NBA</span>
+# אופרטור <KatexInline math="\omega" />: המקרה הכללי
 
-<div class="grid grid-cols-[1.05fr_0.95fr] gap-6 mt-5 items-center">
-<div class="bg-white rounded border border-slate-200 shadow-sm">
-<AutomatonD3 variant="classic" :width="560" :height="250" :arrowSize="4.5" :stateLabelFontSize="16" :transitionLabelFontSize="14"
+<div class="mt-2 text-right text-[17px] leading-tight">
+אם יש מעברים שנכנסים למצבי ההתחלה, קודם מחליפים את האוטומט באוטומט שקול מבחינת השפה הסופית,
+שבו אין מעברים אל מצבי ההתחלה.
+</div>
+
+<div class="grid grid-cols-[0.95fr_1.05fr] gap-4 mt-3 items-center">
+<div class="text-right text-[15px] leading-tight space-y-2">
+<div v-click class="bg-blue-50 border border-blue-200 rounded p-2.5">
+<div class="font-bold text-blue-700 mb-0.5">1. מוסיפים עותקי התחלה</div>
+לכל <KatexInline math="q_0\in Q_0" /> מוסיפים מצב חדש <KatexInline math="\widehat{q_0}" />.
+מצבי ההתחלה החדשים הם רק <KatexInline math="\widehat{Q_0}" />.
+</div>
+
+<div v-click class="bg-emerald-50 border border-emerald-200 rounded p-2.5">
+<div class="font-bold text-emerald-700 mb-0.5">2. מעתיקים את היציאות</div>
+לכל מעבר <KatexInline math="q_0\xrightarrow{a}p" /> מוסיפים
+<KatexInline math="\widehat{q_0}\xrightarrow{a}p" />.
+בפרט, הלולאה <KatexInline math="s\xrightarrow{D}s" /> נותנת את החץ <KatexInline math="\widehat{s}\xrightarrow{D}s" />.
+המעברים המקוריים נשארים כמו שהם.
+</div>
+
+<div v-click class="bg-purple-50 border border-purple-200 rounded p-2.5">
+<div class="font-bold text-purple-700 mb-0.5">3. שומרים על קבלה</div>
+אם <KatexInline math="q_0\in F" />, גם <KatexInline math="\widehat{q_0}" /> יהיה מקבל.
+כך מתקבל אוטומט <KatexInline math="\mathcal{A}'" /> עם <KatexInline math="L(\mathcal{A}')=L(\mathcal{A})" /> וללא מעברים למצבי התחלה.
+</div>
+</div>
+
+<div class="bg-white rounded border border-slate-200 shadow-sm flex justify-center">
+<AutomatonD3 variant="classic" :width="500" :height="270" :arrowSize="3.8" :stateLabelFontSize="15" :transitionLabelFontSize="13"
   :states="[
-    { id: 'n0', x: 95, y: 125, label: '$n_0$', initial: true, initialDirection: 'right', r: 24, labelWidth: 70 },
-    { id: 'nf', x: 235, y: 125, label: '$n_f$', r: 24, labelWidth: 70 },
-    { id: 'b0', x: 370, y: 125, label: '$b_0$', r: 24, labelWidth: 70 },
-    { id: 'bf', x: 500, y: 125, label: '$b_f$', accepting: true, r: 24, labelWidth: 70 }
+    { id: 'shat', x: 80, y: 80, label: '$\\widehat{s}$', initial: $clicks >= 1, initialDirection: 'top', initialStroke: $clicks >= 1 ? '#2563eb' : 'transparent', r: 23, labelWidth: 70, fill: $clicks >= 1 ? undefined : 'transparent', stroke: $clicks >= 1 ? '#2563eb' : 'transparent', textColor: $clicks >= 1 ? '#111827' : 'transparent' },
+    { id: 's', x: 80, y: 190, label: '$s$', initial: $clicks < 1, initialDirection: 'top', r: 23, labelWidth: 70 },
+    { id: 'p', x: 245, y: 135, label: '$p$', r: 23, labelWidth: 70 },
+    { id: 'f', x: 410, y: 135, label: '$f$', accepting: true, r: 23, labelWidth: 70 }
   ]"
   :transitions="[
-    { source: 'n0', target: 'nf', label: '$u$', labelY: -10, labelWidth: 45 },
-    { source: 'n0', target: 'b0', label: '$u$', labelY: 42, labelWidth: 45 },
-    { source: 'b0', target: 'bf', label: '$a$', labelY: -10, labelWidth: 45 },
-    { source: 'bf', target: 'bf', label: '$b$', loopDirection: '0deg', labelX: 32, labelWidth: 45 },
-    { source: 'bf', target: 'b0', label: '$c$', labelY: 36, labelWidth: 45 }
+    { source: 'shat', target: 'p', label: '$A$', labelY: -14, labelWidth: 40, curve: -0.0, stroke: $clicks >= 2 ? '#2563eb' : 'transparent', strokeWidth: $clicks >= 2 ? 3 : 1.6, labelColor: $clicks >= 2 ? '#2563eb' : 'transparent' },
+    { source: 'shat', target: 's', label: '$D$', labelX: -18, labelWidth: 40, curve: -0.0, stroke: $clicks >= 2 ? '#2563eb' : 'transparent', strokeWidth: $clicks >= 2 ? 3 : 1.6, labelColor: $clicks >= 2 ? '#2563eb' : 'transparent' },
+    { source: 's', target: 'p', label: '$A$', labelY: 16, labelWidth: 40, curve: 0.0 },
+    { source: 'p', target: 'f', label: '$B$', labelY: -12, labelWidth: 40 },
+    { source: 'f', target: 's', label: '$C$', labelY: 16, labelWidth: 40, curve: -0.35 },
+    { source: 's', target: 's', label: '$D$', loopDirection: '180deg', labelX: -14, labelWidth: 40 }
   ]"
 />
 </div>
-
-<div class="text-right text-[21px] leading-relaxed">
-עבור <span dir="ltr">NFA</span> שמקבל <KatexInline math="L" /> ו־<span dir="ltr">NBA</span> שמקבל <KatexInline math="M" />:
-
-<div class="mt-4 text-center text-[28px]" dir="ltr">
-<KatexInline display math="L_\omega(\mathcal{A}) = L.L_\omega(\mathcal{A}_2)" />
 </div>
 
-מוסיפים מעברים מכל מעבר שנכנס למצב מקבל ב־<span dir="ltr">NFA</span> אל מצבי ההתחלה של ה־<span dir="ltr">NBA</span>.
-הקבלה נקבעת רק לפי ה־<span dir="ltr">NBA</span>.
+<!-- <div class="mt-2 text-center text-[21px]" dir="ltr">
+<KatexInline display math="\mathcal{A}\ \leadsto\ \mathcal{A}'" />
+</div> -->
+
+<div class="mt-4 text-center text-[17px]">
+כעת מפעילים על <span dir="ltr"><KatexInline math="\mathcal{A}'" /></span> את הבנייה מהשקף הקודם.
+</div>
+
+---
+
+# שרשור <span dir="ltr">NFA</span> ו־<span dir="ltr">NBA</span>
+
+<div class="grid grid-cols-[0.86fr_1.14fr] gap-4 mt-4 items-start" dir="ltr">
+<div>
+<div class="text-right text-[15px] leading-tight" dir="rtl">
+נתונים <span dir="ltr">NFA</span> <KatexInline math="\mathcal{A}_1" /> לשפה סופית <KatexInline math="L" />,
+ו־<span dir="ltr">NBA</span> <KatexInline math="\mathcal{A}_2" /> לשפה אינסופית <KatexInline math="M" />. רוצים לבנות <span dir="ltr">NBA</span> <KatexInline math="\mathcal{B}" /> שמקבל את השפה <KatexInline math="L\cdot M" />.
+
+<div class="mt-1.5 text-center text-[20px]" dir="ltr">
+<KatexInline display math="L_\omega(\mathcal{B})=L(\mathcal{A}_1)\cdot L_\omega(\mathcal{A}_2)=L\cdot M" />
+</div>
+</div>
+
+<div class="bg-white rounded border border-slate-200 shadow-sm mt-2">
+<AutomatonD3 variant="classic" :width="450" :height="250" :arrowSize="2.5" :stateLabelFontSize="15" :transitionLabelFontSize="13"
+  :states="[
+    { id: 'n0', x: 75, y: 125, label: '$n_0$', initial: true, initialDirection: 'left', r: 23, labelWidth: 65, accepting: $clicks < 4 },
+    { id: 'nf', x: 185, y: 125, label: '$n_f$', accepting: $clicks < 4, r: 23, labelWidth: 65 },
+    { id: 'b0', x: 290, y: 125, label: '$b_0$', r: 23, labelWidth: 65, initial: true, initialDirection: 'top', initialStroke: $clicks >= 3 ? '#16a34a' : '' },
+    { id: 'bf', x: 395, y: 125, label: '$b_f$', accepting: true, r: 23, labelWidth: 65 }
+  ]"
+  :transitions="[
+    { source: 'n0', target: 'nf', label: '$u$', labelY: -10, labelWidth: 45 },
+    { source: 'n0', target: 'b0', label: '$u$', labelY: 12, labelWidth: 45, curve: 0.3, stroke: $clicks >= 2 ? '#16a34a' : 'transparent', strokeWidth: $clicks >= 2 ? 3.2 : 1.6, labelColor: $clicks >= 2 ? '#16a34a' : 'transparent' },
+    { source: 'b0', target: 'bf', label: '$a$', labelY: -14, labelWidth: 45, curve: -0.22 },
+    { source: 'bf', target: 'bf', label: '$b$', loopDirection: '-90deg', labelY: -10, labelWidth: 45 },
+    { source: 'n0', target: 'n0', label: '$b$', loopDirection: '-90deg', labelY: -10, labelWidth: 45 },   
+    { source: 'nf', target: 'nf', label: '$b$', loopDirection: '-90deg', labelY: -10, labelWidth: 45 },   
+    { source: 'bf', target: 'b0', label: '$c$', labelY: 22, labelWidth: 45, curve: -0.22 },
+    { source: 'n0', target: 'b0', label: '$b$', labelY: 12, labelWidth: 45, curve: 0.6, stroke: $clicks >= 2 ? '#16a34a' : 'transparent', strokeWidth: $clicks >= 2 ? 3.2 : 1.6, labelColor: $clicks >= 2 ? '#16a34a' : 'transparent' },
+    { source: 'nf', target: 'b0', label: '$b$', labelX: -12, labelY: -12, labelWidth: 45, stroke: $clicks >= 2 ? '#16a34a' : 'transparent', strokeWidth: $clicks >= 2 ? 3.2 : 1.6, labelColor: $clicks >= 2 ? '#16a34a' : 'transparent' },
+  ]"
+/>
+</div>
+</div>
+
+<div class="text-right text-[16px] leading-tight" dir="rtl">
+<div class="mt-2 space-y-2">
+<div v-click class="bg-blue-50 border border-blue-200 rounded p-2.5">
+<div class="font-bold text-blue-700 mb-0.5">1. שמים זה לצד זה</div>
+המצבים והמעברים של <KatexInline math="\mathcal{A}_1" /> ושל <KatexInline math="\mathcal{A}_2" /> נשארים.
+מצבי ההתחלה הם מצבי ההתחלה של <KatexInline math="\mathcal{A}_1" />.
+</div>
+
+<div v-click class="bg-emerald-50 border border-emerald-200 rounded p-2.5">
+<div class="font-bold text-emerald-700 mb-0.5">2. מחברים בסיום הרישא</div>
+לכל מעבר <KatexInline math="q\xrightarrow{a}f" /> שנכנס למצב מקבל <KatexInline math="f" /> של <KatexInline math="\mathcal{A}_1" />,
+מוסיפים גם <KatexInline math="q\xrightarrow{a}q_0" /> לכל מצב התחלתי <KatexInline math="q_0" /> של <KatexInline math="\mathcal{A}_2" />.
+</div>
+
+<div v-click class="bg-amber-50 border border-amber-200 rounded p-2.5">
+<div class="font-bold text-amber-700 mb-0.5">3. מעדכנים מצבי התחלה של <KatexInline math="\mathcal{A}_2" /></div>
+אם יש מצב מקבל שהוא גם מצב התחלה של <KatexInline math="\mathcal{A}_1" />, משאירים את מצבי ההתחלה של <KatexInline math="\mathcal{A}_2" />.
+אחרת מוחקים אותם.
+</div>
+
+<div v-click class="bg-purple-50 border border-purple-200 rounded p-2.5">
+<div class="font-bold text-purple-700 mb-0.5">4. קובעים קבלה</div>
+מצבי הקבלה של <KatexInline math="\mathcal{B}" /> הם בדיוק מצבי הקבלה של <KatexInline math="\mathcal{A}_2" />.
+כך הרישא הסופית נצרכת פעם אחת, ומאותו רגע נדרשת ריצת Büchi מקבלת.
+</div>
+</div>
 </div>
 </div>
 
