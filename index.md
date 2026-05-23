@@ -31,5 +31,6 @@ dir: rtl
     <li><b>13 - הוֹגְנוּת:</b> אילוצי הוֹגְנוּת, הנחות הוֹגְנוֹת, עקבות הוֹגְנוֹת והקשר לתכונות בטיחות. <a href="./13-fairness/#1" target="_blank">[מצגת]</a></li>
     <li><b>14 - בדיקת תכונות בטיחות רגולריות:</b> בדיקת תכונות בטיחות רגולריות באמצעות אוטומטים. <a href="./14-model-checking-regular-safety-properties/#1" target="_blank">[מצגת]</a></li>
     <li><b>15 - שפות ω-רגולריות:</b> שפות ω-רגולריות, אוטומטי Büchi והקשר לתכונות זמן לינארי. <a href="./15-omega-regular-languages/#1" target="_blank">[מצגת]</a></li>
+    <li><b>16 - אוטומטי Büchi דטרמיניסטיים ומוכללים:</b> ריקות, דטרמיניזם, אוטומטי Büchi מוכללים וחיתוך שפות. <a href="./16-deterministic-and-generalized-buchi-automata/#1" target="_blank">[מצגת]</a></li>
   </ul>
 </div>
