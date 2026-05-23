@@ -402,27 +402,27 @@ https://play.kahoot.it/#/k/15aefb35-8427-4809-807c-7098ee85599f
 
 ---
 
-# דוגמאות מעל <span dir="ltr">{A,B}</span>
+# דוגמאות מעל <KatexInline math="\{A,B\}" />
 
 <div class="grid grid-cols-2 gap-6 mt-8 text-right text-[21px] leading-relaxed">
 <div class="bg-emerald-50 border border-emerald-200 rounded p-5">
-<div class="font-bold text-emerald-700 mb-3">אינסוף מופעים של <span dir="ltr">A</span></div>
+<div class="font-bold text-emerald-700 mb-3">אינסוף מופעים של <KatexInline math="A" /></div>
 
 <div class="text-center text-[29px]" dir="ltr">
 <KatexInline display math="(B^*A)^\omega" />
 </div>
 
-כל בלוק נגמר ב־<span dir="ltr">A</span>, ולכן <span dir="ltr">A</span> מופיע שוב ושוב.
+כל בלוק נגמר ב־<KatexInline math="A" />, ולכן <KatexInline math="A" /> מופיע שוב ושוב.
 </div>
 
 <div class="bg-orange-50 border border-orange-200 rounded p-5">
-<div class="font-bold text-orange-700 mb-3">רק מספר סופי של <span dir="ltr">A</span></div>
+<div class="font-bold text-orange-700 mb-3">רק מספר סופי של <KatexInline math="A" /></div>
 
 <div class="text-center text-[29px]" dir="ltr">
 <KatexInline display math="(A+B)^*.B^\omega" />
 </div>
 
-אחרי רישא סופית כלשהי מופיעים רק <span dir="ltr">B</span>.
+אחרי רישא סופית כלשהי מופיעים רק <KatexInline math="B" />.
 </div>
 </div>
 
