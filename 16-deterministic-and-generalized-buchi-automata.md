@@ -598,32 +598,39 @@ info: |
 
 # דוגמה: שני תנאי קבלה
 
-<div class="grid grid-cols-[0.95fr_1.05fr] gap-5 mt-6 items-center">
-<div class="bg-white rounded border border-slate-200 shadow-sm">
-<AutomatonD3 variant="classic" :width="500" :height="230" :arrowSize="4.2" :stateLabelFontSize="16" :transitionLabelFontSize="13"
-  :states="[
-    { id: 'q0', x: 245, y: 115, label: '$q_0$', initial: true, initialDirection: 'top', r: 25, labelWidth: 70 },
-    { id: 'q1', x: 95, y: 115, label: '$q_1$', r: 25, labelWidth: 70, stroke: '#2563eb' },
-    { id: 'q2', x: 395, y: 115, label: '$q_2$', r: 25, labelWidth: 70, stroke: '#dc2626' }
-  ]"
-  :transitions="[
-    { source: 'q0', target: 'q0', label: '$true$', loopDirection: '90deg', labelY: 8, labelWidth: 50 },
-    { source: 'q0', target: 'q1', label: '$crit_1$', labelY: -12, labelWidth: 70, curve: -0.18 },
-    { source: 'q1', target: 'q0', label: '$true$', labelY: 18, labelWidth: 50, curve: -0.18 },
-    { source: 'q0', target: 'q2', label: '$crit_2$', labelY: -12, labelWidth: 70, curve: -0.18 },
-    { source: 'q2', target: 'q0', label: '$true$', labelY: 18, labelWidth: 50, curve: -0.18 }
-  ]"
+<div class="flex flex-col items-center gap-3 mt-3 text-right">
+<div class="bg-white rounded border border-slate-200 shadow-sm p-1 w-[860px] max-w-full flex justify-center">
+<AutomatonD3 variant="classic" :width="450" :height="140" :arrowSize="4" :stateLabelFontSize="15" :transitionLabelFontSize="12"
+:states="[
+{ id: 'q0', x: 225, y: 65, label: '$q_0$', initial: true, initialDirection: 'top', r: 22, labelWidth: 60 },
+{ id: 'q1', x: 75, y: 65, label: '$q_1$', accepting: true, r: 22, labelWidth: 60, stroke: '#2563eb' },
+{ id: 'q2', x: 375, y: 65, label: '$q_2$', accepting: true, r: 22, labelWidth: 60, stroke: '#dc2626' }
+]"
+:transitions="[
+{ source: 'q0', target: 'q0', label: '$true$', loopDirection: '90deg', labelY: 8, labelWidth: 50 },
+{ source: 'q0', target: 'q1', label: '$crit_1$', labelY: 12, labelWidth: 70, curve: -0.18 },
+{ source: 'q1', target: 'q0', label: '$true$', labelY: -12, labelWidth: 50, curve: -0.18 },
+{ source: 'q0', target: 'q2', label: '$crit_2$', labelY: -12, labelWidth: 70, curve: -0.18 },
+{ source: 'q2', target: 'q0', label: '$true$', labelY: 12, labelWidth: 50, curve: -0.18 }
+]"
 />
 </div>
 
-<div class="text-right text-[21px] leading-relaxed">
-הדרישה:
-<div class="mt-3 text-center text-[25px]" dir="ltr">
+<div class="w-[860px] max-w-full flex flex-col gap-2 text-[15px] leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-2.5">
+<div class="font-bold text-blue-700 mb-1">הדרישה:</div>
+אינסוף פעמים בקר בקטע הקריטי הראשון <b>וגם</b> אינסוף פעמים בשני:
+<div class="mt-1 text-center text-[19px]" dir="ltr">
 <KatexInline display math="\text{Always Eventually }crit_1 \;\land\; \text{Always Eventually }crit_2" />
 </div>
-תנאי הקבלה:
-<div class="mt-3 text-center text-[25px]" dir="ltr">
-<KatexInline display math="\mathcal{F}=\{\{q_1\},\{q_2\}\}" />
+</div>
+
+<div class="bg-purple-50 border border-purple-200 rounded p-2.5">
+<div class="font-bold text-purple-700 mb-1">תנאי הקבלה (Generalized Büchi):</div>
+שתי קבוצות קבלה נפרדות, <span class="text-blue-700 font-semibold"><KatexInline math="F_1" /></span> ו־<span class="text-red-600 font-semibold"><KatexInline math="F_2" /></span>, שצריך לבקר בכל אחת מהן אינסוף פעמים:
+<div class="mt-1 text-center text-[19px]" dir="ltr">
+<KatexInline display math="\mathcal{F} = \{ \textcolor{#2563eb}{F_1}, \textcolor{#dc2626}{F_2} \} = \{ \{ \textcolor{#2563eb}{q_1} \}, \{ \textcolor{#dc2626}{q_2} \} \}" />
+</div>
 </div>
 </div>
 </div>
@@ -661,31 +668,106 @@ info: |
 
 # הבנייה הפורמלית
 
-<div class="mt-4 text-right text-[20px] leading-snug">
+<div class="mt-3 text-right text-[16px] leading-snug">
 יהי <span dir="ltr"><KatexInline math="\mathcal{G}=\langle Q,\Sigma,\delta,Q_0,\{F_1,\ldots,F_k\}\rangle" /></span>.
 נבנה <span dir="ltr"><KatexInline math="\mathcal{A}" /></span> שקול:
 </div>
 
-<div class="grid grid-cols-2 gap-4 mt-5 text-right text-[18px] leading-snug">
-<div class="bg-slate-50 border border-slate-200 rounded p-4">
-<div class="font-bold mb-2">מצבים והתחלה</div>
-<div class="text-center text-[23px]" dir="ltr">
+<div class="grid grid-cols-2 gap-4 mt-4 text-right text-[14px] leading-snug">
+<div class="bg-slate-50 border border-slate-200 rounded p-3">
+<div class="font-bold mb-1">מצבים והתחלה</div>
+<div class="text-center text-[17px]" dir="ltr">
 <KatexInline display math="Q_\mathcal{A}=Q\times\{1,\ldots,k\}" />
 <KatexInline display math="Q_{0,\mathcal{A}}=Q_0\times\{1\}" />
 </div>
 </div>
 
-<div class="bg-slate-50 border border-slate-200 rounded p-4">
-<div class="font-bold mb-2">קבלה</div>
-<div class="text-center text-[23px]" dir="ltr">
+<div class="bg-slate-50 border border-slate-200 rounded p-3">
+<div class="font-bold mb-1">קבלה</div>
+<div class="text-center text-[17px]" dir="ltr">
 <KatexInline display math="F_\mathcal{A}=F_1\times\{1\}" />
 </div>
 </div>
 </div>
 
-<div class="mt-5 text-center text-[24px]" dir="ltr">
-<KatexInline display math="(q,i)\xrightarrow{a}(q',j)\quad\text{if}\quad q'\in\delta(q,a)" />
+<div class="mt-4 text-center text-[18px]" dir="ltr">
+<KatexInline display math="\langle q,i\rangle\xrightarrow{a}\langle q',j\rangle\quad\text{if}\quad q'\in\delta(q,a)" />
 <KatexInline display math="j=\begin{cases} i & q\notin F_i\\ i\bmod k+1 & q\in F_i\end{cases}" />
+</div>
+
+---
+
+# דוגמה לבנייה: מ־<span dir="ltr">GNBA</span> ל־<span dir="ltr">NBA</span>
+
+<div class="grid grid-cols-[0.8fr_1.2fr] gap-4 mt-2 text-right">
+<div class="flex flex-col gap-3">
+<div class="bg-blue-50 border border-blue-200 rounded p-3 text-[14px]">
+<span class="font-bold text-blue-700">GNBA המקור (שני תנאי קבלה):</span>
+<div class="mt-1 text-xs text-gray-700">
+<KatexInline math="F_1=\{q_1\}" /> (כחול), <KatexInline math="F_2=\{q_2\}" /> (אדום).
+</div>
+<div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
+<AutomatonD3 variant="classic" :width="230" :height="90" :arrowSize="3.5" :stateLabelFontSize="11" :transitionLabelFontSize="9"
+:states="[
+  { id: 'q0', x: 115, y: 45, label: '$q_0$', initial: true, initialDirection: 'top', r: 15, labelWidth: 40 },
+  { id: 'q1', x: 30, y: 45, label: '$q_1$', accepting: true, r: 15, labelWidth: 40, stroke: '#2563eb' },
+  { id: 'q2', x: 200, y: 45, label: '$q_2$', accepting: true, r: 15, labelWidth: 40, stroke: '#dc2626' }
+]"
+:transitions="[
+  { source: 'q0', target: 'q0', label: '$true$', loopDirection: '90deg', labelY: 6, labelWidth: 25 },
+  { source: 'q0', target: 'q1', label: '$crit_1$', labelY: 8, labelWidth: 35, curve: -0.15 },
+  { source: 'q1', target: 'q0', label: '$true$', labelY: -8, labelWidth: 25, curve: -0.15 },
+  { source: 'q0', target: 'q2', label: '$crit_2$', labelY: -8, labelWidth: 35, curve: -0.15 },
+  { source: 'q2', target: 'q0', label: '$true$', labelY: 8, labelWidth: 25, curve: -0.15 }
+]"
+/>
+</div>
+</div>
+
+<div class="bg-gray-50 border border-gray-200 rounded p-3 text-[12.5px] leading-snug">
+<strong>שים לב לחוק המעבר:</strong>
+<ul class="list-disc list-inside mt-1 space-y-1">
+<li>בביקור ב־<KatexInline math="q_1" /> בעותק 1: עוברים לעותק 2 (כי <KatexInline math="q_1 \in F_1" />).</li>
+<li>בביקור ב־<KatexInline math="q_2" /> בעותק 2: חוזרים לעותק 1 (כי <KatexInline math="q_2 \in F_2" />).</li>
+<li>בשאר המקרים נשארים באותו העותק.</li>
+</ul>
+</div>
+</div>
+
+<div class="bg-purple-50 border border-purple-200 rounded p-3 text-[14px]">
+<span class="font-bold text-purple-700">ה־NBA השקול (שני עותקים):</span>
+<div class="mt-1 text-xs text-gray-700">
+קבוצת הקבלה ב־NBA היא רק העותק הראשון של <KatexInline math="F_1" />, כלומר <KatexInline math="F_{\mathcal{A}} = \{\langle q_1,1\rangle\}" /> (מסומן בכחול).
+</div>
+<div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
+<AutomatonD3 variant="classic" :width="450" :height="230" :arrowSize="4" :stateLabelFontSize="11" :transitionLabelFontSize="10"
+:states="[
+  { id: 's1_q1', x: 60, y: 55, label: '$\\langle q_1,1\\rangle$', accepting: true, r: 20, labelWidth: 60, stroke: '#2563eb' },
+  { id: 's1_q0', x: 220, y: 55, label: '$\\langle q_0,1\\rangle$', initial: true, initialDirection: 'top', r: 20, labelWidth: 60 },
+  { id: 's1_q2', x: 380, y: 55, label: '$\\langle q_2,1\\rangle$', r: 20, labelWidth: 60 },
+  
+  { id: 's2_q1', x: 60, y: 175, label: '$\\langle q_1,2\\rangle$', r: 20, labelWidth: 60 },
+  { id: 's2_q0', x: 220, y: 175, label: '$\\langle q_0,2\\rangle$', r: 20, labelWidth: 60 },
+  { id: 's2_q2', x: 380, y: 175, label: '$\\langle q_2,2\\rangle$', r: 20, labelWidth: 60, stroke: '#dc2626' }
+]"
+:transitions="[
+  { source: 's1_q0', target: 's1_q0', label: '$true$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
+  { source: 's1_q0', target: 's1_q1', label: '$crit_1$', labelY: 10, labelWidth: 35, curve: -0.15 },
+  { source: 's1_q0', target: 's1_q2', label: '$crit_2$', labelY: -10, labelWidth: 35, curve: -0.15 },
+  { source: 's1_q2', target: 's1_q0', label: '$true$', labelY: 10, labelWidth: 30, curve: -0.15 },
+  
+  { source: 's1_q1', target: 's2_q0', label: '$true$', labelY: 12, labelWidth: 30, curve: 0 },
+  
+  { source: 's2_q0', target: 's2_q0', label: '$true$', loopDirection: '270deg', labelY: 8, labelWidth: 30 },
+  { source: 's2_q0', target: 's2_q1', label: '$crit_1$', labelY: -10, labelWidth: 35, curve: -0.15 },
+  { source: 's2_q1', target: 's2_q0', label: '$true$', labelY: 10, labelWidth: 30, curve: -0.15 },
+  { source: 's2_q0', target: 's2_q2', label: '$crit_2$', labelY: 10, labelWidth: 35, curve: -0.15 },
+  
+  { source: 's2_q2', target: 's1_q0', label: '$true$', labelY: -12, labelWidth: 30, curve: 0 }
+]"
+/>
+</div>
+</div>
 </div>
 
 ---
@@ -726,13 +808,16 @@ info: |
 <div class="grid grid-cols-2 gap-5 mt-5 text-right text-[19px] leading-snug">
 <div class="bg-blue-50 border border-blue-200 rounded p-5">
 <div class="font-bold text-blue-700 mb-2">המכפלה</div>
-המצבים הם זוגות <KatexInline math="Q_1\times Q_2" /> והמעברים מתקדמים בשני האוטומטים יחד.
+המצבים הם זוגות <KatexInline math="Q_1\times Q_2" /> והמעברים מתקדמים בשני האוטומטים יחד:
+<div class="mt-2 text-center text-[16px]" dir="ltr">
+<KatexInline display math="\delta(\langle q_1, q_2\rangle, a) = \delta_1(q_1, a) \times \delta_2(q_2, a)" />
+</div>
 </div>
 
 <div class="bg-purple-50 border border-purple-200 rounded p-5">
 <div class="font-bold text-purple-700 mb-2">תנאי הקבלה</div>
 לוקחים את כל התנאים משני הצדדים:
-<div class="mt-2 text-center" dir="ltr">
+<div class="mt-2 text-center text-[13px]" dir="ltr">
 <KatexInline display math="\mathcal{F}=\{F\times Q_2\mid F\in\mathcal{F}_1\}\cup\{Q_1\times F\mid F\in\mathcal{F}_2\}" />
 </div>
 </div>
@@ -744,7 +829,7 @@ info: |
 
 <div class="grid grid-cols-3 gap-4 mt-8 text-right text-[18px] leading-snug">
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
-<div class="font-bold text-blue-700 mb-2">1. בונים GNBA</div>
+<div class="font-bold text-blue-700 mb-2">1. בונים את GNBA המכפלה</div>
 המכפלה שומרת את כל תנאי הקבלה של שני האוטומטים.
 </div>
 
@@ -757,6 +842,105 @@ info: |
 <div class="font-bold text-orange-700 mb-2">3. מקבלים סגירות לחיתוך</div>
 כך מקבלים אוטומט Büchi רגיל לשפה
 <span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_1)\cap L_\omega(\mathcal{A}_2)" /></span>.
+</div>
+</div>
+
+<div class="mt-5 bg-gray-50 border border-gray-200 rounded p-4 text-right text-[15px] leading-snug">
+<div class="font-bold text-gray-700 mb-1">דוגמה למסלול הבנייה:</div>
+נניח שרוצים לחתוך את השפות מעל <KatexInline math="\Sigma=\{a,b\}" />:
+<ul class="list-disc list-inside mr-2">
+<li><KatexInline math="L_1" />: "אינסוף <KatexInline math="a" />-ים" (עם תנאי קבלה <KatexInline math="F_1" />)</li>
+<li><KatexInline math="L_2" />: "אינסוף <KatexInline math="b" />-ים" (עם תנאי קבלה <KatexInline math="F_2" />)</li>
+</ul>
+<div class="mt-2">
+<strong>שלב 1:</strong> בונים את GNBA המכפלה <KatexInline math="\mathcal{G} = \mathcal{A}_1 \times \mathcal{A}_2" /> עם שני תנאי קבלה: <KatexInline math="\mathcal{F} = \{F_1 \times Q_2, Q_1 \times F_2\}" />.
+<br/>
+<strong>שלב 2:</strong> משכפלים לשני עותקים של המכפלה. מעבר מראשון לשני בביקור ב־<KatexInline math="F_1 \times Q_2" />, ובחזרה לראשון בביקור ב־<KatexInline math="Q_1 \times F_2" />.
+<br/>
+<strong>שלב 3:</strong> מקבלים NBA שבו קבוצת הקבלה היא העותק הראשון של <KatexInline math="F_1 \times Q_2" />.
+</div>
+</div>
+
+---
+
+# דוגמה לחיתוך: אינסוף <span dir="ltr">a</span>-ים ואינסוף <span dir="ltr">b</span>-ים
+
+<div class="grid grid-cols-2 gap-4 mt-3 text-right">
+<div class="flex flex-col gap-4">
+<div class="bg-blue-50 border border-blue-200 rounded p-3 text-[14px]">
+<span class="font-bold text-blue-700">האוטומט <KatexInline math="\mathcal{A}_1" /> (אינסוף <KatexInline math="a" />-ים):</span>
+<div class="flex justify-center mt-1 bg-white rounded border border-slate-100 p-1">
+<AutomatonD3 variant="classic" :width="320" :height="100" :arrowSize="4" :stateLabelFontSize="13" :transitionLabelFontSize="11"
+:states="[
+  { id: 'q0', x: 80, y: 30, label: '$q_0$', initial: true, initialDirection: 'left', r: 18, labelWidth: 30 },
+  { id: 'q1', x: 220, y: 30, label: '$q_1$', accepting: true, r: 18, labelWidth: 50 }
+]"
+:transitions="[
+  { source: 'q0', target: 'q0', label: '$b$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
+  { source: 'q0', target: 'q1', label: '$a$', labelY: -10, labelWidth: 30, curve: -0.15 },
+  { source: 'q1', target: 'q1', label: '$a$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
+  { source: 'q1', target: 'q0', label: '$b$', labelY: 12, labelWidth: 30, curve: -0.15 }
+]"
+/>
+</div>
+</div>
+
+<div class="bg-red-50 border border-red-200 rounded p-3 text-[14px]">
+<span class="font-bold text-red-700">האוטומט <KatexInline math="\mathcal{A}_2" /> (אינסוף <KatexInline math="b" />-ים):</span>
+<div class="flex justify-center mt-1 bg-white rounded border border-slate-100 p-1">
+<AutomatonD3 variant="classic" :width="320" :height="100" :arrowSize="4" :stateLabelFontSize="13" :transitionLabelFontSize="11"
+:states="[
+  { id: 'p0', x: 80, y: 30, label: '$p_0$', initial: true, initialDirection: 'left', r: 18, labelWidth: 30 },
+  { id: 'p1', x: 220, y: 30, label: '$p_1$', accepting: true, r: 18, labelWidth: 50 }
+]"
+:transitions="[
+  { source: 'p0', target: 'p0', label: '$a$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
+  { source: 'p0', target: 'p1', label: '$b$', labelY: -10, labelWidth: 30, curve: -0.15 },
+  { source: 'p1', target: 'p1', label: '$b$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
+  { source: 'p1', target: 'p0', label: '$a$', labelY: 12, labelWidth: 30, curve: -0.15 }
+]"
+/>
+</div>
+</div>
+</div>
+
+<div class="bg-purple-50 border border-purple-200 rounded p-4 text-[14px] flex flex-col justify-between">
+<div>
+<span class="font-bold text-purple-700">GNBA המכפלה <KatexInline math="\mathcal{G} = \mathcal{A}_1 \times \mathcal{A}_2" />:</span>
+<div class="text-[12px] text-gray-600 mt-1">
+מצבי המכפלה ותנאי הקבלה (שים לב ש־<KatexInline math="\langle q_1,p_1\rangle" /> אינו נגיש).
+</div>
+</div>
+<div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
+<AutomatonD3 variant="classic" :width="400" :height="220" :arrowSize="4" :stateLabelFontSize="12" :transitionLabelFontSize="11"
+:states="[
+  { id: 's00', x: 90,  y: 40, label: '$\\langle q_0,p_0\\rangle$', initial: true, initialDirection: 'left', r: 24, labelWidth: 80 },
+  { id: 's10', x: 290, y: 40, label: '$\\langle q_1,p_0\\rangle$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb' },
+  { id: 's01', x: 90,  y: 180, label: '$\\langle q_0,p_1\\rangle$', accepting: true, r: 24, labelWidth: 80, stroke: '#dc2626' },
+  { id: 's11', x: 290, y: 180, label: '$\\langle q_1,p_1\\rangle$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb', innerStroke: '#dc2626' }
+]"
+:transitions="[
+  { source: 's00', target: 's10', label: '$a$', labelY: -10, labelWidth: 30 },
+  { source: 's00', target: 's01', label: '$b$', labelX: -12, labelWidth: 30 },
+  { source: 's10', target: 's10', label: '$a$', loopDirection: '0deg', labelX: 8, labelWidth: 30 },
+  { source: 's10', target: 's01', label: '$b$', labelX: -12, labelWidth: 30, curve: 0.2 },
+  { source: 's01', target: 's01', label: '$b$', loopDirection: '180deg', labelX: -8, labelWidth: 30 },
+  { source: 's01', target: 's10', label: '$a$', labelY: -15, labelWidth: 30, curve: 0.2 },
+  { source: 's11', target: 's10', label: '$a$', labelX: 12, labelWidth: 30 },
+  { source: 's11', target: 's01', label: '$b$', labelY: 12, labelWidth: 30 }
+]"
+/>
+</div>
+<div class="mt-2 text-[12px] text-gray-700 leading-tight">
+<strong>קבוצות הקבלה:</strong>
+<ul class="list-disc list-inside mr-1 mt-1">
+<li>קבוצה ראשונה (כחול): <KatexInline math="F_1 \times Q_2 = \{\langle q_1, p_0\rangle, \langle q_1, p_1\rangle\}" /></li>
+<li>קבוצה שנייה (אדום): <KatexInline math="Q_1 \times F_2 = \{\langle q_0, p_1\rangle, \langle q_1, p_1\rangle\}" /></li>
+</ul>
+המצב <KatexInline math="\langle q_1, p_1\rangle" /> (מוקף בכחול ואדום) שייך לשתי הקבוצות. 
+<br/>
+ריצה מקבלת חייבת לבקר בשתיהן אינסוף פעמים.
+</div>
 </div>
 </div>
 

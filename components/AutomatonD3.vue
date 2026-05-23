@@ -58,7 +58,7 @@
           <circle v-if="state.accepting"
                   :cx="state.x" :cy="state.y" :r="state.r - 6"
                   fill="none"
-                  :stroke="state.stroke"
+                  :stroke="state.innerStroke"
                   :stroke-width="Math.max(1.6, state.strokeWidth - 0.4)" />
           <foreignObject :x="state.x - state.labelWidth / 2"
                          :y="state.y - state.labelHeight / 2"
@@ -118,6 +118,7 @@ interface AutomatonState {
   initialStrokeWidth?: number;
   fill?: string;
   stroke?: string;
+  innerStroke?: string;
   strokeWidth?: number;
   shadow?: boolean;
   textColor?: string;
@@ -187,6 +188,7 @@ const normalizedStates = computed(() => props.states.map((state) => ({
   r: state.r ?? 34,
   fill: state.fill ?? (isClassic.value ? '#fff9c4' : props.defaultStateFill),
   stroke: state.stroke ?? defaultStroke.value,
+  innerStroke: state.innerStroke ?? state.stroke ?? defaultStroke.value,
   strokeWidth: state.strokeWidth ?? (isClassic.value ? 1.6 : 2.2),
   shadow: state.shadow ?? (isClassic.value || props.defaultStateShadow),
   textColor: state.textColor ?? '#111827',
@@ -207,6 +209,7 @@ const uniqueColors = computed(() => {
   const colors = new Set<string>([defaultStroke.value]);
   props.states.forEach((state) => {
     if (state.stroke) colors.add(state.stroke);
+    if (state.innerStroke) colors.add(state.innerStroke);
     if (state.initialStroke) colors.add(state.initialStroke);
   });
   props.transitions.forEach((transition) => {
