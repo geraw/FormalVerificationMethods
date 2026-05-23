@@ -257,7 +257,7 @@ info: |
     </div>
 
     <!-- Nondeterminism Arrow Overlay -->
-    <div class="absolute z-10 top-[102px] left-[55px] -rotate-[12deg] bg-red-600 text-white font-bold py-1 px-3 text-[12px] shadow-md rounded border border-red-700">
+    <div v-click class="absolute z-10 top-[102px] left-[55px] -rotate-[12deg] bg-red-600 text-white font-bold py-1 px-3 text-[12px] shadow-md rounded border border-red-700">
       ◀ בחירה לא דטרמיניסטית
     </div>
 
