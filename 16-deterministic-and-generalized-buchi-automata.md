@@ -700,6 +700,23 @@ info: |
 # דוגמה לבנייה: מ־<span dir="ltr">GNBA</span> ל־<span dir="ltr">NBA</span>
 
 <div class="grid grid-cols-[0.8fr_1.2fr] gap-4 mt-2 text-right">
+<!-- Left Column: Steps of the construction -->
+<div class="bg-gray-50 border border-gray-200 rounded p-3 text-[11px] leading-snug">
+<ul class="list-disc list-inside space-y-1">
+  <li><strong>שלב 1: כותבים שני עותקים עצמאיים.</strong> כל עותק מכיל את כל המצבים והמעברים המקוריים ללא מעברים ביניהם (שני עותקים זהים).</li>
+  <li v-click="1" :class="{ 'text-blue-700 font-semibold': $clicks === 1 }"><strong>שלב 2: מעברים מ־<KatexInline math="q_1" /> לעותק השני.</strong> במעבר מ־<KatexInline math="q_1" /> בעותק הראשון (שנמצא ב־<KatexInline math="F_1" />), במקום להיכנס למצב הבא בעותק הראשון, נכנסים אליו בעותק השני.</li>
+  <li v-click="2" :class="{ 'text-red-700 font-semibold': $clicks === 2 }"><strong>שלב 3: מעברים מ־<KatexInline math="q_2" /> לעותק הראשון.</strong> במעבר מ־<KatexInline math="q_2" /> בעותק השני (שנמצא ב־<KatexInline math="F_2" />), במקום להיכנס למצב הבא בעותק השני, חוזרים לעותק הראשון.</li>
+  <li v-click="3" :class="{ 'text-emerald-700 font-semibold': $clicks >= 3 }"><strong>שלב 4: קביעת המצבים המקבלים ב־NBA.</strong> מסמנים כקבוצת הקבלה החדשה רק את העותק הראשון של <KatexInline math="F_1" />, כלומר <KatexInline math="F_{\mathcal{A}} = \{\langle q_1,1\rangle\}" /> (צבוע בשחור, בעוד העותק השני מאבד את סימון הקבלה).</li>
+</ul>
+<div class="mt-2 text-xs text-gray-500 font-medium">
+  <span v-if="$clicks === 0">לחצו על המצגת כדי להעביר את המעברים מ־<KatexInline math="q_1" />...</span>
+  <span v-else-if="$clicks === 1">לחצו כדי להעביר את המעברים מ־<KatexInline math="q_2" />...</span>
+  <span v-else-if="$clicks === 2">לחצו כדי לסמן את מצבי הקבלה...</span>
+  <span v-else>הבנייה הושלמה! 🎉</span>
+</div>
+</div>
+
+<!-- Right Column: Automata (GNBA above NBA) -->
 <div class="flex flex-col gap-3">
 <div class="bg-blue-50 border border-blue-200 rounded p-3 text-[14px]">
 <span class="font-bold text-blue-700">GNBA המקור (שני תנאי קבלה):</span>
@@ -721,22 +738,6 @@ info: |
   { source: 'q2', target: 'q0', label: '$true$', labelY: 8, labelWidth: 25, curve: -0.15 }
 ]"
 />
-</div>
-</div>
-
-<div class="bg-gray-50 border border-gray-200 rounded p-3 text-[12.5px] leading-snug">
-<ul class="list-disc list-inside space-y-1">
-  <li><strong>שלב 1: כותבים שני עותקים עצמאיים.</strong> כל עותק מכיל את כל המצבים והמעברים המקוריים ללא מעברים ביניהם (שני עותקים זהים).</li>
-  <li v-click="1" :class="{ 'text-blue-700 font-semibold': $clicks === 1 }"><strong>שלב 2: מעברים מ־<KatexInline math="q_1" /> לעותק השני.</strong> במעבר מ־<KatexInline math="q_1" /> בעותק הראשון (שנמצא ב־<KatexInline math="F_1" />), במקום להיכנס למצב הבא בעותק הראשון, נכנסים אליו בעותק השני.</li>
-  <li v-click="2" :class="{ 'text-red-700 font-semibold': $clicks === 2 }"><strong>שלב 3: מעברים מ־<KatexInline math="q_2" /> לעותק הראשון.</strong> במעבר מ־<KatexInline math="q_2" /> בעותק השני (שנמצא ב־<KatexInline math="F_2" />), במקום להיכנס למצב הבא בעותק השני, חוזרים לעותק הראשון.</li>
-  <li v-click="3" :class="{ 'text-emerald-700 font-semibold': $clicks >= 3 }"><strong>שלב 4: קביעת המצבים המקבלים ב־NBA.</strong> מסמנים כקבוצת הקבלה החדשה רק את העותק הראשון של <KatexInline math="F_1" />, כלומר <KatexInline math="F_{\mathcal{A}} = \{\langle q_1,1\rangle\}" /> (צבוע בשחור, בעוד העותק השני מאבד את סימון הקבלה).</li>
-</ul>
-<div class="mt-2 text-xs text-gray-500 font-medium">
-  <span v-if="$clicks === 0">לחצו על המצגת כדי להעביר את המעברים מ־<KatexInline math="q_1" />...</span>
-  <span v-else-if="$clicks === 1">לחצו כדי להעביר את המעברים מ־<KatexInline math="q_2" />...</span>
-  <span v-else-if="$clicks === 2">לחצו כדי לסמן את מצבי הקבלה...</span>
-  <span v-else>הבנייה הושלמה! 🎉</span>
-</div>
 </div>
 </div>
 
@@ -770,6 +771,7 @@ info: |
   ...($clicks >= 2 ? [{ source: 's2_q2', target: 's1_q0', label: '$true$', labelY: -12, labelWidth: 30, curve: 0, stroke: $clicks === 2 ? '#dc2626' : '#6b7280', strokeWidth: $clicks === 2 ? 3 : 1.6, labelColor: $clicks === 2 ? '#dc2626' : '#6b7280' }] : [])
 ]"
 />
+</div>
 </div>
 </div>
 </div>
