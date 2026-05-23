@@ -348,31 +348,46 @@ info: |
 נוכיח שגם <KatexInline math="L_\omega(\mathcal{A}_1)=L_\omega(\mathcal{A}_2)" />.
 </div>
 
-<div class="mt-3 mx-auto w-[820px] rounded border border-slate-200 bg-white px-5 py-3 shadow-sm" dir="ltr">
-<div class="grid grid-cols-[1fr_auto_1fr] gap-x-4 gap-y-2 items-center text-[21px]">
-<div v-click class="text-right"><KatexInline math="w\in L_\omega(\mathcal{A}_1)" /></div>
-<div v-click class="text-slate-500">⇕</div>
-<div v-click class="text-left text-[15px] text-slate-600" dir="rtl">הגדרת קבלת Büchi באוטומט דטרמיניסטי</div>
+<div class="mt-3 mx-auto w-[860px] rounded border border-slate-200 bg-white px-5 py-3 shadow-sm" dir="ltr">
+<div class="flex flex-col items-center gap-0 text-center">
+<div v-click="1" class="text-[22px]"><KatexInline math="w\in L_\omega(\mathcal{A}_1)" /></div>
 
-<div v-click class="text-right"><KatexInline math="\underset{\infty}{\exists} i\ \left(w[0..i]\in L(\mathcal{A}_1)\right)" /></div>
-<div v-click class="text-slate-500">⇕</div>
-<div v-click class="text-left text-[15px] text-rose-700 font-bold" dir="rtl">מההנחה <KatexInline math="L(\mathcal{A}_1)=L(\mathcal{A}_2)" /></div>
-
-<div v-click class="text-right"><KatexInline math="\underset{\infty}{\exists} i\ \left(w[0..i]\in L(\mathcal{A}_2)\right)" /></div>
-<div v-click class="text-slate-500">⇕</div>
-<div v-click class="text-left text-[15px] text-slate-600" dir="rtl">שוב הגדרת קבלת Büchi</div>
-
-<div v-click class="text-right"><KatexInline math="w\in L_\omega(\mathcal{A}_2)" /></div>
-<div></div>
-<div></div>
+<div class="relative h-[31px] w-[640px]">
+<div v-click="2" class="absolute left-1/2 top-0 -translate-x-1/2 text-[26px] leading-none text-slate-500">⇕</div>
+<div v-click="3" class="absolute left-[10px] top-[6px] w-[285px] text-[14px] text-slate-600 leading-tight text-right" dir="rtl">
+הגדרת קבלת Büchi
+<span v-click="9" class="text-amber-700 font-bold"> באוטומט דטרמיניסטי</span>
 </div>
 </div>
 
-<div v-click class="mt-3 rounded border border-amber-200 bg-amber-50 px-5 py-2 text-right text-[17px] leading-snug font-bold text-amber-800">
-איפה השתמשנו בדטרמיניזם?
+<div v-click="2" class="text-[20px]"><KatexInline math="\underset{\infty}{\exists} i\ \left(w[0..i]\in L(\mathcal{A}_1)\right)" /></div>
+
+<div class="relative h-[31px] w-[640px]">
+<div v-click="4" class="absolute left-1/2 top-0 -translate-x-1/2 text-[26px] leading-none text-rose-700">⇕</div>
+<div v-click="5" class="absolute left-[30px] top-[6px] w-[260px] text-[14px] text-rose-700 font-bold leading-tight text-right" dir="rtl">
+מההנחה <KatexInline math="L(\mathcal{A}_1)=L(\mathcal{A}_2)" />
+</div>
 </div>
 
-<div v-click class="mt-2 rounded border border-amber-200 bg-amber-50 px-5 py-2 text-right text-[16px] leading-snug">
+<div v-click="4" class="text-[20px]"><KatexInline math="\underset{\infty}{\exists} i\ \left(w[0..i]\in L(\mathcal{A}_2)\right)" /></div>
+
+<div class="relative h-[31px] w-[640px]">
+<div v-click="6" class="absolute left-1/2 top-0 -translate-x-1/2 text-[26px] leading-none text-slate-500">⇕</div>
+<div v-click="7" class="absolute left-[-30px] top-[6px] w-[330px] text-[14px] text-slate-600 leading-tight text-right" dir="rtl">
+שוב הגדרת קבלת Büchi
+<span v-click="9" class="text-amber-700 font-bold"> באוטומט דטרמיניסטי</span>
+</div>
+</div>
+
+<div v-click="6" class="text-[22px]"><KatexInline math="w\in L_\omega(\mathcal{A}_2)" /></div>
+</div>
+</div>
+
+<div v-click="8" class="mt-3 rounded border border-amber-200 bg-amber-50 px-5 py-2 text-right text-[17px] leading-snug font-bold text-amber-800">
+איפה השתמשנו בנתון שהאוטומטים דטרמיניסטיים?
+</div>
+
+<div v-click="9" class="mt-2 rounded border border-amber-200 bg-amber-50 px-5 py-2 text-right text-[16px] leading-snug">
 באוטומט דטרמיניסטי יש ריצה יחידה על <KatexInline math="w" />. לכן “התחילית <KatexInline math="w[0..i]" /> מתקבלת” אומר בדיוק שהריצה היחידה נמצאת במצב מקבל בזמן <KatexInline math="i" />. באוטומט לא דטרמיניסטי תחיליות שונות יכולות להתקבל על ידי ריצות שונות, שלא בהכרח מתחברות לריצה אינסופית אחת.
 </div>
 
