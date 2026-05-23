@@ -935,22 +935,73 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 ---
 
+# דוגמה: שני מצבים מקבלים
+
+<div class="grid grid-cols-[0.72fr_1.18fr] gap-4 mt-5 items-center">
+<div class="bg-white rounded border border-slate-200 shadow-sm w-[350px] translate-x-10">
+<AutomatonD3 variant="classic" :width="350" :height="285" :arrowSize="3.4" :stateLabelFontSize="16" :transitionLabelFontSize="14"
+  :states="[
+    { id: 'q0', x: 65, y: 120, label: '$q_0$', initial: true, initialDirection: 'top', r: 25, labelWidth: 70 },
+    { id: 'q1', x: 195, y: 100, label: '$q_1$', accepting: true, r: 25, labelWidth: 70 },
+    { id: 'q2', x: 195, y: 205, label: '$q_2$', accepting: true, r: 25, labelWidth: 70 }
+  ]"
+  :transitions="[
+    { source: 'q0', target: 'q1', label: '$A$', labelY: -12 },
+    { source: 'q1', target: 'q1', label: '$A$', loopDirection: '-90deg', labelY: -10, labelWidth: 45 },
+    { source: 'q1', target: 'q2', label: '$B$', labelX: -14, labelWidth: 45, curve: 0.18 },
+    { source: 'q2', target: 'q2', label: '$B$', loopDirection: '90deg', labelY: 14, labelWidth: 45 },
+    { source: 'q2', target: 'q1', label: '$C$', labelX: 14, labelWidth: 45, curve: 0.18 }
+  ]"
+/>
+</div>
+
+<div class="text-right text-[16px] leading-snug space-y-1.5">
+<div v-click class="bg-blue-50 border border-blue-200 rounded p-2.5">
+עבור <KatexInline math="q_1" />:
+הרישא היא <KatexInline math="A" />, והלולאות הלא ריקות הן <KatexInline math="A" /> או <KatexInline math="BB^*C" />.
+
+<div class="mt-1 text-center text-[21px]" dir="ltr">
+<KatexInline display math="A(A+BB^*C)^\omega" />
+</div>
+</div>
+
+<div v-click class="bg-emerald-50 border border-emerald-200 rounded p-2.5">
+עבור <KatexInline math="q_2" />:
+הרישא היא <KatexInline math="AA^*B" />, והלולאות הלא ריקות הן <KatexInline math="B" /> או <KatexInline math="CA^*B" />.
+
+<div class="mt-1 text-center text-[21px]" dir="ltr">
+<KatexInline display math="AA^*B(B+CA^*B)^\omega" />
+</div>
+</div>
+
+<div v-click class="bg-purple-50 border border-purple-200 rounded p-2.5">
+לכן הביטוי שנבנה הוא סכום שני המחוברים:
+
+<div class="mt-1 text-center text-[20px]" dir="ltr">
+<KatexInline display math="A(A+BB^*C)^\omega+AA^*B(B+CA^*B)^\omega" />
+</div>
+</div>
+</div>
+</div>
+
+---
+
 # מביטוי לאוטומט: שלושת אבני הבניין
 
 <div class="grid grid-cols-3 gap-5 mt-8 text-right text-[19px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-5">
-<div class="font-bold text-blue-700 mb-3">1. איחוד</div>
-אם יש אוטומטים ל־<KatexInline math="L_1" /> ול־<KatexInline math="L_2" />, שמים אותם זה לצד זה ומאחדים מצבים התחלתיים.
-</div>
-
 <div class="bg-emerald-50 border border-emerald-200 rounded p-5">
-<div class="font-bold text-emerald-700 mb-3">2. אופרטור <KatexInline math="\omega" /></div>
+<div class="font-bold text-emerald-700 mb-3">1. אופרטור <KatexInline math="\omega" /></div>
 אם <KatexInline math="L" /> רגולרית ו־<KatexInline math="\epsilon\notin L" />, בונים <span dir="ltr">NBA</span> שמקבל <KatexInline math="L^\omega" />.
 </div>
 
 <div class="bg-orange-50 border border-orange-200 rounded p-5">
-<div class="font-bold text-orange-700 mb-3">3. שרשור</div>
+<div class="font-bold text-orange-700 mb-3">2. שרשור</div>
 אם <KatexInline math="L" /> רגולרית ו־<KatexInline math="\mathcal{A}" /> מקבל שפת Büchi, בונים אוטומט עבור <KatexInline math="L.L_\omega(\mathcal{A})" />.
+</div>
+
+<div class="bg-blue-50 border border-blue-200 rounded p-5">
+<div class="font-bold text-blue-700 mb-3">3. איחוד</div>
+אם יש אוטומטים ל־<KatexInline math="L_1" /> ול־<KatexInline math="L_2" />, שמים אותם זה לצד זה ומאחדים מצבים התחלתיים.
 </div>
 </div>
 
@@ -960,30 +1011,54 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 ---
 
-# אופרטור <KatexInline math="\omega" /> עבור <span dir="ltr">NFA</span>
+# אופרטור <KatexInline math="\omega" /> עבור <span dir="ltr">NFA</span> כשאין מעברים למצבי ההתחלה
 
-<div class="grid grid-cols-[0.95fr_1.05fr] gap-6 mt-5 items-center">
-<div class="text-right text-[21px] leading-relaxed">
-נתון <span dir="ltr">NFA</span> עבור <KatexInline math="L" /> ללא <KatexInline math="\epsilon" />.
-
-כדי לקבל <KatexInline math="L^\omega" />:
-
-- שומרים את כל המעברים.
-- כל מעבר שמגיע למצב מקבל מקבל גם עותקים אל מצבי ההתחלה.
-- מצבי ההתחלה הופכים למצבים המקבלים של ה־<span dir="ltr">NBA</span>.
+<div class="mt-2 text-center text-[20px]" dir="ltr">
+<KatexInline display math="\mathcal{A}=\langle Q,\Sigma,\delta,Q_0,F\rangle,\qquad \epsilon\notin L(\mathcal{A}), \qquad \forall q\in Q_0,\ \sigma \in \Sigma\;(\delta(q,\sigma)=\emptyset)" />
 </div>
 
-<div class="bg-white rounded border border-slate-200 shadow-sm">
-<AutomatonD3 variant="classic" :width="560" :height="250" :arrowSize="4.5" :stateLabelFontSize="16" :transitionLabelFontSize="14"
+<div class="grid grid-cols-[1fr_1fr] gap-4 mt-2 items-center">
+<div class="text-right text-[15px] leading-tight">
+נבנה אוטומט Büchi <KatexInline math="\mathcal{B}" /> עבור <KatexInline math="L^\omega" />.
+הכולל איפוס שיחזיר אותנו למצבי ההתחלה המקוריים.
+
+<div class="mt-1 text-center text-[17px]" dir="ltr">
+<KatexInline display math="\mathcal{B}=\langle Q,\Sigma,\delta',Q_0,Q_0\rangle" />
+</div>
+
+<div class="mt-2 space-y-2">
+<div v-click><span class="font-bold text-blue-700">1.</span> מתחילים מהאוטומט המקורי: למשל <KatexInline math="AB" /> מובילה מ־<KatexInline math="s" /> אל מצב מקבל, וגם <KatexInline math="ADE" />.</div>
+<div v-click><span class="font-bold text-emerald-700">2.</span> לכל מעבר שנכנס למצב מקבל מוסיפים גם מעבר איפוס להתחלה: למשל <KatexInline math="p\xrightarrow{B}s" />, <KatexInline math="f\xrightarrow{F}s" />, <KatexInline math="r\xrightarrow{E}s" />, <KatexInline math="g\xrightarrow{G}s" />.</div>
+<div v-click><span class="font-bold text-emerald-700">3.</span> מצבי ההתחלה הם מצבי הקבלה של Büchi: בכל פעם שמסתיים בלוק מתוך <KatexInline math="L" />, חוזרים להתחלה.
+<span class="mt-2 text-center text-[18px]" dir="ltr">
+<KatexInline math="F_{\mathcal{B}}=Q_0" />
+</span>.
+</div>
+</div>
+</div>
+
+<div class="bg-white rounded border border-slate-200 shadow-sm flex justify-center">
+<AutomatonD3 variant="classic" :width="560" :height="295" :arrowSize="3.8" :stateLabelFontSize="15" :transitionLabelFontSize="13"
   :states="[
-    { id: 's', x: 115, y: 125, label: '$s$', initial: true, initialDirection: 'right', accepting: true, r: 25, labelWidth: 70 },
-    { id: 'p', x: 285, y: 125, label: '$p$', r: 25, labelWidth: 70 },
-    { id: 'f', x: 455, y: 125, label: '$f$', r: 25, labelWidth: 70 }
+    { id: 's', x: 80, y: 148, label: '$s$', initial: true, initialDirection: 'top', accepting: $clicks >= 3, r: 23, labelWidth: 65, stroke: $clicks >= 3 ? '#16a34a' : undefined },
+    { id: 'p', x: 215, y: 92, label: '$p$', r: 23, labelWidth: 65 },
+    { id: 'r', x: 215, y: 202, label: '$r$', r: 23, labelWidth: 65 },
+    { id: 'f', x: 390, y: 92, label: '$f$', accepting: $clicks < 3, r: 23, labelWidth: 65, stroke: $clicks === 1 ? '#2563eb' : undefined },
+    { id: 'g', x: 390, y: 202, label: '$g$', accepting: $clicks < 3, r: 23, labelWidth: 65, stroke: $clicks === 1 ? '#2563eb' : undefined }
   ]"
   :transitions="[
-    { source: 's', target: 'p', label: '$u$', labelY: -10, labelWidth: 45 },
-    { source: 'p', target: 'f', label: '$v$', labelY: -10, labelWidth: 45 },
-    { source: 'p', target: 's', label: '$v$', labelY: 38, labelWidth: 45 }
+    { source: 's', target: 's', label: '$C$', loopDirection: '180deg', labelX: -12, labelWidth: 40 },
+    { source: 's', target: 'p', label: '$A$', labelY: -12, labelWidth: 40, curve: -0.18, stroke: $clicks === 1 ? '#2563eb' : undefined, strokeWidth: $clicks === 1 ? 3.2 : undefined, labelColor: $clicks === 1 ? '#2563eb' : undefined },
+    { source: 'p', target: 'f', label: '$B$', labelY: -12, labelWidth: 40, curve: -0.14, stroke: $clicks === 1 ? '#2563eb' : undefined, strokeWidth: $clicks === 1 ? 3.2 : undefined, labelColor: $clicks === 1 ? '#2563eb' : undefined },
+    { source: 'p', target: 'r', label: '$D$', labelX: -16, labelWidth: 40, curve: 0.18, stroke: $clicks === 1 ? '#2563eb' : undefined, strokeWidth: $clicks === 1 ? 3.2 : undefined, labelColor: $clicks === 1 ? '#2563eb' : undefined },
+    { source: 'r', target: 'g', label: '$E$', labelY: 12, labelWidth: 40, curve: 0.14, stroke: $clicks === 1 ? '#2563eb' : undefined, strokeWidth: $clicks === 1 ? 3.2 : undefined, labelColor: $clicks === 1 ? '#2563eb' : undefined },
+    { source: 'f', target: 'f', label: '$F$', loopDirection: '-90deg', labelY: -6, labelWidth: 40 },
+    { source: 'g', target: 'g', label: '$G$', loopDirection: '90deg', labelY: 6, labelWidth: 40 },
+    { source: 'f', target: 'r', label: '$C$', labelX: 20, labelWidth: 40, curve: 0.2 },
+    { source: 'p', target: 's', label: '$B$', labelY: -10, labelWidth: 40, curve: -0.20, stroke: $clicks >= 2 ? '#16a34a' : 'transparent', strokeWidth: $clicks >= 2 ? 3.2 : 1.6, labelColor: $clicks >= 2 ? '#16a34a' : 'transparent' },
+    { source: 'r', target: 's', label: '$E$', labelY: 12, labelWidth: 40, curve: -0.1, stroke: $clicks >= 2 ? '#16a34a' : 'transparent', strokeWidth: $clicks >= 2 ? 3.2 : 1.6, labelColor: $clicks >= 2 ? '#16a34a' : 'transparent' },
+    { source: 'f', target: 's', label: '$F$', labelY: -10, labelWidth: 40, curve: 0.52, stroke: $clicks >= 2 ? '#16a34a' : 'transparent', strokeWidth: $clicks >= 2 ? 3.2 : 1.6, labelColor: $clicks >= 2 ? '#16a34a' : 'transparent' },
+    { source: 'g', target: 's', label: '$G$', labelY: 12, labelWidth: 40, curve: -0.52, stroke: $clicks >= 2 ? '#16a34a' : 'transparent', strokeWidth: $clicks >= 2 ? 3.2 : 1.6, labelColor: $clicks >= 2 ? '#16a34a' : 'transparent' }
   ]"
 />
 </div>
