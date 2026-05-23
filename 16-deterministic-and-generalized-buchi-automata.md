@@ -743,9 +743,6 @@ info: |
 
 <div class="bg-purple-50 border border-purple-200 rounded p-3 text-[14px]">
 <span class="font-bold text-purple-700">ה־NBA השקול (שני עותקים):</span>
-<div class="mt-1 text-xs text-gray-700">
-קבוצת הקבלה ב־NBA היא רק העותק הראשון של <KatexInline math="F_1" />, כלומר <KatexInline math="F_{\mathcal{A}} = \{\langle q_1,1\rangle\}" /> (מסומן בכחול).
-</div>
 <div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
 <AutomatonD3 variant="classic" :width="380" :height="195" :arrowSize="4" :stateLabelFontSize="9" :transitionLabelFontSize="10"
 :states="[
