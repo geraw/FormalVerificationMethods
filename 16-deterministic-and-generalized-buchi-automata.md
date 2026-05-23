@@ -219,10 +219,10 @@ info: |
 
 # תזכורת: <span class="text-red-600">שקילות סופית</span> <KatexInline math="\not\Leftrightarrow" /> <span class="text-blue-600">שקילות <KatexInline math="\omega" /></span>
 
-<div class="grid grid-cols-[1fr_1.8fr_1fr] gap-4 mt-4 items-center text-right">
+<div class="grid grid-cols-[1.1fr_1.8fr_1.1fr] gap-4 mt-4 items-center text-right">
 <!-- Left Column: L_omega -->
 <div class="flex flex-col gap-6">
-<div class="bg-blue-50 border border-blue-200 rounded p-3 text-[14px] leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-2.5 text-[13px] leading-snug">
 <div class="font-bold text-blue-700 mb-1">שפת <KatexInline math="\omega" /> של <KatexInline math="\mathcal{A}_1" />:</div>
 כל המילים האינסופיות שבהן כל האותיות מכילות את <KatexInline math="a" />:
 <div class="mt-2 text-center text-blue-800" dir="ltr">
@@ -230,7 +230,7 @@ info: |
 </div>
 </div>
 
-<div class="bg-blue-50 border border-blue-200 rounded p-3 text-[14px] leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-2.5 text-[13px] leading-snug">
 <div class="font-bold text-blue-700 mb-1">שפת <KatexInline math="\omega" /> של <KatexInline math="\mathcal{A}_2" />:</div>
 אין אף ריצה אינסופית שמבקרת במצב המקבל אינסוף פעמים:
 <div class="mt-2 text-center text-blue-800" dir="ltr">
@@ -246,8 +246,8 @@ info: |
 <div class="text-[10px] text-slate-400 absolute top-2 right-4 font-mono"><KatexInline math="\mathcal{A}_1" /></div>
 <AutomatonD3 variant="classic" :width="320" :height="110" :arrowSize="4" :stateLabelFontSize="15" :transitionLabelFontSize="13"
 :states="[
-{ id: 's0', x: 80, y: 55, label: '', initial: true, initialDirection: 'left', r: 20 },
-{ id: 's1', x: 240, y: 55, label: '', accepting: true, r: 20 }
+{ id: 's0', x: 80, y: 55, label: '$s_0$', initial: true, initialDirection: 'left', r: 20 },
+{ id: 's1', x: 240, y: 55, label: '$s_1$', accepting: true, r: 20 }
 ]"
 :transitions="[
 { source: 's0', target: 's1', label: '$a$', labelY: -10, labelWidth: 40 },
@@ -256,18 +256,27 @@ info: |
 />
 </div>
 
-<!-- Nondeterminism Arrow Overlay -->
-<div v-click class="absolute z-10 top-[102px] left-[55px] -rotate-[12deg] bg-red-600 text-white font-bold py-1 px-3 text-[12px] shadow-md rounded border border-red-700">
-◀ בחירה לא דטרמיניסטית
-</div>
+<!-- Nondeterminism SVG Arrow Overlay -->
+<svg v-click="2" class="absolute z-20 top-0 left-0 w-[340px] h-[270px] pointer-events-none overflow-visible">
+<path d="M 230,120 L 105,185" stroke="#dc2626" stroke-width="5" marker-end="url(#arrow)" fill="none" />
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" />
+</marker>
+</defs>
+<g transform="translate(167, 152) rotate(-28)">
+<rect x="-80" y="-12" width="160" height="24" rx="4" fill="#dc2626" />
+<text x="0" y="4" fill="#ffffff" font-weight="bold" font-size="11" text-anchor="middle" font-family="sans-serif">בחירה לא דטרמיניסטית</text>
+</g>
+</svg>
 
 <!-- Automaton 2 -->
 <div class="bg-white rounded border border-slate-200 shadow-sm p-2 w-[340px]">
 <div class="text-[10px] text-slate-400 absolute bottom-2 right-4 font-mono"><KatexInline math="\mathcal{A}_2" /></div>
 <AutomatonD3 variant="classic" :width="320" :height="110" :arrowSize="4" :stateLabelFontSize="15" :transitionLabelFontSize="13"
 :states="[
-{ id: 's0', x: 80, y: 55, label: '', initial: true, initialDirection: 'left', r: 20 },
-{ id: 's1', x: 240, y: 55, label: '', accepting: true, r: 20 }
+{ id: 's0', x: 80, y: 55, label: '$s_0$', initial: true, initialDirection: 'left', r: 20 },
+{ id: 's1', x: 240, y: 55, label: '$s_1$', accepting: true, r: 20 }
 ]"
 :transitions="[
 { source: 's0', target: 's0', label: '$a$', loopDirection: '-90deg', labelY: -12, labelWidth: 40 },
@@ -279,7 +288,7 @@ info: |
 
 <!-- Right Column: L_finite -->
 <div class="flex flex-col gap-6">
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-[14px] leading-snug">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2.5 text-[13px] leading-snug">
 <div class="font-bold text-emerald-700 mb-1">שפה סופית של <KatexInline math="\mathcal{A}_1" />:</div>
 כל המילים הסופיות באורך גדול מ-0 שבהן כל האותיות הן <KatexInline math="a" />:
 <div class="mt-2 text-center text-emerald-800" dir="ltr">
@@ -287,7 +296,7 @@ info: |
 </div>
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-[14px] leading-snug">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2.5 text-[13px] leading-snug">
 <div class="font-bold text-emerald-700 mb-1">שפה סופית של <KatexInline math="\mathcal{A}_2" />:</div>
 אותה שפה בדיוק (מגיעים ל מצב המקבל אחרי סדרת מעברי <KatexInline math="a" />):
 <div class="mt-2 text-center text-emerald-800" dir="ltr">
@@ -297,7 +306,7 @@ info: |
 </div>
 </div>
 
-<div class="mt-6 flex justify-center gap-8 items-center text-[22px] font-semibold border-t border-slate-100 pt-4">
+<div v-click="1" class="mt-6 flex justify-center gap-8 items-center text-[22px] font-semibold border-t border-slate-100 pt-4">
 <div class="text-blue-700" dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_1) \neq L_\omega(\mathcal{A}_2)" /></div>
 <div class="text-slate-400">אבל</div>
 <div class="text-red-600" dir="ltr"><KatexInline math="L(\mathcal{A}_1) = L(\mathcal{A}_2)" /></div>
