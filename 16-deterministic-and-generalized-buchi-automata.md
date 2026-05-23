@@ -724,7 +724,7 @@ info: |
 <KatexInline math="F_1=\{q_1\}" /> (כחול), <KatexInline math="F_2=\{q_2\}" /> (אדום).
 </div>
 <div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
-<AutomatonD3 variant="classic" :width="230" :height="90" :arrowSize="3.5" :stateLabelFontSize="9" :transitionLabelFontSize="9"
+<AutomatonD3 variant="classic" :width="230" :height="90" :arrowSize="2.8" :stateLabelFontSize="9" :transitionLabelFontSize="9"
 :states="[
   { id: 'q0', x: 115, y: 45, label: '$q_0$', initial: true, initialDirection: 'top', r: 15, labelWidth: 40 },
   { id: 'q1', x: 30, y: 45, label: '$q_1$', accepting: true, r: 15, labelWidth: 40, stroke: '#2563eb' },
@@ -744,14 +744,14 @@ info: |
 <div class="bg-purple-50 border border-purple-200 rounded p-3 text-[14px]">
 <span class="font-bold text-purple-700">ה־NBA השקול (שני עותקים):</span>
 <div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
-<AutomatonD3 variant="classic" :width="380" :height="195" :arrowSize="4" :stateLabelFontSize="9" :transitionLabelFontSize="10"
+<AutomatonD3 variant="classic" :width="380" :height="195" :arrowSize="3.2" :stateLabelFontSize="9" :transitionLabelFontSize="10"
 :states="[
-  { id: 's1_q1', x: 50, y: 50, label: '$⟨q_1,1⟩$', accepting: true, r: 16, labelWidth: 60, stroke: $clicks >= 3 ? '#000000' : '#2563eb' },
-  { id: 's1_q0', x: 190, y: 50, label: '$⟨q_0,1⟩$', initial: true, initialDirection: 'top', r: 16, labelWidth: 60 },
-  { id: 's1_q2', x: 330, y: 50, label: '$⟨q_2,1⟩$', r: 16, labelWidth: 60 },
-  { id: 's2_q1', x: 50, y: 145, label: '$⟨q_1,2⟩$', r: 16, labelWidth: 60 },
-  { id: 's2_q0', x: 190, y: 145, label: '$⟨q_0,2⟩$', r: 16, labelWidth: 60 },
-  { id: 's2_q2', x: 330, y: 145, label: '$⟨q_2,2⟩$', accepting: $clicks < 3, r: 16, labelWidth: 60, stroke: $clicks >= 3 ? '#6b7280' : '#dc2626' }
+  { id: 's1_q1', x: 50, y: 50, label: '$⟨q_1,1⟩$', accepting: true, r: 18, labelWidth: 60, stroke: $clicks >= 3 ? '#000000' : '#2563eb' },
+  { id: 's1_q0', x: 190, y: 50, label: '$⟨q_0,1⟩$', initial: true, initialDirection: 'top', r: 18, labelWidth: 60 },
+  { id: 's1_q2', x: 330, y: 50, label: '$⟨q_2,1⟩$', r: 18, labelWidth: 60 },
+  { id: 's2_q1', x: 50, y: 145, label: '$⟨q_1,2⟩$', r: 18, labelWidth: 60 },
+  { id: 's2_q0', x: 190, y: 145, label: '$⟨q_0,2⟩$', r: 18, labelWidth: 60 },
+  { id: 's2_q2', x: 330, y: 145, label: '$⟨q_2,2⟩$', accepting: $clicks < 3, r: 18, labelWidth: 60, stroke: $clicks >= 3 ? '#6b7280' : '#dc2626' }
 ]"
 :transitions="[
   { source: 's1_q0', target: 's1_q0', label: '$true$', loopDirection: '90deg', loopRadius: 45, labelY: 6, labelWidth: 30 },
