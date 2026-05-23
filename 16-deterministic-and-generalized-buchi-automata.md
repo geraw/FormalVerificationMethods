@@ -731,7 +731,7 @@ info: |
   { id: 'q2', x: 200, y: 45, label: '$q_2$', accepting: true, r: 15, labelWidth: 40, stroke: '#dc2626' }
 ]"
 :transitions="[
-  { source: 'q0', target: 'q0', label: '$true$', loopDirection: '90deg', labelY: 6, labelWidth: 25 },
+  { source: 'q0', target: 'q0', label: '$true$', loopDirection: '90deg', loopRadius: 40, labelY: 6, labelWidth: 25 },
   { source: 'q0', target: 'q1', label: '$crit_1$', labelY: 8, labelWidth: 35, curve: -0.15 },
   { source: 'q1', target: 'q0', label: '$true$', labelY: -8, labelWidth: 25, curve: -0.15 },
   { source: 'q0', target: 'q2', label: '$crit_2$', labelY: -8, labelWidth: 35, curve: -0.15 },
@@ -747,23 +747,23 @@ info: |
 קבוצת הקבלה ב־NBA היא רק העותק הראשון של <KatexInline math="F_1" />, כלומר <KatexInline math="F_{\mathcal{A}} = \{\langle q_1,1\rangle\}" /> (מסומן בכחול).
 </div>
 <div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
-<AutomatonD3 variant="classic" :width="450" :height="230" :arrowSize="4" :stateLabelFontSize="11" :transitionLabelFontSize="10"
+<AutomatonD3 variant="classic" :width="380" :height="195" :arrowSize="4" :stateLabelFontSize="11" :transitionLabelFontSize="10"
 :states="[
-  { id: 's1_q1', x: 60, y: 55, label: '$⟨q_1,1⟩$', accepting: true, r: 20, labelWidth: 60, stroke: $clicks >= 3 ? '#000000' : '#2563eb' },
-  { id: 's1_q0', x: 220, y: 55, label: '$⟨q_0,1⟩$', initial: true, initialDirection: 'top', r: 20, labelWidth: 60 },
-  { id: 's1_q2', x: 380, y: 55, label: '$⟨q_2,1⟩$', r: 20, labelWidth: 60 },
-  { id: 's2_q1', x: 60, y: 175, label: '$⟨q_1,2⟩$', r: 20, labelWidth: 60 },
-  { id: 's2_q0', x: 220, y: 175, label: '$⟨q_0,2⟩$', r: 20, labelWidth: 60 },
-  { id: 's2_q2', x: 380, y: 175, label: '$⟨q_2,2⟩$', accepting: $clicks < 3, r: 20, labelWidth: 60, stroke: $clicks >= 3 ? '#6b7280' : '#dc2626' }
+  { id: 's1_q1', x: 50, y: 50, label: '$⟨q_1,1⟩$', accepting: true, r: 16, labelWidth: 60, stroke: $clicks >= 3 ? '#000000' : '#2563eb' },
+  { id: 's1_q0', x: 190, y: 50, label: '$⟨q_0,1⟩$', initial: true, initialDirection: 'top', r: 16, labelWidth: 60 },
+  { id: 's1_q2', x: 330, y: 50, label: '$⟨q_2,1⟩$', r: 16, labelWidth: 60 },
+  { id: 's2_q1', x: 50, y: 145, label: '$⟨q_1,2⟩$', r: 16, labelWidth: 60 },
+  { id: 's2_q0', x: 190, y: 145, label: '$⟨q_0,2⟩$', r: 16, labelWidth: 60 },
+  { id: 's2_q2', x: 330, y: 145, label: '$⟨q_2,2⟩$', accepting: $clicks < 3, r: 16, labelWidth: 60, stroke: $clicks >= 3 ? '#6b7280' : '#dc2626' }
 ]"
 :transitions="[
-  { source: 's1_q0', target: 's1_q0', label: '$true$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
+  { source: 's1_q0', target: 's1_q0', label: '$true$', loopDirection: '90deg', loopRadius: 45, labelY: 6, labelWidth: 30 },
   { source: 's1_q0', target: 's1_q1', label: '$crit_1$', labelY: 10, labelWidth: 35, curve: -0.15 },
   { source: 's1_q0', target: 's1_q2', label: '$crit_2$', labelY: -10, labelWidth: 35, curve: -0.15 },
   { source: 's1_q2', target: 's1_q0', label: '$true$', labelY: 10, labelWidth: 30, curve: -0.15 },
   ...($clicks === 0 ? [{ source: 's1_q1', target: 's1_q0', label: '$true$', labelY: -12, labelWidth: 30, curve: -0.15 }] : []),
   ...($clicks >= 1 ? [{ source: 's1_q1', target: 's2_q0', label: '$true$', labelY: 12, labelWidth: 30, curve: 0, stroke: $clicks === 1 ? '#2563eb' : '#6b7280', strokeWidth: $clicks === 1 ? 3 : 1.6, labelColor: $clicks === 1 ? '#2563eb' : '#6b7280' }] : []),
-  { source: 's2_q0', target: 's2_q0', label: '$true$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
+  { source: 's2_q0', target: 's2_q0', label: '$true$', loopDirection: '90deg', loopRadius: 45, labelY: 6, labelWidth: 30 },
   { source: 's2_q0', target: 's2_q1', label: '$crit_1$', labelY: 10, labelWidth: 35, curve: -0.15 },
   { source: 's2_q1', target: 's2_q0', label: '$true$', labelY: -12, labelWidth: 30, curve: -0.15 },
   { source: 's2_q0', target: 's2_q2', label: '$crit_2$', labelY: -10, labelWidth: 35, curve: -0.15 },
