@@ -724,7 +724,7 @@ info: |
 <KatexInline math="F_1=\{q_1\}" /> (כחול), <KatexInline math="F_2=\{q_2\}" /> (אדום).
 </div>
 <div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
-<AutomatonD3 variant="classic" :width="230" :height="90" :arrowSize="3.5" :stateLabelFontSize="11" :transitionLabelFontSize="9"
+<AutomatonD3 variant="classic" :width="230" :height="90" :arrowSize="3.5" :stateLabelFontSize="9" :transitionLabelFontSize="9"
 :states="[
   { id: 'q0', x: 115, y: 45, label: '$q_0$', initial: true, initialDirection: 'top', r: 15, labelWidth: 40 },
   { id: 'q1', x: 30, y: 45, label: '$q_1$', accepting: true, r: 15, labelWidth: 40, stroke: '#2563eb' },
@@ -747,7 +747,7 @@ info: |
 קבוצת הקבלה ב־NBA היא רק העותק הראשון של <KatexInline math="F_1" />, כלומר <KatexInline math="F_{\mathcal{A}} = \{\langle q_1,1\rangle\}" /> (מסומן בכחול).
 </div>
 <div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
-<AutomatonD3 variant="classic" :width="380" :height="195" :arrowSize="4" :stateLabelFontSize="11" :transitionLabelFontSize="10"
+<AutomatonD3 variant="classic" :width="380" :height="195" :arrowSize="4" :stateLabelFontSize="9" :transitionLabelFontSize="10"
 :states="[
   { id: 's1_q1', x: 50, y: 50, label: '$⟨q_1,1⟩$', accepting: true, r: 16, labelWidth: 60, stroke: $clicks >= 3 ? '#000000' : '#2563eb' },
   { id: 's1_q0', x: 190, y: 50, label: '$⟨q_0,1⟩$', initial: true, initialDirection: 'top', r: 16, labelWidth: 60 },
