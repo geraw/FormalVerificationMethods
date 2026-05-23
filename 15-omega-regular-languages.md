@@ -1251,24 +1251,40 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 # מה קיבלנו?
 
-<div class="mt-8 text-right text-[23px] leading-relaxed">
-לכל ביטוי <KatexInline math="\omega" />-רגולרי:
-</div>
-
-<div class="mt-5 text-center text-[31px]" dir="ltr">
+<div class="mt-1 text-center text-[28px] leading-none" dir="ltr">
 <KatexInline display math="G=E_1.F_1^\omega+\cdots+E_n.F_n^\omega" />
 </div>
 
-<div class="mt-7 text-right text-[23px] leading-relaxed">
-אפשר לבנות באופן קונסטרוקטיבי <span dir="ltr">NBA</span> כך ש:
+<div class="grid grid-cols-3 gap-3 mt-3 text-right text-[16px] leading-tight">
+<div v-click class="bg-emerald-50 border border-emerald-200 rounded p-3">
+<div class="font-bold text-emerald-700 mb-1">1. בונים את החלק האינסופי</div>
+לכל <KatexInline math="F_i" /> יש <span dir="ltr">NFA</span> רגיל מהקורס הקודם.
+מהבנייה של <KatexInline math="\omega" /> מקבלים <span dir="ltr">NBA</span> עבור
+<span dir="ltr"><KatexInline math="F_i^\omega" /></span>.
 </div>
 
-<div class="mt-5 text-center text-[32px]" dir="ltr">
-<KatexInline display math="L_\omega(\mathcal{A})=L_\omega(G)" />
+<div v-click class="bg-orange-50 border border-orange-200 rounded p-3">
+<div class="font-bold text-orange-700 mb-1">2. מוסיפים את הרישא</div>
+לכל <KatexInline math="E_i" /> יש <span dir="ltr">NFA</span> רגיל.
+בעזרת בניית השרשור מחברים אותו לפני האוטומט של
+<span dir="ltr"><KatexInline math="F_i^\omega" /></span>, ומקבלים אוטומט עבור
+<span dir="ltr"><KatexInline math="E_iF_i^\omega" /></span>.
 </div>
 
-<div class="mt-8 bg-blue-50 border border-blue-200 rounded p-5 text-right text-[22px] leading-relaxed">
-בשיעור הבא משתמשים בזה לבדיקת מודלים: מכפלה של מערכת המעברים עם האוטומט, ואז חיפוש מחזור מקבל.
+<div v-click class="bg-blue-50 border border-blue-200 rounded p-3">
+<div class="font-bold text-blue-700 mb-1">3. מאחדים את כל המחוברים</div>
+בעזרת בניית האיחוד שמים את כל האוטומטים זה לצד זה.
+האוטומט המתקבל מקבל בדיוק את סכום המחוברים, כלומר את <KatexInline math="G" />.
+</div>
+</div>
+
+<div v-click class="mt-3 bg-slate-50 border border-slate-200 rounded px-3 py-1.5 text-center text-[24px] leading-none" dir="ltr">
+<KatexInline display math="L_\omega(\mathcal{A}_G)=L_\omega(G)" />
+</div>
+
+<div v-click class="mt-4 text-right text-[20px] leading-snug">
+לכן כל ביטוי <KatexInline math="\omega" />-רגולרי מתורגם באופן קונסטרוקטיבי לאוטומט Büchi. <br>
+זה הכיוון <span dir="ltr"><KatexInline math="\omega\text{-regular expression}\Rightarrow NBA" /></span>.
 </div>
 
 ---
@@ -1288,7 +1304,7 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 <div class="font-bold text-emerald-700 mb-3">אוטומטי Büchi</div>
 
 - מקבלים ריצה אם היא מבקרת ב־<KatexInline math="F" /> אינסוף פעמים.
-- מבטאים תכונות חַיּוּת כמו <span dir="ltr"><KatexInline math="\text{Always Eventually }p" /></span> ו־<span dir="ltr"><KatexInline math="\text{Always }(req \Rightarrow \text{Eventually }resp)" /></span>.
+- מבטאים תכונות חַיּוּת כמו <span class="inline-block text-left text-[17px]" dir="ltr"><KatexInline math="\text{Always Eventually }p" /></span> ו־<span class="inline-block text-left text-[17px]" dir="ltr"><KatexInline math="\text{Always }(req \Rightarrow \text{Eventually }resp)" /></span>.
 - שקולים בכוחם לביטויי <KatexInline math="\omega" />-רגולריים.
 </div>
 </div>
