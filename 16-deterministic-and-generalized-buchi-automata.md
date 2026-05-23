@@ -873,16 +873,16 @@ info: |
 <div class="bg-blue-50 border border-blue-200 rounded p-3 text-[14px]">
 <span class="font-bold text-blue-700">האוטומט <KatexInline math="\mathcal{A}_1" /> (אינסוף <KatexInline math="a" />-ים):</span>
 <div class="flex justify-center mt-1 bg-white rounded border border-slate-100 p-1">
-<AutomatonD3 variant="classic" :width="320" :height="100" :arrowSize="4" :stateLabelFontSize="13" :transitionLabelFontSize="11"
+<AutomatonD3 variant="classic" :width="320" :height="100" :arrowSize="3.2" :stateLabelFontSize="13" :transitionLabelFontSize="11"
 :states="[
   { id: 'q0', x: 80, y: 30, label: '$q_0$', initial: true, initialDirection: 'left', r: 18, labelWidth: 30 },
   { id: 'q1', x: 220, y: 30, label: '$q_1$', accepting: true, r: 18, labelWidth: 50 }
 ]"
 :transitions="[
-  { source: 'q0', target: 'q0', label: '$b$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
+  { source: 'q0', target: 'q0', label: '$\\neg a$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
   { source: 'q0', target: 'q1', label: '$a$', labelY: -10, labelWidth: 30, curve: -0.15 },
   { source: 'q1', target: 'q1', label: '$a$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
-  { source: 'q1', target: 'q0', label: '$b$', labelY: 12, labelWidth: 30, curve: -0.15 }
+  { source: 'q1', target: 'q0', label: '$\\neg a$', labelY: 12, labelWidth: 30, curve: -0.15 }
 ]"
 />
 </div>
@@ -891,16 +891,16 @@ info: |
 <div class="bg-red-50 border border-red-200 rounded p-3 text-[14px]">
 <span class="font-bold text-red-700">האוטומט <KatexInline math="\mathcal{A}_2" /> (אינסוף <KatexInline math="b" />-ים):</span>
 <div class="flex justify-center mt-1 bg-white rounded border border-slate-100 p-1">
-<AutomatonD3 variant="classic" :width="320" :height="100" :arrowSize="4" :stateLabelFontSize="13" :transitionLabelFontSize="11"
+<AutomatonD3 variant="classic" :width="320" :height="100" :arrowSize="3.2" :stateLabelFontSize="13" :transitionLabelFontSize="11"
 :states="[
   { id: 'p0', x: 80, y: 30, label: '$p_0$', initial: true, initialDirection: 'left', r: 18, labelWidth: 30 },
   { id: 'p1', x: 220, y: 30, label: '$p_1$', accepting: true, r: 18, labelWidth: 50 }
 ]"
 :transitions="[
-  { source: 'p0', target: 'p0', label: '$a$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
+  { source: 'p0', target: 'p0', label: '$\\neg b$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
   { source: 'p0', target: 'p1', label: '$b$', labelY: -10, labelWidth: 30, curve: -0.15 },
   { source: 'p1', target: 'p1', label: '$b$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
-  { source: 'p1', target: 'p0', label: '$a$', labelY: 12, labelWidth: 30, curve: -0.15 }
+  { source: 'p1', target: 'p0', label: '$\\neg b$', labelY: 12, labelWidth: 30, curve: -0.15 }
 ]"
 />
 </div>
@@ -911,26 +911,34 @@ info: |
 <div>
 <span class="font-bold text-purple-700">GNBA המכפלה <KatexInline math="\mathcal{G} = \mathcal{A}_1 \times \mathcal{A}_2" />:</span>
 <div class="text-[12px] text-gray-600 mt-1">
-מצבי המכפלה ותנאי הקבלה (שים לב ש־<KatexInline math="\langle q_1,p_1\rangle" /> אינו נגיש).
+מצבי המכפלה ותנאי הקבלה (שים לב ש־<KatexInline math="\langle q_1,p_1\rangle" /> נגיש כאשר $a$ ו־$b$ מתקבלים יחד).
 </div>
 </div>
 <div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
-<AutomatonD3 variant="classic" :width="400" :height="220" :arrowSize="4" :stateLabelFontSize="12" :transitionLabelFontSize="11"
+<AutomatonD3 variant="classic" :width="450" :height="250" :arrowSize="3.2" :stateLabelFontSize="10" :transitionLabelFontSize="8"
 :states="[
-  { id: 's00', x: 90,  y: 60, label: '$⟨q_0,p_0⟩$', initial: true, initialDirection: 'left', r: 24, labelWidth: 80 },
-  { id: 's10', x: 290, y: 60, label: '$⟨q_1,p_0⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb' },
-  { id: 's01', x: 90,  y: 180, label: '$⟨q_0,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#dc2626' },
-  { id: 's11', x: 290, y: 180, label: '$⟨q_1,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb', innerStroke: '#dc2626' }
+  { id: 's00', x: 100, y: 70, label: '$⟨q_0,p_0⟩$', initial: true, initialDirection: 'left', r: 24, labelWidth: 80 },
+  { id: 's10', x: 350, y: 70, label: '$⟨q_1,p_0⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb' },
+  { id: 's01', x: 100, y: 200, label: '$⟨q_0,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#dc2626' },
+  { id: 's11', x: 350, y: 200, label: '$⟨q_1,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb', innerStroke: '#dc2626' }
 ]"
 :transitions="[
-  { source: 's00', target: 's10', label: '$a$', labelY: -10, labelWidth: 30 },
-  { source: 's00', target: 's01', label: '$b$', labelX: -12, labelWidth: 30 },
-  { source: 's10', target: 's10', label: '$a$', loopDirection: '0deg', labelX: 8, labelWidth: 30 },
-  { source: 's10', target: 's01', label: '$b$', labelX: -12, labelWidth: 30, curve: 0.2 },
-  { source: 's01', target: 's01', label: '$b$', loopDirection: '180deg', labelX: -8, labelWidth: 30 },
-  { source: 's01', target: 's10', label: '$a$', labelY: -15, labelWidth: 30, curve: 0.2 },
-  { source: 's11', target: 's10', label: '$a$', labelX: 12, labelWidth: 30 },
-  { source: 's11', target: 's01', label: '$b$', labelY: 12, labelWidth: 30 }
+  { source: 's00', target: 's00', label: '$\\neg a \\land \\neg b$', loopDirection: '135deg', labelY: -10, labelWidth: 70 },
+  { source: 's10', target: 's10', label: '$a \\land \\neg b$', loopDirection: '45deg', labelY: -10, labelWidth: 70 },
+  { source: 's01', target: 's01', label: '$\\neg a \\land b$', loopDirection: '225deg', labelY: 10, labelWidth: 70 },
+  { source: 's11', target: 's11', label: '$a \\land b$', loopDirection: '315deg', labelY: 10, labelWidth: 70 },
+  { source: 's00', target: 's10', label: '$a\\land \\neg b$', labelY: -12, labelWidth: 60, curve: -0.15 },
+  { source: 's10', target: 's00', label: '$\\neg a\\land \\neg b$', labelY: 12, labelWidth: 70, curve: -0.15 },
+  { source: 's00', target: 's01', label: '$\\neg a\\land b$', labelX: -24, labelWidth: 65, curve: 0.15 },
+  { source: 's01', target: 's00', label: '$\\neg a\\land \\neg b$', labelX: 24, labelWidth: 70, curve: 0.15 },
+  { source: 's01', target: 's11', label: '$a\\land b$', labelY: 12, labelWidth: 50, curve: 0.15 },
+  { source: 's11', target: 's01', label: '$\\neg a\\land b$', labelY: -12, labelWidth: 65, curve: 0.15 },
+  { source: 's10', target: 's11', label: '$a\\land b$', labelX: 22, labelWidth: 50, curve: -0.15 },
+  { source: 's11', target: 's10', label: '$a\\land \\neg b$', labelX: -22, labelWidth: 60, curve: -0.15 },
+  { source: 's00', target: 's11', label: '$a\\land b$', labelY: -15, labelX: 20, labelWidth: 50, curve: 0.08 },
+  { source: 's11', target: 's00', label: '$\\neg a\\land \\neg b$', labelY: 15, labelX: -20, labelWidth: 70, curve: 0.08 },
+  { source: 's10', target: 's01', label: '$\\neg a\\land b$', labelY: -15, labelX: -20, labelWidth: 65, curve: 0.08 },
+  { source: 's01', target: 's10', label: '$a\\land \\neg b$', labelY: 15, labelX: 20, labelWidth: 60, curve: 0.08 }
 ]"
 />
 </div>
