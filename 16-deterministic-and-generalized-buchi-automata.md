@@ -940,7 +940,6 @@ info: |
   { source: 's01', target: 's10', label: '$a\\land \\neg b$', labelY: -30, labelX: 70, labelWidth: 60, curve: -0.05 }
 ]"
 />
-</div>
 <div class="mt-2 text-[12px] text-gray-700 leading-tight">
 <strong>קבוצות הקבלה:</strong>
 <ul class="list-disc list-inside mr-1 mt-1">
