@@ -517,10 +517,10 @@ https://play.kahoot.it/#/k/15aefb35-8427-4809-807c-7098ee85599f
 
 ---
 
-# אוטומט Büchi לא דטרמיניסטי
+# אוטומט Büchi <span class="text-sm bg-blue-100 text-blue-800 px-2 py-0.5 rounded mr-2 font-normal align-middle">תחביר</span>
 
 <div class="mt-8 text-right text-[23px] leading-relaxed">
-אוטומט Büchi לא דטרמיניסטי הוא:
+אוטומט Büchi הוא:
 </div>
 
 <div class="mt-6 text-center text-[34px]" dir="ltr">
@@ -539,7 +539,7 @@ https://play.kahoot.it/#/k/15aefb35-8427-4809-807c-7098ee85599f
 
 ---
 
-# ריצה, קבלה ושפה <span class="text-sm bg-purple-100 text-purple-800 px-2 py-0.5 rounded mr-2 font-normal align-middle">משמעות</span>
+# אוטומט Büchi <span class="text-sm bg-purple-100 text-purple-800 px-2 py-0.5 rounded mr-2 font-normal align-middle">משמעות</span>
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
 עבור מילה אינסופית <KatexInline math="\sigma" />, ריצה היא סדרת מצבים <span dir="ltr"><KatexInline math="q_0q_1q_2\cdots" /></span>
@@ -639,45 +639,47 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 # בטיחות רגולרית כאוטומט Büchi
 
-<div class="mt-6 text-right text-[22px] leading-relaxed">
+<div class="mt-5 text-right text-[21px] leading-snug">
 אם יש לנו <span dir="ltr">DFA</span> שלם לרישות הרעות עם מצבי מלכודת מקבלים, אפשר לקרוא אותו גם כאוטומט Büchi.
 </div>
 
-<div class="grid grid-cols-2 gap-6 mt-7 text-right text-[20px] leading-relaxed">
-<div class="bg-red-50 border border-red-200 rounded p-5">
-<div class="font-bold text-red-700 mb-3">הפרות</div>
-האוטומט שמקבל את מצבי המלכודת מקבל בדיוק ריצות שבהן הופיעה רישא רעה.
+<div class="grid grid-cols-2 gap-5 mt-5 text-right text-[18px] leading-snug">
+<div class="bg-red-50 border border-red-200 rounded p-4">
+<div class="font-bold text-red-700 mb-2">הֲפָרוֹת</div>
+כאוטומט Büchi, האוטומט שמקבל את מצבי המלכודת מקבל בדיוק ריצות שבהן הופיעה רישא רעה: אחרי שנכנסים למלכודת מקבלת, נשארים בה ולכן מבקרים במצב מקבל אינסוף פעמים.
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-5">
-<div class="font-bold text-emerald-700 mb-3">התכונה עצמה</div>
-באוטומט דטרמיניסטי שלם, החלפת קבוצת הקבלה ל־<KatexInline math="Q\setminus F" /> מקבלת את העקבות התקינים.
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
+<div class="font-bold text-emerald-700 mb-2">התכונה עצמה</div>
+באוטומט דטרמיניסטי שלם, החלפת קבוצת הקבלה ל־<KatexInline math="Q\setminus F" /> מקבלת את העקבות התקינים: אם אין רישא רעה, הריצה לעולם לא נכנסת למלכודת ולכן נשארת במצבים שמחוץ ל־<KatexInline math="F" /> אינסוף פעמים. אם יש רישא רעה, נכנסים למלכודת שב־<KatexInline math="F" /> ונשארים בה, ולכן לא מבקרים ב־<KatexInline math="Q\setminus F" /> אינסוף פעמים.
 </div>
 </div>
 
-<div class="mt-7 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[19px]">
+<div class="mt-5 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[18px] leading-snug">
 זו הסיבה ש־<KatexInline math="\omega" />־רגולריות באמת מרחיבה את בטיחות רגולרית, ולא מחליפה אותה.
 </div>
 
 ---
 
-# זהירות: שקילות סופית אינה שקילות אינסופית
+# זהירות: שקילות סופית ושקילות אינסופית אינן שקולות
 
-<div class="grid grid-cols-2 gap-6 mt-7 text-right text-[21px] leading-relaxed">
-<div class="bg-white border border-slate-200 rounded p-5">
-<div class="font-bold mb-3"><span dir="ltr">NFA</span> מול <span dir="ltr">NBA</span></div>
+<div class="grid grid-cols-2 gap-4 mt-4 text-right text-[20px] leading-snug">
+<div class="bg-white border border-slate-200 rounded p-4">
+<div class="font-bold mb-2"><span dir="ltr">NFA</span> מול <span dir="ltr">NBA</span></div>
 שני אוטומטים יכולים לקבל אותה שפה סופית, אבל כשקוראים אותם מעל מילים אינסופיות הם יכולים לקבל שפות שונות.
+וגם להפך: הם יכולים לקבל אותה שפה אינסופית, אבל שפות סופיות שונות.
 </div>
 
-<div class="bg-blue-50 border border-blue-200 rounded p-5">
-<div class="font-bold text-blue-700 mb-3">הָאִינְטוּאִיצְיָה</div>
+<div class="bg-blue-50 border border-blue-200 rounded p-4">
+<div class="font-bold text-blue-700 mb-2">הָאִינְטוּאִיצְיָה</div>
 באוטומט סופי מספיק להגיע פעם אחת למצב מקבל.
 באוטומט Büchi צריך לחזור למצבי קבלה אינסוף פעמים.
 </div>
 </div>
 
-<div class="mt-8 text-center text-[29px]" dir="ltr">
+<div class="mt-4 flex flex-col gap-0 text-center text-[25px]" dir="ltr">
 <KatexInline display math="L(\mathcal{A}_1)=L(\mathcal{A}_2)\ \not\Rightarrow\ L_\omega(\mathcal{A}_1)=L_\omega(\mathcal{A}_2)" />
+<KatexInline display math="L_\omega(\mathcal{A}_1)=L_\omega(\mathcal{A}_2)\ \not\Rightarrow\ L(\mathcal{A}_1)=L(\mathcal{A}_2)" />
 </div>
 
 ---
@@ -813,71 +815,116 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 ---
 
-# מאוטומט לביטוי <KatexInline math="\omega" />-רגולרי
+# מאוטומט לביטוי <KatexInline math="\omega" />-רגולרי: מתכון
 
-<div class="grid grid-cols-[0.9fr_1.1fr] gap-6 mt-5 items-center">
-<div class="text-right text-[21px] leading-relaxed">
-נסמן ב־<KatexInline math="L_{qp}" /> את השפה הסופית שמובילה מ־<KatexInline math="q" /> ל־<KatexInline math="p" /> באוטומט.
+<div class="mt-2 text-right text-[18px] leading-tight">
+נשתמש בכלי מהקורס <span class="font-bold">מודלים חישוביים</span>:
+בונים אוטומט סופי רגיל ומפיקים ממנו ביטוי רגולרי רגיל.
+</div>
 
-אם ריצה מקבלת, יש מצב מקבל <KatexInline math="q\in F" /> שמופיע אינסוף פעמים.
+<div class="grid grid-cols-2 gap-2 mt-3 text-right text-[16px] leading-tight">
+<div class="bg-blue-50 border border-blue-200 rounded p-2.5">
+<div class="font-bold text-blue-700 mb-1">1. רישא עד מצב מקבל</div>
+לכל <KatexInline math="q_0\in Q_0" /> ולכל <KatexInline math="q\in F" /> בונים אוטומט סופי:
+אותם מצבים ומעברים, מצב התחלתי <KatexInline math="q_0" />, וקבוצת קבלה <KatexInline math="\{q\}" />.
+מהאוטומט הזה מפיקים ביטוי רגולרי <KatexInline math="E_{q_0,q}" />.
+</div>
 
-<div class="mt-5 text-center text-[27px]" dir="ltr">
-<KatexInline display math="L_\omega(\mathcal{A})=\bigcup_{q_0\in Q_0,\ q\in F} L_{q_0q}.(L_{qq}\setminus\{\epsilon\})^\omega" />
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2.5">
+<div class="font-bold text-emerald-700 mb-1">2. לולאה לא ריקה דרך אותו מצב</div>
+לכל <KatexInline math="q\in F" /> בונים אוטומט סופי חדש: מוסיפים מצב התחלה חדש <KatexInline math="s" />,
+ומ־<KatexInline math="s" /> יוצאים בדיוק כמו שיוצאים מ־<KatexInline math="q" /> באות הראשונה.
+מצב הקבלה היחיד הוא <KatexInline math="q" />.
+כך מתקבלות בדיוק המילים הלא ריקות שמובילות מ־<KatexInline math="q" /> חזרה ל־<KatexInline math="q" />.
+מהאוטומט הזה מפיקים ביטוי רגולרי רגיל <KatexInline math="G_q" />.
+</div>
+
+<div class="bg-purple-50 border border-purple-200 rounded p-2.5">
+<div class="font-bold text-purple-700 mb-1">3. הופכים ללולאה אינסופית</div>
+הביטוי <KatexInline math="G_q^\omega" /> אומר: חזרה אינסופית על מקטעים לא ריקים, שכל אחד מהם מתחיל ב־<KatexInline math="q" /> ומחזיר ל־<KatexInline math="q" />.
+</div>
+
+<div class="bg-slate-50 border border-slate-200 rounded p-2.5">
+<div class="font-bold text-slate-700 mb-1">4. מאחדים את כל האפשרויות</div>
+מצב ההתחלה ומצב הקבלה שחוזרים אליו אינם ידועים מראש, לכן לוקחים איחוד על כולם.
 </div>
 </div>
 
-<div class="bg-white border border-slate-200 rounded p-5 text-right text-[20px] leading-relaxed">
-<div class="font-bold mb-3">הרעיון</div>
-כל ריצה מקבלת מכילה ביקורים אינסופיים במצב מקבל כלשהו.
-לכן אפשר לבחור ביקור ראשון ב־<KatexInline math="q" />, ואז לפרק את ההמשך ללולאות לא ריקות מ־<KatexInline math="q" /> אל עצמו.
-
-<div class="mt-5 grid grid-cols-3 gap-3 text-center" dir="ltr">
-<div class="border border-slate-300 rounded p-3 bg-slate-50"><KatexInline math="q_0 \to q" /></div>
-<div class="border border-blue-300 rounded p-3 bg-blue-50"><KatexInline math="q \to q" /></div>
-<div class="border border-blue-300 rounded p-3 bg-blue-50"><KatexInline math="q \to q \to \cdots" /></div>
-</div>
-</div>
+<div class="mt-3 text-center text-[24px]" dir="ltr">
+<KatexInline display math="L_\omega(\mathcal{A})=\bigcup_{q_0\in Q_0,\ q\in F} E_{q_0,q}\cdot G_q^\omega" />
 </div>
 
 ---
 
-# דוגמה מהשקפים: מצב מקבל שחוזרים אליו
+# מאוטומט לביטוי: למה המתכון נכון
 
-<div class="grid grid-cols-[1.05fr_0.95fr] gap-6 mt-5 items-center">
+<div class="grid grid-cols-2 gap-5 mt-6 text-right text-[19px] leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-4">
+<div class="font-bold text-blue-700 mb-2">מריצה מקבלת לביטוי</div>
+אם מילה מתקבלת, יש ריצה שבה מצב מקבל <KatexInline math="q\in F" /> מופיע אינסוף פעמים.
+נבחר את הביקור הראשון ב־<KatexInline math="q" />: הרישא עד אליו שייכת ל־<KatexInline math="E_{q_0,q}" />.
+בין כל שני ביקורים עוקבים ב־<KatexInline math="q" /> מתקבל מקטע לא ריק ששייך ל־<KatexInline math="G_q" />.
+לכן המילה שייכת ל־<KatexInline math="E_{q_0,q}\cdot G_q^\omega" />.
+</div>
+
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
+<div class="font-bold text-emerald-700 mb-2">מהביטוי לריצה מקבלת</div>
+אם מילה שייכת ל־<KatexInline math="E_{q_0,q}\cdot G_q^\omega" />, אז יש רישא שמובילה מ־<KatexInline math="q_0" /> ל־<KatexInline math="q" />,
+ואחריה אינסוף מקטעים לא ריקים שכל אחד מוביל מ־<KatexInline math="q" /> חזרה ל־<KatexInline math="q" />.
+מדביקים את המסלולים האלה ומקבלים ריצה שמבקרת ב־<KatexInline math="q" /> אינסוף פעמים.
+מכיוון ש־<KatexInline math="q\in F" />, הריצה מקבלת.
+</div>
+</div>
+
+<div class="mt-5 bg-white border border-slate-200 rounded p-4 text-center text-[24px]" dir="ltr">
+<KatexInline display math="\text{NBA}\ \Longrightarrow\ \bigcup E\cdot G^\omega" />
+</div>
+
+---
+
+# דוגמה: מצב מקבל שחוזרים אליו
+
+<div class="grid grid-cols-[0.9fr_1.1fr] gap-5 mt-5 items-center">
 <div class="bg-white rounded border border-slate-200 shadow-sm">
-<AutomatonD3 variant="classic" :width="570" :height="250" :arrowSize="4.5" :stateLabelFontSize="16" :transitionLabelFontSize="14"
+<AutomatonD3 variant="classic" :width="470" :height="230" :arrowSize="3.2" :stateLabelFontSize="16" :transitionLabelFontSize="14"
   :states="[
-    { id: 'q1', x: 115, y: 125, label: '$q_1$', initial: true, initialDirection: 'right', r: 25, labelWidth: 70 },
-    { id: 'q2', x: 285, y: 125, label: '$q_2$', r: 25, labelWidth: 70 },
-    { id: 'q3', x: 455, y: 125, label: '$q_3$', accepting: true, r: 25, labelWidth: 70 }
+    { id: 'q1', x: 95, y: 115, label: '$q_1$', initial: true, initialDirection: 'top', r: 25, labelWidth: 70 },
+    { id: 'q2', x: 235, y: 115, label: '$q_2$', r: 25, labelWidth: 70 },
+    { id: 'q3', x: 375, y: 115, label: '$q_3$', accepting: true, r: 25, labelWidth: 70 }
   ]"
   :transitions="[
-    { source: 'q1', target: 'q1', label: '$C$', loopDirection: '180deg', labelX: -32, labelWidth: 45 },
-    { source: 'q1', target: 'q2', label: '$A$', labelY: -10, labelWidth: 45 },
-    { source: 'q2', target: 'q3', label: '$B$', labelY: -10, labelWidth: 45 },
-    { source: 'q3', target: 'q3', label: '$B$', loopDirection: '0deg', labelX: 32, labelWidth: 45 },
-    { source: 'q3', target: 'q1', label: '$B$', labelY: 43, labelWidth: 45 }
+    { source: 'q1', target: 'q1', label: '$C$', loopDirection: '180deg', labelX: -20, labelWidth: 45, stroke: $clicks === 1 ? '#2563eb' : $clicks === 2 ? '#16a34a' : undefined, strokeWidth: $clicks === 1 || $clicks === 2 ? 3.4 : undefined, labelColor: $clicks === 1 ? '#2563eb' : $clicks === 2 ? '#16a34a' : undefined },
+    { source: 'q1', target: 'q2', label: '$A$', labelY: -10, labelWidth: 45, stroke: $clicks === 1 ? '#2563eb' : $clicks === 2 ? '#16a34a' : undefined, strokeWidth: $clicks === 1 || $clicks === 2 ? 3.4 : undefined, labelColor: $clicks === 1 ? '#2563eb' : $clicks === 2 ? '#16a34a' : undefined },
+    { source: 'q2', target: 'q3', label: '$B$', labelY: -10, labelWidth: 45, stroke: $clicks === 1 ? '#2563eb' : $clicks === 2 ? '#16a34a' : undefined, strokeWidth: $clicks === 1 || $clicks === 2 ? 3.4 : undefined, labelColor: $clicks === 1 ? '#2563eb' : $clicks === 2 ? '#16a34a' : undefined },
+    { source: 'q3', target: 'q3', label: '$B$', loopDirection: '0deg', labelX: 20, labelWidth: 45, stroke: $clicks === 2 ? '#d97706' : undefined, strokeWidth: $clicks === 2 ? 3.4 : undefined, labelColor: $clicks === 2 ? '#d97706' : undefined },
+    { source: 'q3', target: 'q1', label: '$B$', labelY: 18, labelWidth: 45, curve: -0.2, stroke: $clicks === 2 ? '#16a34a' : undefined, strokeWidth: $clicks === 2 ? 3.4 : undefined, labelColor: $clicks === 2 ? '#16a34a' : undefined }
   ]"
 />
 </div>
 
-<div class="text-right text-[22px] leading-relaxed">
+<div class="text-right text-[20px] leading-snug space-y-1.5">
+<div v-click class="bg-blue-50 border border-blue-200 rounded p-2.5">
 הרישא שמגיעה ל־<KatexInline math="q_3" />:
 
-<div class="mt-3 text-center text-[27px]" dir="ltr">
-<KatexInline display math="C^*AB" />
+<div class="mt-1 text-center text-[25px]" dir="ltr">
+<KatexInline display math="\textcolor{blue}{C^*AB}" />
+</div>
 </div>
 
+<div v-click class="bg-emerald-50 border border-emerald-200 rounded p-2.5">
 הלולאות שחוזרות מ־<KatexInline math="q_3" /> אל <KatexInline math="q_3" />:
 
-<div class="mt-3 text-center text-[27px]" dir="ltr">
-<KatexInline display math="B + BC^*AB" />
+<div class="mt-1 text-center text-[25px]" dir="ltr">
+<KatexInline display math="\textcolor{orange}{B} + \textcolor{green}{BC^*AB}" />
+</div>
 </div>
 
-ולכן:
+<div v-click class="bg-purple-50 border border-purple-200 rounded p-2.5">
+ולכן הביטוי ה-<KatexInline math="\omega" />-רגולרי הוא:
 
-<div class="mt-3 text-center text-[27px]" dir="ltr">
-<KatexInline display math="C^*AB.(B+BC^*AB)^\omega" />
+<div class="mt-1 text-center text-[25px]" dir="ltr">
+<KatexInline display math="\textcolor{blue}{C^*AB}\cdot(\textcolor{orange}{B}+\textcolor{green}{BC^*AB})^\omega" />
+</div>
 </div>
 </div>
 </div>
