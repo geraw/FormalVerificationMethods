@@ -701,9 +701,9 @@ info: |
 
 <div class="grid grid-cols-[0.8fr_1.2fr] gap-4 mt-2 text-right">
 <!-- Left Column: Steps of the construction -->
-<div class="bg-gray-50 border border-gray-200 rounded p-3 text-[11px] leading-snug">
+<div class="bg-gray-50 border border-gray-200 rounded p-3 text-[13px] leading-snug">
 <ul class="list-disc list-inside space-y-1">
-  <li><strong>שלב 1: כותבים שני עותקים עצמאיים.</strong> כל עותק מכיל את כל המצבים והמעברים המקוריים ללא מעברים ביניהם (שני עותקים זהים).</li>
+  <li><strong>שלב 1: כותבים שני עותקים עצמאיים.</strong> כל עותק מכיל את כל המצבים והמעברים המקוריים ללא מעברים ביניהם (זהים, פרט לחצי ההתחלה שנשמרים רק בעותק הראשון).</li>
   <li v-click="1" :class="{ 'text-blue-700 font-semibold': $clicks === 1 }"><strong>שלב 2: מעברים מ־<KatexInline math="q_1" /> לעותק השני.</strong> במעבר מ־<KatexInline math="q_1" /> בעותק הראשון (שנמצא ב־<KatexInline math="F_1" />), במקום להיכנס למצב הבא בעותק הראשון, נכנסים אליו בעותק השני.</li>
   <li v-click="2" :class="{ 'text-red-700 font-semibold': $clicks === 2 }"><strong>שלב 3: מעברים מ־<KatexInline math="q_2" /> לעותק הראשון.</strong> במעבר מ־<KatexInline math="q_2" /> בעותק השני (שנמצא ב־<KatexInline math="F_2" />), במקום להיכנס למצב הבא בעותק השני, חוזרים לעותק הראשון.</li>
   <li v-click="3" :class="{ 'text-emerald-700 font-semibold': $clicks >= 3 }"><strong>שלב 4: קביעת המצבים המקבלים ב־NBA.</strong> מסמנים כקבוצת הקבלה החדשה רק את העותק הראשון של <KatexInline math="F_1" />, כלומר <KatexInline math="F_{\mathcal{A}} = \{\langle q_1,1\rangle\}" /> (צבוע בשחור, בעוד העותק השני מאבד את סימון הקבלה).</li>
