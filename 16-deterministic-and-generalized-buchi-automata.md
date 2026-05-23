@@ -730,7 +730,7 @@ info: |
   <li><strong>שלב 1: כותבים שני עותקים עצמאיים.</strong> כל עותק מכיל את כל המצבים והמעברים המקוריים ללא מעברים ביניהם (שני עותקים זהים).</li>
   <li v-click="1" :class="{ 'text-blue-700 font-semibold': $clicks === 1 }"><strong>שלב 2: מעברים מ־<KatexInline math="q_1" /> לעותק השני.</strong> במעבר מ־<KatexInline math="q_1" /> בעותק הראשון (שנמצא ב־<KatexInline math="F_1" />), במקום להיכנס למצב הבא בעותק הראשון, נכנסים אליו בעותק השני.</li>
   <li v-click="2" :class="{ 'text-red-700 font-semibold': $clicks === 2 }"><strong>שלב 3: מעברים מ־<KatexInline math="q_2" /> לעותק הראשון.</strong> במעבר מ־<KatexInline math="q_2" /> בעותק השני (שנמצא ב־<KatexInline math="F_2" />), במקום להיכנס למצב הבא בעותק השני, חוזרים לעותק הראשון.</li>
-  <li v-click="3" :class="{ 'text-emerald-700 font-semibold': $clicks >= 3 }"><strong>שלב 4: קביעת המצבים המקבלים ב־NBA.</strong> מסמנים כקבוצת הקבלה החדשה רק את העותק הראשון של <KatexInline math="F_1" />, כלומר <KatexInline math="F_{\mathcal{A}} = \{\langle q_1,1\rangle\}" /> (בכחול).</li>
+  <li v-click="3" :class="{ 'text-emerald-700 font-semibold': $clicks >= 3 }"><strong>שלב 4: קביעת המצבים המקבלים ב־NBA.</strong> מסמנים כקבוצת הקבלה החדשה רק את העותק הראשון של <KatexInline math="F_1" />, כלומר <KatexInline math="F_{\mathcal{A}} = \{\langle q_1,1\rangle\}" /> (צבוע בשחור, בעוד העותק השני מאבד את סימון הקבלה).</li>
 </ul>
 <div class="mt-2 text-xs text-gray-500 font-medium">
   <span v-if="$clicks === 0">לחצו על המצגת כדי להעביר את המעברים מ־<KatexInline math="q_1" />...</span>
@@ -749,21 +749,21 @@ info: |
 <div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
 <AutomatonD3 variant="classic" :width="450" :height="230" :arrowSize="4" :stateLabelFontSize="11" :transitionLabelFontSize="10"
 :states="[
-  { id: 's1_q1', x: 60, y: 55, label: '$⟨q_1,1⟩$', accepting: $clicks >= 3, r: 20, labelWidth: 60, stroke: '#2563eb' },
+  { id: 's1_q1', x: 60, y: 55, label: '$⟨q_1,1⟩$', accepting: true, r: 20, labelWidth: 60, stroke: $clicks >= 3 ? '#000000' : '#2563eb' },
   { id: 's1_q0', x: 220, y: 55, label: '$⟨q_0,1⟩$', initial: true, initialDirection: 'top', r: 20, labelWidth: 60 },
   { id: 's1_q2', x: 380, y: 55, label: '$⟨q_2,1⟩$', r: 20, labelWidth: 60 },
   { id: 's2_q1', x: 60, y: 175, label: '$⟨q_1,2⟩$', r: 20, labelWidth: 60 },
   { id: 's2_q0', x: 220, y: 175, label: '$⟨q_0,2⟩$', r: 20, labelWidth: 60 },
-  { id: 's2_q2', x: 380, y: 175, label: '$⟨q_2,2⟩$', r: 20, labelWidth: 60, stroke: '#dc2626' }
+  { id: 's2_q2', x: 380, y: 175, label: '$⟨q_2,2⟩$', accepting: $clicks < 3, r: 20, labelWidth: 60, stroke: '#dc2626' }
 ]"
 :transitions="[
-  { source: 's1_q0', target: 's1_q0', label: '$true$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
+  { source: 's1_q0', target: 's1_q0', label: '$true$', loopDirection: '270deg', labelY: 8, labelWidth: 30 },
   { source: 's1_q0', target: 's1_q1', label: '$crit_1$', labelY: 10, labelWidth: 35, curve: -0.15 },
   { source: 's1_q0', target: 's1_q2', label: '$crit_2$', labelY: -10, labelWidth: 35, curve: -0.15 },
   { source: 's1_q2', target: 's1_q0', label: '$true$', labelY: 10, labelWidth: 30, curve: -0.15 },
   ...($clicks === 0 ? [{ source: 's1_q1', target: 's1_q0', label: '$true$', labelY: -12, labelWidth: 30, curve: -0.15 }] : []),
   ...($clicks >= 1 ? [{ source: 's1_q1', target: 's2_q0', label: '$true$', labelY: 12, labelWidth: 30, curve: 0, stroke: $clicks === 1 ? '#2563eb' : undefined, strokeWidth: $clicks === 1 ? 3 : undefined, labelColor: $clicks === 1 ? '#2563eb' : undefined }] : []),
-  { source: 's2_q0', target: 's2_q0', label: '$true$', loopDirection: '270deg', labelY: 8, labelWidth: 30 },
+  { source: 's2_q0', target: 's2_q0', label: '$true$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
   { source: 's2_q0', target: 's2_q1', label: '$crit_1$', labelY: -10, labelWidth: 35, curve: -0.15 },
   { source: 's2_q1', target: 's2_q0', label: '$true$', labelY: 10, labelWidth: 30, curve: -0.15 },
   { source: 's2_q0', target: 's2_q2', label: '$crit_2$', labelY: 10, labelWidth: 35, curve: -0.15 },
