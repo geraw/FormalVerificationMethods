@@ -761,15 +761,12 @@ info: |
   { source: 's1_q0', target: 's1_q1', label: '$crit_1$', labelY: 10, labelWidth: 35, curve: -0.15 },
   { source: 's1_q0', target: 's1_q2', label: '$crit_2$', labelY: -10, labelWidth: 35, curve: -0.15 },
   { source: 's1_q2', target: 's1_q0', label: '$true$', labelY: 10, labelWidth: 30, curve: -0.15 },
-  
   ...($clicks === 0 ? [{ source: 's1_q1', target: 's1_q0', label: '$true$', labelY: -12, labelWidth: 30, curve: -0.15 }] : []),
   ...($clicks >= 1 ? [{ source: 's1_q1', target: 's2_q0', label: '$true$', labelY: 12, labelWidth: 30, curve: 0, stroke: $clicks === 1 ? '#2563eb' : undefined, strokeWidth: $clicks === 1 ? 3 : undefined, labelColor: $clicks === 1 ? '#2563eb' : undefined }] : []),
-  
   { source: 's2_q0', target: 's2_q0', label: '$true$', loopDirection: '270deg', labelY: 8, labelWidth: 30 },
   { source: 's2_q0', target: 's2_q1', label: '$crit_1$', labelY: -10, labelWidth: 35, curve: -0.15 },
   { source: 's2_q1', target: 's2_q0', label: '$true$', labelY: 10, labelWidth: 30, curve: -0.15 },
   { source: 's2_q0', target: 's2_q2', label: '$crit_2$', labelY: 10, labelWidth: 35, curve: -0.15 },
-  
   ...($clicks < 2 ? [{ source: 's2_q2', target: 's2_q0', label: '$true$', labelY: -12, labelWidth: 30, curve: -0.15 }] : []),
   ...($clicks >= 2 ? [{ source: 's2_q2', target: 's1_q0', label: '$true$', labelY: -12, labelWidth: 30, curve: 0, stroke: $clicks === 2 ? '#dc2626' : undefined, strokeWidth: $clicks === 2 ? 3 : undefined, labelColor: $clicks === 2 ? '#dc2626' : undefined }] : [])
 ]"
