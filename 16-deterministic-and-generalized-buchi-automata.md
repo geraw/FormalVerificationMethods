@@ -725,10 +725,10 @@ info: |
 </div>
 
 <div class="bg-gray-50 border border-gray-200 rounded p-3 text-[12.5px] leading-snug">
-<strong>שים לב לחוק המעבר:</strong>
+<strong>שימו לב לחוק המעבר:</strong>
 <ul class="list-disc list-inside mt-1 space-y-1">
-<li>בביקור ב־<KatexInline math="q_1" /> בעותק 1: עוברים לעותק 2 (כי <KatexInline math="q_1 \in F_1" />).</li>
-<li>בביקור ב־<KatexInline math="q_2" /> בעותק 2: חוזרים לעותק 1 (כי <KatexInline math="q_2 \in F_2" />).</li>
+<li>במעבר מ־<KatexInline math="q_1" /> בעותק הראשון: במקום להיכנס למצב הבא בעותק הראשון, נכנסים אליו בעותק השני (כי <KatexInline math="q_1 \in F_1" />).</li>
+<li>במעבר מ־<KatexInline math="q_2" /> בעותק השני: במקום להיכנס למצב הבא בעותק השני, נכנסים אליו בעותק הראשון (כי <KatexInline math="q_2 \in F_2" />).</li>
 <li>בשאר המקרים נשארים באותו העותק.</li>
 </ul>
 </div>
