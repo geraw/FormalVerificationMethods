@@ -242,12 +242,12 @@ info: |
 <!-- Center Column: Automata -->
 <div class="flex flex-col gap-4 items-center relative">
 <!-- Automaton 1 -->
-<div class="bg-white rounded border border-slate-200 shadow-sm p-2 w-[340px]">
-<div class="text-[10px] text-slate-400 absolute top-2 right-4 font-mono"><KatexInline math="\mathcal{A}_1" /></div>
-<AutomatonD3 variant="classic" :width="320" :height="110" :arrowSize="4" :stateLabelFontSize="15" :transitionLabelFontSize="13"
+<div class="bg-white rounded border border-slate-200 shadow-sm p-2 w-[340px] relative">
+<div class="text-[11px] text-slate-400 absolute top-2 right-3 font-mono font-semibold"><KatexInline math="\mathcal{A}_1" /></div>
+<AutomatonD3 variant="classic" :width="320" :height="135" :arrowSize="4" :stateLabelFontSize="15" :transitionLabelFontSize="13"
 :states="[
-{ id: 's0', x: 80, y: 55, label: '$s_0$', initial: true, initialDirection: 'left', r: 20 },
-{ id: 's1', x: 240, y: 55, label: '$s_1$', accepting: true, r: 20 }
+{ id: 's0', x: 80, y: 75, label: '$s_0$', initial: true, initialDirection: 'left', r: 20 },
+{ id: 's1', x: 240, y: 75, label: '$s_1$', accepting: true, r: 20 }
 ]"
 :transitions="[
 { source: 's0', target: 's1', label: '$a$', labelY: -10, labelWidth: 40 },
@@ -256,27 +256,30 @@ info: |
 />
 </div>
 
-<!-- Nondeterminism SVG Arrow Overlay -->
-<svg v-click="2" class="absolute z-20 top-0 left-0 w-[340px] h-[270px] pointer-events-none overflow-visible">
-<path d="M 230,120 L 105,185" stroke="#dc2626" stroke-width="5" marker-end="url(#arrow)" fill="none" />
+<!-- Nondeterminism Arrow and Badge Overlay -->
+<svg v-click="2" style="width: 340px; height: 310px;" class="absolute z-20 top-0 left-0 pointer-events-none overflow-visible" viewBox="0 0 340 310">
 <defs>
-<marker id="arrow" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-<path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" />
+<marker id="nondet-arrow-marker" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
 </marker>
 </defs>
-<g transform="translate(167, 152) rotate(-28)">
-<rect x="-80" y="-12" width="160" height="24" rx="4" fill="#dc2626" />
-<text x="0" y="4" fill="#ffffff" font-weight="bold" font-size="11" text-anchor="middle" font-family="sans-serif">בחירה לא דטרמיניסטית</text>
-</g>
 </svg>
 
+<div v-click="2" class="absolute z-30 top-[180px] left-[140px] -rotate-[29deg] pointer-events-none">
+<div class="relative bg-red-600 text-white font-bold py-1 px-3 text-[12px] rounded-r shadow-md border border-red-700 whitespace-nowrap">
+<div class="absolute top-1/2 left-[-15px] -translate-y-1/2 w-0 h-0 border-y-[14px] border-y-transparent border-r-[15px] border-r-red-600"></div>
+<div class="absolute top-1/2 left-[-17px] -translate-y-1/2 w-0 h-0 border-y-[16px] border-y-transparent border-r-[17px] border-r-red-700 -z-10"></div>
+בחירה לא דטרמיניסטית
+</div>
+</div>
+
 <!-- Automaton 2 -->
-<div class="bg-white rounded border border-slate-200 shadow-sm p-2 w-[340px]">
-<div class="text-[10px] text-slate-400 absolute bottom-2 right-4 font-mono"><KatexInline math="\mathcal{A}_2" /></div>
-<AutomatonD3 variant="classic" :width="320" :height="110" :arrowSize="4" :stateLabelFontSize="15" :transitionLabelFontSize="13"
+<div class="bg-white rounded border border-slate-200 shadow-sm p-2 w-[340px] relative">
+<div class="text-[11px] text-slate-400 absolute top-2 right-3 font-mono font-semibold"><KatexInline math="\mathcal{A}_2" /></div>
+<AutomatonD3 variant="classic" :width="320" :height="135" :arrowSize="4" :stateLabelFontSize="15" :transitionLabelFontSize="13"
 :states="[
-{ id: 's0', x: 80, y: 55, label: '$s_0$', initial: true, initialDirection: 'left', r: 20 },
-{ id: 's1', x: 240, y: 55, label: '$s_1$', accepting: true, r: 20 }
+{ id: 's0', x: 80, y: 75, label: '$s_0$', initial: true, initialDirection: 'left', r: 20 },
+{ id: 's1', x: 240, y: 75, label: '$s_1$', accepting: true, r: 20 }
 ]"
 :transitions="[
 { source: 's0', target: 's0', label: '$a$', loopDirection: '-90deg', labelY: -12, labelWidth: 40 },
@@ -334,6 +337,43 @@ info: |
 
 <div class="mt-3 text-center text-[18px]">
 הכיוון ההפוך אינו נכון אפילו עבור אוטומטים דטרמיניסטיים.
+</div>
+
+---
+
+# שקילות אוטומטים דטרמיניסטיים: שלבי ההוכחה
+
+<div class="mt-2 text-right text-[18px] leading-snug">
+נניח ש־<KatexInline math="\mathcal{A}_1,\mathcal{A}_2" /> דטרמיניסטיים ושלמים, וש־<KatexInline math="L(\mathcal{A}_1)=L(\mathcal{A}_2)" />.
+נוכיח שגם <KatexInline math="L_\omega(\mathcal{A}_1)=L_\omega(\mathcal{A}_2)" />.
+</div>
+
+<div class="mt-3 mx-auto w-[820px] rounded border border-slate-200 bg-white px-5 py-3 shadow-sm" dir="ltr">
+<div class="grid grid-cols-[1fr_auto_1fr] gap-x-4 gap-y-2 items-center text-[21px]">
+<div v-click class="text-right"><KatexInline math="w\in L_\omega(\mathcal{A}_1)" /></div>
+<div v-click class="text-slate-500">⇕</div>
+<div v-click class="text-left text-[15px] text-slate-600" dir="rtl">הגדרת קבלת Büchi באוטומט דטרמיניסטי</div>
+
+<div v-click class="text-right"><KatexInline math="\underset{\infty}{\exists} i\ \left(w[0..i]\in L(\mathcal{A}_1)\right)" /></div>
+<div v-click class="text-slate-500">⇕</div>
+<div v-click class="text-left text-[15px] text-rose-700 font-bold" dir="rtl">מההנחה <KatexInline math="L(\mathcal{A}_1)=L(\mathcal{A}_2)" /></div>
+
+<div v-click class="text-right"><KatexInline math="\underset{\infty}{\exists} i\ \left(w[0..i]\in L(\mathcal{A}_2)\right)" /></div>
+<div v-click class="text-slate-500">⇕</div>
+<div v-click class="text-left text-[15px] text-slate-600" dir="rtl">שוב הגדרת קבלת Büchi</div>
+
+<div v-click class="text-right"><KatexInline math="w\in L_\omega(\mathcal{A}_2)" /></div>
+<div></div>
+<div></div>
+</div>
+</div>
+
+<div v-click class="mt-3 rounded border border-amber-200 bg-amber-50 px-5 py-2 text-right text-[17px] leading-snug font-bold text-amber-800">
+איפה השתמשנו בדטרמיניזם?
+</div>
+
+<div v-click class="mt-2 rounded border border-amber-200 bg-amber-50 px-5 py-2 text-right text-[16px] leading-snug">
+באוטומט דטרמיניסטי יש ריצה יחידה על <KatexInline math="w" />. לכן “התחילית <KatexInline math="w[0..i]" /> מתקבלת” אומר בדיוק שהריצה היחידה נמצאת במצב מקבל בזמן <KatexInline math="i" />. באוטומט לא דטרמיניסטי תחיליות שונות יכולות להתקבל על ידי ריצות שונות, שלא בהכרח מתחברות לריצה אינסופית אחת.
 </div>
 
 ---
