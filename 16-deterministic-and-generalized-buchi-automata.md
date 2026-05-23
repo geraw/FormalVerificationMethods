@@ -725,8 +725,7 @@ info: |
 </div>
 
 <div class="bg-gray-50 border border-gray-200 rounded p-3 text-[12.5px] leading-snug">
-<strong>שימו לב לחוקי הבנייה (שלב אחרי שלב):</strong>
-<ul class="list-disc list-inside mt-1 space-y-1">
+<ul class="list-disc list-inside space-y-1">
   <li><strong>שלב 1: כותבים שני עותקים עצמאיים.</strong> כל עותק מכיל את כל המצבים והמעברים המקוריים ללא מעברים ביניהם (שני עותקים זהים).</li>
   <li v-click="1" :class="{ 'text-blue-700 font-semibold': $clicks === 1 }"><strong>שלב 2: מעברים מ־<KatexInline math="q_1" /> לעותק השני.</strong> במעבר מ־<KatexInline math="q_1" /> בעותק הראשון (שנמצא ב־<KatexInline math="F_1" />), במקום להיכנס למצב הבא בעותק הראשון, נכנסים אליו בעותק השני.</li>
   <li v-click="2" :class="{ 'text-red-700 font-semibold': $clicks === 2 }"><strong>שלב 3: מעברים מ־<KatexInline math="q_2" /> לעותק הראשון.</strong> במעבר מ־<KatexInline math="q_2" /> בעותק השני (שנמצא ב־<KatexInline math="F_2" />), במקום להיכנס למצב הבא בעותק השני, חוזרים לעותק הראשון.</li>
@@ -754,7 +753,7 @@ info: |
   { id: 's1_q2', x: 380, y: 55, label: '$⟨q_2,1⟩$', r: 20, labelWidth: 60 },
   { id: 's2_q1', x: 60, y: 175, label: '$⟨q_1,2⟩$', r: 20, labelWidth: 60 },
   { id: 's2_q0', x: 220, y: 175, label: '$⟨q_0,2⟩$', r: 20, labelWidth: 60 },
-  { id: 's2_q2', x: 380, y: 175, label: '$⟨q_2,2⟩$', accepting: $clicks < 3, r: 20, labelWidth: 60, stroke: $clicks >= 3 ? undefined : '#dc2626' }
+  { id: 's2_q2', x: 380, y: 175, label: '$⟨q_2,2⟩$', accepting: $clicks < 3, r: 20, labelWidth: 60, stroke: $clicks >= 3 ? '#6b7280' : '#dc2626' }
 ]"
 :transitions="[
   { source: 's1_q0', target: 's1_q0', label: '$true$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
@@ -762,13 +761,13 @@ info: |
   { source: 's1_q0', target: 's1_q2', label: '$crit_2$', labelY: -10, labelWidth: 35, curve: -0.15 },
   { source: 's1_q2', target: 's1_q0', label: '$true$', labelY: 10, labelWidth: 30, curve: -0.15 },
   ...($clicks === 0 ? [{ source: 's1_q1', target: 's1_q0', label: '$true$', labelY: -12, labelWidth: 30, curve: -0.15 }] : []),
-  ...($clicks >= 1 ? [{ source: 's1_q1', target: 's2_q0', label: '$true$', labelY: 12, labelWidth: 30, curve: 0, stroke: $clicks === 1 ? '#2563eb' : undefined, strokeWidth: $clicks === 1 ? 3 : undefined, labelColor: $clicks === 1 ? '#2563eb' : undefined }] : []),
+  ...($clicks >= 1 ? [{ source: 's1_q1', target: 's2_q0', label: '$true$', labelY: 12, labelWidth: 30, curve: 0, stroke: $clicks === 1 ? '#2563eb' : '#6b7280', strokeWidth: $clicks === 1 ? 3 : 1.6, labelColor: $clicks === 1 ? '#2563eb' : '#6b7280' }] : []),
   { source: 's2_q0', target: 's2_q0', label: '$true$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
   { source: 's2_q0', target: 's2_q1', label: '$crit_1$', labelY: 10, labelWidth: 35, curve: -0.15 },
   { source: 's2_q1', target: 's2_q0', label: '$true$', labelY: -12, labelWidth: 30, curve: -0.15 },
   { source: 's2_q0', target: 's2_q2', label: '$crit_2$', labelY: -10, labelWidth: 35, curve: -0.15 },
   ...($clicks < 2 ? [{ source: 's2_q2', target: 's2_q0', label: '$true$', labelY: 10, labelWidth: 30, curve: -0.15 }] : []),
-  ...($clicks >= 2 ? [{ source: 's2_q2', target: 's1_q0', label: '$true$', labelY: -12, labelWidth: 30, curve: 0, stroke: $clicks === 2 ? '#dc2626' : undefined, strokeWidth: $clicks === 2 ? 3 : undefined, labelColor: $clicks === 2 ? '#dc2626' : undefined }] : [])
+  ...($clicks >= 2 ? [{ source: 's2_q2', target: 's1_q0', label: '$true$', labelY: -12, labelWidth: 30, curve: 0, stroke: $clicks === 2 ? '#dc2626' : '#6b7280', strokeWidth: $clicks === 2 ? 3 : 1.6, labelColor: $clicks === 2 ? '#dc2626' : '#6b7280' }] : [])
 ]"
 />
 </div>
