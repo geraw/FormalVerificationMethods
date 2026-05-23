@@ -439,25 +439,39 @@ info: |
 
 # למה אין <span dir="ltr">DBA</span> לשפה הזו?
 
-<div class="text-right text-[20px] leading-snug mt-5">
-נניח בשלילה שקיים <span dir="ltr">DBA</span> המקבל את <span dir="ltr"><KatexInline math="(A+B)^*B^\omega" /></span>.
+<div class="text-right text-[17px] leading-snug mt-3">
+נניח בשלילה שקיים <span dir="ltr">DBA</span> <KatexInline math="\mathcal{A}" /> המקבל את
+<span dir="ltr"><KatexInline math="(A+B)^*B^\omega" /></span>, 
+<br>
+כלומר את כל המילים שבהן החל ממקום כלשהו מופיעים רק <KatexInline math="B" />-ים ורק אותן.
 </div>
 
-<div class="grid grid-cols-3 gap-4 mt-5 text-right text-[18px] leading-snug">
-<div v-click class="bg-blue-50 border border-blue-200 rounded p-4">
-<div class="font-bold text-blue-700 mb-2">1. מאלצים ביקורים מקבלים</div>
-נזין מילים מהצורה <span dir="ltr"><KatexInline math="B^{n_1}AB^{n_2}A\cdots" /></span>, ובכל פעם נבחר מספיק <KatexInline math="B" />-ים כדי להגיע למצב מקבל.
+<div class="mt-3 space-y-2 text-right text-[15px] leading-snug">
+<div v-click class="bg-blue-50 border border-blue-200 rounded px-4 py-2">
+<div class="font-bold text-blue-700 mb-1">1. מתחילים ממילה שחייבת להתקבל</div>
+המילה <KatexInline math="B^\omega" /> בשפה, ולכן הריצה היחידה של <KatexInline math="\mathcal{A}" /> עליה מקבלת.
+לכן קיים <KatexInline math="n_1" /> כך שאחרי קריאת <KatexInline math="B^{n_1}" /> הריצה נמצאת במצב מקבל.
 </div>
 
-<div v-click class="bg-orange-50 border border-orange-200 rounded p-4">
-<div class="font-bold text-orange-700 mb-2">2. שובך היונים</div>
-יש רק מספר סופי של מצבים מקבלים, לכן בשלב כלשהו נבקר באותו מצב מקבל פעמיים.
+<div v-click class="bg-blue-50 border border-blue-200 rounded px-4 py-2">
+<div class="font-bold text-blue-700 mb-1">2. מוסיפים <KatexInline math="A" /> וחוזרים על אותו נימוק</div>
+גם <KatexInline math="B^{n_1}AB^\omega" /> בשפה, כי אחרי ה־<KatexInline math="A" /> נשארים רק <KatexInline math="B" />-ים.
+מכיוון שהאוטומט דטרמיניסטי, הריצה על התחילית <KatexInline math="B^{n_1}A" /> כבר נקבעה.
+כדי לקבל את המשך <KatexInline math="B^\omega" />, חייב להיות <KatexInline math="n_2" /> כך שאחרי
+<KatexInline math="B^{n_1}AB^{n_2}" /> שוב נמצאים במצב מקבל.
 </div>
 
-<div v-click class="bg-red-50 border border-red-200 rounded p-4">
-<div class="font-bold text-red-700 mb-2">3. סתירה</div>
-אפשר לחזור על הקטע שבין שני הביקורים ולקבל ריצה מקבלת על מילה שיש בה אינסוף <KatexInline math="A" />-ים.
-אבל מילה כזו אינה בשפה.
+<div v-click class="bg-orange-50 border border-orange-200 rounded px-4 py-2">
+<div class="font-bold text-orange-700 mb-1">3. ממשיכים באינדוקציה</div>
+באותו אופן בוחרים <KatexInline math="n_3,n_4,\ldots" /> כך שהריצה על
+<span dir="ltr"><KatexInline math="B^{n_1}AB^{n_2}AB^{n_3}A\cdots" /></span>
+מבקרת במצב מקבל אחרי כל בלוק <KatexInline math="B^{n_i}" />.
+</div>
+
+<div v-click class="bg-red-50 border border-red-200 rounded px-4 py-2">
+<div class="font-bold text-red-700 mb-1">4. הסתירה</div>
+קיבלנו מילה עם אינסוף מופעים של <KatexInline math="A" />, ולכן היא אינה ב־<KatexInline math="(A+B)^*B^\omega" />.
+אבל הריצה הדטרמיניסטית עליה מבקרת במצבים מקבלים אינסוף פעמים, ולכן <KatexInline math="\mathcal{A}" /> מקבל אותה. סתירה.
 </div>
 </div>
 
@@ -465,23 +479,95 @@ info: |
 
 # למה בניית החזקה לא עובדת?
 
-<div class="mt-6 text-right text-[22px] leading-relaxed">
+<div class="mt-4 text-right text-[19px] leading-relaxed">
 עבור מילים סופיות, בניית החזקה עוקבת אחרי קבוצת כל המצבים האפשריים של ה־<span dir="ltr">NFA</span>.
 למילים אינסופיות הבעיה היא תנאי הקבלה:
 </div>
 
-<div class="grid grid-cols-2 gap-5 mt-6 text-right text-[20px] leading-snug">
-<div class="bg-slate-50 border border-slate-200 rounded p-5">
+<div class="grid grid-cols-2 gap-4 mt-4 text-right text-[17px] leading-snug">
+<div class="bg-slate-50 border border-slate-200 rounded p-4">
 <div class="font-bold mb-2">מה עובד בסופי?</div>
-מספיק שקיימת ריצה אחת שמסתיימת במצב מקבל.
+מספיק שקיימת ריצה אחת שמסתיים במצב מקבל.
 לכן אם קבוצת המצבים מכילה מצב מקבל, אפשר לקבל את המילה הסופית.
 </div>
 
-<div class="bg-red-50 border border-red-200 rounded p-5">
+<div class="bg-red-50 border border-red-200 rounded p-4">
 <div class="font-bold text-red-700 mb-2">מה נכשל באינסופי?</div>
 קבלת Büchi דורשת ריצה אחת שמבקרת במצב מקבל אינסוף פעמים.
 אוטומט החזקה עלול לראות אינסוף רישות, שבכל אחת מהן ריצה אחרת מגיעה למצב מקבל.
 </div>
+</div>
+
+<div class="bg-blue-50 border border-blue-200 rounded p-3 mt-4 text-right text-[15px] leading-snug">
+<div class="font-bold text-blue-700 mb-1">תזכורת: בניית החזקה (Subset Construction)</div>
+בניית החזקה מתרגמת אוטומט לא-דטרמיניסטי לדטרמיניסטי על ידי מעקב אחר קבוצת המצבים האפשריים: 
+כל מצב באוטומט החדש הוא קבוצת מצבים <KatexInline math="S \subseteq Q" /> של האוטומט המקורי, ויחס המעברים מוגדר על ידי:
+<div class="mt-1 text-center" dir="ltr">
+<KatexInline display math="\delta_{\mathcal{D}}(S, a) = \bigcup_{q \in S} \delta(q, a)" />
+</div>
+</div>
+
+---
+
+# דוגמה: כישלון בניית החזקה ב־Büchi
+
+<div class="grid grid-cols-2 gap-6 mt-4 text-right">
+<!-- Left Column: NBA -->
+<div class="flex flex-col gap-3">
+<div class="font-bold text-[18px] text-slate-700">האוטומט הלא-דטרמיניסטי <KatexInline math="\mathcal{A}" />:</div>
+<div class="bg-white rounded border border-slate-200 shadow-sm p-3 w-full relative">
+<div class="text-[11px] text-slate-400 absolute top-2 right-3 font-mono font-semibold">NBA</div>
+<AutomatonD3 variant="classic" :width="380" :height="140" :arrowSize="4" :stateLabelFontSize="15" :transitionLabelFontSize="13"
+:states="[
+{ id: 'q0', x: 100, y: 70, label: '$q_0$', initial: true, initialDirection: 'left', r: 22 },
+{ id: 'q1', x: 280, y: 70, label: '$q_1$', accepting: true, r: 22 }
+]"
+:transitions="[
+{ source: 'q0', target: 'q0', label: '$a$', loopDirection: '-90deg', labelY: -12, labelWidth: 40 },
+{ source: 'q0', target: 'q1', label: '$a$', labelY: -10, labelWidth: 40 }
+]"
+/>
+</div>
+<div class="bg-blue-50 border border-blue-100 rounded p-3 text-[14px] leading-snug">
+<div class="font-bold text-blue-700 mb-1">שפת Büchi:</div>
+אין אף ריצה אינסופית שיכולה לבקר ב־<KatexInline math="q_1" /> אינסוף פעמים (כי אין מעברים מתוך <KatexInline math="q_1" />).
+<div class="mt-2 font-semibold text-center text-blue-800" dir="ltr">
+<KatexInline math="L_\omega(\mathcal{A}) = \emptyset" />
+</div>
+</div>
+</div>
+
+<!-- Right Column: Subset Construction DBA -->
+<div class="flex flex-col gap-3">
+<div class="font-bold text-[18px] text-slate-700">אוטומט החזקה המתקבל <KatexInline math="\mathcal{D}" />:</div>
+<div class="bg-white rounded border border-slate-200 shadow-sm p-3 w-full relative">
+<div class="text-[11px] text-slate-400 absolute top-2 right-3 font-mono font-semibold">DBA (Subset)</div>
+<AutomatonD3 variant="classic" :width="380" :height="140" :arrowSize="4" :stateLabelFontSize="15" :transitionLabelFontSize="13"
+:states="[
+{ id: 's0', x: 100, y: 70, label: '$\\{q_0\\}$', initial: true, initialDirection: 'left', r: 22 },
+{ id: 's1', x: 280, y: 70, label: '$\\{q_0, q_1\\}$', accepting: true, r: 28 }
+]"
+:transitions="[
+{ source: 's0', target: 's1', label: '$a$', labelY: -10, labelWidth: 40 },
+{ source: 's1', target: 's1', label: '$a$', loopDirection: '-90deg', labelY: -12, labelWidth: 40 }
+]"
+/>
+</div>
+<div class="bg-emerald-50 border border-emerald-100 rounded p-3 text-[14px] leading-snug">
+<div class="font-bold text-emerald-700 mb-1">שפת Büchi של אוטומט החזקה:</div>
+המצב המקבל <KatexInline math="\{q_0,q_1\}" /> מבוקר אינסוף פעמים על המילה <KatexInline math="a^\omega" />.
+<div class="mt-2 font-semibold text-center text-emerald-800" dir="ltr">
+<KatexInline math="L_\omega(\mathcal{D}) = \{a^\omega\}" />
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-red-50 border border-red-200 rounded p-3.5 mt-4 text-right text-[13.5px] leading-snug">
+<div class="font-bold text-red-700 mb-1">מדוע זה נכשל?</div>
+בכל קידומת סופית של המילה, קיימת ריצה כלשהי שמגיעה למצב המקבל <KatexInline math="q_1" />. 
+לכן אוטומט החזקה עוקב אחרי הקבוצה <KatexInline math="\{q_0,q_1\}" /> ומקבל את המילה.
+אולם, אין <b>ריצה אינסופית אחת ויחידה</b> שמבקרת ב־<KatexInline math="q_1" /> אינסוף פעמים. בניית החזקה מאבדת את הקישוריות בין הריצות השונות.
 </div>
 
 ---
