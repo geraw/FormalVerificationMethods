@@ -404,30 +404,38 @@ https://play.kahoot.it/#/k/15aefb35-8427-4809-807c-7098ee85599f
 
 # דוגמאות מעל <KatexInline math="\{A,B\}" />
 
-<div class="grid grid-cols-2 gap-6 mt-8 text-right text-[21px] leading-relaxed">
-<div class="bg-emerald-50 border border-emerald-200 rounded p-5">
-<div class="font-bold text-emerald-700 mb-3">אינסוף מופעים של <KatexInline math="A" /></div>
+<div class="grid grid-cols-2 gap-4 mt-4 text-right text-[17px] leading-snug">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
+<div class="font-bold text-emerald-700 mb-1.5">אינסוף מופעים של <KatexInline math="A" /></div>
 
-<div class="text-center text-[29px]" dir="ltr">
+<div class="text-center text-[24px]" dir="ltr">
 <KatexInline display math="(B^*A)^\omega" />
 </div>
 
-כל בלוק נגמר ב־<KatexInline math="A" />, ולכן <KatexInline math="A" /> מופיע שוב ושוב.
+<div class="mt-1.5 bg-white/70 border border-emerald-200 rounded p-2 text-[12px] leading-tight">
+אם מילה מכילה אינסוף מופעים של <KatexInline math="A" />, חותכים אותה בכל מופע של <KatexInline math="A" />: כל קטע סופי שמתקבל הוא רצף של אפס או יותר <KatexInline math="B" />-ים ואחריהם <KatexInline math="A" />, כלומר מילה מתוך <KatexInline math="B^*A" />. לכן המילה כולה היא שרשור אינסופי של מילים מתוך <KatexInline math="B^*A" />.
+
+להפך, אם מילה שייכת ל־<KatexInline math="(B^*A)^\omega" />, היא מורכבת מאינסוף בלוקים, וכל בלוק מסתיים ב־<KatexInline math="A" />. לכן מופיעים בה אינסוף <KatexInline math="A" />-ים.
+</div>
 </div>
 
-<div class="bg-orange-50 border border-orange-200 rounded p-5">
-<div class="font-bold text-orange-700 mb-3">רק מספר סופי של <KatexInline math="A" /></div>
+<div class="bg-orange-50 border border-orange-200 rounded p-3">
+<div class="font-bold text-orange-700 mb-1.5">רק מספר סופי של <KatexInline math="A" /></div>
 
-<div class="text-center text-[29px]" dir="ltr">
+<div class="text-center text-[24px]" dir="ltr">
 <KatexInline display math="(A+B)^*.B^\omega" />
 </div>
 
-אחרי רישא סופית כלשהי מופיעים רק <KatexInline math="B" />.
+<div class="mt-1.5 bg-white/70 border border-orange-200 rounded p-2 text-[12px] leading-tight">
+אם במילה מופיעים רק מספר סופי של <KatexInline math="A" />-ים, נסמן את המקום האחרון שבו מופיע <KatexInline math="A" />. הרישא עד המקום הזה היא מילה סופית כלשהי מעל <KatexInline math="\{A,B\}" />, כלומר מתוך <KatexInline math="(A+B)^*" />. מכאן ואילך מופיעים רק <KatexInline math="B" />-ים, ולכן הזנב הוא מתוך <KatexInline math="B^\omega" />.
+
+להפך, כל מילה מתוך <KatexInline math="(A+B)^*.B^\omega" /> מתחילה ברישא סופית כלשהי, שבה יכולים להופיע רק מספר סופי של <KatexInline math="A" />-ים, ואחריה זנב שמורכב רק מ־<KatexInline math="B" />. לכן במילה כולה יש רק מספר סופי של <KatexInline math="A" />-ים.
+</div>
 </div>
 </div>
 
-<div class="mt-7 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[20px]">
-המחלקה סגורה תחת איחוד, חיתוך ומשלים.
+<div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-right text-[17px]">
+קבוצת השפות הניתנות לתיאור באמצעות ביטויי <KatexInline math="\omega" />-רגולריים סגורה תחת איחוד, חיתוך ומשלים.
 </div>
 
 ---
