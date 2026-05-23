@@ -742,27 +742,23 @@ info: |
 <div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
 <AutomatonD3 variant="classic" :width="450" :height="230" :arrowSize="4" :stateLabelFontSize="11" :transitionLabelFontSize="10"
 :states="[
-  { id: 's1_q1', x: 60, y: 55, label: '$\\langle q_1,1\\rangle$', accepting: true, r: 20, labelWidth: 60, stroke: '#2563eb' },
-  { id: 's1_q0', x: 220, y: 55, label: '$\\langle q_0,1\\rangle$', initial: true, initialDirection: 'top', r: 20, labelWidth: 60 },
-  { id: 's1_q2', x: 380, y: 55, label: '$\\langle q_2,1\\rangle$', r: 20, labelWidth: 60 },
-  
-  { id: 's2_q1', x: 60, y: 175, label: '$\\langle q_1,2\\rangle$', r: 20, labelWidth: 60 },
-  { id: 's2_q0', x: 220, y: 175, label: '$\\langle q_0,2\\rangle$', r: 20, labelWidth: 60 },
-  { id: 's2_q2', x: 380, y: 175, label: '$\\langle q_2,2\\rangle$', r: 20, labelWidth: 60, stroke: '#dc2626' }
+  { id: 's1_q1', x: 60, y: 55, label: '$⟨q_1,1⟩$', accepting: true, r: 20, labelWidth: 60, stroke: '#2563eb' },
+  { id: 's1_q0', x: 220, y: 55, label: '$⟨q_0,1⟩$', initial: true, initialDirection: 'top', r: 20, labelWidth: 60 },
+  { id: 's1_q2', x: 380, y: 55, label: '$⟨q_2,1⟩$', r: 20, labelWidth: 60 },
+  { id: 's2_q1', x: 60, y: 175, label: '$⟨q_1,2⟩$', r: 20, labelWidth: 60 },
+  { id: 's2_q0', x: 220, y: 175, label: '$⟨q_0,2⟩$', r: 20, labelWidth: 60 },
+  { id: 's2_q2', x: 380, y: 175, label: '$⟨q_2,2⟩$', r: 20, labelWidth: 60, stroke: '#dc2626' }
 ]"
 :transitions="[
   { source: 's1_q0', target: 's1_q0', label: '$true$', loopDirection: '90deg', labelY: 8, labelWidth: 30 },
   { source: 's1_q0', target: 's1_q1', label: '$crit_1$', labelY: 10, labelWidth: 35, curve: -0.15 },
   { source: 's1_q0', target: 's1_q2', label: '$crit_2$', labelY: -10, labelWidth: 35, curve: -0.15 },
   { source: 's1_q2', target: 's1_q0', label: '$true$', labelY: 10, labelWidth: 30, curve: -0.15 },
-  
   { source: 's1_q1', target: 's2_q0', label: '$true$', labelY: 12, labelWidth: 30, curve: 0 },
-  
   { source: 's2_q0', target: 's2_q0', label: '$true$', loopDirection: '270deg', labelY: 8, labelWidth: 30 },
   { source: 's2_q0', target: 's2_q1', label: '$crit_1$', labelY: -10, labelWidth: 35, curve: -0.15 },
   { source: 's2_q1', target: 's2_q0', label: '$true$', labelY: 10, labelWidth: 30, curve: -0.15 },
   { source: 's2_q0', target: 's2_q2', label: '$crit_2$', labelY: 10, labelWidth: 35, curve: -0.15 },
-  
   { source: 's2_q2', target: 's1_q0', label: '$true$', labelY: -12, labelWidth: 30, curve: 0 }
 ]"
 />
@@ -914,10 +910,10 @@ info: |
 <div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
 <AutomatonD3 variant="classic" :width="400" :height="220" :arrowSize="4" :stateLabelFontSize="12" :transitionLabelFontSize="11"
 :states="[
-  { id: 's00', x: 90,  y: 40, label: '$\\langle q_0,p_0\\rangle$', initial: true, initialDirection: 'left', r: 24, labelWidth: 80 },
-  { id: 's10', x: 290, y: 40, label: '$\\langle q_1,p_0\\rangle$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb' },
-  { id: 's01', x: 90,  y: 180, label: '$\\langle q_0,p_1\\rangle$', accepting: true, r: 24, labelWidth: 80, stroke: '#dc2626' },
-  { id: 's11', x: 290, y: 180, label: '$\\langle q_1,p_1\\rangle$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb', innerStroke: '#dc2626' }
+  { id: 's00', x: 90,  y: 60, label: '$⟨q_0,p_0⟩$', initial: true, initialDirection: 'left', r: 24, labelWidth: 80 },
+  { id: 's10', x: 290, y: 60, label: '$⟨q_1,p_0⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb' },
+  { id: 's01', x: 90,  y: 180, label: '$⟨q_0,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#dc2626' },
+  { id: 's11', x: 290, y: 180, label: '$⟨q_1,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb', innerStroke: '#dc2626' }
 ]"
 :transitions="[
   { source: 's00', target: 's10', label: '$a$', labelY: -10, labelWidth: 30 },
