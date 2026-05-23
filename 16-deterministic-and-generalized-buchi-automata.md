@@ -914,13 +914,12 @@ info: |
 מצבי המכפלה ותנאי הקבלה (שים לב ש־<KatexInline math="\langle q_1,p_1\rangle" /> נגיש כאשר $a$ ו־$b$ מתקבלים יחד).
 </div>
 </div>
-<div class="flex justify-center mt-2 bg-white rounded border border-slate-100 p-1">
-<AutomatonD3 variant="classic" :width="450" :height="250" :arrowSize="3.2" :stateLabelFontSize="10" :transitionLabelFontSize="8"
+<AutomatonD3 variant="classic" :width="400" :height="220" :arrowSize="3.2" :stateLabelFontSize="10" :transitionLabelFontSize="8"
 :states="[
-  { id: 's00', x: 100, y: 70, label: '$⟨q_0,p_0⟩$', initial: true, initialDirection: 'left', r: 24, labelWidth: 80 },
-  { id: 's10', x: 350, y: 70, label: '$⟨q_1,p_0⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb' },
-  { id: 's01', x: 100, y: 200, label: '$⟨q_0,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#dc2626' },
-  { id: 's11', x: 350, y: 200, label: '$⟨q_1,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb', innerStroke: '#dc2626' }
+  { id: 's00', x: 65,  y: 45, label: '$⟨q_0,p_0⟩$', initial: true, initialDirection: 'left', r: 24, labelWidth: 80 },
+  { id: 's10', x: 345, y: 45, label: '$⟨q_1,p_0⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb' },
+  { id: 's01', x: 65,  y: 175, label: '$⟨q_0,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#dc2626' },
+  { id: 's11', x: 345, y: 175, label: '$⟨q_1,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb', innerStroke: '#dc2626' }
 ]"
 :transitions="[
   { source: 's00', target: 's00', label: '$\\neg a \\land \\neg b$', loopDirection: '135deg', labelY: -10, labelWidth: 70 },
@@ -935,10 +934,10 @@ info: |
   { source: 's11', target: 's01', label: '$\\neg a\\land b$', labelY: -12, labelWidth: 65, curve: 0.15 },
   { source: 's10', target: 's11', label: '$a\\land b$', labelX: 22, labelWidth: 50, curve: -0.15 },
   { source: 's11', target: 's10', label: '$a\\land \\neg b$', labelX: -22, labelWidth: 60, curve: -0.15 },
-  { source: 's00', target: 's11', label: '$a\\land b$', labelY: -15, labelX: 20, labelWidth: 50, curve: 0.08 },
-  { source: 's11', target: 's00', label: '$\\neg a\\land \\neg b$', labelY: 15, labelX: -20, labelWidth: 70, curve: 0.08 },
-  { source: 's10', target: 's01', label: '$\\neg a\\land b$', labelY: -15, labelX: -20, labelWidth: 65, curve: 0.08 },
-  { source: 's01', target: 's10', label: '$a\\land \\neg b$', labelY: 15, labelX: 20, labelWidth: 60, curve: 0.08 }
+  { source: 's00', target: 's11', label: '$a\\land b$', labelY: 30, labelX: 70, labelWidth: 50, curve: -0.05 },
+  { source: 's11', target: 's00', label: '$\\neg a\\land \\neg b$', labelY: -30, labelX: -70, labelWidth: 70, curve: -0.05 },
+  { source: 's10', target: 's01', label: '$\\neg a\\land b$', labelY: 30, labelX: -70, labelWidth: 65, curve: -0.05 },
+  { source: 's01', target: 's10', label: '$a\\land \\neg b$', labelY: -30, labelX: 70, labelWidth: 60, curve: -0.05 }
 ]"
 />
 </div>
