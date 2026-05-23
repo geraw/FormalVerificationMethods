@@ -908,18 +908,13 @@ info: |
 </div>
 
 <div class="bg-purple-50 border border-purple-200 rounded p-4 text-[14px] flex flex-col justify-between">
-<div>
 <span class="font-bold text-purple-700">GNBA המכפלה <KatexInline math="\mathcal{G} = \mathcal{A}_1 \times \mathcal{A}_2" />:</span>
-<div class="text-[12px] text-gray-600 mt-1">
-מצבי המכפלה ותנאי הקבלה (שים לב ש־<KatexInline math="\langle q_1,p_1\rangle" /> נגיש כאשר $a$ ו־$b$ מתקבלים יחד).
-</div>
-</div>
-<AutomatonD3 variant="classic" :width="400" :height="220" :arrowSize="3.2" :stateLabelFontSize="10" :transitionLabelFontSize="8"
+<AutomatonD3 variant="classic" :width="440" :height="250" :arrowSize="3.2" :stateLabelFontSize="10" :transitionLabelFontSize="9"
 :states="[
-  { id: 's00', x: 65,  y: 45, label: '$⟨q_0,p_0⟩$', initial: true, initialDirection: 'left', r: 24, labelWidth: 80 },
-  { id: 's10', x: 345, y: 45, label: '$⟨q_1,p_0⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb' },
-  { id: 's01', x: 65,  y: 175, label: '$⟨q_0,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#dc2626' },
-  { id: 's11', x: 345, y: 175, label: '$⟨q_1,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb', innerStroke: '#dc2626' }
+  { id: 's00', x: 65,  y: 55, label: '$⟨q_0,p_0⟩$', initial: true, initialDirection: 'left', r: 24, labelWidth: 80 },
+  { id: 's10', x: 375, y: 55, label: '$⟨q_1,p_0⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb' },
+  { id: 's01', x: 65,  y: 195, label: '$⟨q_0,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#dc2626' },
+  { id: 's11', x: 375, y: 195, label: '$⟨q_1,p_1⟩$', accepting: true, r: 24, labelWidth: 80, stroke: '#2563eb', innerStroke: '#dc2626' }
 ]"
 :transitions="[
   { source: 's00', target: 's00', label: '$\\neg a \\land \\neg b$', loopDirection: '135deg', labelY: -10, labelWidth: 70 },
@@ -934,10 +929,10 @@ info: |
   { source: 's11', target: 's01', label: '$\\neg a\\land b$', labelY: -12, labelWidth: 65, curve: 0.15 },
   { source: 's10', target: 's11', label: '$a\\land b$', labelX: 22, labelWidth: 50, curve: -0.15 },
   { source: 's11', target: 's10', label: '$a\\land \\neg b$', labelX: -22, labelWidth: 60, curve: -0.15 },
-  { source: 's00', target: 's11', label: '$a\\land b$', labelY: 30, labelX: 70, labelWidth: 50, curve: -0.05 },
-  { source: 's11', target: 's00', label: '$\\neg a\\land \\neg b$', labelY: -30, labelX: -70, labelWidth: 70, curve: -0.05 },
-  { source: 's10', target: 's01', label: '$\\neg a\\land b$', labelY: 30, labelX: -70, labelWidth: 65, curve: -0.05 },
-  { source: 's01', target: 's10', label: '$a\\land \\neg b$', labelY: -30, labelX: 70, labelWidth: 60, curve: -0.05 }
+  { source: 's00', target: 's11', label: '$a\\land b$', labelY: 30, labelX: 70, labelWidth: 50, curve: -0.06 },
+  { source: 's11', target: 's00', label: '$\\neg a\\land \\neg b$', labelY: -30, labelX: -70, labelWidth: 70, curve: -0.06 },
+  { source: 's10', target: 's01', label: '$\\neg a\\land b$', labelY: 30, labelX: -70, labelWidth: 65, curve: -0.06 },
+  { source: 's01', target: 's10', label: '$a\\land \\neg b$', labelY: -30, labelX: 70, labelWidth: 60, curve: -0.06 }
 ]"
 />
 <div class="mt-2 text-[12px] text-gray-700 leading-tight">
