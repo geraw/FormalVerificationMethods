@@ -1192,6 +1192,63 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 ---
 
+# מתכון לאיחוד שפות
+
+<div class="grid grid-cols-[0.9fr_1.1fr] gap-4 mt-3 items-start" dir="ltr">
+<div class="space-y-2">
+<div class="text-right text-[15px] leading-tight" dir="rtl">
+
+<div class="text-center text-[22px] mb-2" dir="ltr">
+<KatexInline display math="L_\omega(\mathcal{B}) = L_\omega(\mathcal{A}_1)\cup L_\omega(\mathcal{A}_2)" />
+</div>
+
+
+<div class="relative w-[420px] mx-auto bg-white rounded border border-slate-200 shadow-sm p-2 mt-2">
+  <div v-if="$clicks < 1" class="absolute left-4 top-[75px] text-[26px] font-bold text-blue-700 transition-all duration-300">
+    <KatexInline math="\mathcal{A}_1" />
+  </div>
+  <div v-if="$clicks < 1" class="absolute left-4 top-[215px] text-[26px] font-bold text-red-600 transition-all duration-300">
+    <KatexInline math="\mathcal{A}_2" />
+  </div>
+  <div v-else class="absolute left-4 top-[145px] text-[34px] font-bold text-purple-800 transition-all duration-300">
+    <KatexInline math="\mathcal{B}" />
+  </div>
+
+  <AutomatonD3 variant="classic" :width="400" :height="320" :arrowSize="3.2" :stateLabelFontSize="15" :transitionLabelFontSize="13"
+    :states="[
+      { id: 'a1q0', x: 160, y: 90, label: '$q_0$', initial: true, initialDirection: 'left', r: 23, labelWidth: 65, stroke: $clicks >= 1 ? '#7e22ce' : '#2563eb', initialStroke: $clicks >= 1 ? '#7e22ce' : '#2563eb', textColor: $clicks >= 1 ? '#7e22ce' : '#2563eb' },
+      { id: 'a1q1', x: 300, y: 90, label: '$q_1$', accepting: true, r: 23, labelWidth: 65, stroke: $clicks >= 1 ? '#7e22ce' : '#2563eb', textColor: $clicks >= 1 ? '#7e22ce' : '#2563eb' },
+      { id: 'a2q0', x: 160, y: 230, label: '$p_0$', initial: true, initialDirection: 'left', accepting: true, r: 23, labelWidth: 65, stroke: $clicks >= 1 ? '#7e22ce' : '#dc2626', initialStroke: $clicks >= 1 ? '#7e22ce' : '#dc2626', textColor: $clicks >= 1 ? '#7e22ce' : '#dc2626' },
+      { id: 'a2q1', x: 300, y: 230, label: '$p_1$', r: 23, labelWidth: 65, stroke: $clicks >= 1 ? '#7e22ce' : '#dc2626', textColor: $clicks >= 1 ? '#7e22ce' : '#dc2626' }
+    ]"
+    :transitions="[
+      { source: 'a1q0', target: 'a1q0', label: '$b$', loopDirection: '-90deg', loopRadius: 58, labelY: -9, stroke: $clicks >= 1 ? '#7e22ce' : '#2563eb', labelColor: $clicks >= 1 ? '#7e22ce' : '#2563eb' },
+      { source: 'a1q0', target: 'a1q1', label: '$a$', labelY: -6, labelWidth: 45, stroke: $clicks >= 1 ? '#7e22ce' : '#2563eb', labelColor: $clicks >= 1 ? '#7e22ce' : '#2563eb' },
+      { source: 'a1q1', target: 'a1q1', label: '$a,b$', loopDirection: '0deg', loopRadius: 58, labelX: 13, labelWidth: 45, stroke: $clicks >= 1 ? '#7e22ce' : '#2563eb', labelColor: $clicks >= 1 ? '#7e22ce' : '#2563eb' },
+      { source: 'a2q0', target: 'a2q0', label: '$c$', loopDirection: '90deg', loopRadius: 58, labelY: 9, stroke: $clicks >= 1 ? '#7e22ce' : '#dc2626', labelColor: $clicks >= 1 ? '#7e22ce' : '#dc2626' },
+      { source: 'a2q0', target: 'a2q1', label: '$d$', labelY: -8, labelWidth: 45, curve: -0.2, stroke: $clicks >= 1 ? '#7e22ce' : '#dc2626', labelColor: $clicks >= 1 ? '#7e22ce' : '#dc2626' },
+      { source: 'a2q1', target: 'a2q0', label: '$c$', labelY: 8, labelWidth: 45, curve: -0.2, stroke: $clicks >= 1 ? '#7e22ce' : '#dc2626', labelColor: $clicks >= 1 ? '#7e22ce' : '#dc2626' }
+    ]"
+  />
+</div>
+</div>
+</div>
+
+<div class="text-right text-[16px] leading-tight mt-4" dir="rtl">
+<div class="bg-blue-50 border border-blue-200 rounded p-2.5">
+<div class="font-bold text-blue-700 mb-0.5">1. שמים זה לצד זה</div>
+פשוט מסתכלים על שני האוטומטים יחד, כולל חץ ההתחלה וסימון המצבים המקבלים.
+</div>
+
+<div v-click class="bg-amber-50 border border-amber-200 rounded p-2.5 mt-2">
+<div class="font-bold text-amber-700 mb-0.5">2. לא צריך לעשות כלום :-)</div>
+מתייחסים לכל מה שרואים כאוטומט אחד: <span dir="ltr"><KatexInline math="\mathcal{B}" /></span>.
+</div>
+</div>
+</div>
+
+---
+
 # מה קיבלנו?
 
 <div class="mt-8 text-right text-[23px] leading-relaxed">
