@@ -845,13 +845,17 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 </div>
 
 <div class="bg-slate-50 border border-slate-200 rounded p-2.5">
-<div class="font-bold text-slate-700 mb-1">4. מאחדים את כל האפשרויות</div>
-מצב ההתחלה ומצב הקבלה שחוזרים אליו אינם ידועים מראש, לכן לוקחים איחוד על כולם.
+<div class="font-bold text-slate-700 mb-1">4. מחברים את כל האפשרויות</div>
+מצב ההתחלה ומצב הקבלה שחוזרים אליו אינם ידועים מראש, לכן כותבים סכום של כל המחוברים.
 </div>
 </div>
 
 <div class="mt-3 text-center text-[24px]" dir="ltr">
-<KatexInline display math="L_\omega(\mathcal{A})=\bigcup_{q_0\in Q_0,\ q\in F} E_{q_0,q}\cdot G_q^\omega" />
+<KatexInline display math="R_{\mathcal{A}}=\sum_{q_0\in Q_0,\ q\in F} E_{q_0,q}\cdot G_q^\omega" />
+</div>
+
+<div class="mt-1 text-center text-[20px]" dir="ltr">
+<KatexInline display math="L_\omega(R_{\mathcal{A}})=L_\omega(\mathcal{A})" />
 </div>
 
 ---
@@ -877,7 +881,7 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 </div>
 
 <div class="mt-5 bg-white border border-slate-200 rounded p-4 text-center text-[24px]" dir="ltr">
-<KatexInline display math="\text{NBA}\ \Longrightarrow\ \bigcup E\cdot G^\omega" />
+<KatexInline display math="\text{NBA}\ \Longrightarrow\ R_{\mathcal{A}}=\sum E\cdot G^\omega" />
 </div>
 
 ---
