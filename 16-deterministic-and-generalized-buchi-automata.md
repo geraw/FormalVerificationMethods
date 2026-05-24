@@ -186,13 +186,16 @@ info: |
 
 # דוגמה: <span dir="ltr">DBA</span> לתכונת זמן לינארי
 
-<div class="grid grid-cols-[0.9fr_1.1fr] gap-5 mt-6 items-center">
-<div class="bg-white rounded border border-slate-200 shadow-sm">
-<AutomatonD3 variant="classic" :width="500" :height="230" :arrowSize="4.2" :stateLabelFontSize="16" :transitionLabelFontSize="13"
+<div class="grid grid-cols-2 gap-5 mt-4">
+<!-- Left Column: DBA -->
+<div class="flex flex-col items-center">
+<div class="font-bold text-[18px] text-blue-600 mb-2">DBA דטרמיניסטי ושלם</div>
+<div class="bg-white rounded border border-slate-200 shadow-sm p-3 w-full">
+<AutomatonD3 variant="classic" :width="450" :height="220" :arrowSize="4.2" :stateLabelFontSize="15" :transitionLabelFontSize="12"
   :states="[
-    { id: 'bad', x: 95, y: 115, label: '$q_{\bot}$', r: 25, labelWidth: 70 },
-    { id: 'wait', x: 250, y: 115, label: '$q_0$', initial: true, initialDirection: 'top', r: 25, labelWidth: 70 },
-    { id: 'seen', x: 405, y: 115, label: '$q_1$', accepting: true, r: 25, labelWidth: 70 }
+    { id: 'bad', x: 80, y: 110, label: '$q_{\\bot}$', r: 23, labelWidth: 70 },
+    { id: 'wait', x: 220, y: 110, label: '$q_0$', initial: true, initialDirection: 'top', r: 23, labelWidth: 70 },
+    { id: 'seen', x: 360, y: 110, label: '$q_1$', accepting: true, r: 23, labelWidth: 70 }
   ]"
   :transitions="[
     { source: 'wait', target: 'seen', label: '$a\\land b$', labelY: -10, labelWidth: 70, curve: -0.18 },
@@ -205,13 +208,35 @@ info: |
   ]"
 />
 </div>
-
-<div class="text-right text-[22px] leading-relaxed">
-האוטומט מקבל בדיוק את התכונה:
-<div class="mt-4 text-center text-[29px]" dir="ltr">
-<KatexInline display math="\text{Always } b \;\land\; \text{Always Eventually } a" />
 </div>
-המצב המקבל מציין שראינו <KatexInline math="a" /> תוך שמירה על <KatexInline math="b" />.
+
+<!-- Right Column: NBA -->
+<div class="flex flex-col items-center">
+<div class="font-bold text-[18px] text-red-600 mb-2">NBA לא דטרמיניסטי</div>
+<div class="bg-white rounded border border-slate-200 shadow-sm p-3 w-full">
+<AutomatonD3 variant="classic" :width="450" :height="220" :arrowSize="4.2" :stateLabelFontSize="15" :transitionLabelFontSize="12"
+  :states="[
+    { id: 'q0', x: 150, y: 110, label: '$q_0$', initial: true, initialDirection: 'top', r: 23, labelWidth: 70 },
+    { id: 'q1', x: 310, y: 110, label: '$q_1$', accepting: true, r: 23, labelWidth: 70 }
+  ]"
+  :transitions="[
+    { source: 'q0', target: 'q0', label: '$b$', loopDirection: '-90deg', labelY: -8, labelWidth: 50 },
+    { source: 'q0', target: 'q1', label: '$b$', labelY: 18, labelWidth: 50, curve: 0.18 },
+    { source: 'q1', target: 'q0', label: '$a\\land b$', labelY: -10, labelWidth: 70, curve: 0.18 },
+    { source: 'q1', target: 'q1', label: '$a\\land b$', loopDirection: '-90deg', labelY: -8, labelWidth: 70 }
+  ]"
+/>
+</div>
+</div>
+</div>
+
+<div class="mt-6 text-right text-[20px] leading-relaxed">
+שני האוטומטים מייצגים את תכונת הזמן הלינארי: <strong>"תמיד <KatexInline math="b" /> ואינסוף פעמים <KatexInline math="a" />"</strong>.
+<div class="mt-3 text-center text-[26px]" dir="ltr">
+<KatexInline display math="\text{always } (b \;\land\; \text{eventually } a)" />
+</div>
+<div class="text-left text-[16px] text-slate-500 mt-2 font-bold">
+הוכיחו טענה זאת 🦉
 </div>
 </div>
 
