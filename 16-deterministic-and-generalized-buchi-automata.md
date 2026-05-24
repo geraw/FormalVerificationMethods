@@ -193,18 +193,18 @@ info: |
 <div class="bg-white rounded border border-slate-200 shadow-sm p-3 w-full">
 <AutomatonD3 variant="classic" :width="450" :height="220" :arrowSize="4.2" :stateLabelFontSize="15" :transitionLabelFontSize="12"
   :states="[
-    { id: 'bad', x: 80, y: 110, label: '$q_{\\bot}$', r: 23, labelWidth: 70 },
-    { id: 'wait', x: 220, y: 110, label: '$q_0$', initial: true, initialDirection: 'top', r: 23, labelWidth: 70 },
-    { id: 'seen', x: 360, y: 110, label: '$q_1$', accepting: true, r: 23, labelWidth: 70 }
+    { id: 'bad',  x: 110, y: 110, label: '$q_{\\bot}$', r: 23, labelWidth: 70 },
+    { id: 'wait', x: 250, y: 110, label: '$q_0$', initial: true, initialDirection: 'top', r: 23, labelWidth: 70 },
+    { id: 'seen', x: 390, y: 110, label: '$q_1$', accepting: true, r: 23, labelWidth: 70 }
   ]"
   :transitions="[
     { source: 'wait', target: 'seen', label: '$a\\land b$', labelY: -10, labelWidth: 70, curve: -0.18 },
     { source: 'seen', target: 'wait', label: '$\\neg a\\land b$', labelY: 18, labelWidth: 90, curve: -0.18 },
     { source: 'wait', target: 'wait', label: '$\\neg a\\land b$', loopDirection: '90deg', labelY: 8, labelWidth: 90 },
     { source: 'seen', target: 'seen', label: '$a\\land b$', loopDirection: '90deg', labelY: 8, labelWidth: 70 },
-    { source: 'wait', target: 'bad', label: '$\\neg b$', labelY: 20, labelWidth: 55, curve: -0.2 },
-    { source: 'seen', target: 'bad', label: '$\\neg b$', labelY: -18, labelWidth: 55, curve: 0.35 },
-    { source: 'bad', target: 'bad', label: '$true$', loopDirection: '180deg', labelX: -12, labelWidth: 50 }
+    { source: 'wait', target: 'bad', label: '$\\neg b$', labelY: 20, labelWidth: 55, curve: 0 },
+    { source: 'seen', target: 'bad', label: '$\\neg b$', labelY: -18, labelWidth: 55, curve: 0.45 },
+    { source: 'bad',  target: 'bad', label: '$true$', loopDirection: '180deg', labelX: -18, labelWidth: 50 }
   ]"
 />
 </div>
@@ -216,7 +216,7 @@ info: |
 <div class="bg-white rounded border border-slate-200 shadow-sm p-3 w-full">
 <AutomatonD3 variant="classic" :width="450" :height="220" :arrowSize="4.2" :stateLabelFontSize="15" :transitionLabelFontSize="12"
   :states="[
-    { id: 'q0', x: 150, y: 110, label: '$q_0$', initial: true, initialDirection: 'top', r: 23, labelWidth: 70 },
+    { id: 'q0', x: 150, y: 110, label: '$q_0$', initial: true, initialDirection: 'left', r: 23, labelWidth: 70 },
     { id: 'q1', x: 310, y: 110, label: '$q_1$', accepting: true, r: 23, labelWidth: 70 }
   ]"
   :transitions="[
@@ -244,14 +244,14 @@ info: |
 
 # תזכורת: <span class="text-red-600">שקילות סופית</span> <KatexInline math="\not\Leftrightarrow" /> <span class="text-blue-600">שקילות <KatexInline math="\omega" /></span>
 
-<div class="grid grid-cols-[1.1fr_1.8fr_1.1fr] gap-4 mt-4 items-center text-right">
+<div class="grid grid-cols-[1.25fr_1.5fr_1.25fr] gap-3 mt-3 items-center text-right">
 <!-- Left Column: L_omega -->
-<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-4">
 <div class="bg-blue-50 border border-blue-200 rounded p-2.5 text-[13px] leading-snug">
 <div class="font-bold text-blue-700 mb-1">שפת <KatexInline math="\omega" /> של <KatexInline math="\mathcal{A}_1" />:</div>
-כל המילים האינסופיות שבהן כל האותיות מכילות את <KatexInline math="a" />:
-<div class="mt-2 text-center text-blue-800" dir="ltr">
-<KatexInline math="L_\omega(\mathcal{A}_1) = \{a\}^\omega" />
+כל המילים האינסופיות שבהן תמיד <KatexInline math="a" /> מתקיים:
+<div class="mt-2 text-center text-blue-800 text-[18px] font-bold" dir="ltr">
+<KatexInline math="L_\omega(\mathcal{A}_1)=\Sigma_a^\omega" />
 </div>
 </div>
 
@@ -265,9 +265,9 @@ info: |
 </div>
 
 <!-- Center Column: Automata -->
-<div class="flex flex-col gap-4 items-center relative">
+<div class="flex flex-col gap-3 items-center relative">
 <!-- Automaton 1 -->
-<div class="bg-white rounded border border-slate-200 shadow-sm p-2 w-[340px] relative">
+<div class="bg-white rounded border border-slate-200 shadow-sm p-2 w-[330px] relative">
 <div class="text-[11px] text-slate-400 absolute top-2 right-3 font-mono font-semibold"><KatexInline math="\mathcal{A}_1" /></div>
 <AutomatonD3 variant="classic" :width="320" :height="135" :arrowSize="4" :stateLabelFontSize="15" :transitionLabelFontSize="13"
 :states="[
@@ -290,7 +290,7 @@ info: |
 </defs>
 </svg>
 
-<div v-click="2" class="absolute z-30 top-[180px] left-[140px] -rotate-[29deg] pointer-events-none">
+<div v-click="2" class="absolute z-30 top-[180px] left-[110px] -rotate-[29deg] pointer-events-none">
 <div class="relative bg-red-600 text-white font-bold py-1 px-3 text-[12px] rounded-r shadow-md border border-red-700 whitespace-nowrap">
 <div class="absolute top-1/2 left-[-15px] -translate-y-1/2 w-0 h-0 border-y-[14px] border-y-transparent border-r-[15px] border-r-red-600"></div>
 <div class="absolute top-1/2 left-[-17px] -translate-y-1/2 w-0 h-0 border-y-[16px] border-y-transparent border-r-[17px] border-r-red-700 -z-10"></div>
@@ -299,7 +299,7 @@ info: |
 </div>
 
 <!-- Automaton 2 -->
-<div class="bg-white rounded border border-slate-200 shadow-sm p-2 w-[340px] relative">
+<div class="bg-white rounded border border-slate-200 shadow-sm p-2 w-[330px] relative">
 <div class="text-[11px] text-slate-400 absolute top-2 right-3 font-mono font-semibold"><KatexInline math="\mathcal{A}_2" /></div>
 <AutomatonD3 variant="classic" :width="320" :height="135" :arrowSize="4" :stateLabelFontSize="15" :transitionLabelFontSize="13"
 :states="[
@@ -315,23 +315,27 @@ info: |
 </div>
 
 <!-- Right Column: L_finite -->
-<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-4">
 <div class="bg-emerald-50 border border-emerald-200 rounded p-2.5 text-[13px] leading-snug">
 <div class="font-bold text-emerald-700 mb-1">שפה סופית של <KatexInline math="\mathcal{A}_1" />:</div>
-כל המילים הסופיות באורך גדול מ-0 שבהן כל האותיות הן <KatexInline math="a" />:
-<div class="mt-2 text-center text-emerald-800" dir="ltr">
-<KatexInline math="L(\mathcal{A}_1) = \{a\}^+" />
+כל המילים הסופיות באורך גדול מ-0 שבהן כל האותיות מכילות את <KatexInline math="a" />:
+<div class="mt-2 text-center text-emerald-800 text-[18px] font-bold" dir="ltr">
+<KatexInline math="L(\mathcal{A}_1)=\Sigma_a^+" />
 </div>
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-2.5 text-[13px] leading-snug">
 <div class="font-bold text-emerald-700 mb-1">שפה סופית של <KatexInline math="\mathcal{A}_2" />:</div>
 אותה שפה בדיוק (מגיעים ל מצב המקבל אחרי סדרת מעברי <KatexInline math="a" />):
-<div class="mt-2 text-center text-emerald-800" dir="ltr">
-<KatexInline math="L(\mathcal{A}_2) = \{a\}^+" />
+<div class="mt-2 text-center text-emerald-800 text-[18px] font-bold" dir="ltr">
+<KatexInline math="L(\mathcal{A}_2)=\Sigma_a^+" />
 </div>
 </div>
 </div>
+</div>
+
+<div class="mt-2 text-center text-[13px] text-slate-500" dir="ltr">
+<KatexInline math="\Sigma_a=\{X\subseteq AP\mid a\in X\}" />
 </div>
 
 <div v-click="1" class="mt-6 flex justify-center gap-8 items-center text-[22px] font-semibold border-t border-slate-100 pt-4">
@@ -468,7 +472,7 @@ info: |
 נניח בשלילה שקיים <span dir="ltr">DBA</span> <KatexInline math="\mathcal{A}" /> המקבל את
 <span dir="ltr"><KatexInline math="(A+B)^*B^\omega" /></span>, 
 <br>
-כלומר את כל המילים שבהן החל ממקום כלשהו מופיעים רק <KatexInline math="B" />-ים ורק אותן.
+כלומר את כל המילים שבהן החל ממקום כלשהו מופיעים <KatexInline math="B" />-ים ורק אותן.
 </div>
 
 <div class="mt-3 space-y-2 text-right text-[15px] leading-snug">
