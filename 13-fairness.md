@@ -123,11 +123,9 @@ info: |
 
 <div class="grid grid-cols-[1.15fr_0.85fr] gap-6 mt-6 items-center">
 <div class="bg-amber-50 border border-amber-200 rounded p-5 text-right text-[21px] leading-relaxed">
-נניח שתהליך <KatexInline math="P_2" /> מתחיל בפעולה:
-
-<div class="mt-3 text-center" dir="ltr">
-<KatexInline display math="x := 1" />
-</div>
+<p>
+נניח שתהליך <KatexInline math="P_2"></KatexInline> מתחיל בפעולה <KatexInline math="x := 1"></KatexInline>, ושאף תהליך אחר אינו נוגע במשתנה <KatexInline math="x"></KatexInline>.
+</p>
 
 נרצה להוכיח שמנקודה מסוימת ואילך תמיד <KatexInline math="x=1" />:
 
