@@ -163,6 +163,8 @@ info: |
 קשה להוכיח התקדמות במערכת שבה אפשר להתעלם מתהליך מסוים לנצח.
 </div>
 
+<img src="/unfair_scheduling_comic.png" class="absolute left-6 top-10 w-[230px] rounded-xl shadow-2xl border border-slate-200/85 transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
+
 ---
 
 # הוֹגְנוּת היא חלק מהמודל
