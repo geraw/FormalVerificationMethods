@@ -30,6 +30,65 @@ info: |
 
 ---
 
+# תזכורת: סיכום סיווג תכונות זמן ליניארי
+
+<div class="relative mt-1 h-[455px]" dir="ltr">
+  <div class="absolute left-[2%] top-[28%] h-[240px] w-[470px] rounded-[50%] border-2 border-[#6f6366] bg-[radial-gradient(circle_at_45%_35%,#b8a5a8_0%,#88777b_70%,#6f6366_100%)] shadow-xl z-0"></div>
+  <div class="absolute left-[23%] top-[38%] h-[130px] w-[280px] rounded-[50%] border-2 border-[#776b6e] bg-[radial-gradient(circle_at_45%_35%,#c9babd_0%,#7d7073_100%)] shadow-xl z-10"></div>
+  <div class="absolute left-[40%] top-[45%] h-[68px] w-[136px] rounded-[50%] border-2 border-[#776b6e] bg-[radial-gradient(circle_at_45%_35%,#c9babd_0%,#7d7073_100%)] shadow-xl z-20"></div>
+  <div class="absolute left-[55%] top-[29%] h-[240px] w-[445px] rounded-[50%] border-2 border-[#6f6366] bg-[radial-gradient(circle_at_45%_35%,#b8a5a8_0%,#88777b_70%,#6f6366_100%)] shadow-xl z-0"></div>
+
+  <div class="absolute left-[10%] top-[50%] text-[26px] text-white z-30">בטיחות</div>
+  <div class="absolute left-[29%] top-[45%] text-[25px] text-white z-30">בטיחות  <br> רגולרית</div>
+  <div class="absolute left-[45%] top-[50%] text-[24px] text-white z-30">שמורה</div>
+  <div class="absolute left-[73%] top-[50%] text-[26px] text-white z-30">חַיּוּת</div>
+
+  <div class="absolute left-[18.8%] top-[45%] h-[10px] w-[10px] rounded-full bg-red-600 shadow-md z-40"></div>
+  <div class="absolute left-[38%] top-[42%] h-[10px] w-[10px] rounded-full bg-red-600 shadow-md z-40"></div>
+  <div class="absolute left-[43.2%] top-[53%] h-[10px] w-[10px] rounded-full bg-red-600 shadow-md z-40"></div>
+  <div class="absolute left-[55%] top-[53%] h-[10px] w-[10px] rounded-full bg-red-600 shadow-md z-40"></div>
+  <div class="absolute left-[74.5%] top-[43%] h-[10px] w-[10px] rounded-full bg-red-600 shadow-md z-40"></div>
+  <div class="absolute left-[76%] top-[85.5%] h-[12px] w-[12px] rounded-full bg-blue-700 shadow-md z-40"></div>
+
+  <svg class="absolute inset-0 w-full h-full z-30 pointer-events-none" viewBox="0 0 900 455" aria-hidden="true">
+    <defs>
+      <marker id="class-red-arrow-html" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 Z" fill="#ef4444" />
+      </marker>
+      <marker id="class-blue-arrow-html" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 Z" fill="#2563eb" />
+      </marker>
+    </defs>
+    <path d="M 145 40 L 171 205" stroke="#ef4444" stroke-width="2" marker-end="url(#class-red-arrow-html)" />
+    <path d="M 360 79 L 348 185" stroke="#ef4444" stroke-width="2" marker-end="url(#class-red-arrow-html)" />
+    <path d="M 401 375 L 396 255" stroke="#ef4444" stroke-width="2" marker-end="url(#class-red-arrow-html)" />
+    <path d="M 496 333 L 500 250" stroke="#ef4444" stroke-width="2" marker-end="url(#class-red-arrow-html)" />
+    <path d="M 700 72 L 678 196" stroke="#ef4444" stroke-width="2" marker-end="url(#class-red-arrow-html)" />
+    <!-- <path d="M 610 407 L 690 392" stroke="#2563eb" stroke-width="2.5" marker-end="url(#class-blue-arrow-html)" /> -->
+  </svg>
+
+  <div class="absolute left-[0%] top-[0%] text-[21px] text-red-600" dir="ltr">
+    <KatexInline math="P=\{\sigma \mid \operatorname{pref}(\sigma)\cap BadPref=\emptyset\}" />
+  </div>
+  <div class="absolute left-[30%] top-[12%] text-[22px] text-red-600" dir="rtl">
+    <KatexInline math="BadPref" /> רגולרית
+  </div>
+  <div class="absolute left-[63%] top-[7%] text-[22px] text-red-600" dir="ltr">
+    <KatexInline math="\operatorname{pref}(P)=(2^{AP})^*" />
+  </div>
+  <div class="absolute left-[28%] top-[83%] text-[21px] text-red-600" dir="ltr">
+    <KatexInline math="P=\{\sigma \mid \forall i\ \left(\sigma[i]\models\Phi\right)\}" />
+  </div>
+  <div class="absolute left-[47%] top-[74%] text-[21px] text-red-600" dir="ltr">
+    <KatexInline math="P=(2^{AP})^\omega" />
+  </div>
+  <div class="absolute left-[74%] top-[90%] text-[21px] text-blue-700" dir="ltr">
+    <KatexInline math="P=P_{live}\cap P_{safe}" />
+  </div>
+</div>
+
+---
+
 # מטרות ההרצאה
 
 <div class="grid grid-cols-2 gap-6 mt-8 text-right">
