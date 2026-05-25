@@ -108,6 +108,71 @@ info: |
 
 ---
 
+# תזכורת: מכפלה של מערכת מעברים ואוטומט Büchi
+
+<div class="mt-3 text-right text-[20px] leading-snug">
+עבור <KatexInline math="TS=\langle S,Act,\to,I,AP,L\rangle" /> ללא מצבים סופניים, ו־
+<KatexInline math="\mathcal{A}=\langle Q,2^{AP},\delta,Q_0,F\rangle" /> בלתי חוסם:
+</div>
+
+<div class="compact-display mt-3 text-center text-[27px]" dir="ltr">
+<KatexInline display math="TS\times\mathcal{A}=\langle S\times Q,Act,\to_\times,I_\times,Q,L_\times\rangle" />
+</div>
+
+<div class="mt-3 grid grid-cols-1 gap-2 text-[20px] leading-snug">
+<div class="bg-slate-50 border border-slate-200 rounded px-4 py-3">
+<div class="font-bold mb-1">מעברים</div>
+<div class="compact-display" dir="ltr"><KatexInline display math="\frac{s\xrightarrow{\alpha}t\ \land\ p\in\delta(q,L(t))}{\langle s,q\rangle\xrightarrow{\alpha}_\times\langle t,p\rangle}" /></div>
+</div>
+
+<div class="bg-slate-50 border border-slate-200 rounded px-4 py-3">
+<div class="font-bold mb-1">מצבים התחלתיים</div>
+<div class="compact-display" dir="ltr"><KatexInline display math="I_\times=\{\langle s_0,q\rangle\mid s_0\in I,\ \exists q_0\in Q_0\ \left(q\in\delta(q_0,L(s_0))\right)\}" /></div>
+</div>
+</div>
+
+<div class="mt-3 text-right text-[20px] leading-snug">
+התיוג במכפלה הוא מצב האוטומט: <span dir="ltr"><KatexInline math="L_\times(\langle s,q\rangle)=\{q\}" /></span>.
+</div>
+
+<style>
+.compact-display :deep(.katex-display) {
+  margin: 0.15em 0;
+}
+</style>
+
+---
+
+# מה מייצגת ריצה במכפלה?
+
+<div class="mt-6 grid grid-cols-3 gap-4 text-[20px] leading-relaxed">
+<div class="bg-blue-50 border border-blue-200 rounded p-4">
+<div class="font-bold text-blue-700 mb-2">ריצת מערכת</div>
+<div dir="ltr"><KatexInline math="s_0s_1s_2\cdots" /></div>
+</div>
+
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
+<div class="font-bold text-emerald-700 mb-2">עקבה</div>
+<div dir="ltr"><KatexInline math="L(s_0)L(s_1)L(s_2)\cdots" /></div>
+</div>
+
+<div class="bg-amber-50 border border-amber-200 rounded p-4">
+<div class="font-bold text-amber-700 mb-2">ריצת אוטומט</div>
+<div dir="ltr"><KatexInline math="q_0q_1q_2\cdots" /></div>
+</div>
+</div>
+
+<div class="mt-9 text-center text-[28px]" dir="ltr">
+<KatexInline display math="\langle s_0,q_1\rangle\langle s_1,q_2\rangle\langle s_2,q_3\rangle\cdots" />
+</div>
+
+<div class="mt-8 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[21px] leading-relaxed">
+אם לאורך ריצה במכפלה מבקרים במצבים מהצורה <KatexInline math="\langle s,q\rangle" /> עם
+<KatexInline math="q\in F" /> אינסוף פעמים, אז העקבה של ריצת המערכת מתקבלת על ידי האוטומט.
+</div>
+
+---
+
 # מה מחפשים כשבודקים <KatexInline math="TS\models P" />?
 
 <div class="mt-8 text-right text-[23px] leading-relaxed">
@@ -195,65 +260,6 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 
 ---
 
-# מכפלה של מערכת מעברים ואוטומט Büchi
-
-<div class="mt-5 text-right text-[20px] leading-relaxed">
-עבור <KatexInline math="TS=(S,Act,\to,I,AP,L)" /> ללא מצבים סופיים, ו־
-<KatexInline math="\mathcal{A}=(Q,2^{AP},\delta,Q_0,F)" /> בלתי חוסם:
-</div>
-
-<div class="mt-5 text-center text-[28px]" dir="ltr">
-<KatexInline display math="TS\times\mathcal{A}=(S\times Q,Act,\to_\times,I_\times,Q,L_\times)" />
-</div>
-
-<div class="mt-6 grid grid-cols-2 gap-5 text-[20px] leading-relaxed">
-<div class="bg-slate-50 border border-slate-200 rounded p-4">
-<div class="font-bold mb-2">מעברים</div>
-<div dir="ltr"><KatexInline display math="\frac{s\xrightarrow{\alpha}t\ \land\ p\in\delta(q,L(t))}{(s,q)\xrightarrow{\alpha}_\times(t,p)}" /></div>
-</div>
-
-<div class="bg-slate-50 border border-slate-200 rounded p-4">
-<div class="font-bold mb-2">מצבים התחלתיים</div>
-<div dir="ltr"><KatexInline display math="I_\times=\{(s_0,q)\mid s_0\in I,\ \exists q_0\in Q_0\ \left(q\in\delta(q_0,L(s_0))\right)\}" /></div>
-</div>
-</div>
-
-<div class="mt-5 text-right text-[20px] leading-relaxed">
-התיוג במכפלה הוא מצב האוטומט: <span dir="ltr"><KatexInline math="L_\times(s,q)=\{q\}" /></span>.
-</div>
-
----
-
-# מה מייצגת ריצה במכפלה?
-
-<div class="mt-6 grid grid-cols-3 gap-4 text-[20px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
-<div class="font-bold text-blue-700 mb-2">ריצת מערכת</div>
-<div dir="ltr"><KatexInline math="s_0s_1s_2\cdots" /></div>
-</div>
-
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-2">עקבה</div>
-<div dir="ltr"><KatexInline math="L(s_0)L(s_1)L(s_2)\cdots" /></div>
-</div>
-
-<div class="bg-amber-50 border border-amber-200 rounded p-4">
-<div class="font-bold text-amber-700 mb-2">ריצת אוטומט</div>
-<div dir="ltr"><KatexInline math="q_0q_1q_2\cdots" /></div>
-</div>
-</div>
-
-<div class="mt-9 text-center text-[28px]" dir="ltr">
-<KatexInline display math="(s_0,q_1)(s_1,q_2)(s_2,q_3)\cdots" />
-</div>
-
-<div class="mt-8 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[21px] leading-relaxed">
-אם לאורך ריצה במכפלה מבקרים במצבים מהצורה <KatexInline math="(s,q)" /> עם
-<KatexInline math="q\in F" /> אינסוף פעמים, אז העקבה של ריצת המערכת מתקבלת על ידי האוטומט.
-</div>
-
----
-
 # תכונת התמדה
 
 <div class="mt-8 text-right text-[23px] leading-relaxed">
@@ -261,11 +267,11 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 </div>
 
 <div class="mt-5 text-center text-[32px]" dir="ltr">
-<KatexInline display math="\text{eventually forever }\Phi" />
+<KatexInline display math="\text{Eventually Always }\Phi" />
 </div>
 
 <div class="mt-6 text-center text-[29px]" dir="ltr">
-<KatexInline display math="P_{\mathrm{pers}}(\Phi)=\{\sigma=A_0A_1A_2\cdots\mid \exists i\ge 0\ \left(\forall j\ge i\ \left(A_j\models\Phi\right)\right)\}" />
+<KatexInline display math="P_{\mathrm{pers}}(\Phi)=\{\sigma\in(2^{AP})^\omega\mid \exists i\ge 0\ \left(\forall j\ge i\ \left(\sigma[j]\models\Phi\right)\right)\}" />
 </div>
 
 <div class="mt-8 grid grid-cols-2 gap-5 text-[21px] leading-relaxed">
@@ -281,20 +287,22 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 
 # תכונת ההתמדה של האוטומט
 
-<div class="mt-7 text-right text-[22px] leading-relaxed">
+<div class="mt-5 text-right text-[21px] leading-snug">
 במכפלה <KatexInline math="TS\times\mathcal{A}" /> הפסוקים האטומיים הם מצבי האוטומט
 <KatexInline math="Q" />.
+נסמן ב־<KatexInline math="P_{\mathrm{pers}}(\mathcal{A})" /> את תכונת ההתמדה שמתקבלת מהצבת
+<KatexInline math="\Phi=\neg F" />.
 </div>
 
-<div class="mt-7 text-center text-[31px]" dir="ltr">
-<KatexInline display math="P_{\mathrm{pers}}(\mathcal{A})=\text{eventually forever }\neg F" />
+<div class="mt-5 text-center text-[29px]" dir="ltr">
+<KatexInline display math="P_{\mathrm{pers}}(\mathcal{A})=\text{Eventually Always }\neg F" />
 </div>
 
-<div class="mt-7 text-center text-[29px]" dir="ltr">
+<div class="mt-5 text-center text-[27px]" dir="ltr">
 <KatexInline display math="\neg F=\bigwedge_{q\in F}\neg q" />
 </div>
 
-<div class="mt-8 bg-slate-50 border border-slate-200 rounded p-5 text-[22px] leading-relaxed">
+<div class="mt-6 bg-slate-50 border border-slate-200 rounded p-4 text-[21px] leading-snug">
 כלומר: החל מרגע מסוים, הריצה במכפלה אינה מבקרת יותר במצב מקבל של האוטומט.
 </div>
 
@@ -303,9 +311,9 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 # משפט: אימות תכונות <KatexInline math="\omega" />-רגולריות
 
 <div class="mt-5 text-right text-[20px] leading-relaxed">
-יהיו <KatexInline math="TS" /> מערכת מעברים סופית ללא מצבים סופיים,
+יהיו <KatexInline math="TS" /> מערכת מעברים סופית ללא מצבים סופניים,
 <KatexInline math="P" /> תכונה <KatexInline math="\omega" />-רגולרית,
-ו־<KatexInline math="\mathcal{A}" /> אוטומט Büchi בלתי חוסם כך ש־
+ו־<KatexInline math="\mathcal{A}" /> אוטומט Büchi בלתי חוסם <span class="text-red-600 font-bold">למילים שאינן מקיימות את <KatexInline math="P" /></span>, כלומר
 </div>
 
 <div class="mt-4 text-center text-[28px]" dir="ltr">
@@ -316,7 +324,7 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 אז התנאים הבאים שקולים:
 </div>
 
-<div class="mt-4 grid grid-cols-3 gap-4 text-[20px]">
+<div class="mt-4 grid grid-cols-[0.8fr_1.35fr_1fr] gap-4 text-[19px]">
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4" dir="ltr">
 <KatexInline math="TS\models P" />
 </div>
@@ -329,7 +337,7 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 </div>
 
 <div class="mt-8 text-right text-[21px] leading-relaxed">
-זהו סעיף 4.4 בספר: אימות כללי של תכונה <KatexInline math="\omega" />-רגולרית מצטמצם לבדיקת התמדה במכפלה.
+אימות כללי של תכונה <KatexInline math="\omega" />-רגולרית מצטמצם לבדיקת התמדה במכפלה.
 </div>
 
 ---
@@ -342,7 +350,7 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 </div>
 
 <div class="mt-5 text-center text-[28px]" dir="ltr">
-<KatexInline display math="(s_0,q_1)(s_1,q_2)(s_2,q_3)\cdots" />
+<KatexInline display math="\langle s_0,q_1\rangle\langle s_1,q_2\rangle\langle s_2,q_3\rangle\cdots" />
 </div>
 
 <div class="mt-6 grid grid-cols-2 gap-5 text-[20px] leading-relaxed">
@@ -747,7 +755,7 @@ cycle-check(root, s):
 <KatexInline math="TS\times\mathcal{A}" />.
 </div>
 <div class="mt-3 text-right text-[21px] leading-relaxed">
-3. מחפשים מעגל נגיש שמכיל מצב מהצורה <KatexInline math="(s,q)" /> עם
+3. מחפשים מעגל נגיש שמכיל מצב מהצורה <KatexInline math="\langle s,q\rangle" /> עם
 <KatexInline math="q\in F" />.
 </div>
 
