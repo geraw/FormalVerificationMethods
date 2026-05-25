@@ -4,20 +4,26 @@
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4 border-b border-slate-100 pb-3">
       <div>
         <h3 class="text-base font-bold text-slate-800">הדמיה אינטראקטיבית: אילוצי הוגנות והרעבה</h3>
-        <p class="text-xs text-slate-500 mt-1">בחרו סוג שיבוץ כדי לראות מי מקבל שירות ומי מורעב</p>
+        <p class="text-xs text-slate-500 mt-1">אנימציה מחזורית המדגימה שיבוצים שונים. ניתן ללחוץ ידנית כדי להקפיא.</p>
       </div>
-      <!-- Mode selectors -->
-      <div class="flex flex-wrap gap-1.5">
-        <button 
-          v-for="mode in modes" 
-          :key="mode.id"
-          @click="currentMode = mode.id"
-          type="button"
-          class="px-2.5 py-1 rounded-full text-xs font-bold transition-all duration-200"
-          :class="currentMode === mode.id ? 'bg-indigo-600 text-white shadow-sm font-semibold' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'"
-        >
-          {{ mode.name }}
-        </button>
+      <!-- Mode selectors and autoplay -->
+      <div class="flex items-center gap-3 flex-wrap">
+        <label class="flex items-center gap-1.5 cursor-pointer select-none text-slate-500 hover:text-slate-700 transition-colors">
+          <input type="checkbox" v-model="isAutoplay" class="rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 w-3.5 h-3.5" />
+          <span class="text-[11px] font-medium">ניגון מחזורי (כמו GIF)</span>
+        </label>
+        <div class="flex gap-1">
+          <button 
+            v-for="mode in modes" 
+            :key="mode.id"
+            @click="selectModeManually(mode.id)"
+            type="button"
+            class="px-2.5 py-1 rounded-full text-xs font-bold transition-all duration-200"
+            :class="currentMode === mode.id ? 'bg-indigo-600 text-white shadow-sm font-semibold' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'"
+          >
+            {{ mode.name }}
+          </button>
+        </div>
       </div>
     </div>
 
@@ -67,15 +73,42 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const currentMode = ref<'unfair' | 'weak_fair' | 'strong_fair'>('unfair')
+const isAutoplay = ref(true)
+let intervalId: any = null
 
 const modes = [
   { id: 'unfair', name: 'שיבוץ לא הוגן' },
   { id: 'weak_fair', name: 'שיבוץ הוגן חלש' },
   { id: 'strong_fair', name: 'שיבוץ הוגן חזק' }
 ] as const
+
+function cycleMode() {
+  if (currentMode.value === 'unfair') currentMode.value = 'weak_fair'
+  else if (currentMode.value === 'weak_fair') currentMode.value = 'strong_fair'
+  else currentMode.value = 'unfair'
+}
+
+function selectModeManually(modeId: 'unfair' | 'weak_fair' | 'strong_fair') {
+  currentMode.value = modeId
+  isAutoplay.value = false // Pause autoplay when manually clicked
+}
+
+onMounted(() => {
+  intervalId = setInterval(() => {
+    if (isAutoplay.value) {
+      cycleMode()
+    }
+  }, 4500) // Cycle every 4.5 seconds
+})
+
+onUnmounted(() => {
+  if (intervalId) {
+    clearInterval(intervalId)
+  }
+})
 
 const currentModeDescription = computed(() => {
   if (currentMode.value === 'unfair') {
