@@ -169,7 +169,7 @@ info: |
 
 # הוֹגְנוּת היא חלק מהמודל
 
-<img src="/fairness_filter_comic.png" class="absolute left-6 top-4 w-[130px] rounded-xl shadow-2xl border border-slate-200/80 transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
+<img src="/fairness_filter_comic.png" class="absolute left-6 top-64 w-[160px] rounded-xl shadow-2xl border border-slate-200/80 transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
 
 <div class="grid grid-cols-2 gap-6 mt-8 text-right text-[21px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-5">
@@ -294,7 +294,7 @@ info: |
 </div>
 
 <div class="mt-4 text-center text-[28px]" dir="ltr">
-<KatexInline display math="\rho = s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} s_2 \xrightarrow{\alpha_3}\cdots" />
+<KatexInline display math="\rho = s_0 \xrightarrow{\alpha_0} s_1 \xrightarrow{\alpha_1} s_2 \xrightarrow{\alpha_2}\cdots" />
 </div>
 
 <div class="mt-6 text-right text-[22px] leading-relaxed">
@@ -318,31 +318,31 @@ info: |
 # הגדרות: הוֹגְנוּת של ריצה ביחס לקבוצת פעולות
 
 <div class="mt-3 text-right text-[20px] leading-relaxed">
-ריצה <KatexInline math="\rho" /> היא:
+ריצה <span dir="ltr"><KatexInline math="\rho = s_0 \xrightarrow{\alpha_0} s_1 \xrightarrow{\alpha_1} s_2 \xrightarrow{\alpha_2}\cdots" /></span> היא:
 </div>
 
 <div class="mt-3 space-y-4 text-right text-[19px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
 <span class="font-bold text-blue-700">הוגנת ללא תנאי ביחס ל-<KatexInline math="A" /></span>
 אם:
-<span dir="ltr"><KatexInline math="\underset{\infty}{\exists} i\ \left(\alpha_i\in A\right)" /></span>
+<span v-click dir="ltr"><KatexInline math="\underbrace{\underset{\infty}{\exists} i\ \left(\alpha_i\in A\right)}_{\raisebox{-0.35em}{\scriptsize\textsf{מופעלת אינסוף פעמים}}}" /></span>
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
 <span class="font-bold text-emerald-700">הוגנת חזק ביחס ל-<KatexInline math="A" /></span>
 אם:
-<span dir="ltr"><KatexInline math="\left(\underset{\infty}{\exists} i\ \left(Post(s_i,A)\neq\emptyset\right)\right)\Rightarrow\left(\underset{\infty}{\exists} i\ \left(\alpha_i\in A\right)\right)" /></span>
+<span v-click dir="ltr"><KatexInline math="\underbrace{\left(\underset{\infty}{\exists} i\ \left(Post(s_i,A)\neq\emptyset\right)\right)}_{\raisebox{-0.35em}{\scriptsize\textsf{מאופשרת אינסוף פעמים}}}\Rightarrow\underbrace{\left(\underset{\infty}{\exists} i\ \left(\alpha_i\in A\right)\right)}_{\raisebox{-0.35em}{\scriptsize\textsf{מופעלת אינסוף פעמים}}}" /></span>
 </div>
 
 <div class="bg-amber-50 border border-amber-200 rounded p-4">
 <span class="font-bold text-amber-700">הוגנת חלש ביחס ל-<KatexInline math="A" /></span>
 אם:
-<span dir="ltr"><KatexInline math="\left(\exists j\ \left(\forall i>j\ \left(Post(s_i,A)\neq\emptyset\right)\right)\right)\Rightarrow\left(\underset{\infty}{\exists} i\ \left(\alpha_i\in A\right)\right)" /></span>
+<span v-click dir="ltr"><KatexInline math="\underbrace{\left(\exists j\ \left(\forall i>j\ \left(Post(s_i,A)\neq\emptyset\right)\right)\right)}_{\raisebox{-0.35em}{\scriptsize\textsf{מאופשרת ברצף מרגע מסוים}}}\Rightarrow\underbrace{\left(\underset{\infty}{\exists} i\ \left(\alpha_i\in A\right)\right)}_{\raisebox{-0.35em}{\scriptsize\textsf{מופעלת אינסוף פעמים}}}" /></span>
 </div>
 </div>
 
 
-<div class="bg-red-100 border border-red-200 mt-8 text-center text-[20px] leading-relaxed flex items-center justify-center gap-4">
+<div class="bg-red-100 border border-red-200 mt-3 text-center text-[20px] leading-relaxed flex items-center justify-center gap-4">
 <div>הוגנת ללא תנאי</div>
 <div class="text-[20px]" dir="ltr"><KatexInline display math="\Leftarrow" /></div>
 <div>הוגנת חזקה</div>
