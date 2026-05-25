@@ -279,11 +279,11 @@ info: |
 </div>
 </div>
 
-<div class="mt-3 text-right text-[18px] text-slate-600">
+<div class="mt-8 w-[68%] bg-slate-50 border border-slate-200 rounded p-5 text-[22px] text-right ml-auto">
 ככל שהאילוץ חזק יותר, הוא פוסל יותר ריצות.
 </div>
 
-<FairnessTypesAnimation />
+<img src="/three_fairness_types_comic.png" class="absolute left-6 bottom-4 w-[240px] rounded-xl shadow-2xl border border-slate-200/85 transform -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
 
 ---
 
