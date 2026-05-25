@@ -694,10 +694,10 @@ const fairnessQuiz2Transitions = [
 
 ---
 
-# הוֹגְנוּת בת מימוש
+# הוֹגְנוּת בת-מימוש
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
-הנחת הוֹגְנוּת <KatexInline math="\mathcal{F}" /> היא <span class="font-bold">בת מימוש</span> ב-<KatexInline math="TS" /> אם מכל מצב נגיש קיימת לפחות ריצה הוגנת אחת:
+הנחת הוֹגְנוּת <KatexInline math="\mathcal{F}" /> היא <span class="font-bold">בת-מימוש</span> ב-<KatexInline math="TS" /> אם מכל מצב נגיש קיימת לפחות ריצה הוגנת אחת:
 </div>
 
 <div class="mt-7 text-center text-[31px]" dir="ltr">
@@ -713,7 +713,7 @@ const fairnessQuiz2Transitions = [
 # האם הוֹגְנוּת משפיעה על בטיחות?
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
-הנחות הוֹגְנוֹת בנות מימוש אינן משנות אימות של תכונות בטיחות.
+הנחות הוֹגְנוֹת בנות-מימוש אינן משנות אימות של תכונות בטיחות.
 </div>
 
 <div class="mt-7 text-center text-[30px]" dir="ltr">
@@ -721,7 +721,7 @@ const fairnessQuiz2Transitions = [
 </div>
 
 <div class="mt-7 bg-slate-50 border border-slate-200 rounded p-5 text-[21px] leading-relaxed">
-הסיבה: הפרת בטיחות מתגלה ברישא סופית. אם ההוֹגְנוּת בת מימוש, אפשר להשלים את הרישא הזאת לריצה הוגנת, ולכן ההפרה לא יכולה "להיעלם" רק בגלל ההנחה.
+הסיבה: הפרת בטיחות מתגלה ברישא סופית. אם ההוֹגְנוּת בת-מימוש, אפשר להשלים את הרישא הזאת לריצה הוגנת, ולכן ההפרה לא יכולה "להיעלם" רק בגלל ההנחה.
 </div>
 
 ---
@@ -779,7 +779,7 @@ const unrealizableFairnessTransitions = [
     target: 'right',
     action: '$\\beta$',
     actionFontSize: 20,
-    actionY: 0,
+    actionY: -15,
   },
   {
     source: 'right',
@@ -795,10 +795,10 @@ const unrealizableFairnessTransitions = [
 ];
 </script>
 
-# כשההנחה אינה בת מימוש
+# כשההנחה אינה בת-מימוש
 
 <div class="mt-1 text-right text-[22px] leading-relaxed text-slate-700">
-הנחות הוֹגְנוּת שאינן בנות מימוש עלולות לפגוע גם בתכונות בטיחות.
+הנחות הוֹגְנוּת שאינן בנות-מימוש עלולות לפגוע גם בתכונות בטיחות.
 </div>
 
 <div class="-mt-10 flex justify-center h-[225px]" dir="ltr">
@@ -820,14 +820,14 @@ const unrealizableFairnessTransitions = [
 </div>
 
 <div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[20px] leading-relaxed text-right text-blue-800 ">
-הנחה זו אינה בת מימוש כיוון שהמצב הימני נגיש אבל חסר ריצות הוֹגְנוֹת.
+הנחה זו אינה בת-מימוש כיוון שהמצב הימני נגיש אבל חסר ריצות הוֹגְנוֹת.
 </div>
 
 <div class="mt-3 bg-slate-50 border border-slate-300 rounded p-2 text-center text-[20px] text-red-600" dir="ltr">
 <KatexInline math="TS\models_{\mathcal{F}} P" />
 <span class="mx-8">אבל</span>
 <KatexInline math="TS\not\models P" />
-<div class="mt-1" dir="rtl">גם עבור תכונת בטיחות</div>
+<div class="mt-1" dir="rtl">למרות שמדובר בתכונת בטיחות</div>
 </div>
 
 ---
@@ -843,6 +843,6 @@ const unrealizableFairnessTransitions = [
 - הנחת הוֹגְנוּת <KatexInline math="\mathcal{F}" /> מגדירה אילוצים שונים על קבוצות פעולות שונות.
 - תחת הוֹגְנוּת בודקים רק עקבות הוֹגְנוֹת:
   <KatexInline math="FairTraces_{\mathcal{F}}(TS)\subseteq P" />.
-- הנחות הוֹגְנוֹת בנות מימוש אינן משפיעות על תכונות בטיחות.
+- הנחות הוֹגְנוֹת בנות-מימוש אינן משפיעות על תכונות בטיחות.
 
 </div>
