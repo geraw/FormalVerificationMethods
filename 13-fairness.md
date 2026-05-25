@@ -169,7 +169,7 @@ info: |
 
 # הוֹגְנוּת היא חלק מהמודל
 
-<img src="/fairness_filter_comic.png" class="absolute left-6 top-10 w-[170px] rounded-xl shadow-2xl border border-slate-200/80 transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
+<img src="/fairness_filter_comic.png" class="absolute left-6 top-4 w-[130px] rounded-xl shadow-2xl border border-slate-200/80 transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
 
 <div class="grid grid-cols-2 gap-6 mt-8 text-right text-[21px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-5">
