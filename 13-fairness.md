@@ -393,10 +393,10 @@ info: |
 כלומר: כל רכיב הוא אוסף של קבוצות פעולות
 </div>
 
-נגד
-<div class="mt-0 bg-slate-50 border border-slate-200 rounded p-0 text-[18px] leading-relaxed">
+נגדיר:
+<div class="mt-0 w-[68%] bg-slate-50 border border-slate-200 rounded p-4 text-[18px] leading-relaxed text-right ml-auto">
 
-ריצה תיקרא **<KatexInline math="\mathcal{F}" />-הוגנת** אם היא מקיימת בו-זמנית את  כל התנאים הבאים:
+ריצה תיקרא **<KatexInline math="\mathcal{F}" />-הוגנת** אם היא מקיימת בו-זמנית את כל התנאים הבאים:
 
 - **הוֹגְנוּת בלתי מותנית** עבור כל קבוצת פעולות ב-<KatexInline math="\mathcal{F}_{uncond}" />.
 
@@ -404,6 +404,8 @@ info: |
 - **הוֹגְנוּת חלשה** עבור כל קבוצת פעולות ב-<KatexInline math="\mathcal{F}_{weak}" />.
 
 </div>
+
+<img src="/fairness_checklist_comic.png" class="absolute left-6 bottom-4 w-[240px] rounded-xl shadow-2xl border border-slate-200/85 transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
 
 ---
 
