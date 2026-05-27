@@ -56,8 +56,11 @@ info: |
 תכונת בטיחות <KatexInline math="P_{\mathrm{safe}}" /> היא תכונה שבה כל הפרה נחשפת אחרי מספר סופי של צעדים.
 </div>
 
-<div class="mt-8 text-center text-[31px]" dir="ltr">
-<KatexInline display math="\mathit{BadPref}(P_{\mathrm{safe}})=\{\rho\in(2^{AP})^* \mid \forall\sigma\in(2^{AP})^\omega\ (\rho\sigma\notin P_{\mathrm{safe}})\}" />
+<div class="mt-8 text-center text-[24px]" dir="ltr">
+<KatexInline display math="\begin{array}{rcl}
+\mathit{BadPref}(P_{\mathrm{safe}}) &amp;=&amp; \{\rho\in(2^{AP})^* \mid \forall\sigma\in(2^{AP})^\omega\ (\rho\sigma\notin P_{\mathrm{safe}})\}\\[4pt]
+&amp;=&amp; (2^{AP})^* \setminus \mathit{pref}(P_{\mathrm{safe}})
+\end{array}" />
 </div>
 
 <div class="mt-8 grid grid-cols-2 gap-6 text-right text-[21px] leading-relaxed">
