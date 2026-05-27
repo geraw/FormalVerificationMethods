@@ -200,6 +200,7 @@ info: |
 <div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-center text-[18px] leading-snug">
 פלט: ריצה סופית <span dir="ltr"><KatexInline math="s_0s_1\cdots s_n" /></span> כך ש־
 <span dir="ltr"><KatexInline math="L(s_0)L(s_1)\cdots L(s_n)\in\mathit{BadPref}(P_{\mathrm{safe}})" /></span>,
+<br>
 או הודעה שלא קיימת ריצה כזאת.
 </div>
 
