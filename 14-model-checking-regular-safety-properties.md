@@ -168,7 +168,39 @@ info: |
 </div>
 
 <div class="mt-4 bg-slate-50 border border-slate-200 rounded p-3 text-[18px]">
-האינטואיציה: רישא רעה היא “נקודת אל־חזור”; רישא רעה מינימלית היא נקודת אל־חזור הראשונה.
+האינטואיציה: רישא רעה היא “נקודת אַל־חזור”; רישא רעה מינימלית היא נקודת אַל־חזור הראשונה.
+</div>
+
+---
+
+# הבעיה האלגוריתמית
+
+<div class="mt-3 grid grid-cols-[1.1fr_0.9fr] gap-5 items-center">
+<div class="text-right text-[18px] leading-snug">
+
+<div class="bg-blue-50 border border-blue-200 rounded p-3">
+<div class="font-bold text-blue-700 mb-1">קלט</div>
+מערכת מעברים סופית <KatexInline math="TS" />, ואוטומט סופי <KatexInline math="\mathcal{A}" /> עבור הרישות הרעות של תכונת בטיחות רגולרית <KatexInline math="P_{\mathrm{safe}}" />:
+<div class="mt-1 text-center" dir="ltr">
+<KatexInline math="\mathcal{L}(\mathcal{A})=\mathit{BadPref}(P_{\mathrm{safe}})" />
+</div>
+</div>
+
+<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3">
+<div class="font-bold text-emerald-700 mb-1">פלט רצוי</div>
+אלגוריתם שמכריע אם <KatexInline math="TS\models P_{\mathrm{safe}}" />.
+אם לא, הוא מפיק דוגמה נגדית סופית: מסלול של <KatexInline math="TS" /> שהעקבה שלו מגיעה לרישא רעה.
+</div>
+
+</div>
+
+<img src="/regular-safety-problem-comic-he.svg" class="w-full rounded border border-slate-200 shadow-md" />
+</div>
+
+<div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-center text-[18px] leading-snug">
+פלט: ריצה סופית <span dir="ltr"><KatexInline math="s_0s_1\cdots s_n" /></span> כך ש־
+<span dir="ltr"><KatexInline math="L(s_0)L(s_1)\cdots L(s_n)\in\mathit{BadPref}(P_{\mathrm{safe}})" /></span>,
+או הודעה שלא קיימת ריצה כזאת.
 </div>
 
 ---
@@ -185,7 +217,7 @@ info: |
 <KatexInline math="\mathit{MinBadPref} = (2^{AP})^* \neg\Phi" />
 </div>
 </div>
-<div class="mt-5 h-[86px] bg-lime-400 px-4 pt-9 text-center text-[17px] leading-snug shadow-sm" style="clip-path: polygon(50% 0, 100% 28%, 100% 100%, 0 100%, 0 28%);">
+<div v-click class="mt-5 h-[86px] bg-lime-400 px-4 pt-9 text-center text-[17px] leading-snug shadow-sm" style="clip-path: polygon(50% 0, 100% 28%, 100% 100%, 0 100%, 0 28%);">
 ראינו אלגוריתמים<br>לבדיקת תכונות שְׁמוּרָה
 </div>
 </div>
@@ -196,7 +228,7 @@ info: |
 אור אדום נדלק רק אם בצעד הקודם דלק אור צהוב.
 צריך לזכור צעד אחד אחורה.
 </div>
-<div class="mt-5 h-[86px] bg-yellow-300 px-4 pt-9 text-center text-[17px] leading-snug shadow-sm" style="clip-path: polygon(50% 0, 100% 28%, 100% 100%, 0 100%, 0 28%);">
+<div v-click class="mt-5 h-[86px] bg-yellow-300 px-4 pt-9 text-center text-[17px] leading-snug shadow-sm" style="clip-path: polygon(50% 0, 100% 28%, 100% 100%, 0 100%, 0 28%);">
 אין לנו <span class="font-bold">עדיין</span> אלגוריתם<br>לתכונות שאינן שְׁמוּרָה
 </div>
 </div>
@@ -207,7 +239,7 @@ info: |
 בכל רישא סופית, מספר המטבעות שהוכנסו אינו קטן ממספר המשקאות שסופקו.
 כאן צריך זיכרון לא חסום.
 </div>
-<div class="mt-5 h-[86px] bg-red-700 text-white px-4 pt-9 text-center text-[17px] leading-snug shadow-sm" style="clip-path: polygon(50% 0, 100% 28%, 100% 100%, 0 100%, 0 28%);">
+<div v-click class="mt-5 h-[86px] bg-red-700 text-white px-4 pt-9 text-center text-[17px] leading-snug shadow-sm" style="clip-path: polygon(50% 0, 100% 28%, 100% 100%, 0 100%, 0 28%);">
 לא נתאר<br>אלגוריתם לתכונות שאינן רגולריות
 </div>
 </div>
