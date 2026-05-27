@@ -418,7 +418,7 @@ info: |
 </div>
 </div>
 
-<div class="bg-red-50 border border-red-200 rounded p-3">
+<div class="bg-red-50 border border-red-200 rounded p-3 text-right" dir="rtl">
 <div class="font-bold text-red-700 mb-2">תוויות</div>
 התווית המקורית נשמרת, ונוסיף התראה אם ראינו שלושה צעדים רצופים בלי <KatexInline math="\psi" />:
 <div class="mt-1 text-center text-[13px]" dir="ltr">
@@ -455,7 +455,7 @@ info: |
 
 ---
 
-# רעיון האלגוריתם
+# נפעיל את אותו הרעיון<br> לבדיקת תכונות בטיחות רגולרית באופן כללי
 
 <div class="mt-8 text-right text-[24px] leading-relaxed">
 נריץ את המערכת ואת אוטומט הרישות הרעות במקביל.
