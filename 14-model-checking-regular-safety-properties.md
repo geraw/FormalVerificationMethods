@@ -79,22 +79,24 @@ info: |
 
 # תכונת בטיחות רגולרית
 
-<div class="mt-8 text-right text-[24px] leading-relaxed w-[58%]">
+<div class="mt-8 text-right text-[24px] leading-relaxed w-full">
 תכונת בטיחות <KatexInline math="P_{\mathrm{safe}}" /> היא <span class="font-bold">רגולרית</span> אם קבוצת הרישות הרעות שלה היא שפה רגולרית:
 </div>
 
-<div class="mt-8 bg-slate-50 border border-slate-200 rounded p-5 text-[23px] leading-relaxed w-[58%]">
+<div class="mt-8 bg-slate-50 border border-slate-200 rounded p-5 text-[23px] leading-relaxed w-full">
 קבוצת הרישות הרעות
 <span dir="ltr"><KatexInline math="\mathit{BadPref}(P_{\mathrm{safe}})\subseteq (2^{AP})^*" /></span>
 היא שפה רגולרית.
 </div>
 
-<div class="mt-8 bg-blue-50 border border-blue-200 rounded p-5 text-[22px] leading-relaxed w-[58%]">
+<div class="mt-8 grid grid-cols-[1fr_25%] gap-5 items-center">
+<div class="bg-blue-50 border border-blue-200 rounded p-5 text-[22px] leading-relaxed">
 קיים אוטומט סופי <KatexInline math="\mathcal{A}" /> מעל האלפבית <KatexInline math="2^{AP}" /> כך ש־
 <span dir="ltr"><KatexInline math="\mathcal{L}(\mathcal{A})=\mathit{BadPref}(P_{\mathrm{safe}})" /></span>.
 </div>
 
-<img src="/security_automaton_guard.png" class="absolute left-[40px] top-[140px] w-[35%] rounded shadow-lg border-2 border-slate-200" />
+<img src="/security_automaton_guard.png" class="w-full rounded shadow-lg border-2 border-slate-200" />
+</div>
 
 ---
 
