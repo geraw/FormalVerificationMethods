@@ -106,8 +106,8 @@ info: |
 רישא רעה <KatexInline math="\rho" /> היא <span class="font-bold">מינימלית</span> אם אף רישא ממש שלה אינה רעה.
 </div>
 
-<div class="mt-7 text-center text-[30px]" dir="ltr">
-<KatexInline display math="\mathit{MinBadPref}(P_{\mathrm{safe}})" />
+<div class="mt-7 text-center text-[24px]" dir="ltr">
+<KatexInline display math="\mathit{MinBadPref}(P_{\mathrm{safe}})=\{\rho\in\mathit{BadPref}(P_{\mathrm{safe}})\mid \forall\rho'\prec\rho\ \left(\rho'\notin\mathit{BadPref}(P_{\mathrm{safe}})\right)\}" />
 </div>
 
 <div class="grid grid-cols-2 gap-6 mt-7 text-right text-[21px] leading-relaxed">
@@ -120,6 +120,7 @@ info: |
 <div class="font-bold mb-3">משפט</div>
 <KatexInline math="P_{\mathrm{safe}}" /> רגולרית אם ורק אם
 <KatexInline math="\mathit{MinBadPref}(P_{\mathrm{safe}})" /> רגולרית.
+<div class="mt-3 text-emerald-700 font-bold">נסו להוכיח בעצמכם 💪</div>
 </div>
 </div>
 
