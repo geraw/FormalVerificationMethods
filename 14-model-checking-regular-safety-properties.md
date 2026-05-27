@@ -302,25 +302,28 @@ info: |
 
 ---
 
-# מוסיפים רכיב בדיקה למערכת
+# רעיון האלגוריתם : רדוקציה לבדיקת שְׁמוּרָה
 
 <img src="/bad-prefix-monitor-machine.png" class="absolute right-[-165px] top-[82px] w-[500px]" />
 
-<div class="absolute left-[145px] top-[125px] w-[270px] h-[110px] bg-blue-700 text-white text-center text-[22px] leading-tight px-7 pt-3 shadow-lg border-2 border-blue-950" style="clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);">
-נוסיף למערכת רכיב<br>שיזהה שנצפתה<br>רישא רעה
+<div class="absolute left-[145px] top-[150px] w-[350px] h-[100px] bg-blue-700 text-white text-center text-[22px] leading-tight px-7 pt-3 shadow-lg border-2 border-blue-950" style="clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);">
+נוסיף למערכת רכיב שיזהה שנצפתה
+רישא רעה
 </div>
 
-<div class="absolute left-[145px] top-[270px] w-[270px] h-[120px] bg-blue-700 text-white text-center text-[21px] leading-tight px-7 pt-5 shadow-lg border-2 border-blue-950" style="clip-path: polygon(0 0, 50% 12%, 100% 0, 100% 100%, 0 100%);">
-ונבדוק את תכונת<br>הַשְׁמוּרָה “אף פעם לא<br>נצפית רישא רעה”
+<div class="absolute left-[145px] top-[270px] w-[350px] h-[100px] bg-blue-700 text-white text-center text-[21px] leading-tight px-7 pt-5 shadow-lg border-2 border-blue-950" style="clip-path: polygon(0 0, 50% 12%, 100% 0, 100% 100%, 0 100%);">
+ונבדוק את תכונת הַשְׁמוּרָה
+<br>
+“אף פעם לא נצפית רישא רעה”
 </div>
 
-<svg class="absolute left-[436px] top-[126px] w-[315px] h-[92px] z-20 overflow-visible" viewBox="-8 -12 325 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg class="absolute left-[450px] top-[126px] w-[315px] h-[92px] z-20 overflow-visible" viewBox="-8 -12 325 92" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <marker id="monitor-arrow-head" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
       <path d="M 0 0 L 8 4 L 0 8 z" fill="#1d4ed8" />
     </marker>
   </defs>
-  <path d="M 0 42 C 78 42, 122 42, 138 24 S 210 18, 291 18" stroke="#1d4ed8" stroke-width="7" stroke-linecap="round" marker-end="url(#monitor-arrow-head)" />
+  <path d="M 0 42 C 78 42, 122 42, 138 24 S 210 18, 281 18" stroke="#1d4ed8" stroke-width="7" stroke-linecap="round" marker-end="url(#monitor-arrow-head)" />
 </svg>
 
 ---
@@ -405,8 +408,8 @@ info: |
 
 <div class="mt-3 grid grid-cols-2 gap-3 text-[14px] leading-snug" dir="ltr">
 <div class="bg-orange-50 border border-orange-200 rounded p-3 text-right" dir="rtl">
-<div class="font-bold text-orange-800 mb-2">בדיקת שמורה על המערכת החדשה</div>
-על המערכת שקיבלנו נוכל לבדוק את תכונת השמורה:
+<div class="font-bold text-orange-800 mb-2">בדיקת שְׁמוּרָה על המערכת החדשה</div>
+על המערכת שקיבלנו נוכל לבדוק את תכונת הַשְׁמוּרָה:
 <div class="mt-1 text-center text-[13px]" dir="ltr">
 <KatexInline math="P_{inv}=\{\sigma\mid \forall i\ge 0\ (\sigma[i]\models\neg bad)\}" />
 </div>
