@@ -145,7 +145,7 @@ info: |
 
 # דוגמה: בניית המכפלה
 
-<div class="mt-3 grid grid-cols-2 gap-4 text-[18px] leading-snug">
+<div class="mt-3 grid grid-cols-2 gap-4 text-[17px] leading-snug">
 <div class="bg-blue-50 border border-blue-200 rounded p-3">
 <div class="font-bold text-blue-700 mb-2">מערכת המעברים <span dir="ltr"><KatexInline math="TS" /></span></div>
 <div dir="ltr" class="compact-display"><KatexInline display math="\begin{array}{c}
@@ -165,7 +165,7 @@ Q=\{q_0,q_1\},\quad Q_0=\{q_0\},\quad F=\{q_1\}\\
 </div>
 </div>
 
-<div class="mt-3 grid grid-cols-2 gap-4 text-[18px] leading-snug">
+<div class="mt-3 grid grid-cols-2 gap-4 text-[17px] leading-snug">
 <div class="bg-slate-50 border border-slate-200 rounded p-3">
 <div class="font-bold mb-2">מצבי המכפלה הנגישים</div>
 <div dir="ltr" class="compact-display"><KatexInline display math="\begin{array}{rcl}
@@ -190,7 +190,7 @@ I_\times&=&\{\langle s_0,q_1\rangle\}\\
 </div>
 </div>
 
-<div class="mt-3 bg-red-50 border border-red-200 rounded p-3 text-center text-[19px]" dir="ltr">
+<div class="mt-3 bg-red-50 border border-red-200 rounded p-3 text-center text-[18px]" dir="ltr">
 <KatexInline math="L_\times(\langle s_1,q_1\rangle)=\{q_1\}" />
 <span dir="rtl"> ולכן הביקור העצמי מסמן ביקור חוזר במצב מקבל של האוטומט.</span>
 </div>
@@ -221,8 +221,10 @@ I_\times&=&\{\langle s_0,q_1\rangle\}\\
 </div>
 
 <div class="mt-8 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[21px] leading-relaxed">
-אם לאורך ריצה במכפלה מבקרים במצבים מהצורה <KatexInline math="\langle s,q\rangle" /> עם
-<KatexInline math="q\in F" /> אינסוף פעמים, אז העקבה של ריצת המערכת מתקבלת על ידי האוטומט.
+התיוג במכפלה הוא מצבי האוטומט:
+<span dir="ltr"><KatexInline math="L_\times(\langle s,q\rangle)=\{q\}" /></span>.
+לכן צופה בעקבה של המכפלה יכול לדעת אם המילה התקבלה או לא, לפי ביקורים במצבי
+<span dir="ltr"><KatexInline math="F" /></span>.
 </div>
 
 ---
@@ -308,13 +310,24 @@ I_\times&=&\{\langle s_0,q_1\rangle\}\\
 <div class="mt-9 text-center text-[21px]" dir="ltr">
 <KatexInline display math="\begin{array}{rcl}
 TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq\emptyset\\[6pt]
-&amp;\iff&amp; TS\times \mathcal{A}\not\models \text{Eventually Always}\bigwedge_{q_f\in F} \neg q_f
+&amp;\iff&amp; \exists \sigma\in\mathit{Traces}(TS\times\mathcal{A})\
+\left(\underset{\infty}{\exists} i\ \left(\sigma[i]\subseteq F\right)\right)
 \end{array}" />
 </div>
 
 ---
 
 # תכונת התמדה
+
+<div class="absolute left-[24px] top-[58px] pointer-events-none">
+<InclusionDiagramD3 :width="330" :height="145" :fontSize="12"
+  :sets="[
+    { label: 'תכונות זמן לינארי', fill: '#3b82f6', stroke: '#bfdbfe', textColor: '#ffffff', Y: -2 },
+    { label: 'תכונות חַיּוּת', fill: '#10b981', stroke: '#a7f3d0', textColor: '#ffffff', Y: 0 },
+    { label: 'תכונות התמדה', fill: '#f59e0b', stroke: '#fde68a', textColor: '#4a2c00', Y: -4 }
+  ]"
+/>
+</div>
 
 <div class="mt-8 text-right text-[23px] leading-relaxed">
 תכונת התמדה היא תכונה מהצורה:
@@ -328,12 +341,12 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 <KatexInline display math="P_{\mathrm{pers}}(\Phi)=\{\sigma\in(2^{AP})^\omega\mid \exists i\ge 0\ \left(\forall j\ge i\ \left(\sigma[j]\models\Phi\right)\right)\}" />
 </div>
 
-<div class="mt-8 grid grid-cols-2 gap-5 text-[21px] leading-relaxed">
+<div class="mt-8 grid grid-cols-2 gap-5 text-[19px] leading-relaxed">
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
 אחרי רישא סופית כל המצבים מקיימים <KatexInline math="\Phi" />.
 </div>
 <div class="bg-red-50 border border-red-200 rounded p-4">
-ההפרה היא ביקור אינסופי במצבים שמקיימים <KatexInline math="\neg\Phi" />.
+הפרה היא ביקור באינסוף מצבים שמקיימים <KatexInline math="\neg\Phi" />.
 </div>
 </div>
 
@@ -357,7 +370,7 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 </div>
 
 <div class="mt-6 bg-slate-50 border border-slate-200 rounded p-4 text-[21px] leading-snug">
-כלומר: החל מרגע מסוים, הריצה במכפלה אינה מבקרת יותר במצב מקבל של האוטומט.
+כלומר: החל מרגע מסוים, הריצה במכפלה אינה מבקרת יותר במצבים מקבלים של האוטומט.
 </div>
 
 ---
@@ -379,13 +392,13 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 </div>
 
 <div class="mt-4 grid grid-cols-[0.8fr_1.35fr_1fr] gap-4 text-[19px]">
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4" dir="ltr">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-center" dir="ltr">
 <KatexInline math="TS\models P" />
 </div>
-<div class="bg-blue-50 border border-blue-200 rounded p-4" dir="ltr">
+<div class="bg-blue-50 border border-blue-200 rounded p-4 text-center" dir="ltr">
 <KatexInline math="\mathit{Traces}(TS)\cap L_\omega(\mathcal{A})=\emptyset" />
 </div>
-<div class="bg-amber-50 border border-amber-200 rounded p-4" dir="ltr">
+<div class="bg-amber-50 border border-amber-200 rounded p-4 text-center" dir="ltr">
 <KatexInline math="TS\times\mathcal{A}\models P_{\mathrm{pers}}(\mathcal{A})" />
 </div>
 </div>
@@ -420,6 +433,20 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 <KatexInline display math="\mathit{trace}(s_0s_1s_2\cdots)\in\mathit{Traces}(TS)\cap L_\omega(\mathcal{A})" />
 </div>
 
+<div v-click>
+<div class="absolute left-[50px] bottom-[100px] text-red-600 font-bold text-[27px] rotate-[0deg]">
+האומנם?
+</div>
+<svg class="absolute left-[120px] bottom-[130px] w-[120px] h-[74px] pointer-events-none" viewBox="0 0 120 74">
+  <defs>
+    <marker id="proof-s0-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#dc2626" />
+    </marker>
+  </defs>
+  <path d="M6 66 C34 28 66 20 112 7" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" marker-end="url(#proof-s0-arrow)" />
+</svg>
+</div>
+
 ---
 
 # דוגמה: “אינסוף פעמים ירוק”
@@ -444,9 +471,9 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 
 <div class="text-right text-[21px] leading-relaxed">
 <div class="font-bold mb-3">התכונה שרוצים לבדוק:</div>
-<div class="text-center text-[28px] mb-5" dir="ltr"><KatexInline math="\Box\Diamond green" /></div>
+<div class="text-center text-[28px] mb-5" dir="ltr"><KatexInline math="\text{Always Eventually }green" /></div>
 <div class="font-bold mb-3">האוטומט מקבל את המשלים:</div>
-<div class="text-center text-[28px]" dir="ltr"><KatexInline math="\Diamond\Box\neg green" /></div>
+<div class="text-center text-[28px]" dir="ltr"><KatexInline math="\text{Eventually Always }\neg green" /></div>
 <div class="mt-5">
 כלומר, החל מרגע מסוים אין יותר ירוק.
 </div>
@@ -457,53 +484,142 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 
 # דוגמה: מערכת שמקיימת את התכונה
 
-<div class="mt-5 grid grid-cols-2 gap-5 text-[20px] leading-relaxed">
-<div class="bg-white border border-slate-200 rounded p-4">
-<div class="font-bold mb-3">רמזור פשוט</div>
-<div class="flex justify-center items-center gap-4 mt-6" dir="ltr">
-  <div class="rounded-full bg-red-100 border-2 border-red-500 w-24 h-24 flex items-center justify-center font-bold">$red$</div>
-  <div class="text-[34px]">⇄</div>
-  <div class="rounded-full bg-green-100 border-2 border-green-500 w-24 h-24 flex items-center justify-center font-bold">$green$</div>
+<div class="mt-3 grid grid-cols-[1fr_0.78fr] gap-3 text-[13px] leading-snug">
+<div class="bg-white border border-slate-200 rounded p-2">
+<div class="font-bold mb-1">המערכת</div>
+<div class="-mt-8 -mb-10" dir="ltr">
+<TransitionSystemD3 :width="240" :height="160" :auto="false"
+  :states="[
+    { id: 'simple_ts_r', text: '$r$', label: '$\\{red\\}$', initial: true, x: 20, y: 66, width: 50, color: '#fee2e2', stroke: '#dc2626', labelX: -12, labelY: 18 },
+    { id: 'simple_ts_g', text: '$g$', label: '$\\{green\\}$', x: 175, y: 66, width: 50, color: '#dcfce7', stroke: '#16a34a', labelX: -18, labelY: 18 }
+  ]"
+  :transitions="[
+    { source: 'simple_ts_r', target: 'simple_ts_g', action: '$switch$', curve: -0.25, actionY: -14, actionWidth: 60 },
+    { source: 'simple_ts_g', target: 'simple_ts_r', action: '$switch$', curve: -0.25, actionY: 16, actionWidth: 60 }
+  ]"
+/>
 </div>
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-3">במכפלה</div>
-אין מעגל נגיש שמבקר במצב מקבל של האוטומט עבור המשלים.
-לכן לא קיימת עקבה רעה, ומתקיים:
-<div class="mt-4 text-center text-[27px]" dir="ltr"><KatexInline math="TS\models\Box\Diamond green" /></div>
+<div class="bg-white border border-slate-200 rounded p-2">
+<div class="font-bold mb-1">האוטומט למשלים</div>
+<div class="-mt-2 -mb-4" dir="ltr">
+<AutomatonD3 variant="classic" :width="280" :height="115" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="11"
+  :states="[
+    { id: 'sq0', x: 45, y: 82, label: '$q_0$', initial: true, initialDirection: 'left', r: 19, labelWidth: 48 },
+    { id: 'sq1', x: 140, y: 82, label: '$q_1$', accepting: true, r: 19, labelWidth: 48 },
+    { id: 'sq2', x: 235, y: 82, label: '$q_2$', r: 19, labelWidth: 48 }
+  ]"
+  :transitions="[
+    { source: 'sq0', target: 'sq0', label: '$true$', loopDirection: '-90deg', labelY: -8, labelWidth: 48 },
+    { source: 'sq0', target: 'sq1', label: '$\\neg green$', labelY: -8, labelWidth: 72 },
+    { source: 'sq1', target: 'sq1', label: '$\\neg green$', loopDirection: '-90deg', labelY: -8, labelWidth: 72 },
+    { source: 'sq1', target: 'sq2', label: '$green$', labelY: -8, labelWidth: 54 },
+    { source: 'sq2', target: 'sq2', label: '$true$', loopDirection: '-90deg', labelY: -8, labelWidth: 48 }
+  ]"
+/>
 </div>
 </div>
 
-<div class="mt-8 text-right text-[21px] leading-relaxed">
-המעבר בין אדום לירוק חוזר אינסוף פעמים, ולכן אי אפשר להישאר לנצח באזור <KatexInline math="\neg green" />.
+<div class="bg-white border border-slate-200 rounded p-2 col-span-2">
+<div class="font-bold mb-1">המכפלה</div>
+<div class="-mt-8 -mb-10" dir="ltr">
+<TransitionSystemD3 :width="760" :height="205" :auto="false"
+  :states="[
+    { id: 'simple_r0', text: '$\\langle r,q_0\\rangle$', label: '$\\{q_0\\}$', initial: true, x: 145, y: 36, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: -18, labelY: 18 },
+    { id: 'simple_r1', text: '$\\langle r,q_1\\rangle$', label: '$\\{q_1\\}$', initial: true, initialDirection: 'left', x: 145, y: 115, width: 82, color: '#fff1f2', stroke: '#e11d48', labelX: -18, labelY: 18 },
+    { id: 'simple_g0', text: '$\\langle g,q_0\\rangle$', label: '$\\{q_0\\}$', x: 325, y: 36, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: -18, labelY: 18 },
+    { id: 'simple_g2', text: '$\\langle g,q_2\\rangle$', label: '$\\{q_2\\}$', x: 325, y: 115, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: -18, labelY: 18 },
+    { id: 'simple_r2', text: '$\\langle r,q_2\\rangle$', label: '$\\{q_2\\}$', x: 505, y: 115, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: -18, labelY: 18 }
+  ]"
+  :transitions="[
+    { source: 'simple_r0', target: 'simple_g0', action: '', curve: -0.15, actionY: -10, actionWidth: 42 },
+    { source: 'simple_g0', target: 'simple_r0', action: '', curve: -0.15, actionY: 14, actionWidth: 42 },
+    { source: 'simple_g0', target: 'simple_r1', action: '', curve: 0, actionX: -8, actionY: 2, actionWidth: 42 },
+    { source: 'simple_r1', target: 'simple_g2', action: '', curve: 0, actionY: -10, actionWidth: 42 },
+    { source: 'simple_g2', target: 'simple_r2', action: '', curve: -0.15, actionY: -10, actionWidth: 42 },
+    { source: 'simple_r2', target: 'simple_g2', action: '', curve: -0.15, actionY: 14, actionWidth: 42 }
+  ]"
+/>
+</div>
+</div>
+</div>
+
+<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-[14px] leading-snug">
+יש מצב מקבל נגיש, למשל <span dir="ltr"><KatexInline math="\langle r,q_1\rangle" /></span>, אבל אין ממנו מעגל שמבקר במצבי קבלה אינסוף פעמים. לכן אין ריצה בעייתית, ומתקיים
+<span dir="ltr"><KatexInline math="TS\models\text{Always Eventually }green" /></span>.
 </div>
 
 ---
 
 # דוגמה: מערכת שמפרה את התכונה
 
-<div class="mt-5 grid grid-cols-2 gap-5 text-[20px] leading-relaxed">
-<div class="bg-white border border-slate-200 rounded p-4">
-<div class="font-bold mb-3">רמזור שיכול להיכבות</div>
-<div class="flex justify-center items-center gap-3 mt-6" dir="ltr">
-  <div class="rounded-full bg-red-100 border-2 border-red-500 w-20 h-20 flex items-center justify-center font-bold">$red$</div>
-  <div class="text-[30px]">⇄</div>
-  <div class="rounded-full bg-green-100 border-2 border-green-500 w-20 h-20 flex items-center justify-center font-bold">$green$</div>
-  <div class="text-[30px]">←</div>
-  <div class="rounded-full bg-slate-100 border-2 border-slate-500 w-20 h-20 flex items-center justify-center font-bold">$\emptyset$</div>
+<div class="mt-3 grid grid-cols-[1fr_0.78fr] gap-3 text-[13px] leading-snug">
+<div class="bg-white border border-slate-200 rounded p-2">
+<div class="font-bold mb-1">המערכת</div>
+<div class="-mt-8 -mb-10" dir="ltr">
+<TransitionSystemD3 :width="240" :height="190" :auto="false"
+  :states="[
+    { id: 'bad_ts_r', text: '$r$', label: '$\\{red\\}$', initial: true, x: 15, y: 66, width: 50, color: '#fee2e2', stroke: '#dc2626', labelX: -12, labelY: 18 },
+    { id: 'bad_ts_g', text: '$g$', label: '$\\{green\\}$', x: 155, y: 66, width: 50, color: '#dcfce7', stroke: '#16a34a', labelX: -18, labelY: 18 },
+    { id: 'bad_ts_off', text: '$off$', label: '$\\{\\}$', x: 285, y: 66, width: 54, color: '#f1f5f9', stroke: '#64748b', labelX: 24, labelY: 18 }
+  ]"
+  :transitions="[
+    { source: 'bad_ts_r', target: 'bad_ts_g', action: '$sw$', curve: -0.25, actionY: -12, actionWidth: 42 },
+    { source: 'bad_ts_g', target: 'bad_ts_r', action: '$sw$', curve: -0.25, actionY: 14, actionWidth: 42 },
+    { source: 'bad_ts_g', target: 'bad_ts_off', action: '$fail$', actionY: -10, actionWidth: 48 },
+    { source: 'bad_ts_off', target: 'bad_ts_off', action: '$stay$', loopDirection: '90deg', loopRadius: 62, loopLabelRadius: 28, actionWidth: 48, actionY: 27}
+  ]"
+/>
 </div>
 </div>
 
-<div class="bg-red-50 border border-red-200 rounded p-4">
-<div class="font-bold text-red-700 mb-3">במכפלה</div>
-יש מעגל נגיש שבו האוטומט נשאר במצב שמקבל את המשלים:
-<div class="mt-4 text-center text-[26px]" dir="ltr"><KatexInline math="red,\emptyset,red,\emptyset,\ldots" /></div>
+<div class="bg-white border border-slate-200 rounded p-2">
+<div class="font-bold mb-1">האוטומט למשלים</div>
+<div class="-mt-2 -mb-4" dir="ltr">
+<AutomatonD3 variant="classic" :width="280" :height="165" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="11"
+  :states="[
+    { id: 'bq0', x: 45, y: 82, label: '$q_0$', initial: true, initialDirection: 'left', r: 19, labelWidth: 48 },
+    { id: 'bq1', x: 140, y: 82, label: '$q_1$', accepting: true, r: 19, labelWidth: 48 },
+    { id: 'bq2', x: 235, y: 82, label: '$q_2$', r: 19, labelWidth: 48 }
+  ]"
+  :transitions="[
+    { source: 'bq0', target: 'bq0', label: '$true$', loopDirection: '-90deg', labelY: -8, labelWidth: 48 },
+    { source: 'bq0', target: 'bq1', label: '$\\neg green$', labelY: -8, labelWidth: 72 },
+    { source: 'bq1', target: 'bq1', label: '$\\neg green$', loopDirection: '-90deg', labelY: -8, labelWidth: 72 },
+    { source: 'bq1', target: 'bq2', label: '$green$', labelY: -8, labelWidth: 54 },
+    { source: 'bq2', target: 'bq2', label: '$true$', loopDirection: '-90deg', labelY: -8, labelWidth: 48 }
+  ]"
+/>
 </div>
 </div>
 
-<div class="mt-8 text-center text-[28px]" dir="ltr">
-<KatexInline display math="TS\not\models\Box\Diamond green" />
+<div class="bg-white border border-slate-200 rounded p-2 col-span-2">
+<div class="font-bold mb-1">המכפלה</div>
+<div class="-mt-8 -mb-10" dir="ltr">
+<TransitionSystemD3 :width="760" :height="160" :auto="false"
+  :highlightedStateIds="['bad_o1']"
+  :highlightedTransitionIds="['bad_r0_g0', 'bad_to_o1', 'bad_o1_loop']"
+  highlightColor="#dc2626"
+  :states="[
+    { id: 'bad_r0', text: '$\\langle r,q_0\\rangle$', label: '$\\{q_0\\}$', initial: true, x: 115, y: 46, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: 20, labelY: 18 },
+    { id: 'bad_g0', text: '$\\langle g,q_0\\rangle$', label: '$\\{q_0\\}$', x: 305, y: 46, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: 20, labelY: 18 },
+    { id: 'bad_o1', text: '$\\langle off,q_1\\rangle$', label: '$\\{q_1\\}$', x: 510, y: 46, width: 98, color: '#fff1f2', stroke: '#e11d48', labelX: 30, labelY: 18, highlightFill: '#fee2e2' }
+  ]"
+  :transitions="[
+    { id: 'bad_r0_g0', source: 'bad_r0', target: 'bad_g0', action: '', curve: -0.18, actionY: -12, actionWidth: 42 },
+    { source: 'bad_g0', target: 'bad_r0', action: '', curve: -0.18, actionY: 16, actionWidth: 42 },
+    { id: 'bad_to_o1', source: 'bad_g0', target: 'bad_o1', action: '', curve: 0, actionY: -8, actionWidth: 48 },
+    { id: 'bad_o1_loop', source: 'bad_o1', target: 'bad_o1', action: '', loopDirection: '90deg', loopRadius: 96, loopLabelRadius: 98, actionWidth: 48, actionY: 27}
+  ]"
+/>
+</div>
+</div>
+</div>
+
+<div class="mt-3 bg-red-50 border border-red-200 rounded p-3 text-[14px] leading-snug">
+הריצה הבעייתית מסומנת באדום: מגיעים אל <span dir="ltr"><KatexInline math="\langle off,q_1\rangle" /></span> וחוזרים אליו אינסוף פעמים. זהו מעגל מקבל נגיש במכפלה, ולכן
+<span dir="ltr"><KatexInline math="TS\not\models\text{Always Eventually }green" /></span>.
 </div>
 
 ---
@@ -511,12 +627,12 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 # בדיקת התמדה: מעבר לבעיית מעגל
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
-כדי לבדוק <KatexInline math="TS\models\Diamond\Box\Phi" />, מספיק לשאול:
+כדי לבדוק <KatexInline math="TS\models\text{Eventually Always }\Phi" />, מספיק לשאול:
 האם יש מצב נגיש שאינו מקיים <KatexInline math="\Phi" /> ונמצא על מעגל?
 </div>
 
 <div class="mt-7 text-center text-[29px]" dir="ltr">
-<KatexInline display math="TS\not\models\Diamond\Box\Phi\iff \exists s\in Reach(TS)\ \left(s\not\models\Phi\ \land\ s\text{ is on a cycle}\right)" />
+<KatexInline display math="TS\not\models\text{Eventually Always }\Phi\iff \exists s\in Reach(TS)\ \left(s\not\models\Phi\ \land\ s\text{ is on a cycle}\right)" />
 </div>
 
 <div class="mt-8 grid grid-cols-2 gap-5 text-[21px] leading-relaxed">
@@ -696,7 +812,7 @@ cycle-check(root, s):
 
 <div class="mt-7 text-right text-[21px] leading-relaxed">
 עבור מערכת מעברים סופית ללא מצבים ללא מוצא ותכונת התמדה
-<KatexInline math="P_{\mathrm{pers}}=\Diamond\Box\Phi" />:
+<KatexInline math="P_{\mathrm{pers}}=\text{Eventually Always }\Phi" />:
 </div>
 
 <div class="mt-7 text-center text-[28px]" dir="ltr">
@@ -754,7 +870,7 @@ cycle-check(root, s):
 
 <div class="mt-6 grid grid-cols-[1fr_auto_1fr] gap-3 items-center text-[19px] leading-relaxed">
 <div class="bg-amber-50 border border-amber-200 rounded p-4">
-בדיקת התמדה <span dir="ltr"><KatexInline math="\Diamond\Box\neg F" /></span>
+בדיקת התמדה <span dir="ltr"><KatexInline math="\text{Eventually Always }\neg F" /></span>
 </div>
 <div class="text-[30px] text-slate-500">←</div>
 <div class="bg-red-50 border border-red-200 rounded p-4">
