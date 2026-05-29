@@ -108,7 +108,7 @@ info: |
 
 ---
 
-# תזכורת: מכפלה של מערכת מעברים ואוטומט Büchi
+# תזכורת: מכפלה של מערכת מעברים ואוטומט
 
 <div class="mt-3 text-right text-[20px] leading-snug">
 עבור <KatexInline math="TS=\langle S,Act,\to,I,AP,L\rangle" /> ללא מצבים סופניים, ו־
@@ -126,7 +126,7 @@ info: |
 </div>
 
 <div class="bg-slate-50 border border-slate-200 rounded px-4 py-3">
-<div class="font-bold mb-1">מצבים התחלתיים</div>
+<div class="font-bold mb-1">מצבי התחלה</div>
 <div class="compact-display" dir="ltr"><KatexInline display math="I_\times=\{\langle s_0,q\rangle\mid s_0\in I,\ \exists q_0\in Q_0\ \left(q\in\delta(q_0,L(s_0))\right)\}" /></div>
 </div>
 </div>
@@ -140,6 +140,60 @@ info: |
   margin: 0.15em 0;
 }
 </style>
+
+---
+
+# דוגמה: בניית המכפלה
+
+<div class="mt-3 grid grid-cols-2 gap-4 text-[18px] leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-3">
+<div class="font-bold text-blue-700 mb-2">מערכת המעברים <span dir="ltr"><KatexInline math="TS" /></span></div>
+<div dir="ltr" class="compact-display"><KatexInline display math="\begin{array}{c}
+S=\{s_0,s_1\},\quad I=\{s_0\}\\
+s_0\xrightarrow{\alpha}s_1,\quad s_1\xrightarrow{\beta}s_1\\
+L(s_0)=\{a\},\quad L(s_1)=\{a\}
+\end{array}" /></div>
+</div>
+
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
+<div class="font-bold text-emerald-700 mb-2">האוטומט <span dir="ltr"><KatexInline math="\mathcal{A}" /></span></div>
+<div dir="ltr" class="compact-display"><KatexInline display math="\begin{array}{c}
+Q=\{q_0,q_1\},\quad Q_0=\{q_0\},\quad F=\{q_1\}\\
+\delta(q_0,\emptyset)=\{q_0\},\quad \delta(q_0,\{a\})=\{q_1\}\\
+\delta(q_1,\emptyset)=\{q_1\},\quad \delta(q_1,\{a\})=\{q_1\}
+\end{array}" /></div>
+</div>
+</div>
+
+<div class="mt-3 grid grid-cols-2 gap-4 text-[18px] leading-snug">
+<div class="bg-slate-50 border border-slate-200 rounded p-3">
+<div class="font-bold mb-2">מצבי המכפלה הנגישים</div>
+<div dir="ltr" class="compact-display"><KatexInline display math="\begin{array}{rcl}
+I_\times&=&\{\langle s_0,q_1\rangle\}\\
+\langle s_0,q_1\rangle &\xrightarrow{\alpha}_\times& \langle s_1,q_1\rangle\\
+\langle s_1,q_1\rangle &\xrightarrow{\beta}_\times& \langle s_1,q_1\rangle
+\end{array}" /></div>
+</div>
+
+<div class="bg-amber-50 border border-amber-200 rounded p-3">
+<div class="font-bold text-amber-700 mb-2">מה קרה בבנייה?</div>
+<div class="text-right">
+מתחילים ב־<span dir="ltr"><KatexInline math="s_0" /></span>, אבל הרכיב השני נקבע
+אחרי קריאת התיוג <span dir="ltr"><KatexInline math="L(s_0)=\{a\}" /></span>.
+לכן מ־<span dir="ltr"><KatexInline math="q_0\in Q_0" /></span> האוטומט עובר אל
+<span dir="ltr"><KatexInline math="q_1" /></span>, ומצב ההתחלה במכפלה הוא
+<span dir="ltr"><KatexInline math="\langle s_0,q_1\rangle" /></span>.
+במעבר אל <span dir="ltr"><KatexInline math="s_1" /></span> קוראים שוב את
+<span dir="ltr"><KatexInline math="L(s_1)=\{a\}" /></span>, ונשארים ב־
+<span dir="ltr"><KatexInline math="q_1" /></span>.
+</div>
+</div>
+</div>
+
+<div class="mt-3 bg-red-50 border border-red-200 rounded p-3 text-center text-[19px]" dir="ltr">
+<KatexInline math="L_\times(\langle s_1,q_1\rangle)=\{q_1\}" />
+<span dir="rtl"> ולכן הביקור העצמי מסמן ביקור חוזר במצב מקבל של האוטומט.</span>
+</div>
 
 ---
 
