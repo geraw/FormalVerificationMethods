@@ -45,6 +45,7 @@ jobs:
     timeout-minutes: 45
     env:
       SKIP_PDF_EXPORT: '1'
+      TARGET_DECK: '15-omega-regular-languages.md'
 
     steps:
       - uses: actions/checkout@v4

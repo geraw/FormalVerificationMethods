@@ -22,6 +22,7 @@ const GLOBAL_DEPENDENCY_PATHS = [
 const ASSET_ROOTS = ["public", "images"];
 const FORCE_REBUILD = process.env.FORCE_REBUILD === "1" || process.env.FORCE_REBUILD === "true";
 const SKIP_PDF_EXPORT = process.env.SKIP_PDF_EXPORT === "1" || process.env.SKIP_PDF_EXPORT === "true";
+const TARGET_DECK = (process.env.TARGET_DECK || "").trim();
 
 /**
  * Calculates a content hash for the file.
@@ -185,12 +186,22 @@ if (!fs.existsSync("dist")) {
 }
 
 // Get all .md files starting with 2 digits
-const decks = fs
+const allDecks = fs
     .readdirSync(process.cwd(), { withFileTypes: true })
     .filter(dirent => dirent.isFile() && /^\d{2}-.*\.md$/.test(dirent.name))
     .map(dirent => dirent.name);
 
-const deckBases = new Set(decks.map(file => file.replace(/\.md$/, "")));
+let decks = allDecks;
+if (TARGET_DECK) {
+    const normalizedTarget = TARGET_DECK.endsWith(".md") ? TARGET_DECK : `${TARGET_DECK}.md`;
+    decks = allDecks.filter(file => file === normalizedTarget || file.replace(/\.md$/, "") === TARGET_DECK);
+
+    if (decks.length === 0) {
+        throw new Error(`TARGET_DECK was set to '${TARGET_DECK}', but no matching deck was found.`);
+    }
+}
+
+const deckBases = new Set(allDecks.map(file => file.replace(/\.md$/, "")));
 
 let builtCount = 0;
 let skippedCount = 0;
@@ -210,6 +221,9 @@ for (const entry of fs.readdirSync("dist", { withFileTypes: true })) {
 console.log(`🔍 Checking for updates in ${decks.length + 1} files...`);
 if (SKIP_PDF_EXPORT) {
     console.log(`📄 PDF export is disabled (SKIP_PDF_EXPORT=1)`);
+}
+if (TARGET_DECK) {
+    console.log(`🎯 Building target deck only: ${decks[0]}`);
 }
 
 // 1. Build index.md as the main landing page
