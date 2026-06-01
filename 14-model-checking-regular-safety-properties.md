@@ -779,7 +779,7 @@ info: |
 
 <div class="bg-red-50/70 border border-red-200/80 rounded p-2 text-right text-[13px] leading-snug">
 <div class="font-bold text-red-900 mb-0.5">התוצאה: התכונה מופרת!</div>
-מערכת המכפלה מגיעה למצבים אדומים (המכילים את המצב המקבל <KatexInline math="q_3" />) ונכנסת ללולאה בתוכם. לכן <KatexInline math="TS \not\models P_{\text{safe}}" />.
+מערכת המכפלה מגיעה למצבים אדומים (המכילים את המצב המקבל <KatexInline math="q_3" />). לכן <KatexInline math="TS \not\models P_{\text{safe}}" />.
 </div>
 </div>
 </div>
