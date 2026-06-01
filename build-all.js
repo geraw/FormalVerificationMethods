@@ -17,10 +17,10 @@ const GLOBAL_DEPENDENCY_PATHS = [
     "slidev.config.js",
     "styles.css",
     "components",
-    "public",
-    "images",
     "setup",
 ];
+const ASSET_ROOTS = ["public", "images"];
+const FORCE_REBUILD = process.env.FORCE_REBUILD === "1" || process.env.FORCE_REBUILD === "true";
 
 /**
  * Calculates a content hash for the file.
@@ -44,10 +44,51 @@ function listFilesRecursive(targetPath) {
         .sort();
 }
 
+function addIfExists(files, filePath) {
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+        files.push(filePath);
+    }
+}
+
+function getReferencedAssets(sourceFile) {
+    const content = fs.readFileSync(sourceFile, "utf8");
+    const files = [];
+    const patterns = [
+        /(?:src|href)=["']\/([^"']+)["']/g,
+        /!\[[^\]]*]\(([^)]+)\)/g,
+        /\[[^\]]*]\(([^)]+)\)/g,
+    ];
+
+    for (const pattern of patterns) {
+        for (const match of content.matchAll(pattern)) {
+            const rawRef = match[1].split(/[?#]/)[0];
+            if (!rawRef || /^[a-z]+:/i.test(rawRef)) continue;
+
+            const normalized = rawRef.replace(/\\/g, "/").replace(/^\/+/, "");
+            const candidates = [];
+
+            if (ASSET_ROOTS.some(root => normalized === root || normalized.startsWith(`${root}/`))) {
+                candidates.push(normalized);
+            } else {
+                candidates.push(path.join(path.dirname(sourceFile), normalized));
+                candidates.push(path.join("public", normalized));
+                candidates.push(path.join("images", normalized));
+            }
+
+            for (const candidate of candidates) {
+                addIfExists(files, candidate);
+            }
+        }
+    }
+
+    return files;
+}
+
 function getBuildHash(sourceFile) {
     const files = [
         sourceFile,
         ...GLOBAL_DEPENDENCY_PATHS.flatMap(listFilesRecursive),
+        ...getReferencedAssets(sourceFile),
     ];
 
     const hash = crypto.createHash("sha1");
@@ -93,6 +134,7 @@ function needsRebuild(sourceFile, outputDir, targetFiles = []) {
         ? targetFiles
         : [path.join(outputDir, "index.html")];
 
+    if (FORCE_REBUILD) return { rebuild: true, reason: "Forced rebuild" };
     if (!fs.existsSync(signatureFile)) return { rebuild: true, reason: "Missing signature file" };
     const missingTarget = actualTargets.find(target => !fs.existsSync(target));
     if (missingTarget) {

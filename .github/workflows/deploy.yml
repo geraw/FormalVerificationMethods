@@ -2,6 +2,12 @@ name: Deploy pages
 
 on:
   workflow_dispatch:
+    inputs:
+      force_rebuild:
+        description: 'Rebuild every deck even if cache signatures match'
+        required: false
+        default: false
+        type: boolean
   push:
     branches: [main]
     paths:
@@ -83,6 +89,8 @@ jobs:
             ${{ runner.os }}-dist-${{ github.ref_name }}-
 
       - name: Build
+        env:
+          FORCE_REBUILD: ${{ github.event_name == 'workflow_dispatch' && inputs.force_rebuild && '1' || '0' }}
         run: nr build:all
 
       - name: Save dist snapshot
