@@ -77,7 +77,6 @@ jobs:
 
       - name: Install Playwright Chromium
         timeout-minutes: 10
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install chromium
 
       - name: Restore previous dist snapshot

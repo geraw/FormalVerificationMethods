@@ -218,7 +218,8 @@ for (const entry of fs.readdirSync("dist", { withFileTypes: true })) {
     removedCount++;
 }
 
-console.log(`🔍 Checking for updates in ${decks.length + 1} files...`);
+const totalCandidates = decks.length + (TARGET_DECK ? 0 : 1);
+console.log(`🔍 Checking for updates in ${totalCandidates} files...`);
 if (SKIP_PDF_EXPORT) {
     console.log(`📄 PDF export is disabled (SKIP_PDF_EXPORT=1)`);
 }
@@ -227,7 +228,7 @@ if (TARGET_DECK) {
 }
 
 // 1. Build index.md as the main landing page
-if (fs.existsSync("index.md")) {
+if (!TARGET_DECK && fs.existsSync("index.md")) {
     const result = needsRebuild("index.md", "dist", [path.join("dist", "index.html")]);
     
     if (result.rebuild) {
@@ -244,6 +245,8 @@ if (fs.existsSync("index.md")) {
         console.log(`⏭️  [SKIP] index.md (up to date)`);
         skippedCount++;
     }
+} else if (TARGET_DECK) {
+    console.log(`⏭️  [SKIP] index.md (TARGET_DECK mode)`);
 }
 
 // 2. Build each deck into its own directory
