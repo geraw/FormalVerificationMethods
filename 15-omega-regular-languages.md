@@ -617,7 +617,14 @@ info: |
 </div>
 
 <div class="bg-blue-50 border border-blue-200 rounded p-5">
-<KatexInline math="Q_0\subseteq Q" /> מצבים התחלתיים, ו־<KatexInline math="F\subseteq Q" /> מצבים מקבלים.
+<KatexInline math="Q_0\subseteq Q" /> מצבי התחלה, ו־<KatexInline math="F\subseteq Q" /> מצבים מקבלים.
+</div>
+</div>
+
+<div class="absolute top-[20px] left-12 w-[250px]">
+<img src="/same-notation-different-meaning-cartoon.png" class="w-full rounded border border-slate-200 shadow-sm bg-white" />
+<div class="mt-0.5 text-center text-[12px] text-slate-600">
+אותם תווים; המפתח משנה את המשמעות.
 </div>
 </div>
 
@@ -1085,7 +1092,7 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 <div class="bg-blue-50 border border-blue-200 rounded p-5">
 <div class="font-bold text-blue-700 mb-3">3. איחוד</div>
-אם יש אוטומטים ל־<KatexInline math="L_1" /> ול־<KatexInline math="L_2" />, שמים אותם זה לצד זה ומאחדים מצבים התחלתיים.
+אם יש אוטומטים ל־<KatexInline math="L_1" /> ול־<KatexInline math="L_2" />, שמים אותם זה לצד זה ומאחדים את מצבי ההתחלה.
 </div>
 </div>
 
