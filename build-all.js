@@ -21,6 +21,7 @@ const GLOBAL_DEPENDENCY_PATHS = [
 ];
 const ASSET_ROOTS = ["public", "images"];
 const FORCE_REBUILD = process.env.FORCE_REBUILD === "1" || process.env.FORCE_REBUILD === "true";
+const SKIP_PDF_EXPORT = process.env.SKIP_PDF_EXPORT === "1" || process.env.SKIP_PDF_EXPORT === "true";
 
 /**
  * Calculates a content hash for the file.
@@ -198,6 +199,9 @@ for (const entry of fs.readdirSync("dist", { withFileTypes: true })) {
 }
 
 console.log(`🔍 Checking for updates in ${decks.length + 1} files...`);
+if (SKIP_PDF_EXPORT) {
+    console.log(`📄 PDF export is disabled (SKIP_PDF_EXPORT=1)`);
+}
 
 // 1. Build index.md as the main landing page
 if (fs.existsSync("index.md")) {
@@ -224,10 +228,11 @@ for (const file of decks) {
     const base = file.replace(/\.md$/, "");
     const outputDir = path.join("dist", base);
     const pdfOutput = path.join(outputDir, `${base}.pdf`);
-    const result = needsRebuild(file, outputDir, [
-        path.join(outputDir, "index.html"),
-        pdfOutput,
-    ]);
+    const requiredTargets = [path.join(outputDir, "index.html")];
+    if (!SKIP_PDF_EXPORT) {
+        requiredTargets.push(pdfOutput);
+    }
+    const result = needsRebuild(file, outputDir, requiredTargets);
 
     if (result.rebuild) {
         console.log(`\n▶ [REBUILD] ${file} (${result.reason})`);
@@ -239,7 +244,9 @@ for (const file of decks) {
         fs.mkdirSync(outputDir, { recursive: true });
 
         runSlidev("build", [file, "--base", `/${REPO}/${base}/`, "-o", outputDir]);
-        exportPdfWithRetry(file, pdfOutput);
+        if (!SKIP_PDF_EXPORT) {
+            exportPdfWithRetry(file, pdfOutput);
+        }
         saveSignature(file, outputDir);
         builtCount++;
     } else {

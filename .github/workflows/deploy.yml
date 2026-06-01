@@ -43,6 +43,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    env:
+      SKIP_PDF_EXPORT: '1'
 
     steps:
       - uses: actions/checkout@v4
@@ -73,10 +75,11 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install Playwright for PDF export
+        if: env.SKIP_PDF_EXPORT != '1'
         timeout-minutes: 10
         run: |
           if [ "${{ steps.playwright-cache.outputs.cache-hit }}" = "true" ]; then
-            npx playwright install-deps chromium
+            npx playwright install chromium
           else
             npx playwright install --with-deps chromium
           fi
