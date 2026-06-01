@@ -67,6 +67,10 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm ci --prefer-offline --no-audit --no-fund
 
+      - name: Install Playwright Chromium
+        timeout-minutes: 10
+        run: npx playwright install --with-deps chromium
+
       - name: Restore previous dist snapshot
         uses: actions/cache/restore@v4
         with:
