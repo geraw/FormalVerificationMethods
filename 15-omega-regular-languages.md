@@ -328,7 +328,7 @@ info: |
 </div>
 
 <div class="absolute left-[19%] top-[70px] w-[60%] bg-white border border-slate-200 shadow-sm py-3 px-5 text-center text-[25px]" dir="ltr">
-<KatexInline display math="(\{a\}+\{a,b\})^*+(\{b\}+\emptyset)^\omega" />
+<KatexInline display math="(\{a\}+\{a,b\})^*+(\{b\}+\{\})^\omega" />
 </div>
 
 <div class="absolute left-[19%] top-[160px] w-[60%] bg-white border border-slate-200 shadow-sm py-3 px-5 text-center text-[25px]" dir="ltr">
@@ -436,10 +436,58 @@ info: |
 
 ---
 
+# חידון משמעות תכונות אומגה רגולריות
+
+<div class="text-right text-[18px] leading-snug">
+נניח <KatexInline math="AP=\{p,q,r\}" />. כל אות היא קבוצת האטומים שנכונים באותו רגע.
+</div>
+
+<div class="mt-2 grid grid-cols-[1.06fr_0.94fr] gap-x-4 gap-y-2 text-right text-[14px] leading-tight">
+<div class="font-bold text-slate-700">ביטוי מעל <KatexInline math="2^{AP}" /></div>
+<div class="font-bold text-slate-700">משמעות במילים</div>
+
+<div class="bg-white border border-slate-200 rounded px-2 py-1.5 text-center text-[15px]" dir="ltr">
+<KatexInline display math="(2^{AP})^*.\{p\}^\omega" />
+</div>
+<div v-click class="bg-red-50 border border-red-200 rounded px-2 py-1.5 flex items-center justify-center">
+לבסוף תמיד: רק <span class="mx-1"><KatexInline math="p" /></span> נכון, ו־<span class="mx-1"><KatexInline math="q" /></span> ו־<span class="mx-1"><KatexInline math="r" /></span> אינם נכונים יותר.
+</div>
+
+<div class="bg-white border border-slate-200 rounded px-2 py-1.5 text-center text-[15px]" dir="ltr">
+<KatexInline display math="((2^{AP})^*.(\{p,q\}+\{p,q,r\}))^\omega" />
+</div>
+<div v-click class="bg-emerald-50 border border-emerald-200 rounded px-2 py-1.5 flex items-center justify-center">
+אינסוף פעמים: גם <span class="mx-1"><KatexInline math="p" /></span> וגם <span class="mx-1"><KatexInline math="q" /></span> נכונים יחד.
+</div>
+
+<div class="bg-white border border-slate-200 rounded px-2 py-1.5 text-center text-[15px]" dir="ltr">
+<KatexInline display math="(2^{AP})^*.(\{\}+\{q\}+\{r\}+\{q,r\})^\omega" />
+</div>
+<div v-click class="bg-blue-50 border border-blue-200 rounded px-2 py-1.5 flex items-center justify-center">
+לבסוף תמיד: <span class="mx-1"><KatexInline math="p" /></span> שקרי.
+</div>
+
+<div class="bg-white border border-slate-200 rounded px-2 py-1.5 text-center text-[15px]" dir="ltr">
+<KatexInline display math="((\{\}+\{q\}+\{r\}+\{q,r\})^*.(\{p\}+\{p,q\}+\{p,r\}+\{p,q,r\}))^\omega" />
+</div>
+<div v-click class="bg-amber-50 border border-amber-200 rounded px-2 py-1.5 flex items-center justify-center">
+אינסוף פעמים: <span class="mx-1"><KatexInline math="p" /></span> נכון.
+</div>
+
+<div class="bg-white border border-slate-200 rounded px-2 py-1.5 text-center text-[14px]" dir="ltr">
+<KatexInline display math="(2^{AP})^*.(\{r\}+\{p,r\}+\{q,r\}+\{p,q,r\}).(\{\}+\{p\}+\{q\}+\{p,q\})^\omega" />
+</div>
+<div v-click class="bg-purple-50 border border-purple-200 rounded px-2 py-1.5 flex items-center justify-center">
+בשלב כלשהו <span class="mx-1"><KatexInline math="r" /></span> נכון, ומיד אחר כך ולתמיד <span class="mx-1"><KatexInline math="r" /></span> שקרי.
+</div>
+</div>
+
+---
+
 # תכונות <KatexInline math="\omega" />-רגולריות
 
 <div class="mt-8 text-right text-[23px] leading-relaxed">
-תכונת זמן לינארי <KatexInline math="P" /> מעל <KatexInline math="AP" /> היא <span class="font-bold"><KatexInline math="\omega" />-רגולרית</span> אם קיימת שפה <KatexInline math="\omega" />-רגולרית מעל האלפבית <KatexInline math="2^{AP}" /> כך ש:
+תכונת זמן לינארי <KatexInline math="P" /> מעל <KatexInline math="AP" /> היא <span class="font-bold"><KatexInline math="\omega" />-רגולרית</span> אם קיים ביטוי <KatexInline math="\omega" />-רגולרי <KatexInline math="G" /> מעל האלפבית <KatexInline math="2^{AP}" /> כך ש:
 </div>
 
 <div class="mt-7 text-center text-[31px]" dir="ltr">
@@ -484,6 +532,46 @@ info: |
 
 ומכאן <KatexInline math="P" /> עצמה <KatexInline math="\omega" />-רגולרית, כי <span class="transition-all duration-300" :class="{ 'text-red-600 font-bold': $clicks >= 1 }">יש סגירות תחת משלים<span v-if="$clicks >= 1"> ⚠️</span></span>.
 <div v-click class="hidden"></div>
+</div>
+</div>
+
+---
+
+# סוגי תכונות
+
+<div class="relative mt-4 h-[500px] border-2 border-slate-300 rounded bg-slate-50 overflow-hidden">
+<div class="absolute top-4 right-5 text-[24px] font-bold text-slate-800">
+תכונות זמן לינארי
+</div>
+
+<div class="absolute left-[18%] top-[58px] w-[64%] h-[380px] rounded-[50%] border-[5px] border-blue-300 bg-blue-100/30"></div>
+<div class="absolute left-[39%] top-[78px] text-[24px] font-bold text-blue-800">
+תכונות <KatexInline math="\omega" />-רגולריות
+</div>
+
+<div class="absolute left-[8%] top-[128px] w-[360px] h-[290px] rounded-[50%] border-[5px] border-emerald-400 bg-emerald-100/45"></div>
+<div class="absolute left-[18%] top-[155px] text-[25px] font-bold text-emerald-800">
+תכונות בטיחות
+</div>
+
+<div class="absolute right-[9%] top-[128px] w-[360px] h-[290px] rounded-[50%] border-[5px] border-amber-400 bg-amber-100/45"></div>
+<div class="absolute right-[18%] top-[155px] text-[25px] font-bold text-amber-800">
+תכונות חַיּוּת
+</div>
+
+<div class="absolute left-[21%] top-[220px] w-[250px] h-[118px] rounded-[50%] border-[4px] border-teal-500 bg-teal-100/70"></div>
+<div class="absolute left-[26%] top-[230px] text-[21px] font-bold text-teal-900">
+בטיחות רגולרית
+</div>
+
+<div class="absolute left-[32.2%] top-[260px] w-[150px] h-[48px] rounded-[50%] border-[3px] border-indigo-500 bg-indigo-100/85"></div>
+<div class="absolute left-[39%] top-[271px] text-[18px] font-bold text-indigo-900">
+שמורות
+</div>
+
+<div class="absolute right-[7%] bottom-5 text-[15px] text-slate-600 leading-snug text-right">
+כל אזור מייצג מחלקת תכונות.<br>
+תת־אזור מייצג מקרה פרטי.
 </div>
 </div>
 
