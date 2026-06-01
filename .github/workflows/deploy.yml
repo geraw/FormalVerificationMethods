@@ -45,7 +45,6 @@ jobs:
     timeout-minutes: 45
     env:
       SKIP_PDF_EXPORT: '1'
-      TARGET_DECK: '15-omega-regular-languages.md'
 
     steps:
       - uses: actions/checkout@v4
@@ -68,25 +67,18 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm ci --prefer-offline --no-audit --no-fund
 
-      - name: Restore previous dist snapshot
-        uses: actions/cache/restore@v4
-        with:
-          path: dist
-          key: ${{ runner.os }}-dist-${{ github.ref_name }}-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-dist-${{ github.ref_name }}-
-
       - name: Build
-        env:
-          FORCE_REBUILD: ${{ github.event_name == 'workflow_dispatch' && inputs.force_rebuild && '1' || '0' }}
-        run: npm run build:all
-
-      - name: Save dist snapshot
-        uses: actions/cache/save@v4
-        if: success()
-        with:
-          path: dist
-          key: ${{ runner.os }}-dist-${{ github.ref_name }}-${{ github.sha }}
+        run: |
+          rm -rf dist
+          mkdir -p dist/15-omega-regular-languages
+          npx slidev build "15-omega-regular-languages.md" --download "false" --base "/FormalVerificationMethods/15-omega-regular-languages/" -o "dist/15-omega-regular-languages"
+          cat > dist/index.html << 'EOF'
+          <!doctype html>
+          <meta charset="utf-8">
+          <meta http-equiv="refresh" content="0; url=/FormalVerificationMethods/15-omega-regular-languages/">
+          <title>Redirecting...</title>
+          <a href="/FormalVerificationMethods/15-omega-regular-languages/">Open deck 15</a>
+          EOF
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
