@@ -67,23 +67,6 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
         run: npm ci --prefer-offline --no-audit --no-fund
 
-      - name: Cache Playwright browsers
-        id: playwright-cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Install Playwright for PDF export
-        if: env.SKIP_PDF_EXPORT != '1'
-        timeout-minutes: 10
-        run: |
-          if [ "${{ steps.playwright-cache.outputs.cache-hit }}" = "true" ]; then
-            npx playwright install chromium
-          else
-            npx playwright install --with-deps chromium
-          fi
-
       - name: Restore previous dist snapshot
         uses: actions/cache/restore@v4
         with:
