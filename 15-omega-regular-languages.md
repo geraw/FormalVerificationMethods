@@ -769,13 +769,13 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 <div class="grid grid-cols-2 gap-5 mt-5 text-right text-[18px] leading-snug">
 <div class="bg-red-50 border border-red-200 rounded p-4">
-<div class="font-bold text-red-700 mb-2">הֲפָרוֹת</div>
-כאוטומט Büchi, האוטומט שמקבל את מצבי המלכודת מקבל בדיוק ריצות שבהן הופיעה רישא רעה: אחרי שנכנסים למלכודת מקבלת, נשארים בה ולכן מבקרים במצב מקבל אינסוף פעמים.
+<div class="font-bold text-red-700 mb-2">משלים התכונה: ההפרות</div>
+האוטומט כמו שהוא מקבל את <span class="font-bold">משלים התכונה</span>: בדיוק ריצות שבהן הופיעה רישא רעה. אחרי שנכנסים למלכודת מקבלת, נשארים בה ולכן מבקרים במצב מקבל אינסוף פעמים.
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
 <div class="font-bold text-emerald-700 mb-2">התכונה עצמה</div>
-באוטומט דטרמיניסטי שלם, החלפת קבוצת הקבלה ל־<KatexInline math="Q\setminus F" /> מקבלת את העקבות התקינים: אם אין רישא רעה, הריצה לעולם לא נכנסת למלכודת ולכן נשארת במצבים שמחוץ ל־<KatexInline math="F" /> אינסוף פעמים. אם יש רישא רעה, נכנסים למלכודת שב־<KatexInline math="F" /> ונשארים בה, ולכן לא מבקרים ב־<KatexInline math="Q\setminus F" /> אינסוף פעמים.
+בלי הגבלת הכלליות נניח שהאוטומט שלם ודטרמיניסטי. אז החלפת קבוצת הקבלה ל־<KatexInline math="Q\setminus F" /> מקבלת את התכונה עצמה: אם אין רישא רעה, הריצה לעולם לא נכנסת למלכודת ולכן מבקרת במצבים שמחוץ ל־<KatexInline math="F" /> אינסוף פעמים. אם יש רישא רעה, נכנסים למלכודת שב־<KatexInline math="F" /> ונשארים בה, ולכן לא מבקרים ב־<KatexInline math="Q\setminus F" /> אינסוף פעמים.
 </div>
 </div>
 
