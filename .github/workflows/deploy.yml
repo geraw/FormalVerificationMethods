@@ -42,6 +42,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
 
     steps:
       - uses: actions/checkout@v4
@@ -52,17 +53,15 @@ jobs:
         with:
           node-version: 'lts/*'
 
-      - name: Setup @antfu/ni
-        run: npm i -g @antfu/ni
-
-      - name: Cache node modules
+      - name: Cache npm downloads
         uses: actions/cache@v4
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
-        run: npm install
+        timeout-minutes: 10
+        run: npm ci --prefer-offline --no-audit --no-fund
 
       - name: Cache Playwright browsers
         id: playwright-cache
@@ -72,8 +71,8 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install Playwright for PDF export
+        timeout-minutes: 10
         run: |
-          npm i -D playwright-chromium
           if [ "${{ steps.playwright-cache.outputs.cache-hit }}" = "true" ]; then
             npx playwright install-deps chromium
           else
@@ -91,7 +90,7 @@ jobs:
       - name: Build
         env:
           FORCE_REBUILD: ${{ github.event_name == 'workflow_dispatch' && inputs.force_rebuild && '1' || '0' }}
-        run: nr build:all
+        run: npm run build:all
 
       - name: Save dist snapshot
         uses: actions/cache/save@v4
