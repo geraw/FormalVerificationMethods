@@ -90,64 +90,6 @@ info: |
 
 ---
 
-# חידון
-
-<div class="relative h-[500px] mt-2">
-<div class="text-right text-[24px] mb-5">
-מי מהבאים הם ביטויים אומגה רגולריים חוקיים?
-</div>
-
-<div class="absolute left-[19%] top-[70px] w-[60%] bg-white border border-slate-200 shadow-sm py-3 px-5 text-center text-[25px]" dir="ltr">
-<KatexInline display math="(\{a\}+\{a,b\})^*+(\{b\}+\emptyset)^\omega" />
-</div>
-
-<div class="absolute left-[19%] top-[160px] w-[60%] bg-white border border-slate-200 shadow-sm py-3 px-5 text-center text-[25px]" dir="ltr">
-<KatexInline display math="(\{a\}+\{a,b\})^*\cdot(\{b\}+\epsilon)^\omega+\{a\}^\omega" />
-</div>
-
-<div class="absolute left-[19%] top-[250px] w-[60%] bg-white border border-slate-200 shadow-sm py-3 px-5 text-center text-[25px]" dir="ltr">
-<KatexInline display math="(\{a\}\cdot\{a\})^*\cdot((\{a\}+\{a,b\})^*)^\omega" />
-</div>
-
-<div class="absolute left-[19%] top-[340px] w-[60%] bg-white border border-slate-200 shadow-sm py-3 px-5 text-center text-[25px]" dir="ltr">
-<KatexInline display math="(\{a\}\cdot\{a\})^*\cdot((\{a\}+\{a,b\})^+)^\omega" />
-</div>
-
-<div v-click class="absolute left-[1%] top-[58px] text-red-600 text-[19px] leading-snug text-right w-[170px]">
-כל מחובר חייב<br>להסתיים בביטוי<br>בחזקת <KatexInline math="\omega" />
-<svg class="absolute -top-8 left-[70px] w-[220px] h-[80px]" viewBox="0 0 220 80" fill="none">
-  <path d="M5 55 C55 5, 120 15, 205 52" stroke="#b23816" stroke-width="4" fill="none"/>
-  <path d="M190 42 L205 52 L188 57" stroke="#b23816" stroke-width="4" fill="none"/>
-</svg>
-</div>
-
-<div v-click class="absolute right-[0%] top-[154px] text-red-600 text-[19px] leading-snug text-right w-[190px]">
-לביטוי בחזקת <KatexInline math="\omega" /><br>אסור להכיל את<br>המילה הריקה
-<svg class="absolute -top-3 right-[165px] w-[230px] h-[80px]" viewBox="0 0 230 80" fill="none">
-  <path d="M225 28 C165 0, 78 5, 15 38" stroke="#b23816" stroke-width="4" fill="none"/>
-  <path d="M18 22 L15 38 L31 32" stroke="#b23816" stroke-width="4" fill="none"/>
-</svg>
-</div>
-
-<div v-click class="absolute right-[12%] top-[238px] text-red-600 text-[19px] leading-snug text-right w-[150px]">
-גם כאן יש<br>ביטוי שיכול<br>להיות ריק
-<svg class="absolute -top-8 right-[120px] w-[170px] h-[80px]" viewBox="0 0 170 80" fill="none">
-  <path d="M165 22 C115 42, 65 5, 18 42" stroke="#b23816" stroke-width="4" fill="none"/>
-  <path d="M20 25 L18 42 L33 34" stroke="#b23816" stroke-width="4" fill="none"/>
-</svg>
-</div>
-
-<div v-click class="absolute right-[6%] top-[362px] text-emerald-700 text-[22px] font-bold">
-ביטוי חוקי
-</div>
-</div>
-
-<div class="absolute bottom-7 left-[10%] right-[10%] bg-blue-800 text-yellow-300 text-center text-[18px] py-2" dir="ltr">
-https://play.kahoot.it/#/k/15aefb35-8427-4809-807c-7098ee85599f
-</div>
-
----
-
 # מטרות ההרצאה
 
 <div class="grid grid-cols-[1.15fr_0.85fr] gap-6 mt-4 items-center">
@@ -206,7 +148,7 @@ https://play.kahoot.it/#/k/15aefb35-8427-4809-807c-7098ee85599f
 </div>
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
 <div class="font-bold text-blue-700 mb-2"><KatexInline math="\omega" />־רגולריות</div>
-חיפוש דפוס אינסופי: ביקורים חוזרים, מענה לבקשות, והוגנות.
+חיפוש דפוס אינסופי: ביקורים חוזרים, מענה לבקשות, והוֹגְנוּת.
 </div>
 </div>
 </div>
@@ -279,7 +221,7 @@ https://play.kahoot.it/#/k/15aefb35-8427-4809-807c-7098ee85599f
 <div class="mt-1 mb-1 text-center text-[24px]" dir="ltr">
 <KatexInline display math="L \subseteq \Sigma^\omega" />
 </div>
-מתארת עקבות מלאים של מערכות תגובתיות.
+מתארת עקבות של מערכות תגובתיות.
 </div>
 
 <div class="mt-2 pt-2 border-t border-blue-200 text-[15px]">
@@ -299,7 +241,7 @@ https://play.kahoot.it/#/k/15aefb35-8427-4809-807c-7098ee85599f
 
 # תזכורת: ביטויים רגולריים
 
-ביטוי רגולרי מעל אלפבית <KatexInline math="\Sigma" /> מוגדר על ידי הסינטקס:
+ביטוי רגולרי מעל אלפבית <KatexInline math="\Sigma" /> מוגדר על ידי התחביר:
 <div class="mt-4 text-center text-[26px]" dir="ltr">
 <KatexInline display math="E ::= \emptyset \mid \epsilon \mid a \mid E_1 + E_2 \mid E_1 \cdot E_2 \mid E^*" />
 </div>
@@ -323,7 +265,7 @@ https://play.kahoot.it/#/k/15aefb35-8427-4809-807c-7098ee85599f
 
 ---
 
-# תרגום אינדוקטיבי של ביטוי רגולרי לשפה
+# דוגמה: תרגום אינדוקטיבי של ביטוי רגולרי לשפה
 
 <ParseTreeTranslation :clicks="$clicks" />
 
@@ -373,6 +315,60 @@ https://play.kahoot.it/#/k/15aefb35-8427-4809-807c-7098ee85599f
 <div class="text-[14px] text-slate-600">אינסוף מופעים של <KatexInline math="A" /></div>
 </div>
 </div>
+</div>
+</div>
+
+---
+
+# חידון
+
+<div class="relative h-[500px] mt-2">
+<div class="text-right text-[24px] mb-5">
+מי מהבאים הם ביטויים אומגה רגולריים חוקיים?
+</div>
+
+<div class="absolute left-[19%] top-[70px] w-[60%] bg-white border border-slate-200 shadow-sm py-3 px-5 text-center text-[25px]" dir="ltr">
+<KatexInline display math="(\{a\}+\{a,b\})^*+(\{b\}+\emptyset)^\omega" />
+</div>
+
+<div class="absolute left-[19%] top-[160px] w-[60%] bg-white border border-slate-200 shadow-sm py-3 px-5 text-center text-[25px]" dir="ltr">
+<KatexInline display math="(\{a\}+\{a,b\})^*\cdot(\{b\}+\epsilon)^\omega+\{a\}^\omega" />
+</div>
+
+<div class="absolute left-[19%] top-[250px] w-[60%] bg-white border border-slate-200 shadow-sm py-3 px-5 text-center text-[25px]" dir="ltr">
+<KatexInline display math="(\{a\}\cdot\{a\})^*\cdot((\{a\}+\{a,b\})^*)^\omega" />
+</div>
+
+<div class="absolute left-[19%] top-[340px] w-[60%] bg-white border border-slate-200 shadow-sm py-3 px-5 text-center text-[25px]" dir="ltr">
+<KatexInline display math="(\{a\}\cdot\{a\})^*\cdot((\{a\}+\{a,b\})^+)^\omega" />
+</div>
+
+<div v-click class="absolute left-[-5%] top-[30px] text-red-600 text-[18px] leading-snug text-right w-[180px]">
+כל מחובר חייב<br>להסתיים בביטוי<br>בחזקת <KatexInline math="\omega" />
+<svg class="absolute top-[22px] left-[190px] w-[120px] h-[70px]" viewBox="0 0 120 70" fill="none">
+  <path d="M4 14 C42 18, 70 33, 102 51" stroke="#b23816" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <path d="M84 54 L104 52 L96 34" stroke="#b23816" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+</div>
+
+<div v-click class="absolute right-[6%] top-[125px] text-red-600 text-[18px] leading-snug text-right w-[190px]">
+לביטוי בחזקת <KatexInline math="\omega" /><br>אסור להכיל את<br>המילה הריקה
+<svg class="absolute top-[34px] right-[128px] w-[145px] h-[52px]" viewBox="0 0 145 52" fill="none">
+  <path d="M138 6 C98 16, 63 26, 16 37" stroke="#b23816" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <path d="M32 22 L14 38 L37 43" stroke="#b23816" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+</div>
+
+<div v-click class="absolute right-[2%] top-[306px] text-red-600 text-[18px] leading-snug text-right w-[165px]">
+גם כאן יש<br>ביטוי שיכול<br>להיות ריק
+<svg class="absolute top-[-6px] right-[90px] w-[160px] h-[52px]" viewBox="0 0 160 52" fill="none">
+  <path d="M152 36 C112 24, 72 15, 18 20" stroke="#b23816" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <path d="M36 7 L16 20 L36 33" stroke="#b23816" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+</div>
+
+<div v-click class="absolute right-[12%] top-[400px] text-emerald-700 text-[22px] font-bold">
+ביטוי חוקי
 </div>
 </div>
 
