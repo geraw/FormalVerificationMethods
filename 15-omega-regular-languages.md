@@ -601,6 +601,39 @@ info: |
 
 ---
 
+# אוטומטי Büchi
+
+<img src="/julius-richard-buchi.jpg" class="absolute top-3 left-12 w-20 rounded-full border-4 border-white shadow-lg" />
+
+<div class="mt-5 text-right text-[21px] leading-relaxed max-w-[820px] mr-auto">
+כמו שלמדנו בקורס <span class="font-bold">מודלים חישוביים</span>, יש דואליות בין ביטויים רגולריים לבין אוטומטים:
+</div>
+
+<div class="mt-4 text-center text-[27px]" dir="ltr">
+<KatexInline display math="\text{regular expressions}\quad \Longleftrightarrow \quad \text{finite automata}" />
+</div>
+
+<div class="mt-5 text-right text-[21px] leading-relaxed max-w-[820px] mr-auto">
+גם כאן נרצה דואליות דומה בין ביטויים <KatexInline math="\omega" />-רגולריים לבין אוטומטים.
+אבל קודם צריך לשאול: איך אוטומט מגדיר שפה של מילים באורך אינסופי?
+</div>
+
+<div class="mt-5 grid grid-cols-2 gap-5 text-right text-[18px] leading-relaxed">
+<div class="bg-slate-50 border border-slate-200 rounded p-4">
+במילים סופיות אפשר לשאול באיזה מצב האוטומט נמצא כשהמילה מסתיימת.
+</div>
+
+<div class="bg-red-50 border border-red-200 rounded p-4">
+במילים אינסופיות אין רגע סיום, ולכן הקריטריון הזה כבר לא זמין.
+</div>
+</div>
+
+<div class="mt-5 bg-blue-50 border border-blue-200 rounded p-4 text-right text-[20px] leading-relaxed">
+הרעיון של Büchi: נסתכל על המצבים שהריצה מבקרת בהם אינסוף פעמים, ונקבל אם ביניהם יש מצב מקבל.
+</div>
+
+---
+
 # אוטומט Büchi <span class="text-sm bg-blue-100 text-blue-800 px-2 py-0.5 rounded mr-2 font-normal align-middle">תחביר</span>
 
 <div class="mt-8 text-right text-[23px] leading-relaxed">
@@ -633,7 +666,7 @@ info: |
 # אוטומט Büchi <span class="text-sm bg-purple-100 text-purple-800 px-2 py-0.5 rounded mr-2 font-normal align-middle">משמעות</span>
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
-עבור מילה אינסופית <KatexInline math="\sigma" />, ריצה היא סדרת מצבים <span dir="ltr"><KatexInline math="q_0q_1q_2\cdots" /></span>
+עבור מילה אינסופית <KatexInline math="\sigma" />, ריצה של האוטומט היא סדרת מצבים <span dir="ltr"><KatexInline math="q_0q_1q_2\cdots" /></span>
 כך ש־<KatexInline math="q_0\in Q_0" /> ו־<KatexInline math="q_{i+1}\in\delta(q_i,\sigma[i])" /> לכל <KatexInline math="i" />.
 שימו לב שמדובר בריצה באורך אינסופי.
 </div> 
