@@ -112,6 +112,15 @@ function runSlidev(command, args) {
     execSync(`npx slidev ${command} ${quotedArgs}`, { stdio: "inherit" });
 }
 
+function getBuildArgs(sourceFile, basePath, outputDir) {
+    const args = [sourceFile, "--base", basePath, "-o", outputDir];
+    if (SKIP_PDF_EXPORT) {
+        // Frontmatter sets download: true on decks; disable it in CI to avoid Playwright.
+        args.push("--download", "false");
+    }
+    return args;
+}
+
 function exportPdfWithRetry(sourceFile, outputFile, maxAttempts = 2) {
     for (let attempt = 1; attempt <= maxAttempts; attempt++) {
         runSlidev("export", [sourceFile, "--output", outputFile, ...PDF_EXPORT_ARGS]);
@@ -212,7 +221,7 @@ if (fs.existsSync("index.md")) {
         const tempIndexDir = path.join(".slidev-temp", "index");
         fs.rmSync(tempIndexDir, { recursive: true, force: true });
         fs.mkdirSync(path.dirname(tempIndexDir), { recursive: true });
-        runSlidev("build", ["index.md", "--base", `/${REPO}/`, "-o", tempIndexDir]);
+        runSlidev("build", getBuildArgs("index.md", `/${REPO}/`, tempIndexDir));
         replaceRootDistContents(tempIndexDir, "dist", deckBases);
         fs.rmSync(".slidev-temp", { recursive: true, force: true });
         saveSignature("index.md", "dist");
@@ -243,7 +252,7 @@ for (const file of decks) {
         }
         fs.mkdirSync(outputDir, { recursive: true });
 
-        runSlidev("build", [file, "--base", `/${REPO}/${base}/`, "-o", outputDir]);
+        runSlidev("build", getBuildArgs(file, `/${REPO}/${base}/`, outputDir));
         if (!SKIP_PDF_EXPORT) {
             exportPdfWithRetry(file, pdfOutput);
         }
