@@ -41,7 +41,8 @@
         "venn.js": "^0.2.20"
     },
     "devDependencies": {
-        "cross-env": "^7.0.3"
+        "cross-env": "^7.0.3",
+        "playwright-chromium": "^1.60.0"
     },
     "overrides": {
         "venn.js": {
