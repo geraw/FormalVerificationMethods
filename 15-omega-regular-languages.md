@@ -956,15 +956,15 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
   </defs>
   <path d="M10 48 C30 48, 38 45, 58 42" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)"/>
   <circle cx="86" cy="39" r="18" stroke="#2563eb" stroke-width="3" fill="#fff"/>
-  <path d="M107 32 C132 11, 150 35, 171 20 S208 25, 228 18 S255 30, 274 25" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)"/>
-  <path d="M111 44 C138 44, 145 56, 171 48 S204 33, 225 43 S254 48, 275 36" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.95"/>
-  <path d="M103 56 C133 76, 158 67, 183 62 S226 59, 252 55 S279 43, 296 37" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.9"/>
+  <path d="M107 32 C132 11, 150 35, 171 20 S208 25, 228 18 S263 30, 302 25" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)"/>
+  <path d="M111 44 C138 44, 145 56, 171 48 S204 33, 225 43 S263 48, 302 36" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.95"/>
+  <path d="M103 56 C132 75, 158 72, 184 67 S235 70, 264 64 S294 55, 310 47" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.9"/>
   <path d="M312 17 C315 20, 317 22, 318 25" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.65"/>
   <circle cx="325" cy="33" r="20" stroke="#2563eb" stroke-width="3" fill="#fff"/>
   <circle cx="325" cy="33" r="13" stroke="#2563eb" stroke-width="2" fill="none"/>
-  <path d="M344 24 C352 18, 356 14, 359 9" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.65"/>
-  <path d="M346 35 C354 35, 357 38, 360 40" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.65"/>
-  <path d="M342 46 C350 52, 353 57, 357 64" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.65"/>
+  <path d="M344 24 C352 18, 358 13, 362 7" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.65"/>
+  <path d="M346 35 C355 35, 362 35, 366 35" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.65"/>
+  <path d="M342 46 C350 54, 356 63, 360 70" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.65"/>
   <path d="M344 18 L351 26" stroke="#dc2626" stroke-width="3.2" stroke-linecap="round"/>
   <path d="M348 28 L348 42" stroke="#dc2626" stroke-width="3.2" stroke-linecap="round"/>
   <path d="M343 53 L351 47" stroke="#dc2626" stroke-width="3.2" stroke-linecap="round"/>
