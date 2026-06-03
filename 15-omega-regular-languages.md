@@ -1189,7 +1189,7 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
 <div class="font-bold text-blue-700 mb-2">3. איחוד</div>
-אם יש אוטומטים ל־<KatexInline math="L_1" /> ול־<KatexInline math="L_2" />, שמים אותם זה לצד זה ומאחדים את מצבי ההתחלה.
+אם יש אוטומטים ל־<KatexInline math="L_1" /> ול־<KatexInline math="L_2" />, שמים אותם זה לצד זה.
 </div>
 </div>
 
