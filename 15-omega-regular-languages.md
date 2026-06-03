@@ -919,7 +919,7 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 ---
 
-# המשפט המרכזי
+# משפט המרכזי
 
 <div class="mt-10 text-center text-[34px] leading-relaxed">
 השפות שמתקבלות על ידי אוטומטי Büchi לא דטרמיניסטיים הן בדיוק השפות ה־<KatexInline math="\omega" />-רגולריות.
