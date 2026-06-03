@@ -773,7 +773,7 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 האוטומט כמו שהוא מקבל את <span class="font-bold">משלים התכונה</span>: בדיוק ריצות שבהן הופיעה רישא רעה. אחרי שנכנסים למלכודת מקבלת, נשארים בה ולכן מבקרים במצב מקבל אינסוף פעמים.
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
+<div class="bg-emerald-50 border border-emerald-200 rounded px-5 py-4">
 <div class="font-bold text-emerald-700 mb-2">התכונה עצמה</div>
 בלי הגבלת הכלליות נניח שהאוטומט שלם ודטרמיניסטי. אז החלפת קבוצת הקבלה ל־<KatexInline math="Q\setminus F" /> מקבלת את התכונה עצמה: אם אין רישא רעה, הריצה לעולם לא נכנסת למלכודת ולכן מבקרת במצבים שמחוץ ל־<KatexInline math="F" /> אינסוף פעמים. אם יש רישא רעה, נכנסים למלכודת שב־<KatexInline math="F" /> ונשארים בה, ולכן לא מבקרים ב־<KatexInline math="Q\setminus F" /> אינסוף פעמים.
 </div>
@@ -941,20 +941,55 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 # מאוטומט לביטוי <KatexInline math="\omega" />-רגולרי: מתכון
 
-<div class="mt-2 text-right text-[18px] leading-tight">
+<div class="mt-1 text-right text-[14px] leading-tight">
 נשתמש בכלי מהקורס <span class="font-bold">מודלים חישוביים</span>:
 בונים אוטומט סופי רגיל ומפיקים ממנו ביטוי רגולרי רגיל.
 </div>
 
-<div class="grid grid-cols-2 gap-2 mt-3 text-right text-[16px] leading-tight">
-<div class="bg-blue-50 border border-blue-200 rounded p-2.5">
+<div class="grid grid-cols-2 gap-2 mt-2 text-right text-[13px] leading-tight">
+<div class="bg-blue-50 border border-blue-200 rounded p-2">
+<svg class="mb-1 w-full h-[76px]" viewBox="0 0 360 76" fill="none" dir="ltr" aria-label="prefix to accepting state">
+  <defs>
+    <marker id="prefix-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <path d="M10 48 C30 48, 38 45, 58 42" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)"/>
+  <circle cx="86" cy="39" r="18" stroke="#2563eb" stroke-width="3" fill="#fff"/>
+  <path d="M107 32 C132 11, 150 35, 171 20 S208 25, 228 18 S255 30, 274 25" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)"/>
+  <path d="M111 44 C138 44, 145 56, 171 48 S204 33, 225 43 S254 48, 275 36" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.95"/>
+  <path d="M103 56 C133 76, 158 67, 183 62 S226 59, 252 55 S279 43, 296 37" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.9"/>
+  <path d="M312 17 C315 20, 317 22, 318 25" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.65"/>
+  <circle cx="325" cy="33" r="20" stroke="#2563eb" stroke-width="3" fill="#fff"/>
+  <circle cx="325" cy="33" r="13" stroke="#2563eb" stroke-width="2" fill="none"/>
+  <path d="M344 24 C352 18, 356 14, 359 9" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.65"/>
+  <path d="M346 35 C354 35, 357 38, 360 40" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.65"/>
+  <path d="M342 46 C350 52, 353 57, 357 64" stroke="#2563eb" stroke-width="3" stroke-linecap="round" marker-end="url(#prefix-arrow)" opacity="0.65"/>
+  <path d="M344 18 L351 26" stroke="#dc2626" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M348 28 L348 42" stroke="#dc2626" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M343 53 L351 47" stroke="#dc2626" stroke-width="3.2" stroke-linecap="round"/>
+</svg>
 <div class="font-bold text-blue-700 mb-1">1. רישא עד מצב מקבל</div>
 לכל <KatexInline math="q_0\in Q_0" /> ולכל <KatexInline math="q\in F" /> בונים אוטומט סופי:
 אותם מצבים ומעברים, מצב התחלתי <KatexInline math="q_0" />, וקבוצת קבלה <KatexInline math="\{q\}" />.
 מהאוטומט הזה מפיקים ביטוי רגולרי <KatexInline math="E_{q_0,q}" />.
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2.5">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2">
+<svg class="mb-1 w-full h-[76px]" viewBox="0 -14 360 90" fill="none" dir="ltr" aria-label="nonempty loop through the same accepting state">
+  <defs>
+    <marker id="loop-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#059669"/>
+    </marker>
+  </defs>
+  <path d="M180 -12 C180 -1, 180 7, 180 14" stroke="#059669" stroke-width="3" stroke-linecap="round" marker-end="url(#loop-arrow)" opacity="0.55"/>
+  <circle cx="180" cy="38" r="20" stroke="#059669" stroke-width="3" fill="#fff"/>
+  <circle cx="180" cy="38" r="13" stroke="#059669" stroke-width="2" fill="none"/>
+  <path d="M162 24 C126 0, 75 3, 42 23 C12 42, 55 58, 100 47 C128 40, 145 29, 162 27" stroke="#059669" stroke-width="3" stroke-linecap="round" marker-end="url(#loop-arrow)"/>
+  <path d="M159 51 C127 75, 73 72, 39 53 C9 35, 55 17, 104 31 C129 38, 145 47, 160 48" stroke="#059669" stroke-width="3" stroke-linecap="round" marker-end="url(#loop-arrow)" opacity="0.92"/>
+  <path d="M198 24 C234 0, 285 3, 318 23 C348 42, 305 58, 260 47 C232 40, 215 29, 198 27" stroke="#059669" stroke-width="3" stroke-linecap="round" marker-end="url(#loop-arrow)" opacity="0.95"/>
+  <path d="M201 51 C233 75, 287 72, 321 53 C351 35, 305 17, 256 31 C231 38, 215 47, 200 48" stroke="#059669" stroke-width="3" stroke-linecap="round" marker-end="url(#loop-arrow)" opacity="0.86"/>
+</svg>
 <div class="font-bold text-emerald-700 mb-1">2. לולאה לא ריקה דרך אותו מצב</div>
 לכל <KatexInline math="q\in F" /> בונים אוטומט סופי חדש: מוסיפים מצב התחלה חדש <KatexInline math="s" />,
 ומ־<KatexInline math="s" /> יוצאים בדיוק כמו שיוצאים מ־<KatexInline math="q" /> באות הראשונה.
@@ -963,22 +998,22 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 מהאוטומט הזה מפיקים ביטוי רגולרי רגיל <KatexInline math="G_q" />.
 </div>
 
-<div class="bg-purple-50 border border-purple-200 rounded p-2.5">
+<div class="bg-purple-50 border border-purple-200 rounded p-2">
 <div class="font-bold text-purple-700 mb-1">3. הופכים ללולאה אינסופית</div>
 הביטוי <KatexInline math="G_q^\omega" /> אומר: חזרה אינסופית על מקטעים לא ריקים, שכל אחד מהם מתחיל ב־<KatexInline math="q" /> ומחזיר ל־<KatexInline math="q" />.
 </div>
 
-<div class="bg-slate-50 border border-slate-200 rounded p-2.5">
+<div class="bg-slate-50 border border-slate-200 rounded p-2">
 <div class="font-bold text-slate-700 mb-1">4. מחברים את כל האפשרויות</div>
 מצב ההתחלה ומצב הקבלה שחוזרים אליו אינם ידועים מראש, לכן כותבים סכום של כל המחוברים.
 </div>
 </div>
 
-<div class="mt-3 text-center text-[24px]" dir="ltr">
+<div class="mt-2 text-center text-[20px]" dir="ltr">
 <KatexInline display math="R_{\mathcal{A}}=\sum_{q_0\in Q_0,\ q\in F} E_{q_0,q}\cdot G_q^\omega" />
 </div>
 
-<div class="mt-1 text-center text-[20px]" dir="ltr">
+<div class="mt-0.5 text-center text-[17px]" dir="ltr">
 <KatexInline display math="L_\omega(R_{\mathcal{A}})=L_\omega(\mathcal{A})" />
 </div>
 
