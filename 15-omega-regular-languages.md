@@ -1112,24 +1112,53 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 
 # מביטוי לאוטומט: שלושת אבני הבניין
 
-<div class="grid grid-cols-3 gap-5 mt-8 text-right text-[19px] leading-relaxed">
-<div class="bg-emerald-50 border border-emerald-200 rounded p-5">
-<div class="font-bold text-emerald-700 mb-3">1. אופרטור <KatexInline math="\omega" /></div>
+<div class="omega-building-visual mt-5" dir="ltr">
+<div class="absolute opacity-0 pointer-events-none h-0 overflow-hidden" aria-hidden="true">
+<span v-click></span>
+<span v-click></span>
+<span v-click></span>
+<span v-click></span>
+</div>
+<div class="omega-building-formula text-[25px]">
+<div v-if="$clicks < 1"><KatexInline display math="F_1" /></div>
+<div v-else-if="$clicks < 2"><KatexInline display math="\mathcal{A}_{F_1}:L(F_1)\subseteq\Sigma^*" /></div>
+<div v-else-if="$clicks < 3"><KatexInline display math="\mathcal{B}_{F_1^\omega}:L_\omega(F_1^\omega)\subseteq\Sigma^\omega" /></div>
+<div v-else-if="$clicks < 4"><KatexInline display math="\mathcal{C}_{E_1\cdot F_1^\omega}:L_\omega(E_1\cdot F_1^\omega)\subseteq\Sigma^\omega" /></div>
+<div v-else><KatexInline display math="\mathcal{A}_G:L_\omega(E_1.F_1^\omega+\cdots+E_n.F_n^\omega)\subseteq\Sigma^\omega" /></div>
+</div>
+<div class="omega-flow-canvas mt-2">
+<div class="omega-stage-card stage-f" :class="$clicks >= 0 ? 'on' : ''"><div class="omega-stage-chip re-chip"><KatexInline math="F_1" /></div></div>
+<div class="omega-stage-arrow" :class="$clicks >= 1 ? 'on' : ''">→</div>
+<div class="omega-stage-card stage-af" :class="$clicks >= 1 ? 'on' : ''"><div class="omega-stage-chip aut-chip"><KatexInline math="\mathcal{A}_{F_1}" /></div><div class="omega-stage-caption"><KatexInline math="\Sigma^*" /></div></div>
+<div class="omega-stage-arrow" :class="$clicks >= 2 ? 'on' : ''"><KatexInline math="\xRightarrow{\omega}" /></div>
+<div class="omega-stage-card stage-bf" :class="$clicks >= 2 ? 'on' : ''"><div class="omega-stage-chip aut-chip"><KatexInline math="\mathcal{B}_{F_1^\omega}" /></div><div class="omega-stage-caption"><KatexInline math="\Sigma^\omega" /></div></div>
+<div class="omega-stage-card stage-e" :class="$clicks >= 3 ? 'on' : ''"><div class="omega-stage-chip re-chip"><KatexInline math="E_1" /></div></div>
+<div class="omega-merge-arrow" :class="$clicks >= 3 ? 'on' : ''">↘</div>
+<div class="omega-stage-card stage-c" :class="$clicks >= 3 ? 'on' : ''"><div class="omega-stage-chip aut-chip"><KatexInline math="\mathcal{C}_{E_1.F_1^\omega}" /></div><div class="omega-stage-caption"><KatexInline math="\Sigma^\omega" /></div></div>
+<div class="omega-stage-arrow" :class="$clicks >= 4 ? 'on' : ''">→</div>
+<div class="omega-stage-card stage-g" :class="$clicks >= 4 ? 'on' : ''"><div class="omega-stage-chip final-chip"><KatexInline math="\mathcal{A}_G" /></div><div class="omega-stage-caption"><KatexInline math="E_1.F_1^\omega+\cdots+E_n.F_n^\omega" /></div></div>
+</div>
+<div class="omega-dot-steps mt-2" dir="ltr"><span class="omega-dot" :class="$clicks >= 1 ? 'on' : ''"></span><span class="omega-dot" :class="$clicks >= 2 ? 'on' : ''"></span><span class="omega-dot" :class="$clicks >= 3 ? 'on' : ''"></span><span class="omega-dot" :class="$clicks >= 4 ? 'on' : ''"></span></div>
+</div>
+
+<div class="grid grid-cols-3 gap-4 mt-5 text-right text-[17px] leading-snug">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
+<div class="font-bold text-emerald-700 mb-2">1. אופרטור <KatexInline math="\omega" /></div>
 אם <KatexInline math="L" /> רגולרית ו־<KatexInline math="\epsilon\notin L" />, בונים <span dir="ltr">NBA</span> שמקבל <KatexInline math="L^\omega" />.
 </div>
 
-<div class="bg-orange-50 border border-orange-200 rounded p-5">
-<div class="font-bold text-orange-700 mb-3">2. שרשור</div>
+<div class="bg-orange-50 border border-orange-200 rounded p-4">
+<div class="font-bold text-orange-700 mb-2">2. שרשור</div>
 אם <KatexInline math="L" /> רגולרית ו־<KatexInline math="\mathcal{A}" /> מקבל שפת Büchi, בונים אוטומט עבור <KatexInline math="L.L_\omega(\mathcal{A})" />.
 </div>
 
-<div class="bg-blue-50 border border-blue-200 rounded p-5">
-<div class="font-bold text-blue-700 mb-3">3. איחוד</div>
+<div class="bg-blue-50 border border-blue-200 rounded p-4">
+<div class="font-bold text-blue-700 mb-2">3. איחוד</div>
 אם יש אוטומטים ל־<KatexInline math="L_1" /> ול־<KatexInline math="L_2" />, שמים אותם זה לצד זה ומאחדים את מצבי ההתחלה.
 </div>
 </div>
 
-<div class="mt-8 text-center text-[29px]" dir="ltr">
+<div class="mt-6 text-center text-[29px]" dir="ltr">
 <KatexInline display math="E_1.F_1^\omega+\cdots+E_n.F_n^\omega" />
 </div>
 
