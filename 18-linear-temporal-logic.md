@@ -370,15 +370,15 @@ false &\equiv \neg true \\
 
 # סמנטיקה: נוסחה מגדירה קבוצת מילים
 
-<div class="mt-7 text-right text-[21px] leading-relaxed">
+<div class="mt-4 text-right text-[21px] leading-snug">
 תכונת הזמן הליניארי המוגדרת על ידי נוסחת <span dir="ltr"><KatexInline math="\psi" /></span> היא קבוצת כל המילים שמספקות אותה:
 </div>
 
-<div class="mt-6 text-center text-[20px]" dir="ltr">
+<div class="mt-3 text-center text-[20px]" dir="ltr">
 <KatexInline display math="Words(\psi)=\{\sigma\in(2^{AP})^\omega : \sigma\models\psi\}" />
 </div>
 
-<div class="mt-6 bg-slate-50 border border-slate-200 rounded p-5 text-[21px]" dir="ltr">
+<div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-[21px]" dir="ltr">
 <KatexInline display math="\begin{aligned}
 \sigma\models true &\iff true \\
 \sigma\models a &\iff a\in\sigma[0] \\
@@ -397,13 +397,61 @@ false &\equiv \neg true \\
 <KatexInline display math="\sigma\models\varphi\mathbin{\mathrm{U}}\psi \iff \left(\exists j\ge 0\;\left(\sigma[j..]\models\psi\;\land\;\forall i<j\;\sigma[i..]\models\varphi\right)\right)" />
 </div>
 
-<div class="mt-8 grid grid-cols-6 gap-2 items-end text-center text-[17px]" dir="ltr">
-<div class="bg-blue-50 border border-blue-200 rounded p-3 h-24 flex flex-col justify-center"><KatexInline math="\sigma[0..]\models\varphi" /></div>
-<div class="bg-blue-50 border border-blue-200 rounded p-3 h-24 flex flex-col justify-center"><KatexInline math="\sigma[1..]\models\varphi" /></div>
-<div class="bg-blue-50 border border-blue-200 rounded p-3 h-24 flex flex-col justify-center"><KatexInline math="\sigma[2..]\models\varphi" /></div>
-<div class="bg-blue-50 border border-blue-200 rounded p-3 h-24 flex flex-col justify-center"><KatexInline math="\cdots" /></div>
-<div class="bg-emerald-50 border-2 border-emerald-400 rounded p-3 h-28 flex flex-col justify-center"><KatexInline math="\sigma[j..]\models\psi" /></div>
-<div class="text-[34px] text-slate-500 pb-6">...</div>
+<div class="mt-3 text-center text-[20px]">
+בכל אינדקס <span dir="ltr"><KatexInline math="k" /></span> בודקים את הנוסחה על הזנב <span dir="ltr"><KatexInline math="\sigma[k..]" /></span> בלבד.
+</div>
+
+<div class="mt-5 bg-slate-50 border border-slate-200 rounded p-4" dir="ltr">
+  <svg viewBox="0 0 760 305" class="w-full h-[305px]">
+    <defs>
+      <pattern id="cellsGray" width="18" height="20" patternUnits="userSpaceOnUse">
+        <rect width="18" height="20" fill="#d1d5db" />
+        <line x1="18" y1="0" x2="18" y2="20" stroke="#6b7280" stroke-width="1" />
+      </pattern>
+      <pattern id="cellsRed" width="18" height="20" patternUnits="userSpaceOnUse">
+        <rect width="18" height="20" fill="#fca5a5" />
+        <line x1="18" y1="0" x2="18" y2="20" stroke="#ef4444" stroke-width="1" />
+      </pattern>
+      <pattern id="cellsBlue" width="18" height="20" patternUnits="userSpaceOnUse">
+        <rect width="18" height="20" fill="#93c5fd" />
+        <line x1="18" y1="0" x2="18" y2="20" stroke="#2563eb" stroke-width="1" />
+      </pattern>
+      <marker id="redArrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+        <polygon points="0 0, 7 3.5, 0 7" fill="#dc2626" />
+      </marker>
+      <marker id="blueArrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+        <polygon points="0 0, 7 3.5, 0 7" fill="#2563eb" />
+      </marker>
+    </defs>
+
+    <text x="12" y="18" font-size="22" fill="#111827">σ |= φ₁ U ψ₂</text>
+    <rect x="12" y="28" width="736" height="20" fill="url(#cellsGray)" stroke="#4b5563" />
+
+    <text x="118" y="77" font-size="18" fill="#111827">σ[4..] |= </text>
+    <text x="198" y="77" font-size="18" fill="#1d4ed8">ψ₂</text>
+    <rect x="92" y="84" width="656" height="20" fill="url(#cellsBlue)" stroke="#2563eb" />
+    <line x1="98" y1="50" x2="98" y2="82" stroke="#2563eb" stroke-width="3" marker-end="url(#blueArrow)" />
+
+    <text x="98" y="125" font-size="18" fill="#111827">σ[3..] |= </text>
+    <text x="178" y="125" font-size="18" fill="#dc2626">φ₁</text>
+    <rect x="74" y="132" width="674" height="20" fill="url(#cellsRed)" stroke="#ef4444" />
+    <line x1="80" y1="50" x2="80" y2="130" stroke="#dc2626" stroke-width="3" marker-end="url(#redArrow)" />
+
+    <text x="74" y="173" font-size="18" fill="#111827">σ[2..] |= </text>
+    <text x="154" y="173" font-size="18" fill="#dc2626">φ₁</text>
+    <rect x="56" y="180" width="692" height="20" fill="url(#cellsRed)" stroke="#ef4444" />
+    <line x1="62" y1="50" x2="62" y2="178" stroke="#dc2626" stroke-width="3" marker-end="url(#redArrow)" />
+
+    <text x="50" y="221" font-size="18" fill="#111827">σ[1..] |= </text>
+    <text x="130" y="221" font-size="18" fill="#dc2626">φ₁</text>
+    <rect x="38" y="228" width="710" height="20" fill="url(#cellsRed)" stroke="#ef4444" />
+    <line x1="44" y1="50" x2="44" y2="226" stroke="#dc2626" stroke-width="3" marker-end="url(#redArrow)" />
+
+    <text x="30" y="269" font-size="18" fill="#111827">σ[0..] |= </text>
+    <text x="110" y="269" font-size="18" fill="#dc2626">φ₁</text>
+    <rect x="12" y="276" width="736" height="20" fill="url(#cellsRed)" stroke="#ef4444" />
+    <line x1="26" y1="50" x2="26" y2="274" stroke="#dc2626" stroke-width="3" marker-end="url(#redArrow)" />
+  </svg>
 </div>
 
 <div class="mt-7 text-center text-[21px]">
