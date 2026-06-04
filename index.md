@@ -7,7 +7,7 @@ dir: rtl
 ---
 
 <a href="https://in.bgu.ac.il/" target="_blank">
-  <img src="/bgu-logo.png" class="bgu-logo w-10" />
+  <img src="./public/bgu-logo.png" class="bgu-logo w-10" />
 </a>
 
 ## מצגות הקורס מבוא לאימות תוכנה בשיטות פורמליות
@@ -33,5 +33,6 @@ dir: rtl
     <li><b>15 - שפות ω-רגולריות:</b> שפות ω-רגולריות, אוטומטי Büchi והקשר לתכונות זמן לינארי. <a href="./15-omega-regular-languages/#1" target="_blank">[מצגת]</a></li>
     <li><b>16 - אוטומטי Büchi דטרמיניסטיים ומוכללים:</b> ריקות, דטרמיניזם, אוטומטי Büchi מוכללים וחיתוך שפות. <a href="./16-deterministic-and-generalized-buchi-automata/#1" target="_blank">[מצגת]</a></li>
     <li><b>17 - אימות תכונות ω-רגולריות:</b> מכפלה עם אוטומט Büchi למשלים, תכונות התמדה, זיהוי מעגלים ו-DFS מקונן. <a href="./17-verification-of-omega-regular-properties/#1" target="_blank">[מצגת]</a></li>
+    <li><b>18 - לוגיקת זמנים ליניארית:</b> תחביר וסמנטיקה של LTL, מודליות זמן, שקילויות, Weak Until, Release וצורה חיובית נורמלית. <a href="./18-linear-temporal-logic/#1" target="_blank">[מצגת]</a></li>
   </ul>
 </div>
