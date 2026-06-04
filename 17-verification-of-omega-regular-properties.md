@@ -56,7 +56,7 @@ info: |
 
 # תזכורת: בטיחות רגולרית
 
-<div class="mt-7 text-right text-[22px] leading-relaxed">
+<div class="mt-7 text-right text-[19px] leading-relaxed">
 עבור תכונת בטיחות רגולרית <KatexInline math="P_{\mathrm{safe}}" />, נתון אוטומט סופי
 <KatexInline math="\mathcal{A}" /> שמקבל את הרֵישׁוֹת הרעות:
 </div>
@@ -352,6 +352,65 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 
 ---
 
+# היחס לתכונות שמורות
+
+<div class="mt-2 text-right text-[18px] leading-snug">
+נשווה בין שתי צורות של תכונות:
+</div>
+
+<div class="mt-2 grid grid-cols-2 gap-3 text-[18px]">
+<div class="bg-blue-50 border border-blue-200 rounded px-3 py-1 text-center" dir="rtl">
+<div class="font-bold text-blue-700" dir="ltr"><KatexInline math="P_{\mathrm{inv}}(\Phi)" /></div>
+<div dir="ltr"><KatexInline display math="\{\sigma\mid \forall i\ge 0:\ \sigma[i]\models\Phi\}" /></div>
+<div class="text-[14px] leading-tight">כלומר: <span dir="ltr"><KatexInline math="\text{Always }\Phi" /></span></div>
+</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded px-3 py-1 text-center" dir="rtl">
+<div class="font-bold text-emerald-700" dir="ltr"><KatexInline math="P_{\mathrm{per}}(\Phi)" /></div>
+<div dir="ltr"><KatexInline display math="\{\sigma\mid \exists k\ge 0\ \forall i\ge k:\ \sigma[i]\models\Phi\}" /></div>
+<div class="text-[14px] leading-tight">כלומר: <span dir="ltr"><KatexInline math="\text{Eventually Always }\Phi" /></span></div>
+</div>
+</div>
+
+<div class="mt-2 space-y-2 text-right text-[15px] leading-tight" dir="rtl">
+<div v-click class="bg-slate-50 border border-slate-200 rounded px-3 py-2" dir="rtl">
+<div class="flex items-start justify-between gap-3">
+<div class="font-bold">האם <span dir="ltr"><KatexInline math="P_{\mathrm{per}}(\Phi)=P_{\mathrm{inv}}(\Phi)" /></span>?</div>
+<div class="shrink-0 text-red-700 font-bold">לא, אלא אם <KatexInline math="\Phi" /> טריוויאלית.</div>
+</div>
+<div class="mt-1">
+הוכחה: אם <KatexInline math="\Phi" /> אינה תמיד אמת ואינה תמיד שקר, קיימות אותיות
+<span dir="ltr"><KatexInline math="A\not\models\Phi" /></span> ו־
+<span dir="ltr"><KatexInline math="B\models\Phi" /></span>.
+אז <span dir="ltr"><KatexInline math="AB^\omega\in P_{\mathrm{per}}(\Phi)" /></span>
+כי החל ממיקום 1 מתקיים <KatexInline math="\Phi" />, אבל
+<span dir="ltr"><KatexInline math="AB^\omega\notin P_{\mathrm{inv}}(\Phi)" /></span>
+כי האות הראשונה מפרה את <KatexInline math="\Phi" />.
+</div>
+</div>
+
+<div v-click class="bg-slate-50 border border-slate-200 rounded px-3 py-2" dir="rtl">
+<div class="flex items-start justify-between gap-3">
+<div class="font-bold">האם קיימות <span dir="ltr"><KatexInline math="\Phi_{\mathrm{inv}},\Phi_{\mathrm{per}}" /></span> כך ש־<span dir="ltr"><KatexInline math="P_{\mathrm{per}}(\Phi_{\mathrm{per}})=P_{\mathrm{inv}}(\Phi_{\mathrm{inv}})" /></span>?</div>
+<div class="shrink-0 text-emerald-700 font-bold">כן, רק טריוויאליות.</div>
+</div>
+<div class="mt-1">
+נסמן <span dir="ltr"><KatexInline math="\Sigma=2^{AP}" /></span>,
+<span dir="ltr"><KatexInline math="X=\{A\mid A\models\Phi_{\mathrm{inv}}\}" /></span>,
+<span dir="ltr"><KatexInline math="Y=\{A\mid A\models\Phi_{\mathrm{per}}\}" /></span>.
+אז <span dir="ltr"><KatexInline math="P_{\mathrm{inv}}=X^\omega" /></span> ו־
+<span dir="ltr"><KatexInline math="P_{\mathrm{per}}=\Sigma^*Y^\omega" /></span>.
+אם <span dir="ltr"><KatexInline math="Y=\emptyset" /></span>, שוויון מחייב
+<span dir="ltr"><KatexInline math="X=\emptyset" /></span>.
+אחרת, לכל <span dir="ltr"><KatexInline math="A\in\Sigma" /></span> ולכל <span dir="ltr"><KatexInline math="B\in Y" /></span>,
+<span dir="ltr"><KatexInline math="AB^\omega\in\Sigma^*Y^\omega=X^\omega" /></span>, ולכן
+<span dir="ltr"><KatexInline math="A\in X" /></span>. מכאן <span dir="ltr"><KatexInline math="X=\Sigma" /></span>, ואז שוויון מחייב
+<span dir="ltr"><KatexInline math="Y=\Sigma" /></span>.
+</div>
+</div>
+</div>
+
+---
+
 # תכונת ההתמדה של האוטומט
 
 <div class="mt-5 text-right text-[21px] leading-snug">
@@ -641,16 +700,22 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 
 # בדיקת התמדה: מעבר לבעיית מעגל
 
-<div class="mt-7 text-right text-[22px] leading-relaxed">
+<div class="mt-7 text-right text-[19px] leading-relaxed">
 כדי לבדוק <KatexInline math="TS\models\text{Eventually Always }\Phi" />, מספיק לשאול:
 האם יש מצב נגיש שאינו מקיים <KatexInline math="\Phi" /> ונמצא על מעגל?
 </div>
 
-<div class="mt-7 text-center text-[29px]" dir="ltr">
-<KatexInline display math="TS\not\models\text{Eventually Always }\Phi\iff \exists s\in Reach(TS)\ \left(s\not\models\Phi\ \land\ s\text{ is on a cycle}\right)" />
+<div class="mt-6 flex flex-col items-center gap-1 text-center" dir="ltr">
+<div class="text-[24px]">
+<KatexInline display math="TS\not\models\text{Eventually Always }\Phi" />
+</div>
+<div class="text-[30px] leading-none">⇕</div>
+<div class="text-[22px]">
+<KatexInline display math="\exists s\in Reach(TS)\ \left(s\not\models\Phi\ \land\ s\text{ is on a cycle}\right)" />
+</div>
 </div>
 
-<div class="mt-8 grid grid-cols-2 gap-5 text-[21px] leading-relaxed">
+<div class="mt-8 grid grid-cols-2 gap-5 text-[18px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
 נגישות נותנת רישא שמגיעה אל <KatexInline math="s" />.
 </div>
@@ -659,35 +724,32 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 </div>
 </div>
 
----
-
-# דוגמה נגדית לתכונת התמדה
-
-<div class="mt-5 relative h-[300px] mx-auto max-w-[760px]" dir="ltr">
-  <div class="absolute left-[40px] top-[120px] w-20 h-20 rounded-full border-2 border-slate-500 bg-slate-50 flex items-center justify-center">$s_0$</div>
-  <div class="absolute left-[205px] top-[120px] w-20 h-20 rounded-full border-2 border-red-500 bg-red-50 flex items-center justify-center">$s$<br>$\neg\Phi$</div>
-  <div class="absolute left-[370px] top-[120px] w-20 h-20 rounded-full border-2 border-slate-500 bg-slate-50 flex items-center justify-center">$t$</div>
-  <div class="absolute left-[535px] top-[120px] w-20 h-20 rounded-full border-2 border-slate-500 bg-slate-50 flex items-center justify-center">$u$</div>
-
-  <svg class="absolute inset-0 w-full h-full" viewBox="0 0 760 300">
-    <defs>
-      <marker id="arrow21" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-        <path d="M0,0 L0,6 L9,3 z" fill="#475569" />
-      </marker>
-    </defs>
-    <path d="M120 160 L200 160" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow21)" fill="none" />
-    <path d="M285 160 L365 160" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow21)" fill="none" />
-    <path d="M450 160 L530 160" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow21)" fill="none" />
-    <path d="M575 118 C545 40 245 40 245 118" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow21)" fill="none" />
-  </svg>
+<div class="absolute right-[54px] top-[262px] w-[245px] h-[110px] pointer-events-none scale-85" dir="ltr">
+<svg class="absolute inset-0 w-full h-full overflow-visible" viewBox="0 0 245 110">
+  <defs>
+    <marker id="persistence-arrow" markerWidth="9" markerHeight="7" viewBox="0 0 9 7" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L9,3.5 L0,7 z" fill="#dc2626" />
+    </marker>
+    <marker id="persistence-red-arrow" markerWidth="9" markerHeight="7" viewBox="0 0 9 7" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L9,3.5 L0,7 z" fill="#dc2626" />
+    </marker>
+  </defs>
+  <path d="M8 54 C20 42 32 66 44 54 C56 42 68 66 80 54 C88 46 96 54 103 54"
+        stroke="#dc2626" stroke-width="3" fill="none" stroke-linecap="round"
+        marker-end="url(#persistence-arrow)" />
+  <path d="M135 42
+           C139 18 151 32 164 20
+           C177 8 187 40 200 30
+           C213 20 228 43 234 58
+           C240 73 226 91 211 98
+           C196 105 187 84 174 98
+           C161 112 145 84 135 73"
+        stroke="#dc2626" stroke-width="3" fill="none" stroke-linecap="round"
+        marker-end="url(#persistence-red-arrow)" />
+</svg>
+<div class="absolute left-[105px] top-[38px] w-[50px] h-[32px] rounded border-[3px] border-red-600 bg-red-50 flex items-center justify-center text-[22px] text-red-800">
+<KatexInline math="s" />
 </div>
-
-<div class="mt-5 text-center text-[27px]" dir="ltr">
-<KatexInline display math="s_0\cdots s\ t\ u\ s\ t\ u\ s\cdots" />
-</div>
-
-<div class="mt-4 text-right text-[21px] leading-relaxed">
-המצב <KatexInline math="s" /> מפר את <KatexInline math="\Phi" /> ומופיע אינסוף פעמים, ולכן “לבסוף תמיד <KatexInline math="\Phi" />” מופר.
 </div>
 
 ---
