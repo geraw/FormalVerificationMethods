@@ -107,7 +107,7 @@ function draw() {
     .attr('font-weight', 700)
     .attr('text-anchor', 'middle')
     .attr('dominant-baseline', 'middle')
-    .style('font-family', 'Arial, sans-serif')
+    .style('font-family', 'inherit')
     .text((d) => d.label);
 }
 

@@ -8,7 +8,7 @@ download: true
 exportFilename: 17-verification-of-omega-regular-properties
 htmlAttrs:
   dir: rtl
-  lang: heb
+  lang: he
 drawings:
   enabled: true
 info: |
@@ -484,10 +484,10 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 
 # דוגמה: מערכת שמקיימת את התכונה
 
-<div class="mt-3 grid grid-cols-[1fr_0.78fr] gap-3 text-[13px] leading-snug">
-<div class="bg-white border border-slate-200 rounded p-2">
+<div class="mt-2 grid grid-cols-[1fr_0.78fr] gap-2 text-[13px] leading-snug">
+<div class="bg-white border border-slate-200 rounded px-2 py-1">
 <div class="font-bold mb-1">המערכת</div>
-<div class="-mt-8 -mb-10" dir="ltr">
+<div class="-mt-9 -mb-11" dir="ltr">
 <TransitionSystemD3 :width="240" :height="160" :auto="false"
   :states="[
     { id: 'simple_ts_r', text: '$r$', label: '$\\{red\\}$', initial: true, x: 20, y: 66, width: 50, color: '#fee2e2', stroke: '#dc2626', labelX: -12, labelY: 18 },
@@ -501,9 +501,9 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 </div>
 </div>
 
-<div class="bg-white border border-slate-200 rounded p-2">
+<div class="bg-white border border-slate-200 rounded px-2 py-1">
 <div class="font-bold mb-1">האוטומט למשלים</div>
-<div class="-mt-2 -mb-4" dir="ltr">
+<div class="-mt-3 -mb-5" dir="ltr">
 <AutomatonD3 variant="classic" :width="280" :height="115" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="11"
   :states="[
     { id: 'sq0', x: 45, y: 82, label: '$q_0$', initial: true, initialDirection: 'left', r: 19, labelWidth: 48 },
@@ -554,15 +554,15 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 
 # דוגמה: מערכת שמפרה את התכונה
 
-<div class="mt-3 grid grid-cols-[1fr_0.78fr] gap-3 text-[13px] leading-snug">
-<div class="bg-white border border-slate-200 rounded p-2">
+<div class="mt-2 grid grid-cols-[1fr_0.78fr] gap-2 text-[13px] leading-snug">
+<div class="bg-white border border-slate-200 rounded px-2 py-1">
 <div class="font-bold mb-1">המערכת</div>
-<div class="-mt-8 -mb-10" dir="ltr">
-<TransitionSystemD3 :width="240" :height="190" :auto="false"
+<div class="-mt-9 -mb-3" dir="ltr">
+<TransitionSystemD3 :width="240" :height="118" :auto="false"
   :states="[
-    { id: 'bad_ts_r', text: '$r$', label: '$\\{red\\}$', initial: true, x: 15, y: 66, width: 50, color: '#fee2e2', stroke: '#dc2626', labelX: -12, labelY: 18 },
-    { id: 'bad_ts_g', text: '$g$', label: '$\\{green\\}$', x: 155, y: 66, width: 50, color: '#dcfce7', stroke: '#16a34a', labelX: -18, labelY: 18 },
-    { id: 'bad_ts_off', text: '$off$', label: '$\\{\\}$', x: 285, y: 66, width: 54, color: '#f1f5f9', stroke: '#64748b', labelX: 24, labelY: 18 }
+    { id: 'bad_ts_r', text: '$r$', label: '$\\{red\\}$', initial: true, x: 15, y: 46, width: 50, color: '#fee2e2', stroke: '#dc2626', labelX: -12, labelY: 18 },
+    { id: 'bad_ts_g', text: '$g$', label: '$\\{green\\}$', x: 155, y: 46, width: 50, color: '#dcfce7', stroke: '#16a34a', labelX: -18, labelY: 18 },
+    { id: 'bad_ts_off', text: '$off$', label: '$\\{\\}$', x: 285, y: 46, width: 54, color: '#f1f5f9', stroke: '#64748b', labelX: 24, labelY: 18 }
   ]"
   :transitions="[
     { source: 'bad_ts_r', target: 'bad_ts_g', action: '$sw$', curve: -0.25, actionY: -12, actionWidth: 42 },
@@ -574,10 +574,10 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 </div>
 </div>
 
-<div class="bg-white border border-slate-200 rounded p-2">
+<div class="bg-white border border-slate-200 rounded px-2 py-1">
 <div class="font-bold mb-1">האוטומט למשלים</div>
-<div class="-mt-2 -mb-4" dir="ltr">
-<AutomatonD3 variant="classic" :width="280" :height="165" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="11"
+<div class="-mt-3 -mb-2" dir="ltr">
+<AutomatonD3 variant="classic" :width="280" :height="118" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="11"
   :states="[
     { id: 'bq0', x: 45, y: 82, label: '$q_0$', initial: true, initialDirection: 'left', r: 19, labelWidth: 48 },
     { id: 'bq1', x: 140, y: 82, label: '$q_1$', accepting: true, r: 19, labelWidth: 48 },
@@ -594,30 +594,45 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 </div>
 </div>
 
-<div class="bg-white border border-slate-200 rounded p-2 col-span-2">
+<div class="bg-white border border-slate-200 rounded px-2 py-1 col-span-2">
 <div class="font-bold mb-1">המכפלה</div>
-<div class="-mt-8 -mb-10" dir="ltr">
-<TransitionSystemD3 :width="760" :height="160" :auto="false"
-  :highlightedStateIds="['bad_o1']"
-  :highlightedTransitionIds="['bad_r0_g0', 'bad_to_o1', 'bad_o1_loop']"
+<div class="-mt-10 -mb-10 h-[270px] scale-[.9] origin-top mx-auto w-fit" dir="ltr">
+<TransitionSystemD3 :width="760" :height="300" :auto="false"
+  :highlightedStateIds="['bad_r0', 'bad_g0', 'bad_o1']"
+  :highlightedTransitionIds="['bad_r0_g0', 'bad_g0_o1', 'bad_o1_loop']"
   highlightColor="#dc2626"
+  :highlightArrowheadScale="0.65"
   :states="[
-    { id: 'bad_r0', text: '$\\langle r,q_0\\rangle$', label: '$\\{q_0\\}$', initial: true, x: 115, y: 46, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: 20, labelY: 18 },
-    { id: 'bad_g0', text: '$\\langle g,q_0\\rangle$', label: '$\\{q_0\\}$', x: 305, y: 46, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: 20, labelY: 18 },
-    { id: 'bad_o1', text: '$\\langle off,q_1\\rangle$', label: '$\\{q_1\\}$', x: 510, y: 46, width: 98, color: '#fff1f2', stroke: '#e11d48', labelX: 30, labelY: 18, highlightFill: '#fee2e2' }
+    { id: 'bad_r0', text: '$\\langle r,q_0\\rangle$', label: '$\\{q_0\\}$', initial: true, x: 95, y: 46, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: 20, labelY: 18 },
+    { id: 'bad_g0', text: '$\\langle g,q_0\\rangle$', label: '$\\{q_0\\}$', x: 275, y: 46, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: 20, labelY: 18 },
+    { id: 'bad_o0', text: '$\\langle off,q_0\\rangle$', label: '$\\{q_0\\}$', x: 530, y: 46, width: 98, color: '#f8fafc', stroke: '#64748b', labelX: 30, labelY: 18 },
+    { id: 'bad_r1', text: '$\\langle r,q_1\\rangle$', label: '$\\{q_1\\}$', initial: true, initialDirection: 'left', x: 95, y: 126, width: 82, color: '#fff1f2', stroke: '#e11d48', labelX: 20, labelY: 18 },
+    { id: 'bad_o1', text: '$\\langle off,q_1\\rangle$', label: '$\\{q_1\\}$', x: 530, y: 126, width: 98, color: '#fff1f2', stroke: '#e11d48', labelX: 30, labelY: 18, highlightFill: '#fee2e2' },
+    { id: 'bad_r2', text: '$\\langle r,q_2\\rangle$', label: '$\\{q_2\\}$', x: 95, y: 206, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: 20, labelY: 18 },
+    { id: 'bad_g2', text: '$\\langle g,q_2\\rangle$', label: '$\\{q_2\\}$', x: 275, y: 206, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: 20, labelY: 18 },
+    { id: 'bad_o2', text: '$\\langle off,q_2\\rangle$', label: '$\\{q_2\\}$', x: 530, y: 206, width: 98, color: '#f8fafc', stroke: '#64748b', labelX: 30, labelY: 18 }
   ]"
   :transitions="[
     { id: 'bad_r0_g0', source: 'bad_r0', target: 'bad_g0', action: '', curve: -0.18, actionY: -12, actionWidth: 42 },
     { source: 'bad_g0', target: 'bad_r0', action: '', curve: -0.18, actionY: 16, actionWidth: 42 },
-    { id: 'bad_to_o1', source: 'bad_g0', target: 'bad_o1', action: '', curve: 0, actionY: -8, actionWidth: 48 },
-    { id: 'bad_o1_loop', source: 'bad_o1', target: 'bad_o1', action: '', loopDirection: '90deg', loopRadius: 96, loopLabelRadius: 98, actionWidth: 48, actionY: 27}
+    { source: 'bad_g0', target: 'bad_r1', action: '', curve: 0, actionX: -10, actionY: 2, actionWidth: 42 },
+    { source: 'bad_g0', target: 'bad_o0', action: '', curve: -0.12, actionY: -10, actionWidth: 42 },
+    { id: 'bad_g0_o1', source: 'bad_g0', target: 'bad_o1', action: '', curve: 0.12, actionY: 10, actionWidth: 42 },
+    { source: 'bad_o0', target: 'bad_o0', action: '', loopDirection: '-90deg', loopRadius: 74, loopLabelRadius: 34, actionWidth: 42 },
+    { source: 'bad_o0', target: 'bad_o1', action: '', curve: 0.1, actionX: 14, actionY: 0, actionWidth: 42 },
+    { source: 'bad_r1', target: 'bad_g2', action: '', curve: -0.18, actionY: -8, actionWidth: 42 },
+    { source: 'bad_g2', target: 'bad_r2', action: '', curve: -0.18, actionY: -10, actionWidth: 42 },
+    { source: 'bad_r2', target: 'bad_g2', action: '', curve: -0.18, actionY: 14, actionWidth: 42 },
+    { source: 'bad_g2', target: 'bad_o2', action: '', curve: -0.12, actionY: -10, actionWidth: 42 },
+    { id: 'bad_o1_loop', source: 'bad_o1', target: 'bad_o1', action: '', loopDirection: '90deg', loopRadius: 74, loopLabelRadius: 34, actionWidth: 42, actionY: 22 },
+    { source: 'bad_o2', target: 'bad_o2', action: '', loopDirection: '90deg', loopRadius: 74, loopLabelRadius: 34, actionWidth: 42, actionY: 22 }
   ]"
 />
 </div>
 </div>
 </div>
 
-<div class="mt-3 bg-red-50 border border-red-200 rounded p-3 text-[14px] leading-snug">
+<div class="mt-1 bg-red-50 border border-red-200 rounded px-3 py-1 text-[13px] leading-tight">
 הריצה הבעייתית מסומנת באדום: מגיעים אל <span dir="ltr"><KatexInline math="\langle off,q_1\rangle" /></span> וחוזרים אליו אינסוף פעמים. זהו מעגל מקבל נגיש במכפלה, ולכן
 <span dir="ltr"><KatexInline math="TS\not\models\text{Always Eventually }green" /></span>.
 </div>

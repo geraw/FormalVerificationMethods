@@ -9,7 +9,10 @@
     <svg ref="svgRef" :width="width" :height="height" class="overflow-visible">
       <defs>
         <marker v-for="color in uniqueColors" :key="color"
-          :id="getMarkerId(color)" markerWidth="7" markerHeight="5" 
+          :id="getMarkerId(color)"
+          :markerWidth="getMarkerWidth(color)"
+          :markerHeight="getMarkerHeight(color)"
+          viewBox="0 0 7 5"
           refX="6" refY="2.5" orient="auto">
           <polygon points="0 0, 7 2.5, 0 5" :fill="color" />
         </marker>
@@ -105,6 +108,7 @@ interface Props {
   pulseHighlights?: boolean;
   highlightColor?: string;
   highlightFill?: string | null;
+  highlightArrowheadScale?: number;
   markers?: StateMarker[];
 }
 
@@ -120,6 +124,7 @@ const props = withDefaults(defineProps<Props>(), {
   pulseHighlights: true,
   highlightColor: '#ea580c',
   highlightFill: null,
+  highlightArrowheadScale: 1,
   markers: () => [],
 });
 
@@ -129,6 +134,9 @@ const containerRef = ref<HTMLDivElement | null>(null);
 
 const markerIdBase = `arrowhead-ts-d3-${Math.random().toString(36).slice(2, 11)}`;
 const getMarkerId = (color: string) => `${markerIdBase}-${color.replace('#', '')}`;
+const getMarkerScale = (color: string) => color === props.highlightColor ? props.highlightArrowheadScale : 1;
+const getMarkerWidth = (color: string) => 7 * getMarkerScale(color);
+const getMarkerHeight = (color: string) => 5 * getMarkerScale(color);
 const zoomable = computed(() => props.zoomable);
 const showZoomControls = computed(() => props.showZoomControls);
 const highlightedStateIdSet = computed(() => new Set(props.highlightedStateIds));
