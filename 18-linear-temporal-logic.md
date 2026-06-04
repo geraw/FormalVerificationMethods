@@ -244,7 +244,7 @@ false &\equiv \neg true \\
 
 ---
 
-# ארבע מודליות זמן שכדאי להכיר
+# ארבע תבניות זמן שכדאי להכיר
 
 <div class="mt-7 grid grid-cols-4 gap-3 text-center text-[18px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
@@ -265,37 +265,49 @@ false &\equiv \neg true \\
 </div>
 </div>
 
-<div class="mt-8 text-center text-[26px]" dir="ltr">
+<div class="mt-7 text-center text-[22px]">
+גרירות לוגיות הנובעות מהתיאור למעלה
+</div>
+
+<div class="mt-4 text-center text-[26px]" dir="ltr">
 <KatexInline display math="\Diamond\Box\varphi \Rightarrow \Diamond\varphi,\qquad \Box\varphi \Rightarrow \Box\Diamond\varphi" />
 </div>
 
----
 
 ---
 
 # שלוש דרכים לתאר אותה דרישה
 
-<div class="mt-7 text-right text-[22px] leading-relaxed">
-נרצה שכל אחד משני הפילוסופים יגיע לאזור הקריטי אינסוף פעמים.
-</div>
-
-<div class="mt-6 grid grid-cols-3 gap-4 text-center text-[18px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
+<div class="mt-3 grid grid-cols-1 gap-2 text-center text-[17px] leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-2.5">
 <div class="font-bold text-blue-700 mb-2">כשפה</div>
-<div dir="ltr" class="text-[22px]"><KatexInline math="\{\sigma:\exists^\infty i.\;crit_1\in\sigma[i]\;\land\;\exists^\infty i.\;crit_2\in\sigma[i]\}" /></div>
-</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-2">כנוסחת LTL</div>
-<div dir="ltr" class="text-[28px]"><KatexInline math="\Box\Diamond crit_1\land\Box\Diamond crit_2" /></div>
-</div>
-<div class="bg-amber-50 border border-amber-200 rounded p-4">
-<div class="font-bold text-amber-700 mb-2">כאוטומט</div>
-מצבים מקבלים דורשים לבקר שוב ושוב באירועים המתאימים.
-</div>
+<div dir="ltr" class="text-[20px]"><KatexInline math="\{\sigma:\underset{\infty}{\exists} i.\;crit_1\in\sigma[i]\;\land\;\underset{\infty}{\exists} i.\;crit_2\in\sigma[i]\}" /></div>
 </div>
 
-<div class="mt-8 text-center text-[23px]">
-בהמשך הקורס נשתמש בתרגום מנוסחאות <span dir="ltr">LTL</span> לאוטומטי Büchi.
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2.5">
+<div class="font-bold text-emerald-700 mb-2">כנוסחת LTL</div>
+<div dir="ltr" class="text-[24px]"><KatexInline math="\Box\Diamond crit_1\land\Box\Diamond crit_2" /></div>
+</div>
+
+<div class="bg-amber-50 border border-amber-200 rounded p-2.5">
+<div class="font-bold text-amber-700 mb-1">כאוטומט GNBA</div>
+<div class="mt-2 bg-white rounded border border-slate-200 shadow-sm p-2 flex justify-center">
+<AutomatonD3 variant="classic" :width="390" :height="125" :arrowSize="3.7" :stateLabelFontSize="14" :transitionLabelFontSize="11"
+:states="[
+{ id: 'q0', x: 195, y: 60, label: '$q_0$', initial: true, initialDirection: 'top', r: 20, labelWidth: 56 },
+{ id: 'q1', x: 68, y: 60, label: '$q_1$', accepting: true, r: 20, labelWidth: 56, stroke: '#2563eb' },
+{ id: 'q2', x: 322, y: 60, label: '$q_2$', accepting: true, r: 20, labelWidth: 56, stroke: '#dc2626' }
+]"
+:transitions="[
+{ source: 'q0', target: 'q0', label: '$true$', loopDirection: '90deg', labelY: 8, labelWidth: 50 },
+{ source: 'q0', target: 'q1', label: '$crit_1$', labelY: 12, labelWidth: 70, curve: -0.18 },
+{ source: 'q1', target: 'q0', label: '$true$', labelY: -12, labelWidth: 50, curve: -0.18 },
+{ source: 'q0', target: 'q2', label: '$crit_2$', labelY: -12, labelWidth: 70, curve: -0.18 },
+{ source: 'q2', target: 'q0', label: '$true$', labelY: 12, labelWidth: 50, curve: -0.18 }
+]"
+/>
+</div>
+</div>
 </div>
 
 ---
