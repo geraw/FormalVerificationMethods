@@ -374,21 +374,19 @@ false &\equiv \neg true \\
 תכונת הזמן הליניארי המוגדרת על ידי נוסחת <span dir="ltr"><KatexInline math="\psi" /></span> היא קבוצת כל המילים שמספקות אותה:
 </div>
 
-<div class="mt-6 text-center text-[30px]" dir="ltr">
+<div class="mt-6 text-center text-[20px]" dir="ltr">
 <KatexInline display math="Words(\psi)=\{\sigma\in(2^{AP})^\omega : \sigma\models\psi\}" />
 </div>
 
-<div class="mt-7 grid grid-cols-2 gap-4 text-right text-[18px] leading-relaxed">
-<div class="bg-slate-50 border border-slate-200 rounded p-4">
-<div dir="ltr"><KatexInline math="\sigma\models true" /></div>
-<div dir="ltr"><KatexInline math="\sigma\models a \iff a\in\sigma[0]" /></div>
-<div dir="ltr"><KatexInline math="\sigma\models\varphi_1\land\varphi_2 \iff \sigma\models\varphi_1\;\text{and}\;\sigma\models\varphi_2" /></div>
-</div>
-<div class="bg-slate-50 border border-slate-200 rounded p-4">
-<div dir="ltr"><KatexInline math="\sigma\models\neg\varphi \iff \sigma\not\models\varphi" /></div>
-<div dir="ltr"><KatexInline math="\sigma\models\bigcirc\varphi \iff \sigma[1..]\models\varphi" /></div>
-<div dir="ltr"><KatexInline math="\sigma\models\varphi U\psi \iff \exists j.\;\sigma[j..]\models\psi\land\forall i<j.\;\sigma[i..]\models\varphi" /></div>
-</div>
+<div class="mt-6 bg-slate-50 border border-slate-200 rounded p-5 text-[21px]" dir="ltr">
+<KatexInline display math="\begin{aligned}
+\sigma\models true &\iff true \\
+\sigma\models a &\iff a\in\sigma[0] \\
+\sigma\models\varphi_1\land\varphi_2 &\iff \left(\sigma\models\varphi_1\;\text{and}\;\sigma\models\varphi_2\right) \\
+\sigma\models\neg\varphi &\iff \sigma\not\models\varphi \\
+\sigma\models\bigcirc\varphi &\iff \sigma[1..]\models\varphi \\
+\sigma\models\varphi\mathbin{\mathrm{U}}\psi &\iff \left(\exists j\;\left(\sigma[j..]\models\psi\land\forall i<j\;\sigma[i..]\models\varphi\right)\right)
+\end{aligned}" />
 </div>
 
 ---
@@ -396,7 +394,7 @@ false &\equiv \neg true \\
 # סמנטיקה של Until
 
 <div class="mt-6 text-center text-[29px]" dir="ltr">
-<KatexInline display math="\sigma\models\varphi U\psi \iff \exists j\ge 0.\;\sigma[j..]\models\psi\;\land\;\forall i<j.\;\sigma[i..]\models\varphi" />
+<KatexInline display math="\sigma\models\varphi\mathbin{\mathrm{U}}\psi \iff \left(\exists j\ge 0\;\left(\sigma[j..]\models\psi\;\land\;\forall i<j\;\sigma[i..]\models\varphi\right)\right)" />
 </div>
 
 <div class="mt-8 grid grid-cols-6 gap-2 items-end text-center text-[17px]" dir="ltr">
