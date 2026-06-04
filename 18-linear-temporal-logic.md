@@ -170,7 +170,7 @@ info: |
 <div class="bg-emerald-50 border border-emerald-200 rounded p-5">
 <div class="font-bold text-emerald-700 mb-2">עד ש...</div>
 נהיה במצב אתחול עד שנגיע למצב מוכן:
-<div dir="ltr" class="mt-4 text-center text-[28px]"><KatexInline math="init\;U\;ready" /></div>
+<div dir="ltr" class="mt-4 text-center text-[28px]"><KatexInline math="init\mathbin{\mathrm{U}}ready" /></div>
 </div>
 </div>
 
@@ -178,7 +178,7 @@ info: |
 <span class="font-bold">מקרא אופרטורים:</span>
 <span dir="ltr" class="mr-3"><KatexInline math="\Box" /></span> תמיד,
 <span dir="ltr" class="mr-3"><KatexInline math="\bigcirc" /></span> בצעד הבא,
-<span dir="ltr" class="mr-3"><KatexInline math="U" /></span> עד ש־.
+<span dir="ltr" class="mr-3"><KatexInline math="\mathrm{U}" /></span> עד ש־.
 </div>
 
 <div class="mt-8 grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-3 items-center text-[18px]">
@@ -199,7 +199,7 @@ info: |
 </div>
 
 <div class="mt-6 text-center text-[31px]" dir="ltr">
-<KatexInline display math="\varphi ::= true \mid a \mid \varphi_1\land\varphi_2 \mid \neg\varphi \mid \bigcirc\varphi \mid \varphi_1\,U\,\varphi_2" />
+<KatexInline display math="\varphi ::= true \mid a \mid \varphi_1\land\varphi_2 \mid \neg\varphi \mid \bigcirc\varphi \mid \varphi_1\mathbin{\mathrm{U}}\varphi_2" />
 </div>
 
 <div class="mt-7 grid grid-cols-2 gap-4 text-right text-[19px] leading-relaxed">
@@ -207,7 +207,7 @@ info: |
 <span dir="ltr"><KatexInline math="\bigcirc\varphi" /></span> אומר: <span class="font-bold">בצעד הבא</span> תתקיים <span dir="ltr"><KatexInline math="\varphi" /></span>.
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<span dir="ltr"><KatexInline math="\varphi_1 U \varphi_2" /></span> אומר: <span dir="ltr"><KatexInline math="\varphi_1" /></span> תתקיים עד ש־<span dir="ltr"><KatexInline math="\varphi_2" /></span> תתקיים.
+<span dir="ltr"><KatexInline math="\varphi_1\mathbin{\mathrm{U}}\varphi_2" /></span> אומר: <span dir="ltr"><KatexInline math="\varphi_1" /></span> תתקיים עד ש־<span dir="ltr"><KatexInline math="\varphi_2" /></span> תתקיים.
 </div>
 </div>
 
@@ -281,7 +281,7 @@ false &\equiv \neg true \\
 <div class="mt-3 grid grid-cols-1 gap-2 text-center text-[17px] leading-snug">
 <div class="bg-blue-50 border border-blue-200 rounded p-2.5">
 <div class="font-bold text-blue-700 mb-2">כשפה</div>
-<div dir="ltr" class="text-[20px]"><KatexInline math="\{\sigma:\underset{\infty}{\exists} i.\;crit_1\in\sigma[i]\;\land\;\underset{\infty}{\exists} i.\;crit_2\in\sigma[i]\}" /></div>
+<div dir="ltr" class="text-[20px]"><KatexInline math="\{\sigma:\underset{\infty}{\exists}i\;(crit_1\in\sigma[i])\;\land\;\underset{\infty}{\exists}i\;(crit_2\in\sigma[i])\}" /></div>
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-2.5">
@@ -332,7 +332,7 @@ false &\equiv \neg true \\
 
 <div class="bg-red-50 border border-red-200 rounded p-4">
 <div class="font-bold text-red-700 mb-2">אין פלט לפני קלט</div>
-<div dir="ltr" class="text-center text-[25px]"><KatexInline math="\Box\neg output\lor(\neg output\;U\;input)" /></div>
+<div dir="ltr" class="text-center text-[25px]"><KatexInline math="\Box\neg output\lor(\neg output\mathbin{\mathrm{U}}input)" /></div>
 </div>
 </div>
 
@@ -385,7 +385,7 @@ false &\equiv \neg true \\
 \sigma\models\varphi_1\land\varphi_2 &\iff \left(\sigma\models\varphi_1\;\text{and}\;\sigma\models\varphi_2\right) \\
 \sigma\models\neg\varphi &\iff \sigma\not\models\varphi \\
 \sigma\models\bigcirc\varphi &\iff \sigma[1..]\models\varphi \\
-\sigma\models\varphi\mathbin{\mathrm{U}}\psi &\iff \left(\exists j\;\left(\sigma[j..]\models\psi\land\forall i<j\;\sigma[i..]\models\varphi\right)\right)
+\sigma\models\varphi\mathbin{\mathrm{U}}\psi &\iff \left(\exists j\;\left(\sigma[j..]\models\psi\land\forall i<j\;\left(\sigma[i..]\models\varphi\right)\right)\right)
 \end{aligned}" />
 </div>
 
@@ -394,93 +394,82 @@ false &\equiv \neg true \\
 # סמנטיקה של Until
 
 <div class="mt-6 text-center text-[29px]" dir="ltr">
-<KatexInline display math="\sigma\models\varphi\mathbin{\mathrm{U}}\psi \iff \left(\exists j\ge 0\;\left(\sigma[j..]\models\psi\;\land\;\forall i<j\;\sigma[i..]\models\varphi\right)\right)" />
+<KatexInline display math="\sigma\models\varphi\mathbin{\mathrm{U}}\psi \iff \left(\exists j\ge0\;\left(\sigma[j..]\models\psi\;\land\;\forall i<j\;\left(\sigma[i..]\models\varphi\right)\right)\right)" />
 </div>
 
-<div class="mt-3 text-center text-[20px]">
-בכל אינדקס <span dir="ltr"><KatexInline math="k" /></span> בודקים את הנוסחה על הזנב <span dir="ltr"><KatexInline math="\sigma[k..]" /></span> בלבד.
+<div class="mt-6 bg-slate-50 border border-slate-200 rounded p-4 text-left" dir="ltr">
+<div class="space-y-2 text-[18px] overflow-hidden">
+<div v-click class="grid grid-cols-[42px_170px_1fr] gap-3 items-center">
+<div class="text-emerald-600 font-bold text-[22px]">✓</div>
+<div class="font-mono text-red-700">i=0 &lt; j</div>
+<div class="relative h-8 bg-red-100 border border-red-300 flex items-center px-3 after:content-[''] after:absolute after:top-[-1px] after:left-full after:h-8 after:w-[280px] after:bg-red-100 after:border-y after:border-red-300 after:bg-[repeating-linear-gradient(90deg,#fee2e2_0,#fee2e2_18px,#fecaca_18px,#fecaca_20px)]"><KatexInline math="\sigma[0..]\models\varphi" /><span class="absolute left-[calc(100%+248px)] top-10 h-8 flex items-center text-red-500 text-[18px]">→</span></div>
+</div>
+<div v-click class="grid grid-cols-[42px_170px_1fr] gap-3 items-center">
+<div class="text-emerald-600 font-bold text-[22px]">✓</div>
+<div class="font-mono text-red-700">i=1 &lt; j</div>
+<div class="relative h-8 bg-red-100 border border-red-300 flex items-center px-3 ml-8 after:content-[''] after:absolute after:top-[-1px] after:left-full after:h-8 after:w-[280px] after:bg-red-100 after:border-y after:border-red-300 after:bg-[repeating-linear-gradient(90deg,#fee2e2_0,#fee2e2_18px,#fecaca_18px,#fecaca_20px)]"><KatexInline math="\sigma[1..]\models\varphi" /><span class="absolute left-[calc(100%+248px)] top-0 h-8 flex items-center text-red-500 text-[18px]">→</span></div>
+</div>
+<div v-click class="grid grid-cols-[42px_170px_1fr] gap-3 items-center">
+<div class="text-emerald-600 font-bold text-[22px]">✓</div>
+<div class="font-mono text-red-700">i=2 &lt; j</div>
+<div class="relative h-8 bg-red-100 border border-red-300 flex items-center px-3 ml-16 after:content-[''] after:absolute after:top-[-1px] after:left-full after:h-8 after:w-[280px] after:bg-red-100 after:border-y after:border-red-300 after:bg-[repeating-linear-gradient(90deg,#fee2e2_0,#fee2e2_18px,#fecaca_18px,#fecaca_20px)]"><KatexInline math="\sigma[2..]\models\varphi" /><span class="absolute left-[calc(100%+248px)] top-0 h-8 flex items-center text-red-500 text-[18px]">→</span></div>
+</div>
+<div v-click class="grid grid-cols-[42px_170px_1fr] gap-3 items-center">
+<div class="text-emerald-600 font-bold text-[22px]">✓</div>
+<div class="font-mono text-red-700">i=3 &lt; j</div>
+<div class="relative h-8 bg-red-100 border border-red-300 flex items-center px-3 ml-24 after:content-[''] after:absolute after:top-[-1px] after:left-full after:h-8 after:w-[280px] after:bg-red-100 after:border-y after:border-red-300 after:bg-[repeating-linear-gradient(90deg,#fee2e2_0,#fee2e2_18px,#fecaca_18px,#fecaca_20px)]"><KatexInline math="\sigma[3..]\models\varphi" /><span class="absolute left-[calc(100%+248px)] top-0 h-8 flex items-center text-red-500 text-[18px]">→</span></div>
+</div>
+<div v-click class="grid grid-cols-[42px_170px_1fr] gap-3 items-center">
+<div class="text-emerald-600 font-bold text-[22px]">✓</div>
+<div class="font-mono text-blue-700">now j=4</div>
+<div class="relative h-8 bg-blue-100 border-2 border-blue-500 flex items-center px-3 ml-32 after:content-[''] after:absolute after:top-[-2px] after:left-full after:h-8 after:w-[280px] after:bg-blue-100 after:border-y-2 after:border-blue-500 after:bg-[repeating-linear-gradient(90deg,#dbeafe_0,#dbeafe_18px,#bfdbfe_18px,#bfdbfe_20px)]"><KatexInline math="\sigma[4..]\models\psi" /><span class="absolute left-[calc(100%+248px)] top-0 h-8 flex items-center text-blue-500 text-[18px]">→</span></div>
+</div>
+</div>
 </div>
 
-<div class="mt-5 bg-slate-50 border border-slate-200 rounded p-4" dir="ltr">
-  <svg viewBox="0 0 760 305" class="w-full h-[305px]">
-    <defs>
-      <pattern id="cellsGray" width="18" height="20" patternUnits="userSpaceOnUse">
-        <rect width="18" height="20" fill="#d1d5db" />
-        <line x1="18" y1="0" x2="18" y2="20" stroke="#6b7280" stroke-width="1" />
-      </pattern>
-      <pattern id="cellsRed" width="18" height="20" patternUnits="userSpaceOnUse">
-        <rect width="18" height="20" fill="#fca5a5" />
-        <line x1="18" y1="0" x2="18" y2="20" stroke="#ef4444" stroke-width="1" />
-      </pattern>
-      <pattern id="cellsBlue" width="18" height="20" patternUnits="userSpaceOnUse">
-        <rect width="18" height="20" fill="#93c5fd" />
-        <line x1="18" y1="0" x2="18" y2="20" stroke="#2563eb" stroke-width="1" />
-      </pattern>
-      <marker id="redArrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-        <polygon points="0 0, 7 3.5, 0 7" fill="#dc2626" />
-      </marker>
-      <marker id="blueArrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
-        <polygon points="0 0, 7 3.5, 0 7" fill="#2563eb" />
-      </marker>
-    </defs>
-
-    <text x="12" y="18" font-size="22" fill="#111827">σ |= φ₁ U ψ₂</text>
-    <rect x="12" y="28" width="736" height="20" fill="url(#cellsGray)" stroke="#4b5563" />
-
-    <text x="118" y="77" font-size="18" fill="#111827">σ[4..] |= </text>
-    <text x="198" y="77" font-size="18" fill="#1d4ed8">ψ₂</text>
-    <rect x="92" y="84" width="656" height="20" fill="url(#cellsBlue)" stroke="#2563eb" />
-    <line x1="98" y1="50" x2="98" y2="82" stroke="#2563eb" stroke-width="3" marker-end="url(#blueArrow)" />
-
-    <text x="98" y="125" font-size="18" fill="#111827">σ[3..] |= </text>
-    <text x="178" y="125" font-size="18" fill="#dc2626">φ₁</text>
-    <rect x="74" y="132" width="674" height="20" fill="url(#cellsRed)" stroke="#ef4444" />
-    <line x1="80" y1="50" x2="80" y2="130" stroke="#dc2626" stroke-width="3" marker-end="url(#redArrow)" />
-
-    <text x="74" y="173" font-size="18" fill="#111827">σ[2..] |= </text>
-    <text x="154" y="173" font-size="18" fill="#dc2626">φ₁</text>
-    <rect x="56" y="180" width="692" height="20" fill="url(#cellsRed)" stroke="#ef4444" />
-    <line x1="62" y1="50" x2="62" y2="178" stroke="#dc2626" stroke-width="3" marker-end="url(#redArrow)" />
-
-    <text x="50" y="221" font-size="18" fill="#111827">σ[1..] |= </text>
-    <text x="130" y="221" font-size="18" fill="#dc2626">φ₁</text>
-    <rect x="38" y="228" width="710" height="20" fill="url(#cellsRed)" stroke="#ef4444" />
-    <line x1="44" y1="50" x2="44" y2="226" stroke="#dc2626" stroke-width="3" marker-end="url(#redArrow)" />
-
-    <text x="30" y="269" font-size="18" fill="#111827">σ[0..] |= </text>
-    <text x="110" y="269" font-size="18" fill="#dc2626">φ₁</text>
-    <rect x="12" y="276" width="736" height="20" fill="url(#cellsRed)" stroke="#ef4444" />
-    <line x1="26" y1="50" x2="26" y2="274" stroke="#dc2626" stroke-width="3" marker-end="url(#redArrow)" />
-  </svg>
-</div>
-
-<div class="mt-7 text-center text-[21px]">
+<div v-click class="mt-7 text-center text-[21px]">
 ה־<span dir="ltr"><KatexInline math="Until" /></span> הוא חזק: הוא דורש שבסוף אכן נגיע ל־<span dir="ltr"><KatexInline math="\psi" /></span>.
 </div>
 
 ---
 
-# סמנטיקה של האופרטורים הנגזרים
+# סמנטיקה ישירה של האופרטורים הנגזרים
 
-<div class="mt-7 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
-<div dir="ltr" class="text-[26px]"><KatexInline math="\sigma\models\Diamond\varphi \iff \exists j\ge0.\;\sigma[j..]\models\varphi" /></div>
-<div class="mt-2">מתישהו בעתיד.</div>
+<div class="mt-5 grid grid-cols-1 gap-y-2 text-right text-[18px] leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-3 grid grid-cols-[170px_1fr] gap-8 items-center">
+<div>מתישהו בעתיד.</div>
+<div dir="ltr" class="grid grid-cols-[235px_64px_minmax(0,1fr)] gap-4 items-center text-[23px] leading-tight">
+<div class="text-right"><KatexInline math="\sigma\models\Diamond\varphi" /></div>
+<div class="text-center"><KatexInline math="\iff" /></div>
+<div class="text-left pl-3"><KatexInline math="\exists j\ge0\;\left(\sigma[j..]\models\varphi\right)" /></div>
+</div>
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div dir="ltr" class="text-[26px]"><KatexInline math="\sigma\models\Box\varphi \iff \forall j\ge0.\;\sigma[j..]\models\varphi" /></div>
-<div class="mt-2">בכל נקודה מעכשיו והלאה.</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3 grid grid-cols-[170px_1fr] gap-8 items-center">
+<div>בכל נקודה מעכשיו והלאה.</div>
+<div dir="ltr" class="grid grid-cols-[235px_64px_minmax(0,1fr)] gap-4 items-center text-[23px] leading-tight">
+<div class="text-right"><KatexInline math="\sigma\models\Box\varphi" /></div>
+<div class="text-center"><KatexInline math="\iff" /></div>
+<div class="text-left pl-3"><KatexInline math="\forall j\ge0\;\left(\sigma[j..]\models\varphi\right)" /></div>
+</div>
 </div>
 
-<div class="bg-amber-50 border border-amber-200 rounded p-4">
-<div dir="ltr" class="text-[26px]"><KatexInline math="\sigma\models\Box\Diamond\varphi \iff \forall i\ge0.\exists j\ge i.\;\sigma[j..]\models\varphi" /></div>
-<div class="mt-2">אינסוף פעמים.</div>
+<div class="bg-amber-50 border border-amber-200 rounded p-3 grid grid-cols-[170px_1fr] gap-8 items-center">
+<div>אינסוף פעמים.</div>
+<div dir="ltr" class="grid grid-cols-[235px_64px_minmax(0,1fr)] gap-4 items-center text-[22px] leading-tight">
+<div class="text-right"><KatexInline math="\sigma\models\Box\Diamond\varphi" /></div>
+<div class="text-center"><KatexInline math="\iff" /></div>
+<div class="text-left pl-3"><KatexInline math="\forall i\ge0\;\left(\exists j\ge i\;\left(\sigma[j..]\models\varphi\right)\right)" /></div>
+</div>
 </div>
 
-<div class="bg-red-50 border border-red-200 rounded p-4">
-<div dir="ltr" class="text-[26px]"><KatexInline math="\sigma\models\Diamond\Box\varphi \iff \exists i\ge0.\forall j\ge i.\;\sigma[j..]\models\varphi" /></div>
-<div class="mt-2">בסופו של דבר תמיד.</div>
+<div class="bg-red-50 border border-red-200 rounded p-3 grid grid-cols-[170px_1fr] gap-8 items-center">
+<div>בסופו של דבר תמיד.</div>
+<div dir="ltr" class="grid grid-cols-[235px_64px_minmax(0,1fr)] gap-4 items-center text-[22px] leading-tight">
+<div class="text-right"><KatexInline math="\sigma\models\Diamond\Box\varphi" /></div>
+<div class="text-center"><KatexInline math="\iff" /></div>
+<div class="text-left pl-3"><KatexInline math="\exists i\ge0\;\left(\forall j\ge i\;\left(\sigma[j..]\models\varphi\right)\right)" /></div>
+</div>
 </div>
 </div>
 
@@ -495,51 +484,60 @@ false &\equiv \neg true \\
 <div class="mt-6 grid grid-cols-3 gap-4 text-right text-[18px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
 <div class="font-bold text-blue-700 mb-2">מסלול</div>
-<div dir="ltr" class="text-[24px]"><KatexInline math="\pi\models\varphi \iff trace(\pi)\models\varphi" /></div>
+<div dir="ltr" class="text-[19px] text-center leading-tight space-y-1">
+<div><KatexInline math="\pi\models\varphi" /></div>
+<div class="text-[17px]"><KatexInline math="\Updownarrow" /></div>
+<div><KatexInline math="trace(\pi)\models\varphi" /></div>
+</div>
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
 <div class="font-bold text-emerald-700 mb-2">מצב</div>
-<div dir="ltr" class="text-[24px]"><KatexInline math="s\models\varphi \iff \forall\pi\in Paths(s).\;\pi\models\varphi" /></div>
+<div dir="ltr" class="text-[17px] text-center leading-tight space-y-1">
+<div><KatexInline math="s\models\varphi" /></div>
+<div class="text-[17px]"><KatexInline math="\Updownarrow" /></div>
+<div class="whitespace-nowrap"><KatexInline math="\forall\pi\in Paths(s)\;\left(\pi\models\varphi\right)" /></div>
+</div>
 </div>
 
 <div class="bg-amber-50 border border-amber-200 rounded p-4">
 <div class="font-bold text-amber-700 mb-2">מערכת</div>
-<div dir="ltr" class="text-[24px]"><KatexInline math="TS\models\varphi \iff Traces(TS)\subseteq Words(\varphi)" /></div>
+<div dir="ltr" class="text-[18px] text-center leading-tight space-y-1">
+<div><KatexInline math="TS\models\varphi" /></div>
+<div class="text-[17px]"><KatexInline math="\Updownarrow" /></div>
+<div><KatexInline math="\forall s_0\in I\;\left(s_0\models\varphi\right)" /></div>
+<div class="text-[17px]"><KatexInline math="\Updownarrow" /></div>
+<div><KatexInline math="Traces(TS)\subseteq Words(\varphi)" /></div>
 </div>
 </div>
-
-<div class="mt-7 text-center text-[24px]" dir="ltr">
-<KatexInline display math="TS\models\varphi \iff \forall s_0\in I.\;s_0\models\varphi" />
 </div>
 
 ---
 
 # דוגמה: מערכת מעברים קטנה
 
-<div class="mt-8 flex justify-center items-center gap-6" dir="ltr">
-<div class="bg-blue-50 border border-blue-300 rounded-full w-20 h-20 flex flex-col items-center justify-center">
-<div class="font-bold">s1</div><div>{a,b}</div>
-</div>
-<div class="text-[34px] text-slate-500">→</div>
-<div class="bg-blue-50 border border-blue-300 rounded-full w-20 h-20 flex flex-col items-center justify-center">
-<div class="font-bold">s2</div><div>{a,b}</div>
-</div>
-<div class="text-[34px] text-slate-500">→</div>
-<div class="bg-blue-50 border border-blue-300 rounded-full w-20 h-20 flex flex-col items-center justify-center">
-<div class="font-bold">s3</div><div>{a}</div>
-</div>
-<div class="text-[34px] text-slate-500">↺</div>
-</div>
+<TransitionSystemD3
+  :width="520" :height="190" :auto="false"
+  :states="[
+    { id: 's1', text: '$s_1$', label: '\{a,b\}', x: 90, y: 95, width: 62, initial: true, initialDirection: 'left' },
+    { id: 's2', text: '$s_2$', label: '\{a,b\}', x: 260, y: 95, width: 62 },
+    { id: 's3', text: '$s_3$', label: '\{a\}', x: 430, y: 95, width: 62 }
+  ]"
+  :transitions="[
+    { source: 's1', target: 's2', action: ' ' },
+    { source: 's2', target: 's3', action: ' ' },
+    { source: 's3', target: 's3', action: ' ', loopDirection: '90deg', loopRadius: 72, loopLabelRadius: 82 }
+  ]"
+/>
 
 <div class="mt-8 grid grid-cols-2 gap-4 text-right text-[21px] leading-relaxed">
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div dir="ltr"><KatexInline math="TS\models\Box a" /></div>
-<div dir="ltr"><KatexInline math="TS\models \Box(\neg b\Rightarrow\Box(a\land\neg b))" /></div>
+<div dir="ltr" class="text-left"><KatexInline math="TS\models\Box a" /></div>
+<div dir="ltr" class="text-left"><KatexInline math="TS\models \Box(\neg b\Rightarrow\Box(a\land\neg b))" /></div>
 </div>
 <div class="bg-red-50 border border-red-200 rounded p-4">
-<div dir="ltr"><KatexInline math="TS\not\models \bigcirc(a\land b)" /></div>
-<div dir="ltr"><KatexInline math="TS\not\models b\,U\,(a\land\neg b)" /></div>
+<div dir="ltr" class="text-left"><KatexInline math="TS\not\models \bigcirc(a\land b)" /></div>
+<div dir="ltr" class="text-left"><KatexInline math="TS\not\models b\mathbin{\mathrm{U}}(a\land\neg b)" /></div>
 </div>
 </div>
 
@@ -570,28 +568,6 @@ false &\equiv \neg true \\
 
 ---
 
-# דוגמה: הוגנות אינה מובטחת בלי הנחות
-
-<div class="mt-7 text-right text-[21px] leading-relaxed">
-במערכת סמפורים אפשר להוכיח מניעה הדדית, אבל לא בהכרח התקדמות הוגנת של שני התהליכים.
-</div>
-
-<div class="mt-6 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-2">נכון</div>
-<div dir="ltr" class="text-[27px]"><KatexInline math="TS_{sem}\models\Box(\neg crit_1\lor\neg crit_2)" /></div>
-<div dir="ltr" class="text-[27px]"><KatexInline math="TS_{sem}\models\Box\Diamond crit_1\lor\Box\Diamond crit_2" /></div>
-</div>
-
-<div class="bg-red-50 border border-red-200 rounded p-4">
-<div class="font-bold text-red-700 mb-2">לא נובע בלי הוגנות</div>
-<div dir="ltr" class="text-[27px]"><KatexInline math="TS_{sem}\not\models\Box\Diamond crit_1\land\Box\Diamond crit_2" /></div>
-<div dir="ltr" class="text-[27px]"><KatexInline math="TS_{sem}\not\models\Box\Diamond wait_1\Rightarrow\Box\Diamond crit_1" /></div>
-</div>
-</div>
-
----
-
 # שקילות של נוסחאות LTL
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
@@ -613,41 +589,103 @@ false &\equiv \neg true \\
 <div class="mt-7 grid grid-cols-2 gap-5 text-right text-[21px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
 <div class="font-bold text-blue-700 mb-2">דואליות</div>
-<div dir="ltr"><KatexInline math="\neg\Box\varphi\equiv\Diamond\neg\varphi" /></div>
-<div dir="ltr"><KatexInline math="\neg\Diamond\varphi\equiv\Box\neg\varphi" /></div>
-<div dir="ltr"><KatexInline math="\neg\bigcirc\varphi\equiv\bigcirc\neg\varphi" /></div>
+<div dir="ltr" class="grid grid-cols-[150px_44px_1fr] gap-2 items-center text-[20px] leading-snug">
+<div class="text-right"><KatexInline math="\neg\Box\varphi" /></div>
+<div class="text-center"><KatexInline math="\equiv" /></div>
+<div class="text-left"><KatexInline math="\Diamond\neg\varphi" /></div>
+<div class="text-right"><KatexInline math="\neg\Diamond\varphi" /></div>
+<div class="text-center"><KatexInline math="\equiv" /></div>
+<div class="text-left"><KatexInline math="\Box\neg\varphi" /></div>
+<div class="text-right"><KatexInline math="\neg\bigcirc\varphi" /></div>
+<div class="text-center"><KatexInline math="\equiv" /></div>
+<div class="text-left"><KatexInline math="\bigcirc\neg\varphi" /></div>
+</div>
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
 <div class="font-bold text-emerald-700 mb-2">אידמפוטנטיות</div>
-<div dir="ltr"><KatexInline math="\Box\Box\varphi\equiv\Box\varphi" /></div>
-<div dir="ltr"><KatexInline math="\Diamond\Diamond\varphi\equiv\Diamond\varphi" /></div>
-<div dir="ltr"><KatexInline math="\varphi U(\varphi U\psi)\equiv\varphi U\psi" /></div>
+<div dir="ltr" class="grid grid-cols-[150px_44px_1fr] gap-2 items-center text-[20px] leading-snug">
+<div class="text-right"><KatexInline math="\Box\Box\varphi" /></div>
+<div class="text-center"><KatexInline math="\equiv" /></div>
+<div class="text-left"><KatexInline math="\Box\varphi" /></div>
+<div class="text-right"><KatexInline math="\Diamond\Diamond\varphi" /></div>
+<div class="text-center"><KatexInline math="\equiv" /></div>
+<div class="text-left"><KatexInline math="\Diamond\varphi" /></div>
+<div class="text-right"><KatexInline math="\varphi\mathbin{\mathrm{U}}(\varphi\mathbin{\mathrm{U}}\psi)" /></div>
+<div class="text-center"><KatexInline math="\equiv" /></div>
+<div class="text-left"><KatexInline math="\varphi\mathbin{\mathrm{U}}\psi" /></div>
+</div>
 </div>
 </div>
 
-<div class="mt-7 text-center text-[22px]">
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+
+<div class="mt-4 min-h-[150px]">
+<div v-show="$slidev.nav.clicks === 0" class="pt-10 text-center text-[22px]">
 הוכחות השקילות נעשות ישירות מהסמנטיקה של <span dir="ltr"><KatexInline math="\models" /></span>.
 </div>
 
----
-
-# דוגמה: הוכחת דואליות
-
-<div class="mt-6 text-right text-[22px] leading-relaxed">
-נוכיח:
+<div v-show="$slidev.nav.clicks === 1" class="bg-slate-50 border border-slate-200 rounded p-2 text-[15px]" dir="ltr">
+<KatexInline display math="\begin{aligned}
+\sigma\models\neg\Box\varphi
+&\iff \sigma\not\models\Box\varphi\\
+&\iff \exists j\ge0\;\left(\sigma[j..]\models\neg\varphi\right)\\
+&\iff \sigma\models\Diamond\neg\varphi
+\end{aligned}" />
 </div>
 
-<div class="text-center text-[31px]" dir="ltr">
-<KatexInline display math="\neg\Diamond\varphi\equiv\Box\neg\varphi" />
+<div v-show="$slidev.nav.clicks === 2" class="bg-slate-50 border border-slate-200 rounded p-2 text-[15px]" dir="ltr">
+<KatexInline display math="\begin{aligned}
+\sigma\models\neg\Diamond\varphi
+&\iff \sigma\not\models\Diamond\varphi\\
+&\iff \nexists j\ge0\;\left(\sigma[j..]\models\varphi\right)\\
+&\iff \forall j\ge0\;\left(\sigma[j..]\models\neg\varphi\right)\\
+&\iff \sigma\models\Box\neg\varphi
+\end{aligned}" />
 </div>
 
-<div class="mt-5 bg-slate-50 border border-slate-200 rounded p-5 text-[22px]" dir="ltr">
-<div><KatexInline math="\sigma\models\neg\Diamond\varphi" /></div>
-<div><KatexInline math="\iff \sigma\not\models\Diamond\varphi" /></div>
-<div><KatexInline math="\iff \nexists j\ge0.\;\sigma[j..]\models\varphi" /></div>
-<div><KatexInline math="\iff \forall j\ge0.\;\sigma[j..]\models\neg\varphi" /></div>
-<div><KatexInline math="\iff \sigma\models\Box\neg\varphi" /></div>
+<div v-show="$slidev.nav.clicks === 3" class="bg-slate-50 border border-slate-200 rounded p-2 text-[15px]" dir="ltr">
+<KatexInline display math="\begin{aligned}
+\sigma\models\neg\bigcirc\varphi
+&\iff \sigma[1..]\not\models\varphi\\
+&\iff \sigma[1..]\models\neg\varphi\\
+&\iff \sigma\models\bigcirc\neg\varphi
+\end{aligned}" />
+</div>
+
+<div v-show="$slidev.nav.clicks === 4" class="bg-slate-50 border border-slate-200 rounded p-2 text-[15px]" dir="ltr">
+<KatexInline display math="\begin{aligned}
+\sigma\models\Box\Box\varphi
+&\iff \forall i\ge0\;\left(\sigma[i..]\models\Box\varphi\right)\\
+&\iff \forall i\ge0\;\forall j\ge i\;\left(\sigma[j..]\models\varphi\right)\\
+&\iff \forall j\ge0\;\left(\sigma[j..]\models\varphi\right)\\
+&\iff \sigma\models\Box\varphi
+\end{aligned}" />
+</div>
+
+<div v-show="$slidev.nav.clicks === 5" class="bg-slate-50 border border-slate-200 rounded p-2 text-[15px]" dir="ltr">
+<KatexInline display math="\begin{aligned}
+\sigma\models\Diamond\Diamond\varphi
+&\iff \exists i\ge0\;\left(\sigma[i..]\models\Diamond\varphi\right)\\
+&\iff \exists i\ge0\;\exists j\ge i\;\left(\sigma[j..]\models\varphi\right)\\
+&\iff \exists j\ge0\;\left(\sigma[j..]\models\varphi\right)\\
+&\iff \sigma\models\Diamond\varphi
+\end{aligned}" />
+</div>
+
+<div v-show="$slidev.nav.clicks === 6" class="bg-slate-50 border border-slate-200 rounded p-2 text-[15px]" dir="ltr">
+<KatexInline display math="\begin{aligned}
+\sigma\models\varphi\mathbin{\mathrm{U}}(\varphi\mathbin{\mathrm{U}}\psi)
+&\iff \exists k\ge0\;\left(\sigma[k..]\models\varphi\mathbin{\mathrm{U}}\psi\land\forall i<k\;\left(\sigma[i..]\models\varphi\right)\right)\\
+&\iff \exists j\ge0\;\left(\sigma[j..]\models\psi\land\forall i<j\;\left(\sigma[i..]\models\varphi\right)\right)\\
+&\iff \sigma\models\varphi\mathbin{\mathrm{U}}\psi
+\end{aligned}" />
+</div>
 </div>
 
 ---
@@ -657,20 +695,103 @@ false &\equiv \neg true \\
 <div class="mt-7 grid grid-cols-2 gap-5 text-right text-[21px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
 <div class="font-bold text-blue-700 mb-2">ספיגה</div>
-<div dir="ltr"><KatexInline math="\Diamond\Box\Diamond\varphi\equiv\Box\Diamond\varphi" /></div>
-<div dir="ltr"><KatexInline math="\Box\Diamond\Box\varphi\equiv\Diamond\Box\varphi" /></div>
+<div dir="ltr" class="grid grid-cols-[160px_44px_1fr] gap-2 items-center text-[19px] leading-snug">
+<div class="text-right"><KatexInline math="\Diamond\Box\Diamond\varphi" /></div>
+<div class="text-center"><KatexInline math="\equiv" /></div>
+<div class="text-left"><KatexInline math="\Box\Diamond\varphi" /></div>
+<div class="text-right"><KatexInline math="\Box\Diamond\Box\varphi" /></div>
+<div class="text-center"><KatexInline math="\equiv" /></div>
+<div class="text-left"><KatexInline math="\Diamond\Box\varphi" /></div>
+</div>
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
 <div class="font-bold text-emerald-700 mb-2">פילוג שמתקיים</div>
-<div dir="ltr"><KatexInline math="\bigcirc(\varphi U\psi)\equiv(\bigcirc\varphi)U(\bigcirc\psi)" /></div>
-<div dir="ltr"><KatexInline math="\Diamond(\varphi\lor\psi)\equiv\Diamond\varphi\lor\Diamond\psi" /></div>
-<div dir="ltr"><KatexInline math="\Box(\varphi\land\psi)\equiv\Box\varphi\land\Box\psi" /></div>
+<div dir="ltr" class="grid grid-cols-[160px_44px_1fr] gap-2 items-center text-[17px] leading-snug">
+<div class="text-right"><KatexInline math="\bigcirc(\varphi\mathbin{\mathrm{U}}\psi)" /></div>
+<div class="text-center"><KatexInline math="\equiv" /></div>
+<div class="text-left"><KatexInline math="(\bigcirc\varphi)\mathbin{\mathrm{U}}(\bigcirc\psi)" /></div>
+<div class="text-right"><KatexInline math="\Diamond(\varphi\lor\psi)" /></div>
+<div class="text-center"><KatexInline math="\equiv" /></div>
+<div class="text-left"><KatexInline math="\Diamond\varphi\lor\Diamond\psi" /></div>
+<div class="text-right"><KatexInline math="\Box(\varphi\land\psi)" /></div>
+<div class="text-center"><KatexInline math="\equiv" /></div>
+<div class="text-left"><KatexInline math="\Box\varphi\land\Box\psi" /></div>
+</div>
 </div>
 </div>
 
-<div class="mt-7 bg-red-50 border border-red-200 rounded p-4 text-right text-[20px] leading-relaxed">
-אבל בדרך כלל: <span dir="ltr"><KatexInline math="\Diamond(\varphi\land\psi)\not\equiv\Diamond\varphi\land\Diamond\psi" /></span>.
+<div class="mt-4 bg-red-50 border border-red-200 rounded p-3 text-right text-[20px] leading-relaxed">
+<div class="font-bold text-red-700 mb-1">אבל בדרך כלל</div>
+<div dir="ltr" class="grid grid-cols-[250px_70px_250px] justify-center gap-2 items-center text-[19px] leading-snug">
+<div class="text-right"><KatexInline math="\Diamond(\varphi\land\psi)" /></div>
+<div class="text-center"><KatexInline math="\not\equiv" /></div>
+<div class="text-left"><KatexInline math="\Diamond\varphi\land\Diamond\psi" /></div>
+</div>
+</div>
+
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+
+<div class="mt-3 min-h-[136px]">
+<div v-show="$slidev.nav.clicks === 0" class="pt-8 text-center text-[21px]">
+גם כאן ההוכחות הן פריסה ישירה של הסמנטיקה מעל כל מיקום במסלול.
+</div>
+
+<div v-show="$slidev.nav.clicks === 1" class="bg-slate-50 border border-slate-200 rounded p-2 text-[14px]" dir="ltr">
+<KatexInline display math="\begin{aligned}
+\sigma\models\Diamond\Box\Diamond\varphi
+&\iff \exists i\ge0\;\left(\forall j\ge i\;\exists k\ge j\;\left(\sigma[k..]\models\varphi\right)\right)\\
+&\iff \forall j\ge0\;\exists k\ge j\;\left(\sigma[k..]\models\varphi\right)\\
+&\iff \sigma\models\Box\Diamond\varphi
+\end{aligned}" />
+</div>
+
+<div v-show="$slidev.nav.clicks === 2" class="bg-slate-50 border border-slate-200 rounded p-2 text-[14px]" dir="ltr">
+<KatexInline display math="\begin{aligned}
+\sigma\models\Box\Diamond\Box\varphi
+&\iff \forall i\ge0\;\exists j\ge i\;\forall k\ge j\;\left(\sigma[k..]\models\varphi\right)\\
+&\iff \exists j\ge0\;\forall k\ge j\;\left(\sigma[k..]\models\varphi\right)\\
+&\iff \sigma\models\Diamond\Box\varphi
+\end{aligned}" />
+</div>
+
+<div v-show="$slidev.nav.clicks === 3" class="bg-slate-50 border border-slate-200 rounded p-2 text-[14px]" dir="ltr">
+<KatexInline display math="\begin{aligned}
+\sigma\models\bigcirc(\varphi\mathbin{\mathrm{U}}\psi)
+&\iff \sigma[1..]\models\varphi\mathbin{\mathrm{U}}\psi\\
+&\iff \sigma\models(\bigcirc\varphi)\mathbin{\mathrm{U}}(\bigcirc\psi)
+\end{aligned}" />
+</div>
+
+<div v-show="$slidev.nav.clicks === 4" class="bg-slate-50 border border-slate-200 rounded p-2 text-[14px]" dir="ltr">
+<KatexInline display math="\begin{aligned}
+\sigma\models\Diamond(\varphi\lor\psi)
+&\iff \exists j\ge0\;\left(\sigma[j..]\models\varphi\lor\psi\right)\\
+&\iff \sigma\models\Diamond\varphi\lor\Diamond\psi
+\end{aligned}" />
+</div>
+
+<div v-show="$slidev.nav.clicks === 5" class="bg-slate-50 border border-slate-200 rounded p-2 text-[14px]" dir="ltr">
+<KatexInline display math="\begin{aligned}
+\sigma\models\Box(\varphi\land\psi)
+&\iff \forall j\ge0\;\left(\sigma[j..]\models\varphi\land\psi\right)\\
+&\iff \sigma\models\Box\varphi\land\Box\psi
+\end{aligned}" />
+</div>
+
+<div v-show="$slidev.nav.clicks === 6" class="bg-red-50 border border-red-200 rounded p-2 text-[14px]" dir="ltr">
+<KatexInline display math="\begin{aligned}
+\varphi&=a,\quad \psi=b\\
+\sigma[0]&=\{a\},\quad \sigma[1]=\{b\},\quad \sigma[i]=\emptyset\ (i\ge2)\\
+\sigma&\models\Diamond a\land\Diamond b\\
+\sigma&\not\models\Diamond(a\land b)
+\end{aligned}" />
+</div>
 </div>
 
 ---
@@ -681,19 +802,19 @@ false &\equiv \neg true \\
 כללי הפריסה מציגים את אופרטורי הזמן באופן רקורסיבי:
 </div>
 
-<div class="mt-6 grid grid-cols-3 gap-4 text-center text-[22px]" dir="ltr">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
-<KatexInline math="\varphi U\psi \equiv \psi\lor(\varphi\land\bigcirc(\varphi U\psi))" />
+<div class="mt-5 grid grid-cols-1 gap-3 text-center text-[28px]" dir="ltr">
+<div class="bg-blue-50 border border-blue-200 rounded p-3 whitespace-nowrap">
+<KatexInline math="\varphi\mathbin{\mathrm{U}}\psi \equiv \psi\lor(\varphi\land\bigcirc(\varphi\mathbin{\mathrm{U}}\psi))" />
 </div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3 whitespace-nowrap">
 <KatexInline math="\Diamond\varphi\equiv\varphi\lor\bigcirc\Diamond\varphi" />
 </div>
-<div class="bg-amber-50 border border-amber-200 rounded p-4">
+<div class="bg-amber-50 border border-amber-200 rounded p-3 whitespace-nowrap">
 <KatexInline math="\Box\varphi\equiv\varphi\land\bigcirc\Box\varphi" />
 </div>
 </div>
 
-<div class="mt-8 text-center text-[22px]">
+<div class="mt-6 text-center text-[22px]">
 אלה הכללים שמאפשרים לחשוב על נוסחת <span dir="ltr">LTL</span> כמו על מצב נוכחי והמשך.
 </div>
 
@@ -702,16 +823,16 @@ false &\equiv \neg true \\
 # Weak Until
 
 <div class="mt-7 text-right text-[21px] leading-relaxed">
-הקשר <span dir="ltr"><KatexInline math="W" /></span>, הנקרא לפעמים <span dir="ltr">unless</span>, הוא גרסה חלשה של <span dir="ltr"><KatexInline math="U" /></span>:
+הקשר <span dir="ltr"><KatexInline math="W" /></span>, הנקרא לפעמים <span dir="ltr">unless</span>, הוא גרסה חלשה של <span dir="ltr"><KatexInline math="\mathrm{U}" /></span>:
 </div>
 
 <div class="mt-5 text-center text-[30px]" dir="ltr">
-<KatexInline display math="\varphi W\psi \equiv (\varphi U\psi)\lor\Box\varphi" />
+<KatexInline display math="\varphi W\psi \equiv (\varphi\mathbin{\mathrm{U}}\psi)\lor\Box\varphi" />
 </div>
 
 <div class="mt-6 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
-ב־<span dir="ltr"><KatexInline math="\varphi U\psi" /></span> חייבים להגיע בסוף ל־<span dir="ltr"><KatexInline math="\psi" /></span>.
+ב־<span dir="ltr"><KatexInline math="\varphi\mathbin{\mathrm{U}}\psi" /></span> חייבים להגיע בסוף ל־<span dir="ltr"><KatexInline math="\psi" /></span>.
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
 ב־<span dir="ltr"><KatexInline math="\varphi W\psi" /></span> מותר לא להגיע ל־<span dir="ltr"><KatexInline math="\psi" /></span>, אם <span dir="ltr"><KatexInline math="\varphi" /></span> ממשיכה להתקיים לנצח.
@@ -723,11 +844,11 @@ false &\equiv \neg true \\
 # Release
 
 <div class="mt-7 text-right text-[21px] leading-relaxed">
-הקשר <span dir="ltr"><KatexInline math="R" /></span> הוא הדואלי של <span dir="ltr"><KatexInline math="U" /></span>:
+הקשר <span dir="ltr"><KatexInline math="R" /></span> הוא הדואלי של <span dir="ltr"><KatexInline math="\mathrm{U}" /></span>:
 </div>
 
 <div class="mt-5 text-center text-[29px]" dir="ltr">
-<KatexInline display math="\varphi R\psi \equiv \neg(\neg\varphi U\neg\psi)" />
+<KatexInline display math="\varphi R\psi \equiv \neg(\neg\varphi\mathbin{\mathrm{U}}\neg\psi)" />
 </div>
 
 <div class="mt-6 bg-slate-50 border border-slate-200 rounded p-5 text-right text-[21px] leading-relaxed">
@@ -748,7 +869,7 @@ false &\equiv \neg true \\
 </div>
 
 <div class="mt-5 text-center text-[27px]" dir="ltr">
-<KatexInline display math="\varphi ::= true \mid false \mid a \mid \neg a \mid \varphi_1\land\varphi_2 \mid \varphi_1\lor\varphi_2 \mid \bigcirc\varphi \mid \varphi_1 U\varphi_2 \mid \varphi_1 R\varphi_2" />
+<KatexInline display math="\varphi ::= true \mid false \mid a \mid \neg a \mid \varphi_1\land\varphi_2 \mid \varphi_1\lor\varphi_2 \mid \bigcirc\varphi \mid \varphi_1\mathbin{\mathrm{U}}\varphi_2 \mid \varphi_1 R\varphi_2" />
 </div>
 
 <div class="mt-7 grid grid-cols-2 gap-4 text-right text-[20px] leading-relaxed">
@@ -773,13 +894,13 @@ false &\equiv \neg true \\
 </div>
 <div class="bg-slate-50 border border-slate-200 rounded p-4">
 <div dir="ltr"><KatexInline math="\neg\bigcirc\varphi\rightsquigarrow\bigcirc\neg\varphi" /></div>
-<div dir="ltr"><KatexInline math="\neg(\varphi_1 U\varphi_2)\rightsquigarrow\neg\varphi_1 R\neg\varphi_2" /></div>
-<div dir="ltr"><KatexInline math="\neg(\varphi_1 R\varphi_2)\rightsquigarrow\neg\varphi_1 U\neg\varphi_2" /></div>
+<div dir="ltr"><KatexInline math="\neg(\varphi_1\mathbin{\mathrm{U}}\varphi_2)\rightsquigarrow\neg\varphi_1 R\neg\varphi_2" /></div>
+<div dir="ltr"><KatexInline math="\neg(\varphi_1 R\varphi_2)\rightsquigarrow\neg\varphi_1\mathbin{\mathrm{U}}\neg\varphi_2" /></div>
 </div>
 </div>
 
 <div class="mt-8 text-center text-[27px]" dir="ltr">
-<KatexInline display math="\forall\varphi\;\exists\psi\in PNF.\quad \varphi\equiv\psi\;\land\;|\psi|=O(|\varphi|)" />
+<KatexInline display math="\forall\varphi\;\left(\exists\psi\in PNF\;\left(\varphi\equiv\psi\;\land\;|\psi|=O(|\varphi|)\right)\right)" />
 </div>
 
 ---
