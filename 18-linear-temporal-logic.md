@@ -820,14 +820,14 @@ false &\equiv \neg true \\
 
 ---
 
-# Weak Until
+# ניסיון ראשון: Weak Until
 
 <div class="mt-7 text-right text-[21px] leading-relaxed">
-הקשר <span dir="ltr"><KatexInline math="W" /></span>, הנקרא לפעמים <span dir="ltr">unless</span>, הוא גרסה חלשה של <span dir="ltr"><KatexInline math="\mathrm{U}" /></span>:
+כדי לדחוף שלילות פנימה נרצה, לכל קשר, קשר דואלי. עבור <span dir="ltr"><KatexInline math="\mathrm{U}" /></span> אפשר להגדיר תחילה את <span dir="ltr"><KatexInline math="\mathrm{W}" /></span>, הנקרא לפעמים <span dir="ltr">unless</span>:
 </div>
 
 <div class="mt-5 text-center text-[30px]" dir="ltr">
-<KatexInline display math="\varphi W\psi \equiv (\varphi\mathbin{\mathrm{U}}\psi)\lor\Box\varphi" />
+<KatexInline display math="\varphi\mathbin{\mathrm{W}}\psi \equiv (\varphi\mathbin{\mathrm{U}}\psi)\lor\Box\varphi" />
 </div>
 
 <div class="mt-6 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
@@ -835,8 +835,12 @@ false &\equiv \neg true \\
 ב־<span dir="ltr"><KatexInline math="\varphi\mathbin{\mathrm{U}}\psi" /></span> חייבים להגיע בסוף ל־<span dir="ltr"><KatexInline math="\psi" /></span>.
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-ב־<span dir="ltr"><KatexInline math="\varphi W\psi" /></span> מותר לא להגיע ל־<span dir="ltr"><KatexInline math="\psi" /></span>, אם <span dir="ltr"><KatexInline math="\varphi" /></span> ממשיכה להתקיים לנצח.
+ב־<span dir="ltr"><KatexInline math="\varphi\mathbin{\mathrm{W}}\psi" /></span> מותר לא להגיע ל־<span dir="ltr"><KatexInline math="\psi" /></span>, אם <span dir="ltr"><KatexInline math="\varphi" /></span> ממשיכה להתקיים לנצח.
 </div>
+</div>
+
+<div class="mt-6 bg-amber-50 border border-amber-200 rounded p-4 text-right text-[20px] leading-relaxed">
+זה מספיק אקספרסיבית, אבל לא תמיד מספיק טוב אלגוריתמית: המרה דרך <span dir="ltr"><KatexInline math="\mathrm{W}" /></span> עלולה לנפח נוסחאות באופן אקספוננציאלי.
 </div>
 
 ---
@@ -844,11 +848,11 @@ false &\equiv \neg true \\
 # Release
 
 <div class="mt-7 text-right text-[21px] leading-relaxed">
-הקשר <span dir="ltr"><KatexInline math="R" /></span> הוא הדואלי של <span dir="ltr"><KatexInline math="\mathrm{U}" /></span>:
+הפתרון הוא להשתמש בדואלי הישיר של <span dir="ltr"><KatexInline math="\mathrm{U}" /></span>: הקשר <span dir="ltr"><KatexInline math="\mathrm{R}" /></span>, הנקרא <span dir="ltr">Release</span>.
 </div>
 
 <div class="mt-5 text-center text-[29px]" dir="ltr">
-<KatexInline display math="\varphi R\psi \equiv \neg(\neg\varphi\mathbin{\mathrm{U}}\neg\psi)" />
+<KatexInline display math="\varphi\mathbin{\mathrm{R}}\psi \equiv \neg(\neg\varphi\mathbin{\mathrm{U}}\neg\psi)" />
 </div>
 
 <div class="mt-6 bg-slate-50 border border-slate-200 rounded p-5 text-right text-[21px] leading-relaxed">
@@ -857,27 +861,33 @@ false &\equiv \neg true \\
 </div>
 
 <div class="mt-6 text-center text-[26px]" dir="ltr">
-<KatexInline display math="\Box\psi\equiv false\,R\,\psi" />
+<KatexInline display math="\Box\psi\equiv false\mathbin{\mathrm{R}}\psi" />
+</div>
+
+<div class="mt-5 bg-emerald-50 border border-emerald-200 rounded p-4 text-right text-[20px] leading-relaxed">
+עכשיו אפשר להחליף שלילה של <span dir="ltr"><KatexInline math="\mathrm{U}" /></span> ב־<span dir="ltr"><KatexInline math="\mathrm{R}" /></span> בלי לשכפל את תת־הנוסחאות.
 </div>
 
 ---
 
-# צורה חיובית נורמלית
+# צורה חיובית נורמלית בלי ניפוח
 
 <div class="mt-7 text-right text-[21px] leading-relaxed">
-ב־<span dir="ltr">Positive Normal Form</span> שלילה מופיעה רק ליד פסוקים אטומיים.
+בזכות הדואלים של הקשרים אפשר להגיע ל־<span dir="ltr">Positive Normal Form</span>: שלילה מופיעה רק ליד פסוקים אטומיים.
 </div>
 
 <div class="mt-5 text-center text-[27px]" dir="ltr">
-<KatexInline display math="\varphi ::= true \mid false \mid a \mid \neg a \mid \varphi_1\land\varphi_2 \mid \varphi_1\lor\varphi_2 \mid \bigcirc\varphi \mid \varphi_1\mathbin{\mathrm{U}}\varphi_2 \mid \varphi_1 R\varphi_2" />
+<KatexInline display math="\varphi ::= true \mid false \mid a \mid \neg a \mid \varphi_1\land\varphi_2 \mid \varphi_1\lor\varphi_2 \mid \bigcirc\varphi \mid \varphi_1\mathbin{\mathrm{U}}\varphi_2 \mid \varphi_1\mathbin{\mathrm{R}}\varphi_2" />
 </div>
 
 <div class="mt-7 grid grid-cols-2 gap-4 text-right text-[20px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
-עם <span dir="ltr"><KatexInline math="W" /></span> בלבד עלול להיווצר ניפוח אקספוננציאלי.
+<div class="bg-red-50 border border-red-200 rounded p-4">
+<div class="font-bold text-red-700 mb-2">ניסיון עם <span dir="ltr"><KatexInline math="\mathrm{W}" /></span></div>
+אפשר לדחוף שלילות פנימה, אבל במקרים מסוימים מתקבל ניפוח אקספוננציאלי.
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-עם <span dir="ltr"><KatexInline math="R" /></span> אפשר להכניס שלילה פנימה בגודל ליניארי.
+<div class="font-bold text-emerald-700 mb-2">עם <span dir="ltr"><KatexInline math="\mathrm{R}" /></span></div>
+מקבלים אותה צורה נורמלית, אבל ההמרה שומרת על גודל ליניארי.
 </div>
 </div>
 
@@ -885,7 +895,11 @@ false &\equiv \neg true \\
 
 # התמרות ל-PNF
 
-<div class="mt-6 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
+<div class="mt-5 text-right text-[20px] leading-relaxed">
+כל כלל מחליף קשר בקשר הדואלי שלו, וכך השלילה “יורדת” שלב אחד פנימה:
+</div>
+
+<div class="mt-4 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
 <div class="bg-slate-50 border border-slate-200 rounded p-4">
 <div dir="ltr"><KatexInline math="\neg true \rightsquigarrow false" /></div>
 <div dir="ltr"><KatexInline math="\neg\neg\varphi \rightsquigarrow \varphi" /></div>
@@ -894,8 +908,8 @@ false &\equiv \neg true \\
 </div>
 <div class="bg-slate-50 border border-slate-200 rounded p-4">
 <div dir="ltr"><KatexInline math="\neg\bigcirc\varphi\rightsquigarrow\bigcirc\neg\varphi" /></div>
-<div dir="ltr"><KatexInline math="\neg(\varphi_1\mathbin{\mathrm{U}}\varphi_2)\rightsquigarrow\neg\varphi_1 R\neg\varphi_2" /></div>
-<div dir="ltr"><KatexInline math="\neg(\varphi_1 R\varphi_2)\rightsquigarrow\neg\varphi_1\mathbin{\mathrm{U}}\neg\varphi_2" /></div>
+<div dir="ltr"><KatexInline math="\neg(\varphi_1\mathbin{\mathrm{U}}\varphi_2)\rightsquigarrow\neg\varphi_1\mathbin{\mathrm{R}}\neg\varphi_2" /></div>
+<div dir="ltr"><KatexInline math="\neg(\varphi_1\mathbin{\mathrm{R}}\varphi_2)\rightsquigarrow\neg\varphi_1\mathbin{\mathrm{U}}\neg\varphi_2" /></div>
 </div>
 </div>
 
