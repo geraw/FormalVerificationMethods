@@ -214,6 +214,87 @@ info: |
 
 ---
 
+# אנימציה: נחשנים על מילה
+
+<div class="mt-4 text-right text-[20px] leading-relaxed">
+נחשוב על מצבי האוטומט כעל נחשנים: כל נחשן טוען אילו תת־נוסחאות נכונות עכשיו, והוא יוצא מהמשחק ברגע שהמילה מפריכה את הניחוש.
+</div>
+
+<div class="mt-3 grid grid-cols-4 gap-2 text-center text-[18px]" dir="ltr">
+<div class="bg-slate-50 border border-slate-200 rounded p-2"><KatexInline math="A_0=\{a,c,e\}" /></div>
+<div class="bg-slate-50 border border-slate-200 rounded p-2"><KatexInline math="A_1=\{a,c,e\}" /></div>
+<div class="bg-slate-50 border border-slate-200 rounded p-2"><KatexInline math="A_2=\{b,c,e\}" /></div>
+<div class="bg-slate-50 border border-slate-200 rounded p-2"><KatexInline math="A_3=\{c,e\}" /></div>
+</div>
+
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+
+<div class="mt-3 min-h-[355px]">
+<div v-show="$slidev.nav.clicks === 0">
+<div class="mb-3 text-center text-[20px]">לפני הקריאה: כל הנחשנים עדיין במשחק.</div>
+<div class="grid grid-cols-3 gap-3 text-right text-[17px] leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 1</div><div dir="ltr"><KatexInline math="b" /></div><div>טוען ש־<span dir="ltr"><KatexInline math="b" /></span> נכון עכשיו.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 2</div><div dir="ltr"><KatexInline math="a\land d" /></div><div>טוען ששני האטומים נכונים עכשיו.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 3</div><div dir="ltr"><KatexInline math="\bigcirc b" /></div><div>טוען שבצעד הבא נראה <span dir="ltr"><KatexInline math="b" /></span>.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 4</div><div dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></div><div>מבטיח להגיע ל־<span dir="ltr"><KatexInline math="b" /></span> כל עוד <span dir="ltr"><KatexInline math="a" /></span>.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 5</div><div dir="ltr"><KatexInline math="c\mathbin{\mathrm{U}}d" /></div><div>מחכה ל־<span dir="ltr"><KatexInline math="d" /></span>.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 6</div><div dir="ltr"><KatexInline math="e\mathbin{\mathrm{U}}f" /></div><div>מחכה ל־<span dir="ltr"><KatexInline math="f" /></span>.</div></div>
+</div>
+</div>
+
+<div v-show="$slidev.nav.clicks === 1">
+<div class="mb-3 text-center text-[20px]">אחרי <span dir="ltr"><KatexInline math="A_0" /></span>: ניחושים על ההווה נבדקים מייד.</div>
+<div class="grid grid-cols-3 gap-3 text-right text-[17px] leading-snug">
+<div class="bg-red-50 border border-red-200 rounded p-3 opacity-75"><div class="font-bold text-red-700 mb-1">נחשן 1 נפל</div><div dir="ltr"><KatexInline math="b" /></div><div>ב־<span dir="ltr"><KatexInline math="A_0" /></span> אין <span dir="ltr"><KatexInline math="b" /></span>.</div></div>
+<div class="bg-red-50 border border-red-200 rounded p-3 opacity-75"><div class="font-bold text-red-700 mb-1">נחשן 2 נפל</div><div dir="ltr"><KatexInline math="a\land d" /></div><div>ב־<span dir="ltr"><KatexInline math="A_0" /></span> אין <span dir="ltr"><KatexInline math="d" /></span>.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 3 ממתין</div><div dir="ltr"><KatexInline math="\bigcirc b" /></div><div>ייבדק מול <span dir="ltr"><KatexInline math="A_1" /></span>.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 4 ממשיך</div><div dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></div><div><span dir="ltr"><KatexInline math="a" /></span> נכון, <span dir="ltr"><KatexInline math="b" /></span> עוד לא.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 5 ממשיך</div><div dir="ltr"><KatexInline math="c\mathbin{\mathrm{U}}d" /></div><div><span dir="ltr"><KatexInline math="c" /></span> נכון, <span dir="ltr"><KatexInline math="d" /></span> עוד לא.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 6 ממשיך</div><div dir="ltr"><KatexInline math="e\mathbin{\mathrm{U}}f" /></div><div><span dir="ltr"><KatexInline math="e" /></span> נכון, <span dir="ltr"><KatexInline math="f" /></span> עוד לא.</div></div>
+</div>
+</div>
+
+<div v-show="$slidev.nav.clicks === 2">
+<div class="mb-3 text-center text-[20px]">אחרי <span dir="ltr"><KatexInline math="A_1" /></span>: ניחוש ה־<span dir="ltr">Next</span> נבדק.</div>
+<div class="grid grid-cols-3 gap-3 text-right text-[17px] leading-snug">
+<div class="bg-red-50 border border-red-200 rounded p-3 opacity-50"><div class="font-bold text-red-700 mb-1">נחשן 1 בחוץ</div><div dir="ltr"><KatexInline math="b" /></div></div>
+<div class="bg-red-50 border border-red-200 rounded p-3 opacity-50"><div class="font-bold text-red-700 mb-1">נחשן 2 בחוץ</div><div dir="ltr"><KatexInline math="a\land d" /></div></div>
+<div class="bg-red-50 border border-red-200 rounded p-3 opacity-75"><div class="font-bold text-red-700 mb-1">נחשן 3 נפל</div><div dir="ltr"><KatexInline math="\bigcirc b" /></div><div>ב־<span dir="ltr"><KatexInline math="A_1" /></span> אין <span dir="ltr"><KatexInline math="b" /></span>.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 4 ממשיך</div><div dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></div><div>עדיין מחכה ל־<span dir="ltr"><KatexInline math="b" /></span>.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 5 ממשיך</div><div dir="ltr"><KatexInline math="c\mathbin{\mathrm{U}}d" /></div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 6 ממשיך</div><div dir="ltr"><KatexInline math="e\mathbin{\mathrm{U}}f" /></div></div>
+</div>
+</div>
+
+<div v-show="$slidev.nav.clicks === 3">
+<div class="mb-3 text-center text-[20px]">אחרי <span dir="ltr"><KatexInline math="A_2" /></span>: אחת מהבטחות ה־<span dir="ltr">Until</span> נסגרת.</div>
+<div class="grid grid-cols-3 gap-3 text-right text-[17px] leading-snug">
+<div class="bg-red-50 border border-red-200 rounded p-3 opacity-45"><div class="font-bold text-red-700 mb-1">נחשן 1 בחוץ</div><div dir="ltr"><KatexInline math="b" /></div></div>
+<div class="bg-red-50 border border-red-200 rounded p-3 opacity-45"><div class="font-bold text-red-700 mb-1">נחשן 2 בחוץ</div><div dir="ltr"><KatexInline math="a\land d" /></div></div>
+<div class="bg-red-50 border border-red-200 rounded p-3 opacity-45"><div class="font-bold text-red-700 mb-1">נחשן 3 בחוץ</div><div dir="ltr"><KatexInline math="\bigcirc b" /></div></div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3"><div class="font-bold text-emerald-700 mb-1">נחשן 4 הצליח</div><div dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></div><div>ב־<span dir="ltr"><KatexInline math="A_2" /></span> מופיע <span dir="ltr"><KatexInline math="b" /></span>.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 5 עדיין פתוח</div><div dir="ltr"><KatexInline math="c\mathbin{\mathrm{U}}d" /></div><div><span dir="ltr"><KatexInline math="d" /></span> עוד לא נראה.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-1">נחשן 6 עדיין פתוח</div><div dir="ltr"><KatexInline math="e\mathbin{\mathrm{U}}f" /></div><div><span dir="ltr"><KatexInline math="f" /></span> עוד לא נראה.</div></div>
+</div>
+</div>
+
+<div v-show="$slidev.nav.clicks === 4">
+<div class="mb-3 text-center text-[20px]">אחרי הקידומת שראינו: נשארו שתי הבטחות פתוחות.</div>
+<div class="grid grid-cols-3 gap-3 text-right text-[17px] leading-snug">
+<div class="bg-red-50 border border-red-200 rounded p-3 opacity-40"><div class="font-bold text-red-700 mb-1">נחשנים 1-3 נפלו</div><div>הניחושים שלהם הופרכו בזמן סופי.</div></div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3 opacity-80"><div class="font-bold text-emerald-700 mb-1">נחשן 4 סגר הבטחה</div><div dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></div></div>
+<div class="bg-amber-50 border border-amber-200 rounded p-3"><div class="font-bold text-amber-700 mb-1">מה נשאר לבדוק?</div><div>הקבלה תוודא שהבטחות פתוחות לא נשארות פתוחות לנצח.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3 col-span-1"><div class="font-bold text-blue-700 mb-1">נחשן 5 נשאר</div><div dir="ltr"><KatexInline math="c\mathbin{\mathrm{U}}d" /></div><div>לא ראינו עדיין <span dir="ltr"><KatexInline math="d" /></span>.</div></div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3 col-span-1"><div class="font-bold text-blue-700 mb-1">נחשן 6 נשאר</div><div dir="ltr"><KatexInline math="e\mathbin{\mathrm{U}}f" /></div><div>לא ראינו עדיין <span dir="ltr"><KatexInline math="f" /></span>.</div></div>
+</div>
+</div>
+</div>
+
+---
+
 # שלב 1: סגור תת־נוסחאות
 
 <div class="mt-7 text-right text-[21px] leading-relaxed">
