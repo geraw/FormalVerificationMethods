@@ -34,5 +34,6 @@ dir: rtl
     <li><b>16 - אוטומטי Büchi דטרמיניסטיים ומוכללים:</b> ריקות, דטרמיניזם, אוטומטי Büchi מוכללים וחיתוך שפות. <a href="./16-deterministic-and-generalized-buchi-automata/#1" target="_blank">[מצגת]</a></li>
     <li><b>17 - אימות תכונות ω-רגולריות:</b> מכפלה עם אוטומט Büchi למשלים, תכונות התמדה, זיהוי מעגלים ו-DFS מקונן. <a href="./17-verification-of-omega-regular-properties/#1" target="_blank">[מצגת]</a></li>
     <li><b>18 - לוגיקת זמנים ליניארית:</b> תחביר וסמנטיקה של LTL, מודליות זמן, שקילויות, Weak Until, Release וצורה חיובית נורמלית. <a href="./18-linear-temporal-logic/#1" target="_blank">[מצגת]</a></li>
+    <li><b>19 - תרגום LTL לאוטומטי Büchi מוכללים:</b> בניית GNBA מנוסחת LTL, קבוצות עקביות, מעברים לפי כללי פריסה ותנאי קבלה להבטחות Until. <a href="./19-ltl-to-generalized-buchi-automata/#1" target="_blank">[מצגת]</a></li>
   </ul>
 </div>
