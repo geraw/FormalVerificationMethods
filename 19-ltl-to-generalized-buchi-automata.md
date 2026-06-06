@@ -458,39 +458,10 @@ info: |
 
 ---
 
-# המצבים עבור <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>
-
-<div class="mt-7 grid grid-cols-4 gap-3 text-center text-[18px]" dir="ltr">
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
-<KatexInline display math="\{a,b,a\mathbin{\mathrm{U}}b\}" />
-</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
-<KatexInline display math="\{a,\neg b,a\mathbin{\mathrm{U}}b\}" />
-</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
-<KatexInline display math="\{\neg a,b,a\mathbin{\mathrm{U}}b\}" />
-</div>
-<div class="bg-slate-50 border border-slate-200 rounded p-3">
-<KatexInline display math="\{a,\neg b,\neg(a\mathbin{\mathrm{U}}b)\}" />
-</div>
-</div>
-
-<div class="mt-4 grid grid-cols-2 gap-4 text-center text-[18px]" dir="ltr">
-<div class="bg-slate-50 border border-slate-200 rounded p-3">
-<KatexInline display math="\{\neg a,\neg b,\neg(a\mathbin{\mathrm{U}}b)\}" />
-</div>
-<div class="bg-red-50 border border-red-200 rounded p-3">
-<KatexInline display math="\{\neg a,\neg b,a\mathbin{\mathrm{U}}b\}" />
-<div dir="rtl" class="text-[17px] text-red-700 mt-2">לא עקבי: <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> מחייב <span dir="ltr"><KatexInline math="a\lor b" /></span>.</div>
-</div>
-</div>
-
----
-
-# שלב 3: מצבים התחלתיים
+# שלב 3: מצבי התחלה
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
-מצב התחלתי הוא ניחוש שבו הנוסחה הראשית נכונה בתחילת המילה.
+מצב התחלה הוא ניחוש שבו הנוסחה הראשית נכונה בתחילת המילה.
 </div>
 
 <div class="mt-6 text-center text-[31px]" dir="ltr">
@@ -543,6 +514,10 @@ info: |
 </div>
 </div>
 
+<div class="mt-6 text-right text-[19px] leading-snug">
+משתמשים בכלל הפריסה שהוכחנו במצגת הקודמת:
+</div>
+
 <div class="mt-7 text-center text-[27px]" dir="ltr">
 <KatexInline display math="\psi_1\mathbin{\mathrm{U}}\psi_2 \equiv \psi_2\lor(\psi_1\land\bigcirc(\psi_1\mathbin{\mathrm{U}}\psi_2))" />
 </div>
@@ -559,6 +534,14 @@ info: |
 <KatexInline display math="F_{\psi_1\mathrm{U}\psi_2}=\{B\in Q:\psi_1\mathbin{\mathrm{U}}\psi_2\notin B\;\lor\;\psi_2\in B\}" />
 </div>
 
+<div class="mt-4 text-right text-[20px] leading-relaxed">
+משפחת קבוצות הקבלה היא:
+</div>
+
+<div class="mt-2 text-center text-[27px]" dir="ltr">
+<KatexInline display math="\mathcal{F}=\{F_{\psi_1\mathrm{U}\psi_2}\mid \psi_1\mathbin{\mathrm{U}}\psi_2\in cl(\varphi)\}" />
+</div>
+
 <div class="mt-7 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
 אם ההבטחה אינה פתוחה, אין בעיה: המצב נמצא בקבוצת הקבלה.
@@ -566,6 +549,41 @@ info: |
 <div class="bg-amber-50 border border-amber-200 rounded p-4">
 אם ההבטחה פתוחה, חייבים לבקר בעתיד במצב שבו <span dir="ltr"><KatexInline math="\psi_2" /></span> מתקיימת.
 </div>
+</div>
+
+---
+
+# למה צריך תנאי קבלה?
+
+<div class="mt-5 text-right text-[21px] leading-relaxed">
+תנאי הקבלה נועד לטפל, לדוגמה, בעובדה שהמילה <span dir="ltr"><KatexInline math="\{a\}^{\omega}" /></span> לא נופלת מהאוטומט עבור <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>.
+</div>
+
+<div class="mt-4 grid grid-cols-[0.95fr_1.05fr] gap-5 items-center">
+<div class="bg-white rounded border border-slate-200 shadow-sm">
+<AutomatonD3 variant="classic" :width="390" :height="235" :arrowSize="4" :stateLabelFontSize="14" :transitionLabelFontSize="13"
+  :states="[
+    { id: 'q_wait_only', x: 195, y: 125, label: '$a\\mathbin{\\mathrm{U}}b,a,\\neg b$', initial: true, initialDirection: 'left', accepting: false, stroke: '#dc2626', r: 42, labelWidth: 215, labelHeight: 42 }
+  ]"
+  :transitions="[
+    { source: 'q_wait_only', target: 'q_wait_only', label: '$\\{a\\}$', loopDirection: '-90deg', labelY: -12, labelWidth: 90 }
+  ]"
+/>
+</div>
+
+<div class="text-right text-[15px] leading-relaxed">
+<div class="bg-red-50 border border-red-200 rounded p-4">
+<div class="font-bold text-red-700 mb-2">ריצה לא טובה</div>
+קוראים שוב ושוב את <span dir="ltr"><KatexInline math="\{a\}" /></span>: כל הזמן <span dir="ltr"><KatexInline math="a" /></span> מתקיים ו־<span dir="ltr"><KatexInline math="b" /></span> לא מתקיים, אבל המעבר העצמי ממשיך לנחש <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>.
+</div>
+<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-4">
+<div class="font-bold text-emerald-700 mb-2">תיקון Büchi</div>
+תנאי הקבלה פוסל ריצה שנשארת לנצח במצב שבו ההבטחה פתוחה ולא רואים את <span dir="ltr"><KatexInline math="b" /></span>.
+</div>
+</div>
+</div>
+<div class="mt-7 text-center text-[27px]" dir="ltr">
+<KatexInline display math="F_{a\mathrm{U}b}=\{B:a\mathbin{\mathrm{U}}b\notin B\lor b\in B\}" />
 </div>
 
 ---
@@ -598,7 +616,7 @@ info: |
 
 <div class="text-right text-[19px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-3 mb-3">
-מצבים התחלתיים: אלה שמכילים <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>.
+מצבי התחלה: אלה שמכילים <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>.
 </div>
 <div class="bg-red-50 border border-red-200 rounded p-3 mb-3">
 המצב האדום אינו מקבל: ההבטחה <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> פתוחה ו־<span dir="ltr"><KatexInline math="b" /></span> עדיין לא התקיים.
@@ -607,29 +625,6 @@ info: |
 כל מצב שבו <span dir="ltr"><KatexInline math="b" /></span> מתקיים, או שבו ההבטחה אינה נטענת, שייך לקבוצת הקבלה.
 </div>
 </div>
-</div>
-
----
-
-# למה צריך תנאי קבלה?
-
-<div class="mt-7 text-right text-[22px] leading-relaxed">
-כללי המעבר לבדם אינם מספיקים: הם יכולים להחזיק הבטחת <span dir="ltr">Until</span> פתוחה לנצח.
-</div>
-
-<div class="mt-6 grid grid-cols-2 gap-5 text-right text-[21px] leading-relaxed">
-<div class="bg-red-50 border border-red-200 rounded p-4">
-<div class="font-bold text-red-700 mb-2">ריצה לא טובה</div>
-כל הזמן <span dir="ltr"><KatexInline math="a" /></span> מתקיים ו־<span dir="ltr"><KatexInline math="b" /></span> לא מתקיים, אבל ממשיכים לנחש <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>.
-</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-2">תיקון Büchi</div>
-הריצה חייבת לבקר אינסוף פעמים במצב שבו ההבטחה אינה פתוחה או שכבר מומשה.
-</div>
-</div>
-
-<div class="mt-7 text-center text-[27px]" dir="ltr">
-<KatexInline display math="F_{a\mathrm{U}b}=\{B:a\mathbin{\mathrm{U}}b\notin B\lor b\in B\}" />
 </div>
 
 ---
