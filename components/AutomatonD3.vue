@@ -50,16 +50,16 @@
 
       <g class="states">
         <g v-for="state in normalizedStates" :key="state.id">
-          <circle :cx="state.x" :cy="state.y" :r="state.r"
-                  :fill="state.fill"
-                  :stroke="state.stroke"
-                  :stroke-width="state.strokeWidth"
-                  :filter="state.shadow ? `url(#${shadowId})` : undefined" />
-          <circle v-if="state.accepting"
-                  :cx="state.x" :cy="state.y" :r="state.r - 6"
-                  fill="none"
-                  :stroke="state.innerStroke"
-                  :stroke-width="Math.max(1.6, state.strokeWidth - 0.4)" />
+          <ellipse :cx="state.x" :cy="state.y" :rx="state.rx" :ry="state.ry"
+                   :fill="state.fill"
+                   :stroke="state.stroke"
+                   :stroke-width="state.strokeWidth"
+                   :filter="state.shadow ? `url(#${shadowId})` : undefined" />
+          <ellipse v-if="state.accepting"
+                   :cx="state.x" :cy="state.y" :rx="Math.max(4, state.rx - 6)" :ry="Math.max(4, state.ry - 6)"
+                   fill="none"
+                   :stroke="state.innerStroke"
+                   :stroke-width="Math.max(1.6, state.strokeWidth - 0.4)" />
           <foreignObject :x="state.x - state.labelWidth / 2"
                          :y="state.y - state.labelHeight / 2"
                          :width="state.labelWidth"
@@ -106,6 +106,8 @@ interface AutomatonState {
   x: number;
   y: number;
   r?: number;
+  rx?: number;
+  ry?: number;
   label?: string;
   accepting?: boolean;
   initial?: boolean;
@@ -186,6 +188,8 @@ const arrowSize = computed(() => props.arrowSize);
 const normalizedStates = computed(() => props.states.map((state) => ({
   ...state,
   r: state.r ?? 34,
+  rx: state.rx ?? state.r ?? 34,
+  ry: state.ry ?? state.r ?? 34,
   fill: state.fill ?? (isClassic.value ? '#fff9c4' : props.defaultStateFill),
   stroke: state.stroke ?? defaultStroke.value,
   innerStroke: state.innerStroke ?? state.stroke ?? defaultStroke.value,
@@ -235,8 +239,8 @@ const renderedTransitions = computed(() => props.transitions.flatMap((transition
     const radius = transition.loopRadius ?? 76;
     const loopAngle = transition.loopAngle ?? 0.5;
     const spread = transition.loopSpread ?? 0.3;
-    const start = pointOnCircle(source, direction - spread);
-    const end = pointOnCircle(source, direction + spread);
+    const start = pointOnEllipse(source, direction - spread);
+    const end = pointOnEllipse(source, direction + spread);
     const c1x = source.x + Math.cos(direction - loopAngle) * radius;
     const c1y = source.y + Math.sin(direction - loopAngle) * radius;
     const c2x = source.x + Math.cos(direction + loopAngle) * radius;
@@ -291,8 +295,8 @@ const renderedTransitions = computed(() => props.transitions.flatMap((transition
     : Math.atan2(cy - target.y, cx - target.x);
   const startAngle = transition.sourceAngle ? parseAngle(transition.sourceAngle) : naturalStartAngle;
   const endAngle = transition.targetAngle ? parseAngle(transition.targetAngle) : naturalEndAngle;
-  const start = pointOnCircle(source, startAngle);
-  const end = pointOnCircle(target, endAngle);
+  const start = pointOnEllipse(source, startAngle);
+  const end = pointOnEllipse(target, endAngle);
 
   const path = Math.abs(curve) < 0.001
     ? `M ${start.x} ${start.y} L ${end.x} ${end.y}`
@@ -358,10 +362,10 @@ function quadraticPoint(
   };
 }
 
-function pointOnCircle(state: ReturnType<typeof normalizedStates.value[number]>, angle: number) {
+function pointOnEllipse(state: ReturnType<typeof normalizedStates.value[number]>, angle: number) {
   return {
-    x: state.x + Math.cos(angle) * state.r,
-    y: state.y + Math.sin(angle) * state.r,
+    x: state.x + Math.cos(angle) * state.rx,
+    y: state.y + Math.sin(angle) * state.ry,
   };
 }
 
@@ -379,11 +383,12 @@ function renderMath(value: string) {
 
 function initialArrowPath(state: ReturnType<typeof normalizedStates.value[number]>) {
   const direction = state.initialDirection ?? 'left';
-  const length = state.r + (isClassic.value ? 34 : 38);
-  if (direction === 'right') return `M ${state.x + length} ${state.y} L ${state.x + state.r} ${state.y}`;
-  if (direction === 'top') return `M ${state.x} ${state.y - length} L ${state.x} ${state.y - state.r}`;
-  if (direction === 'bottom') return `M ${state.x} ${state.y + length} L ${state.x} ${state.y + state.r}`;
-  return `M ${state.x - length} ${state.y} L ${state.x - state.r} ${state.y}`;
+  const horizontalLength = state.rx + (isClassic.value ? 34 : 38);
+  const verticalLength = state.ry + (isClassic.value ? 34 : 38);
+  if (direction === 'right') return `M ${state.x + horizontalLength} ${state.y} L ${state.x + state.rx} ${state.y}`;
+  if (direction === 'top') return `M ${state.x} ${state.y - verticalLength} L ${state.x} ${state.y - state.ry}`;
+  if (direction === 'bottom') return `M ${state.x} ${state.y + verticalLength} L ${state.x} ${state.y + state.ry}`;
+  return `M ${state.x - horizontalLength} ${state.y} L ${state.x - state.rx} ${state.y}`;
 }
 
 function initialLabelPosition(state: ReturnType<typeof normalizedStates.value[number]>) {

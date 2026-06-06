@@ -590,40 +590,87 @@ info: |
 
 # דוגמה: <span dir="ltr"><KatexInline math="\mathcal{G}_{a\mathrm{U}b}" /></span>
 
-<div class="grid grid-cols-[1.05fr_0.95fr] gap-4 mt-4 items-center">
-<div class="bg-white rounded border border-slate-200 shadow-sm">
-<AutomatonD3 variant="classic" :width="520" :height="350" :arrowSize="4" :stateLabelFontSize="13" :transitionLabelFontSize="13"
-  :states="[
-    { id: 'q_both', x: 260, y: 55, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', initial: true, initialDirection: 'top', accepting: true, r: 30, labelWidth: 135, labelHeight: 34 },
-    { id: 'q_wait', x: 95, y: 155, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', initial: true, initialDirection: 'left', accepting: false, stroke: '#dc2626', r: 31, labelWidth: 150, labelHeight: 34 },
-    { id: 'q_b', x: 425, y: 155, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', initial: true, initialDirection: 'right', accepting: true, r: 31, labelWidth: 150, labelHeight: 34 },
-    { id: 'q_no', x: 175, y: 285, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', accepting: true, r: 32, labelWidth: 170, labelHeight: 34 },
-    { id: 'q_dead', x: 355, y: 285, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', accepting: true, r: 32, labelWidth: 180, labelHeight: 34 }
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+
+<div class="mt-3 bg-white rounded border border-slate-200 shadow-sm p-2 relative" dir="ltr">
+<div class="mt-1 bg-white rounded border border-slate-200 shadow-sm relative overflow-hidden">
+<AutomatonD3 variant="classic" :width="520" :height="250" :arrowSize="4" :stateLabelFontSize="10.5" :transitionLabelFontSize="11"
+  :states="$slidev.nav.clicks === 0 ? [
+    { id: 'c1', x: 90, y: 55, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', r: 33, labelWidth: 132, labelHeight: 30, labelFontSize: 10.2, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'c2', x: 260, y: 55, label: '$a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 154, labelHeight: 30, labelFontSize: 10.2, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
+    { id: 'c3', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, labelFontSize: 10.2, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'c4', x: 90, y: 140, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, labelFontSize: 10.2, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'c5', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, labelFontSize: 10.2, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'c6', x: 430, y: 140, label: '$\\neg a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, labelFontSize: 10.2, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
+    { id: 'c7', x: 175, y: 220, label: '$\\neg a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 33, labelWidth: 154, labelHeight: 30, labelFontSize: 10.2, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
+    { id: 'c8', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 176, labelHeight: 30, labelFontSize: 10.2, fill: '#dcfce7', stroke: '#16a34a' }
+  ] : [
+    { id: 'q_both', x: 90, y: 55, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', initial: $slidev.nav.clicks >= 1, initialDirection: 'left', accepting: $slidev.nav.clicks >= 10, r: 33, labelWidth: 132, labelHeight: 30, labelFontSize: 10.2 },
+    { id: 'q_wait', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', initial: $slidev.nav.clicks >= 1, initialDirection: 'right', accepting: false, stroke: '#dc2626', r: 33, labelWidth: 142, labelHeight: 30, labelFontSize: 10.2 },
+    { id: 'q_b', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', initial: $slidev.nav.clicks >= 1, initialDirection: 'top', accepting: $slidev.nav.clicks >= 10, r: 33, labelWidth: 142, labelHeight: 30, labelFontSize: 10.2 },
+    { id: 'q_no', x: 90, y: 220, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', accepting: $slidev.nav.clicks >= 10, r: 33, labelWidth: 164, labelHeight: 30, labelFontSize: 10.2 },
+    { id: 'q_dead', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', accepting: $slidev.nav.clicks >= 10, r: 33, labelWidth: 176, labelHeight: 30, labelFontSize: 10.2 }
   ]"
   :transitions="[
-    { source: 'q_wait', target: 'q_wait', label: '$\\{a\\}$', loopDirection: '-170deg', labelY: -8, labelWidth: 70 },
-    { source: 'q_wait', target: 'q_both', label: '$\\{a,b\\}$', labelY: -12, labelWidth: 75, curve: 0.18 },
-    { source: 'q_wait', target: 'q_b', label: '$\\{b\\}$', labelY: -8, labelWidth: 60, curve: 0.18 },
-    { source: 'q_both', target: 'q_wait', label: '$\\{a\\}$', labelY: 15, labelWidth: 65, curve: 0.18 },
-    { source: 'q_both', target: 'q_b', label: '$\\{b\\}$', labelY: 15, labelWidth: 60, curve: -0.18 },
-    { source: 'q_no', target: 'q_no', label: '$\\{a\\}$', loopDirection: '90deg', labelY: 10, labelWidth: 65 },
-    { source: 'q_dead', target: 'q_dead', label: '$\\emptyset$', loopDirection: '90deg', labelY: 10, labelWidth: 80 },
-    { source: 'q_b', target: 'q_dead', label: '$\\emptyset$', labelY: 18, labelWidth: 80, curve: 0.18 },
-    { source: 'q_b', target: 'q_both', label: '$\\{a,b\\}$', labelY: -14, labelWidth: 80, curve: 0.18 }
+    ...($slidev.nav.clicks >= 2 ? [{ source: 'q_wait', target: 'q_wait', label: '$\\{a\\}$', loopDirection: '-90deg', labelY: -10, labelWidth: 70 }] : []),
+    ...($slidev.nav.clicks >= 3 ? [{ source: 'q_wait', target: 'q_both', label: '$\\{a,b\\}$', labelY: -12, labelWidth: 75, curve: 0.18 }] : []),
+    ...($slidev.nav.clicks >= 4 ? [{ source: 'q_wait', target: 'q_b', label: '$\\{b\\}$', labelY: -8, labelWidth: 60, curve: -0.12 }] : []),
+    ...($slidev.nav.clicks >= 5 ? [{ source: 'q_both', target: 'q_wait', label: '$\\{a\\}$', labelY: 8, labelWidth: 65, curve: 0.22 }] : []),
+    ...($slidev.nav.clicks >= 6 ? [{ source: 'q_both', target: 'q_b', label: '$\\{b\\}$', labelY: 12, labelWidth: 60, curve: -0.18 }] : []),
+    ...($slidev.nav.clicks >= 7 ? [{ source: 'q_no', target: 'q_no', label: '$\\{a\\}$', loopDirection: '90deg', labelY: 10, labelWidth: 65 }] : []),
+    ...($slidev.nav.clicks >= 8 ? [{ source: 'q_dead', target: 'q_dead', label: '$\\emptyset$', loopDirection: '90deg', labelY: 10, labelWidth: 80 }] : []),
+    ...($slidev.nav.clicks >= 9 ? [{ source: 'q_b', target: 'q_dead', label: '$\\emptyset$', labelY: 16, labelWidth: 80, curve: 0.12 }] : []),
+    ...($slidev.nav.clicks >= 9 ? [{ source: 'q_b', target: 'q_both', label: '$\\{a,b\\}$', labelY: -14, labelWidth: 80, curve: 0.18 }] : [])
   ]"
 />
 </div>
+</div>
 
-<div class="text-right text-[19px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-3 mb-3">
-מצבי התחלה: אלה שמכילים <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>.
+<div class="mt-3 text-right text-[17px] leading-relaxed">
+<div v-show="$slidev.nav.clicks === 0" class="bg-blue-50 border border-blue-200 rounded p-3" dir="rtl">
+בשלב הראשון כל 8 המועמדים מופיעים בתוך ציור האוטומט. שלושת האדומים נפסלים מחוסר עקביות.
 </div>
-<div class="bg-red-50 border border-red-200 rounded p-3 mb-3">
-המצב האדום אינו מקבל: ההבטחה <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> פתוחה ו־<span dir="ltr"><KatexInline math="b" /></span> עדיין לא התקיים.
+
+<div v-show="$slidev.nav.clicks === 1" class="bg-emerald-50 border border-emerald-200 rounded p-3" dir="rtl">
+נשארים 5 מצבים עקביים, וממקמים אותם כאוטומט.
+<div class="mt-1">מצבי התחלה נקבעים לפי הכלל <span dir="ltr"><KatexInline math="Q_0=\{B\in Q:\varphi\in B\}" /></span>, כלומר כל מצב שמכיל את <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> מסומן כהתחלתי.</div>
 </div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
-כל מצב שבו <span dir="ltr"><KatexInline math="b" /></span> מתקיים, או שבו ההבטחה אינה נטענת, שייך לקבוצת הקבלה.
+
+<div v-show="$slidev.nav.clicks === 2" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
+קשת 1: לולאה על המצב <span dir="ltr"><KatexInline math="a,\neg b,a\mathbin{\mathrm{U}}b" /></span> עם <span dir="ltr"><KatexInline math="\{a\}" /></span>.
 </div>
+<div v-show="$slidev.nav.clicks === 3" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
+קשת 2: עם <span dir="ltr"><KatexInline math="\{a,b\}" /></span> עוברים אל המצב <span dir="ltr"><KatexInline math="a,b,a\mathbin{\mathrm{U}}b" /></span>.
+</div>
+<div v-show="$slidev.nav.clicks === 4" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
+קשת 3: עם <span dir="ltr"><KatexInline math="\{b\}" /></span> עוברים אל המצב <span dir="ltr"><KatexInline math="\neg a,b,a\mathbin{\mathrm{U}}b" /></span>.
+</div>
+<div v-show="$slidev.nav.clicks === 5" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
+קשת 4: מהמצב העליון חזרה אל מצב ההמתנה עם <span dir="ltr"><KatexInline math="\{a\}" /></span>.
+</div>
+<div v-show="$slidev.nav.clicks === 6" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
+קשת 5: מהמצב העליון אל מצב <span dir="ltr"><KatexInline math="\neg a,b,a\mathbin{\mathrm{U}}b" /></span> עם <span dir="ltr"><KatexInline math="\{b\}" /></span>.
+</div>
+<div v-show="$slidev.nav.clicks === 7" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
+קשת 6: לולאה על <span dir="ltr"><KatexInline math="a,\neg b,\neg(a\mathbin{\mathrm{U}}b)" /></span>.
+</div>
+<div v-show="$slidev.nav.clicks === 8" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
+קשת 7: לולאה על <span dir="ltr"><KatexInline math="\neg a,\neg b,\neg(a\mathbin{\mathrm{U}}b)" /></span>.
+</div>
+<div v-show="$slidev.nav.clicks === 9" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
+קשתות 8-9: מהמצב <span dir="ltr"><KatexInline math="\neg a,b,a\mathbin{\mathrm{U}}b" /></span> אל שני מצבים בהתאם לתווית הקלט.
+</div>
+<div v-show="$slidev.nav.clicks >= 10" class="bg-emerald-50 border border-emerald-200 rounded p-3" dir="rtl">
+רק עכשיו מסמנים את המצבים המקבלים: כל מצב שבו <span dir="ltr"><KatexInline math="b" /></span> מתקיים או ש־<span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> לא פתוחה.
 </div>
 </div>
 

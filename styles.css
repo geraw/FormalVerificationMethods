@@ -15,9 +15,9 @@
   display: inline-flex;
 }
 
-/* RTL Header Alignment - only if not explicitly centered */
-[dir="rtl"] .slidev-layout:not(.text-center) :is(h1, h2, h3, h4) {
-  text-align: right;
+/* RTL Header Alignment */
+[dir="rtl"] .slidev-layout :is(h1, h2, h3, h4) {
+  text-align: right !important;
 }
 
 /* RTL Table Alignment */
