@@ -214,97 +214,151 @@ info: |
 
 ---
 
-# אנימציה: ניחושים לתת־נוסחאות
+# אנימציה: שלושה מהמרים
 
-<div class="mt-3 text-right text-[19px] leading-relaxed">
-ננתח את הנוסחה <span dir="ltr"><KatexInline math="\varphi=a\mathbin{\mathrm{U}}(b\mathbin{\mathrm{U}}c)" /></span>. נסמן <span dir="ltr"><KatexInline math="\theta=b\mathbin{\mathrm{U}}c" /></span>, ולכן <span dir="ltr"><KatexInline math="\varphi=a\mathbin{\mathrm{U}}\theta" /></span>. בכל מיקום האטומים נקבעים על ידי האות, והניחוש הוא אילו מבין <span dir="ltr"><KatexInline math="\theta,\varphi" /></span> נכונות בסיפה.
+<div class="absolute inset-x-0 bottom-0 h-[310px] overflow-hidden opacity-75">
+<img src="./public/gambler-guesses.png" class="w-full h-full object-cover object-bottom" />
+</div>
+<div class="absolute inset-0 bg-white/45 pointer-events-none"></div>
+
+<div class="relative z-10">
+<div class="-mt-1 text-right text-[17px] leading-snug">
+<div>ננתח את הנוסחה</div>
+<div class="mt-0 text-center text-[21px]" dir="ltr">
+<KatexInline display math="\varphi=(a\mathbin{\mathrm{U}}b)\mathbin{\mathrm{U}}(c\mathbin{\mathrm{U}}d)" />
+</div>
+<div class="mt-0 flex justify-center gap-8 text-[17px]" dir="ltr">
+<span><KatexInline math="\alpha=a\mathbin{\mathrm{U}}b" /></span>
+<span><KatexInline math="\beta=c\mathbin{\mathrm{U}}d" /></span>
+</div>
 </div>
 
-<div class="mt-3 grid grid-cols-4 gap-2 text-center text-[17px]" dir="ltr">
-<div class="bg-slate-50 border border-slate-200 rounded p-2"><KatexInline math="A_0=\{a\}" /></div>
-<div class="bg-slate-50 border border-slate-200 rounded p-2"><KatexInline math="A_1=\{a,b\}" /></div>
-<div class="bg-slate-50 border border-slate-200 rounded p-2"><KatexInline math="A_2=\{b\}" /></div>
-<div class="bg-slate-50 border border-slate-200 rounded p-2"><KatexInline math="A_3=\{b\}" /></div>
-</div>
-
 <span v-click class="hidden"></span>
 <span v-click class="hidden"></span>
 <span v-click class="hidden"></span>
 <span v-click class="hidden"></span>
 
-<div class="mt-3 min-h-[350px]">
+<div class="mt-2 min-h-[330px]">
 <div v-show="$slidev.nav.clicks === 0">
-<div class="mb-3 text-center text-[20px]">שלב 0: כל הניחושים המקומיים שמותריים בכל מיקום.</div>
-<div class="grid grid-cols-4 gap-3 text-center text-[17px]" dir="ltr">
-<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-2">A_0=\{a\}</div><KatexInline display math="\neg\theta,\varphi" /><KatexInline display math="\neg\theta,\neg\varphi" /></div>
-<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-2">A_1=\{a,b\}</div><KatexInline display math="\theta,\varphi" /><KatexInline display math="\neg\theta,\varphi" /><KatexInline display math="\neg\theta,\neg\varphi" /></div>
-<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-2">A_2=\{b\}</div><KatexInline display math="\theta,\varphi" /><KatexInline display math="\neg\theta,\neg\varphi" /></div>
-<div class="bg-blue-50 border border-blue-200 rounded p-3"><div class="font-bold mb-2">A_3=\{b\}</div><KatexInline display math="\theta,\varphi" /><KatexInline display math="\neg\theta,\neg\varphi" /></div>
+<div class="text-center text-[18px] mb-2">לפני קריאת המילה: שלושת המהמרים בוחרים ניחוש התחלתי לגבי שני תת־הביטויים.</div>
+<div class="grid grid-cols-3 gap-3 text-right text-[17px] leading-snug">
+<div class="bg-blue-50/95 border border-blue-200 rounded p-2.5 shadow-sm">
+<div class="font-bold text-blue-700 mb-2">מהמר 1</div>
+<div class="text-center text-[22px]" dir="ltr"><KatexInline display math="\neg\alpha,\;\beta" /></div>
+<div>מהמר שהחלק השמאלי לא מתקיים עכשיו, אבל החלק הימני כן.</div>
 </div>
-<div class="mt-3 text-center text-[17px]">הטבלה עדיין לא משתמשת בכללי המעבר, אלא רק בעקביות מקומית.</div>
+<div class="bg-amber-50/95 border border-amber-200 rounded p-2.5 shadow-sm">
+<div class="font-bold text-amber-700 mb-2">מהמר 2</div>
+<div class="text-center text-[22px]" dir="ltr"><KatexInline display math="\alpha,\;\neg\beta" /></div>
+<div>מהמר שהחלק השמאלי מתקיים עכשיו, והחלק הימני לא.</div>
+</div>
+<div class="bg-emerald-50/95 border border-emerald-200 rounded p-2.5 shadow-sm">
+<div class="font-bold text-emerald-700 mb-2">מהמר 3</div>
+<div class="text-center text-[22px]" dir="ltr"><KatexInline display math="\alpha,\;\beta" /></div>
+<div>מהמר ששני תת־הביטויים מתקיימים עכשיו.</div>
+</div>
+</div>
+<div class="mt-3 bg-slate-50/95 border border-slate-200 rounded px-4 py-2 text-center text-[16px] leading-snug">
+יש לנו רק שלושה מהמרים, כי אנחנו רוצים לבדוק את התכונה למעלה:
+אם גם <span dir="ltr"><KatexInline math="\alpha" /></span> וגם <span dir="ltr"><KatexInline math="\beta" /></span> לא יתקיימו,
+אז <span dir="ltr"><KatexInline math="\alpha\mathbin{\mathrm{U}}\beta" /></span> לא תתקיים.
+</div>
 </div>
 
 <div v-show="$slidev.nav.clicks === 1">
-<div class="mb-3 text-center text-[20px]">שלב 1: דורשים שהנוסחה הראשית נכונה בתחילת המילה.</div>
-<div class="grid grid-cols-[110px_1fr_1fr_1fr_1fr] gap-2 text-[15px] leading-snug" dir="ltr">
-<div class="font-bold text-right" dir="rtl">מסלול ניחושים</div><div class="font-bold text-center">A_0</div><div class="font-bold text-center">A_1</div><div class="font-bold text-center">A_2</div><div class="font-bold text-center">A_3</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-right" dir="rtl">אפשרי</div><div class="bg-emerald-50 border border-emerald-200 rounded p-2"><KatexInline math="\neg\theta,\varphi" /></div><div class="bg-slate-50 border border-slate-200 rounded p-2 text-slate-400">?</div><div class="bg-slate-50 border border-slate-200 rounded p-2 text-slate-400">?</div><div class="bg-slate-50 border border-slate-200 rounded p-2 text-slate-400">?</div>
-<div class="bg-red-50 border border-red-200 rounded p-2 text-right" dir="rtl">נופל מיד</div><div class="bg-red-50 border border-red-200 rounded p-2"><KatexInline math="\neg\theta,\neg\varphi" /></div><div class="bg-red-50 border border-red-200 rounded p-2 col-span-3 text-right" dir="rtl">לא מתאים למצב התחלתי, כי אנחנו בונים אוטומט עבור <span dir="ltr"><KatexInline math="Words(\varphi)" /></span>.</div>
+<div class="mx-auto mb-2 w-fit bg-yellow-100/95 border-2 border-yellow-400 rounded px-5 py-1.5 text-center shadow-md">
+<div class="text-[13px] font-bold text-yellow-800 mb-0.5">האות הנקראת עכשיו</div>
+<div class="text-[20px]" dir="ltr"><KatexInline math="A_0=\{a,c\}" /></div>
+</div>
+<div class="text-center text-[18px] mb-2">מתחילים לעדכן את הניחושים: אף אחד עדיין לא יוצא.</div>
+<div class="grid grid-cols-3 gap-3 text-right text-[17px] leading-snug">
+<div class="bg-blue-50/95 border border-blue-200 rounded p-2.5 shadow-sm">
+<div class="font-bold text-blue-700 mb-2">מהמר 1 נשאר</div>
+<div dir="ltr" class="text-center text-[21px]"><KatexInline display math="\neg\alpha,\beta" /></div>
+<div><span dir="ltr"><KatexInline math="b" /></span> עוד לא הופיע, ולכן אפשר עדיין לעקוב אחרי ניחוש שבו <span dir="ltr"><KatexInline math="\alpha" /></span> לא נסגר.</div>
+</div>
+<div class="bg-amber-50/95 border border-amber-200 rounded p-2.5 shadow-sm">
+<div class="font-bold text-amber-700 mb-2">מהמר 2 נשאר</div>
+<div dir="ltr" class="text-center text-[21px]"><KatexInline display math="\alpha,\neg\beta" /></div>
+<div><span dir="ltr"><KatexInline math="d" /></span> עוד לא הופיע, ולכן אי אפשר להכריע עכשיו נגד הניחוש השלילי לגבי <span dir="ltr"><KatexInline math="\beta" /></span>.</div>
+</div>
+<div class="bg-emerald-50/95 border border-emerald-200 rounded p-2.5 shadow-sm">
+<div class="font-bold text-emerald-700 mb-2">מהמר 3 נשאר</div>
+<div dir="ltr" class="text-center text-[21px]"><KatexInline display math="\alpha,\beta" /></div>
+<div>שני החלקים יכולים עדיין להתקיים בהמשך.</div>
+</div>
 </div>
 </div>
 
 <div v-show="$slidev.nav.clicks === 2">
-<div class="mb-3 text-center text-[20px]">שלב 2: מעבר מ־<span dir="ltr"><KatexInline math="A_0" /></span> ל־<span dir="ltr"><KatexInline math="A_1" /></span>.</div>
-<div class="grid grid-cols-[110px_1fr_1fr_1fr_1fr] gap-2 text-[15px] leading-snug" dir="ltr">
-<div class="font-bold text-right" dir="rtl">מסלול ניחושים</div><div class="font-bold text-center">A_0</div><div class="font-bold text-center">A_1</div><div class="font-bold text-center">A_2</div><div class="font-bold text-center">A_3</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-right" dir="rtl">ענף 1</div><div class="bg-emerald-50 border border-emerald-200 rounded p-2"><KatexInline math="\neg\theta,\varphi" /></div><div class="bg-emerald-50 border border-emerald-200 rounded p-2"><KatexInline math="\theta,\varphi" /></div><div class="bg-slate-50 border border-slate-200 rounded p-2 text-slate-400">?</div><div class="bg-slate-50 border border-slate-200 rounded p-2 text-slate-400">?</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-right" dir="rtl">ענף 2</div><div class="bg-emerald-50 border border-emerald-200 rounded p-2"><KatexInline math="\neg\theta,\varphi" /></div><div class="bg-emerald-50 border border-emerald-200 rounded p-2"><KatexInline math="\neg\theta,\varphi" /></div><div class="bg-slate-50 border border-slate-200 rounded p-2 text-slate-400">?</div><div class="bg-slate-50 border border-slate-200 rounded p-2 text-slate-400">?</div>
-<div class="bg-red-50 border border-red-200 rounded p-2 text-right" dir="rtl">נופל</div><div class="bg-red-50 border border-red-200 rounded p-2"><KatexInline math="\neg\theta,\varphi" /></div><div class="bg-red-50 border border-red-200 rounded p-2"><KatexInline math="\neg\theta,\neg\varphi" /></div><div class="bg-red-50 border border-red-200 rounded p-2 col-span-2 text-right" dir="rtl">אם <span dir="ltr"><KatexInline math="\varphi" /></span> פתוח ו־<span dir="ltr"><KatexInline math="\theta" /></span> עוד לא התקיים, אז <span dir="ltr"><KatexInline math="\varphi" /></span> חייב להמשיך.</div>
+<div class="mx-auto mb-2 w-fit bg-yellow-100/95 border-2 border-yellow-400 rounded px-5 py-1.5 text-center shadow-md">
+<div class="text-[13px] font-bold text-yellow-800 mb-0.5">האות הנקראת עכשיו</div>
+<div class="text-[20px]" dir="ltr"><KatexInline math="A_1=\{b,c\}" /></div>
+</div>
+<div class="text-center text-[18px] mb-2">החלק השמאלי נסגר: עכשיו יודעים ש־<span dir="ltr"><KatexInline math="\alpha" /></span> מתקיים, ולכן ממשיכים רק עם השאלה מה יקרה ל־<span dir="ltr"><KatexInline math="\beta" /></span>.</div>
+<div class="grid grid-cols-3 gap-3 text-right text-[17px] leading-snug">
+<div class="bg-red-50/95 border border-red-200 rounded p-2.5 shadow-sm opacity-90">
+<div class="font-bold text-red-700 mb-2">מהמר 1 יוצא</div>
+<div class="text-center text-[24px] leading-snug">
+<span dir="ltr"><KatexInline math="\alpha" /></span> נסגר כי <span dir="ltr"><KatexInline math="b" /></span> הופיע; <span dir="ltr"><KatexInline math="\beta" /></span> עדיין פתוח
+</div>
+<div>ההימור ההתחלתי שלו היה <span dir="ltr"><KatexInline math="\neg\alpha" /></span>, ולכן הוא כבר לא מתאים להמשך.</div>
+</div>
+<div class="bg-amber-50/95 border border-amber-200 rounded p-2.5 shadow-sm">
+<div class="font-bold text-amber-700 mb-2">מהמר 2 מעדכן</div>
+<div dir="ltr" class="text-center text-[21px]"><KatexInline display math="\alpha,\neg\beta\;\leadsto\;\neg\beta" /></div>
+<div>החלק השמאלי מתאים לניחוש שלו וכבר הוכרע, ולכן ההימור הפעיל שנשאר הוא ש־<span dir="ltr"><KatexInline math="\beta" /></span> לא יתקיים.</div>
+</div>
+<div class="bg-emerald-50/95 border border-emerald-200 rounded p-2.5 shadow-sm">
+<div class="font-bold text-emerald-700 mb-2">מהמר 3 מעדכן</div>
+<div class="text-center text-[24px] leading-snug">
+<span dir="ltr"><KatexInline math="\alpha,\beta\;\leadsto\;\beta" /></span>
+</div>
+<div>גם אצלו <span dir="ltr"><KatexInline math="\alpha" /></span> כבר נסגר, ולכן נשאר לעקוב רק אחרי ההבטחה <span dir="ltr"><KatexInline math="\beta=c\mathbin{\mathrm{U}}d" /></span>.</div>
+</div>
 </div>
 </div>
 
 <div v-show="$slidev.nav.clicks === 3">
-<div class="mb-3 text-center text-[20px]">שלב 3: ממשיכים דרך <span dir="ltr"><KatexInline math="A_2" /></span>. כאן רואים שני סיפורים אפשריים.</div>
-<div class="space-y-3 text-[15px] leading-snug" dir="ltr">
-<div class="bg-blue-50 border border-blue-200 rounded p-2">
-  <div class="font-bold text-right mb-1" dir="rtl">ענף חיובי</div>
-  <div class="grid grid-cols-1 gap-1">
-    <div class="bg-blue-50 border border-blue-200 rounded p-2 opacity-70"><span class="font-bold mr-2">A_0:</span><KatexInline math="\neg\theta,\varphi" /></div>
-    <div class="bg-blue-50 border border-blue-200 rounded p-2 opacity-80"><span class="font-bold mr-2">A_1:</span><KatexInline math="\theta,\varphi" /></div>
-    <div class="bg-blue-50 border border-blue-200 rounded p-2"><span class="font-bold mr-2">A_2:</span><KatexInline math="\theta,\varphi" /></div>
-    <div class="bg-slate-50 border border-slate-200 rounded p-2 text-slate-400"><span class="font-bold mr-2">A_3:</span>?</div>
-  </div>
+<div class="mx-auto mb-2 w-fit bg-yellow-100/95 border-2 border-yellow-400 rounded px-5 py-1.5 text-center shadow-md">
+<div class="text-[13px] font-bold text-yellow-800 mb-0.5">האות הנקראת עכשיו</div>
+<div class="text-[20px]" dir="ltr"><KatexInline math="A_2=\{c\}" /></div>
 </div>
-
-<div class="bg-blue-50 border border-blue-200 rounded p-2">
-  <div class="font-bold text-right mb-1" dir="rtl">ענף שלילי</div>
-  <div class="grid grid-cols-1 gap-1">
-    <div class="bg-blue-50 border border-blue-200 rounded p-2 opacity-70"><span class="font-bold mr-2">A_0:</span><KatexInline math="\neg\theta,\varphi" /></div>
-    <div class="bg-blue-50 border border-blue-200 rounded p-2 opacity-80"><span class="font-bold mr-2">A_1:</span><KatexInline math="\neg\theta,\varphi" /></div>
-    <div class="bg-blue-50 border border-blue-200 rounded p-2"><span class="font-bold mr-2">A_2:</span><KatexInline math="\neg\theta,\neg\varphi" /></div>
-    <div class="bg-slate-50 border border-slate-200 rounded p-2 text-slate-400"><span class="font-bold mr-2">A_3:</span>?</div>
-  </div>
+<div class="text-center text-[18px] mb-2">שני ההימורים שנותרו עדיין אפשריים.</div>
+<div class="grid grid-cols-2 gap-4 text-right text-[18px] leading-snug">
+<div class="bg-amber-50/95 border border-amber-200 rounded p-3 shadow-sm">
+<div class="font-bold text-amber-700 mb-2">מהמר 2 עדיין במשחק</div>
+<div>עדיין לא הופיע <span dir="ltr"><KatexInline math="d" /></span>, ולכן הניחוש <span dir="ltr"><KatexInline math="\neg\beta" /></span> עוד לא הופרך בזמן הקריאה.</div>
+</div>
+<div class="bg-emerald-50/95 border border-emerald-200 rounded p-3 shadow-sm">
+<div class="font-bold text-emerald-700 mb-2">מהמר 3 עדיין במשחק</div>
+<div>גם ההימור ששני החלקים נכונים לא הופרך: החלק הימני עדיין מחכה ל־<span dir="ltr"><KatexInline math="d" /></span>.</div>
 </div>
 </div>
-<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-right text-[17px] leading-snug">הענף החיובי אומר: <span dir="ltr"><KatexInline math="b\mathbin{\mathrm{U}}c" /></span> נכון, אבל עוד לא ראינו את <span dir="ltr"><KatexInline math="c" /></span>. הענף השלילי אומר: לדעתו <span dir="ltr"><KatexInline math="c" /></span> לא יגיע בזמן שבו <span dir="ltr"><KatexInline math="b" /></span> ממשיך.</div>
 </div>
 
 <div v-show="$slidev.nav.clicks === 4">
-<div class="mb-3 text-center text-[20px]">שלב 4: אחרי הקידומת, עדיין לא ראינו את <span dir="ltr"><KatexInline math="c" /></span>.</div>
-<div class="space-y-3 text-[15px] leading-snug" dir="ltr">
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2 font-bold text-right" dir="rtl">נשאר 1</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2 opacity-60"><span class="font-bold mr-2">A_0:</span><KatexInline math="\neg\theta,\varphi" /></div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2 opacity-70"><span class="font-bold mr-2">A_1:</span><KatexInline math="\theta,\varphi" /></div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2 opacity-85"><span class="font-bold mr-2">A_2:</span><KatexInline math="\theta,\varphi" /></div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2"><span class="font-bold mr-2">A_3:</span><KatexInline math="\theta,\varphi" /></div>
-
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2 font-bold text-right" dir="rtl">נשאר 2</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2 opacity-60"><span class="font-bold mr-2">A_0:</span><KatexInline math="\neg\theta,\varphi" /></div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2 opacity-70"><span class="font-bold mr-2">A_1:</span><KatexInline math="\neg\theta,\varphi" /></div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2 opacity-85"><span class="font-bold mr-2">A_2:</span><KatexInline math="\neg\theta,\neg\varphi" /></div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2"><span class="font-bold mr-2">A_3:</span><KatexInline math="\neg\theta,\neg\varphi" /></div>
+<div class="mx-auto mb-2 w-fit bg-yellow-100/95 border-2 border-yellow-400 rounded px-5 py-1.5 text-center shadow-md">
+<div class="text-[13px] font-bold text-yellow-800 mb-0.5">האות הנקראת עכשיו</div>
+<div class="text-[20px]" dir="ltr"><KatexInline math="A_3=\{d\}" /></div>
 </div>
-<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-right text-[17px] leading-snug">זה בדיוק המקום שבו תנאי הקבלה נכנס בהמשך: אם הענף הראשון מחזיק <span dir="ltr"><KatexInline math="\theta=b\mathbin{\mathrm{U}}c" /></span> פתוח לנצח, הוא חייב לראות בסוף את <span dir="ltr"><KatexInline math="c" /></span>. אחרת הוא לא יתקבל.</div>
+<div class="text-center text-[18px] mb-2">החלק הימני נסגר: עכשיו יודעים ש־<span dir="ltr"><KatexInline math="\beta" /></span> מתקיים.</div>
+<div class="grid grid-cols-[0.9fr_1.1fr] gap-4 text-right text-[18px] leading-snug">
+<div class="bg-red-50/95 border border-red-200 rounded p-3 shadow-sm opacity-90">
+<div class="font-bold text-red-700 mb-2">מהמר 2 יוצא</div>
+<div>ההימור שלו היה <span dir="ltr"><KatexInline math="\neg\beta" /></span>, אבל <span dir="ltr"><KatexInline math="d" /></span> הופיע וסגר את <span dir="ltr"><KatexInline math="c\mathbin{\mathrm{U}}d" /></span>.</div>
+</div>
+<div class="bg-emerald-50/95 border border-emerald-200 rounded p-3 shadow-sm">
+<div class="font-bold text-emerald-700 mb-2">מהמר 3 צדק</div>
+<div class="text-center text-[24px] leading-snug">
+<span dir="ltr"><KatexInline math="\alpha" /></span> נסגר ב־<span dir="ltr"><KatexInline math="b" /></span>,
+<br />
+<span dir="ltr"><KatexInline math="\beta" /></span> נסגר ב־<span dir="ltr"><KatexInline math="d" /></span>
+</div>
+<div>בסוף מתקבל ניחוש עקבי שבו שני תת־הביטויים מתקיימים, ולכן גם <span dir="ltr"><KatexInline math="\varphi=\alpha\mathbin{\mathrm{U}}\beta" /></span> מתקיימת.</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 ---
