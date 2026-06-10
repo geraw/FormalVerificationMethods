@@ -24,6 +24,34 @@ function fileHash(filePath) {
     return crypto.createHash("sha1").update(fs.readFileSync(filePath)).digest("hex");
 }
 
+function buildSignature(sourceFile) {
+    const hash = crypto.createHash("sha1");
+    const signatureInputs = [
+        sourceFile,
+        "build-all.js",
+        "slidev.config.js",
+        "vite.config.js",
+        "package-lock.json",
+        "package.json",
+    ];
+
+    for (const file of signatureInputs) {
+        if (!fs.existsSync(file)) continue;
+        hash.update(file);
+        hash.update("\0");
+        hash.update(fs.readFileSync(file));
+        hash.update("\0");
+    }
+
+    hash.update(JSON.stringify({
+        repo: REPO,
+        routerMode: "hash",
+        download: false,
+    }));
+
+    return hash.digest("hex");
+}
+
 function resolveAbsoluteAssetRef(rawRef) {
     if (!rawRef.startsWith("/") || rawRef.startsWith("//")) return rawRef;
 
@@ -50,6 +78,20 @@ function resolveAbsoluteAssetRef(rawRef) {
 function prepareBuildSource(sourceFile) {
     const original = fs.readFileSync(sourceFile, "utf8");
     let updated = original;
+
+    if (/^---\r?\n/.test(updated)) {
+        if (/^routerMode:/m.test(updated)) {
+            updated = updated.replace(/^routerMode:.*$/m, "routerMode: hash");
+        } else {
+            updated = updated.replace(/^---(\r?\n)/, "---$1routerMode: hash$1");
+        }
+
+        if (/^download:/m.test(updated)) {
+            updated = updated.replace(/^download:.*$/m, "download: false");
+        } else {
+            updated = updated.replace(/^---(\r?\n)/, "---$1download: false$1");
+        }
+    }
 
     // Rewrite absolute image refs (e.g. ![](/logo.png)) to concrete local files.
     updated = updated.replace(/!\[([^\]]*)\]\((\/[^)]+)\)/g, (_m, altText, rawRef) => {
@@ -85,7 +127,6 @@ function runSlidevBuild(sourceFile, basePath, outputDir) {
         "--base", basePath,
         "-o", outputDir,
         "--download", "false",
-        "--router-mode", "hash",
     ];
     try {
         execSync(`npx slidev build ${args.map(quote).join(" ")}`, { stdio: "inherit" });
@@ -105,16 +146,16 @@ function needsBuild(sourceFile, outputDir) {
     if (!fs.existsSync(sigPath)) return { rebuild: true, reason: "missing signature" };
     if (!fs.existsSync(indexPath)) return { rebuild: true, reason: "missing index.html" };
 
-    const current = fileHash(sourceFile);
+    const current = buildSignature(sourceFile);
     const previous = fs.readFileSync(sigPath, "utf8").trim();
     return current === previous
         ? { rebuild: false }
-        : { rebuild: true, reason: "markdown changed" };
+        : { rebuild: true, reason: "source or build config changed" };
 }
 
 function writeSignature(sourceFile, outputDir) {
     fs.mkdirSync(outputDir, { recursive: true });
-    fs.writeFileSync(signaturePath(outputDir), fileHash(sourceFile));
+    fs.writeFileSync(signaturePath(outputDir), buildSignature(sourceFile));
 }
 
 function discoverDecks() {
