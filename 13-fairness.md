@@ -26,7 +26,7 @@ info: |
 
 **גרא וייס**
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
@@ -114,7 +114,7 @@ info: |
 
 # למה צריך הוֹגְנוּת?
 
-<img src="/lazy_scheduler_comic.png" class="absolute left-8 top-10 w-[160px] rounded-xl shadow-2xl border border-slate-200/85 transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
+<img src="./public/lazy_scheduler_comic.png" class="absolute left-8 top-10 w-[160px] rounded-xl shadow-2xl border border-slate-200/85 transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
 
 <div class="mt-7 text-right text-[23px] leading-relaxed">
 
@@ -163,13 +163,13 @@ info: |
 קשה להוכיח התקדמות במערכת שבה אפשר להתעלם מתהליך מסוים לנצח.
 </div>
 
-<img src="/unfair_scheduling_comic.png" class="absolute left-6 top-10 w-[230px] rounded-xl shadow-2xl border border-slate-200/85 transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
+<img src="./public/unfair_scheduling_comic.png" class="absolute left-6 top-10 w-[230px] rounded-xl shadow-2xl border border-slate-200/85 transform -rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
 
 ---
 
 # הוֹגְנוּת היא חלק מהמודל
 
-<img src="/fairness_filter_comic.png" class="absolute left-6 top-64 w-[160px] rounded-xl shadow-2xl border border-slate-200/80 transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
+<img src="./public/fairness_filter_comic.png" class="absolute left-6 top-64 w-[160px] rounded-xl shadow-2xl border border-slate-200/80 transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
 
 <div class="grid grid-cols-2 gap-6 mt-8 text-right text-[21px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-5">
@@ -283,7 +283,7 @@ info: |
 ככל שהאילוץ חזק יותר, הוא פוסל יותר ריצות.
 </div>
 
-<img src="/three_fairness_types_comic.png" class="absolute left-6 bottom-4 w-[240px] rounded-xl shadow-2xl border border-slate-200/85 transform -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
+<img src="./public/three_fairness_types_comic.png" class="absolute left-6 bottom-4 w-[240px] rounded-xl shadow-2xl border border-slate-200/85 transform -rotate-1 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
 
 ---
 
@@ -373,7 +373,7 @@ info: |
 </div>
 
 <div>
-<img src="/pregnancy_test_fairness.png" class="w-full rounded-lg shadow-md" alt="Pregnancy test illustration" />
+<img src="./public/pregnancy_test_fairness.png" class="w-full rounded-lg shadow-md" alt="Pregnancy test illustration" />
 </div>
 </div>
 
@@ -405,7 +405,7 @@ info: |
 
 </div>
 
-<img src="/fairness_checklist_comic.png" class="absolute left-6 bottom-4 w-[240px] rounded-xl shadow-2xl border border-slate-200/85 transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
+<img src="./public/fairness_checklist_comic.png" class="absolute left-6 bottom-4 w-[240px] rounded-xl shadow-2xl border border-slate-200/85 transform rotate-2 hover:rotate-0 hover:scale-105 transition-all duration-300 z-50" />
 
 ---
 

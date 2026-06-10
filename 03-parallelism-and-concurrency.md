@@ -25,7 +25,7 @@ info: |
 
 
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
@@ -274,7 +274,7 @@ $$Effect(\alpha \,|||\, \beta, \eta) = Effect((\alpha ; \beta) + (\beta ; \alpha
 - **ביצוע**: בכל שלב, מתבצעת בחירה אי-דטרמיניסטית בין כל המעברים האפשריים של שני הרכיבים.
 
 <div class="flex justify-center mt-4">
-  <img src="/interleaving_comic.png" class="h-50" />
+  <img src="./interleaving_comic.png" class="h-50" />
 </div>
 
 
@@ -444,7 +444,7 @@ $$\alpha \equiv x := 2x \hspace{1cm} \beta \equiv x := x+1$$
   - השזירה ברמת ה-PG שומרת על הקשר בין הפעולות למשתנים.
 
 <div class="flex justify-center -mt-10">
-    <img src="/images/pg_interleaving_comic_he.png" class="w-70" style="clip-path: inset(25% 0 25% 0);" />
+    <img src="./images/pg_interleaving_comic_he.png" class="w-70" style="clip-path: inset(25% 0 25% 0);" />
 </div>
 
 ---
@@ -1083,7 +1083,7 @@ const semaphoreReachableTransitions = [
 - **מניעה הדדית (Mutual Exclusion)**: ניתן להיווכח כי המצב $\langle crit_1, crit_2, y=\dots \rangle$ **אינו נגיש** (Unreachable) במערכת המעברים, ולכן דרישת המניעה ההדדית מתקיימת.
 
 <div class="flex justify-center mt-4">
-  <img src="/images/happy_tester.png" class="w-60" />
+  <img src="./images/happy_tester.png" class="w-60" />
 </div>
 
 ---
@@ -1387,7 +1387,7 @@ $P_1:\ c_1 \xrightarrow{b_1:=F} n_1 \hspace{1cm} P_2:\ c_2 \xrightarrow{b_2:=F} 
 - **הוכחת מניעה הדדית**: ניתן לראות כי מצבים מהצורה $\langle crit_1, crit_2, \dots \rangle$ **אינם נגישים** (Unreachable). 
 
 <div class="absolute bottom-10 left-1">
-  <img src="/images/happy_tester.png" class="w-40" />
+  <img src="./images/happy_tester.png" class="w-40" />
 </div>
 
 
@@ -1444,7 +1444,7 @@ $$
   </div>
 </div>
 
-<img src="/handshaking_robots_comic.png" class="absolute top-30 left-10 w-60" />
+<img src="./public/handshaking_robots_comic.png" class="absolute top-30 left-10 w-60" />
 
 ---
 class: handshaking-formal-slide
@@ -1492,7 +1492,7 @@ $$
 
 # קבוצת לחיצות יד ריקה
 
-<img src="/independent_robots.png" class="absolute bottom-0 right-70 w-100" />
+<img src="./public/independent_robots.png" class="absolute bottom-0 right-70 w-100" />
 
 כאשר קבוצת לחיצות היד $H$ היא ריקה, כל הפעולות של התהליכים המשתתפים יכולות להתבצע באופן אוטונומי.
 במקרה זה, מנגנון לחיצת היד מצטמצם לשזירה רגילה:
@@ -1684,7 +1684,7 @@ $$
 
 
 <div class="absolute bottom-5 left-10">
-  <img src="/images/happy_tester.png" class="w-40" />
+  <img src="./images/happy_tester.png" class="w-40" />
 </div>
 
 ---

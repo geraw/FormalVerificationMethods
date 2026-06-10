@@ -22,7 +22,7 @@ info: |
 
 **גרא וייס**
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
@@ -892,7 +892,7 @@ $cap(a)=1$
 
 # דוגמה: פרוטוקול הביט המתהפך (ABP)
 
-<img src="/images/abp_channels_comic.png" class="absolute bottom-0 left-0 w-70" />
+<img src="./images/abp_channels_comic.png" class="absolute bottom-0 left-0 w-70" />
 
 מערכת תקשורת בין שולח $S$ ומקבל $R$ דרך שני ערוצים:
 

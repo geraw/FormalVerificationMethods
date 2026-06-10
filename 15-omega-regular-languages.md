@@ -24,7 +24,7 @@ info: |
 
 **גרא וייס**
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
@@ -112,7 +112,7 @@ info: |
 </div>
 
 <div class="flex justify-center">
-  <img src="/omega_goals_illustration.png" class="rounded-lg shadow-md border border-slate-200 max-h-[380px] w-full object-cover" />
+  <img src="./public/omega_goals_illustration.png" class="rounded-lg shadow-md border border-slate-200 max-h-[380px] w-full object-cover" />
 </div>
 </div>
 
@@ -173,7 +173,7 @@ info: |
     <strong>בקשה ללא מענה:</strong> האם קיימת ריצה אינסופית שבה בקשה נשארת ללא מענה?
   </div>
   <div class="flex justify-center">
-    <img src="/unanswered_request_comic.png" class="rounded-lg shadow border border-slate-200 max-h-[130px] object-contain" />
+    <img src="./public/unanswered_request_comic.png" class="rounded-lg shadow border border-slate-200 max-h-[130px] object-contain" />
   </div>
 </div>
 
@@ -182,7 +182,7 @@ info: |
     <strong>מחזור מפר:</strong> האם במכפלה יש מחזור שמחזיק את ההפרה?
   </div>
   <div class="flex justify-center">
-    <img src="/violating_cycle_comic.png" class="rounded-lg shadow border border-slate-200 max-h-[130px] object-contain" />
+    <img src="./public/violating_cycle_comic.png" class="rounded-lg shadow border border-slate-200 max-h-[130px] object-contain" />
   </div>
 </div>
 </div>
@@ -597,13 +597,13 @@ info: |
 </div>
 </div>
 
-<img src="/crit_decomposition_comic.png" class="absolute bottom-30 left-8 w-40 object-contain pointer-events-none" style="clip-path: inset(20% 0 0 0);" />
+<img src="./public/crit_decomposition_comic.png" class="absolute bottom-30 left-8 w-40 object-contain pointer-events-none" style="clip-path: inset(20% 0 0 0);" />
 
 ---
 
 # אוטומטי Büchi
 
-<img src="/julius-richard-buchi.jpg" class="absolute top-3 left-12 w-20 rounded-full border-4 border-white shadow-lg" />
+<img src="./public/julius-richard-buchi.jpg" class="absolute top-3 left-12 w-20 rounded-full border-4 border-white shadow-lg" />
 
 <div class="mt-5 text-right text-[21px] leading-relaxed max-w-[820px] mr-auto">
 כמו שלמדנו בקורס <span class="font-bold">מודלים חישוביים</span>, יש דואליות בין ביטויים רגולריים לבין אוטומטים:
@@ -655,7 +655,7 @@ info: |
 </div>
 
 <div class="absolute top-[20px] left-12 w-[250px]">
-<img src="/same-notation-different-meaning-cartoon.png" class="w-full rounded border border-slate-200 shadow-sm bg-white" />
+<img src="./public/same-notation-different-meaning-cartoon.png" class="w-full rounded border border-slate-200 shadow-sm bg-white" />
 <div class="mt-0.5 text-center text-[12px] text-slate-600">
 אותם תווים; המפתח משנה את המשמעות.
 </div>
@@ -773,7 +773,7 @@ $$L_\omega(\mathcal{A})=\{\sigma\in\Sigma^\omega\mid \mathcal{A}\ \text{has an a
 האוטומט כמו שהוא מקבל את <span class="font-bold">משלים התכונה</span>: בדיוק ריצות שבהן הופיעה רישא רעה. אחרי שנכנסים למלכודת מקבלת, נשארים בה ולכן מבקרים במצב מקבל אינסוף פעמים.
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded px-5 py-4">
+  <div class="bg-emerald-50 border border-emerald-200 rounded px-5 py-4">
 <div class="font-bold text-emerald-700 mb-2">התכונה עצמה</div>
 בלי הגבלת הכלליות נניח שהאוטומט שלם ודטרמיניסטי. אז החלפת קבוצת הקבלה ל־<KatexInline math="Q\setminus F" /> מקבלת את התכונה עצמה: אם אין רישא רעה, הריצה לעולם לא נכנסת למלכודת ולכן מבקרת במצבים שמחוץ ל־<KatexInline math="F" /> אינסוף פעמים. אם יש רישא רעה, נכנסים למלכודת שב־<KatexInline math="F" /> ונשארים בה, ולכן לא מבקרים ב־<KatexInline math="Q\setminus F" /> אינסוף פעמים.
 </div>

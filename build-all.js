@@ -3,8 +3,24 @@ import crypto from "crypto";
 import fs from "fs";
 import path from "path";
 
+// Normalize CWD drive letter to uppercase on Windows to prevent Vite path resolution errors
+if (process.platform === "win32") {
+    const cwd = process.cwd();
+    const normalized = cwd.replace(/^[a-z]:/i, m => m.toUpperCase());
+    if (cwd !== normalized) {
+        process.chdir(normalized);
+    }
+}
+
 const REPO = process.env.REPO_NAME || "FormalVerificationMethods";
 const FORCE_REBUILD = process.env.FORCE_REBUILD === "1" || process.env.FORCE_REBUILD === "true";
+const COPIED_PUBLIC_DIRS = [
+    "slide-backgrounds",
+    "slide-reference",
+    "extracted",
+    "__pycache__",
+];
+
 
 function quote(value) {
     return `"${String(value).replace(/"/g, '\\"')}"`;
@@ -12,6 +28,35 @@ function quote(value) {
 
 function fileHash(filePath) {
     return crypto.createHash("sha1").update(fs.readFileSync(filePath)).digest("hex");
+}
+
+function buildSignature(sourceFile) {
+    const hash = crypto.createHash("sha1");
+    const signatureInputs = [
+        sourceFile,
+        "build-all.js",
+        "slidev.config.js",
+        "vite.config.js",
+        "package-lock.json",
+        "package.json",
+    ];
+
+    for (const file of signatureInputs) {
+        if (!fs.existsSync(file)) continue;
+        hash.update(file);
+        hash.update("\0");
+        hash.update(fs.readFileSync(file));
+        hash.update("\0");
+    }
+
+    hash.update(JSON.stringify({
+        repo: REPO,
+        routerMode: "hash",
+        download: false,
+        copiedPublicDirs: COPIED_PUBLIC_DIRS,
+    }));
+
+    return hash.digest("hex");
 }
 
 function resolveAbsoluteAssetRef(rawRef) {
@@ -40,6 +85,20 @@ function resolveAbsoluteAssetRef(rawRef) {
 function prepareBuildSource(sourceFile) {
     const original = fs.readFileSync(sourceFile, "utf8");
     let updated = original;
+
+    if (/^---\r?\n/.test(updated)) {
+        if (/^routerMode:/m.test(updated)) {
+            updated = updated.replace(/^routerMode:.*$/m, "routerMode: hash");
+        } else {
+            updated = updated.replace(/^---(\r?\n)/, "---$1routerMode: hash$1");
+        }
+
+        if (/^download:/m.test(updated)) {
+            updated = updated.replace(/^download:.*$/m, "download: false");
+        } else {
+            updated = updated.replace(/^---(\r?\n)/, "---$1download: false$1");
+        }
+    }
 
     // Rewrite absolute image refs (e.g. ![](/logo.png)) to concrete local files.
     updated = updated.replace(/!\[([^\]]*)\]\((\/[^)]+)\)/g, (_m, altText, rawRef) => {
@@ -87,6 +146,12 @@ function signaturePath(outputDir) {
     return path.join(outputDir, ".md_hash");
 }
 
+function removeCopiedPublicDirs(outputDir) {
+    for (const dirname of COPIED_PUBLIC_DIRS) {
+        fs.rmSync(path.join(outputDir, dirname), { recursive: true, force: true });
+    }
+}
+
 function needsBuild(sourceFile, outputDir) {
     if (FORCE_REBUILD) return { rebuild: true, reason: "forced rebuild" };
     const sigPath = signaturePath(outputDir);
@@ -94,16 +159,16 @@ function needsBuild(sourceFile, outputDir) {
     if (!fs.existsSync(sigPath)) return { rebuild: true, reason: "missing signature" };
     if (!fs.existsSync(indexPath)) return { rebuild: true, reason: "missing index.html" };
 
-    const current = fileHash(sourceFile);
+    const current = buildSignature(sourceFile);
     const previous = fs.readFileSync(sigPath, "utf8").trim();
     return current === previous
         ? { rebuild: false }
-        : { rebuild: true, reason: "markdown changed" };
+        : { rebuild: true, reason: "source or build config changed" };
 }
 
 function writeSignature(sourceFile, outputDir) {
     fs.mkdirSync(outputDir, { recursive: true });
-    fs.writeFileSync(signaturePath(outputDir), fileHash(sourceFile));
+    fs.writeFileSync(signaturePath(outputDir), buildSignature(sourceFile));
 }
 
 function discoverDecks() {
@@ -160,6 +225,7 @@ for (const file of decks) {
 
     if (!result.rebuild) {
         console.log(`[SKIP] ${file}`);
+        removeCopiedPublicDirs(outputDir);
         skippedCount++;
         continue;
     }
@@ -168,6 +234,7 @@ for (const file of decks) {
     fs.rmSync(outputDir, { recursive: true, force: true });
     fs.mkdirSync(outputDir, { recursive: true });
     runSlidevBuild(file, `/${REPO}/${base}/`, outputDir);
+    removeCopiedPublicDirs(outputDir);
     writeSignature(file, outputDir);
     builtCount++;
 }

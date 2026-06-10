@@ -24,7 +24,7 @@ info: |
 
 **גרא וייס**
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
@@ -161,7 +161,7 @@ $\sigma'[..i] = \sigma[..i] \;\Rightarrow\; \sigma' \notin P$
 </div>
 
 <div class="relative mx-auto mt-3 w-[40%]">
-  <img src="/safety_equivalent_branching.png" class="w-full" />
+  <img src="./public/safety_equivalent_branching.png" class="w-full" />
   <svg class="absolute left-[47%] bottom-[2%] w-[12%] h-[30%] overflow-visible" viewBox="0 0 60 150" aria-hidden="true">
     <defs>
       <marker id="sigma-prefix-arrow" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto">
@@ -234,7 +234,7 @@ $P_4 = \{\sigma \in (2^{AP})^\omega \mid \exists i \geq 0\ \left(p \in \sigma[i]
 
 <div class="mx-auto w-[95%]">
 <div class="mx-auto w-[98%] relative">
-  <img src="/safety_property_basketball.png" class="w-full rounded-xl shadow-2xl border border-slate-800" />
+  <img src="./public/safety_property_basketball.png" class="w-full rounded-xl shadow-2xl border border-slate-800" />
 
   <!-- Opponent label -->
   <div class="absolute top-[1%] -left-[10%] w-[35%] bg-gradient-to-r from-amber-900/90 to-amber-800/80 text-white p-3 rounded-lg text-[16px] font-bold shadow-lg flex items-center gap-3 backdrop-blur-sm border border-amber-700/50">
