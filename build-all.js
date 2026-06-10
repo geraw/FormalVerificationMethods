@@ -37,6 +37,7 @@ function buildSignature(sourceFile) {
         "build-all.js",
         "slidev.config.js",
         "vite.config.js",
+        "setup/vite-plugins.ts",
         "package-lock.json",
         "package.json",
     ];

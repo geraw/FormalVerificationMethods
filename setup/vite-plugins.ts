@@ -3,8 +3,9 @@ function disableRecordingDurationFix() {
         name: 'disable-recording-duration-fix',
         enforce: 'pre',
         transform(code: string, id: string) {
+            const normalizedId = id.replace(/\\/g, '/');
             const targetImport = "import { fixWebmDuration } from '@fix-webm-duration/fix'"
-            if (!id.includes('@slidev/client') || !code.includes(targetImport))
+            if (!normalizedId.includes('@slidev/client') || !code.includes(targetImport))
                 return null
 
             return {
@@ -18,6 +19,26 @@ function disableRecordingDurationFix() {
     }
 }
 
+function fixSlidevHashRouteBase() {
+    return {
+        name: 'fix-slidev-hash-route-base',
+        enforce: 'pre',
+        transform(code: string, id: string) {
+            const normalizedId = id.replace(/\\/g, '/');
+            if (normalizedId.includes('@slidev/client') && code.includes('createWebHashHistory(import.meta.env.BASE_URL)')) {
+                return {
+                    code: code.replace(
+                        'createWebHashHistory(import.meta.env.BASE_URL)',
+                        "createWebHashHistory('/')",
+                    ),
+                    map: null,
+                }
+            }
+            return null
+        },
+    }
+}
+
 export default function vitePlugins() {
-    return [disableRecordingDurationFix()]
+    return [disableRecordingDurationFix(), fixSlidevHashRouteBase()]
 }
