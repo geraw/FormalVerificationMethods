@@ -10,7 +10,7 @@ htmlAttrs:
   dir: rtl
   lang: heb
 drawings:
-  enabled: true
+  enabled: true 
 info: |
   ## מבוא לאימות תוכנה בשיטות פורמאליות
   מרצה: גרא וייס
