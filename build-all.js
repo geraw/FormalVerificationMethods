@@ -197,8 +197,9 @@ if (!fs.existsSync("dist")) {
     fs.mkdirSync("dist", { recursive: true });
 }
 
-const decks = discoverDecks();
-const deckBases = new Set(decks.map((file) => file.replace(/\.md$/, "")));
+const allDecks = discoverDecks();
+const decks = allDecks.filter((file) => file === "00-intro.md");
+const deckBases = new Set(allDecks.map((file) => file.replace(/\.md$/, "")));
 const removedCount = removeDeletedDeckOutputs(deckBases);
 
 let builtCount = 0;

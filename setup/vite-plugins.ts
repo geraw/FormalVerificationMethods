@@ -25,13 +25,28 @@ function fixSlidevHashRouteBase() {
         enforce: 'pre',
         transform(code: string, id: string) {
             const normalizedId = id.replace(/\\/g, '/');
-            if (normalizedId.includes('@slidev/client') && code.includes('createWebHashHistory(import.meta.env.BASE_URL)')) {
-                return {
-                    code: code.replace(
+            if (normalizedId.includes('@slidev/client')) {
+                let changed = false;
+                let newCode = code;
+                if (newCode.includes('createWebHashHistory(import.meta.env.BASE_URL)')) {
+                    newCode = newCode.replace(
                         'createWebHashHistory(import.meta.env.BASE_URL)',
                         "createWebHashHistory('/')",
-                    ),
-                    map: null,
+                    );
+                    changed = true;
+                }
+                if (newCode.includes('return `${import.meta.env.BASE_URL}${path}`')) {
+                    newCode = newCode.replace(
+                        'return `${import.meta.env.BASE_URL}${path}`',
+                        'return __SLIDEV_HASH_ROUTE__ ? `/${path}` : `${import.meta.env.BASE_URL}${path}`',
+                    );
+                    changed = true;
+                }
+                if (changed) {
+                    return {
+                        code: newCode,
+                        map: null,
+                    }
                 }
             }
             return null
