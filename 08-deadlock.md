@@ -24,7 +24,7 @@ info: |
 
 **גרא וייס**
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
@@ -62,7 +62,7 @@ info: |
 
 <div class="w-26 h-38 overflow-hidden rounded-lg border border-green-200 mb-1 -ml-10 -mt-20 float-left bg-white shadow-sm relative">
   <img
-    src="/terminal_states_comic.png"
+    src="./public/terminal_states_comic.png"
     alt="תוכנית סדרתית שמסתיימת בהצלחה"
     class="absolute inset-y-0 left-0 h-full max-w-none"
     style="width: 200%;"
@@ -90,7 +90,7 @@ $$
 
 <div class="w-26 h-38 overflow-hidden rounded-lg border border-red-200 mb-1 -ml-15 -mt-20 float-left bg-white shadow-sm relative">
   <img
-    src="/terminal_states_comic.png"
+    src="./public/terminal_states_comic.png"
     alt="מערכת מקבילית שנתקעת בקיפאון"
     class="absolute inset-y-0 left-0 h-full max-w-none"
     style="width: 200%; transform: translateX(-50%);"

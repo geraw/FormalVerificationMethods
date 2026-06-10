@@ -3,8 +3,18 @@ import crypto from "crypto";
 import fs from "fs";
 import path from "path";
 
+// Normalize CWD drive letter to uppercase on Windows to prevent Vite path resolution errors
+if (process.platform === "win32") {
+    const cwd = process.cwd();
+    const normalized = cwd.replace(/^[a-z]:/i, m => m.toUpperCase());
+    if (cwd !== normalized) {
+        process.chdir(normalized);
+    }
+}
+
 const REPO = process.env.REPO_NAME || "FormalVerificationMethods";
 const FORCE_REBUILD = process.env.FORCE_REBUILD === "1" || process.env.FORCE_REBUILD === "true";
+
 
 function quote(value) {
     return `"${String(value).replace(/"/g, '\\"')}"`;

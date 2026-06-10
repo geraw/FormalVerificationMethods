@@ -21,7 +21,7 @@ info: |
 
 **גרא וייס**
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; top: 40px; right: 40px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; top: 40px; right: 40px; width: 80px; z-index: 100;" />
 
 
 ---

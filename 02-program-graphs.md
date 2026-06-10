@@ -25,7 +25,7 @@ info: |
 
 
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
@@ -203,7 +203,7 @@ info: |
 
 ניתן לממש את "פריסת" המערכת בעזרת קוד פשוט. הקוד עובר על כל מרחב המצבים ומחשב את המעברים והתיוגים.
 
-<PyodideRunner src="/extract_ts.py" />
+<PyodideRunner src="./public/extract_ts.py" />
 
 ---
 
@@ -218,7 +218,7 @@ info: |
 
 
 <ExtractTsDiagramRunner
-  src="/extract_ts_lib.py"
+  src="./public/extract_ts_lib.py"
   :initial-expression="`extract_ts(
   1,
   [0],
@@ -355,7 +355,7 @@ $\eta_1 = \{ bit \mapsto 1 \}$
 </div>
 </div>
 
-<img src="/images/eta_comic_hebrew.svg" class="absolute bottom-40 left-1 w-[250px]" />
+<img src="./images/eta_comic_hebrew.svg" class="absolute bottom-40 left-1 w-[250px]" />
 
 ---
 
@@ -375,7 +375,7 @@ $\eta_1 = \{ bit \mapsto 1 \}$
 
 - **קיום תנאי (Satisfaction):** נכתוב $\eta \models g$ אם התנאי $g$ מתקיים תחת ההערכה $\eta$.
 
-<img src="/images/models_comic_hebrew.svg" class="absolute bottom-0 left-10 w-[220px]" />
+<img src="./images/models_comic_hebrew.svg" class="absolute bottom-0 left-10 w-[220px]" />
 ---
 
 # פעולות ופונקציית ההשפעה (Effect)
@@ -395,7 +395,7 @@ $\eta_1 = \{ bit \mapsto 1 \}$
   - $Effect(\alpha, \eta)(y) = \eta(y) = -2$
   ההערכה החדשה $Effect(\alpha, \eta)$ מקצה $3$ ל-$x$ ו-$-2$ ל-$y$.
 
-  <img src="/images/effect_explanation.png" class="absolute right-100 -bottom-1 w-45" />
+  <img src="./images/effect_explanation.png" class="absolute right-100 -bottom-1 w-45" />
 
 ---
 
@@ -464,7 +464,7 @@ $g_0 = (x = 0)$
   - המעברים יסמלצו את מה שכתבנו למעלה
 
 
-<img src="/operational_semantics_comic.png" class="absolute bottom-10 left-20 h-60 rounded-lg shadow-lg" />
+<img src="./public/operational_semantics_comic.png" class="absolute bottom-10 left-20 h-60 rounded-lg shadow-lg" />
 
 ---
 
@@ -616,7 +616,7 @@ const robot2dSmallExample = `pg_to_ts(
 </script>
 
 <ProgramGraphTsRunner
-  src="/pg_to_ts_lib.py"
+  src="./public/pg_to_ts_lib.py"
   :initial-expression="robot2dSmallExample"
 />
 
@@ -656,6 +656,6 @@ const robot2dSmallExample = `pg_to_ts(
 </script>
 
 <ProgramGraphTsRunner
-  src="/pg_to_ts_lib.py"
+  src="./public/pg_to_ts_lib.py"
   :initial-expression="robot2dSmallExample"
 />

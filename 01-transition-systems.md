@@ -24,14 +24,14 @@ info: |
 **גרא וייס**<br>
 
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
 # נושאי הקורס 
 
 <div class="flex justify-center">
-  <img src="/images/course_topics_diagram_v2_mine.png" class="h-110 w-140"  /> 
+  <img src="./images/course_topics_diagram_v2_mine.png" class="h-110 w-140"  /> 
 </div>
  
 ---
@@ -40,7 +40,7 @@ info: |
  
 
 <div class="flex justify-center">
-  <img src="/images/model-checking-4.png" class="h-110 w-180"  /> 
+  <img src="./images/model-checking-4.png" class="h-110 w-180"  /> 
 </div>
 
 
@@ -289,7 +289,7 @@ $L: \{RH\} \to \emptyset \to \emptyset \to \{TH\} \to \{TH,RH\}$
 
 
 <div class="flex items-center justify-center">
-  <img src="/images/nondeterminism_uses.png" class="rounded-xl shadow-2xl border border-white/10" />
+  <img src="./images/nondeterminism_uses.png" class="rounded-xl shadow-2xl border border-white/10" />
 </div>
 
 
@@ -299,7 +299,7 @@ $L: \{RH\} \to \emptyset \to \emptyset \to \{TH\} \to \{TH,RH\}$
 
 # קבוצות קודמים ועוקבים ישירים 
 
-<img src="/predecessors_successors_comic.png" class="absolute right-95 bottom-2 w-55" />
+<img src="./public/predecessors_successors_comic.png" class="absolute right-95 bottom-2 w-55" />
 
 תהי $TS = \langle S, Act, \to, I, AP, L \rangle$ מערכת מעברים. עבור מצב $s \in S$ ופעולה $\alpha \in Act$:
 
@@ -331,7 +331,7 @@ $L: \{RH\} \to \emptyset \to \emptyset \to \{TH\} \to \{TH,RH\}$
 
 # הרחבה לקבוצות
 
-<img src="/pointwise_extension_comic.png" class="absolute right-95 bottom-2 w-55" />
+<img src="./public/pointwise_extension_comic.png" class="absolute right-95 bottom-2 w-55" />
 
 תהי $TS = \langle S, Act, \to, I, AP, L \rangle$ מערכת מעברים. עבור קבוצת מצבים $C \subseteq S$ ופעולה $\alpha \in Act$:
 
@@ -362,7 +362,7 @@ $L: \{RH\} \to \emptyset \to \emptyset \to \{TH\} \to \{TH,RH\}$
 
 # מצבים סופניים (Terminal States)
 
-<img src="/terminal_states_comic.png" class="absolute right-95 bottom-0 w-55" />
+<img src="./public/terminal_states_comic.png" class="absolute right-95 bottom-0 w-55" />
 
 מצבים סופניים במערכת מעברים הם מצבים ללא מעברים יוצאים. כשהמערכת מגיעה למצב סופני, פעולתה נעצרת לחלוטין.
 
@@ -397,7 +397,7 @@ $L: \{RH\} \to \emptyset \to \emptyset \to \{TH\} \to \{TH,RH\}$
 
 # הגדרה: מערכת מעברים דטרמיניסטית
 
-<img src="/deterministic_observers.png" class="absolute right-95 bottom-5 w-55" />
+<img src="./public/deterministic_observers.png" class="absolute right-95 bottom-5 w-55" />
 
 תהי $TS = \langle S, Act, \to, I, AP, L \rangle$ מערכת מעברים.
 
@@ -448,7 +448,7 @@ $|I| \le 1$ וגם <br> <br> $|Post(s) \cap \{ s' \in S \mid L(s') = A \}| \le 1
   $$\rho = s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} s_2 \xrightarrow{\alpha_3} \dots$$
   כך ש- $s_i \xrightarrow{\alpha_{i+1}} s_{i+1}$ לכל $i \ge 0$.
 
-<img src="/execution_fragment_comic.png" class="absolute left-10 bottom-10 w-55" />
+<img src="./public/execution_fragment_comic.png" class="absolute left-10 bottom-10 w-55" />
 
 ---
 
@@ -460,13 +460,13 @@ $|I| \le 1$ וגם <br> <br> $|Post(s) \cap \{ s' \in S \mid L(s') = A \}| \le 1
 
 * מעתה, המונח **"מקטע ריצה"** יתייחס הן למקטע סופי והן לאינסופי.
 
-<img src="/execution_notes_comic.png" class="absolute right-90 bottom-2 w-70" />
+<img src="./public/execution_notes_comic.png" class="absolute right-90 bottom-2 w-70" />
 
 ---
 
 # מקטעי ריצה מקסימליים והתחלתיים
 
-<img v-click-hide src="/maximal_initial_fragments.png" class="absolute right-95 bottom-0 w-45" />
+<img v-click-hide src="./public/maximal_initial_fragments.png" class="absolute right-95 bottom-0 w-45" />
 
 מקטע ריצה נקרא **מקסימלי** כאשר לא ניתן להאריך אותו, ו**התחלתי** כאשר הוא מתחיל ממצב התחלתי:
 
@@ -557,7 +557,7 @@ $$s_0 \xrightarrow{\alpha_1} s_1 \xrightarrow{\alpha_2} \dots \xrightarrow{\alph
 </div>
 
 <div class="flex flex-col items-center justify-center">
-  <img src="/images/balls_puzzle_student.png" class="rounded-xl shadow-2xl border border-white/10 w-90" />
+  <img src="./images/balls_puzzle_student.png" class="rounded-xl shadow-2xl border border-white/10 w-90" />
 </div>
 
 

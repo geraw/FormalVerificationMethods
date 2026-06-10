@@ -24,7 +24,7 @@ info: |
 
 **גרא וייס**
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
@@ -190,7 +190,7 @@ $s_0s_1s_2s_3\dots$
 </div>
 
 <img
-  src="/trace-footprints-comic.png"
+  src="./public/trace-footprints-comic.png"
   alt="איור קומי של אדם הולך ואדם אחר בוחן את העקבות שלו"
   class="absolute bottom-5 left-75 w-90 opacity-90 pointer-events-none"
 />
@@ -828,7 +828,7 @@ $$
 </div>
 
 <div class="flex items-center justify-center">
-<img src="/summary_illustration.png" class="rounded shadow border border-slate-200 object-cover" />
+<img src="./public/summary_illustration.png" class="rounded shadow border border-slate-200 object-cover" />
 </div>
 </div>
 

@@ -26,7 +26,7 @@ info: |
 
 **גרא וייס**
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
@@ -56,7 +56,7 @@ info: |
 
 <div class="grid grid-cols-2 gap-8 mt-7 text-right">
 <div class="bg-red-50 border border-red-200 rounded p-4 min-h-[405px]">
-<img src="/images/liveness-intuition-safety-comic.png" class="w-full h-[178px] object-cover rounded border border-red-100 mb-4" />
+<img src="./images/liveness-intuition-safety-comic.png" class="w-full h-[178px] object-cover rounded border border-red-100 mb-4" />
 <div class="text-[27px] font-bold text-red-700 mb-3">בטיחות</div>
 <div class="text-[22px] font-bold mb-3">“משהו רע לא יקרה”</div>
 <div class="text-[18px] leading-relaxed">
@@ -66,7 +66,7 @@ info: |
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4 min-h-[405px]">
-<img src="/images/liveness-intuition-liveness-comic.png" class="w-full h-[178px] object-cover rounded border border-emerald-100 mb-4" />
+<img src="./images/liveness-intuition-liveness-comic.png" class="w-full h-[178px] object-cover rounded border border-emerald-100 mb-4" />
 <div class="text-[27px] font-bold text-emerald-700 mb-3">חַיּוּת</div>
 <div class="text-[22px] font-bold mb-3">“משהו טוב יקרה בסופו של דבר”</div>
 <div class="text-[18px] leading-relaxed">
@@ -80,7 +80,7 @@ info: |
 
 # הגדרה: תכונת חַיּוּת
 
-<img src="/images/liveness_prefix_extension_comic_he.png" style="position: absolute; bottom: 40px; left: 30px; width: 250px; z-index: 10; border-radius: 8px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); border: 1px solid #cbd5e1;" />
+<img src="./images/liveness_prefix_extension_comic_he.png" style="position: absolute; bottom: 40px; left: 30px; width: 250px; z-index: 10; border-radius: 8px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); border: 1px solid #cbd5e1;" />
 
 <div class="mt-8 text-right text-[24px] leading-relaxed">
 
@@ -128,11 +128,11 @@ info: |
 
 <div class="grid grid-cols-2 gap-4 mt-3">
 <div class="flex justify-center">
-<img src="/images/liveness_prove_no_text.png" class="max-w-full h-[240px] object-contain rounded-lg border border-slate-200 shadow-md" />
+<img src="./images/liveness_prove_no_text.png" class="max-w-full h-[240px] object-contain rounded-lg border border-slate-200 shadow-md" />
 </div>
 
 <div class="flex justify-center">
-<img src="/images/liveness_disprove_no_text.png" class="max-w-full h-[240px] object-contain rounded-lg border border-slate-200 shadow-md" />
+<img src="./images/liveness_disprove_no_text.png" class="max-w-full h-[240px] object-contain rounded-lg border border-slate-200 shadow-md" />
 </div>
 </div>
 
@@ -332,7 +332,7 @@ info: |
 </div>
 
 <div class="bg-blue-50 border border-blue-200 rounded p-5 text-[22px] leading-relaxed">
-<img src="/images/leslie-lamport-cutout.png" class="h-[170px] mx-auto -mt-3 mb-2 object-contain" />
+<img src="./images/leslie-lamport-cutout.png" class="h-[170px] mx-auto -mt-3 mb-2 object-contain" />
 <div class="font-bold text-[26px] mb-3">Leslie Lamport</div>
 חַיּוּת לא נותנת חסם זמן, אבל היא שוללת לולאות אינסופיות שמונעות התקדמות.
 </div>

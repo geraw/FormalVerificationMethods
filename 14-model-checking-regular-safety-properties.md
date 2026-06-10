@@ -24,7 +24,7 @@ info: |
 
 **גרא וייס**
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
@@ -95,7 +95,7 @@ info: |
 <span dir="ltr"><KatexInline math="\mathcal{L}(\mathcal{A})=\mathit{BadPref}(P_{\mathrm{safe}})" /></span>.
 </div>
 
-<img src="/security_automaton_guard.png" class="w-full rounded shadow-lg border-2 border-slate-200" />
+<img src="./public/security_automaton_guard.png" class="w-full rounded shadow-lg border-2 border-slate-200" />
 </div>
 
 ---
@@ -194,7 +194,7 @@ info: |
 
 </div>
 
-<img src="/regular-safety-problem-comic-he.svg" class="w-full rounded border border-slate-200 shadow-md" />
+<img src="./public/regular-safety-problem-comic-he.svg" class="w-full rounded border border-slate-200 shadow-md" />
 </div>
 
 <div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-center text-[18px] leading-snug">
@@ -304,7 +304,7 @@ info: |
 
 # רעיון האלגוריתם : רדוקציה לבדיקת שְׁמוּרָה
 
-<img src="/bad-prefix-monitor-machine.png" class="absolute right-[-165px] top-[82px] w-[500px]" />
+<img src="./public/bad-prefix-monitor-machine.png" class="absolute right-[-165px] top-[82px] w-[500px]" />
 
 <div class="absolute left-[145px] top-[150px] w-[350px] h-[100px] bg-blue-700 text-white text-center text-[22px] leading-tight px-7 pt-3 shadow-lg border-2 border-blue-950" style="clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);">
 נוסיף למערכת רכיב שיזהה שנצפתה
@@ -584,7 +584,7 @@ info: |
 
 <div class="relative mt-2 mx-auto w-[96%] h-[560px] overflow-hidden">
   <div class="absolute top-[8px] left-1/2 -translate-x-1/2 w-[220px] h-[186px] overflow-hidden">
-    <img src="/slide-reference/l18/image36.gif" class="w-[220px] h-[220px] object-cover object-top" style="clip-path: inset(0 0 34px 0);" />
+    <img src="./public/slide-reference/l18/image36.gif" class="w-[220px] h-[220px] object-cover object-top" style="clip-path: inset(0 0 34px 0);" />
   </div>
 
   <div class="absolute top-[206px] left-1/2 -translate-x-1/2 text-[27px]" dir="ltr">

@@ -24,7 +24,7 @@ info: |
 
 **גרא וייס**
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
@@ -104,7 +104,7 @@ info: |
 
 <div class="grid grid-cols-[0.8fr_1.2fr] gap-5 mt-3 items-center">
 <div class="flex items-center justify-center">
-  <img src="/images/buchi_emptiness.png" class="h-[260px] object-contain" />
+  <img src="./images/buchi_emptiness.png" class="h-[260px] object-contain" />
 </div>
 
 <div class="text-right text-[20px] leading-snug">
