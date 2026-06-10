@@ -85,6 +85,7 @@ function runSlidevBuild(sourceFile, basePath, outputDir) {
         "--base", basePath,
         "-o", outputDir,
         "--download", "false",
+        "--router-mode", "hash",
     ];
     try {
         execSync(`npx slidev build ${args.map(quote).join(" ")}`, { stdio: "inherit" });
