@@ -14,6 +14,12 @@ if (process.platform === "win32") {
 
 const REPO = process.env.REPO_NAME || "FormalVerificationMethods";
 const FORCE_REBUILD = process.env.FORCE_REBUILD === "1" || process.env.FORCE_REBUILD === "true";
+const COPIED_PUBLIC_DIRS = [
+    "slide-backgrounds",
+    "slide-reference",
+    "extracted",
+    "__pycache__",
+];
 
 
 function quote(value) {
@@ -47,6 +53,7 @@ function buildSignature(sourceFile) {
         repo: REPO,
         routerMode: "hash",
         download: false,
+        copiedPublicDirs: COPIED_PUBLIC_DIRS,
     }));
 
     return hash.digest("hex");
@@ -139,6 +146,12 @@ function signaturePath(outputDir) {
     return path.join(outputDir, ".md_hash");
 }
 
+function removeCopiedPublicDirs(outputDir) {
+    for (const dirname of COPIED_PUBLIC_DIRS) {
+        fs.rmSync(path.join(outputDir, dirname), { recursive: true, force: true });
+    }
+}
+
 function needsBuild(sourceFile, outputDir) {
     if (FORCE_REBUILD) return { rebuild: true, reason: "forced rebuild" };
     const sigPath = signaturePath(outputDir);
@@ -212,6 +225,7 @@ for (const file of decks) {
 
     if (!result.rebuild) {
         console.log(`[SKIP] ${file}`);
+        removeCopiedPublicDirs(outputDir);
         skippedCount++;
         continue;
     }
@@ -220,6 +234,7 @@ for (const file of decks) {
     fs.rmSync(outputDir, { recursive: true, force: true });
     fs.mkdirSync(outputDir, { recursive: true });
     runSlidevBuild(file, `/${REPO}/${base}/`, outputDir);
+    removeCopiedPublicDirs(outputDir);
     writeSignature(file, outputDir);
     builtCount++;
 }
