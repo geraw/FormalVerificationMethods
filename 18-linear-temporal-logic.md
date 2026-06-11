@@ -92,9 +92,9 @@ info: |
 </div>
 
 <div class="p-1 text-center">
-<img src="./public/amir-pnueli.jpg" class="mx-auto rounded w-[132px] h-[142px] object-cover" alt="אמיר פנואלי" />
+<img src="./public/amir-pnueli.png" class="mx-auto rounded w-[132px] h-[162px] object-cover" alt="אמיר פנואלי" />
 <div class="mt-1 text-[13px] text-slate-700">1941-2009</div>
-<div class="mt-0.5 text-[9px] text-slate-500" dir="ltr">Dennis Hamilton, CC BY 2.0</div>
+<div class="mt-0.5 text-[12px] text-slate-500" dir="ltr">אמיר פנואלי</div>
 </div>
 </div>
 
