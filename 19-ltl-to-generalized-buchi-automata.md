@@ -191,6 +191,10 @@ info: |
 
 # האינטואיציה של הבנייה
 
+<div class="mt-8 text-center text-[30px]">
+נבנה אוטומט Büchi מוכלל "שינחש" באופן אי-דטרמיניסטי אילו נוסחאות עומדות להתקיים בהמשך המילה בכל רגע, ויצליח ליצור ריצה אינסופית מקבלת רק אם הניחושים שלו היו נכונים.
+</div>
+
 <div class="mt-7 grid grid-cols-3 gap-4 text-right text-[20px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900">
 <div class="font-bold text-blue-800 mb-2">מצב</div>
@@ -198,19 +202,16 @@ info: |
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
-<div class="font-bold text-emerald-800 mb-2">מעבר</div>
+<div class="font-bold text-emerald-800 mb-2">יחס המעברים</div>
 בדיקה שהניחוש במצב הבא מתאים לכללי הפריסה של <span dir="ltr"><KatexInline math="\bigcirc" /></span> ושל <span dir="ltr"><KatexInline math="\mathrm{U}" /></span>.
 </div>
 
 <div class="bg-amber-50 border border-amber-200 rounded p-4 text-amber-900">
-<div class="font-bold text-amber-800 mb-2">קבלה</div>
+<div class="font-bold text-amber-800 mb-2">תנאי הקבלה</div>
 אכיפה של הבטחות חַיּוּת: אם ניחשנו <span dir="ltr"><KatexInline math="\psi_1\mathbin{\mathrm{U}}\psi_2" /></span>, אז <span dir="ltr"><KatexInline math="\psi_2" /></span> חייבת להגיע.
 </div>
 </div>
 
-<div class="mt-8 text-center text-[24px]">
-המצב <span dir="ltr"><KatexInline math="B_i" /></span> מתאר את אמת תת־הנוסחאות על הַסֵּיפָא <span dir="ltr"><KatexInline math="\sigma[i..]" /></span>.
-</div>
 
 ---
 
@@ -415,7 +416,7 @@ info: |
 </div>
 ---
 
-# שלב 2: קבוצות עקביות
+# שלב 2: מצבי האוטומט הם הקבוצות העקביות
 
 <div class="mt-6 text-right text-[21px] leading-relaxed">
 מצב באוטומט הוא קבוצה <span dir="ltr"><KatexInline math="B\subseteq cl(\varphi)" /></span> שמייצגת ניחוש מלא ועקבי.
@@ -435,7 +436,7 @@ info: |
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
-<div class="font-bold text-emerald-800 mb-2">עקביות מקומית של Until</div>
+<div class="font-bold text-emerald-800 mb-2">עקביות של Until</div>
 <div dir="ltr" class="grid grid-cols-[1fr_42px_1fr] gap-2 items-center text-[17px] leading-snug">
 <div class="text-right"><KatexInline math="\psi_2\in B" /></div>
 <div class="text-center"><KatexInline math="\Rightarrow" /></div>
@@ -458,7 +459,7 @@ info: |
 
 ---
 
-# שלב 3: מצבי התחלה
+# שלב 3: מצבי ההתחלה הם אלה המכילים את <span dir="ltr"><KatexInline math="\varphi" /></span>
 
 <div class="mt-7 text-right text-[22px] leading-relaxed">
 מצב התחלה הוא ניחוש שבו הנוסחה הראשית נכונה בתחילת המילה.
@@ -469,30 +470,30 @@ info: |
 </div>
 
 <div class="mt-8 bg-blue-50 border border-blue-200 rounded p-5 text-blue-900 text-right text-[21px] leading-relaxed">
-עבור <span dir="ltr"><KatexInline math="\varphi=a\mathbin{\mathrm{U}}b" /></span>, המצבים ההתחלתיים הם בדיוק המצבים שמכילים את <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>.
+עבור <span dir="ltr"><KatexInline math="\varphi=a\mathbin{\mathrm{U}}b" /></span>, מצבי ההתחלה הם בדיוק המצבים שמכילים את <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>.
 </div>
 
 ---
 
-# שלב 4: יחס המעברים
+# שלב 4: יחס המעברים נקבע על פי כללי הפריסה
 
 <div class="mt-6 text-right text-[21px] leading-relaxed">
-מעבר <span dir="ltr"><KatexInline math="B'\in\delta(B,A)" /></span> מותר רק אם האות הנקראת והמצב הבא תואמים לניחוש הנוכחי.
+מעבר <span dir="ltr"><KatexInline math="B'\in\delta(B,A)" /></span> מותר רק אם האות הנקראת והמצב הבא תואמים לניחוש הנוכחי:
 </div>
 
 <div class="mt-5 grid grid-cols-1 gap-3 text-right text-[18px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900">
-<div class="font-bold text-blue-800 mb-2">אטומים</div>
+<div class="font-bold text-blue-800 mb-2">לכל <span dir="ltr"><KatexInline math="a\in AP" /></span>:</div>
 <div dir="ltr" class="text-center"><KatexInline math="a\in B\iff a\in A" /></div>
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
-<div class="font-bold text-emerald-800 mb-2">Next</div>
+<div class="font-bold text-emerald-800 mb-2">לכל <span dir="ltr"><KatexInline math="\bigcirc\psi\in cl(\varphi)" /></span>:</div>
 <div dir="ltr" class="text-center"><KatexInline math="\bigcirc\psi\in B\iff \psi\in B'" /></div>
 </div>
 
 <div class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900">
-<div class="font-bold text-amber-800 mb-2">Until</div>
+<div class="font-bold text-amber-800 mb-2">לכל <span dir="ltr"><KatexInline math="\psi_1\mathbin{\mathrm{U}}\psi_2\in cl(\varphi)" /></span>:</div>
 <div dir="ltr" class="text-center"><KatexInline math="\psi_1\mathbin{\mathrm{U}}\psi_2\in B\land\psi_2\notin B\Rightarrow \psi_1\mathbin{\mathrm{U}}\psi_2\in B'" /></div>
 <div dir="ltr" class="mt-2 text-center"><KatexInline math="\psi_1\mathbin{\mathrm{U}}\psi_2\notin B\land\psi_1\in B\Rightarrow \psi_1\mathbin{\mathrm{U}}\psi_2\notin B'" /></div>
 </div>
