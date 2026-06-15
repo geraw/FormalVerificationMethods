@@ -466,7 +466,7 @@ info: |
 </div>
 
 <div class="mt-6 text-center text-[31px]" dir="ltr">
-<KatexInline display math="Q_0=\{B\in Q:\varphi\in B\}" />
+<KatexInline display math="Q_0=\{B\in Q\mid\varphi\in B\}" />
 </div>
 
 <div class="mt-8 bg-blue-50 border border-blue-200 rounded p-5 text-blue-900 text-right text-[21px] leading-relaxed">
@@ -500,6 +500,8 @@ info: |
 </div>
 
 ---
+hide: true
+---
 
 # איך לקרוא את כללי המעבר?
 
@@ -525,25 +527,25 @@ info: |
 
 ---
 
-# שלב 5: תנאי הקבלה
+# שלב 5: תנאי הקבלה ע"פ העיקרון "הבטחות צריך לקיים"
 
-<div class="mt-7 text-right text-[22px] leading-relaxed">
+<div class="mt-4 text-right text-[22px] leading-relaxed">
 לכל תת־נוסחת <span dir="ltr">Until</span> יוצרים קבוצת קבלה אחת:
 </div>
 
-<div class="mt-5 text-center text-[28px]" dir="ltr">
-<KatexInline display math="F_{\psi_1\mathrm{U}\psi_2}=\{B\in Q:\psi_1\mathbin{\mathrm{U}}\psi_2\notin B\;\lor\;\psi_2\in B\}" />
+<div class="mt-2 text-center text-[28px]" dir="ltr">
+<KatexInline display math="F_{\psi_1\mathrm{U}\psi_2}=\{B\in Q\mid\psi_1\mathbin{\mathrm{U}}\psi_2\notin B\;\lor\;\psi_2\in B\}" />
 </div>
 
-<div class="mt-4 text-right text-[20px] leading-relaxed">
+<div class="mt-2 text-right text-[20px] leading-relaxed">
 משפחת קבוצות הקבלה היא:
 </div>
 
-<div class="mt-2 text-center text-[27px]" dir="ltr">
+<div class="mt-1 text-center text-[27px]" dir="ltr">
 <KatexInline display math="\mathcal{F}=\{F_{\psi_1\mathrm{U}\psi_2}\mid \psi_1\mathbin{\mathrm{U}}\psi_2\in cl(\varphi)\}" />
 </div>
 
-<div class="mt-7 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
+<div class="mt-4 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900">
 אם ההבטחה אינה פתוחה, אין בעיה: המצב נמצא בקבוצת הקבלה.
 </div>
@@ -584,7 +586,7 @@ info: |
 </div>
 </div>
 <div class="mt-7 text-center text-[27px]" dir="ltr">
-<KatexInline display math="F_{a\mathrm{U}b}=\{B:a\mathbin{\mathrm{U}}b\notin B\lor b\in B\}" />
+<KatexInline display math="F_{a\mathrm{U}b}=\{B\mid a\mathbin{\mathrm{U}}b\notin B\lor b\in B\}" />
 </div>
 
 ---
@@ -610,14 +612,40 @@ info: |
     { id: 'c2', x: 260, y: 55, label: '$a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 154, labelHeight: 30, labelFontSize: 10.2, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
     { id: 'c3', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, labelFontSize: 10.2, fill: '#dcfce7', stroke: '#16a34a' },
     { id: 'c4', x: 90, y: 140, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, labelFontSize: 10.2, fill: '#dcfce7', stroke: '#16a34a' },
-    { id: 'c5', x: 26<div class="mt-3 text-right text-[17px] leading-relaxed">
+    { id: 'c5', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, labelFontSize: 10.2, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'c6', x: 430, y: 140, label: '$\\neg a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, labelFontSize: 10.2, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
+    { id: 'c7', x: 175, y: 220, label: '$\\neg a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 33, labelWidth: 154, labelHeight: 30, labelFontSize: 10.2, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
+    { id: 'c8', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 176, labelHeight: 30, labelFontSize: 10.2, fill: '#dcfce7', stroke: '#16a34a' }
+  ] : [
+    { id: 'q_both', x: 90, y: 55, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', initial: $slidev.nav.clicks >= 1, initialDirection: 'left', accepting: $slidev.nav.clicks >= 10, r: 33, labelWidth: 132, labelHeight: 30, labelFontSize: 10.2 },
+    { id: 'q_wait', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', initial: $slidev.nav.clicks >= 1, initialDirection: 'right', accepting: false, stroke: '#dc2626', r: 33, labelWidth: 142, labelHeight: 30, labelFontSize: 10.2 },
+    { id: 'q_b', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', initial: $slidev.nav.clicks >= 1, initialDirection: 'top', accepting: $slidev.nav.clicks >= 10, r: 33, labelWidth: 142, labelHeight: 30, labelFontSize: 10.2 },
+    { id: 'q_no', x: 90, y: 220, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', accepting: $slidev.nav.clicks >= 10, r: 33, labelWidth: 164, labelHeight: 30, labelFontSize: 10.2 },
+    { id: 'q_dead', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', accepting: $slidev.nav.clicks >= 10, r: 33, labelWidth: 176, labelHeight: 30, labelFontSize: 10.2 }
+  ]"
+  :transitions="[
+    ...($slidev.nav.clicks >= 2 ? [{ source: 'q_wait', target: 'q_wait', label: '$\\{a\\}$', loopDirection: '-90deg', labelY: -10, labelWidth: 70 }] : []),
+    ...($slidev.nav.clicks >= 3 ? [{ source: 'q_wait', target: 'q_both', label: '$\\{a,b\\}$', labelY: -12, labelWidth: 75, curve: 0.18 }] : []),
+    ...($slidev.nav.clicks >= 4 ? [{ source: 'q_wait', target: 'q_b', label: '$\\{b\\}$', labelY: -8, labelWidth: 60, curve: -0.12 }] : []),
+    ...($slidev.nav.clicks >= 5 ? [{ source: 'q_both', target: 'q_wait', label: '$\\{a\\}$', labelY: 8, labelWidth: 65, curve: 0.22 }] : []),
+    ...($slidev.nav.clicks >= 6 ? [{ source: 'q_both', target: 'q_b', label: '$\\{b\\}$', labelY: 12, labelWidth: 60, curve: -0.18 }] : []),
+    ...($slidev.nav.clicks >= 7 ? [{ source: 'q_no', target: 'q_no', label: '$\\{a\\}$', loopDirection: '90deg', labelY: 10, labelWidth: 65 }] : []),
+    ...($slidev.nav.clicks >= 8 ? [{ source: 'q_dead', target: 'q_dead', label: '$\\emptyset$', loopDirection: '90deg', labelY: 10, labelWidth: 80 }] : []),
+    ...($slidev.nav.clicks >= 9 ? [{ source: 'q_b', target: 'q_dead', label: '$\\emptyset$', labelY: 16, labelWidth: 80, curve: 0.12 }] : []),
+    ...($slidev.nav.clicks >= 9 ? [{ source: 'q_b', target: 'q_both', label: '$\\{a,b\\}$', labelY: -14, labelWidth: 80, curve: 0.18 }] : [])
+  ]"
+/>
+</div>
+</div>
+
+<div class="mt-3 text-right text-[17px] leading-relaxed">
 <div v-show="$slidev.nav.clicks === 0" class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900" dir="rtl">
 בשלב הראשון כל 8 המועמדים מופיעים בתוך ציור האוטומט. שלושת האדומים נפסלים מחוסר עקביות.
 </div>
 
-<div class="v-show" v-show="$slidev.nav.clicks === 1" class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900" dir="rtl">
+<div v-show="$slidev.nav.clicks === 1" class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900" dir="rtl">
 נשארים 5 מצבים עקביים, וממקמים אותם כאוטומט.
-<div class="mt-1">מצבי התחלה נקבעים לפי הכלל <span dir="ltr"><KatexInline math="Q_0=\{B\in Q:\varphi\in B\}" /></span>, כלומר כל מצב שמכיל את <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> מסומן כהתחלתי.</div>
+<div class="mt-1">מצבי התחלה נקבעים לפי הכלל <span dir="ltr"><KatexInline math="Q_0=\{B\in Q\mid\varphi\in B\}" /></span>, כלומר כל מצב שמכיל את <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> מסומן כהתחלתי.</div>
 </div>
 
 <div v-show="$slidev.nav.clicks === 2" class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900" dir="rtl">
@@ -646,51 +674,6 @@ info: |
 </div>
 <div v-show="$slidev.nav.clicks >= 10" class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900" dir="rtl">
 רק עכשיו מסמנים את המצבים המקבלים: כל מצב שבו <span dir="ltr"><KatexInline math="b" /></span> מתקיים או ש־<span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> לא פתוחה.
-</div>
-</div>..($slidev.nav.clicks >= 9 ? [{ source: 'q_b', target: 'q_dead', label: '$\\emptyset$', labelY: 16, labelWidth: 80, curve: 0.12 }] : []),
-    ...($slidev.nav.clicks >= 9 ? [{ source: 'q_b', target: 'q_both', label: '$\\{a,b\\}$', labelY: -14, labelWidth: 80, curve: 0.18 }] : [])
-  ]"
-/>
-</div>
-</div>
-
-<div class="mt-3 text-right text-[17px] leading-relaxed">
-<div v-show="$slidev.nav.clicks === 0" class="bg-blue-50 border border-blue-200 rounded p-3" dir="rtl">
-בשלב הראשון כל 8 המועמדים מופיעים בתוך ציור האוטומט. שלושת האדומים נפסלים מחוסר עקביות.
-</div>
-
-<div v-show="$slidev.nav.clicks === 1" class="bg-emerald-50 border border-emerald-200 rounded p-3" dir="rtl">
-נשארים 5 מצבים עקביים, וממקמים אותם כאוטומט.
-<div class="mt-1">מצבי התחלה נקבעים לפי הכלל <span dir="ltr"><KatexInline math="Q_0=\{B\in Q:\varphi\in B\}" /></span>, כלומר כל מצב שמכיל את <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> מסומן כהתחלתי.</div>
-</div>
-
-<div v-show="$slidev.nav.clicks === 2" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
-קשת 1: לולאה על המצב <span dir="ltr"><KatexInline math="a,\neg b,a\mathbin{\mathrm{U}}b" /></span> עם <span dir="ltr"><KatexInline math="\{a\}" /></span>.
-</div>
-<div v-show="$slidev.nav.clicks === 3" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
-קשת 2: עם <span dir="ltr"><KatexInline math="\{a,b\}" /></span> עוברים אל המצב <span dir="ltr"><KatexInline math="a,b,a\mathbin{\mathrm{U}}b" /></span>.
-</div>
-<div v-show="$slidev.nav.clicks === 4" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
-קשת 3: עם <span dir="ltr"><KatexInline math="\{b\}" /></span> עוברים אל המצב <span dir="ltr"><KatexInline math="\neg a,b,a\mathbin{\mathrm{U}}b" /></span>.
-</div>
-<div v-show="$slidev.nav.clicks === 5" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
-קשת 4: מהמצב העליון חזרה אל מצב ההמתנה עם <span dir="ltr"><KatexInline math="\{a\}" /></span>.
-</div>
-<div v-show="$slidev.nav.clicks === 6" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
-קשת 5: מהמצב העליון אל מצב <span dir="ltr"><KatexInline math="\neg a,b,a\mathbin{\mathrm{U}}b" /></span> עם <span dir="ltr"><KatexInline math="\{b\}" /></span>.
-</div>
-<div v-show="$slidev.nav.clicks === 7" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
-קשת 6: לולאה על <span dir="ltr"><KatexInline math="a,\neg b,\neg(a\mathbin{\mathrm{U}}b)" /></span>.
-</div>
-<div v-show="$slidev.nav.clicks === 8" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
-קשת 7: לולאה על <span dir="ltr"><KatexInline math="\neg a,\neg b,\neg(a\mathbin{\mathrm{U}}b)" /></span>.
-</div>
-<div v-show="$slidev.nav.clicks === 9" class="bg-amber-50 border border-amber-200 rounded p-3" dir="rtl">
-קשתות 8-9: מהמצב <span dir="ltr"><KatexInline math="\neg a,b,a\mathbin{\mathrm{U}}b" /></span> אל שני מצבים בהתאם לתווית הקלט.
-</div>
-<div v-show="$slidev.nav.clicks >= 10" class="bg-emerald-50 border border-emerald-200 rounded p-3" dir="rtl">
-רק עכשיו מסמנים את המצבים המקבלים: כל מצב שבו <span dir="ltr"><KatexInline math="b" /></span> מתקיים או ש־<span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> לא פתוחה.
-</div>
 </div>
 
 ---
