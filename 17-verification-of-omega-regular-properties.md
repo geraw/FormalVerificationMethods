@@ -110,74 +110,69 @@ info: |
 
 # תזכורת: מכפלה של מערכת מעברים ואוטומט
 
-<div class="mt-2 grid grid-cols-[1.05fr_0.95fr] gap-4 items-start">
-
-<div>
-<div class="text-right text-[18px] leading-snug">
+<div class="mt-2 text-right text-[17px] leading-snug">
 עבור <KatexInline math="TS=\langle S,Act,\to,I,AP,L\rangle" /> ללא מצבים סופניים, ו־
 <KatexInline math="\mathcal{A}=\langle Q,2^{AP},\delta,Q_0,F\rangle" /> בלתי חוסם:
 </div>
 
-<div class="compact-display mt-2 text-center text-[23px]" dir="ltr">
+<div class="compact-display mt-1 text-center text-[22px]" dir="ltr">
 <KatexInline display math="TS\times\mathcal{A}=\langle S\times Q,Act,\to_\times,I_\times,Q,L_\times\rangle" />
 </div>
 
-<div class="mt-2 grid grid-cols-1 gap-2 text-[17px] leading-snug">
-<div class="bg-slate-50 border border-slate-200 rounded px-3 py-2 text-slate-800">
+<div class="mt-1 space-y-1.5 text-[16px] leading-snug">
+<div class="bg-slate-50 border border-slate-200 rounded px-3 py-1.5 text-slate-800">
 <div class="font-bold mb-1">מעברים</div>
 <div class="compact-display" dir="ltr"><KatexInline display math="\frac{s\xrightarrow{\alpha}t\ \land\ p\in\delta(q,L(t))}{\langle s,q\rangle\xrightarrow{\alpha}_\times\langle t,p\rangle}" /></div>
 </div>
 
-<div class="bg-slate-50 border border-slate-200 rounded px-3 py-2 text-slate-800">
+<div class="bg-slate-50 border border-slate-200 rounded px-3 py-1.5 text-slate-800">
 <div class="font-bold mb-1">מצבי התחלה</div>
 <div class="compact-display" dir="ltr"><KatexInline display math="I_\times=\{\langle s_0,q\rangle\mid s_0\in I\ \land\ \exists q_0\in Q_0\ \left(q\in\delta(q_0,L(s_0))\right)\}" /></div>
 </div>
 </div>
 
-<div class="mt-2 text-right text-[18px] leading-snug">
+<div class="mt-1.5 text-right text-[17px] leading-snug">
 התיוג במכפלה הוא מצב האוטומט: <span dir="ltr"><KatexInline math="L_\times(\langle s,q\rangle)=\{q\}" /></span>.
 </div>
-</div>
 
-<div class="relative h-[470px] overflow-hidden">
-  <div class="absolute top-[92px] left-1/2 -translate-x-1/2 w-[220px] h-[186px] overflow-hidden">
-    <img src="/slide-reference/l18/image36.gif" class="w-[220px] h-[220px] object-cover object-top" style="clip-path: inset(0 0 34px 0);" />
+<div class="relative mt-1 mx-auto h-[250px] w-[64%] overflow-hidden">
+  <div class="absolute top-[18px] left-1/2 -translate-x-1/2 w-[180px] h-[152px] overflow-hidden">
+    <img src="/slide-reference/l18/image36.gif" class="w-[180px] h-[180px] object-cover object-top" style="clip-path: inset(0 0 28px 0);" />
   </div>
 
-  <div class="absolute top-[280px] left-1/2 -translate-x-1/2 text-[25px]" dir="ltr">
+  <div class="absolute top-[172px] left-1/2 -translate-x-1/2 text-[21px]" dir="ltr">
     <KatexInline math="TS\times\mathcal{A}" />
   </div>
 
-  <div class="absolute top-[100px] right-[14px] text-[17px] text-blue-700 text-right leading-tight">
+  <div class="absolute top-[32px] right-[48px] text-[14px] text-blue-700 text-right leading-tight">
     מערכת המעברים<br>מייצרת עקבות
   </div>
 
-  <div class="absolute top-[232px] left-[4px] text-[17px] text-red-700 text-right leading-tight">
+  <div class="absolute top-[126px] left-[28px] text-[14px] text-red-700 text-right leading-tight">
     האוטומט עוקב<br>אחרי העקבות
   </div>
 
-  <svg class="absolute left-[18px] top-[140px] w-[154px] h-[114px]" viewBox="0 0 154 114" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg class="absolute left-[74px] top-[54px] w-[124px] h-[92px]" viewBox="0 0 154 114" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <marker id="arrow-red-product-reminder" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
         <path d="M 0 0 L 8 4 L 0 8 z" fill="#dc2626" />
       </marker>
     </defs>
-    <path d="M 20 96 C 42 66, 82 42, 132 26" stroke="#dc2626" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow-red-product-reminder)" />
+    <path d="M 20 96 C 42 66, 82 42, 132 26" stroke="#dc2626" stroke-width="4.2" stroke-linecap="round" marker-end="url(#arrow-red-product-reminder)" />
   </svg>
 
-  <svg class="absolute right-[26px] top-[130px] w-[150px] h-[110px]" viewBox="0 0 150 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg class="absolute right-[84px] top-[56px] w-[120px] h-[88px]" viewBox="0 0 150 110" fill="none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <marker id="arrow-blue-product-reminder" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
         <path d="M 0 0 L 8 4 L 0 8 z" fill="#1d4ed8" />
       </marker>
     </defs>
-    <path d="M 128 18 C 110 48, 82 76, 34 96" stroke="#1d4ed8" stroke-width="5" stroke-linecap="round" marker-end="url(#arrow-blue-product-reminder)" />
+    <path d="M 128 18 C 110 48, 82 76, 34 96" stroke="#1d4ed8" stroke-width="4.2" stroke-linecap="round" marker-end="url(#arrow-blue-product-reminder)" />
   </svg>
 
-  <div class="absolute left-1/2 -translate-x-1/2 bottom-[72px] w-[90%] bg-[#0f4c81] text-white text-[14px] px-5 py-2 rounded shadow-md text-center leading-tight">
+  <div class="absolute left-1/2 -translate-x-1/2 bottom-[6px] w-[84%] bg-[#0f4c81] text-white text-[12px] px-4 py-1.5 rounded shadow-md text-center leading-tight">
     בכל צעד מתקדמים גם במערכת המעברים וגם באוטומט שקורא את התיוג של המצב החדש.
   </div>
-</div>
 </div>
 
 <style>
