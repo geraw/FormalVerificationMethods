@@ -675,6 +675,7 @@ hide: true
 <div v-show="$slidev.nav.clicks >= 10" class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900" dir="rtl">
 רק עכשיו מסמנים את המצבים המקבלים: כל מצב שבו <span dir="ltr"><KatexInline math="b" /></span> מתקיים או ש־<span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> לא פתוחה.
 </div>
+</div>
 
 ---
 
