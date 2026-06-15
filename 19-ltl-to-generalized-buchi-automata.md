@@ -24,25 +24,25 @@ info: |
 
 **גרא וייס**
 
-<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
 # ראשי פרקים
 
 <div class="grid grid-cols-3 gap-4 mt-8 text-right text-[19px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
-<div class="font-bold text-blue-700 mb-2">רדוקציה</div>
+<div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900">
+<div class="font-bold text-blue-800 mb-2">רדוקציה</div>
 נראה איך בדיקת <span dir="ltr">LTL</span> הופכת לחיפוש ריצה מקבלת במכפלה עם אוטומט.
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-2">בניית האוטומט</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
+<div class="font-bold text-emerald-800 mb-2">בניית האוטומט</div>
 נבנה <span dir="ltr">GNBA</span> שמקבל בדיוק את המילים שמקיימות נוסחת <span dir="ltr">LTL</span>.
 </div>
 
-<div class="bg-amber-50 border border-amber-200 rounded p-4">
-<div class="font-bold text-amber-700 mb-2">הבטחות Until</div>
+<div class="bg-amber-50 border border-amber-200 rounded p-4 text-amber-900">
+<div class="font-bold text-amber-800 mb-2">הבטחות Until</div>
 נבין למה תנאי הקבלה נועד לוודא שכל הבטחת <span dir="ltr">Until</span> אכן מתממשת.
 </div>
 </div>
@@ -60,12 +60,12 @@ info: |
 </div>
 
 <div class="mt-8 grid grid-cols-2 gap-5 text-right text-[21px] leading-relaxed">
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-2">כן</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
+<div class="font-bold text-emerald-800 mb-2">כן</div>
 כל עקבה של המערכת מקיימת את הנוסחה.
 </div>
-<div class="bg-red-50 border border-red-200 rounded p-4">
-<div class="font-bold text-red-700 mb-2">לא</div>
+<div class="bg-red-50 border border-red-200 rounded p-4 text-red-900">
+<div class="font-bold text-red-800 mb-2">לא</div>
 יש עקבה של המערכת שמפרה את הנוסחה, והיא תהיה הדוגמה הנגדית.
 </div>
 </div>
@@ -83,18 +83,18 @@ info: |
 </div>
 
 <div class="mt-6 grid grid-cols-[1fr_auto_1fr] gap-4 items-center text-center text-[20px]">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
+<div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900">
 מערכת המעברים<br />
 <span dir="ltr"><KatexInline math="TS" /></span>
 </div>
 <div class="text-[34px]">×</div>
-<div class="bg-amber-50 border border-amber-200 rounded p-4">
+<div class="bg-amber-50 border border-amber-200 rounded p-4 text-amber-900">
 אוטומט עבור ההפרה<br />
 <span dir="ltr"><KatexInline math="\mathcal{A}_{\neg\varphi}" /></span>
 </div>
 </div>
 
-<div class="mt-6 bg-slate-50 border border-slate-200 rounded p-4 text-right text-[20px] leading-relaxed">
+<div class="mt-6 bg-slate-50 border border-slate-200 rounded p-4 text-slate-800 text-right text-[20px] leading-relaxed">
 אם במכפלה יש ריצה מקבלת, היא מתארת בדיוק עקבה מפרה של המערכת. אם אין ריצה כזאת, המערכת מקיימת את הנוסחה.
 </div>
 
@@ -104,11 +104,11 @@ info: |
 
 <div class="absolute top-[30px] left-[72px] flex gap-5 items-start">
 <div class="text-center">
-<img src="./public/moshe-vardi.png" class="h-[108px] mx-auto object-contain" />
+<img src="/moshe-vardi.png" class="h-[108px] mx-auto object-contain" />
 <div class="mt-1 text-[16px]">משה ורדי</div>
 </div>
 <div class="text-center">
-<img src="./public/pierre-wolper.png" class="h-[108px] mx-auto object-contain" />
+<img src="/pierre-wolper.png" class="h-[108px] mx-auto object-contain" />
 <div class="mt-1 text-[16px]">פייר וולפר</div>
 </div>
 </div>
@@ -125,7 +125,7 @@ info: |
 נרצה לבנות את האוטומט כדי שיתקיים:
 </div>
 
-<div class="mt-5 bg-emerald-50 border border-emerald-200 rounded p-4 text-center text-[28px]" dir="ltr">
+<div class="mt-5 bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900 text-center text-[28px]" dir="ltr">
 <KatexInline display math="\mathcal{L}_{\omega}(\mathcal{G}_{\varphi})=Words(\varphi)" />
 </div>
 
@@ -156,7 +156,7 @@ info: |
 </div>
 </div>
 
-<div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-right text-[16px] leading-snug">
+<div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-slate-800 text-right text-[16px] leading-snug">
 <div class="font-bold mb-1">הוכחה ששפת האוטומט היא <span dir="ltr"><KatexInline math="\Box\Diamond a\land\Box\Diamond b" /></span></div>
 אם ריצה מתקבלת, היא מבקרת ב־<span dir="ltr"><KatexInline math="q_a" /></span> וב־<span dir="ltr"><KatexInline math="q_b" /></span> אינסוף פעמים; לכן נקראו אותיות עם <span dir="ltr"><KatexInline math="a" /></span> ועם <span dir="ltr"><KatexInline math="b" /></span> אינסוף פעמים.
 להפך, אם במילה יש אינסוף מופעים של <span dir="ltr"><KatexInline math="a" /></span> ואינסוף מופעים של <span dir="ltr"><KatexInline math="b" /></span>, אפשר לבחור בכל מופע כזה מעבר אל <span dir="ltr"><KatexInline math="q_a" /></span> או <span dir="ltr"><KatexInline math="q_b" /></span>, ולכן הריצה מבקרת בשתי קבוצות הקבלה אינסוף פעמים.
@@ -164,20 +164,20 @@ info: |
 </div>
 
 <div class="text-right text-[19px] leading-relaxed -mt-4">
-<div class="bg-slate-50 border border-slate-200 rounded p-3 mb-3 w-full">
+<div class="bg-slate-50 border border-slate-200 rounded p-3 mb-3 w-full text-slate-800">
 ב־<span dir="ltr">GNBA</span> ריצה מתקבלת אם ורק אם היא מבקרת בכל אחת מקבוצות הקבלה אינסוף פעמים.
 </div>
 
 <div class="grid grid-cols-1 gap-3">
-<div class="bg-blue-50 border border-blue-200 rounded p-3 w-full">
+<div class="bg-blue-50 border border-blue-200 rounded p-3 w-full text-blue-900">
 <span dir="ltr"><KatexInline math="F_a=\{q_a\}" /></span>: צריך לראות <span dir="ltr"><KatexInline math="a" /></span> אינסוף פעמים.
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3 w-full">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3 w-full text-emerald-900">
 <span dir="ltr"><KatexInline math="F_b=\{q_b\}" /></span>: צריך לראות <span dir="ltr"><KatexInline math="b" /></span> אינסוף פעמים.
 </div>
 
-<div class="bg-amber-50 border border-amber-200 rounded p-3 text-center w-full">
+<div class="bg-amber-50 border border-amber-200 rounded p-3 text-center w-full text-amber-900">
 <div class="text-right mb-1">לכן הדוגמה מקבלת את השפה:</div>
 <div class="text-[24px]" dir="ltr">
 <KatexInline display math="\Box\Diamond a\;\land\;\Box\Diamond b" />
@@ -192,24 +192,24 @@ info: |
 # האינטואיציה של הבנייה
 
 <div class="mt-7 grid grid-cols-3 gap-4 text-right text-[20px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
-<div class="font-bold text-blue-700 mb-2">מצב</div>
-השמה עקבית לתת־נוסחאות של <span dir="ltr"><KatexInline math="\varphi" /></span>: מה נכון עכשיו לגבי הסיפה הנוכחית של המילה.
+<div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900">
+<div class="font-bold text-blue-800 mb-2">מצב</div>
+השמה עקבית לתת־נוסחאות של <span dir="ltr"><KatexInline math="\varphi" /></span>: מה נכון עכשיו לגבי הַסֵּיפָא הנוכחית של המילה.
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-2">מעבר</div>
-בדיקה שהניחוש במצב הבא מתאים ל־<span dir="ltr"><KatexInline math="\bigcirc" /></span> ולכללי הפריסה של <span dir="ltr"><KatexInline math="\mathrm{U}" /></span>.
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
+<div class="font-bold text-emerald-800 mb-2">מעבר</div>
+בדיקה שהניחוש במצב הבא מתאים לכללי הפריסה של <span dir="ltr"><KatexInline math="\bigcirc" /></span> ושל <span dir="ltr"><KatexInline math="\mathrm{U}" /></span>.
 </div>
 
-<div class="bg-amber-50 border border-amber-200 rounded p-4">
-<div class="font-bold text-amber-700 mb-2">קבלה</div>
-אכיפה של הבטחות חיות: אם ניחשנו <span dir="ltr"><KatexInline math="\psi_1\mathbin{\mathrm{U}}\psi_2" /></span>, אז <span dir="ltr"><KatexInline math="\psi_2" /></span> חייבת להגיע.
+<div class="bg-amber-50 border border-amber-200 rounded p-4 text-amber-900">
+<div class="font-bold text-amber-800 mb-2">קבלה</div>
+אכיפה של הבטחות חַיּוּת: אם ניחשנו <span dir="ltr"><KatexInline math="\psi_1\mathbin{\mathrm{U}}\psi_2" /></span>, אז <span dir="ltr"><KatexInline math="\psi_2" /></span> חייבת להגיע.
 </div>
 </div>
 
 <div class="mt-8 text-center text-[24px]">
-המצב <span dir="ltr"><KatexInline math="B_i" /></span> מתאר את אמת תת־הנוסחאות על הסיפה <span dir="ltr"><KatexInline math="\sigma[i..]" /></span>.
+המצב <span dir="ltr"><KatexInline math="B_i" /></span> מתאר את אמת תת־הנוסחאות על הַסֵּיפָא <span dir="ltr"><KatexInline math="\sigma[i..]" /></span>.
 </div>
 
 ---
@@ -217,7 +217,7 @@ info: |
 # אנימציה: שלושה מהמרים
 
 <div class="absolute inset-x-0 bottom-0 h-[310px] overflow-hidden opacity-75">
-<img src="./public/gambler-guesses.png" class="w-full h-full object-cover object-bottom" />
+<img src="/gambler-guesses.png" class="w-full h-full object-cover object-bottom" />
 </div>
 <div class="absolute inset-0 bg-white/45 pointer-events-none"></div>
 
@@ -374,7 +374,7 @@ info: |
 </div>
 
 <div class="mt-2 grid grid-cols-[0.95fr_1.05fr] gap-4 items-start">
-<div class="bg-slate-50 border border-slate-200 rounded p-2 text-center">
+<div class="bg-slate-50 border border-slate-200 rounded p-2 text-center text-slate-800">
 <div class="font-bold mb-1 text-right text-[16px]">עץ הביטוי</div>
 <div class="relative h-[205px] text-[17px]" dir="ltr">
 <div class="absolute left-[50%] top-[6px] -translate-x-1/2 bg-white border border-slate-300 rounded px-4 py-1 z-10"><KatexInline math="\land" /></div>
@@ -396,8 +396,8 @@ info: |
 </div>
 </div>
 
-<div class="bg-blue-50 border border-blue-200 rounded p-2 text-right text-[15px] leading-snug">
-<div class="font-bold text-blue-700 mb-1"><span dir="ltr"><KatexInline math="cl(\varphi)" /></span>: כל תת־העצים ושלילתם</div>
+<div class="bg-blue-50 border border-blue-200 rounded p-2 text-right text-[15px] leading-snug text-blue-900">
+<div class="font-bold text-blue-800 mb-1"><span dir="ltr"><KatexInline math="cl(\varphi)" /></span>: כל תת־העצים ושלילתם</div>
 <div class="grid grid-cols-2 gap-x-3 gap-y-0.5 text-center justify-items-center" dir="ltr">
 <div><KatexInline math="a" /></div><div><KatexInline math="\neg a" /></div>
 <div><KatexInline math="b" /></div><div><KatexInline math="\neg b" /></div>
@@ -422,8 +422,8 @@ info: |
 </div>
 
 <div class="mt-5 grid grid-cols-2 gap-5 text-right text-[18px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
-<div class="font-bold text-blue-700 mb-2">עקביות בוליאנית</div>
+<div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900">
+<div class="font-bold text-blue-800 mb-2">עקביות בוליאנית</div>
 <div dir="ltr" class="grid grid-cols-[1fr_42px_1fr] gap-2 items-center text-[17px] leading-snug">
 <div class="text-right"><KatexInline math="\psi_1\land\psi_2\in B" /></div>
 <div class="text-center"><KatexInline math="\iff" /></div>
@@ -434,8 +434,8 @@ info: |
 </div>
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-2">עקביות מקומית של Until</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
+<div class="font-bold text-emerald-800 mb-2">עקביות מקומית של Until</div>
 <div dir="ltr" class="grid grid-cols-[1fr_42px_1fr] gap-2 items-center text-[17px] leading-snug">
 <div class="text-right"><KatexInline math="\psi_2\in B" /></div>
 <div class="text-center"><KatexInline math="\Rightarrow" /></div>
@@ -447,7 +447,7 @@ info: |
 </div>
 </div>
 
-<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-4 text-right text-[20px] leading-relaxed">
+<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-4 text-amber-900 text-right text-[20px] leading-relaxed">
 <div class="mb-2">המקסימליות אומרת שבכל מצב אנחנו בוחרים בדיוק אחד מכל זוג <span dir="ltr"><KatexInline math="\psi,\neg\psi" /></span>:</div>
 <div dir="ltr" class="grid grid-cols-[1fr_42px_1fr] gap-2 items-center text-[19px] leading-snug">
 <div class="text-right"><KatexInline math="\psi\in B" /></div>
@@ -468,7 +468,7 @@ info: |
 <KatexInline display math="Q_0=\{B\in Q:\varphi\in B\}" />
 </div>
 
-<div class="mt-8 bg-blue-50 border border-blue-200 rounded p-5 text-right text-[21px] leading-relaxed">
+<div class="mt-8 bg-blue-50 border border-blue-200 rounded p-5 text-blue-900 text-right text-[21px] leading-relaxed">
 עבור <span dir="ltr"><KatexInline math="\varphi=a\mathbin{\mathrm{U}}b" /></span>, המצבים ההתחלתיים הם בדיוק המצבים שמכילים את <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>.
 </div>
 
@@ -481,18 +481,18 @@ info: |
 </div>
 
 <div class="mt-5 grid grid-cols-1 gap-3 text-right text-[18px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-3">
-<div class="font-bold text-blue-700 mb-2">אטומים</div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900">
+<div class="font-bold text-blue-800 mb-2">אטומים</div>
 <div dir="ltr" class="text-center"><KatexInline math="a\in B\iff a\in A" /></div>
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
-<div class="font-bold text-emerald-700 mb-2">Next</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
+<div class="font-bold text-emerald-800 mb-2">Next</div>
 <div dir="ltr" class="text-center"><KatexInline math="\bigcirc\psi\in B\iff \psi\in B'" /></div>
 </div>
 
-<div class="bg-amber-50 border border-amber-200 rounded p-3">
-<div class="font-bold text-amber-700 mb-2">Until</div>
+<div class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900">
+<div class="font-bold text-amber-800 mb-2">Until</div>
 <div dir="ltr" class="text-center"><KatexInline math="\psi_1\mathbin{\mathrm{U}}\psi_2\in B\land\psi_2\notin B\Rightarrow \psi_1\mathbin{\mathrm{U}}\psi_2\in B'" /></div>
 <div dir="ltr" class="mt-2 text-center"><KatexInline math="\psi_1\mathbin{\mathrm{U}}\psi_2\notin B\land\psi_1\in B\Rightarrow \psi_1\mathbin{\mathrm{U}}\psi_2\notin B'" /></div>
 </div>
@@ -503,13 +503,13 @@ info: |
 # איך לקרוא את כללי המעבר?
 
 <div class="mt-7 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-2">הבטחה פתוחה</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
+<div class="font-bold text-emerald-800 mb-2">הבטחה פתוחה</div>
 אם <span dir="ltr"><KatexInline math="\psi_1\mathbin{\mathrm{U}}\psi_2" /></span> נכון עכשיו, אבל <span dir="ltr"><KatexInline math="\psi_2" /></span> עדיין לא נכון, אז ההבטחה חייבת להמשיך למצב הבא.
 </div>
 
-<div class="bg-red-50 border border-red-200 rounded p-4">
-<div class="font-bold text-red-700 mb-2">ניחוש שלילי</div>
+<div class="bg-red-50 border border-red-200 rounded p-4 text-red-900">
+<div class="font-bold text-red-800 mb-2">ניחוש שלילי</div>
 אם <span dir="ltr"><KatexInline math="\psi_1\mathbin{\mathrm{U}}\psi_2" /></span> שקרי עכשיו ו־<span dir="ltr"><KatexInline math="\psi_1" /></span> נכון, אז גם במצב הבא הוא צריך להישאר שקרי.
 </div>
 </div>
@@ -543,10 +543,10 @@ info: |
 </div>
 
 <div class="mt-7 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
+<div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900">
 אם ההבטחה אינה פתוחה, אין בעיה: המצב נמצא בקבוצת הקבלה.
 </div>
-<div class="bg-amber-50 border border-amber-200 rounded p-4">
+<div class="bg-amber-50 border border-amber-200 rounded p-4 text-amber-900">
 אם ההבטחה פתוחה, חייבים לבקר בעתיד במצב שבו <span dir="ltr"><KatexInline math="\psi_2" /></span> מתקיימת.
 </div>
 </div>
@@ -609,26 +609,44 @@ info: |
     { id: 'c2', x: 260, y: 55, label: '$a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 154, labelHeight: 30, labelFontSize: 10.2, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
     { id: 'c3', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, labelFontSize: 10.2, fill: '#dcfce7', stroke: '#16a34a' },
     { id: 'c4', x: 90, y: 140, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, labelFontSize: 10.2, fill: '#dcfce7', stroke: '#16a34a' },
-    { id: 'c5', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, labelFontSize: 10.2, fill: '#dcfce7', stroke: '#16a34a' },
-    { id: 'c6', x: 430, y: 140, label: '$\\neg a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, labelFontSize: 10.2, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
-    { id: 'c7', x: 175, y: 220, label: '$\\neg a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 33, labelWidth: 154, labelHeight: 30, labelFontSize: 10.2, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
-    { id: 'c8', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 176, labelHeight: 30, labelFontSize: 10.2, fill: '#dcfce7', stroke: '#16a34a' }
-  ] : [
-    { id: 'q_both', x: 90, y: 55, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', initial: $slidev.nav.clicks >= 1, initialDirection: 'left', accepting: $slidev.nav.clicks >= 10, r: 33, labelWidth: 132, labelHeight: 30, labelFontSize: 10.2 },
-    { id: 'q_wait', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', initial: $slidev.nav.clicks >= 1, initialDirection: 'right', accepting: false, stroke: '#dc2626', r: 33, labelWidth: 142, labelHeight: 30, labelFontSize: 10.2 },
-    { id: 'q_b', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', initial: $slidev.nav.clicks >= 1, initialDirection: 'top', accepting: $slidev.nav.clicks >= 10, r: 33, labelWidth: 142, labelHeight: 30, labelFontSize: 10.2 },
-    { id: 'q_no', x: 90, y: 220, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', accepting: $slidev.nav.clicks >= 10, r: 33, labelWidth: 164, labelHeight: 30, labelFontSize: 10.2 },
-    { id: 'q_dead', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', accepting: $slidev.nav.clicks >= 10, r: 33, labelWidth: 176, labelHeight: 30, labelFontSize: 10.2 }
-  ]"
-  :transitions="[
-    ...($slidev.nav.clicks >= 2 ? [{ source: 'q_wait', target: 'q_wait', label: '$\\{a\\}$', loopDirection: '-90deg', labelY: -10, labelWidth: 70 }] : []),
-    ...($slidev.nav.clicks >= 3 ? [{ source: 'q_wait', target: 'q_both', label: '$\\{a,b\\}$', labelY: -12, labelWidth: 75, curve: 0.18 }] : []),
-    ...($slidev.nav.clicks >= 4 ? [{ source: 'q_wait', target: 'q_b', label: '$\\{b\\}$', labelY: -8, labelWidth: 60, curve: -0.12 }] : []),
-    ...($slidev.nav.clicks >= 5 ? [{ source: 'q_both', target: 'q_wait', label: '$\\{a\\}$', labelY: 8, labelWidth: 65, curve: 0.22 }] : []),
-    ...($slidev.nav.clicks >= 6 ? [{ source: 'q_both', target: 'q_b', label: '$\\{b\\}$', labelY: 12, labelWidth: 60, curve: -0.18 }] : []),
-    ...($slidev.nav.clicks >= 7 ? [{ source: 'q_no', target: 'q_no', label: '$\\{a\\}$', loopDirection: '90deg', labelY: 10, labelWidth: 65 }] : []),
-    ...($slidev.nav.clicks >= 8 ? [{ source: 'q_dead', target: 'q_dead', label: '$\\emptyset$', loopDirection: '90deg', labelY: 10, labelWidth: 80 }] : []),
-    ...($slidev.nav.clicks >= 9 ? [{ source: 'q_b', target: 'q_dead', label: '$\\emptyset$', labelY: 16, labelWidth: 80, curve: 0.12 }] : []),
+    { id: 'c5', x: 26<div class="mt-3 text-right text-[17px] leading-relaxed">
+<div v-show="$slidev.nav.clicks === 0" class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900" dir="rtl">
+בשלב הראשון כל 8 המועמדים מופיעים בתוך ציור האוטומט. שלושת האדומים נפסלים מחוסר עקביות.
+</div>
+
+<div class="v-show" v-show="$slidev.nav.clicks === 1" class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900" dir="rtl">
+נשארים 5 מצבים עקביים, וממקמים אותם כאוטומט.
+<div class="mt-1">מצבי התחלה נקבעים לפי הכלל <span dir="ltr"><KatexInline math="Q_0=\{B\in Q:\varphi\in B\}" /></span>, כלומר כל מצב שמכיל את <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> מסומן כהתחלתי.</div>
+</div>
+
+<div v-show="$slidev.nav.clicks === 2" class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900" dir="rtl">
+קשת 1: לולאה על המצב <span dir="ltr"><KatexInline math="a,\neg b,a\mathbin{\mathrm{U}}b" /></span> עם <span dir="ltr"><KatexInline math="\{a\}" /></span>.
+</div>
+<div v-show="$slidev.nav.clicks === 3" class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900" dir="rtl">
+קשת 2: עם <span dir="ltr"><KatexInline math="\{a,b\}" /></span> עוברים אל המצב <span dir="ltr"><KatexInline math="a,b,a\mathbin{\mathrm{U}}b" /></span>.
+</div>
+<div v-show="$slidev.nav.clicks === 4" class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900" dir="rtl">
+קשת 3: עם <span dir="ltr"><KatexInline math="\{b\}" /></span> עוברים אל המצב <span dir="ltr"><KatexInline math="\neg a,b,a\mathbin{\mathrm{U}}b" /></span>.
+</div>
+<div v-show="$slidev.nav.clicks === 5" class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900" dir="rtl">
+קשת 4: מהמצב העליון חזרה אל מצב ההמתנה עם <span dir="ltr"><KatexInline math="\{a\}" /></span>.
+</div>
+<div v-show="$slidev.nav.clicks === 6" class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900" dir="rtl">
+קשת 5: מהמצב העליון אל מצב <span dir="ltr"><KatexInline math="\neg a,b,a\mathbin{\mathrm{U}}b" /></span> עם <span dir="ltr"><KatexInline math="\{b\}" /></span>.
+</div>
+<div v-show="$slidev.nav.clicks === 7" class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900" dir="rtl">
+קשת 6: לולאה על <span dir="ltr"><KatexInline math="a,\neg b,\neg(a\mathbin{\mathrm{U}}b)" /></span>.
+</div>
+<div v-show="$slidev.nav.clicks === 8" class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900" dir="rtl">
+קשת 7: לולאה על <span dir="ltr"><KatexInline math="\neg a,\neg b,\neg(a\mathbin{\mathrm{U}}b)" /></span>.
+</div>
+<div v-show="$slidev.nav.clicks === 9" class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900" dir="rtl">
+קשתות 8-9: מהמצב <span dir="ltr"><KatexInline math="\neg a,b,a\mathbin{\mathrm{U}}b" /></span> אל שני מצבים בהתאם לתווית הקלט.
+</div>
+<div v-show="$slidev.nav.clicks >= 10" class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900" dir="rtl">
+רק עכשיו מסמנים את המצבים המקבלים: כל מצב שבו <span dir="ltr"><KatexInline math="b" /></span> מתקיים או ש־<span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> לא פתוחה.
+</div>
+</div>..($slidev.nav.clicks >= 9 ? [{ source: 'q_b', target: 'q_dead', label: '$\\emptyset$', labelY: 16, labelWidth: 80, curve: 0.12 }] : []),
     ...($slidev.nav.clicks >= 9 ? [{ source: 'q_b', target: 'q_both', label: '$\\{a,b\\}$', labelY: -14, labelWidth: 80, curve: 0.18 }] : [])
   ]"
 />
@@ -686,7 +704,7 @@ info: |
 <KatexInline display math="B_0 \xrightarrow{A_0} B_1 \xrightarrow{A_1} B_2 \xrightarrow{A_2}\cdots" />
 </div>
 
-<div class="mt-6 bg-blue-50 border border-blue-200 rounded p-4 text-right text-[21px] leading-relaxed">
+<div class="mt-6 bg-blue-50 border border-blue-200 rounded p-4 text-blue-900 text-right text-[21px] leading-relaxed">
 מוכיחים באינדוקציה מבנית על תת־נוסחאות:
 <div class="mt-3 text-center text-[27px]" dir="ltr">
 <KatexInline display math="\sigma[i..]\models\psi \iff \psi\in B_i" />
@@ -702,15 +720,15 @@ info: |
 </div>
 
 <div class="mt-5 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
 אם <span dir="ltr"><KatexInline math="\psi_2\in B_i" /></span>, ה־<span dir="ltr">Until</span> נכון מייד.
 </div>
-<div class="bg-amber-50 border border-amber-200 rounded p-4">
+<div class="bg-amber-50 border border-amber-200 rounded p-4 text-amber-900">
 אם <span dir="ltr"><KatexInline math="\psi_1\mathbin{\mathrm{U}}\psi_2\in B_i" /></span> ו־<span dir="ltr"><KatexInline math="\psi_2\notin B_i" /></span>, כללי המעבר מעבירים את ההבטחה ל־<span dir="ltr"><KatexInline math="B_{i+1}" /></span>.
 </div>
 </div>
 
-<div class="mt-6 bg-red-50 border border-red-200 rounded p-4 text-right text-[20px] leading-relaxed">
+<div class="mt-6 bg-red-50 border border-red-200 rounded p-4 text-red-900 text-right text-[20px] leading-relaxed">
 תנאי הקבלה מונע מצב שבו ההבטחה מועברת לנצח בלי ש־<span dir="ltr"><KatexInline math="\psi_2" /></span> תופיע.
 </div>
 
@@ -718,7 +736,7 @@ info: |
 
 # התוצאה המרכזית
 
-<div class="mt-7 bg-emerald-50 border border-emerald-200 rounded p-5 text-right text-[22px] leading-relaxed">
+<div class="mt-7 bg-emerald-50 border border-emerald-200 rounded p-5 text-emerald-900 text-right text-[22px] leading-relaxed">
 לכל נוסחת <span dir="ltr">LTL</span> <span dir="ltr"><KatexInline math="\varphi" /></span> מעל <span dir="ltr"><KatexInline math="AP" /></span> אפשר לבנות <span dir="ltr">GNBA</span> <span dir="ltr"><KatexInline math="\mathcal{G}_{\varphi}" /></span> כך ש:
 </div>
 
@@ -727,10 +745,10 @@ info: |
 </div>
 
 <div class="mt-7 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
+<div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900">
 גודל האוטומט חסום אקספוננציאלית בגודל הנוסחה.
 </div>
-<div class="bg-amber-50 border border-amber-200 rounded p-4">
+<div class="bg-amber-50 border border-amber-200 rounded p-4 text-amber-900">
 מספר קבוצות הקבלה חסום על ידי מספר תת־נוסחאות ה־<span dir="ltr">Until</span>.
 </div>
 </div>
@@ -740,16 +758,16 @@ info: |
 # מה זה נותן לאימות?
 
 <div class="mt-7 grid grid-cols-3 gap-4 text-right text-[20px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
-<div class="font-bold text-blue-700 mb-2">מתרגמים</div>
+<div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900">
+<div class="font-bold text-blue-800 mb-2">מתרגמים</div>
 בונים אוטומט עבור <span dir="ltr"><KatexInline math="\neg\varphi" /></span>.
 </div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-2">מרכיבים</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
+<div class="font-bold text-emerald-800 mb-2">מרכיבים</div>
 יוצרים מכפלה עם מערכת המעברים <span dir="ltr"><KatexInline math="TS" /></span>.
 </div>
-<div class="bg-red-50 border border-red-200 rounded p-4">
-<div class="font-bold text-red-700 mb-2">מחפשים</div>
+<div class="bg-red-50 border border-red-200 rounded p-4 text-red-900">
+<div class="font-bold text-red-800 mb-2">מחפשים</div>
 בודקים אם קיימת ריצה מקבלת, כלומר דוגמה נגדית.
 </div>
 </div>
@@ -763,23 +781,23 @@ info: |
 # סיכום
 
 <div class="mt-7 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
-<div class="font-bold text-blue-700 mb-2">מצבים הם ניחושים</div>
+<div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900">
+<div class="font-bold text-blue-800 mb-2">מצבים הם ניחושים</div>
 כל מצב מתאר אילו תת־נוסחאות נכונות בסיפה הנוכחית.
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-2">מעברים הם בדיקות עקביות</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
+<div class="font-bold text-emerald-800 mb-2">מעברים הם בדיקות עקביות</div>
 האות הנקראת, <span dir="ltr">Next</span>, וכללי הפריסה של <span dir="ltr">Until</span> קובעים אילו מעברים מותרים.
 </div>
 
-<div class="bg-amber-50 border border-amber-200 rounded p-4">
-<div class="font-bold text-amber-700 mb-2">קבלה סוגרת הבטחות</div>
+<div class="bg-amber-50 border border-amber-200 rounded p-4 text-amber-900">
+<div class="font-bold text-amber-800 mb-2">קבלה סוגרת הבטחות</div>
 קבוצות הקבלה מבטיחות שכל <span dir="ltr">Until</span> שנפתח גם יגיע בסוף לצד הימני.
 </div>
 
-<div class="bg-red-50 border border-red-200 rounded p-4">
-<div class="font-bold text-red-700 mb-2">LTL היא ω-רגולרית</div>
+<div class="bg-red-50 border border-red-200 rounded p-4 text-red-900">
+<div class="font-bold text-red-800 mb-2">LTL היא ω-רגולרית</div>
 כל נוסחת <span dir="ltr">LTL</span> מגדירה שפה שמתקבלת על ידי אוטומט Büchi.
 </div>
 </div>
