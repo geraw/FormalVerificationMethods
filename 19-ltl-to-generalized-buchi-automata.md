@@ -146,7 +146,7 @@ info: |
   :transitions="[
     { source: 'q0', target: 'q0', label: '$\\neg a\\land\\neg b$', loopDirection: '180deg', labelY: -25, labelWidth: 120 },
     { source: 'q0', target: 'qa', label: '$a$', labelY: -12, labelWidth: 45, curve: -0.18 },
-    { source: 'q0', target: 'qb', label: '$b$', labelY: 16, labelWidth: 45, curve: 0.18 },
+    { source: 'q0', target: 'qb', label: '$b$', labelY: 16, labelWidth: 45, curve: 0.15 },
     { source: 'qa', target: 'qa', label: '$a$', loopDirection: '-90deg', labelY: -10, labelWidth: 45 },
     { source: 'qb', target: 'qb', label: '$b$', loopDirection: '90deg', labelY: 10, labelWidth: 45 },
     { source: 'qa', target: 'qb', label: '$b$', labelY: 18, labelWidth: 45, curve: 0.28 },
@@ -599,43 +599,43 @@ hide: true
 
 <div class="grid grid-cols-[1.1fr_0.9fr] gap-5 mt-2 items-start">
 <div class="bg-white rounded border border-slate-200 shadow-sm p-2">
-<AutomatonD3 variant="classic" :width="500" :height="250" :arrowSize="4" :stateLabelFontSize="10.5" :transitionLabelFontSize="11"
+<AutomatonD3 variant="classic" :width="500" :height="360" :arrowSize="4" :stateLabelFontSize="10.5" :transitionLabelFontSize="11"
   :states="$slidev.nav.clicks === 0 ? [
-    { id: 'c1', x: 90, y: 55, label: '$a,b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 132, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c2', x: 260, y: 55, label: '$a,b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 154, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c3', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c4', x: 90, y: 140, label: '$a,\\neg b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c5', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c6', x: 430, y: 140, label: '$\\neg a,b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c7', x: 175, y: 220, label: '$\\neg a,\\neg b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 154, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c8', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 176, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' }
+    { id: 'c1', x: 90, y: 65, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 132, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c2', x: 260, y: 65, label: '$a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 154, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c3', x: 430, y: 65, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c4', x: 90, y: 175, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c5', x: 260, y: 175, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c6', x: 430, y: 175, label: '$\\neg a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c7', x: 175, y: 285, label: '$\\neg a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 154, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c8', x: 345, y: 285, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 176, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' }
   ] : $slidev.nav.clicks === 1 ? [
-    { id: 'c1', x: 90, y: 55, label: '$a,b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 132, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c2', x: 260, y: 55, label: '$a,b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 154, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
-    { id: 'c3', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c4', x: 90, y: 140, label: '$a,\\neg b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c5', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c6', x: 430, y: 140, label: '$\\neg a,b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
-    { id: 'c7', x: 175, y: 220, label: '$\\neg a,\\neg b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 154, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c8', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 176, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' }
+    { id: 'c1', x: 90, y: 65, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 132, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c2', x: 260, y: 65, label: '$a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 154, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
+    { id: 'c3', x: 430, y: 65, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c4', x: 90, y: 175, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c5', x: 260, y: 175, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c6', x: 430, y: 175, label: '$\\neg a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
+    { id: 'c7', x: 175, y: 285, label: '$\\neg a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 154, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c8', x: 345, y: 285, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 176, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' }
   ] : $slidev.nav.clicks === 2 ? [
-    { id: 'c1', x: 90, y: 55, label: '$a,b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 132, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c2', x: 260, y: 55, label: '$a,b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 154, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b', opacity: 0.3 },
-    { id: 'c3', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c4', x: 90, y: 140, label: '$a,\\neg b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c5', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
-    { id: 'c6', x: 430, y: 140, label: '$\\neg a,b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b', opacity: 0.3 },
-    { id: 'c7', x: 175, y: 220, label: '$\\neg a,\\neg b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 154, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
-    { id: 'c8', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 176, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' }
+    { id: 'c1', x: 90, y: 65, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 132, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c2', x: 260, y: 65, label: '$a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 154, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b', opacity: 0.3 },
+    { id: 'c3', x: 430, y: 65, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c4', x: 90, y: 175, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c5', x: 260, y: 175, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' },
+    { id: 'c6', x: 430, y: 175, label: '$\\neg a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b', opacity: 0.3 },
+    { id: 'c7', x: 175, y: 285, label: '$\\neg a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 154, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b' },
+    { id: 'c8', x: 345, y: 285, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 176, labelHeight: 30, fill: '#f8fafc', stroke: '#cbd5e1' }
   ] : [
-    { id: 'c1', x: 90, y: 55, label: '$a,b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 132, labelHeight: 30, fill: '#dcfce7', stroke: '#16a34a', textColor: '#15803d' },
-    { id: 'c2', x: 260, y: 55, label: '$a,b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 154, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b', opacity: 0.2 },
-    { id: 'c3', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, fill: '#dcfce7', stroke: '#16a34a', textColor: '#15803d' },
-    { id: 'c4', x: 90, y: 140, label: '$a,\\neg b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, fill: '#dcfce7', stroke: '#16a34a', textColor: '#15803d' },
-    { id: 'c5', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, fill: '#dcfce7', stroke: '#16a34a', textColor: '#15803d' },
-    { id: 'c6', x: 430, y: 140, label: '$\\neg a,b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b', opacity: 0.2 },
-    { id: 'c7', x: 175, y: 220, label: '$\\neg a,\\neg b,a\\mathbin{\mathrm{U}}b$', r: 33, labelWidth: 154, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b', opacity: 0.2 },
-    { id: 'c8', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\mathrm{U}}b)$', r: 33, labelWidth: 176, labelHeight: 30, fill: '#dcfce7', stroke: '#16a34a', textColor: '#15803d' }
+    { id: 'c1', x: 90, y: 65, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 132, labelHeight: 30, fill: '#dcfce7', stroke: '#16a34a', textColor: '#15803d' },
+    { id: 'c2', x: 260, y: 65, label: '$a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 154, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b', opacity: 0.2 },
+    { id: 'c3', x: 430, y: 65, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, fill: '#dcfce7', stroke: '#16a34a', textColor: '#15803d' },
+    { id: 'c4', x: 90, y: 175, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30, fill: '#dcfce7', stroke: '#16a34a', textColor: '#15803d' },
+    { id: 'c5', x: 260, y: 175, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, fill: '#dcfce7', stroke: '#16a34a', textColor: '#15803d' },
+    { id: 'c6', x: 430, y: 175, label: '$\\neg a,b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b', opacity: 0.2 },
+    { id: 'c7', x: 175, y: 285, label: '$\\neg a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 154, labelHeight: 30, fill: '#fee2e2', stroke: '#dc2626', textColor: '#991b1b', opacity: 0.2 },
+    { id: 'c8', x: 345, y: 285, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 176, labelHeight: 30, fill: '#dcfce7', stroke: '#16a34a', textColor: '#15803d' }
   ]"
   :transitions="[]"
 />
@@ -661,81 +661,81 @@ hide: true
 
 ---
 
-# דוגמה: מעברים ממצב הבטחה פתוחה <span dir="ltr"><KatexInline math="q_{\text{wait}}" /></span>
+# דוגמה: מעברים ממצב הבטחה פתוחה
 
 <span v-click class="hidden"></span>
 
 <div class="grid grid-cols-[1.1fr_0.9fr] gap-5 mt-2 items-start">
 <div class="bg-white rounded border border-slate-200 shadow-sm p-2">
-<AutomatonD3 variant="classic" :width="500" :height="250" :arrowSize="4" :stateLabelFontSize="10.5" :transitionLabelFontSize="11"
+<AutomatonD3 variant="classic" :width="500" :height="360" :arrowSize="4" :stateLabelFontSize="10.5" :transitionLabelFontSize="11"
   :states="[
-    { id: 'q_both', x: 90, y: 55, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', r: 33, labelWidth: 132, labelHeight: 30, opacity: 0.8 },
-    { id: 'q_wait', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', stroke: '#eab308', strokeWidth: 3, r: 33, labelWidth: 142, labelHeight: 30 },
-    { id: 'q_b', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30, opacity: 0.8 },
-    { id: 'q_no', x: 90, y: 220, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30, opacity: 0.8 },
-    { id: 'q_dead', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 176, labelHeight: 30, opacity: 0.8 }
+    { id: 'q_both', x: 90, y: 175, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 132, labelHeight: 30, opacity: 0.8 },
+    { id: 'q_wait', x: 260, y: 65, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, stroke: '#eab308', strokeWidth: 3 },
+    { id: 'q_b', x: 260, y: 175, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, opacity: 0.8 },
+    { id: 'q_no', x: 260, y: 285, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30, opacity: 0.8 },
+    { id: 'q_dead', x: 430, y: 175, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 176, labelHeight: 30, opacity: 0.8 }
   ]"
   :transitions="$slidev.nav.clicks === 0 ? [
     { source: 'q_wait', target: 'q_wait', label: '$\\{a\\}$', loopDirection: '-90deg', labelY: -10, labelWidth: 70 },
-    { source: 'q_wait', target: 'q_both', label: '$\\{a,b\\}$', labelY: -12, labelWidth: 75, curve: 0.18 },
-    { source: 'q_wait', target: 'q_b', label: '$\\{b\\}$', labelY: -8, labelWidth: 60, curve: -0.12 },
-    { source: 'q_wait', target: 'q_no', label: '$\\{a\\}$', labelY: 10, labelWidth: 60, stroke: '#ef4444', dasharray: '4,4', tooltip: 'נפסל: הבטחה נשברת' },
-    { source: 'q_wait', target: 'q_dead', label: '$\\emptyset$', labelY: 10, labelWidth: 60, stroke: '#ef4444', dasharray: '4,4', tooltip: 'נפסל: הבטחה נשברת' }
+    { source: 'q_wait', target: 'q_both', label: '$\\{a\\}$', labelY: -12, labelWidth: 75, curve: 0 },
+    { source: 'q_wait', target: 'q_b', label: '$\\{a\\}$', labelX: -14, labelWidth: 60, curve: 0 },
+    { source: 'q_wait', target: 'q_no', label: '$\\{a\\}$', labelX: 14, labelWidth: 60, stroke: '#ef4444', dasharray: '4,4', tooltip: 'נפסל: הבטחה נשברת', curve: -0.4 },
+    { source: 'q_wait', target: 'q_dead', label: '$\\{a\\}$', labelY: -14, labelWidth: 60, stroke: '#ef4444', dasharray: '4,4', tooltip: 'נפסל: הבטחה נשברת', curve: 0 }
   ] : [
     { source: 'q_wait', target: 'q_wait', label: '$\\{a\\}$', loopDirection: '-90deg', labelY: -10, labelWidth: 70 },
-    { source: 'q_wait', target: 'q_both', label: '$\\{a,b\\}$', labelY: -12, labelWidth: 75, curve: 0.18 },
-    { source: 'q_wait', target: 'q_b', label: '$\\{b\\}$', labelY: -8, labelWidth: 60, curve: -0.12 }
+    { source: 'q_wait', target: 'q_both', label: '$\\{a\\}$', labelY: -12, labelWidth: 75, curve: 0 },
+    { source: 'q_wait', target: 'q_b', label: '$\\{a\\}$', labelX: -14, labelWidth: 60, curve: 0 }
   ]"
 />
 </div>
 
 <div class="mt-3 text-right text-[17px] leading-relaxed">
 <div v-show="$slidev.nav.clicks === 0" class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900" dir="rtl">
-ממצב <span dir="rtl"><KatexInline math="q_{\text{wait}}" /></span>, מאחר שהבטחת ה-Until פתוחה (<span dir="rtl"><KatexInline math="a\mathbin{\mathrm{U}}b \in B" /></span>) ואינה מתממשת כעת (<span dir="rtl"><KatexInline math="b \notin B" /></span>), <b>היא חייבת לעבור למצב הבא:</b> <span dir="rtl"><KatexInline math="a\mathbin{\mathrm{U}}b \in B'" /></span>.<br/>
+ממצב הבטחה פתוחה (שבו <span dir="rtl"><KatexInline math="a\mathbin{\mathrm{U}}b \in B" /></span> ו-<span dir="rtl"><KatexInline math="b \notin B" /></span>), מאחר שהבטחת ה-Until פתוחה (<span dir="rtl"><KatexInline math="a\mathbin{\mathrm{U}}b \in B" /></span>) ואינה מתממשת כעת (<span dir="rtl"><KatexInline math="b \notin B" /></span>), <b>היא חייבת לעבור למצב הבא:</b> <span dir="rtl"><KatexInline math="a\mathbin{\mathrm{U}}b \in B'" /></span>.<br/>
 לכן מעברים למצבים שאינם מכילים את ההבטחה (הקווים המקווקווים באדום) <b>נפסלים</b>.
 </div>
 <div v-show="$slidev.nav.clicks === 1" class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900" dir="rtl">
-אנו משאירים רק את המעברים התקינים למצבים שמכילים את ההבטחה (<span dir="rtl"><KatexInline math="q_{\text{wait}}, q_{\text{both}}, q_{\text{b}}" /></span>).
+משאירים רק את המעברים התקינים למצבים שבהם ההבטחה מתקיימת (<span dir="rtl"><KatexInline math="a\mathbin{\mathrm{U}}b \in B'" /></span>).
 </div>
 </div>
 </div>
 
 ---
 
-# דוגמה: מעברים ממצב ללא הבטחה <span dir="ltr"><KatexInline math="q_{\text{no}}" /></span>
+# דוגמה: מעברים ממצב ללא הבטחה
 
 <span v-click class="hidden"></span>
 
 <div class="grid grid-cols-[1.1fr_0.9fr] gap-5 mt-2 items-start">
 <div class="bg-white rounded border border-slate-200 shadow-sm p-2">
-<AutomatonD3 variant="classic" :width="500" :height="250" :arrowSize="4" :stateLabelFontSize="10.5" :transitionLabelFontSize="11"
+<AutomatonD3 variant="classic" :width="500" :height="360" :arrowSize="4" :stateLabelFontSize="10.5" :transitionLabelFontSize="11"
   :states="[
-    { id: 'q_both', x: 90, y: 55, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', opacity: 0.8 },
-    { id: 'q_wait', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', opacity: 0.8 },
-    { id: 'q_b', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', opacity: 0.8 },
-    { id: 'q_no', x: 90, y: 220, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', stroke: '#eab308', strokeWidth: 3, r: 33, labelWidth: 164, labelHeight: 30 },
-    { id: 'q_dead', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', opacity: 0.8 }
+    { id: 'q_both', x: 90, y: 175, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 132, labelHeight: 30, opacity: 0.8 },
+    { id: 'q_wait', x: 260, y: 65, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, opacity: 0.8 },
+    { id: 'q_b', x: 260, y: 175, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, opacity: 0.8 },
+    { id: 'q_no', x: 260, y: 285, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30, stroke: '#eab308', strokeWidth: 3 },
+    { id: 'q_dead', x: 430, y: 175, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 176, labelHeight: 30, opacity: 0.8 }
   ]"
   :transitions="$slidev.nav.clicks === 0 ? [
     { source: 'q_no', target: 'q_no', label: '$\\{a\\}$', loopDirection: '90deg', labelY: 10, labelWidth: 65 },
-    { source: 'q_no', target: 'q_dead', label: '$\\emptyset$', labelY: -10, labelWidth: 60, curve: -0.15 },
-    { source: 'q_no', target: 'q_both', label: '$\\{a,b\\}$', labelY: 10, labelWidth: 60, stroke: '#ef4444', dasharray: '4,4', tooltip: 'נפסל: הבטחה נוצרת יש מאין' },
-    { source: 'q_no', target: 'q_wait', label: '$\\{a\\}$', labelY: -10, labelWidth: 60, stroke: '#ef4444', dasharray: '4,4', tooltip: 'נפסל: הבטחה נוצרת יש מאין' },
-    { source: 'q_no', target: 'q_b', label: '$\\{b\\}$', labelY: 10, labelWidth: 60, stroke: '#ef4444', dasharray: '4,4', tooltip: 'נפסל: הבטחה נוצרת יש מאין' }
+    { source: 'q_no', target: 'q_dead', label: '$\\{a\\}$', labelY: 10, labelWidth: 60, curve: 0 },
+    { source: 'q_no', target: 'q_both', label: '$\\{a\\}$', labelY: 16, labelWidth: 60, stroke: '#ef4444', dasharray: '4,4', tooltip: 'נפסל: הבטחה נוצרת יש מאין', curve: 0 },
+    { source: 'q_no', target: 'q_wait', label: '$\\{a\\}$', labelX: 16, labelWidth: 60, stroke: '#ef4444', dasharray: '4,4', tooltip: 'נפסל: הבטחה נוצרת יש מאין', curve: 0.35 },
+    { source: 'q_no', target: 'q_b', label: '$\\{a\\}$', labelX: -16, labelWidth: 60, stroke: '#ef4444', dasharray: '4,4', tooltip: 'נפסל: הבטחה נוצרת יש מאין', curve: 0 }
   ] : [
     { source: 'q_no', target: 'q_no', label: '$\\{a\\}$', loopDirection: '90deg', labelY: 10, labelWidth: 65 },
-    { source: 'q_no', target: 'q_dead', label: '$\\emptyset$', labelY: -10, labelWidth: 60, curve: -0.15 }
+    { source: 'q_no', target: 'q_dead', label: '$\\{a\\}$', labelY: 10, labelWidth: 60, curve: 0 }
   ]"
 />
 </div>
 
 <div class="mt-3 text-right text-[17px] leading-relaxed">
 <div v-show="$slidev.nav.clicks === 0" class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900" dir="rtl">
-ממצב <span dir="rtl"><KatexInline math="q_{\text{no}}" /></span>, מאחר שההבטחה אינה מתקיימת (<span dir="rtl"><KatexInline math="a\mathbin{\mathrm{U}}b \notin B" /></span>) אך התנאי השמאלי מתקיים (<span dir="rtl"><KatexInline math="a \in B" /></span>), <b>ההבטחה לא יכולה להיווצר סתם כך במצב הבא:</b> <span dir="rtl"><KatexInline math="a\mathbin{\mathrm{U}}b \notin B'" /></span>.<br/>
+ממצב ללא הבטחה (שבו <span dir="rtl"><KatexInline math="a\mathbin{\mathrm{U}}b \notin B" /></span> אך <span dir="rtl"><KatexInline math="a \in B" /></span>), מאחר שההבטחה אינה מתקיימת (<span dir="rtl"><KatexInline math="a\mathbin{\mathrm{U}}b \notin B" /></span>) אך התנאי השמאלי מתקיים (<span dir="rtl"><KatexInline math="a \in B" /></span>), <b>ההבטחה לא יכולה להיווצר סתם כך במצב הבא:</b> <span dir="rtl"><KatexInline math="a\mathbin{\mathrm{U}}b \notin B'" /></span>.<br/>
 לכן מעברים למצבים שמכילים את ההבטחה (באדום מקווקו) <b>נפסלים</b>.
 </div>
 <div v-show="$slidev.nav.clicks === 1" class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900" dir="rtl">
-נשארים רק המעברים התקינים למצבים שלא מכילים את ההבטחה (<span dir="rtl"><KatexInline math="q_{\text{no}}, q_{\text{dead}}" /></span>).
+נשארים רק המעברים התקינים למצבים שבהם ההבטחה שקרית (<span dir="rtl"><KatexInline math="a\mathbin{\mathrm{U}}b \notin B'" /></span>).
 </div>
 </div>
 </div>
@@ -746,20 +746,30 @@ hide: true
 
 <div class="grid grid-cols-[1.1fr_0.9fr] gap-5 mt-2 items-start">
 <div class="bg-white rounded border border-slate-200 shadow-sm p-2">
-<AutomatonD3 variant="classic" :width="500" :height="250" :arrowSize="4" :stateLabelFontSize="10.5" :transitionLabelFontSize="11"
+<AutomatonD3 variant="classic" :width="500" :height="360" :arrowSize="4" :stateLabelFontSize="10.5" :transitionLabelFontSize="11"
   :states="[
-    { id: 'q_both', x: 90, y: 55, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', stroke: '#eab308', strokeWidth: 3, r: 33, labelWidth: 132, labelHeight: 30 },
-    { id: 'q_wait', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 33, labelWidth: 142, labelHeight: 30 },
-    { id: 'q_b', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', stroke: '#eab308', strokeWidth: 3, r: 33, labelWidth: 142, labelHeight: 30 },
-    { id: 'q_no', x: 90, y: 220, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 33, labelWidth: 164, labelHeight: 30 },
-    { id: 'q_dead', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', stroke: '#eab308', strokeWidth: 3, r: 33, labelWidth: 176, labelHeight: 30 }
+    { id: 'q_both', x: 90, y: 175, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 132, labelHeight: 30, stroke: '#eab308', strokeWidth: 3 },
+    { id: 'q_wait', x: 260, y: 65, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30 },
+    { id: 'q_b', x: 260, y: 175, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, stroke: '#eab308', strokeWidth: 3 },
+    { id: 'q_no', x: 260, y: 285, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30 },
+    { id: 'q_dead', x: 430, y: 175, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 176, labelHeight: 30, stroke: '#eab308', strokeWidth: 3 }
   ]"
   :transitions="[
-    { source: 'q_both', target: 'q_wait', label: '$\\{a\\}$', labelY: 8, labelWidth: 65, curve: 0.22 },
-    { source: 'q_both', target: 'q_b', label: '$\\{b\\}$', labelY: 12, labelWidth: 60, curve: -0.18 },
-    { source: 'q_b', target: 'q_dead', label: '$\\emptyset$', labelY: 16, labelWidth: 80, curve: 0.12 },
-    { source: 'q_b', target: 'q_both', label: '$\\{a,b\\}$', labelY: -14, labelWidth: 80, curve: 0.18 },
-    { source: 'q_dead', target: 'q_dead', label: '$\\emptyset$', loopDirection: '90deg', labelY: 10, labelWidth: 80 }
+    { source: 'q_both', target: 'q_both', label: '', loopDirection: '180deg', labelX: -22, labelWidth: 70 },
+    { source: 'q_both', target: 'q_wait', label: '', labelY: -10, labelWidth: 70, curve: 0 },
+    { source: 'q_both', target: 'q_b',    label: '', labelY: 12, labelWidth: 70, curve: 0.18 },
+    { source: 'q_both', target: 'q_no',   label: '', labelY: 10, labelWidth: 70, curve: 0 },
+    { source: 'q_both', target: 'q_dead', label: '', labelY: -18, labelWidth: 70, curve: -0.85 },
+    { source: 'q_b', target: 'q_b',       label: '', loopDirection: '45deg', labelY: -22, labelX: 20, labelWidth: 60 },
+    { source: 'q_b', target: 'q_both',    label: '', labelY: -12, labelWidth: 60, curve: 0.18 },
+    { source: 'q_b', target: 'q_wait',    label: '', labelX: 8, labelWidth: 60, curve: 0.18 },
+    { source: 'q_b', target: 'q_dead',    label: '', labelY: 12, labelWidth: 60, curve: 0.18 },
+    { source: 'q_b', target: 'q_no',      label: '', labelX: -8, labelWidth: 60, curve: 0.18 },
+    { source: 'q_dead', target: 'q_dead', label: '', loopDirection: '0deg', labelX: 22, labelWidth: 60 },
+    { source: 'q_dead', target: 'q_wait', label: '', labelY: -10, labelWidth: 60, curve: 0 },
+    { source: 'q_dead', target: 'q_b',    label: '', labelY: -12, labelWidth: 60, curve: 0.18 },
+    { source: 'q_dead', target: 'q_no',   label: '', labelY: 10, labelWidth: 60, curve: 0 },
+    { source: 'q_dead', target: 'q_both', label: '', labelY: 18, labelWidth: 60, curve: -0.85 }
   ]"
 />
 </div>
@@ -768,8 +778,8 @@ hide: true
 <div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900" dir="rtl">
 ממצבים אלו (המסומנים בצהוב), כללי ה-Until אינם מגבילים את המצב הבא:
 <ul>
-<li>במצבים <span dir="rtl"><KatexInline math="q_{\text{both}}" /></span> ו-<span dir="rtl"><KatexInline math="q_{\text{b}}" /></span> התנאי הימני <span dir="rtl"><KatexInline math="b" /></span> מתקיים, ולכן ההבטחה מומשה ואין המשכיות כפויה.</li>
-<li>במצב <span dir="rtl"><KatexInline math="q_{\text{dead}}" /></span> התנאי השמאלי <span dir="rtl"><KatexInline math="a" /></span> שקרי, ולכן אין דרישה למנוע יצירת הבטחה.</li>
+<li>במצבים שבהם התנאי הימני <span dir="rtl"><KatexInline math="b \in B" /></span> מתקיים, ולכן ההבטחה מומשה ואין המשכיות כפויה.</li>
+<li>במצבים שבהם התנאי השמאלי <span dir="rtl"><KatexInline math="a \notin B" /></span> שקרי, ולכן אין דרישה למנוע יצירת הבטחה.</li>
 </ul>
 המעברים האפשריים מהם נקבעים אך ורק לפי התאמת האות הנקראת למצב היעד.
 </div>
@@ -778,29 +788,71 @@ hide: true
 
 ---
 
+# דוגמה: מצבי ההתחלה של האוטומט עבור <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>
+
+<div class="grid grid-cols-[1.1fr_0.9fr] gap-5 mt-2 items-start">
+<div class="bg-white rounded border border-slate-200 shadow-sm p-2">
+<AutomatonD3 variant="classic" :width="500" :height="360" :arrowSize="4" :stateLabelFontSize="10.5" :transitionLabelFontSize="11"
+  :states="[
+    { id: 'q_both', x: 90, y: 175, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 132, labelHeight: 30, initial: true, initialDirection: 'bottom', stroke: '#16a34a', strokeWidth: 3 },
+    { id: 'q_wait', x: 260, y: 65, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, initial: true, initialDirection: 'left', stroke: '#16a34a', strokeWidth: 3 },
+    { id: 'q_b', x: 260, y: 175, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, initial: true, initialDirection: 'left', stroke: '#16a34a', strokeWidth: 3 },
+    { id: 'q_no', x: 260, y: 285, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30, opacity: 0.4 },
+    { id: 'q_dead', x: 430, y: 175, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 176, labelHeight: 30, opacity: 0.4 }
+  ]"
+  :transitions="[]"
+/>
+</div>
+
+<div class="mt-3 text-right text-[17px] leading-relaxed">
+<div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900" dir="rtl">
+מצב התחלה הוא מצב שבו הנוסחה <b>מתקיימת</b> במצב ההתחלתי:<br/>
+<div dir="ltr" class="text-center my-1"><KatexInline math="Q_0 = \{B \in Q \mid \varphi \in B\}" /></div>
+<ul>
+<li><b>שלושה מצבים</b> מכילים <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b \in B" /></span> ולכן הם מצבי התחלה אפשריים (ירוק).</li>
+<li><b>שני המצבים הנותרים</b> מכילים <span dir="ltr"><KatexInline math="\neg(a\mathbin{\mathrm{U}}b) \in B" /></span> — הנוסחה שקרית שם, ולכן <b>אינם</b> מצבי התחלה.</li>
+</ul>
+</div>
+</div>
+</div>
+
+---
+
+
+
 # דוגמה: תנאי הקבלה של האוטומט עבור <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>
 
 <div class="grid grid-cols-[1.1fr_0.9fr] gap-5 mt-2 items-start">
 <div class="bg-white rounded border border-slate-200 shadow-sm p-2">
-<AutomatonD3 variant="classic" :width="500" :height="250" :arrowSize="4" :stateLabelFontSize="10.5" :transitionLabelFontSize="11"
+<AutomatonD3 variant="classic" :width="500" :height="360" :arrowSize="4" :stateLabelFontSize="10.5" :transitionLabelFontSize="11"
   :states="[
-    { id: 'q_both', x: 90, y: 55, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', initial: true, initialDirection: 'left', accepting: true, r: 33, labelWidth: 132, labelHeight: 30 },
-    { id: 'q_wait', x: 430, y: 55, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', initial: true, initialDirection: 'right', accepting: false, stroke: '#dc2626', r: 33, labelWidth: 142, labelHeight: 30 },
-    { id: 'q_b', x: 260, y: 140, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', initial: true, initialDirection: 'top', accepting: true, r: 33, labelWidth: 142, labelHeight: 30 },
-    { id: 'q_no', x: 90, y: 220, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', accepting: true, r: 33, labelWidth: 164, labelHeight: 30 },
-    { id: 'q_dead', x: 345, y: 220, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', accepting: true, r: 33, labelWidth: 176, labelHeight: 30 }
+    { id: 'q_both', x: 90, y: 175, label: '$a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 132, labelHeight: 30, initial: true, initialDirection: 'bottom', accepting: true },
+    { id: 'q_wait', x: 260, y: 65, label: '$a,\\neg b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, initial: true, initialDirection: 'left', accepting: false, stroke: '#dc2626' },
+    { id: 'q_b', x: 260, y: 175, label: '$\\neg a,b,a\\mathbin{\\mathrm{U}}b$', r: 36, labelWidth: 142, labelHeight: 30, initial: true, initialDirection: 'left', accepting: true },
+    { id: 'q_no', x: 260, y: 285, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30, accepting: true },
+    { id: 'q_dead', x: 430, y: 175, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 176, labelHeight: 30, accepting: true }
   ]"
   :transitions="[
-    { source: 'q_wait', target: 'q_wait', label: '$\\{a\\}$', loopDirection: '-90deg', labelY: -10, labelWidth: 70 },
-    { source: 'q_wait', target: 'q_both', label: '$\\{a,b\\}$', labelY: -12, labelWidth: 75, curve: 0.18 },
-    { source: 'q_wait', target: 'q_b', label: '$\\{b\\}$', labelY: -8, labelWidth: 60, curve: -0.12 },
-    { source: 'q_both', target: 'q_wait', label: '$\\{a\\}$', labelY: 8, labelWidth: 65, curve: 0.22 },
-    { source: 'q_both', target: 'q_b', label: '$\\{b\\}$', labelY: 12, labelWidth: 60, curve: -0.18 },
-    { source: 'q_no', target: 'q_no', label: '$\\{a\\}$', loopDirection: '90deg', labelY: 10, labelWidth: 65 },
-    { source: 'q_no', target: 'q_dead', label: '$\\emptyset$', labelY: -10, labelWidth: 60, curve: -0.15 },
-    { source: 'q_dead', target: 'q_dead', label: '$\\emptyset$', loopDirection: '90deg', labelY: 10, labelWidth: 80 },
-    { source: 'q_b', target: 'q_dead', label: '$\\emptyset$', labelY: 16, labelWidth: 80, curve: 0.12 },
-    { source: 'q_b', target: 'q_both', label: '$\\{a,b\\}$', labelY: -14, labelWidth: 80, curve: 0.18 }
+    { source: 'q_wait', target: 'q_wait', label: '', loopDirection: '-90deg', labelY: -22, labelWidth: 70 },
+    { source: 'q_wait', target: 'q_both', label: '', labelY: -12, labelWidth: 75, curve: 0.15 },
+    { source: 'q_wait', target: 'q_b', label: '', labelX: -12, labelWidth: 60, curve: 0.15 },
+    { source: 'q_no', target: 'q_no', label: '', loopDirection: '90deg', labelY: 22, labelWidth: 65 },
+    { source: 'q_no', target: 'q_dead', label: '', labelY: 12, labelWidth: 60, curve: 0.15 },
+    { source: 'q_both', target: 'q_both', label: '', loopDirection: '180deg', labelX: -22, labelWidth: 70 },
+    { source: 'q_both', target: 'q_wait', label: '', labelY: 12, labelWidth: 70, curve: 0.15 },
+    { source: 'q_both', target: 'q_b', label: '', labelY: 12, labelWidth: 70, curve: 0.18 },
+    { source: 'q_both', target: 'q_no', label: '', labelY: 10, labelWidth: 70, curve: 0.10 },
+    { source: 'q_both', target: 'q_dead', label: '', labelY: -18, labelWidth: 70, curve: -0.95 },
+    { source: 'q_b', target: 'q_b', label: '', loopDirection: '45deg', labelY: -22, labelX: 20, labelWidth: 60 },
+    { source: 'q_b', target: 'q_both', label: '', labelY: -12, labelWidth: 60, curve: 0.18 },
+    { source: 'q_b', target: 'q_wait', label: '', labelX: 12, labelWidth: 60, curve: 0.15 },
+    { source: 'q_b', target: 'q_dead', label: '', labelY: 12, labelWidth: 60, curve: 0.18 },
+    { source: 'q_b', target: 'q_no', label: '', labelX: -12, labelWidth: 60, curve: 0.15 },
+    { source: 'q_dead', target: 'q_dead', label: '', loopDirection: '0deg', labelX: 22, labelWidth: 60 },
+    { source: 'q_dead', target: 'q_wait', label: '', labelY: -10, labelWidth: 60, curve: 0.10 },
+    { source: 'q_dead', target: 'q_b', label: '', labelY: -12, labelWidth: 60, curve: 0.18 },
+    { source: 'q_dead', target: 'q_no', label: '', labelY: -12, labelWidth: 60, curve: 0.15 },
+    { source: 'q_dead', target: 'q_both', label: '', labelY: 18, labelWidth: 60, curve: -0.95 }
   ]"
 />
 </div>
@@ -811,14 +863,13 @@ hide: true
 <div dir="ltr" class="text-center my-1"><KatexInline math="F_{a\mathbin{\mathrm{U}}b} = \{B \mid a\mathbin{\mathrm{U}}b \notin B \lor b \in B\}" /></div>
 המצבים שמקיימים זאת הם אלו שבהם <b>אין הבטחה פתוחה שטרם מומשה</b>:<br/>
 <ul>
-<li><span dir="rtl"><KatexInline math="q_{\text{both}}, q_{\text{b}}" /></span> (ההבטחה <span dir="rtl"><KatexInline math="a\mathrm{U}b" /></span> מתממשת כעת כי <span dir="rtl"><KatexInline math="b" /></span> נכון)</li>
-<li><span dir="rtl"><KatexInline math="q_{\text{no}}, q_{\text{dead}}" /></span> (ההבטחה <span dir="rtl"><KatexInline math="a\mathrm{U}b" /></span> שקרית)</li>
+<li>המצבים שבהם <span dir="rtl"><KatexInline math="b \in B" /></span> (ולכן ההבטחה מתממשת כעת)</li>
+<li>המצבים שבהם ההבטחה שקרית (<span dir="rtl"><KatexInline math="a\mathbin{\mathrm{U}}b \notin B" /></span>)</li>
 </ul>
-רק המצב <span dir="rtl"><KatexInline math="q_{\text{wait}}" /></span> אינו מקבל (מסומן באדום), כי בו ההבטחה פתוחה וממתינה למימוש.
+רק המצב שבו ההבטחה פתוחה וממתינה למימוש (מסומן באדום) אינו מקבל.
 </div>
 </div>
-</div>
----
+</div>---
 
 # נכונות הבנייה: הכיוון האינטואיטיבי
 
