@@ -800,7 +800,28 @@ hide: true
     { id: 'q_no', x: 260, y: 285, label: '$a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 164, labelHeight: 30, opacity: 0.4 },
     { id: 'q_dead', x: 430, y: 175, label: '$\\neg a,\\neg b,\\neg(a\\mathbin{\\mathrm{U}}b)$', r: 36, labelWidth: 176, labelHeight: 30, opacity: 0.4 }
   ]"
-  :transitions="[]"
+  :transitions="[
+    { source: 'q_wait', target: 'q_wait', label: '', loopDirection: '-90deg', labelY: -22, labelWidth: 70 },
+    { source: 'q_wait', target: 'q_both', label: '', labelY: -12, labelWidth: 75, curve: 0.15 },
+    { source: 'q_wait', target: 'q_b',    label: '', labelX: -12, labelWidth: 60, curve: 0.15 },
+    { source: 'q_no', target: 'q_no',     label: '', loopDirection: '90deg', labelY: 22, labelWidth: 65 },
+    { source: 'q_no', target: 'q_dead',   label: '', labelY: 12, labelWidth: 60, curve: 0.15 },
+    { source: 'q_both', target: 'q_both', label: '', loopDirection: '180deg', labelX: -22, labelWidth: 70 },
+    { source: 'q_both', target: 'q_wait', label: '', labelY: -10, labelWidth: 70, curve: 0 },
+    { source: 'q_both', target: 'q_b',    label: '', labelY: 12, labelWidth: 70, curve: 0.18 },
+    { source: 'q_both', target: 'q_no',   label: '', labelY: 10, labelWidth: 70, curve: 0 },
+    { source: 'q_both', target: 'q_dead', label: '', labelY: -18, labelWidth: 70, curve: -0.95 },
+    { source: 'q_b', target: 'q_b',       label: '', loopDirection: '45deg', labelY: -22, labelX: 20, labelWidth: 60 },
+    { source: 'q_b', target: 'q_both',    label: '', labelY: -12, labelWidth: 60, curve: 0.18 },
+    { source: 'q_b', target: 'q_wait',    label: '', labelX: 8, labelWidth: 60, curve: 0.18 },
+    { source: 'q_b', target: 'q_dead',    label: '', labelY: 12, labelWidth: 60, curve: 0.18 },
+    { source: 'q_b', target: 'q_no',      label: '', labelX: -8, labelWidth: 60, curve: 0.18 },
+    { source: 'q_dead', target: 'q_dead', label: '', loopDirection: '0deg', labelX: 22, labelWidth: 60 },
+    { source: 'q_dead', target: 'q_wait', label: '', labelY: -10, labelWidth: 60, curve: 0 },
+    { source: 'q_dead', target: 'q_b',    label: '', labelY: -12, labelWidth: 60, curve: 0.18 },
+    { source: 'q_dead', target: 'q_no',   label: '', labelY: 10, labelWidth: 60, curve: 0 },
+    { source: 'q_dead', target: 'q_both', label: '', labelY: 18, labelWidth: 60, curve: -0.95 }
+  ]"
 />
 </div>
 
@@ -839,19 +860,19 @@ hide: true
     { source: 'q_no', target: 'q_no', label: '', loopDirection: '90deg', labelY: 22, labelWidth: 65 },
     { source: 'q_no', target: 'q_dead', label: '', labelY: 12, labelWidth: 60, curve: 0.15 },
     { source: 'q_both', target: 'q_both', label: '', loopDirection: '180deg', labelX: -22, labelWidth: 70 },
-    { source: 'q_both', target: 'q_wait', label: '', labelY: 12, labelWidth: 70, curve: 0.15 },
-    { source: 'q_both', target: 'q_b', label: '', labelY: 12, labelWidth: 70, curve: 0.18 },
-    { source: 'q_both', target: 'q_no', label: '', labelY: 10, labelWidth: 70, curve: 0.10 },
+    { source: 'q_both', target: 'q_wait', label: '', labelY: -10, labelWidth: 70, curve: 0 },
+    { source: 'q_both', target: 'q_b',    label: '', labelY: 12, labelWidth: 70, curve: 0.18 },
+    { source: 'q_both', target: 'q_no',   label: '', labelY: 10, labelWidth: 70, curve: 0 },
     { source: 'q_both', target: 'q_dead', label: '', labelY: -18, labelWidth: 70, curve: -0.95 },
-    { source: 'q_b', target: 'q_b', label: '', loopDirection: '45deg', labelY: -22, labelX: 20, labelWidth: 60 },
-    { source: 'q_b', target: 'q_both', label: '', labelY: -12, labelWidth: 60, curve: 0.18 },
-    { source: 'q_b', target: 'q_wait', label: '', labelX: 12, labelWidth: 60, curve: 0.15 },
-    { source: 'q_b', target: 'q_dead', label: '', labelY: 12, labelWidth: 60, curve: 0.18 },
-    { source: 'q_b', target: 'q_no', label: '', labelX: -12, labelWidth: 60, curve: 0.15 },
+    { source: 'q_b', target: 'q_b',       label: '', loopDirection: '45deg', labelY: -22, labelX: 20, labelWidth: 60 },
+    { source: 'q_b', target: 'q_both',    label: '', labelY: -12, labelWidth: 60, curve: 0.18 },
+    { source: 'q_b', target: 'q_wait',    label: '', labelX: 8, labelWidth: 60, curve: 0.18 },
+    { source: 'q_b', target: 'q_dead',    label: '', labelY: 12, labelWidth: 60, curve: 0.18 },
+    { source: 'q_b', target: 'q_no',      label: '', labelX: -8, labelWidth: 60, curve: 0.18 },
     { source: 'q_dead', target: 'q_dead', label: '', loopDirection: '0deg', labelX: 22, labelWidth: 60 },
-    { source: 'q_dead', target: 'q_wait', label: '', labelY: -10, labelWidth: 60, curve: 0.10 },
-    { source: 'q_dead', target: 'q_b', label: '', labelY: -12, labelWidth: 60, curve: 0.18 },
-    { source: 'q_dead', target: 'q_no', label: '', labelY: -12, labelWidth: 60, curve: 0.15 },
+    { source: 'q_dead', target: 'q_wait', label: '', labelY: -10, labelWidth: 60, curve: 0 },
+    { source: 'q_dead', target: 'q_b',    label: '', labelY: -12, labelWidth: 60, curve: 0.18 },
+    { source: 'q_dead', target: 'q_no',   label: '', labelY: 10, labelWidth: 60, curve: 0 },
     { source: 'q_dead', target: 'q_both', label: '', labelY: 18, labelWidth: 60, curve: -0.95 }
   ]"
 />
