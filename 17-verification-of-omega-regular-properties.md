@@ -145,54 +145,75 @@ info: |
 
 # דוגמה: בניית המכפלה
 
-<div class="mt-3 grid grid-cols-2 gap-4 text-[17px] leading-snug">
-<div class="bg-blue-50 border border-blue-200 rounded p-3">
-<div class="font-bold text-blue-700 mb-2">מערכת המעברים <span dir="ltr"><KatexInline math="TS" /></span></div>
-<div dir="ltr" class="compact-display"><KatexInline display math="\begin{array}{c}
-S=\{s_0,s_1\},\quad I=\{s_0\}\\
-s_0\xrightarrow{\alpha}s_1,\quad s_1\xrightarrow{\beta}s_1\\
-L(s_0)=\{a\},\quad L(s_1)=\{a\}
-\end{array}" /></div>
+<div class="mt-1 flex flex-col items-center gap-3 text-[16px] leading-snug" dir="ltr">
+  <!-- Top row: TS and Automaton -->
+  <div class="flex items-center gap-4 justify-center w-full">
+    <!-- TS -->
+    <div class="bg-blue-50/50 border border-blue-200/60 rounded-xl p-3 w-[320px] h-[165px] flex flex-col justify-between shadow-sm">
+      <div class="font-bold text-blue-700 text-sm text-right" dir="rtl">מערכת המעברים (TS)</div>
+      <div class="flex-grow flex items-center justify-center -mt-6">
+        <TransitionSystemD3 :width="290" :height="140" :auto="false"
+          :states="[
+            { id: 's0', text: '$s_0$', label: '$\\{a\\}$', initial: true, initialDirection: 'left', initialStroke: '#2563eb', x: 70, y: 70, width: 50, color: '#dbeafe', stroke: '#2563eb', labelX: -12, labelY: 18 },
+            { id: 's1', text: '$s_1$', label: '$\\{a\\}$', x: 200, y: 70, width: 50, color: '#dbeafe', stroke: '#2563eb', labelX: -12, labelY: 18 }
+          ]"
+          :transitions="[
+            { source: 's0', target: 's1', action: '$\\alpha$',  actionY: -12, actionWidth: 60, stroke: '#3b82f6' },
+            { source: 's1', target: 's1', action: '$\\beta$', loopDirection: '0deg', loopRadius: 85, loopLabelRadius: 70, actionWidth: 52, stroke: '#3b82f6' }
+          ]"
+        />
+      </div>
+    </div>
+    <!-- Operator -->
+    <div class="text-[32px] text-slate-400 font-bold select-none">×</div>
+    <!-- Automaton -->
+    <div class="bg-emerald-50/50 border border-emerald-200/60 rounded-xl p-3 w-[320px] h-[165px] flex flex-col justify-between shadow-sm">
+      <div class="font-bold text-emerald-700 text-sm text-right" dir="rtl">אוטומט Büchi (A)</div>
+      <div class="flex-grow flex items-center justify-center -mt-6">
+        <AutomatonD3 variant="classic" :width="290" :height="140" :arrowSize="4.2" :stateLabelFontSize="15" :transitionLabelFontSize="13"
+          :states="[
+            { id: 'q0', x: 70, y: 70, label: '$q_0$', initial: true, initialDirection: 'left', initialStroke: '#059669', r: 20, fill: '#d1fae5', stroke: '#059669' },
+            { id: 'q1', x: 200, y: 70, label: '$q_1$', accepting: true, r: 20, fill: '#d1fae5', stroke: '#059669' }
+          ]"
+          :transitions="[
+            { source: 'q0', target: 'q1', label: '$\\{a\\}$', labelY: -15, stroke: '#10b981', strokeWidth: 2.5 },
+            { source: 'q1', target: 'q1', label: '$\\{a\\}$', loopDirection: '0deg', 
+              loopRadius: 85, labelX: 15, stroke: '#10b981', strokeWidth: 2.5 },
+          ]"
+        />
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Bottom row: Product -->
+  <div class="bg-slate-50/50 border border-slate-200/60 rounded-xl p-3 w-[420px] h-[165px] flex flex-col justify-between shadow-sm">
+    <div class="font-bold text-slate-700 text-sm text-right" dir="rtl">המכפלה <span dir="ltr"><KatexInline math="TS\times\mathcal{A}" /></span> הנגישה</div>
+    <div class="flex-grow flex items-center justify-center -mt-6">
+      <TransitionSystemD3 :width="390" :height="140" :auto="false"
+        :states="[
+          { id: 'p0', text: '$\\langle s_0,q_1\\rangle$', initial: true, initialDirection: 'left', initialStroke: '#64748b', x: 100, y: 70, width: 85, color: '#f8fafc', stroke: '#64748b' },
+          { id: 'p1', text: '$\\langle s_1,q_1\\rangle$', x: 270, y: 70, width: 85, color: '#fee2e2', stroke: '#ef4444' }
+        ]"
+        :transitions="[
+          { source: 'p0', target: 'p1', action: '$\\alpha$', actionY: -12, actionWidth: 60, stroke: '#64748b' },
+          { source: 'p1', target: 'p1', action: '$\\beta$', loopDirection: '0deg', loopRadius: 95, loopLabelRadius: 80, actionWidth: 48, stroke: '#ef4444', labelColor: '#ef4444' }
+        ]"
+      />
+    </div>
+  </div>
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
-<div class="font-bold text-emerald-700 mb-2">האוטומט <span dir="ltr"><KatexInline math="\mathcal{A}" /></span></div>
-<div dir="ltr" class="compact-display"><KatexInline display math="\begin{array}{c}
-Q=\{q_0,q_1\},\quad Q_0=\{q_0\},\quad F=\{q_1\}\\
-\delta(q_0,\emptyset)=\{q_0\},\quad \delta(q_0,\{a\})=\{q_1\}\\
-\delta(q_1,\emptyset)=\{q_1\},\quad \delta(q_1,\{a\})=\{q_1\}
-\end{array}" /></div>
+<div class="mt-3 grid grid-cols-3 gap-3 text-[17px] leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-3 text-right">
+המערכת עוברת מ־<span dir="ltr"><KatexInline math="s_0" /></span> אל <span dir="ltr"><KatexInline math="s_1" /></span>, ואז נשארת ב־<span dir="ltr"><KatexInline math="s_1" /></span>.
 </div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-right">
+בכל מצב קוראים את התיוג <span dir="ltr"><KatexInline math="\{a\}" /></span>, ולכן האוטומט מגיע ל־<span dir="ltr"><KatexInline math="q_1" /></span> ונשאר בו.
 </div>
-
-<div class="mt-3 grid grid-cols-2 gap-4 text-[17px] leading-snug">
-<div class="bg-slate-50 border border-slate-200 rounded p-3">
-<div class="font-bold mb-2">מצבי המכפלה הנגישים</div>
-<div dir="ltr" class="compact-display"><KatexInline display math="\begin{array}{rcl}
-I_\times&=&\{\langle s_0,q_1\rangle\}\\
-\langle s_0,q_1\rangle &\xrightarrow{\alpha}_\times& \langle s_1,q_1\rangle\\
-\langle s_1,q_1\rangle &\xrightarrow{\beta}_\times& \langle s_1,q_1\rangle
-\end{array}" /></div>
+<div class="bg-red-50 border border-red-200 rounded p-3 text-right">
+במכפלה מתקבל מעגל על <span dir="ltr"><KatexInline math="\langle s_1,q_1\rangle" /></span>; זהו ביקור חוזר במצב מקבל של האוטומט.
 </div>
-
-<div class="bg-amber-50 border border-amber-200 rounded p-3">
-<div class="font-bold text-amber-700 mb-2">מה קרה בבנייה?</div>
-<div class="text-right">
-מתחילים ב־<span dir="ltr"><KatexInline math="s_0" /></span>, אבל הרכיב השני נקבע
-אחרי קריאת התיוג <span dir="ltr"><KatexInline math="L(s_0)=\{a\}" /></span>.
-לכן מ־<span dir="ltr"><KatexInline math="q_0\in Q_0" /></span> האוטומט עובר אל
-<span dir="ltr"><KatexInline math="q_1" /></span>, ומצב ההתחלה במכפלה הוא
-<span dir="ltr"><KatexInline math="\langle s_0,q_1\rangle" /></span>.
-במעבר אל <span dir="ltr"><KatexInline math="s_1" /></span> קוראים שוב את
-<span dir="ltr"><KatexInline math="L(s_1)=\{a\}" /></span>, ונשארים ב־
-<span dir="ltr"><KatexInline math="q_1" /></span>.
-</div>
-</div>
-</div>
-
-<div class="mt-3 bg-red-50 border border-red-200 rounded p-3 text-center text-[18px]" dir="ltr">
-<KatexInline math="L_\times(\langle s_1,q_1\rangle)=\{q_1\}" />
-<span dir="rtl"> ולכן הביקור העצמי מסמן ביקור חוזר במצב מקבל של האוטומט.</span>
 </div>
 
 ---
@@ -352,7 +373,7 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 
 ---
 
-# היחס לתכונות שמורות
+# היחס לתכונות שמורה
 
 <div class="mt-2 text-right text-[18px] leading-snug">
 נשווה בין שתי צורות של תכונות:
@@ -372,12 +393,12 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 </div>
 
 <div class="mt-2 space-y-2 text-right text-[15px] leading-tight" dir="rtl">
-<div v-click class="bg-slate-50 border border-slate-200 rounded px-3 py-2" dir="rtl">
-<div class="flex items-start justify-between gap-3">
+<div v-click="1" class="bg-slate-50 border border-slate-200 rounded px-3 py-2" dir="rtl">
+<div class="flex items-start gap-3">
 <div class="font-bold">האם <span dir="ltr"><KatexInline math="P_{\mathrm{per}}(\Phi)=P_{\mathrm{inv}}(\Phi)" /></span>?</div>
-<div class="shrink-0 text-red-700 font-bold">לא, אלא אם <KatexInline math="\Phi" /> טריוויאלית.</div>
+<div v-click="2" class="text-red-700 font-bold">לא, אלא אם <KatexInline math="\Phi" /> טריוויאלית.</div>
 </div>
-<div class="mt-1">
+<div v-click="3" class="mt-1">
 הוכחה: אם <KatexInline math="\Phi" /> אינה תמיד אמת ואינה תמיד שקר, קיימות אותיות
 <span dir="ltr"><KatexInline math="A\not\models\Phi" /></span> ו־
 <span dir="ltr"><KatexInline math="B\models\Phi" /></span>.
@@ -388,12 +409,12 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 </div>
 </div>
 
-<div v-click class="bg-slate-50 border border-slate-200 rounded px-3 py-2" dir="rtl">
-<div class="flex items-start justify-between gap-3">
+<div v-click="4" class="bg-slate-50 border border-slate-200 rounded px-3 py-2" dir="rtl">
+<div class="flex items-start gap-3">
 <div class="font-bold">האם קיימות <span dir="ltr"><KatexInline math="\Phi_{\mathrm{inv}},\Phi_{\mathrm{per}}" /></span> כך ש־<span dir="ltr"><KatexInline math="P_{\mathrm{per}}(\Phi_{\mathrm{per}})=P_{\mathrm{inv}}(\Phi_{\mathrm{inv}})" /></span>?</div>
-<div class="shrink-0 text-emerald-700 font-bold">כן, רק טריוויאליות.</div>
+<div v-click="5" class="text-emerald-700 font-bold">כן, רק טריוויאליות.</div>
 </div>
-<div class="mt-1">
+<div v-click="6" class="mt-1">
 נסמן <span dir="ltr"><KatexInline math="\Sigma=2^{AP}" /></span>,
 <span dir="ltr"><KatexInline math="X=\{A\mid A\models\Phi_{\mathrm{inv}}\}" /></span>,
 <span dir="ltr"><KatexInline math="Y=\{A\mid A\models\Phi_{\mathrm{per}}\}" /></span>.
@@ -508,35 +529,109 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 
 ---
 
+# הוכחת המשפט: הכיוון של אי קיום התכונה
+
+<div class="mt-4 text-right text-[19px] leading-relaxed">
+נניח ש־<KatexInline math="TS \not\models P" />. כלומר, קיימת עקבה של המערכת שאינה מקיימת את התכונה:
+</div>
+
+<div class="mt-2 text-center text-[25px]" dir="ltr">
+<KatexInline display math="\mathit{trace}(s_0s_1s_2\cdots) \in (2^{AP})^\omega \setminus P = L_\omega(\mathcal{A})" />
+</div>
+
+<div class="mt-4 text-right text-[19px] leading-relaxed">
+קיימת ריצה מקבלת של האוטומט <KatexInline math="q_0q_1q_2\cdots" /> על עקבה זו. נבנה ריצה במכפלה:
+</div>
+
+<div class="mt-4 grid grid-cols-2 gap-4 text-[17px] text-right leading-snug">
+<div class="bg-blue-50/50 border border-blue-200 rounded-xl p-3 shadow-sm">
+<div class="font-bold text-blue-700 mb-1">מצב ההתחלה של המכפלה</div>
+מכיוון ש־<KatexInline math="s_0 \in I" /> ו־<KatexInline math="q_1 \in \delta(q_0, L(s_0))" />, מתקיים:
+<div class="text-center mt-1" dir="ltr"><KatexInline math="\langle s_0, q_1\rangle \in I_\times" /></div>
+</div>
+
+<div class="bg-emerald-50/50 border border-emerald-200 rounded-xl p-3 shadow-sm">
+<div class="font-bold text-emerald-700 mb-1">מעברים במכפלה</div>
+לכל <KatexInline math="i \ge 0" />, מכיוון ש־<KatexInline math="s_i \xrightarrow{\alpha_{i+1}} s_{i+1}" /> ו־<KatexInline math="q_{i+2} \in \delta(q_{i+1}, L(s_{i+1}))" />, יש מעבר:
+<div class="text-center mt-1" dir="ltr"><KatexInline math="\langle s_i, q_{i+1}\rangle \xrightarrow{\alpha_{i+1}}_\times \langle s_{i+1}, q_{i+2}\rangle" /></div>
+</div>
+</div>
+
+<div class="mt-4 bg-slate-50/50 border border-slate-200 rounded-xl p-3 text-right text-[18px] leading-relaxed shadow-sm">
+קיבלנו ריצה חוקית במכפלה <KatexInline math="\langle s_0,q_1\rangle\langle s_1,q_2\rangle\langle s_2,q_3\rangle\cdots" />.
+<div class="mt-1">
+מכיוון שריצת האוטומט מקבלת, הרכיב השני מבקר ב־<KatexInline math="F" /> אינסוף פעמים.
+לכן הריצה במכפלה מבקרת אינסוף פעמים במצבי קבלה, ומכאן ש־<KatexInline math="TS\times\mathcal{A}\not\models P_{\mathrm{pers}}(\mathcal{A})" />.
+</div>
+</div>
+
+---
+
 # דוגמה: “אינסוף פעמים ירוק”
 
-<div class="grid grid-cols-[0.9fr_1.1fr] gap-5 mt-5 items-center">
-<div class="bg-white border border-slate-200 rounded p-3">
-<AutomatonD3 variant="classic" :width="430" :height="230" :arrowSize="4.2" :stateLabelFontSize="16" :transitionLabelFontSize="14"
-  :states="[
-    { id: 'q0', x: 70, y: 115, label: '$q_0$', initial: true, initialDirection: 'left', r: 24, labelWidth: 60 },
-    { id: 'q1', x: 215, y: 115, label: '$q_1$', accepting: true, r: 24, labelWidth: 60 },
-    { id: 'q2', x: 360, y: 115, label: '$q_2$', r: 24, labelWidth: 60 }
-  ]"
-  :transitions="[
-    { source: 'q0', target: 'q0', label: '$true$', loopDirection: '-90deg', labelY: -10, labelWidth: 60 },
-    { source: 'q0', target: 'q1', label: '$\\neg green$', labelY: -10, labelWidth: 95 },
-    { source: 'q1', target: 'q1', label: '$\\neg green$', loopDirection: '-90deg', labelY: -10, labelWidth: 95 },
-    { source: 'q1', target: 'q2', label: '$green$', labelY: -10, labelWidth: 70 },
-    { source: 'q2', target: 'q2', label: '$true$', loopDirection: '-90deg', labelY: -10, labelWidth: 60 }
-  ]"
-/>
-</div>
+<div class="grid grid-cols-2 gap-x-10 gap-y-4 mt-6 justify-center w-fit mx-auto" dir="ltr">
+  <!-- Top Row: Automata -->
+  <!-- Automaton for Property P -->
+  <div class="bg-emerald-50/50 border border-emerald-200/60 rounded-xl p-3 w-[420px] h-[200px] flex items-center justify-center shadow-sm">
+    <AutomatonD3 variant="classic" :width="390" :height="180" :arrowSize="4.2" :stateLabelFontSize="15" :transitionLabelFontSize="13"
+      :states="[
+        { id: 'p0', x: 90, y: 90, label: '$p_0$', initial: true, initialDirection: 'left', initialStroke: '#047857', r: 22, fill: '#d1fae5', stroke: '#047857' },
+        { id: 'p1', x: 260, y: 90, label: '$p_1$', accepting: true, r: 22, fill: '#d1fae5', stroke: '#047857' }
+      ]"
+      :transitions="[
+        { source: 'p0', target: 'p0', label: '$\\neg green$', loopDirection: '-90deg', labelY: -10, labelWidth: 90, stroke: '#10b981', strokeWidth: 2.5 },
+        { source: 'p0', target: 'p1', label: '$green$', curve: -0.22, labelY: -10, labelWidth: 70, stroke: '#10b981', strokeWidth: 2.5 },
+        { source: 'p1', target: 'p0', label: '$\\neg green$', curve: -0.22, labelY: 10, labelWidth: 90, stroke: '#10b981', strokeWidth: 2.5 },
+        { source: 'p1', target: 'p1', label: '$green$', loopDirection: '-90deg', labelY: -10, labelWidth: 70, stroke: '#10b981', strokeWidth: 2.5 }
+      ]"
+    />
+  </div>
 
-<div class="text-right text-[21px] leading-relaxed">
-<div class="font-bold mb-3">התכונה שרוצים לבדוק:</div>
-<div class="text-center text-[28px] mb-5" dir="ltr"><KatexInline math="\text{Always Eventually }green" /></div>
-<div class="font-bold mb-3">האוטומט מקבל את המשלים:</div>
-<div class="text-center text-[28px]" dir="ltr"><KatexInline math="\text{Eventually Always }\neg green" /></div>
-<div class="mt-5">
-כלומר, החל מרגע מסוים אין יותר ירוק.
-</div>
-</div>
+  <!-- Automaton for Complement A -->
+  <div class="bg-red-50/50 border border-red-200/60 rounded-xl p-3 w-[420px] h-[200px] flex items-center justify-center shadow-sm">
+    <AutomatonD3 variant="classic" :width="390" :height="180" :arrowSize="4.2" :stateLabelFontSize="15" :transitionLabelFontSize="13"
+      :states="[
+        { id: 'q0', x: 70, y: 90, label: '$q_0$', initial: true, initialDirection: 'left', initialStroke: '#dc2626', r: 20, fill: '#fee2e2', stroke: '#dc2626' },
+        { id: 'q1', x: 195, y: 90, label: '$q_1$', accepting: true, r: 20, fill: '#fee2e2', stroke: '#dc2626' },
+        { id: 'q2', x: 320, y: 90, label: '$q_2$', r: 20, fill: '#fee2e2', stroke: '#dc2626' }
+      ]"
+      :transitions="[
+        { source: 'q0', target: 'q0', label: '$true$', loopDirection: '-90deg', labelY: -10, labelWidth: 60, stroke: '#ef4444', strokeWidth: 2.5 },
+        { source: 'q0', target: 'q1', label: '$\\neg green$', labelY: -10, labelWidth: 95, stroke: '#ef4444', strokeWidth: 2.5 },
+        { source: 'q1', target: 'q1', label: '$\\neg green$', loopDirection: '-90deg', labelY: -10, labelWidth: 95, stroke: '#ef4444', strokeWidth: 2.5 },
+        { source: 'q1', target: 'q2', label: '$green$', labelY: -10, labelWidth: 70, stroke: '#ef4444', strokeWidth: 2.5 },
+        { source: 'q2', target: 'q2', label: '$true$', loopDirection: '-90deg', labelY: -10, labelWidth: 60, stroke: '#ef4444', strokeWidth: 2.5 }
+      ]"
+    />
+  </div>
+
+  <!-- Bottom Row: Descriptions -->
+  <!-- Description for P -->
+  <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 w-[420px] text-right text-[16px] leading-relaxed shadow-sm" dir="rtl">
+  <div class="font-bold text-emerald-700 text-[18px] mb-2">
+    התכונה שרוצים לבדוק (<span dir="ltr"><KatexInline math="L_\omega(\mathcal{A})=P" /></span>)
+  </div>
+  <div class="text-center text-[22px] mb-2 font-mono" dir="ltr">
+      <KatexInline math="\text{Always Eventually }green" />
+    </div>
+    <div class="text-[14px] text-slate-600 leading-snug">
+      השפה היא כל המילים שבהן הצבע ירוק מופיע אינסוף פעמים (תכונת חַיּוּת).
+    </div>
+  </div>
+
+  <!-- Description for A -->
+  <div class="bg-red-50 border border-red-200 rounded-xl p-4 w-[420px] text-right text-[16px] leading-relaxed shadow-sm" dir="rtl">
+    <div class="font-bold text-red-700 text-[18px] mb-2">אוטומט המשלים 
+    (<span dir="ltr"><KatexInline math="L_\omega(\mathcal{A})=(2^{AP})^{\omega} \setminus P"/>
+    </span>)
+    </div>
+    <div class="text-center text-[22px] mb-2 font-mono" dir="ltr">
+      <KatexInline math="\text{Eventually Always }\neg green" />
+    </div>
+    <div class="text-[14px] text-slate-600 leading-snug">
+      השפה המשלימה (העקבות הרעות) שבה החל מרגע מסוים אין יותר ירוק.
+    </div>
+  </div>
 </div>
 
 ---
@@ -549,7 +644,7 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 <div class="-mt-9 -mb-11" dir="ltr">
 <TransitionSystemD3 :width="240" :height="160" :auto="false"
   :states="[
-    { id: 'simple_ts_r', text: '$r$', label: '$\\{red\\}$', initial: true, x: 20, y: 66, width: 50, color: '#fee2e2', stroke: '#dc2626', labelX: -12, labelY: 18 },
+    { id: 'simple_ts_r', text: '$r$', label: '$\\{red\\}$', initial: true, initialDirection: 'left', initialStroke: '#dc2626', x: 20, y: 66, width: 50, color: '#fee2e2', stroke: '#dc2626', labelX: -12, labelY: 18 },
     { id: 'simple_ts_g', text: '$g$', label: '$\\{green\\}$', x: 175, y: 66, width: 50, color: '#dcfce7', stroke: '#16a34a', labelX: -18, labelY: 18 }
   ]"
   :transitions="[
@@ -585,8 +680,8 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 <div class="-mt-8 -mb-10" dir="ltr">
 <TransitionSystemD3 :width="760" :height="205" :auto="false"
   :states="[
-    { id: 'simple_r0', text: '$\\langle r,q_0\\rangle$', label: '$\\{q_0\\}$', initial: true, x: 145, y: 36, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: -18, labelY: 18 },
-    { id: 'simple_r1', text: '$\\langle r,q_1\\rangle$', label: '$\\{q_1\\}$', initial: true, initialDirection: 'left', x: 145, y: 115, width: 82, color: '#fff1f2', stroke: '#e11d48', labelX: -18, labelY: 18 },
+    { id: 'simple_r0', text: '$\\langle r,q_0\\rangle$', label: '$\\{q_0\\}$', initial: true, initialDirection: 'left', initialStroke: '#64748b', x: 145, y: 36, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: -18, labelY: 18 },
+    { id: 'simple_r1', text: '$\\langle r,q_1\\rangle$', label: '$\\{q_1\\}$', initial: true, initialDirection: 'left', initialStroke: '#e11d48', x: 145, y: 115, width: 82, color: '#fff1f2', stroke: '#e11d48', labelX: -18, labelY: 18 },
     { id: 'simple_g0', text: '$\\langle g,q_0\\rangle$', label: '$\\{q_0\\}$', x: 325, y: 36, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: -18, labelY: 18 },
     { id: 'simple_g2', text: '$\\langle g,q_2\\rangle$', label: '$\\{q_2\\}$', x: 325, y: 115, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: -18, labelY: 18 },
     { id: 'simple_r2', text: '$\\langle r,q_2\\rangle$', label: '$\\{q_2\\}$', x: 505, y: 115, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: -18, labelY: 18 }
@@ -619,7 +714,7 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
 <div class="-mt-9 -mb-3" dir="ltr">
 <TransitionSystemD3 :width="240" :height="118" :auto="false"
   :states="[
-    { id: 'bad_ts_r', text: '$r$', label: '$\\{red\\}$', initial: true, x: 15, y: 46, width: 50, color: '#fee2e2', stroke: '#dc2626', labelX: -12, labelY: 18 },
+    { id: 'bad_ts_r', text: '$r$', label: '$\\{red\\}$', initial: true, initialDirection: 'left', initialStroke: '#dc2626', x: 15, y: 46, width: 50, color: '#fee2e2', stroke: '#dc2626', labelX: -12, labelY: 18 },
     { id: 'bad_ts_g', text: '$g$', label: '$\\{green\\}$', x: 155, y: 46, width: 50, color: '#dcfce7', stroke: '#16a34a', labelX: -18, labelY: 18 },
     { id: 'bad_ts_off', text: '$off$', label: '$\\{\\}$', x: 285, y: 46, width: 54, color: '#f1f5f9', stroke: '#64748b', labelX: 24, labelY: 18 }
   ]"
@@ -662,10 +757,10 @@ TS\not\models P &amp;\iff&amp; \mathit{Traces}(TS)\cap L_\omega(\mathcal{A})\neq
   highlightColor="#dc2626"
   :highlightArrowheadScale="0.65"
   :states="[
-    { id: 'bad_r0', text: '$\\langle r,q_0\\rangle$', label: '$\\{q_0\\}$', initial: true, x: 95, y: 46, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: 20, labelY: 18 },
+    { id: 'bad_r0', text: '$\\langle r,q_0\\rangle$', label: '$\\{q_0\\}$', initial: true, initialDirection: 'left', initialStroke: '#64748b', x: 95, y: 46, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: 20, labelY: 18 },
     { id: 'bad_g0', text: '$\\langle g,q_0\\rangle$', label: '$\\{q_0\\}$', x: 275, y: 46, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: 20, labelY: 18 },
     { id: 'bad_o0', text: '$\\langle off,q_0\\rangle$', label: '$\\{q_0\\}$', x: 530, y: 46, width: 98, color: '#f8fafc', stroke: '#64748b', labelX: 30, labelY: 18 },
-    { id: 'bad_r1', text: '$\\langle r,q_1\\rangle$', label: '$\\{q_1\\}$', initial: true, initialDirection: 'left', x: 95, y: 126, width: 82, color: '#fff1f2', stroke: '#e11d48', labelX: 20, labelY: 18 },
+    { id: 'bad_r1', text: '$\\langle r,q_1\\rangle$', label: '$\\{q_1\\}$', initial: true, initialDirection: 'left', initialStroke: '#e11d48', x: 95, y: 126, width: 82, color: '#fff1f2', stroke: '#e11d48', labelX: 20, labelY: 18 },
     { id: 'bad_o1', text: '$\\langle off,q_1\\rangle$', label: '$\\{q_1\\}$', x: 530, y: 126, width: 98, color: '#fff1f2', stroke: '#e11d48', labelX: 30, labelY: 18, highlightFill: '#fee2e2' },
     { id: 'bad_r2', text: '$\\langle r,q_2\\rangle$', label: '$\\{q_2\\}$', x: 95, y: 206, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: 20, labelY: 18 },
     { id: 'bad_g2', text: '$\\langle g,q_2\\rangle$', label: '$\\{q_2\\}$', x: 275, y: 206, width: 82, color: '#f8fafc', stroke: '#64748b', labelX: 20, labelY: 18 },
