@@ -348,8 +348,8 @@ false &\equiv \neg true \\
 </div>
 
 <div class="bg-purple-50 border border-purple-200 rounded p-3 grid grid-cols-[130px_1fr] gap-4 items-center">
-<div class="font-bold text-purple-700">כל בקשה תענה</div>
-<div dir="ltr" class="text-[26px]"><KatexInline math="\Box(request\Rightarrow\Diamond answer)" /></div>
+<div class="font-bold text-purple-700">אתחול עד ריצה תמידית</div>
+<div dir="ltr" class="text-[26px]"><KatexInline math="init\mathbin{\mathrm{U}}\Box running" /></div>
 </div>
 
 </div>
