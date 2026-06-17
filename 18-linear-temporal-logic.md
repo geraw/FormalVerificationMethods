@@ -325,26 +325,28 @@ false &\equiv \neg true \\
 
 # דוגמאות שימושיות בתוכניות
 
-<div class="mt-6 grid grid-cols-2 gap-4 text-right text-[19px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
-<div class="font-bold text-blue-700 mb-2">עצירה</div>
-<div dir="ltr" class="text-center text-[27px]"><KatexInline math="\Diamond terminated" /></div>
+<div class="mt-5 grid grid-cols-1 gap-3 text-right text-[19px] leading-relaxed">
+
+<div class="bg-blue-50 border border-blue-200 rounded p-3 grid grid-cols-[130px_1fr] gap-4 items-center">
+<div class="font-bold text-blue-700">עצירה</div>
+<div dir="ltr" class="text-[26px]"><KatexInline math="\Diamond terminated" /></div>
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-2">שירות חי</div>
-<div dir="ltr" class="text-center text-[27px]"><KatexInline math="\Box(requested\Rightarrow\Diamond served)" /></div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3 grid grid-cols-[130px_1fr] gap-4 items-center">
+<div class="font-bold text-emerald-700">שירות חי</div>
+<div dir="ltr" class="text-[26px]"><KatexInline math="\Box(requested\Rightarrow\Diamond served)" /></div>
 </div>
 
-<div class="bg-amber-50 border border-amber-200 rounded p-4">
-<div class="font-bold text-amber-700 mb-2">העברת הודעות הוגנת</div>
-<div dir="ltr" class="text-center text-[27px]"><KatexInline math="\Box\Diamond sent\Rightarrow\Box\Diamond delivered" /></div>
+<div class="bg-amber-50 border border-amber-200 rounded p-3 grid grid-cols-[130px_1fr] gap-4 items-center">
+<div class="font-bold text-amber-700">העברת הודעות הוגנת</div>
+<div dir="ltr" class="text-[26px]"><KatexInline math="\Box\Diamond sent\Rightarrow\Box\Diamond delivered" /></div>
 </div>
 
-<div class="bg-red-50 border border-red-200 rounded p-4">
-<div class="font-bold text-red-700 mb-2">אין פלט לפני קלט</div>
-<div dir="ltr" class="text-center text-[25px]"><KatexInline math="\Box\neg output\lor(\neg output\mathbin{\mathrm{U}}input)" /></div>
+<div class="bg-red-50 border border-red-200 rounded p-3 grid grid-cols-[130px_1fr] gap-4 items-center">
+<div class="font-bold text-red-700">אין פלט לפני קלט</div>
+<div dir="ltr" class="text-[24px]"><KatexInline math="\Box\neg output\lor(\neg output\mathbin{\mathrm{U}}input)" /></div>
 </div>
+
 </div>
 
 ---
