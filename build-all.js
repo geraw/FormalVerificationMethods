@@ -14,6 +14,7 @@ if (process.platform === "win32") {
 
 const REPO = process.env.REPO_NAME || "FormalVerificationMethods";
 const FORCE_REBUILD = process.env.FORCE_REBUILD === "1" || process.env.FORCE_REBUILD === "true";
+const DOWNLOAD = true;
 const COPIED_PUBLIC_DIRS = [
     "slide-backgrounds",
     "slide-reference",
@@ -53,7 +54,7 @@ function buildSignature(sourceFile) {
     hash.update(JSON.stringify({
         repo: REPO,
         routerMode: "hash",
-        download: false,
+        download: DOWNLOAD,
         copiedPublicDirs: COPIED_PUBLIC_DIRS,
     }));
 
@@ -95,9 +96,9 @@ function prepareBuildSource(sourceFile) {
         }
 
         if (/^download:/m.test(updated)) {
-            updated = updated.replace(/^download:.*$/m, "download: false");
+            updated = updated.replace(/^download:.*$/m, `download: ${DOWNLOAD ? "true" : "false"}`);
         } else {
-            updated = updated.replace(/^---(\r?\n)/, "---$1download: false$1");
+            updated = updated.replace(/^---(\r?\n)/, `---$1download: ${DOWNLOAD ? "true" : "false"}$1`);
         }
     }
 
@@ -134,7 +135,7 @@ function runSlidevBuild(sourceFile, basePath, outputDir) {
         prepared.buildFile,
         "--base", basePath,
         "-o", outputDir,
-        "--download", "false",
+        "--download", DOWNLOAD ? "true" : "false",
     ];
     try {
         execSync(`npx slidev build ${args.map(quote).join(" ")}`, { stdio: "inherit" });
@@ -157,8 +158,13 @@ function needsBuild(sourceFile, outputDir) {
     if (FORCE_REBUILD) return { rebuild: true, reason: "forced rebuild" };
     const sigPath = signaturePath(outputDir);
     const indexPath = path.join(outputDir, "index.html");
+    const base = path.basename(outputDir);
+    const pdfPath = path.join(outputDir, `${base}.pdf`);
     if (!fs.existsSync(sigPath)) return { rebuild: true, reason: "missing signature" };
     if (!fs.existsSync(indexPath)) return { rebuild: true, reason: "missing index.html" };
+    if (sourceFile !== "index.md" && DOWNLOAD && !fs.existsSync(pdfPath)) {
+        return { rebuild: true, reason: "missing PDF" };
+    }
 
     const current = buildSignature(sourceFile);
     const previous = fs.readFileSync(sigPath, "utf8").trim();
