@@ -99,6 +99,10 @@ info: |
 <img src="./public/amir-pnueli.png" class="mx-auto rounded w-[132px] h-[162px] object-cover" alt="אמיר פנואלי" />
 <div class="mt-1 text-[13px] text-slate-700">1941-2009</div>
 <div class="mt-0.5 text-[12px] text-slate-500" dir="ltr">אמיר פנואלי</div>
+<div class="mt-2 flex items-center justify-center gap-1.5">
+<img src="./public/turing-award.png" class="w-[38px] h-[38px] object-contain" alt="פרס טיורינג" title="פרס טיורינג ACM 1996" />
+<span class="text-[11px] text-amber-700 font-semibold leading-tight">פרס טיורינג<br/>ACM 1996</span>
+</div>
 </div>
 </div>
 
