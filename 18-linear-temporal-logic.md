@@ -327,7 +327,7 @@ false &\equiv \neg true \\
 
 <div class="relative mt-5 grid grid-cols-1 gap-3 text-right text-[19px] leading-relaxed">
 
-<img src="./public/engineer-writing.png" style="position:absolute; left:-80px; top:50%; transform:translateY(-50%); height:160px; width:100px; object-fit:contain; z-index:10;" alt="מהנדסת כותבת דרישות" />
+<img src="./public/engineer-writing.png" style="position:absolute; left:-35px; top:0%; transform:translateY(-50%); height:160px; width:300px; object-fit:contain; z-index:10;" alt="מהנדסת כותבת דרישות" />
 
 <div class="bg-blue-50 border border-blue-200 rounded p-3 grid grid-cols-[130px_1fr] gap-4 items-center">
 <div class="font-bold text-blue-700">עצירה</div>
@@ -383,7 +383,7 @@ false &\equiv \neg true \\
 
 # סמנטיקה של Until
 
-<div class="mt-6 text-center text-[29px]" dir="ltr">
+<div class="mt-6 text-center text-[27px]" dir="ltr">
 <KatexInline display math="\sigma\models\varphi\mathbin{\mathrm{U}}\psi \iff \left(\exists j\ge0\;\left(\sigma[j..]\models\psi\;\land\;\forall i<j\;\left(\sigma[i..]\models\varphi\right)\right)\right)" />
 </div>
 
