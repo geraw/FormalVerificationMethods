@@ -246,20 +246,6 @@ false &\equiv \neg true \\
 <div dir="ltr" class="text-[23px]"><KatexInline display math="\begin{aligned}
 \Diamond\varphi &\equiv true\,\mathbin{\mathrm{U}}\,\varphi \\
 \Box\varphi &\equiv \neg\Diamond\neg\varphi
-<div class="bg-slate-50 border border-slate-200 rounded p-4">
-<div class="font-bold mb-2">לוגיקה פסוקית</div>
-<div dir="ltr" class="text-[23px]"><KatexInline display math="\begin{aligned}
-false &\equiv \neg true \\
-\varphi\lor\psi &\equiv \neg(\neg\varphi\land\neg\psi) \\
-\varphi\Rightarrow\psi &\equiv \neg\varphi\lor\psi
-\end{aligned}" /></div>
-</div>
-
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
-<div class="font-bold text-blue-700 mb-2">אופרטורי זמן</div>
-<div dir="ltr" class="text-[23px]"><KatexInline display math="\begin{aligned}
-\Diamond\varphi &\equiv true\,\mathbin{\mathrm{U}}\,\varphi \\
-\Box\varphi &\equiv \neg\Diamond\neg\varphi
 \end{aligned}" /></div>
 </div>
 </div>
