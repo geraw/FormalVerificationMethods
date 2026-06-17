@@ -30,7 +30,7 @@ info: |
 
 # ראשי פרקים
 
-<div class="grid grid-cols-3 gap-4 mt-8 text-right text-[19px] leading-relaxed">
+<div class="grid grid-cols-3 gap-4 mt-4 text-right text-[19px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4">
 <div class="font-bold text-blue-700 mb-2">תחביר</div>
 נגדיר את נוסחאות <span dir="ltr">LTL</span>, את האופרטורים הבסיסיים, ואת הסוכר התחבירי השימושי.
@@ -45,6 +45,10 @@ info: |
 <div class="font-bold text-amber-700 mb-2">שקילות</div>
 נראה דואליות, פריסה, אופרטורים נגזרים וצורות נורמליות.
 </div>
+</div>
+
+<div class="mt-4 flex justify-center">
+<img src="./public/ltl-comic.png" class="rounded shadow-md" style="max-height: 270px; object-fit: contain;" alt="איור קומי: שלוש דרכים להגדיר תכונה" />
 </div>
 
 ---
