@@ -347,36 +347,11 @@ false &\equiv \neg true \\
 <div dir="ltr" class="text-[24px]"><KatexInline math="\Box\neg output\lor(\neg output\mathbin{\mathrm{U}}input)" /></div>
 </div>
 
+<div class="bg-purple-50 border border-purple-200 rounded p-3 grid grid-cols-[130px_1fr] gap-4 items-center">
+<div class="font-bold text-purple-700">כל בקשה תענה</div>
+<div dir="ltr" class="text-[26px]"><KatexInline math="\Box(request\Rightarrow\Diamond answer)" /></div>
 </div>
 
----
-
-# תכונות פרקטיות ב-LTL
-
-<div class="mt-6 grid grid-cols-2 gap-5 text-right text-[19px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-4">
-<div class="font-bold text-blue-700 mb-2">נגישות</div>
-<div dir="ltr" class="text-[25px]"><KatexInline math="\Diamond\varphi" /></div>
-<div class="mt-2">מתישהו מגיעים למצב שמקיים את <span dir="ltr"><KatexInline math="\varphi" /></span>.</div>
-</div>
-
-<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
-<div class="font-bold text-emerald-700 mb-2">בטיחות / שמורה</div>
-<div dir="ltr" class="text-[25px]"><KatexInline math="\Box\varphi" /></div>
-<div class="mt-2">כל מצב לאורך המסלול מקיים את <span dir="ltr"><KatexInline math="\varphi" /></span>.</div>
-</div>
-
-<div class="bg-amber-50 border border-amber-200 rounded p-4">
-<div class="font-bold text-amber-700 mb-2">חיות מותנית</div>
-<div dir="ltr" class="text-[25px]"><KatexInline math="\Box(\varphi\Rightarrow\Diamond\psi)" /></div>
-<div class="mt-2">כל בקשה שמתרחשת תיענה בעתיד.</div>
-</div>
-
-<div class="bg-red-50 border border-red-200 rounded p-4">
-<div class="font-bold text-red-700 mb-2">הוגנות</div>
-<div dir="ltr" class="text-[25px]"><KatexInline math="\Box\Diamond\varphi" /></div>
-<div class="mt-2">האירוע אינו נעלם; הוא חוזר אינסוף פעמים.</div>
-</div>
 </div>
 
 ---
