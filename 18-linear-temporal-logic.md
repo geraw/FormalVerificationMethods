@@ -426,40 +426,99 @@ false &\equiv \neg true \\
 # סמנטיקה ישירה של האופרטורים הנגזרים
 
 <div class="mt-5 grid grid-cols-1 gap-y-2 text-right text-[18px] leading-snug">
-<div class="bg-blue-50 border border-blue-200 rounded p-3 grid grid-cols-[170px_1fr] gap-8 items-center">
+<div class="bg-blue-50 border border-blue-200 rounded p-3 grid grid-cols-[150px_1fr] gap-5 items-center">
 <div>מתישהו בעתיד.</div>
-<div dir="ltr" class="grid grid-cols-[235px_64px_minmax(0,1fr)] gap-4 items-center text-[23px] leading-tight">
+<div dir="ltr" class="grid grid-cols-[200px_50px_minmax(0,1fr)] gap-3 items-center text-[20px] leading-tight">
 <div class="text-right"><KatexInline math="\sigma\models\Diamond\varphi" /></div>
 <div class="text-center"><KatexInline math="\iff" /></div>
 <div class="text-left pl-3"><KatexInline math="\exists j\ge0\;\left(\sigma[j..]\models\varphi\right)" /></div>
 </div>
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3 grid grid-cols-[170px_1fr] gap-8 items-center">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3 grid grid-cols-[150px_1fr] gap-5 items-center">
 <div>בכל נקודה מעכשיו והלאה.</div>
-<div dir="ltr" class="grid grid-cols-[235px_64px_minmax(0,1fr)] gap-4 items-center text-[23px] leading-tight">
+<div dir="ltr" class="grid grid-cols-[200px_50px_minmax(0,1fr)] gap-3 items-center text-[20px] leading-tight">
 <div class="text-right"><KatexInline math="\sigma\models\Box\varphi" /></div>
 <div class="text-center"><KatexInline math="\iff" /></div>
 <div class="text-left pl-3"><KatexInline math="\forall j\ge0\;\left(\sigma[j..]\models\varphi\right)" /></div>
 </div>
 </div>
 
-<div class="bg-amber-50 border border-amber-200 rounded p-3 grid grid-cols-[170px_1fr] gap-8 items-center">
+<div class="bg-amber-50 border border-amber-200 rounded p-3 grid grid-cols-[150px_1fr] gap-5 items-center">
 <div>אינסוף פעמים.</div>
-<div dir="ltr" class="grid grid-cols-[235px_64px_minmax(0,1fr)] gap-4 items-center text-[22px] leading-tight">
+<div dir="ltr" class="grid grid-cols-[200px_50px_minmax(0,1fr)] gap-3 items-center text-[18px] leading-tight">
 <div class="text-right"><KatexInline math="\sigma\models\Box\Diamond\varphi" /></div>
 <div class="text-center"><KatexInline math="\iff" /></div>
 <div class="text-left pl-3"><KatexInline math="\forall i\ge0\;\left(\exists j\ge i\;\left(\sigma[j..]\models\varphi\right)\right)" /></div>
 </div>
 </div>
 
-<div class="bg-red-50 border border-red-200 rounded p-3 grid grid-cols-[170px_1fr] gap-8 items-center">
+<div class="bg-red-50 border border-red-200 rounded p-3 grid grid-cols-[150px_1fr] gap-5 items-center">
 <div>בסופו של דבר תמיד.</div>
-<div dir="ltr" class="grid grid-cols-[235px_64px_minmax(0,1fr)] gap-4 items-center text-[22px] leading-tight">
+<div dir="ltr" class="grid grid-cols-[200px_50px_minmax(0,1fr)] gap-3 items-center text-[18px] leading-tight">
 <div class="text-right"><KatexInline math="\sigma\models\Diamond\Box\varphi" /></div>
 <div class="text-center"><KatexInline math="\iff" /></div>
 <div class="text-left pl-3"><KatexInline math="\exists i\ge0\;\left(\forall j\ge i\;\left(\sigma[j..]\models\varphi\right)\right)" /></div>
 </div>
+</div>
+</div>
+
+---
+
+# הוכחת הסמנטיקה הישירה של האופרטורים הנגזרים
+
+<div class="mt-3 text-right text-[19px] leading-relaxed">
+הנוסחאות הישירות נובעות מן ההגדרה כסוכר תחבירי <span dir="ltr"><KatexInline math="\Diamond\varphi\equiv true\,\mathbin{\mathrm{U}}\,\varphi" /></span> ו־<span dir="ltr"><KatexInline math="\Box\varphi\equiv\neg\Diamond\neg\varphi" /></span>, יחד עם סמנטיקת ה־<span dir="ltr">Until</span>.
+</div>
+
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+
+<div class="mt-4 min-h-[200px]">
+<div v-show="$slidev.nav.clicks === 0" class="pt-10 text-center text-[22px]">
+נעבור על ארבעת הדפוסים בזה אחר זה.
+</div>
+
+<div v-show="$slidev.nav.clicks === 1" class="bg-blue-50 border border-blue-200 rounded p-3 text-[16px]" dir="ltr">
+<div class="mb-1 text-right text-[16px]" dir="rtl">מתישהו בעתיד:</div>
+<KatexInline display math="\begin{aligned}
+\sigma\models\Diamond\varphi
+&\iff \sigma\models true\,\mathbin{\mathrm{U}}\,\varphi\\
+&\iff \exists j\ge0\;\left(\sigma[j..]\models\varphi\;\land\;\forall i<j\;\left(\sigma[i..]\models true\right)\right)\\
+&\iff \exists j\ge0\;\left(\sigma[j..]\models\varphi\right)
+\end{aligned}" />
+</div>
+
+<div v-show="$slidev.nav.clicks === 2" class="bg-emerald-50 border border-emerald-200 rounded p-3 text-[16px]" dir="ltr">
+<div class="mb-1 text-right text-[16px]" dir="rtl">בכל נקודה מעכשיו והלאה — מפעילים שלילה על כלל ה־◇ שהוכח:</div>
+<KatexInline display math="\begin{aligned}
+\sigma\models\Box\varphi
+&\iff \sigma\models\neg\Diamond\neg\varphi\\
+&\iff \neg\exists j\ge0\;\left(\sigma[j..]\models\neg\varphi\right)\\
+&\iff \forall j\ge0\;\left(\sigma[j..]\models\varphi\right)
+\end{aligned}" />
+</div>
+
+<div v-show="$slidev.nav.clicks === 3" class="bg-amber-50 border border-amber-200 rounded p-3 text-[15px]" dir="ltr">
+<div class="mb-1 text-right text-[16px]" dir="rtl">אינסוף פעמים — מפעילים את כלל ה־□ שהוכח על הנוסחה ◇φ:</div>
+<KatexInline display math="\begin{aligned}
+\sigma\models\Box\Diamond\varphi
+&\iff \forall i\ge0\;\left(\sigma[i..]\models\Diamond\varphi\right)\\
+&\iff \forall i\ge0\;\exists j\ge0\;\left(\sigma[i+j..]\models\varphi\right)\\
+&\iff \forall i\ge0\;\exists k\ge i\;\left(\sigma[k..]\models\varphi\right)
+\end{aligned}" />
+</div>
+
+<div v-show="$slidev.nav.clicks === 4" class="bg-red-50 border border-red-200 rounded p-3 text-[15px]" dir="ltr">
+<div class="mb-1 text-right text-[16px]" dir="rtl">בסופו של דבר תמיד — מפעילים את כלל ה־◇ שהוכח על הנוסחה □φ:</div>
+<KatexInline display math="\begin{aligned}
+\sigma\models\Diamond\Box\varphi
+&\iff \exists i\ge0\;\left(\sigma[i..]\models\Box\varphi\right)\\
+&\iff \exists i\ge0\;\forall j\ge0\;\left(\sigma[i+j..]\models\varphi\right)\\
+&\iff \exists i\ge0\;\forall k\ge i\;\left(\sigma[k..]\models\varphi\right)
+\end{aligned}" />
 </div>
 </div>
 
