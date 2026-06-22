@@ -219,16 +219,17 @@ info: |
 <div class="mt-3 flex items-center justify-center gap-2" dir="ltr">
 
 <div class="bg-blue-50 border-2 border-blue-300 rounded-lg p-2 text-center text-[13px] w-[155px]">
-<div class="font-bold text-blue-700">מצב <span dir="ltr">0</span></div>
-<div class="text-[11px] text-slate-500">$\{a\}$</div>
+<div class="font-bold text-blue-700" dir="ltr">מצב 0</div>
+<div class="text-[11px] text-slate-500">
+<KatexInline math="\{a\}" /></div>
 <div class="mt-1"><KatexInline math="a\mathbin{\mathrm{U}}b,\;a,\;\neg b" /></div>
 </div>
 
 <div v-click class="text-blue-400 text-[24px]">→</div>
 
 <div v-click class="bg-blue-50 border-2 border-blue-300 rounded-lg p-2 text-center text-[13px] w-[155px]">
-<div class="font-bold text-blue-700">מצב <span dir="ltr">1</span></div>
-<div class="text-[11px] text-slate-500">$\{a\}$</div>
+<div class="font-bold text-blue-700" dir="ltr">מצב 1</div>
+<div class="text-[11px] text-slate-500"><KatexInline math="\{a\}" /></div>
 <div class="mt-1"><KatexInline math="a\mathbin{\mathrm{U}}b,\;a,\;\neg b" /></div>
 </div>
 
@@ -236,8 +237,8 @@ info: |
 
 <div v-click class="relative bg-emerald-50 border-2 border-emerald-400 rounded-lg p-2 text-center text-[13px] w-[155px]">
 <div class="absolute -top-2 -right-2 bg-emerald-500 text-white text-[9px] rounded-full px-1.5 py-0.5">מקבל</div>
-<div class="font-bold text-emerald-700">מצב <span dir="ltr">2</span></div>
-<div class="text-[11px] text-slate-500">$\{b\}$</div>
+<div class="font-bold text-emerald-700" dir="ltr">מצב 2</div>
+<div class="text-[11px] text-slate-500"><KatexInline math="\{b\}" /></div>
 <div class="mt-1"><KatexInline math="a\mathbin{\mathrm{U}}b,\;\neg a,\;b" /></div>
 </div>
 
@@ -926,44 +927,51 @@ hide: true
 רק המצב שבו ההבטחה פתוחה וממתינה למימוש (מסומן באדום) אינו מקבל.
 </div>
 </div>
-</div>---
-
-# נכונות הבנייה: הכיוון האינטואיטיבי
-
-<div class="mt-7 text-right text-[21px] leading-relaxed">
-נניח שיש ריצה מקבלת של <span dir="ltr"><KatexInline math="\mathcal{G}_{\varphi}" /></span> על מילה <span dir="ltr"><KatexInline math="\sigma=A_0A_1A_2\ldots" /></span>:
-</div>
-
-<div class="mt-5 text-center text-[28px]" dir="ltr">
-<KatexInline display math="B_0 \xrightarrow{A_0} B_1 \xrightarrow{A_1} B_2 \xrightarrow{A_2}\cdots" />
-</div>
-
-<div class="mt-6 bg-blue-50 border border-blue-200 rounded p-4 text-blue-900 text-right text-[21px] leading-relaxed">
-מוכיחים באינדוקציה מבנית על תת־נוסחאות:
-<div class="mt-3 text-center text-[27px]" dir="ltr">
-<KatexInline display math="\sigma[i..]\models\psi \iff \psi\in B_i" />
-</div>
 </div>
 
 ---
 
-# מקרה Until בהוכחת הנכונות
+# מה קורה אם בנוסחה Until בכלל?
 
-<div class="mt-6 text-right text-[21px] leading-relaxed">
-החלק העדין הוא <span dir="ltr"><KatexInline math="\psi_1\mathbin{\mathrm{U}}\psi_2" /></span>.
+<div class="mt-7 text-right text-[21px] leading-relaxed">
+אם <span dir="ltr"><KatexInline math="\varphi" /></span> אינה מכילה אף תת־נוסחת <span dir="ltr">Until</span>, אין הבטחות לאכוף כלל.
 </div>
 
-<div class="mt-5 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
+<div class="mt-5 bg-blue-50 border border-blue-200 rounded p-4 text-blue-900 text-right text-[20px] leading-relaxed">
+קבוצת קבוצות הקבלה <span dir="ltr"><KatexInline math="\mathcal{F}=\emptyset" /></span> — תנאי הקבלה של <span dir="ltr">GNBA</span> הוא קוניונקציה על כל הקבוצות ב־<span dir="ltr"><KatexInline math="\mathcal{F}" /></span>.
+</div>
+
+<div class="mt-5 bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900 text-right text-[20px] leading-relaxed">
+קוניונקציה על קבוצה ריקה מתקיימת תמיד ("vacuous truth") — כך שכל ריצה אינסופית של האוטומט היא ריצה מקבלת.
+</div>
+
+<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-4 text-amber-900 text-right text-[20px] leading-relaxed">
+הגיוני: בלי <span dir="ltr">Until</span> אין דרישת חַיּוּת (liveness) שיש לאכוף — אין מה לבדוק "אינסוף פעמים", ולכן כל ניחוש עקבי לכל אורך הריצה הוא קביל.
+</div>
+
+---
+
+# נכונות הבנייה: שני כיווני ההוכחה
+
+<div class="mt-6 text-right text-[20px] leading-relaxed">
+צריך להוכיח <span dir="ltr"><KatexInline math="\mathcal{L}_{\omega}(\mathcal{G}_{\varphi})=Words(\varphi)" /></span> — שתי הכלות בנפרד, עבור מילה <span dir="ltr"><KatexInline math="\sigma" /></span>:
+</div>
+
+<div class="mt-5 grid grid-cols-2 gap-5 text-right text-[17px] leading-relaxed">
+<div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900">
+<div class="font-bold text-blue-800 mb-2">⊆ נכונות: ריצה מקבלת ⟸ סיפוק</div>
+אם יש ריצה מקבלת <span dir="ltr"><KatexInline math="B_0 \xrightarrow{A_0} B_1 \xrightarrow{A_1}\cdots" /></span> של <span dir="ltr"><KatexInline math="\mathcal{G}_{\varphi}" /></span> על <span dir="ltr"><KatexInline math="\sigma" /></span>, אז <span dir="ltr"><KatexInline math="\sigma\models\varphi" /></span>.
+<div class="mt-2 text-[14.5px] text-blue-700">
+<b>טיעון:</b> אינדוקציה מבנית על תת־נוסחאות <span dir="ltr"><KatexInline math="\psi" /></span> מוכיחה <span dir="ltr"><KatexInline math="\sigma[i..]\models\psi \iff \psi\in B_i" /></span> לכל <span dir="ltr"><KatexInline math="i" /></span>. עבור אטומים, שלילה וקוניונקציה זה נובע ישירות מעקביות בוליאנית, ועבור <span dir="ltr"><KatexInline math="\bigcirc" /></span> — ישירות מיחס המעברים. החלק העדין הוא <span dir="ltr"><KatexInline math="\mathrm{U}" /></span>: כללי המעבר מאפשרים לדחות את ההבטחה הלאה, ותנאי הקבלה הוא מה שמונע דחייה לנצח — בלעדיו הריצה הייתה יכולה "לשקר".
+</div>
+</div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
-אם <span dir="ltr"><KatexInline math="\psi_2\in B_i" /></span>, ה־<span dir="ltr">Until</span> נכון מייד.
+<div class="font-bold text-emerald-800 mb-2">⊇ שלמות: סיפוק ⟸ קיום ריצה מקבלת</div>
+אם <span dir="ltr"><KatexInline math="\sigma\models\varphi" /></span>, אז ל־<span dir="ltr"><KatexInline math="\mathcal{G}_{\varphi}" /></span> יש ריצה מקבלת על <span dir="ltr"><KatexInline math="\sigma" /></span>.
+<div class="mt-2 text-[14.5px] text-emerald-700">
+<b>טיעון:</b> בונים את "הריצה הקנונית" <span dir="ltr"><KatexInline math="B_i=\{\psi\mid \sigma[i..]\models\psi\}" /></span>. עקביות וההתאמה ליחס המעברים נובעות ישירות מסמנטיקת ה־LTL (כך מוגדרו הכללים). תנאי הקבלה מתקיים כי סמנטיקת <span dir="ltr"><KatexInline math="\mathrm{U}" /></span> עצמה מחייבת שכל הבטחה תתממש בפועל בנקודה כלשהי — כך שזה לא "בנוי" כתנאי נוסף אלא נכון אוטומטית מהגדרת הסיפוק.
 </div>
-<div class="bg-amber-50 border border-amber-200 rounded p-4 text-amber-900">
-אם <span dir="ltr"><KatexInline math="\psi_1\mathbin{\mathrm{U}}\psi_2\in B_i" /></span> ו־<span dir="ltr"><KatexInline math="\psi_2\notin B_i" /></span>, כללי המעבר מעבירים את ההבטחה ל־<span dir="ltr"><KatexInline math="B_{i+1}" /></span>.
 </div>
-</div>
-
-<div class="mt-6 bg-red-50 border border-red-200 rounded p-4 text-red-900 text-right text-[20px] leading-relaxed">
-תנאי הקבלה מונע מצב שבו ההבטחה מועברת לנצח בלי ש־<span dir="ltr"><KatexInline math="\psi_2" /></span> תופיע.
 </div>
 
 ---
