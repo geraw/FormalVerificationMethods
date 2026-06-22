@@ -570,7 +570,7 @@ false &\equiv \neg true \\
   :states="[
     { id: 's1', text: '$s_1$', label: '\{a,b\}', x: 90, y: 95, width: 62, initial: true, initialDirection: 'left' },
     { id: 's2', text: '$s_2$', label: '\{a,b\}', x: 260, y: 95, width: 62 },
-    { id: 's3', text: '$s_3$', label: '\{a\}', x: 430, y: 95, width: 62 }
+    { id: 's3', text: '$s_3$', label: '\{a\}', x: 430, y: 95, width: 62, initial: true, initialDirection: 'right' }
   ]"
   :transitions="[
     { source: 's1', target: 's2', action: ' ' },
