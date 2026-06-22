@@ -1020,6 +1020,104 @@ hide: true
 
 ---
 
+# האם כל תכונה ω־רגולרית ניתנת לתיאור ב־LTL?
+
+<div class="mt-3 text-right text-[17px] leading-snug">
+ראינו שלכל נוסחת <span dir="ltr">LTL</span> אפשר לבנות <span dir="ltr">GNBA</span> שקול. מה לגבי הכיוון ההפוך?
+</div>
+
+<div class="mt-2 bg-red-50 border border-red-200 rounded p-2 text-red-900 text-center text-[16px] leading-snug">
+לא! יש שפות <span dir="ltr">ω</span>־רגולריות (ניתנות לקבלה ע"י <span dir="ltr">NBA</span>) שאינן ניתנות לביטוי באף נוסחת <span dir="ltr">LTL</span>.
+</div>
+
+<div class="mt-2 bg-blue-50 border border-blue-200 rounded p-2 text-blue-900 text-right text-[16px] leading-snug">
+דוגמה קלאסית מעל <span dir="ltr"><KatexInline math="AP=\{a\}" /></span>:
+<div class="text-center text-[18px]" dir="ltr">
+<KatexInline display math="L=\{\sigma \mid \forall i\ge 0\,(a\in\sigma(2i))\}" />
+</div>
+כלומר: <span dir="ltr">a</span> מתקיימת בכל מיקום <b>זוגי</b> במילה (0, 2, 4, ...), ואין שום דרישה על המיקומים האי־זוגיים.
+</div>
+
+<div class="grid grid-cols-[0.9fr_1.1fr] gap-3 mt-2 items-center">
+<div class="bg-white rounded border border-slate-200 shadow-sm p-1">
+<AutomatonD3 variant="classic" :width="320" :height="155" :arrowSize="3.5" :stateLabelFontSize="14" :transitionLabelFontSize="12"
+  :states="[
+    { id: 'q0', x: 80, y: 78, label: '$q_0$', initial: true, initialDirection: 'top', accepting: true, r: 24 },
+    { id: 'q1', x: 230, y: 78, label: '$q_1$', accepting: true, r: 24 }
+  ]"
+  :transitions="[
+    { source: 'q0', target: 'q1', label: '$a$', labelY: -12, curve: 0.22 },
+    { source: 'q1', target: 'q0', label: '$\\top$', labelY: 12, curve: 0.22 }
+  ]"
+/>
+</div>
+<div class="text-right text-[13.5px] leading-snug text-slate-800">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-1.5 mb-1">
+<span dir="ltr"><KatexInline math="q_0" /></span>: מיקום זוגי — חייבים <span dir="ltr"><KatexInline math="a" /></span>; <span dir="ltr"><KatexInline math="q_1" /></span>: מיקום אי־זוגי — חופשי (<span dir="ltr"><KatexInline math="\top" /></span>).
+</div>
+<div class="bg-amber-50 border border-amber-200 rounded p-1.5">
+שני המצבים מקבלים — זו תכונת בטיחות גרידא, אין צורך ב"אינסוף פעמים".
+</div>
+</div>
+</div>
+
+---
+
+# מדוע L אינה ניתנת לביטוי ב־LTL
+
+<div class="mt-7 bg-red-50 border border-red-200 rounded p-4 text-red-900 text-right text-[19px] leading-relaxed">
+ל־<span dir="ltr">LTL</span> אין יכולת "לספור מודולו 2": כל נוסחה היא בעלת עומק שיכוב (<span dir="ltr">Until</span>) סופי, ולכן אינה יכולה להבחין באופן עקבי בין מיקום זוגי לאי־זוגי לאורך כל המילה האינסופית — בניגוד לאוטומט, שיש לו "זיכרון" של ביט בודד (המצב הנוכחי) שמתעדכן בכל צעד.
+</div>
+
+<div class="mt-5 bg-slate-50 border border-slate-200 rounded p-4 text-slate-700 text-right text-[17px] leading-relaxed">
+זה לא רק חוסר ב־<span dir="ltr"><KatexInline math="\bigcirc" /></span>: גם שילוב של <span dir="ltr"><KatexInline math="\bigcirc" /></span> עם <span dir="ltr">Until</span> נותן רק "הסתכלות קדימה" חסומה וטענות "אי פעם/לעולם", ולא מנגנון לבדוק זוגיות על פני מילה כולה.
+</div>
+
+---
+
+# הוכחה פשוטה: מנצלים את ה־⊤ באוטומט
+
+<div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900 text-right text-[16.5px] leading-relaxed">
+היציאה מ־<span dir="ltr"><KatexInline math="q_1" /></span> מתויגת <span dir="ltr"><KatexInline math="\top" /></span> — כל אות עוברת. כלומר ערך האות במיקום אי־זוגי <b>לא משפיע כלום</b> על השייכות ל־<span dir="ltr"><KatexInline math="L" /></span>; רק הערך במיקומים הזוגיים קובע.
+</div>
+
+<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900 text-right text-[16.5px] leading-relaxed">
+ניקח <span dir="ltr"><KatexInline math="\sigma=(a,\neg a)^{\omega}\in L" /></span>. לכל <span dir="ltr"><KatexInline math="k" /></span> נבנה <span dir="ltr"><KatexInline math="\tau_k" /></span> ע"י <b>הכפלה בודדת</b> של הסימן באי־זוגי ה־<span dir="ltr"><KatexInline math="k" /></span>: <span dir="ltr"><KatexInline math="\tau_k=(a,\neg a)^{k}\,\neg a\,(a,\neg a)^{\omega}" /></span>. בזכות ה־<span dir="ltr"><KatexInline math="\top" /></span> ההכפלה "תקינה מקומית", אך היא דוחפת את כל מה שאחריה צעד אחד — ובמיקום <span dir="ltr"><KatexInline math="2k" /></span> (זוגי) יושב כעת <span dir="ltr"><KatexInline math="\neg a" /></span>, ולכן <span dir="ltr"><KatexInline math="\tau_k\notin L" /></span>.
+</div>
+
+<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[16.5px] leading-relaxed">
+לכל נוסחת <span dir="ltr">LTL</span> <span dir="ltr"><KatexInline math="\varphi" /></span> יש (ניתן להוכיח באינדוקציה על מבנה <span dir="ltr"><KatexInline math="\varphi" /></span>) "טווח הסתכלות" סופי. אם <span dir="ltr"><KatexInline math="k" /></span> גדול מספיק ביחס ל־<span dir="ltr"><KatexInline math="\varphi" /></span>, ההכפלה הבודדת קורית הרחק מעבר לטווח הזה — ו־<span dir="ltr"><KatexInline math="\varphi" /></span> לא יכולה להבחין בין <span dir="ltr"><KatexInline math="\sigma" /></span> ל־<span dir="ltr"><KatexInline math="\tau_k" /></span>.
+</div>
+
+<div class="mt-3 bg-red-50 border border-red-200 rounded p-3 text-red-900 text-center text-[17px] leading-relaxed">
+אבל <span dir="ltr"><KatexInline math="\sigma\in L" /></span> ו־<span dir="ltr"><KatexInline math="\tau_k\notin L" /></span> — סתירה. לכן <b>שום</b> נוסחת <span dir="ltr">LTL</span> לא יכולה להגדיר בדיוק את <span dir="ltr"><KatexInline math="L" /></span>.
+</div>
+
+---
+
+# המשמעות: LTL חלשה ממש מ־GNBA
+
+<div class="mt-7 bg-blue-50 border border-blue-200 rounded p-5 text-blue-900 text-center text-[21px] leading-relaxed">
+מחלקת התכונות הניתנות לביטוי ב־<span dir="ltr">LTL</span> היא תת־קבוצה <b>ממש</b> של השפות ה־<span dir="ltr">ω</span>־רגולריות.
+</div>
+
+<div class="mt-6 grid grid-cols-2 gap-5 text-right text-[19px] leading-relaxed">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
+<div class="font-bold text-emerald-800 mb-2">כיוון אחד — כן</div>
+לכל נוסחת <span dir="ltr">LTL</span> יש <span dir="ltr">GNBA</span> שקול (הבנייה שלמדנו בשקף זה).
+</div>
+<div class="bg-red-50 border border-red-200 rounded p-4 text-red-900">
+<div class="font-bold text-red-800 mb-2">כיוון הפוך — לא</div>
+יש <span dir="ltr">GNBA</span>/<span dir="ltr">NBA</span> (כמו דוגמת הזוגיות) שאין להן נוסחת <span dir="ltr">LTL</span> שקולה.
+</div>
+</div>
+
+<div class="mt-6 text-center text-[17px] text-slate-600">
+בבדיקת מודלים נעבוד כל הזמן בתוך מחלקת ה־<span dir="ltr">LTL</span>, אך כדאי לזכור שהיא לא "כל הסיפור" של התכונות ה־<span dir="ltr">ω</span>־רגולריות.
+</div>
+
+---
+
 # סיכום
 
 <div class="mt-7 grid grid-cols-2 gap-5 text-right text-[20px] leading-relaxed">
