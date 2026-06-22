@@ -575,6 +575,7 @@ false &\equiv \neg true \\
   :transitions="[
     { source: 's1', target: 's2', action: ' ' },
     { source: 's2', target: 's3', action: ' ' },
+    { source: 's3', target: 's2', action: ' ' },
     { source: 's3', target: 's3', action: ' ', loopDirection: '90deg', loopRadius: 72, loopLabelRadius: 82 }
   ]"
 />
@@ -582,11 +583,11 @@ false &\equiv \neg true \\
 <div class="mt-8 grid grid-cols-2 gap-4 text-right text-[21px] leading-relaxed">
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4">
 <div dir="ltr" class="text-left"><KatexInline math="TS\models\Box a" /></div>
-<div dir="ltr" class="text-left"><KatexInline math="TS\models \Box(\neg b\Rightarrow\Box(a\land\neg b))" /></div>
+<div dir="ltr" class="text-left"><KatexInline math="TS\models b\mathbin{\mathrm{U}}(a\land\neg b)" /></div>
 </div>
 <div class="bg-red-50 border border-red-200 rounded p-4">
 <div dir="ltr" class="text-left"><KatexInline math="TS\not\models \bigcirc(a\land b)" /></div>
-<div dir="ltr" class="text-left"><KatexInline math="TS\not\models b\mathbin{\mathrm{U}}(a\land\neg b)" /></div>
+<div dir="ltr" class="text-left"><KatexInline math="TS\not\models \Diamond b" /></div>
 </div>
 </div>
 
