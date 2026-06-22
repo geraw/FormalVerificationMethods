@@ -24,7 +24,7 @@ info: |
 
 **גרא וייס**
 
-<img src="/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
+<img src="./public/bgu-logo.png" class="bgu-logo" style="position: absolute; bottom: 20px; left: 450px; width: 80px; z-index: 100;" />
 
 ---
 
@@ -104,11 +104,11 @@ info: |
 
 <div class="absolute top-[30px] left-[72px] flex gap-5 items-start">
 <div class="text-center">
-<img src="/moshe-vardi.png" class="h-[108px] mx-auto object-contain" />
+<img src="./public/moshe-vardi.png" class="h-[108px] mx-auto object-contain" />
 <div class="mt-1 text-[16px]">משה ורדי</div>
 </div>
 <div class="text-center">
-<img src="/pierre-wolper.png" class="h-[108px] mx-auto object-contain" />
+<img src="./public/pierre-wolper.png" class="h-[108px] mx-auto object-contain" />
 <div class="mt-1 text-[16px]">פייר וולפר</div>
 </div>
 </div>
@@ -218,7 +218,7 @@ info: |
 # אנימציה: שלושה מהמרים
 
 <div class="absolute inset-x-0 bottom-0 h-[310px] overflow-hidden opacity-75">
-<img src="/gambler-guesses.png" class="w-full h-full object-cover object-bottom" />
+<img src="./public/gambler-guesses.png" class="w-full h-full object-cover object-bottom" />
 </div>
 <div class="absolute inset-0 bg-white/45 pointer-events-none"></div>
 
