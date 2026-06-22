@@ -191,11 +191,11 @@ info: |
 
 # האינטואיציה של הבנייה
 
-<div class="mt-8 text-center text-[30px]">
+<div class="mt-4 text-center text-[21px]">
 נבנה אוטומט Büchi מוכלל "שינחש" באופן אי-דטרמיניסטי אילו נוסחאות עומדות להתקיים בהמשך המילה בכל רגע, ויצליח ליצור ריצה אינסופית מקבלת רק אם הניחושים שלו היו נכונים.
 </div>
 
-<div class="mt-7 grid grid-cols-3 gap-4 text-right text-[20px] leading-relaxed">
+<div class="mt-4 grid grid-cols-3 gap-4 text-right text-[16px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900">
 <div class="font-bold text-blue-800 mb-2">מצב</div>
 השמה עקבית לתת־נוסחאות של <span dir="ltr"><KatexInline math="\varphi" /></span>: מה נכון עכשיו לגבי הַסֵּיפָא הנוכחית של המילה.
@@ -212,6 +212,42 @@ info: |
 </div>
 </div>
 
+<div class="mt-5 text-center text-[15px] text-slate-600">
+נמחיש על <span dir="ltr"><KatexInline math="\varphi=a\mathbin{\mathrm{U}}b" /></span> לאורך המילה <span dir="ltr"><KatexInline math="\{a\},\{a\},\{b\},\ldots" /></span>
+</div>
+
+<div class="mt-3 flex items-center justify-center gap-2" dir="ltr">
+
+<div class="bg-blue-50 border-2 border-blue-300 rounded-lg p-2 text-center text-[13px] w-[155px]">
+<div class="font-bold text-blue-700">מצב <span dir="ltr">0</span></div>
+<div class="text-[11px] text-slate-500">$\{a\}$</div>
+<div class="mt-1"><KatexInline math="a\mathbin{\mathrm{U}}b,\;a,\;\neg b" /></div>
+</div>
+
+<div v-click class="text-blue-400 text-[24px]">→</div>
+
+<div v-click class="bg-blue-50 border-2 border-blue-300 rounded-lg p-2 text-center text-[13px] w-[155px]">
+<div class="font-bold text-blue-700">מצב <span dir="ltr">1</span></div>
+<div class="text-[11px] text-slate-500">$\{a\}$</div>
+<div class="mt-1"><KatexInline math="a\mathbin{\mathrm{U}}b,\;a,\;\neg b" /></div>
+</div>
+
+<div v-click class="text-emerald-500 text-[24px]">→</div>
+
+<div v-click class="relative bg-emerald-50 border-2 border-emerald-400 rounded-lg p-2 text-center text-[13px] w-[155px]">
+<div class="absolute -top-2 -right-2 bg-emerald-500 text-white text-[9px] rounded-full px-1.5 py-0.5">מקבל</div>
+<div class="font-bold text-emerald-700">מצב <span dir="ltr">2</span></div>
+<div class="text-[11px] text-slate-500">$\{b\}$</div>
+<div class="mt-1"><KatexInline math="a\mathbin{\mathrm{U}}b,\;\neg a,\;b" /></div>
+</div>
+
+</div>
+
+<div class="mt-3 min-h-[55px] text-center text-[14px] text-slate-700 leading-snug">
+<div v-show="!$slidev.nav.clicks">מצב 0 הוא הניחוש: <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> תתקיים, אבל לא עכשיו — כלומר חייבת להחזיק <span dir="ltr"><KatexInline math="a" /></span> ולהמשיך להבטיח את הניחוש.</div>
+<div v-show="$slidev.nav.clicks === 1">יחס המעברים בדק שהניחוש במצב 1 תואם את כלל הפריסה: כיוון ש־<span dir="ltr"><KatexInline math="b" /></span> עדיין לא הגיעה, צריך גם <span dir="ltr"><KatexInline math="a" /></span> עכשיו וגם להמשיך להבטיח <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>.</div>
+<div v-show="$slidev.nav.clicks === 2">במצב 2 הגיעה <span dir="ltr"><KatexInline math="b" /></span>, ההבטחה התממשה, והמצב נכנס לקבוצת הקבלה — כך תנאי הקבלה מבטיח שההבטחה לא תידחה לנצח.</div>
+</div>
 
 ---
 
