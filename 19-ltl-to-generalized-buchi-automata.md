@@ -951,6 +951,244 @@ hide: true
 
 ---
 
+# דוגמה נוספת: סגירת תת־נוסחאות עבור <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}(b\mathbin{\mathrm{U}}c)" /></span>
+
+<div class="mt-3 text-right text-[18px] leading-snug">
+נוסחה עם <b>שני</b> אופרטורי <span dir="ltr">Until</span> מקוננים: נסמן <span dir="ltr"><KatexInline math="\psi=b\mathbin{\mathrm{U}}c" /></span> (הפנימי) ו־<span dir="ltr"><KatexInline math="\varphi=a\mathbin{\mathrm{U}}\psi" /></span> (החיצוני).
+</div>
+
+<div class="mt-2 text-center text-[24px]" dir="ltr">
+<KatexInline display math="\varphi=a\mathbin{\mathrm{U}}(b\mathbin{\mathrm{U}}c)" />
+</div>
+
+<div class="mt-4 bg-blue-50 border border-blue-200 rounded p-3 text-blue-900 text-right text-[16px] leading-relaxed">
+<div class="font-bold text-blue-800 mb-1"><span dir="ltr"><KatexInline math="cl(\varphi)" /></span>: כל תת־העצים ושלילתם</div>
+<div class="grid grid-cols-5 gap-x-3 gap-y-1 text-center justify-items-center mt-1" dir="ltr">
+<div><KatexInline math="a" /></div><div><KatexInline math="b" /></div><div><KatexInline math="c" /></div><div><KatexInline math="\psi" /></div><div><KatexInline math="\varphi" /></div>
+<div><KatexInline math="\neg a" /></div><div><KatexInline math="\neg b" /></div><div><KatexInline math="\neg c" /></div><div><KatexInline math="\neg\psi" /></div><div><KatexInline math="\neg\varphi" /></div>
+</div>
+<div class="mt-2 text-[14px]" dir="rtl">
+<span dir="ltr">10</span> איברים בסגירה: שכבה אחת לכל אחד מהשניים, <span dir="ltr">a,b,c</span> והשלילות שלהם, ו־<span dir="ltr"><KatexInline math="\psi" /></span> עם שלילתו.
+</div>
+</div>
+
+---
+
+# דוגמה נוספת: מצבי האוטומט עבור <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}(b\mathbin{\mathrm{U}}c)" /></span>
+
+<div class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-amber-900 text-right text-[13px] leading-snug">
+<span dir="ltr"><KatexInline math="2^5=32" /></span> הקצאות אפשריות; שני כללי העקביות (<span dir="ltr"><KatexInline math="c\in B\Rightarrow\psi\in B" /></span> וכו', <span dir="ltr"><KatexInline math="\psi\in B\Rightarrow\varphi\in B" /></span> וכו') משאירים <b>12</b> מצבים עקביים. ירוק = מצב התחלה אפשרי, אפור = לא.
+</div>
+
+<div class="mt-2 bg-white rounded border border-slate-200 shadow-sm p-1">
+<AutomatonD3 variant="classic" :width="720" :height="280" :arrowSize="3" :stateLabelFontSize="9.5" :transitionLabelFontSize="9.5"
+  :states="[
+    { id: 'S1',  x: 90,  y: 50,  label: '$\\begin{smallmatrix}a,b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S2',  x: 270, y: 50,  label: '$\\begin{smallmatrix}a,\\neg b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S3',  x: 450, y: 50,  label: '$\\begin{smallmatrix}\\neg a,b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S4',  x: 630, y: 50,  label: '$\\begin{smallmatrix}\\neg a,\\neg b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S5',  x: 90,  y: 140, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S6',  x: 270, y: 140, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S7',  x: 450, y: 140, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\neg\\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S8',  x: 630, y: 140, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#f1f5f9', stroke: '#94a3b8' },
+    { id: 'S9',  x: 90,  y: 230, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#f1f5f9', stroke: '#94a3b8' },
+    { id: 'S10', x: 270, y: 230, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\neg\\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S11', x: 450, y: 230, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#f1f5f9', stroke: '#94a3b8' },
+    { id: 'S12', x: 630, y: 230, label: '$\\begin{smallmatrix}\\neg a,\\neg b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#f1f5f9', stroke: '#94a3b8' }
+  ]"
+  :transitions="[]"
+/>
+</div>
+
+---
+
+# דוגמה נוספת: מעברים — הבטחה פתוחה (לשני סוגי ה־<span dir="ltr">Until</span>)
+
+<div class="grid grid-cols-2 gap-5 mt-3">
+<div>
+<div class="bg-white rounded border border-slate-200 shadow-sm p-2">
+<AutomatonD3 variant="classic" :width="340" :height="230" :arrowSize="3.5" :stateLabelFontSize="10" :transitionLabelFontSize="10"
+  :states="[
+    { id: 'S5',  x: 60,  y: 115, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 32, labelWidth: 110, labelHeight: 40, stroke: '#eab308', strokeWidth: 3 },
+    { id: 'S1',  x: 200, y: 40,  label: '$\\begin{smallmatrix}a,b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 95, labelHeight: 36 },
+    { id: 'S2',  x: 290, y: 100, label: '$\\begin{smallmatrix}a,\\neg b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 95, labelHeight: 36 },
+    { id: 'S3',  x: 290, y: 165, label: '$\\begin{smallmatrix}\\neg a,b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 95, labelHeight: 36 },
+    { id: 'S4',  x: 200, y: 215, label: '$\\begin{smallmatrix}\\neg a,\\neg b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 95, labelHeight: 36 },
+    { id: 'S6',  x: 110, y: 215, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 95, labelHeight: 36 }
+  ]"
+  :transitions="[
+    { source: 'S5', target: 'S5', label: '', loopDirection: '-90deg', labelY: -18 },
+    { source: 'S5', target: 'S1', label: '', curve: 0.1 },
+    { source: 'S5', target: 'S2', label: '', curve: 0.1 },
+    { source: 'S5', target: 'S3', label: '', curve: -0.1 },
+    { source: 'S5', target: 'S4', label: '', curve: -0.1 },
+    { source: 'S5', target: 'S6', label: '', curve: 0.15 }
+  ]"
+/>
+</div>
+<div class="mt-2 bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900 text-right text-[14px] leading-snug">
+<span dir="ltr"><KatexInline math="\psi" /></span> פתוח: <span dir="ltr"><KatexInline math="\psi\in S_5,c\notin S_5" /></span> ⟹ חייב <span dir="ltr"><KatexInline math="\psi\in B'" /></span>. שישה מצבים תקפים (כל מי שמכיל <span dir="ltr"><KatexInline math="\psi" /></span>).
+</div>
+</div>
+
+<div>
+<div class="bg-white rounded border border-slate-200 shadow-sm p-2">
+<AutomatonD3 variant="classic" :width="340" :height="230" :arrowSize="3.5" :stateLabelFontSize="10" :transitionLabelFontSize="10"
+  :states="[
+    { id: 'S7',  x: 100, y: 115, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\neg\\psi,\\varphi\\end{smallmatrix}$', r: 32, labelWidth: 110, labelHeight: 40, stroke: '#eab308', strokeWidth: 3 },
+    { id: 'S10', x: 250, y: 115, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\neg\\psi,\\varphi\\end{smallmatrix}$', r: 32, labelWidth: 110, labelHeight: 40 }
+  ]"
+  :transitions="[
+    { source: 'S7', target: 'S7', label: '', loopDirection: '-90deg', labelY: -18 },
+    { source: 'S7', target: 'S10', label: '', curve: 0.15 }
+  ]"
+/>
+</div>
+<div class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-amber-900 text-right text-[14px] leading-snug">
+<span dir="ltr"><KatexInline math="\varphi" /></span> פתוח: <span dir="ltr"><KatexInline math="\varphi\in S_7,\psi\notin S_7" /></span> ⟹ חייב <span dir="ltr"><KatexInline math="\varphi\in B'" /></span>; <b>וגם</b> <span dir="ltr"><KatexInline math="\psi" /></span> ללא־הבטחה (<span dir="ltr"><KatexInline math="b\in S_7" /></span>) ⟹ <span dir="ltr"><KatexInline math="\psi\notin B'" /></span>. שני הכללים גוזרים יחד רק <span dir="ltr">2</span> יעדים.
+</div>
+</div>
+</div>
+
+---
+
+# דוגמה נוספת: מעברים — ללא הבטחה (בשני המישורים בבת אחת)
+
+<div class="grid grid-cols-[1.05fr_0.95fr] gap-5 mt-3 items-start">
+<div class="bg-white rounded border border-slate-200 shadow-sm p-2">
+<AutomatonD3 variant="classic" :width="420" :height="260" :arrowSize="3.5" :stateLabelFontSize="10" :transitionLabelFontSize="10"
+  :states="[
+    { id: 'S8',  x: 90,  y: 130, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 32, labelWidth: 110, labelHeight: 40, stroke: '#eab308', strokeWidth: 3 },
+    { id: 'S9',  x: 250, y: 50,  label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36 },
+    { id: 'S11', x: 250, y: 130, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36 },
+    { id: 'S12', x: 250, y: 210, label: '$\\begin{smallmatrix}\\neg a,\\neg b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36 }
+  ]"
+  :transitions="[
+    { source: 'S8', target: 'S8', label: '', loopDirection: '-90deg', labelY: -18 },
+    { source: 'S8', target: 'S9', label: '', curve: 0.1 },
+    { source: 'S8', target: 'S11', label: '', curve: 0 },
+    { source: 'S8', target: 'S12', label: '', curve: -0.1 }
+  ]"
+/>
+</div>
+<div class="text-right text-[15px] leading-relaxed">
+<div class="bg-red-50 border border-red-200 rounded p-3 text-red-900">
+ב־<span dir="ltr"><KatexInline math="S_8" /></span> שני הכללים פועלים יחד: <span dir="ltr"><KatexInline math="\psi\notin S_8,b\in S_8\Rightarrow\psi\notin B'" /></span> וגם <span dir="ltr"><KatexInline math="\varphi\notin S_8,a\in S_8\Rightarrow\varphi\notin B'" /></span>.
+<div class="mt-1">היעדים האפשריים הם <b>בדיוק</b> ארבעת המצבים הלא־התחלתיים <span dir="ltr"><KatexInline math="\{S_8,S_9,S_{11},S_{12}\}" /></span> — אותם המצבים שלא הכלנו במצבי ההתחלה.</div>
+</div>
+</div>
+</div>
+
+---
+
+# דוגמה נוספת: מעברים — ללא הגבלה
+
+<div class="bg-white rounded border border-slate-200 shadow-sm p-1">
+<AutomatonD3 variant="classic" :width="720" :height="280" :arrowSize="2.2" :stateLabelFontSize="9.5" :transitionLabelFontSize="8.5"
+  :states="[
+    { id: 'S1',  x: 90,  y: 50,  label: '$\\begin{smallmatrix}a,b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 26, labelWidth: 95, labelHeight: 34 },
+    { id: 'S2',  x: 270, y: 50,  label: '$\\begin{smallmatrix}a,\\neg b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 26, labelWidth: 95, labelHeight: 34 },
+    { id: 'S3',  x: 450, y: 50,  label: '$\\begin{smallmatrix}\\neg a,b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 26, labelWidth: 95, labelHeight: 34 },
+    { id: 'S4',  x: 630, y: 50,  label: '$\\begin{smallmatrix}\\neg a,\\neg b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 105, labelHeight: 36, stroke: '#eab308', strokeWidth: 3 },
+    { id: 'S5',  x: 90,  y: 140, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 26, labelWidth: 95, labelHeight: 34 },
+    { id: 'S6',  x: 270, y: 140, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 26, labelWidth: 95, labelHeight: 34 },
+    { id: 'S7',  x: 450, y: 140, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\neg\\psi,\\varphi\\end{smallmatrix}$', r: 26, labelWidth: 95, labelHeight: 34 },
+    { id: 'S8',  x: 630, y: 140, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 26, labelWidth: 95, labelHeight: 34 },
+    { id: 'S9',  x: 90,  y: 230, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 26, labelWidth: 95, labelHeight: 34 },
+    { id: 'S10', x: 270, y: 230, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\neg\\psi,\\varphi\\end{smallmatrix}$', r: 26, labelWidth: 95, labelHeight: 34 },
+    { id: 'S11', x: 450, y: 230, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 26, labelWidth: 95, labelHeight: 34 },
+    { id: 'S12', x: 630, y: 230, label: '$\\begin{smallmatrix}\\neg a,\\neg b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 26, labelWidth: 95, labelHeight: 34 }
+  ]"
+  :transitions="[
+    { source: 'S4', target: 'S1', label: '', curve: 0 },
+    { source: 'S4', target: 'S2', label: '', curve: 0.05 },
+    { source: 'S4', target: 'S3', label: '', curve: -0.05 },
+    { source: 'S4', target: 'S4', label: '', loopDirection: '0deg', labelX: 22 },
+    { source: 'S4', target: 'S5', label: '', curve: 0.1 },
+    { source: 'S4', target: 'S6', label: '', curve: 0.05 },
+    { source: 'S4', target: 'S7', label: '', curve: 0 },
+    { source: 'S4', target: 'S8', label: '', curve: -0.05 },
+    { source: 'S4', target: 'S9', label: '', curve: 0.15 },
+    { source: 'S4', target: 'S10', label: '', curve: 0.1 },
+    { source: 'S4', target: 'S11', label: '', curve: 0 },
+    { source: 'S4', target: 'S12', label: '', curve: -0.1 }
+  ]"
+/>
+</div>
+
+<div class="mt-1 bg-blue-50 border border-blue-200 rounded p-2 text-blue-900 text-right text-[13px] leading-snug">
+ב־<span dir="ltr"><KatexInline math="S_4" /></span>: <span dir="ltr"><KatexInline math="c\in S_4" /></span> כך ש־<span dir="ltr"><KatexInline math="\psi" /></span> כבר מומשה, ובדומה <span dir="ltr"><KatexInline math="\psi\in S_4" /></span> כך ש־<span dir="ltr"><KatexInline math="\varphi" /></span> כבר מומשה. <b>שני הכללים שותקים</b>, ולכן <b>כל 12</b> המצבים תקפים כיעד.
+</div>
+
+---
+
+# דוגמה נוספת: מצבי ההתחלה
+
+<div class="bg-white rounded border border-slate-200 shadow-sm p-1">
+<AutomatonD3 variant="classic" :width="720" :height="280" :arrowSize="3" :stateLabelFontSize="9.5" :transitionLabelFontSize="9.5"
+  :states="[
+    { id: 'S1',  x: 90,  y: 50,  label: '$\\begin{smallmatrix}a,b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, initial: true, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S2',  x: 270, y: 50,  label: '$\\begin{smallmatrix}a,\\neg b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, initial: true, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S3',  x: 450, y: 50,  label: '$\\begin{smallmatrix}\\neg a,b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, initial: true, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S4',  x: 630, y: 50,  label: '$\\begin{smallmatrix}\\neg a,\\neg b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, initial: true, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S5',  x: 90,  y: 140, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, initial: true, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S6',  x: 270, y: 140, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, initial: true, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S7',  x: 450, y: 140, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\neg\\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, initial: true, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S8',  x: 630, y: 140, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#fee2e2', stroke: '#dc2626', opacity: 0.6 },
+    { id: 'S9',  x: 90,  y: 230, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#fee2e2', stroke: '#dc2626', opacity: 0.6 },
+    { id: 'S10', x: 270, y: 230, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\neg\\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, initial: true, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S11', x: 450, y: 230, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#fee2e2', stroke: '#dc2626', opacity: 0.6 },
+    { id: 'S12', x: 630, y: 230, label: '$\\begin{smallmatrix}\\neg a,\\neg b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#fee2e2', stroke: '#dc2626', opacity: 0.6 }
+  ]"
+  :transitions="[]"
+/>
+</div>
+
+<div class="mt-1 text-center text-[13px] text-slate-700">
+<span dir="ltr"><KatexInline math="Q_0=\{B\in Q\mid\varphi\in B\}" /></span>: <b>שמונה</b> מצבי התחלה (ירוק) לעומת <b>ארבעה</b> שאינם (אדום).
+</div>
+
+---
+
+# דוגמה נוספת: תנאי הקבלה — שתי קבוצות
+
+<div class="mt-2 text-right text-[15px] leading-snug">
+לכל תת־נוסחת <span dir="ltr">Until</span> קבוצת קבלה משלה — כאן <b>שתיים</b>, ולכן זהו דוגמה אמיתית ל־<span dir="ltr">GNBA</span> (לא רק <span dir="ltr">NBA</span>):
+<span dir="ltr" class="block text-center mt-1"><KatexInline math="F_\psi=Q\setminus\{S_5,S_6\}\qquad F_\varphi=Q\setminus\{S_7,S_{10}\}" /></span>
+</div>
+
+<div class="mt-1 bg-white rounded border border-slate-200 shadow-sm p-1">
+<AutomatonD3 variant="classic" :width="720" :height="280" :arrowSize="3" :stateLabelFontSize="9.5" :transitionLabelFontSize="9.5"
+  :states="[
+    { id: 'S1',  x: 90,  y: 50,  label: '$\\begin{smallmatrix}a,b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S2',  x: 270, y: 50,  label: '$\\begin{smallmatrix}a,\\neg b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S3',  x: 450, y: 50,  label: '$\\begin{smallmatrix}\\neg a,b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S4',  x: 630, y: 50,  label: '$\\begin{smallmatrix}\\neg a,\\neg b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S5',  x: 90,  y: 140, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#fee2e2', stroke: '#dc2626' },
+    { id: 'S6',  x: 270, y: 140, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#fee2e2', stroke: '#dc2626' },
+    { id: 'S7',  x: 450, y: 140, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\neg\\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#fef3c7', stroke: '#d97706' },
+    { id: 'S8',  x: 630, y: 140, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S9',  x: 90,  y: 230, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S10', x: 270, y: 230, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\neg\\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#fef3c7', stroke: '#d97706' },
+    { id: 'S11', x: 450, y: 230, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' },
+    { id: 'S12', x: 630, y: 230, label: '$\\begin{smallmatrix}\\neg a,\\neg b,\\neg c\\\\ \\neg\\psi,\\neg\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 36, fill: '#dcfce7', stroke: '#16a34a' }
+  ]"
+  :transitions="[]"
+/>
+</div>
+
+<div class="mt-1 grid grid-cols-3 gap-2 text-center text-[12.5px] leading-snug">
+<div class="bg-red-50 border border-red-200 rounded p-1 text-red-900"><span dir="ltr"><KatexInline math="S_5,S_6\notin F_\psi" /></span> (הבטחת <span dir="ltr">ψ</span> פתוחה)</div>
+<div class="bg-amber-50 border border-amber-200 rounded p-1 text-amber-900"><span dir="ltr"><KatexInline math="S_7,S_{10}\notin F_\varphi" /></span> (הבטחת <span dir="ltr">φ</span> פתוחה)</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-1 text-emerald-900">שאר המצבים: ב־<b>שני</b> ה־<span dir="ltr">F</span></div>
+</div>
+
+<div class="mt-1 bg-blue-50 border border-blue-200 rounded p-2 text-blue-900 text-center text-[13px] leading-snug">
+ריצה מקבלת חייבת לבקר <b>אינסוף פעמים גם ב־<span dir="ltr"><KatexInline math="F_\psi" /></span> וגם ב־<span dir="ltr"><KatexInline math="F_\varphi" /></span></b> — תנאי הקבלה המשולב של <span dir="ltr">GNBA</span>.
+</div>
+
+---
+
 # נכונות הבנייה: שני כיווני ההוכחה
 
 <div class="mt-6 text-right text-[20px] leading-relaxed">
