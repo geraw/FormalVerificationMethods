@@ -1063,55 +1063,6 @@ hide: true
 
 ---
 
-# מדוע L אינה ניתנת לביטוי ב־LTL
-
-<div class="mt-7 bg-red-50 border border-red-200 rounded p-4 text-red-900 text-right text-[19px] leading-relaxed">
-ל־<span dir="ltr">LTL</span> אין יכולת "לספור מודולו 2": כל נוסחה היא בעלת עומק קינון (<span dir="ltr">Until</span>) סופי, ולכן אינה יכולה להבחין באופן עקבי בין מיקום זוגי לאי־זוגי לאורך כל המילה האינסופית, בניגוד לאוטומט שיש לו "זיכרון" של ביט בודד (המצב הנוכחי) שמתעדכן בכל צעד.
-</div>
-
-<div class="mt-5 bg-slate-50 border border-slate-200 rounded p-4 text-slate-700 text-right text-[17px] leading-relaxed">
-זה לא רק חוסר ב־<span dir="ltr"><KatexInline math="\bigcirc" /></span>: גם שילוב של <span dir="ltr"><KatexInline math="\bigcirc" /></span> עם <span dir="ltr">Until</span> נותן רק "הסתכלות קדימה" חסומה וטענות "אי פעם/לעולם", ולא מנגנון לבדוק זוגיות על פני מילה כולה.
-</div>
-
----
-
-# הוכחה בשלילה: ההנחה והכלי
-
-<div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900 text-right text-[19px] leading-relaxed">
-<b>נניח בשלילה</b> שקיימת נוסחת <span dir="ltr">LTL</span> <span dir="ltr"><KatexInline math="\varphi" /></span> כך ש־<span dir="ltr"><KatexInline math="\varphi" /></span> מגדירה בדיוק את <span dir="ltr"><KatexInline math="L" /></span>, כלומר לכל מילה <span dir="ltr"><KatexInline math="\sigma" /></span>: <span dir="ltr"><KatexInline math="\sigma\models\varphi \iff \sigma\in L" /></span>.
-</div>
-
-<div class="mt-4 bg-amber-50 border border-amber-200 rounded p-4 text-amber-900 text-right text-[18px] leading-relaxed">
-<div class="font-bold text-amber-800 mb-1">עוד כלי: מספר חסום של בדיקות <span dir="ltr">Until</span></div>
-לכל נוסחת <span dir="ltr">LTL</span> יש (ניתן להוכיח באינדוקציה על מבנה הנוסחה) מספר סופי <span dir="ltr"><KatexInline math="n_\varphi" /></span> של בדיקות <span dir="ltr">Until</span> מקוננות, וסך הבדיקות חסום מראש בנוסחה: כדי לאשר שדפוס מחזורי החזיק נכון <span dir="ltr">k</span> מחזורים ברצף דרושות בערך <span dir="ltr">k</span> בדיקות כאלה, ו־<span dir="ltr"><KatexInline math="\varphi" /></span> מוגבלת ל־<span dir="ltr"><KatexInline math="n_\varphi" /></span> בלבד.
-</div>
-
----
-
-# הוכחה בשלילה: הבנייה והסתירה
-
-<div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900 text-right text-[16.5px] leading-relaxed">
-<div class="font-bold text-blue-800 mb-1">מההנחה קיבלנו נוסחה עם מספר סופי של בדיקות</div>
-מהנחת השלילה יש לנו נוסחה <span dir="ltr"><KatexInline math="\varphi" /></span> ספציפית, ולכן (לפי הכלי הקודם) מספר סופי וקבוע <span dir="ltr"><KatexInline math="n_\varphi" /></span> של בדיקות <span dir="ltr">Until</span> מקוננות. נסמן <span dir="ltr"><KatexInline math="k=n_\varphi+1" /></span>.
-</div>
-
-<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900 text-right text-[16.5px] leading-relaxed">
-<div class="font-bold text-emerald-800 mb-1">נבנה מילה <span dir="ltr"><KatexInline math="\tau" /></span></div>
-ניקח <span dir="ltr"><KatexInline math="\sigma=(a,\neg a)^{\omega}\in L" /></span>, ונבנה <span dir="ltr"><KatexInline math="\tau=(a,\neg a)^{k}\,\neg a\,(a,\neg a)^{\omega}" /></span> ע"י <b>הכפלה בודדת</b> של הסימן באי־זוגי ה־<span dir="ltr"><KatexInline math="k" /></span> (תקינה מקומית, כי <span dir="ltr"><KatexInline math="L" /></span> לא מציבה שום דרישה על מיקומים אי־זוגיים), שדוחפת את כל מה שאחריה צעד אחד.
-</div>
-
-<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[16.5px] leading-relaxed">
-<div class="font-bold text-amber-800 mb-1">נראה ש־<span dir="ltr"><KatexInline math="\tau" /></span> מקיימת שתי תכונות</div>
-(1) במיקום <span dir="ltr"><KatexInline math="2k" /></span> (זוגי) יושב כעת <span dir="ltr"><KatexInline math="\neg a" /></span>, ולכן <span dir="ltr"><KatexInline math="\tau\notin L" /></span>.<br/>
-(2) <span dir="ltr"><KatexInline math="\sigma" /></span> ו־<span dir="ltr"><KatexInline math="\tau" /></span> חולקות בדיוק את אותו דפוס מחזורי על פני <span dir="ltr"><KatexInline math="k" /></span> מחזורים, ונבדלות רק בהכפלה הבודדת שאחריהם. לתפוס הבדל שמתגלה רק אחרי <span dir="ltr"><KatexInline math="k" /></span> מחזורים דורש בערך <span dir="ltr"><KatexInline math="k" /></span> בדיקות <span dir="ltr">Until</span> נפרדות, אך ל־<span dir="ltr"><KatexInline math="\varphi" /></span> יש רק <span dir="ltr"><KatexInline math="n_\varphi=k-1" /></span>: לכן <span dir="ltr"><KatexInline math="\sigma\models\varphi \iff \tau\models\varphi" /></span>.
-</div>
-
-<div class="mt-3 bg-red-50 border-2 border-red-300 rounded p-3 text-red-900 text-center text-[17px] leading-relaxed">
-<b>וזאת סתירה:</b> מההנחה, <span dir="ltr"><KatexInline math="\sigma\in L" /></span> נותן <span dir="ltr"><KatexInline math="\sigma\models\varphi" /></span>, ולפי (2) גם <span dir="ltr"><KatexInline math="\tau\models\varphi" /></span>, ולכן מההנחה <span dir="ltr"><KatexInline math="\tau\in L" /></span>. אך לפי (1), <span dir="ltr"><KatexInline math="\tau\notin L" /></span>. לכן <b>אין</b> נוסחת <span dir="ltr">LTL</span> המגדירה את <span dir="ltr"><KatexInline math="L" /></span>. <span dir="ltr">∎</span>
-</div>
-
----
-
 # המשמעות: LTL חלשה ממש מ־GNBA
 
 <div class="mt-7 bg-blue-50 border border-blue-200 rounded p-5 text-blue-900 text-center text-[21px] leading-relaxed">
