@@ -245,9 +245,9 @@ info: |
 </div>
 
 <div class="mt-3 min-h-[55px] text-center text-[14px] text-slate-700 leading-snug">
-<div v-show="!$slidev.nav.clicks">מצב 0 הוא הניחוש: <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> תתקיים, אבל לא עכשיו — כלומר חייבת להחזיק <span dir="ltr"><KatexInline math="a" /></span> ולהמשיך להבטיח את הניחוש.</div>
+<div v-show="!$slidev.nav.clicks">מצב 0 הוא הניחוש: <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span> תתקיים, אבל לא עכשיו, כלומר חייבת להחזיק <span dir="ltr"><KatexInline math="a" /></span> ולהמשיך להבטיח את הניחוש.</div>
 <div v-show="$slidev.nav.clicks === 1">יחס המעברים בדק שהניחוש במצב 1 תואם את כלל הפריסה: כיוון ש־<span dir="ltr"><KatexInline math="b" /></span> עדיין לא הגיעה, צריך גם <span dir="ltr"><KatexInline math="a" /></span> עכשיו וגם להמשיך להבטיח <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b" /></span>.</div>
-<div v-show="$slidev.nav.clicks === 2">במצב 2 הגיעה <span dir="ltr"><KatexInline math="b" /></span>, ההבטחה התממשה, והמצב נכנס לקבוצת הקבלה — כך תנאי הקבלה מבטיח שההבטחה לא תידחה לנצח.</div>
+<div v-show="$slidev.nav.clicks === 2">במצב 2 הגיעה <span dir="ltr"><KatexInline math="b" /></span>, ההבטחה התממשה, והמצב נכנס לקבוצת הקבלה, כך שתנאי הקבלה מבטיח שההבטחה לא תידחה לנצח.</div>
 </div>
 
 ---
@@ -868,7 +868,7 @@ hide: true
 <div dir="ltr" class="text-center my-1"><KatexInline math="Q_0 = \{B \in Q \mid \varphi \in B\}" /></div>
 <ul>
 <li><b>שלושה מצבים</b> מכילים <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}b \in B" /></span> ולכן הם מצבי התחלה אפשריים (ירוק).</li>
-<li><b>שני המצבים הנותרים</b> מכילים <span dir="ltr"><KatexInline math="\neg(a\mathbin{\mathrm{U}}b) \in B" /></span> — הנוסחה שקרית שם, ולכן <b>אינם</b> מצבי התחלה.</li>
+<li><b>שני המצבים הנותרים</b> מכילים <span dir="ltr"><KatexInline math="\neg(a\mathbin{\mathrm{U}}b) \in B" /></span>, הנוסחה שקרית שם, ולכן <b>אינם</b> מצבי התחלה.</li>
 </ul>
 </div>
 </div>
@@ -938,15 +938,15 @@ hide: true
 </div>
 
 <div class="mt-5 bg-blue-50 border border-blue-200 rounded p-4 text-blue-900 text-right text-[20px] leading-relaxed">
-קבוצת קבוצות הקבלה <span dir="ltr"><KatexInline math="\mathcal{F}=\emptyset" /></span> — תנאי הקבלה של <span dir="ltr">GNBA</span> הוא קוניונקציה על כל הקבוצות ב־<span dir="ltr"><KatexInline math="\mathcal{F}" /></span>.
+קבוצת קבוצות הקבלה <span dir="ltr"><KatexInline math="\mathcal{F}=\emptyset" /></span>, ותנאי הקבלה של <span dir="ltr">GNBA</span> הוא קוניונקציה על כל הקבוצות ב־<span dir="ltr"><KatexInline math="\mathcal{F}" /></span>.
 </div>
 
 <div class="mt-5 bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900 text-right text-[20px] leading-relaxed">
-קוניונקציה על קבוצה ריקה מתקיימת תמיד ("vacuous truth") — כך שכל ריצה אינסופית של האוטומט היא ריצה מקבלת.
+קוניונקציה על קבוצה ריקה מתקיימת תמיד ("vacuous truth"), כך שכל ריצה אינסופית של האוטומט היא ריצה מקבלת.
 </div>
 
 <div class="mt-5 bg-amber-50 border border-amber-200 rounded p-4 text-amber-900 text-right text-[20px] leading-relaxed">
-הגיוני: בלי <span dir="ltr">Until</span> אין דרישת חַיּוּת (liveness) שיש לאכוף — אין מה לבדוק "אינסוף פעמים", ולכן כל ניחוש עקבי לכל אורך הריצה הוא קביל.
+הגיוני: בלי <span dir="ltr">Until</span> אין דרישת חַיּוּת (liveness) שיש לאכוף: אין מה לבדוק "אינסוף פעמים", ולכן כל ניחוש עקבי לכל אורך הריצה הוא קביל.
 </div>
 
 ---
@@ -954,7 +954,7 @@ hide: true
 # נכונות הבנייה: שני כיווני ההוכחה
 
 <div class="mt-6 text-right text-[20px] leading-relaxed">
-צריך להוכיח <span dir="ltr"><KatexInline math="\mathcal{L}_{\omega}(\mathcal{G}_{\varphi})=Words(\varphi)" /></span> — שתי הכלות בנפרד, עבור מילה <span dir="ltr"><KatexInline math="\sigma" /></span>:
+צריך להוכיח <span dir="ltr"><KatexInline math="\mathcal{L}_{\omega}(\mathcal{G}_{\varphi})=Words(\varphi)" /></span>: שתי הכלות בנפרד, עבור מילה <span dir="ltr"><KatexInline math="\sigma" /></span>:
 </div>
 
 <div class="mt-5 grid grid-cols-2 gap-5 text-right text-[17px] leading-relaxed">
@@ -962,14 +962,14 @@ hide: true
 <div class="font-bold text-blue-800 mb-2">⊆ נכונות: ריצה מקבלת ⟸ סיפוק</div>
 אם יש ריצה מקבלת <span dir="ltr"><KatexInline math="B_0 \xrightarrow{A_0} B_1 \xrightarrow{A_1}\cdots" /></span> של <span dir="ltr"><KatexInline math="\mathcal{G}_{\varphi}" /></span> על <span dir="ltr"><KatexInline math="\sigma" /></span>, אז <span dir="ltr"><KatexInline math="\sigma\models\varphi" /></span>.
 <div class="mt-2 text-[14.5px] text-blue-700">
-<b>טיעון:</b> אינדוקציה מבנית על תת־נוסחאות <span dir="ltr"><KatexInline math="\psi" /></span> מוכיחה <span dir="ltr"><KatexInline math="\sigma[i..]\models\psi \iff \psi\in B_i" /></span> לכל <span dir="ltr"><KatexInline math="i" /></span>. עבור אטומים, שלילה וקוניונקציה זה נובע ישירות מעקביות בוליאנית, ועבור <span dir="ltr"><KatexInline math="\bigcirc" /></span> — ישירות מיחס המעברים. החלק העדין הוא <span dir="ltr"><KatexInline math="\mathrm{U}" /></span>: כללי המעבר מאפשרים לדחות את ההבטחה הלאה, ותנאי הקבלה הוא מה שמונע דחייה לנצח — בלעדיו הריצה הייתה יכולה "לשקר".
+<b>טיעון:</b> אינדוקציה מבנית על תת־נוסחאות <span dir="ltr"><KatexInline math="\psi" /></span> מוכיחה <span dir="ltr"><KatexInline math="\sigma[i..]\models\psi \iff \psi\in B_i" /></span> לכל <span dir="ltr"><KatexInline math="i" /></span>. עבור אטומים, שלילה וקוניונקציה זה נובע ישירות מעקביות בוליאנית, ועבור <span dir="ltr"><KatexInline math="\bigcirc" /></span> ישירות מיחס המעברים. החלק העדין הוא <span dir="ltr"><KatexInline math="\mathrm{U}" /></span>: כללי המעבר מאפשרים לדחות את ההבטחה הלאה, ותנאי הקבלה הוא מה שמונע דחייה לנצח, שכן בלעדיו הריצה הייתה יכולה "לשקר".
 </div>
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
 <div class="font-bold text-emerald-800 mb-2">⊇ שלמות: סיפוק ⟸ קיום ריצה מקבלת</div>
 אם <span dir="ltr"><KatexInline math="\sigma\models\varphi" /></span>, אז ל־<span dir="ltr"><KatexInline math="\mathcal{G}_{\varphi}" /></span> יש ריצה מקבלת על <span dir="ltr"><KatexInline math="\sigma" /></span>.
 <div class="mt-2 text-[14.5px] text-emerald-700">
-<b>טיעון:</b> בונים את "הריצה הקנונית" <span dir="ltr"><KatexInline math="B_i=\{\psi\mid \sigma[i..]\models\psi\}" /></span>. עקביות וההתאמה ליחס המעברים נובעות ישירות מסמנטיקת ה־LTL (כך מוגדרו הכללים). תנאי הקבלה מתקיים כי סמנטיקת <span dir="ltr"><KatexInline math="\mathrm{U}" /></span> עצמה מחייבת שכל הבטחה תתממש בפועל בנקודה כלשהי — כך שזה לא "בנוי" כתנאי נוסף אלא נכון אוטומטית מהגדרת הסיפוק.
+<b>טיעון:</b> בונים את "הריצה הקנונית" <span dir="ltr"><KatexInline math="B_i=\{\psi\mid \sigma[i..]\models\psi\}" /></span>. עקביות וההתאמה ליחס המעברים נובעות ישירות מסמנטיקת ה־LTL (כך מוגדרו הכללים). תנאי הקבלה מתקיים כי סמנטיקת <span dir="ltr"><KatexInline math="\mathrm{U}" /></span> עצמה מחייבת שכל הבטחה תתממש בפועל בנקודה כלשהי, כך שזה לא "בנוי" כתנאי נוסף אלא נכון אוטומטית מהגדרת הסיפוק.
 </div>
 </div>
 </div>
@@ -1027,7 +1027,7 @@ hide: true
 </div>
 
 <div class="mt-2 bg-red-50 border border-red-200 rounded p-2 text-red-900 text-center text-[16px] leading-snug">
-לא! יש שפות <span dir="ltr">ω</span>־רגולריות (ניתנות לקבלה ע"י <span dir="ltr">NBA</span>) שאינן ניתנות לביטוי באף נוסחת <span dir="ltr">LTL</span>.
+לא! יש שפות <span dir="ltr">ω</span>־רגולריות (ניתנות לקבלה ע"י <span dir="ltr">NBA</span>) שלא ניתנות לביטוי באף נוסחת <span dir="ltr">LTL</span>.
 </div>
 
 <div class="mt-2 bg-blue-50 border border-blue-200 rounded p-2 text-blue-900 text-right text-[16px] leading-snug">
@@ -1046,17 +1046,17 @@ hide: true
     { id: 'q1', x: 230, y: 78, label: '$q_1$', accepting: true, r: 24 }
   ]"
   :transitions="[
-    { source: 'q0', target: 'q1', label: '$a$', labelY: -12, curve: 0.22 },
-    { source: 'q1', target: 'q0', label: '$\\top$', labelY: 12, curve: 0.22 }
+    { source: 'q0', target: 'q1', label: '$a$', labelY: 12, curve: 0.22 },
+    { source: 'q1', target: 'q0', label: '$\\mathit{true}$', labelY: -12, curve: 0.22 }
   ]"
 />
 </div>
 <div class="text-right text-[13.5px] leading-snug text-slate-800">
 <div class="bg-emerald-50 border border-emerald-200 rounded p-1.5 mb-1">
-<span dir="ltr"><KatexInline math="q_0" /></span>: מיקום זוגי — חייבים <span dir="ltr"><KatexInline math="a" /></span>; <span dir="ltr"><KatexInline math="q_1" /></span>: מיקום אי־זוגי — חופשי (<span dir="ltr"><KatexInline math="\top" /></span>).
+<span dir="ltr"><KatexInline math="q_0" /></span>: מיקום זוגי: חייבים <span dir="ltr"><KatexInline math="a" /></span>; <span dir="ltr"><KatexInline math="q_1" /></span>: מיקום אי־זוגי: חופשי (<span dir="ltr"><KatexInline math="\mathit{true}" /></span>).
 </div>
 <div class="bg-amber-50 border border-amber-200 rounded p-1.5">
-שני המצבים מקבלים — זו תכונת בטיחות גרידא, אין צורך ב"אינסוף פעמים".
+שני המצבים מקבלים: זו תכונת בטיחות גרידא, אין צורך ב"אינסוף פעמים".
 </div>
 </div>
 </div>
@@ -1066,7 +1066,7 @@ hide: true
 # מדוע L אינה ניתנת לביטוי ב־LTL
 
 <div class="mt-7 bg-red-50 border border-red-200 rounded p-4 text-red-900 text-right text-[19px] leading-relaxed">
-ל־<span dir="ltr">LTL</span> אין יכולת "לספור מודולו 2": כל נוסחה היא בעלת עומק שיכוב (<span dir="ltr">Until</span>) סופי, ולכן אינה יכולה להבחין באופן עקבי בין מיקום זוגי לאי־זוגי לאורך כל המילה האינסופית — בניגוד לאוטומט, שיש לו "זיכרון" של ביט בודד (המצב הנוכחי) שמתעדכן בכל צעד.
+ל־<span dir="ltr">LTL</span> אין יכולת "לספור מודולו 2": כל נוסחה היא בעלת עומק קינון (<span dir="ltr">Until</span>) סופי, ולכן אינה יכולה להבחין באופן עקבי בין מיקום זוגי לאי־זוגי לאורך כל המילה האינסופית, בניגוד לאוטומט שיש לו "זיכרון" של ביט בודד (המצב הנוכחי) שמתעדכן בכל צעד.
 </div>
 
 <div class="mt-5 bg-slate-50 border border-slate-200 rounded p-4 text-slate-700 text-right text-[17px] leading-relaxed">
@@ -1075,22 +1075,39 @@ hide: true
 
 ---
 
-# הוכחה פשוטה: מנצלים את ה־⊤ באוטומט
+# הוכחה בשלילה: ההנחה והכלי
+
+<div class="bg-blue-50 border border-blue-200 rounded p-4 text-blue-900 text-right text-[19px] leading-relaxed">
+<b>נניח בשלילה</b> שקיימת נוסחת <span dir="ltr">LTL</span> <span dir="ltr"><KatexInline math="\varphi" /></span> כך ש־<span dir="ltr"><KatexInline math="\varphi" /></span> מגדירה בדיוק את <span dir="ltr"><KatexInline math="L" /></span>, כלומר לכל מילה <span dir="ltr"><KatexInline math="\sigma" /></span>: <span dir="ltr"><KatexInline math="\sigma\models\varphi \iff \sigma\in L" /></span>.
+</div>
+
+<div class="mt-4 bg-amber-50 border border-amber-200 rounded p-4 text-amber-900 text-right text-[18px] leading-relaxed">
+<div class="font-bold text-amber-800 mb-1">עוד כלי: מספר חסום של בדיקות <span dir="ltr">Until</span></div>
+לכל נוסחת <span dir="ltr">LTL</span> יש (ניתן להוכיח באינדוקציה על מבנה הנוסחה) מספר סופי <span dir="ltr"><KatexInline math="n_\varphi" /></span> של בדיקות <span dir="ltr">Until</span> מקוננות, וסך הבדיקות חסום מראש בנוסחה: כדי לאשר שדפוס מחזורי החזיק נכון <span dir="ltr">k</span> מחזורים ברצף דרושות בערך <span dir="ltr">k</span> בדיקות כאלה, ו־<span dir="ltr"><KatexInline math="\varphi" /></span> מוגבלת ל־<span dir="ltr"><KatexInline math="n_\varphi" /></span> בלבד.
+</div>
+
+---
+
+# הוכחה בשלילה: הבנייה והסתירה
 
 <div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900 text-right text-[16.5px] leading-relaxed">
-היציאה מ־<span dir="ltr"><KatexInline math="q_1" /></span> מתויגת <span dir="ltr"><KatexInline math="\top" /></span> — כל אות עוברת. כלומר ערך האות במיקום אי־זוגי <b>לא משפיע כלום</b> על השייכות ל־<span dir="ltr"><KatexInline math="L" /></span>; רק הערך במיקומים הזוגיים קובע.
+<div class="font-bold text-blue-800 mb-1">מההנחה קיבלנו נוסחה עם מספר סופי של בדיקות</div>
+מהנחת השלילה יש לנו נוסחה <span dir="ltr"><KatexInline math="\varphi" /></span> ספציפית, ולכן (לפי הכלי הקודם) מספר סופי וקבוע <span dir="ltr"><KatexInline math="n_\varphi" /></span> של בדיקות <span dir="ltr">Until</span> מקוננות. נסמן <span dir="ltr"><KatexInline math="k=n_\varphi+1" /></span>.
 </div>
 
 <div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900 text-right text-[16.5px] leading-relaxed">
-ניקח <span dir="ltr"><KatexInline math="\sigma=(a,\neg a)^{\omega}\in L" /></span>. לכל <span dir="ltr"><KatexInline math="k" /></span> נבנה <span dir="ltr"><KatexInline math="\tau_k" /></span> ע"י <b>הכפלה בודדת</b> של הסימן באי־זוגי ה־<span dir="ltr"><KatexInline math="k" /></span>: <span dir="ltr"><KatexInline math="\tau_k=(a,\neg a)^{k}\,\neg a\,(a,\neg a)^{\omega}" /></span>. בזכות ה־<span dir="ltr"><KatexInline math="\top" /></span> ההכפלה "תקינה מקומית", אך היא דוחפת את כל מה שאחריה צעד אחד — ובמיקום <span dir="ltr"><KatexInline math="2k" /></span> (זוגי) יושב כעת <span dir="ltr"><KatexInline math="\neg a" /></span>, ולכן <span dir="ltr"><KatexInline math="\tau_k\notin L" /></span>.
+<div class="font-bold text-emerald-800 mb-1">נבנה מילה <span dir="ltr"><KatexInline math="\tau" /></span></div>
+ניקח <span dir="ltr"><KatexInline math="\sigma=(a,\neg a)^{\omega}\in L" /></span>, ונבנה <span dir="ltr"><KatexInline math="\tau=(a,\neg a)^{k}\,\neg a\,(a,\neg a)^{\omega}" /></span> ע"י <b>הכפלה בודדת</b> של הסימן באי־זוגי ה־<span dir="ltr"><KatexInline math="k" /></span> (תקינה מקומית, כי <span dir="ltr"><KatexInline math="L" /></span> לא מציבה שום דרישה על מיקומים אי־זוגיים), שדוחפת את כל מה שאחריה צעד אחד.
 </div>
 
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[16.5px] leading-relaxed">
-לכל נוסחת <span dir="ltr">LTL</span> <span dir="ltr"><KatexInline math="\varphi" /></span> יש (ניתן להוכיח באינדוקציה על מבנה <span dir="ltr"><KatexInline math="\varphi" /></span>) "טווח הסתכלות" סופי. אם <span dir="ltr"><KatexInline math="k" /></span> גדול מספיק ביחס ל־<span dir="ltr"><KatexInline math="\varphi" /></span>, ההכפלה הבודדת קורית הרחק מעבר לטווח הזה — ו־<span dir="ltr"><KatexInline math="\varphi" /></span> לא יכולה להבחין בין <span dir="ltr"><KatexInline math="\sigma" /></span> ל־<span dir="ltr"><KatexInline math="\tau_k" /></span>.
+<div class="font-bold text-amber-800 mb-1">נראה ש־<span dir="ltr"><KatexInline math="\tau" /></span> מקיימת שתי תכונות</div>
+(1) במיקום <span dir="ltr"><KatexInline math="2k" /></span> (זוגי) יושב כעת <span dir="ltr"><KatexInline math="\neg a" /></span>, ולכן <span dir="ltr"><KatexInline math="\tau\notin L" /></span>.<br/>
+(2) <span dir="ltr"><KatexInline math="\sigma" /></span> ו־<span dir="ltr"><KatexInline math="\tau" /></span> חולקות בדיוק את אותו דפוס מחזורי על פני <span dir="ltr"><KatexInline math="k" /></span> מחזורים, ונבדלות רק בהכפלה הבודדת שאחריהם. לתפוס הבדל שמתגלה רק אחרי <span dir="ltr"><KatexInline math="k" /></span> מחזורים דורש בערך <span dir="ltr"><KatexInline math="k" /></span> בדיקות <span dir="ltr">Until</span> נפרדות, אך ל־<span dir="ltr"><KatexInline math="\varphi" /></span> יש רק <span dir="ltr"><KatexInline math="n_\varphi=k-1" /></span>: לכן <span dir="ltr"><KatexInline math="\sigma\models\varphi \iff \tau\models\varphi" /></span>.
 </div>
 
-<div class="mt-3 bg-red-50 border border-red-200 rounded p-3 text-red-900 text-center text-[17px] leading-relaxed">
-אבל <span dir="ltr"><KatexInline math="\sigma\in L" /></span> ו־<span dir="ltr"><KatexInline math="\tau_k\notin L" /></span> — סתירה. לכן <b>שום</b> נוסחת <span dir="ltr">LTL</span> לא יכולה להגדיר בדיוק את <span dir="ltr"><KatexInline math="L" /></span>.
+<div class="mt-3 bg-red-50 border-2 border-red-300 rounded p-3 text-red-900 text-center text-[17px] leading-relaxed">
+<b>וזאת סתירה:</b> מההנחה, <span dir="ltr"><KatexInline math="\sigma\in L" /></span> נותן <span dir="ltr"><KatexInline math="\sigma\models\varphi" /></span>, ולפי (2) גם <span dir="ltr"><KatexInline math="\tau\models\varphi" /></span>, ולכן מההנחה <span dir="ltr"><KatexInline math="\tau\in L" /></span>. אך לפי (1), <span dir="ltr"><KatexInline math="\tau\notin L" /></span>. לכן <b>אין</b> נוסחת <span dir="ltr">LTL</span> המגדירה את <span dir="ltr"><KatexInline math="L" /></span>. <span dir="ltr">∎</span>
 </div>
 
 ---
@@ -1103,11 +1120,11 @@ hide: true
 
 <div class="mt-6 grid grid-cols-2 gap-5 text-right text-[19px] leading-relaxed">
 <div class="bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900">
-<div class="font-bold text-emerald-800 mb-2">כיוון אחד — כן</div>
+<div class="font-bold text-emerald-800 mb-2">כיוון אחד: כן</div>
 לכל נוסחת <span dir="ltr">LTL</span> יש <span dir="ltr">GNBA</span> שקול (הבנייה שלמדנו בשקף זה).
 </div>
 <div class="bg-red-50 border border-red-200 rounded p-4 text-red-900">
-<div class="font-bold text-red-800 mb-2">כיוון הפוך — לא</div>
+<div class="font-bold text-red-800 mb-2">כיוון הפוך: לא</div>
 יש <span dir="ltr">GNBA</span>/<span dir="ltr">NBA</span> (כמו דוגמת הזוגיות) שאין להן נוסחת <span dir="ltr">LTL</span> שקולה.
 </div>
 </div>
