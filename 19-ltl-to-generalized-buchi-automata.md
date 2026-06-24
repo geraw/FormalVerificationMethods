@@ -1020,6 +1020,73 @@ hide: true
 
 ---
 
+# דוגמה: סגירה ומצבים עבור <span dir="ltr"><KatexInline math="\bigcirc a" /></span>
+
+<div class="mt-4 text-right text-[19px] leading-relaxed">
+נסתכל על הנוסחה <span dir="ltr"><KatexInline math="\varphi=\bigcirc a" /></span> — נוסחה <b>בלי שום</b> תת־נוסחת <span dir="ltr">Until</span>, בדיוק המקרה שדנו בו.
+</div>
+
+<div class="mt-4 bg-blue-50 border border-blue-200 rounded p-4 text-blue-900 text-right text-[18px] leading-relaxed">
+<div class="font-bold mb-1"><span dir="ltr"><KatexInline math="cl(\varphi)" /></span>:</div>
+<div dir="ltr" class="text-center text-[20px]"><KatexInline math="cl(\varphi)=\{a,\bigcirc a,\neg a,\neg\bigcirc a\}" /></div>
+</div>
+
+<div class="mt-4 bg-emerald-50 border border-emerald-200 rounded p-4 text-emerald-900 text-right text-[18px] leading-relaxed">
+<div class="font-bold mb-1">ארבעה מצבים (קבוצות עקביות ומקסימליות):</div>
+<div dir="ltr" class="grid grid-cols-2 gap-2 text-center text-[18px] mt-1">
+<div><KatexInline math="B_1=\{a,\bigcirc a\}" /></div>
+<div><KatexInline math="B_2=\{a,\neg\bigcirc a\}" /></div>
+<div><KatexInline math="B_3=\{\neg a,\bigcirc a\}" /></div>
+<div><KatexInline math="B_4=\{\neg a,\neg\bigcirc a\}" /></div>
+</div>
+</div>
+
+<div class="mt-4 bg-amber-50 border border-amber-200 rounded p-4 text-amber-900 text-right text-[18px] leading-relaxed">
+המצבים ההתחלתיים הם אלו המכילים את <span dir="ltr"><KatexInline math="\varphi" /></span> עצמה: <span dir="ltr"><KatexInline math="Q_0=\{B_1,B_3\}" /></span>.
+</div>
+
+---
+
+# דוגמה: האוטומט עבור <span dir="ltr"><KatexInline math="\bigcirc a" /></span>
+
+<div class="grid grid-cols-[1.05fr_0.95fr] gap-5 mt-2 items-start">
+<div class="bg-white rounded border border-slate-200 shadow-sm p-2">
+<AutomatonD3 variant="classic" :width="430" :height="280" :arrowSize="3.8" :stateLabelFontSize="13" :transitionLabelFontSize="13"
+  :states="[
+    { id: 'B1', x: 100, y: 70, label: '$B_1$', initial: true, initialDirection: 'top', r: 30, labelWidth: 50 },
+    { id: 'B2', x: 330, y: 70, label: '$B_2$', r: 30, labelWidth: 50 },
+    { id: 'B3', x: 100, y: 210, label: '$B_3$', initial: true, initialDirection: 'bottom', r: 30, labelWidth: 50 },
+    { id: 'B4', x: 330, y: 210, label: '$B_4$', r: 30, labelWidth: 50 }
+  ]"
+  :transitions="[
+    { source: 'B1', target: 'B1', label: '$a$', loopDirection: '180deg', labelX: -12, labelWidth: 45 },
+    { source: 'B1', target: 'B2', label: '$a$', labelY: -12, labelWidth: 45, curve: 0 },
+    { source: 'B2', target: 'B3', label: '$a$', labelY: -12, labelWidth: 45, curve: 0.15 },
+    { source: 'B2', target: 'B4', label: '$a$', labelX: 12, labelWidth: 45, curve: 0 },
+    { source: 'B3', target: 'B1', label: '$\\neg a$', labelX: 12, labelWidth: 55, curve: 0 },
+    { source: 'B3', target: 'B2', label: '$\\neg a$', labelY: 12, labelWidth: 55, curve: 0.15 },
+    { source: 'B4', target: 'B3', label: '$\\neg a$', labelY: 12, labelWidth: 55, curve: 0 },
+    { source: 'B4', target: 'B4', label: '$\\neg a$', loopDirection: '0deg', labelX: 12, labelWidth: 55 }
+  ]"
+/>
+</div>
+
+<div class="mt-2 text-right text-[16px] leading-relaxed">
+<div class="bg-slate-50 border border-slate-200 rounded p-3 text-slate-800">
+<span dir="ltr"><KatexInline math="\bigcirc a\in B_1,B_3" /></span> <span dir="ltr">⟸</span> היעדים מוכרחים להכיל <span dir="ltr"><KatexInline math="a" /></span> (כלומר <span dir="ltr"><KatexInline math="B_1,B_2" /></span>).<br/>
+<span dir="ltr"><KatexInline math="\neg\bigcirc a\in B_2,B_4" /></span> <span dir="ltr">⟸</span> היעדים מוכרחים <b>שלא</b> להכיל <span dir="ltr"><KatexInline math="a" /></span> (כלומר <span dir="ltr"><KatexInline math="B_3,B_4" /></span>).
+</div>
+<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
+אין בנוסחה אף <span dir="ltr">Until</span>, ולכן <span dir="ltr"><KatexInline math="\mathcal{F}=\emptyset" /></span> — <b>כל</b> ריצה אינסופית מתקבלת.
+</div>
+<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900">
+לדוגמה: הריצות <span dir="ltr"><KatexInline math="B_1B_1B_1\cdots" /></span> ו־<span dir="ltr"><KatexInline math="B_1B_2B_3B_1\cdots" /></span> שתיהן מקבלות, ותואמות מילים המקיימות <span dir="ltr"><KatexInline math="\bigcirc a" /></span>.
+</div>
+</div>
+</div>
+
+---
+
 # דוגמה נוספת: סגירת תת־נוסחאות עבור <span dir="ltr"><KatexInline math="a\mathbin{\mathrm{U}}(b\mathbin{\mathrm{U}}c)" /></span>
 
 <div class="mt-3 text-right text-[18px] leading-snug">
@@ -1116,7 +1183,7 @@ hide: true
 />
 </div>
 <div class="mt-2 bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900 text-right text-[14px] leading-snug">
-<span dir="ltr"><KatexInline math="\psi" /></span> פתוח: <span dir="ltr"><KatexInline math="\psi\in B,c\notin B" /></span> ⟹ חייב <span dir="ltr"><KatexInline math="\psi\in B'" /></span>. שישה מצבים תקפים (כל מי שמכיל <span dir="ltr"><KatexInline math="\psi" /></span>).
+<span dir="ltr"><KatexInline math="\psi" /></span> פתוח: <span dir="ltr"><KatexInline math="\psi\in B,c\notin B" /></span> <span dir="ltr">⟸</span> חייב <span dir="ltr"><KatexInline math="\psi\in B'" /></span>. שישה מצבים תקפים (כל מי שמכיל <span dir="ltr"><KatexInline math="\psi" /></span>).
 </div>
 </div>
 
@@ -1134,7 +1201,7 @@ hide: true
 />
 </div>
 <div class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-amber-900 text-right text-[14px] leading-snug">
-<span dir="ltr"><KatexInline math="\varphi" /></span> פתוח: <span dir="ltr"><KatexInline math="\varphi\in B,\psi\notin B" /></span> ⟹ חייב <span dir="ltr"><KatexInline math="\varphi\in B'" /></span>; <b>וגם</b> <span dir="ltr"><KatexInline math="\psi" /></span> ללא־הבטחה (<span dir="ltr"><KatexInline math="b\in B" /></span>) ⟹ <span dir="ltr"><KatexInline math="\psi\notin B'" /></span>. שני הכללים גוזרים יחד רק <span dir="ltr">2</span> יעדים.
+<span dir="ltr"><KatexInline math="\varphi" /></span> פתוח: <span dir="ltr"><KatexInline math="\varphi\in B,\psi\notin B" /></span> <span dir="ltr">⟸</span> חייב <span dir="ltr"><KatexInline math="\varphi\in B'" /></span>; <b>וגם</b> <span dir="ltr"><KatexInline math="\psi" /></span> ללא־הבטחה (<span dir="ltr"><KatexInline math="b\in B" /></span>) <span dir="ltr">⟸</span> <span dir="ltr"><KatexInline math="\psi\notin B'" /></span>. שני הכללים גוזרים יחד רק <span dir="ltr">2</span> יעדים.
 </div>
 </div>
 </div>
