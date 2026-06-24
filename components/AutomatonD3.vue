@@ -397,7 +397,8 @@ function renderMixedMath(value: string) {
   return value.split(/\$([^$]+)\$/g).map((part, i) => {
     if (i % 2 === 0) return escapeHtml(part);
     try {
-      return katex.renderToString(part, { throwOnError: false, displayMode: false });
+      const html = katex.renderToString(part, { throwOnError: false, displayMode: false });
+      return `<span style="direction:ltr;unicode-bidi:isolate;white-space:nowrap;display:inline-block;">${html}</span>`;
     } catch {
       return escapeHtml(part);
     }

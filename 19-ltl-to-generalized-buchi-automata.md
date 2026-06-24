@@ -1055,34 +1055,34 @@ hide: true
     { id: 'S1', x: 50, y: 45, label: '$\\begin{smallmatrix}a,b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#dcfce7', stroke: '#16a34a' },
     { id: 'S2', x: 160, y: 45, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#dcfce7', stroke: '#16a34a' },
     { id: 'S3', x: 270, y: 45, label: '$\\begin{smallmatrix}a,\\neg b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#dcfce7', stroke: '#16a34a' },
-    { id: 'S4', x: 380, y: 45, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $b$ ו-$c$ שניהם שגויים — אין הצדקה ל-$\\psi$ (סותר $\\psi\\in B\\Rightarrow c\\lor b\\in B$).' },
+    { id: 'S4', x: 380, y: 45, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $b$ ו-$c$ שניהם שגויים — אין הצדקה ל-$\\psi$ (סותר $\\psi\\in B\\Rightarrow c\\lor b\\in B)$.' },
     { id: 'S5', x: 490, y: 45, label: '$\\begin{smallmatrix}\\neg a,b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#dcfce7', stroke: '#16a34a' },
     { id: 'S6', x: 600, y: 45, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#dcfce7', stroke: '#16a34a' },
     { id: 'S7', x: 710, y: 45, label: '$\\begin{smallmatrix}\\neg a,\\neg b,c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#dcfce7', stroke: '#16a34a' },
-    { id: 'S8', x: 820, y: 45, label: '$\\begin{smallmatrix}\\neg a,\\neg b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $b$ ו-$c$ שניהם שגויים — אין הצדקה ל-$\\psi$ (סותר $\\psi\\in B\\Rightarrow c\\lor b\\in B$).' },
-    { id: 'S9', x: 50, y: 127, label: '$\\begin{smallmatrix}a,b,c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ ($=a\\,\\mathrm{U}\\,\\psi$) לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
-    { id: 'S10', x: 160, y: 127, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ ($=a\\,\\mathrm{U}\\,\\psi$) לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
-    { id: 'S11', x: 270, y: 127, label: '$\\begin{smallmatrix}a,\\neg b,c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ ($=a\\,\\mathrm{U}\\,\\psi$) לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
-    { id: 'S12', x: 380, y: 127, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ ($=a\\,\\mathrm{U}\\,\\psi$) לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
-    { id: 'S13', x: 490, y: 127, label: '$\\begin{smallmatrix}\\neg a,b,c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ ($=a\\,\\mathrm{U}\\,\\psi$) לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
-    { id: 'S14', x: 600, y: 127, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ ($=a\\,\\mathrm{U}\\,\\psi$) לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
-    { id: 'S15', x: 710, y: 127, label: '$\\begin{smallmatrix}\\neg a,\\neg b,c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ ($=a\\,\\mathrm{U}\\,\\psi$) לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
-    { id: 'S16', x: 820, y: 127, label: '$\\begin{smallmatrix}\\neg a,\\neg b,\\neg c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ ($=a\\,\\mathrm{U}\\,\\psi$) לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
-    { id: 'S17', x: 50, y: 209, label: '$\\begin{smallmatrix}a,b,c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: 'c מתקיים אך $\\psi$ ($=b\\,\\mathrm{U}\\,c$) לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
+    { id: 'S8', x: 820, y: 45, label: '$\\begin{smallmatrix}\\neg a,\\neg b,\\neg c\\\\ \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $b$ ו-$c$ שניהם שגויים — אין הצדקה ל-$\\psi$ (סותר $\\psi\\in B\\Rightarrow c\\lor b\\in B)$.' },
+    { id: 'S9', x: 50, y: 127, label: '$\\begin{smallmatrix}a,b,c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ $(=a\\,\\mathrm{U}\\,\\psi)$ לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
+    { id: 'S10', x: 160, y: 127, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ $(=a\\,\\mathrm{U}\\,\\psi)$ לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
+    { id: 'S11', x: 270, y: 127, label: '$\\begin{smallmatrix}a,\\neg b,c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ $(=a\\,\\mathrm{U}\\,\\psi)$ לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
+    { id: 'S12', x: 380, y: 127, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ $(=a\\,\\mathrm{U}\\,\\psi)$ לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
+    { id: 'S13', x: 490, y: 127, label: '$\\begin{smallmatrix}\\neg a,b,c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ $(=a\\,\\mathrm{U}\\,\\psi)$ לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
+    { id: 'S14', x: 600, y: 127, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ $(=a\\,\\mathrm{U}\\,\\psi)$ לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
+    { id: 'S15', x: 710, y: 127, label: '$\\begin{smallmatrix}\\neg a,\\neg b,c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ $(=a\\,\\mathrm{U}\\,\\psi)$ לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
+    { id: 'S16', x: 820, y: 127, label: '$\\begin{smallmatrix}\\neg a,\\neg b,\\neg c\\\\ \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\psi$ מתקיים אך $\\varphi$ $(=a\\,\\mathrm{U}\\,\\psi)$ לא — סותר את $\\psi\\in B\\Rightarrow\\varphi\\in B$.' },
+    { id: 'S17', x: 50, y: 209, label: '$\\begin{smallmatrix}a,b,c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$c$ מתקיים אך $\\psi$ $(=b\\,\\mathrm{U}\\,c)$ לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
     { id: 'S18', x: 160, y: 209, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#dcfce7', stroke: '#16a34a' },
-    { id: 'S19', x: 270, y: 209, label: '$\\begin{smallmatrix}a,\\neg b,c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: 'c מתקיים אך $\\psi$ ($=b\\,\\mathrm{U}\\,c$) לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
+    { id: 'S19', x: 270, y: 209, label: '$\\begin{smallmatrix}a,\\neg b,c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$c$ מתקיים אך $\\psi$ $(=b\\,\\mathrm{U}\\,c)$ לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
     { id: 'S20', x: 380, y: 209, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#dcfce7', stroke: '#16a34a' },
-    { id: 'S21', x: 490, y: 209, label: '$\\begin{smallmatrix}\\neg a,b,c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: 'c מתקיים אך $\\psi$ ($=b\\,\\mathrm{U}\\,c$) לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
-    { id: 'S22', x: 600, y: 209, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\varphi$ מתקיים אך $a$ ו-$\\psi$ שניהם שגויים — אין הצדקה ל-$\\varphi$ (סותר $\\varphi\\in B\\Rightarrow\\psi\\lor a\\in B$).' },
-    { id: 'S23', x: 710, y: 209, label: '$\\begin{smallmatrix}\\neg a,\\neg b,c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: 'c מתקיים אך $\\psi$ ($=b\\,\\mathrm{U}\\,c$) לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
-    { id: 'S24', x: 820, y: 209, label: '$\\begin{smallmatrix}\\neg a,\\neg b,\\neg c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\varphi$ מתקיים אך $a$ ו-$\\psi$ שניהם שגויים — אין הצדקה ל-$\\varphi$ (סותר $\\varphi\\in B\\Rightarrow\\psi\\lor a\\in B$).' },
-    { id: 'S25', x: 50, y: 291, label: '$\\begin{smallmatrix}a,b,c\\\\ \\neg \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: 'c מתקיים אך $\\psi$ ($=b\\,\\mathrm{U}\\,c$) לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
+    { id: 'S21', x: 490, y: 209, label: '$\\begin{smallmatrix}\\neg a,b,c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$c$ מתקיים אך $\\psi$ $(=b\\,\\mathrm{U}\\,c)$ לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
+    { id: 'S22', x: 600, y: 209, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\varphi$ מתקיים אך $a$ ו-$\\psi$ שניהם שגויים — אין הצדקה ל-$\\varphi$ (סותר $\\varphi\\in B\\Rightarrow\\psi\\lor a\\in B)$.' },
+    { id: 'S23', x: 710, y: 209, label: '$\\begin{smallmatrix}\\neg a,\\neg b,c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$c$ מתקיים אך $\\psi$ $(=b\\,\\mathrm{U}\\,c)$ לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
+    { id: 'S24', x: 820, y: 209, label: '$\\begin{smallmatrix}\\neg a,\\neg b,\\neg c\\\\ \\neg \\psi,\\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$\\varphi$ מתקיים אך $a$ ו-$\\psi$ שניהם שגויים — אין הצדקה ל-$\\varphi$ (סותר $\\varphi\\in B\\Rightarrow\\psi\\lor a\\in B)$.' },
+    { id: 'S25', x: 50, y: 291, label: '$\\begin{smallmatrix}a,b,c\\\\ \\neg \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$c$ מתקיים אך $\\psi$ $(=b\\,\\mathrm{U}\\,c)$ לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
     { id: 'S26', x: 160, y: 291, label: '$\\begin{smallmatrix}a,b,\\neg c\\\\ \\neg \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#dcfce7', stroke: '#16a34a' },
-    { id: 'S27', x: 270, y: 291, label: '$\\begin{smallmatrix}a,\\neg b,c\\\\ \\neg \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: 'c מתקיים אך $\\psi$ ($=b\\,\\mathrm{U}\\,c$) לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
+    { id: 'S27', x: 270, y: 291, label: '$\\begin{smallmatrix}a,\\neg b,c\\\\ \\neg \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$c$ מתקיים אך $\\psi$ $(=b\\,\\mathrm{U}\\,c)$ לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
     { id: 'S28', x: 380, y: 291, label: '$\\begin{smallmatrix}a,\\neg b,\\neg c\\\\ \\neg \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#dcfce7', stroke: '#16a34a' },
-    { id: 'S29', x: 490, y: 291, label: '$\\begin{smallmatrix}\\neg a,b,c\\\\ \\neg \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: 'c מתקיים אך $\\psi$ ($=b\\,\\mathrm{U}\\,c$) לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
+    { id: 'S29', x: 490, y: 291, label: '$\\begin{smallmatrix}\\neg a,b,c\\\\ \\neg \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$c$ מתקיים אך $\\psi$ $(=b\\,\\mathrm{U}\\,c)$ לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
     { id: 'S30', x: 600, y: 291, label: '$\\begin{smallmatrix}\\neg a,b,\\neg c\\\\ \\neg \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#dcfce7', stroke: '#16a34a' },
-    { id: 'S31', x: 710, y: 291, label: '$\\begin{smallmatrix}\\neg a,\\neg b,c\\\\ \\neg \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: 'c מתקיים אך $\\psi$ ($=b\\,\\mathrm{U}\\,c$) לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
+    { id: 'S31', x: 710, y: 291, label: '$\\begin{smallmatrix}\\neg a,\\neg b,c\\\\ \\neg \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#f8fafc', stroke: '#cbd5e1', tooltip: '$c$ מתקיים אך $\\psi$ $(=b\\,\\mathrm{U}\\,c)$ לא — סותר את $c\\in B\\Rightarrow\\psi\\in B$.' },
     { id: 'S32', x: 820, y: 291, label: '$\\begin{smallmatrix}\\neg a,\\neg b,\\neg c\\\\ \\neg \\psi,\\neg \\varphi\\end{smallmatrix}$', r: 28, labelWidth: 100, labelHeight: 34, fill: '#dcfce7', stroke: '#16a34a' }
   ]"
   :transitions="[]"
@@ -1107,16 +1107,16 @@ hide: true
   ]"
   :transitions="[
     { source: 'S5', target: 'S5', label: '', loopDirection: '-90deg', labelY: -18 },
-    { source: 'S5', target: 'S1', label: '', curve: 0.1 },
-    { source: 'S5', target: 'S2', label: '', curve: 0.1 },
-    { source: 'S5', target: 'S3', label: '', curve: -0.1 },
-    { source: 'S5', target: 'S4', label: '', curve: -0.1 },
-    { source: 'S5', target: 'S6', label: '', curve: 0.15 }
+    { source: 'S5', target: 'S1', label: '', curve: 0},
+    { source: 'S5', target: 'S2', label: '', curve: 0},
+    { source: 'S5', target: 'S3', label: '', curve: 0},
+    { source: 'S5', target: 'S4', label: '', curve: 0},
+    { source: 'S5', target: 'S6', label: '', curve: 0 }
   ]"
 />
 </div>
 <div class="mt-2 bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900 text-right text-[14px] leading-snug">
-<span dir="ltr"><KatexInline math="\psi" /></span> פתוח: <span dir="ltr"><KatexInline math="\psi\in S_5,c\notin S_5" /></span> ⟹ חייב <span dir="ltr"><KatexInline math="\psi\in B'" /></span>. שישה מצבים תקפים (כל מי שמכיל <span dir="ltr"><KatexInline math="\psi" /></span>).
+<span dir="ltr"><KatexInline math="\psi" /></span> פתוח: <span dir="ltr"><KatexInline math="\psi\in B,c\notin B" /></span> ⟹ חייב <span dir="ltr"><KatexInline math="\psi\in B'" /></span>. שישה מצבים תקפים (כל מי שמכיל <span dir="ltr"><KatexInline math="\psi" /></span>).
 </div>
 </div>
 
@@ -1129,12 +1129,12 @@ hide: true
   ]"
   :transitions="[
     { source: 'S7', target: 'S7', label: '', loopDirection: '-90deg', labelY: -18 },
-    { source: 'S7', target: 'S10', label: '', curve: 0.15 }
+    { source: 'S7', target: 'S10', label: '', curve: 0 }
   ]"
 />
 </div>
 <div class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-amber-900 text-right text-[14px] leading-snug">
-<span dir="ltr"><KatexInline math="\varphi" /></span> פתוח: <span dir="ltr"><KatexInline math="\varphi\in S_7,\psi\notin S_7" /></span> ⟹ חייב <span dir="ltr"><KatexInline math="\varphi\in B'" /></span>; <b>וגם</b> <span dir="ltr"><KatexInline math="\psi" /></span> ללא־הבטחה (<span dir="ltr"><KatexInline math="b\in S_7" /></span>) ⟹ <span dir="ltr"><KatexInline math="\psi\notin B'" /></span>. שני הכללים גוזרים יחד רק <span dir="ltr">2</span> יעדים.
+<span dir="ltr"><KatexInline math="\varphi" /></span> פתוח: <span dir="ltr"><KatexInline math="\varphi\in B,\psi\notin B" /></span> ⟹ חייב <span dir="ltr"><KatexInline math="\varphi\in B'" /></span>; <b>וגם</b> <span dir="ltr"><KatexInline math="\psi" /></span> ללא־הבטחה (<span dir="ltr"><KatexInline math="b\in B" /></span>) ⟹ <span dir="ltr"><KatexInline math="\psi\notin B'" /></span>. שני הכללים גוזרים יחד רק <span dir="ltr">2</span> יעדים.
 </div>
 </div>
 </div>
@@ -1162,8 +1162,8 @@ hide: true
 </div>
 <div class="text-right text-[15px] leading-relaxed">
 <div class="bg-red-50 border border-red-200 rounded p-3 text-red-900">
-ב־<span dir="ltr"><KatexInline math="S_8" /></span> שני הכללים פועלים יחד: <span dir="ltr"><KatexInline math="\psi\notin S_8,b\in S_8\Rightarrow\psi\notin B'" /></span> וגם <span dir="ltr"><KatexInline math="\varphi\notin S_8,a\in S_8\Rightarrow\varphi\notin B'" /></span>.
-<div class="mt-1">היעדים האפשריים הם <b>בדיוק</b> ארבעת המצבים הלא־התחלתיים <span dir="ltr"><KatexInline math="\{S_8,S_9,S_{11},S_{12}\}" /></span> — אותם המצבים שלא הכלנו במצבי ההתחלה.</div>
+במצב כזה שני הכללים פועלים יחד: <span dir="ltr"><KatexInline math="\psi\notin B,b\in B\Rightarrow\psi\notin B'" /></span> וגם <span dir="ltr"><KatexInline math="\varphi\notin B,a\in B\Rightarrow\varphi\notin B'" /></span>.
+<div class="mt-1">היעדים האפשריים הם <b>בדיוק</b> ארבעת המצבים הלא־התחלתיים — אותם המצבים שלא הכלנו במצבי ההתחלה.</div>
 </div>
 </div>
 </div>
@@ -1206,7 +1206,7 @@ hide: true
 </div>
 
 <div class="mt-1 bg-blue-50 border border-blue-200 rounded p-2 text-blue-900 text-right text-[13px] leading-snug">
-ב־<span dir="ltr"><KatexInline math="S_4" /></span>: <span dir="ltr"><KatexInline math="c\in S_4" /></span> כך ש־<span dir="ltr"><KatexInline math="\psi" /></span> כבר מומשה, ובדומה <span dir="ltr"><KatexInline math="\psi\in S_4" /></span> כך ש־<span dir="ltr"><KatexInline math="\varphi" /></span> כבר מומשה. <b>שני הכללים שותקים</b>, ולכן <b>כל 12</b> המצבים תקפים כיעד.
+במצב המסומן: <span dir="ltr"><KatexInline math="c\in B" /></span> כך ש־<span dir="ltr"><KatexInline math="\psi" /></span> כבר מומשה, ובדומה <span dir="ltr"><KatexInline math="\psi\in B" /></span> כך ש־<span dir="ltr"><KatexInline math="\varphi" /></span> כבר מומשה. <b>שני הכללים שותקים</b>, ולכן <b>כל 12</b> המצבים תקפים כיעד.
 </div>
 
 ---
@@ -1243,7 +1243,7 @@ hide: true
 
 <div class="mt-2 text-right text-[15px] leading-snug">
 לכל תת־נוסחת <span dir="ltr">Until</span> קבוצת קבלה משלה — כאן <b>שתיים</b>, ולכן זהו דוגמה אמיתית ל־<span dir="ltr">GNBA</span> (לא רק <span dir="ltr">NBA</span>):
-<span dir="ltr" class="block text-center mt-1"><KatexInline math="F_\psi=Q\setminus\{S_5,S_6\}\qquad F_\varphi=Q\setminus\{S_7,S_{10}\}" /></span>
+<span dir="ltr" class="block text-center mt-1"><KatexInline math="F_\psi=\{B\in Q\mid\psi\notin B\lor c\in B\}\qquad F_\varphi=\{B\in Q\mid\varphi\notin B\lor\psi\in B\}" /></span>
 </div>
 
 <div class="mt-1 bg-white rounded border border-slate-200 shadow-sm p-1">
@@ -1267,8 +1267,8 @@ hide: true
 </div>
 
 <div class="mt-1 grid grid-cols-3 gap-2 text-center text-[12.5px] leading-snug">
-<div class="bg-red-50 border border-red-200 rounded p-1 text-red-900"><span dir="ltr"><KatexInline math="S_5,S_6\notin F_\psi" /></span> (הבטחת <span dir="ltr">ψ</span> פתוחה)</div>
-<div class="bg-amber-50 border border-amber-200 rounded p-1 text-amber-900"><span dir="ltr"><KatexInline math="S_7,S_{10}\notin F_\varphi" /></span> (הבטחת <span dir="ltr">φ</span> פתוחה)</div>
+<div class="bg-red-50 border border-red-200 rounded p-1 text-red-900">המצבים האדומים — <span dir="ltr"><KatexInline math="\psi\in B,c\notin B" /></span> — אינם ב־<span dir="ltr"><KatexInline math="F_\psi" /></span> (הבטחת <span dir="ltr">ψ</span> פתוחה)</div>
+<div class="bg-amber-50 border border-amber-200 rounded p-1 text-amber-900">המצבים הכתומים — <span dir="ltr"><KatexInline math="\varphi\in B,\psi\notin B" /></span> — אינם ב־<span dir="ltr"><KatexInline math="F_\varphi" /></span> (הבטחת <span dir="ltr">φ</span> פתוחה)</div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-1 text-emerald-900">שאר המצבים: ב־<b>שני</b> ה־<span dir="ltr">F</span></div>
 </div>
 
