@@ -49,7 +49,7 @@
       </g>
 
       <g class="states">
-        <g v-for="state in normalizedStates" :key="state.id">
+        <g v-for="state in normalizedStates" :key="state.id" class="automaton-state-group">
           <ellipse :cx="state.x" :cy="state.y" :rx="state.rx" :ry="state.ry"
                    :fill="state.fill"
                    :stroke="state.stroke"
@@ -68,6 +68,13 @@
             <div class="automaton-state-label"
                  :style="{ color: state.textColor, fontSize: `${state.labelFontSize}px` }"
                  v-html="renderMath(state.label || state.id)" />
+          </foreignObject>
+          <foreignObject v-if="state.tooltip"
+                         :x="state.x - 120"
+                         :y="state.y - state.ry - 86"
+                         width="240" height="78"
+                         class="overflow-visible pointer-events-none">
+            <div class="automaton-state-tooltip" dir="rtl" v-html="renderMixedMath(state.tooltip)" />
           </foreignObject>
         </g>
       </g>
@@ -127,6 +134,7 @@ interface AutomatonState {
   labelWidth?: number;
   labelHeight?: number;
   labelFontSize?: number;
+  tooltip?: string;
 }
 
 interface AutomatonTransition {
@@ -381,6 +389,21 @@ function renderMath(value: string) {
   }
 }
 
+function escapeHtml(value: string) {
+  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function renderMixedMath(value: string) {
+  return value.split(/\$([^$]+)\$/g).map((part, i) => {
+    if (i % 2 === 0) return escapeHtml(part);
+    try {
+      return katex.renderToString(part, { throwOnError: false, displayMode: false });
+    } catch {
+      return escapeHtml(part);
+    }
+  }).join('');
+}
+
 function initialArrowPath(state: ReturnType<typeof normalizedStates.value[number]>) {
   const direction = state.initialDirection ?? 'left';
   const horizontalLength = state.rx + (isClassic.value ? 34 : 38);
@@ -444,6 +467,29 @@ function initialLabelPosition(state: ReturnType<typeof normalizedStates.value[nu
 }
 
 .automaton-transition-label:hover .automaton-tooltip {
+  display: block;
+}
+
+.automaton-state-tooltip {
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding: 5px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 18%);
+  direction: rtl;
+  unicode-bidi: plaintext;
+  font-size: 12px;
+  line-height: 1.3;
+  text-align: right;
+  white-space: normal;
+  box-sizing: border-box;
+}
+
+.automaton-state-group:hover .automaton-state-tooltip {
   display: block;
 }
 </style>
