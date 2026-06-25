@@ -327,3 +327,137 @@ info: |
 <div v-click class="mt-2 bg-slate-50 border border-slate-200 rounded p-2 text-[15px] leading-relaxed">
 שימו לב: <KatexInline math="\Box a" /> לא תורם אף קבוצת קבלה (לפי סעיף ב'); כל ה-<KatexInline math="\mathcal{F}" /> מגיע מההבטחה הנסתרת בתוך <KatexInline math="\neg\Box\neg b" />, אף שאין <span dir="ltr">Until</span> בתחביר כלל.
 </div>
+
+---
+
+# שאלה: אלגוריתם חלופי לבדיקת <span dir="ltr"><KatexInline math="TS\models P" /></span> (20 נק')
+
+<div class="text-right text-[18px] leading-relaxed mt-3">
+תהי <KatexInline math="P" /> תכונה <KatexInline math="\omega" />-רגולרית, ויהי <span dir="ltr"><KatexInline math="\mathcal{A}=\langle Q,2^{AP},\delta,Q_0,F\rangle" /></span> אוטומט Büchi עם <span dir="ltr"><KatexInline math="L_\omega(\mathcal{A})=P" /></span> (אוטומט <span class="font-bold">של</span> <KatexInline math="P" /> עצמה, לא של שלילתה).
+</div>
+
+<div class="mt-5 bg-blue-50 border border-blue-200 rounded p-4 text-[19px] leading-relaxed">
+מרצה הציע: לבדוק <span dir="ltr"><KatexInline math="TS\models P" /></span> על ידי בניית <span dir="ltr"><KatexInline math="TS\times\mathcal{A}" /></span> ווידוא <span dir="ltr"><KatexInline math="TS\times\mathcal{A}\models\Box\Diamond F" /></span> (כל ריצה של המכפלה מבקרת ב-<KatexInline math="F" /> אינסוף פעמים).
+</div>
+
+<div class="text-right text-[16px] leading-relaxed mt-5 text-gray-600">
+תזכורת: בשיטה שנלמדה, עבדנו עם אוטומט <span class="font-bold">של העקבות הרעות</span> (<span dir="ltr"><KatexInline math="L_\omega(\mathcal{A})=(2^{AP})^\omega\setminus P" /></span>) וחיפשנו ריצה מקבלת <span class="font-bold">אחת</span> במכפלה. כאן, לעומת זאת, משתמשים באוטומט של <KatexInline math="P" /> עצמה ודורשים שכל הריצות יתקבלו.
+</div>
+
+---
+
+# הסעיפים
+
+<div class="space-y-4 text-right text-[19px] leading-relaxed mt-4">
+
+<div class="bg-red-50 border border-red-200 rounded p-4">
+<span class="font-bold">א'. (10 נק')</span>
+הראו, באמצעות דוגמה נגדית קונקרטית (<KatexInline math="TS" /> ו-<KatexInline math="\mathcal{A}" />), שהבנייה <span class="font-bold">אינה נכונה</span> במקרה הכללי: בנו מערכת ואוטומט כך ש-<span dir="ltr"><KatexInline math="TS\models P" /></span> אך <span dir="ltr"><KatexInline math="TS\times\mathcal{A}\not\models\Box\Diamond F" /></span>.
+</div>
+
+<div class="bg-emerald-50 border border-emerald-200 rounded p-4">
+<span class="font-bold">ב'. (10 נק')</span>
+הוכיחו שאם <KatexInline math="\mathcal{A}" /> <span class="font-bold">דטרמיניסטי</span> (כלומר <span dir="ltr"><KatexInline math="|Q_0|=1" /></span> ו-<KatexInline math="\delta" /> פונקציה חד-ערכית), אז <span dir="ltr"><KatexInline math="TS\models P\iff TS\times\mathcal{A}\models\Box\Diamond F" /></span>.
+</div>
+
+</div>
+
+---
+
+# פתרון א': בניית הדוגמה הנגדית
+
+<div class="text-right text-[16px] leading-relaxed mt-1">
+<KatexInline math="AP=\{a\}" />, <KatexInline math="P=\Box\Diamond a" /> ("אינסוף פעמים <KatexInline math="a" />").
+</div>
+
+<div class="grid grid-cols-2 gap-4 mt-1 items-start">
+<div class="bg-white rounded border border-slate-200 shadow-sm p-1">
+<div class="text-center text-[14px] font-bold text-slate-600 -mb-1">האוטומט <span dir="ltr">𝒜</span> (לא דטרמיניסטי!)</div>
+<AutomatonD3 variant="classic" :width="380" :height="190" :arrowSize="3.5" :stateLabelFontSize="15" :transitionLabelFontSize="13"
+  :states="[
+    { id: 'q0', x: 100, y: 100, label: '$q_0$', initial: true, initialDirection: 'left', r: 28 },
+    { id: 'q1', x: 300, y: 100, label: '$q_1$', accepting: true, r: 28, fill: '#d1fae5', stroke: '#059669' }
+  ]"
+  :transitions="[
+    { source: 'q0', target: 'q0', label: '$true$', loopDirection: '-90deg', labelY: -10, labelWidth: 40 },
+    { source: 'q0', target: 'q1', label: '$a$', labelY: -10, curve: 0.15 },
+    { source: 'q1', target: 'q1', label: '$a$', loopDirection: '-90deg', labelY: -10, labelWidth: 40 },
+    { source: 'q1', target: 'q0', label: '$true$', labelY: 10, curve: 0.15 }
+  ]"
+/>
+</div>
+<div class="bg-white rounded border border-slate-200 shadow-sm p-1">
+<div class="text-center text-[14px] font-bold text-slate-600 -mb-1">המערכת <span dir="ltr">TS</span></div>
+<TransitionSystemD3
+  :width="320" :height="190"
+  :states="[
+    { id: 's0', text: 's0', label: '{a}', initial: true, initialDirection: 'top', x: 220, y: 40, width: 80 },
+    { id: 's1', text: 's1', label: '∅', x: 220, y: 160, width: 80 }
+  ]"
+  :transitions="[
+    { source: 's0', target: 's1', action: 'step', curve: 0.3 },
+    { source: 's1', target: 's0', action: 'step', curve: 0.3 }
+  ]"
+/>
+</div>
+</div>
+
+<div v-click class="mt-1 bg-amber-50 border border-amber-200 rounded p-2 text-[15px] leading-relaxed">
+<KatexInline math="\delta(q_0,\{a\})=\{q_0,q_1\}" /> ו-<KatexInline math="\delta(q_1,\{a\})=\{q_0,q_1\}" />: בכל פעם ש-<KatexInline math="a" /> מופיע, אפשר <span class="font-bold">לבחור</span> אם "לחגוג" (לעבור/להישאר ב-<KatexInline math="q_1" />) או להישאר סקפטי ב-<KatexInline math="q_0" /> — אותה מילה יכולה להתקבל ע"י ריצה אחת ולהיכשל בריצה אחרת.
+</div>
+
+---
+
+# פתרון א' (המשך): המכפלה חושפת את הבעיה
+
+<div class="text-right text-[16px] leading-relaxed mt-1">
+<span dir="ltr"><KatexInline math="\mathit{Traces}(TS)=\{(\{a\}\emptyset)^\omega\}" /></span>, ו-<KatexInline math="a" /> מתקיים אינסוף פעמים בה, אז <span dir="ltr"><KatexInline math="TS\models P" /></span> (באופן <span class="font-bold">טריוויאלי</span> — זו העקבה היחידה).
+</div>
+
+<div class="flex justify-center mt-1 scale-[0.88] origin-top">
+<AutomatonD3 variant="classic" :width="480" :height="200" :arrowSize="3.5" :stateLabelFontSize="14" :transitionLabelFontSize="13"
+  :states="[
+    { id: 'p1', x: 240, y: 40, label: '$\\langle s_0,q_0\\rangle$', initial: true, initialDirection: 'top', r: 34, labelWidth: 90 },
+    { id: 'p2', x: 100, y: 160, label: '$\\langle s_1,q_0\\rangle$', r: 34, labelWidth: 90, stroke: '#dc2626', strokeWidth: 2.5 },
+    { id: 'p3', x: 380, y: 160, label: '$\\langle s_0,q_1\\rangle$', initial: true, initialDirection: 'top', r: 34, labelWidth: 90, accepting: true, fill: '#d1fae5', stroke: '#059669' }
+  ]"
+  :transitions="[
+    { source: 'p1', target: 'p2', label: '', curve: 0 },
+    { source: 'p2', target: 'p1', label: '', curve: 0.2, stroke: '#dc2626' },
+    { source: 'p2', target: 'p3', label: '', curve: -0.2 },
+    { source: 'p3', target: 'p2', label: '', curve: 0 }
+  ]"
+/>
+</div>
+
+<div v-click class="mt-1 bg-red-50 border border-red-200 rounded p-2 text-[15px] leading-relaxed" dir="ltr">
+<span class="font-bold text-red-700">ריצה לא טובה:</span> <KatexInline math="\langle s_0,q_0\rangle\langle s_1,q_0\rangle\langle s_0,q_0\rangle\cdots" /> (המעגל האדום) — קיימת, ולעולם לא מבקרת ב-<KatexInline math="F=\{q_1\}" />.
+</div>
+
+<div v-click class="mt-2 bg-emerald-50 border border-emerald-200 rounded p-3 text-[17px] leading-relaxed">
+לכן <span dir="ltr"><KatexInline math="TS\times\mathcal{A}\not\models\Box\Diamond F" /></span> (לא <span class="font-bold">כל</span> ריצה מבקרת ב-<KatexInline math="F" /> אינסוף פעמים), בעוד <span dir="ltr"><KatexInline math="TS\models P" /></span>. הבנייה המוצעת <span class="font-bold">שגויה</span>: היא נותנת תוצאה שגויה ("דוגמה נגדית" מדומה).
+</div>
+
+---
+
+# פתרון ב': נכונות כש-<KatexInline math="\mathcal{A}" /> דטרמיניסטי
+
+<div class="text-right text-[18px] leading-relaxed mt-3">
+<span class="font-bold">כיוון 1</span> (<span dir="ltr"><KatexInline math="\Leftarrow" /></span>, לא דורש דטרמיניזם): אם <span dir="ltr"><KatexInline math="TS\times\mathcal{A}\models\Box\Diamond F" /></span>, אז בפרט לכל ריצה <KatexInline math="\rho" /> של <KatexInline math="TS" /> <span class="font-bold">קיימת</span> ריצה של <KatexInline math="\mathcal{A}" /> על <KatexInline math="trace(\rho)" /> שמבקרת ב-<KatexInline math="F" /> אינסוף פעמים (זו שבמכפלה), ולכן <span dir="ltr"><KatexInline math="trace(\rho)\in L_\omega(\mathcal{A})=P" /></span>. מכאן <span dir="ltr"><KatexInline math="TS\models P" /></span>.
+</div>
+
+<div v-click class="mt-4 text-right text-[18px] leading-relaxed">
+<span class="font-bold">כיוון 2</span> (<span dir="ltr"><KatexInline math="\Rightarrow" /></span>, כאן צריך דטרמיניזם): תהי <span dir="ltr"><KatexInline math="\pi=\langle s_0,q_0\rangle\langle s_1,q_1\rangle\cdots" /></span> ריצה <span class="font-bold">כלשהי</span> של <KatexInline math="TS\times\mathcal{A}" />, ו-<KatexInline math="\rho=s_0s_1\cdots" /> ההיטל שלה על <KatexInline math="TS" />.
+</div>
+
+<div v-click class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-[16px] leading-relaxed">
+מכיוון ש-<KatexInline math="\delta" /> פונקציה חד-ערכית (ו-<KatexInline math="|Q_0|=1" />), הרצף <span dir="ltr"><KatexInline math="q_0q_1\cdots" /></span> <span class="font-bold">נקבע ביחידות</span> ע"י <KatexInline math="trace(\rho)" /> — זו <span class="font-bold">הריצה היחידה האפשרית</span> של <KatexInline math="\mathcal{A}" /> על המילה הזו (לא ריצה כלשהי מבין כמה).
+</div>
+
+<div v-click class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-[17px] leading-relaxed">
+מ-<span dir="ltr"><KatexInline math="TS\models P" /></span> נובע <span dir="ltr"><KatexInline math="trace(\rho)\in L_\omega(\mathcal{A})" /></span>, כלומר <span class="font-bold">הריצה היחידה</span> של <KatexInline math="\mathcal{A}" /> על <KatexInline math="trace(\rho)" /> מבקרת ב-<KatexInline math="F" /> אינסוף פעמים. אבל זו בדיוק הריצה <span dir="ltr"><KatexInline math="q_0q_1\cdots" /></span> של <KatexInline math="\pi" />! לכן <KatexInline math="\pi" /> מבקרת ב-<KatexInline math="F" /> אינסוף פעמים.
+</div>
+
+<div v-click class="mt-2 bg-blue-50 border border-blue-200 rounded p-2 text-[16px] leading-relaxed text-right">
+<KatexInline math="\pi" /> הייתה שרירותית, ולכן <span dir="ltr"><KatexInline math="TS\times\mathcal{A}\models\Box\Diamond F" /></span>.
+</div>
