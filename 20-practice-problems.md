@@ -903,30 +903,32 @@ info: |
 
 # שאלה: יישום לקידוד עשרוני
 
-<div class="text-right text-[18px] leading-relaxed mt-3">
-נניח <KatexInline math="AP=\{p_0,\ldots,p_8\}" />. לכל אות <KatexInline math="A\in2^{AP}" /> נתאים את גודלה <KatexInline math="|A|" />. כך <KatexInline math="|A|\in\{0,\ldots,9\}" />, ולכן אפשר לקרוא אותו כספרה עשרונית.
-עבור מילה <KatexInline math="\sigma" /> נגדיר ספרות <KatexInline math="d_i=|\sigma[i]|" /> ומספר ממשי:
+<div class="text-right text-[16px] leading-relaxed mt-2">
+נניח <KatexInline math="AP=\{p_0,\ldots,p_8\}" />. לכל אות <KatexInline math="A\in2^{AP}" /> נתאים ספרה <KatexInline math="|A|\in\{0,\ldots,9\}" />. עבור מילה <KatexInline math="\sigma" /> נגדיר <KatexInline math="d_i=|\sigma[i]|" />:
 </div>
 
-<div class="mt-2 text-center text-[18px]" dir="ltr">
+<div class="mt-1 text-center text-[16px]" dir="ltr">
 <KatexInline display math="x_\sigma=0.d_0d_1d_2\cdots=\sum_{i=0}^{\infty} d_i\cdot 10^{-(i+1)}" />
 </div>
 
-<div class="mt-2 bg-blue-50 border border-blue-200 rounded p-3 text-[17px] leading-relaxed text-right">
+<div class="mt-2 bg-blue-50 border border-blue-200 rounded p-2 text-[16px] leading-relaxed text-right">
 עבור כל אחת מהקבוצות הבאות, קבעו האם התכונה <KatexInline math="\{\sigma\mid x_\sigma\in S\}" /> היא בטיחות, חַיּוּת, שתיהן, או אף אחת מהן:
 </div>
 
-<div class="mt-2 grid grid-cols-2 gap-2 text-[16px] leading-relaxed" dir="ltr">
-  <div>
-    <KatexInline display math="S_1=[0,\tfrac12]" />
-    <KatexInline display math="S_2=(0,1)" />
-    <KatexInline display math="S_3=[0,\tfrac12]\cup(\tfrac34,1)" />
+<div class="mt-4 ml-auto w-[94%] grid grid-cols-2 gap-x-8 gap-y-2 text-[15px] leading-normal" dir="ltr">
+  <div class="grid grid-cols-[48px_1fr] items-center gap-x-3 gap-y-2">
+    <div><KatexInline math="S_1" /></div><div><KatexInline math="[0,\tfrac12]" /></div>
+    <div><KatexInline math="S_2" /></div><div><KatexInline math="(0,1)" /></div>
+    <div><KatexInline math="S_3" /></div><div><KatexInline math="[0,\tfrac12]\cup(\tfrac34,1)" /></div>
+    <div><KatexInline math="S_4" /></div><div><KatexInline math="[\tfrac14,\tfrac34)" /></div>
   </div>
 
-  <div>
-    <KatexInline display math="S_4=\{x\mid \text{some decimal digit of }x\text{ is }7\}" />
-    <KatexInline display math="S_5=\{x\mid \text{infinitely many decimal digits of }x\text{ are }7\}" />
-    <KatexInline display math="S_6=\emptyset,\qquad S_7=[0,1]" />
+  <div class="grid grid-cols-[48px_1fr] items-center gap-x-3 gap-y-2">
+    <div><KatexInline math="S_5" /></div><div><KatexInline math="\{x\mid \text{some digit of }x\text{ is }7\}" /></div>
+    <div><KatexInline math="S_6" /></div><div><KatexInline math="\{x\mid \text{infinitely many digits of }x\text{ are }7\}" /></div>
+    <div><KatexInline math="S_7" /></div><div><KatexInline math="\emptyset" /></div>
+    <div><KatexInline math="S_8" /></div><div><KatexInline math="[0,1]" /></div>
+    <div><KatexInline math="S_9" /></div><div><KatexInline math="[0,1]\cap\mathbb{Q}" /></div>
   </div>
 </div>
 
@@ -962,27 +964,28 @@ info: |
   <div class="bg-amber-50 border border-amber-200 rounded p-2 text-right">
     <div class="font-bold mb-1">בטיחות</div>
     <div><KatexInline math="S_1=[0,\frac12]" /></div>
-    <div><KatexInline math="S_6=\emptyset" /></div>
-    <div><KatexInline math="S_7=[0,1]" /></div>
+    <div><KatexInline math="S_7=\emptyset" /></div>
+    <div><KatexInline math="S_8=[0,1]" /></div>
   </div>
 
   <div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-right">
     <div class="font-bold mb-1">חַיּוּת</div>
     <div><KatexInline math="S_2=(0,1)" /></div>
-    <div><KatexInline math="S_4" />: מופיעה ספרה <KatexInline math="7" /></div>
-    <div><KatexInline math="S_5" />: אינסוף ספרות <KatexInline math="7" /></div>
-    <div><KatexInline math="S_7=[0,1]" /></div>
+    <div><KatexInline math="S_5" />: מופיעה ספרה <KatexInline math="7" /></div>
+    <div><KatexInline math="S_6" />: אינסוף ספרות <KatexInline math="7" /></div>
+    <div><KatexInline math="S_9=[0,1]\cap\mathbb{Q}" /></div>
+    <div><KatexInline math="S_8=[0,1]" /></div>
   </div>
 </div>
 
 <div v-click class="mt-2 grid grid-cols-2 gap-2 text-[13.5px] leading-relaxed">
   <div class="bg-blue-50 border border-blue-200 rounded p-2 text-right">
     <div class="font-bold mb-1">אף אחת</div>
-    <div><KatexInline math="S_3=[0,\frac12]\cup(\frac34,1)" /> אינה סגורה ואינה צפופה.</div>
+    <div><KatexInline math="S_3=[0,\frac12]\cup(\frac34,1)" /> ו-<KatexInline math="S_4=[\frac14,\frac34)" /> אינן סגורות ואינן צפופות.</div>
   </div>
 
   <div class="bg-slate-50 border border-slate-200 rounded p-2 text-right">
     <div class="font-bold mb-1">שתיהן</div>
-    <div>רק <KatexInline math="S_7=[0,1]" />. <KatexInline math="S_6=\emptyset" /> היא בטיחות בלבד.</div>
+    <div>רק <KatexInline math="S_8=[0,1]" />. <KatexInline math="S_7=\emptyset" /> היא בטיחות בלבד.</div>
   </div>
 </div>
