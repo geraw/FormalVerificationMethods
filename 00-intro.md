@@ -229,7 +229,7 @@ $$M = \frac{(\sum_{i=1}^{N} n_i)!}{\prod_{i=1}^{N} (n_i!)}$$
     </ul>
   </div>
   <div>
-    <strong>5. תכונות בטיחות וחיות (Safety & Liveness)</strong>
+    <strong>5. תכונות בטיחות וחַיּוּת (Safety & Liveness)</strong>
     <ul class="opacity-80">
       <li><strong>Safety:</strong> "משהו רע לעולם לא יקרה" (למשל: אין Deadlock).</li>
       <li><strong>Liveness:</strong> "משהו טוב יקרה בסופו של דבר" (למשל: שירות יינתן).</li>
@@ -261,7 +261,7 @@ $$M = \frac{(\sum_{i=1}^{N} n_i)!}{\prod_{i=1}^{N} (n_i!)}$$
     <strong>7. הגינות (Fairness)</strong>
     <ul class="opacity-80">
       <li>הנחות על תזמון תהליכים (Weak/Strong Fairness).</li>
-      <li>חיוני להוכחת תכונות חיות (Liveness).</li>
+      <li>חיוני להוכחת תכונות חַיּוּת (Liveness).</li>
     </ul>
   </div>
   <div>

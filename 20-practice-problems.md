@@ -194,7 +194,7 @@ info: |
 </div>
 
 <div v-click class="mt-1 bg-slate-50 border border-slate-200 rounded p-2 text-[15px] leading-relaxed" dir="ltr">
-החלק הנגיש: <KatexInline math="\{\langle s_0,0\rangle,\langle s_1,1\rangle,\langle s_2,0\rangle,\langle s_1,0\rangle\}" /> — 4 מתוך 6 הצירופים (<KatexInline math="\langle s_0,1\rangle,\langle s_2,1\rangle" /> אינם נגישים). שימו לב: <KatexInline math="s_1" /> <span dir="rtl">מתפצל לשני מצבים נגישים</span> — <KatexInline math="\langle s_1,1\rangle" /> מגיעים אליו ב-<KatexInline math="\gamma" />, <KatexInline math="\langle s_1,0\rangle" /> ב-<KatexInline math="\delta" /> — כך ש-<KatexInline math="TS'" /> אכן <span class="font-bold">גדול ממש</span> מ-<KatexInline math="TS" />.
+החלק הנגיש: <KatexInline math="\{\langle s_0,0\rangle,\langle s_1,1\rangle,\langle s_2,0\rangle,\langle s_1,0\rangle\}" />: 4 מתוך 6 הצירופים (<KatexInline math="\langle s_0,1\rangle,\langle s_2,1\rangle" /> אינם נגישים). שימו לב: <KatexInline math="s_1" /> <span dir="rtl">מתפצל לשני מצבים נגישים</span>: <KatexInline math="\langle s_1,1\rangle" /> מגיעים אליו ב-<KatexInline math="\gamma" />, <KatexInline math="\langle s_1,0\rangle" /> ב-<KatexInline math="\delta" />. לכן <KatexInline math="TS'" /> אכן <span class="font-bold">גדול ממש</span> מ-<KatexInline math="TS" />.
 </div>
 
 <div v-click class="mt-2 text-center text-[20px]" dir="ltr">
@@ -210,11 +210,11 @@ info: |
 </div>
 
 <div v-click class="mt-3 bg-amber-50 border border-amber-200 rounded p-2 text-[15px] leading-relaxed text-right">
-<span class="font-bold">מקרה 1 (לולאת <KatexInline math="\alpha" /> לעד):</span> <KatexInline math="en_{\gamma}" /> מתקיים תמיד אך <KatexInline math="tk_{\gamma}" /> לעולם לא, כך ש-<span dir="ltr"><KatexInline math="\theta_{\mathcal{F}}=(\Box\Diamond en_{\gamma}\Rightarrow\Box\Diamond tk_{\gamma})" /></span> שקרי — ו-<KatexInline math="\varphi'=\theta_{\mathcal{F}}\Rightarrow\varphi" /> מתקיים באופן ריק.
+<span class="font-bold">מקרה 1 (לולאת <KatexInline math="\alpha" /> לעד):</span> <KatexInline math="en_{\gamma}" /> מתקיים תמיד אך <KatexInline math="tk_{\gamma}" /> לעולם לא, כך ש-<span dir="ltr"><KatexInline math="\theta_{\mathcal{F}}=(\Box\Diamond en_{\gamma}\Rightarrow\Box\Diamond tk_{\gamma})" /></span> שקרי, ו-<KatexInline math="\varphi'=\theta_{\mathcal{F}}\Rightarrow\varphi" /> מתקיים באופן ריק.
 </div>
 
 <div v-click class="mt-3 bg-blue-50 border border-blue-200 rounded p-2 text-[15px] leading-relaxed text-right">
-<span class="font-bold">מקרה 2 (יוצאים בשלב סופי):</span> מאז <KatexInline math="\gamma" /> אינו זמין עוד, ולכן <KatexInline math="\Box\Diamond en_{\gamma}" /> שקרי ו-<KatexInline math="\theta_{\mathcal{F}}" /> מתקיים שוב באופן ריק. (וגם בלי ריקנות: במחזור <KatexInline math="\langle s_1,\cdot\rangle" /> — ולכן <KatexInline math="p" /> — חוזר אינסוף פעמים, כך ש-<KatexInline math="\Box\Diamond p" /> מתקיים ישירות.)
+<span class="font-bold">מקרה 2 (יוצאים בשלב סופי):</span> מאז <KatexInline math="\gamma" /> אינו זמין עוד, ולכן <KatexInline math="\Box\Diamond en_{\gamma}" /> שקרי ו-<KatexInline math="\theta_{\mathcal{F}}" /> מתקיים שוב באופן ריק. (וגם בלי ריקנות: במחזור <KatexInline math="\langle s_1,\cdot\rangle" />, ולכן <KatexInline math="p" />, חוזר אינסוף פעמים, כך ש-<KatexInline math="\Box\Diamond p" /> מתקיים ישירות.)
 </div>
 
 <div v-click class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-2 text-[16px] leading-relaxed">
@@ -238,7 +238,7 @@ info: |
 </div>
 
 <div class="text-right text-[15px] leading-relaxed mt-2 text-gray-600">
-הערה: התחביר הזה חלש ממש מ-LTL המלא — ניתן להוכיח שאי אפשר לבטא בו את <KatexInline math="p\mathbin{\mathrm{U}}q" /> (גם בעזרת הסוכרים התחביריים <KatexInline math="\Diamond,\lor,\Rightarrow" />).
+הערה: התחביר הזה חלש ממש מ-LTL המלא; ניתן להוכיח שאי אפשר לבטא בו את <KatexInline math="p\mathbin{\mathrm{U}}q" /> (גם בעזרת הסוכרים התחביריים <KatexInline math="\Diamond,\lor,\Rightarrow" />).
 </div>
 
 <div class="mt-5 bg-blue-50 border border-blue-200 rounded p-4 text-[19px] leading-relaxed">
@@ -452,7 +452,7 @@ info: |
 </div>
 
 <div v-click class="mt-1 bg-amber-50 border border-amber-200 rounded p-2 text-[15px] leading-relaxed">
-<KatexInline math="\delta(q_0,\{a\})=\{q_0,q_1\}" /> ו-<KatexInline math="\delta(q_1,\{a\})=\{q_0,q_1\}" />: בכל פעם ש-<KatexInline math="a" /> מופיע, אפשר <span class="font-bold">לבחור</span> אם "לחגוג" (לעבור/להישאר ב-<KatexInline math="q_1" />) או להישאר סקפטי ב-<KatexInline math="q_0" /> — אותה מילה יכולה להתקבל ע"י ריצה אחת ולהיכשל בריצה אחרת.
+<KatexInline math="\delta(q_0,\{a\})=\{q_0,q_1\}" /> ו-<KatexInline math="\delta(q_1,\{a\})=\{q_0,q_1\}" />: בכל פעם ש-<KatexInline math="a" /> מופיע, אפשר <span class="font-bold">לבחור</span> אם "לחגוג" (לעבור/להישאר ב-<KatexInline math="q_1" />) או להישאר סקפטי ב-<KatexInline math="q_0" />. אותה מילה יכולה להתקבל ע"י ריצה אחת ולהיכשל בריצה אחרת.
 </div>
 
 ---
@@ -460,7 +460,7 @@ info: |
 # פתרון א' (המשך): המכפלה חושפת את הבעיה
 
 <div class="text-right text-[16px] leading-relaxed mt-1">
-<span dir="ltr"><KatexInline math="\mathit{Traces}(TS)=\{(\{a\}\emptyset)^\omega\}" /></span>, ו-<KatexInline math="a" /> מתקיים אינסוף פעמים בה, אז <span dir="ltr"><KatexInline math="TS\models P" /></span> (באופן <span class="font-bold">טריוויאלי</span> — זו העקבה היחידה).
+<span dir="ltr"><KatexInline math="\mathit{Traces}(TS)=\{(\{a\}\emptyset)^\omega\}" /></span>, ו-<KatexInline math="a" /> מתקיים אינסוף פעמים בה, אז <span dir="ltr"><KatexInline math="TS\models P" /></span> (באופן <span class="font-bold">טריוויאלי</span>: זו העקבה היחידה).
 </div>
 
 <div class="flex justify-center mt-1 scale-[0.88] origin-top">
@@ -480,7 +480,7 @@ info: |
 </div>
 
 <div v-click class="mt-1 bg-red-50 border border-red-200 rounded p-2 text-[15px] leading-relaxed text-right">
-<span class="font-bold text-red-700">ריצה לא טובה:</span> <KatexInline math="\langle s_0,q_0\rangle\langle s_1,q_0\rangle\langle s_0,q_0\rangle\cdots" /> (המעגל האדום) — קיימת, ולעולם לא מבקרת ב-<KatexInline math="F=\{q_1\}" />.
+<span class="font-bold text-red-700">ריצה לא טובה:</span> <KatexInline math="\langle s_0,q_0\rangle\langle s_1,q_0\rangle\langle s_0,q_0\rangle\cdots" /> (המעגל האדום) קיימת, ולעולם לא מבקרת ב-<KatexInline math="F=\{q_1\}" />.
 </div>
 
 <div v-click class="mt-1 bg-blue-50 border border-blue-200 rounded p-2 text-[15px] leading-relaxed text-right">
@@ -504,7 +504,7 @@ info: |
 </div>
 
 <div v-click class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-[16px] leading-relaxed">
-מכיוון ש-<KatexInline math="\delta" /> פונקציה חד-ערכית (ו-<KatexInline math="|Q_0|=1" />), הרצף <span dir="ltr"><KatexInline math="q_0q_1\cdots" /></span> <span class="font-bold">נקבע ביחידות</span> ע"י <KatexInline math="trace(\rho)" /> — זו <span class="font-bold">הריצה היחידה האפשרית</span> של <KatexInline math="\mathcal{A}" /> על המילה הזו (לא ריצה כלשהי מבין כמה).
+מכיוון ש-<KatexInline math="\delta" /> פונקציה חד-ערכית (ו-<KatexInline math="|Q_0|=1" />), הרצף <span dir="ltr"><KatexInline math="q_0q_1\cdots" /></span> <span class="font-bold">נקבע ביחידות</span> ע"י <KatexInline math="trace(\rho)" />. זו <span class="font-bold">הריצה היחידה האפשרית</span> של <KatexInline math="\mathcal{A}" /> על המילה הזו (לא ריצה כלשהי מבין כמה).
 </div>
 
 <div v-click class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-[17px] leading-relaxed">
@@ -513,4 +513,168 @@ info: |
 
 <div v-click class="mt-2 bg-blue-50 border border-blue-200 rounded p-2 text-[16px] leading-relaxed text-right">
 <KatexInline math="\pi" /> הייתה שרירותית, ולכן <span dir="ltr"><KatexInline math="TS\times\mathcal{A}\models\Box\Diamond F" /></span>.
+</div>
+
+---
+
+# שאלה: פירוק אוטומט Büchi לבטיחות וחַיּוּת (20 נק')
+
+<div class="text-right text-[18px] leading-relaxed mt-3">
+נתון אוטומט Büchi <span dir="ltr"><KatexInline math="\mathcal{A}=\langle Q,2^{AP},\delta,Q_0,F\rangle" /></span> המייצג תכונת זמן ליניארי <KatexInline math="\omega" />-רגולרית <span dir="ltr"><KatexInline math="P=L_\omega(\mathcal{A})" /></span> (לאו דווקא בטיחות או חַיּוּת).
+</div>
+
+<div class="mt-6 bg-blue-50 border border-blue-200 rounded p-4 text-[20px] leading-relaxed">
+<span class="font-bold">המשימה:</span> בנו שני אוטומטי Büchi <span dir="ltr"><KatexInline math="\mathcal{A}_{safe},\mathcal{A}_{live}" /></span> מעל אותו א"ב <span dir="ltr"><KatexInline math="2^{AP}" /></span> כך ש:
+</div>
+
+<div class="mt-5 text-center text-[24px]" dir="ltr">
+<KatexInline display math="L_\omega(\mathcal{A}_{safe})\cap L_\omega(\mathcal{A}_{live})=P" />
+</div>
+
+<div class="text-right text-[16px] leading-relaxed mt-3 text-gray-600">
+כאשר <span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_{safe})" /></span> היא תכונת בטיחות ו-<span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_{live})" /></span> היא תכונת חַיּוּת.
+</div>
+
+---
+
+# הסעיפים
+
+<div class="space-y-3 text-right text-[18px] leading-relaxed mt-3">
+
+<div class="bg-slate-50 border border-slate-200 rounded p-3">
+<span class="font-bold">א'. (5 נק')</span>
+בנו אוטומט Büchi שקול ל-<KatexInline math="\mathcal{A}" /> בעזרת פרוצדורת המחיקה הבאה:
+
+<div dir="ltr" class="text-left text-[15px] leading-relaxed bg-white border border-slate-200 rounded p-2 mt-2 font-mono">
+<div><KatexInline math="R := Q" /></div>
+<div><KatexInline math="\texttt{repeat}" /></div>
+<div class="pl-6"><KatexInline math="Dead := \{q\in R \mid \nexists\ \text{path inside }R\text{ of length }>0\text{ from }q\text{ to }F\cap R\}" /></div>
+<div class="pl-6"><KatexInline math="R := R\setminus Dead" /></div>
+<div><KatexInline math="\texttt{until } Dead=\emptyset" /></div>
+<div class="mt-2"><KatexInline math="Q' := R" /></div>
+<div><KatexInline math="\texttt{return }\mathcal{A}' := \langle Q',2^{AP},\delta|_{Q'},Q_0\cap Q',F\cap Q'\rangle" /></div>
+</div>
+
+הוכיחו שבכל איטרציה המחיקה אינה משנה את שפת Büchi של האוטומט, ולכן <span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}')=L_\omega(\mathcal{A})" /></span>.
+
+<div class="mt-3 bg-rose-50 border border-rose-200 rounded p-2 text-[16px] leading-relaxed">
+<span class="font-bold">שימו לב:</span> גם מצב מקבל נמחק אם אין ממנו מסלול באורך גדול מאפס למצב מקבל שנותר.
+</div>
+
+<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-2 text-[16px] leading-relaxed">
+ב-<KatexInline math="\mathcal{A}'" /> מכל מצב אפשר להמשיך לריצה מקבלת.
+</div>
+</div>
+
+</div>
+
+---
+
+<div class="space-y-3 text-right text-[18px] leading-relaxed mt-3">
+
+<div class="bg-amber-50 border border-amber-200 rounded p-3">
+<span class="font-bold">ב'. (5 נק')</span>
+בנו את <span dir="ltr"><KatexInline math="\mathcal{A}_{safe}" /></span> מתוך <KatexInline math="\mathcal{A}'" /> על ידי החלפת תנאי הקבלה בקבלה טריוויאלית (כל ריצה אינסופית מתקבלת). הוכיחו ש-<span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_{safe})=closure(P)" /></span>.
+</div>
+
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
+<span class="font-bold">ג'. (5 נק')</span>
+בנו אוטומט החזקה <KatexInline math="\mathcal{D}" /> מעל <span dir="ltr"><KatexInline math="2^{Q'}" /></span> עבור <KatexInline math="\mathcal{A}'" /> (בנייה כקבוצת-העל, בלי תנאי קבלה), והגדירו <span dir="ltr"><KatexInline math="\mathcal{A}_{bad}" /></span> עם קבוצת קבלה <span dir="ltr"><KatexInline math="\{\emptyset\}" /></span>. הוכיחו ש-<span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_{bad})=(2^{AP})^\omega\setminus closure(P)" /></span>.
+</div>
+
+<div class="bg-blue-50 border border-blue-200 rounded p-3">
+<span class="font-bold">ד'. (5 נק')</span>
+הגדירו <span dir="ltr"><KatexInline math="\mathcal{A}_{live}" /></span> כך ש-<span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_{live})=L_\omega(\mathcal{A}')\cup L_\omega(\mathcal{A}_{bad})" /></span>. הוכיחו ש-<span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_{live})" /></span> היא תכונת חַיּוּת, וש-<span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_{safe})\cap L_\omega(\mathcal{A}_{live})=P" /></span>.
+</div>
+
+</div>
+
+---
+
+# פתרון א': אוטומט שקול אחרי מחיקות
+
+<div class="mt-2 bg-slate-50 border border-slate-200 rounded p-3 text-[16px] leading-relaxed text-right">
+<span class="font-bold">פסאודו־קוד:</span>
+
+<div dir="ltr" class="text-left text-[15px] leading-relaxed bg-white border border-slate-200 rounded p-2 mt-2 font-mono">
+<div><KatexInline math="R := Q" /></div>
+<div><KatexInline math="\texttt{repeat}" /></div>
+<div class="pl-6"><KatexInline math="Dead := \{q\in R \mid \nexists\ \text{path inside }R\text{ of length }>0\text{ from }q\text{ to }F\cap R\}" /></div>
+<div class="pl-6"><KatexInline math="R := R\setminus Dead" /></div>
+<div><KatexInline math="\texttt{until } Dead=\emptyset" /></div>
+<div class="mt-2"><KatexInline math="Q' := R" /></div>
+<div><KatexInline math="\texttt{return }\mathcal{A}' := \langle Q',2^{AP},\delta|_{Q'},Q_0\cap Q',F\cap Q'\rangle" /></div>
+</div>
+</div>
+
+<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[15px] leading-relaxed text-right">
+<span class="font-bold">טענת שימור השפה:</span> נסמן ב-<KatexInline math="\mathcal{A}_R" /> את האוטומט המושרה על <KatexInline math="R" /> בתחילת איטרציה. מחיקת <KatexInline math="Dead" /> אינה משנה את שפתו: אם ריצה של <KatexInline math="\mathcal{A}_R" /> עוברת במצב <KatexInline math="q\in Dead" />, אז מאותו רגע אין לה דרך להגיע אפילו פעם אחת נוספת למצב ב-<KatexInline math="F\cap R" />. לכן היא לא יכולה להיות ריצת Büchi מקבלת. מכאן <span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_R)=L_\omega(\mathcal{A}_{R\setminus Dead})" /></span>.
+</div>
+
+<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[15px] leading-relaxed text-right">
+חזרה על הטיעון בכל איטרציה נותנת <span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}')=L_\omega(\mathcal{A})" /></span>. בפרט, מצב מקבל אינו נשאר רק מפני שהוא מקבל: אם אין ממנו מסלול באורך גדול מאפס למצב מקבל שנותר, הוא נמחק.
+</div>
+
+---
+
+# פתרון ב': בניית <span dir="ltr"><KatexInline math="\mathcal{A}_{safe}" /></span>
+
+<div class="mt-1 bg-slate-50 border border-slate-200 rounded p-2 text-[15px] leading-relaxed" dir="ltr">
+<KatexInline display math="\mathcal{A}_{safe}=\langle Q',\ 2^{AP},\ \delta|_{Q'},\ Q_0\cap Q',\ Q'\rangle" />
+</div>
+
+<div class="text-right text-[14px] text-gray-600 -mt-1">
+(<KatexInline math="\delta|_{Q'}" />: המעברים של <KatexInline math="\mathcal{A}'" />; קבלה <span dir="ltr"><KatexInline math="F_{safe}=Q'" /></span>, כלומר <span class="font-bold">כל</span> ריצה אינסופית בתוך <KatexInline math="Q'" /> מתקבלת.)
+</div>
+
+<div v-click class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-[14px] leading-relaxed text-right">
+<span class="font-bold"><KatexInline math="\subseteq" />:</span> אם ל-<KatexInline math="\sigma" /> יש ריצה של <KatexInline math="\mathcal{A}_{safe}" />, אז לכל קידומת <KatexInline math="\rho\preceq\sigma" /> המצב בסופה נמצא ב-<KatexInline math="Q'" />. מנקודת השבת של האלגוריתם אפשר להמשיך ממנו למסלול שמגיע למצב מקבל של <KatexInline math="\mathcal{A}'" />, ומשם שוב להמשיך כך, אינסוף פעמים. לכן יש ל-<KatexInline math="\rho" /> המשך ב-<KatexInline math="P" />, ומכאן <span dir="ltr"><KatexInline math="\sigma\in closure(P)" /></span>.
+</div>
+
+<div v-click class="mt-2 bg-emerald-50 border border-emerald-200 rounded p-2 text-[14px] leading-relaxed text-right">
+<span class="font-bold"><KatexInline math="\supseteq" />:</span> אם <span dir="ltr"><KatexInline math="\sigma\in closure(P)" /></span>, אז לכל אורך <KatexInline math="n" /> יש ל-<KatexInline math="\sigma[0..n]" /> המשך שמתקבל ב-<KatexInline math="\mathcal{A}'" />. לכן קיימת ריצה סופית של <KatexInline math="\mathcal{A}'" /> על <KatexInline math="\sigma[0..n]" />. מכיוון שמספר המצבים סופי, אפשר לבחור מצב ראשון שמופיע בתחילת אינסוף ריצות כאלה, אחריו יורש שמופיע באינסוף מהריצות שנותרו, וכן הלאה. הבחירות האלו מגדירות ריצה אינסופית של <span dir="ltr"><KatexInline math="\mathcal{A}_{safe}" /></span> על <KatexInline math="\sigma" />.
+</div>
+
+---
+
+# פתרון ג': בניית <span dir="ltr"><KatexInline math="\mathcal{A}_{bad}" /></span> (אוטומט החזקה)
+
+<div class="mt-1 bg-slate-50 border border-slate-200 rounded p-2 text-[14px] leading-relaxed" dir="ltr">
+<KatexInline display math="\mathcal{D}=\langle 2^{Q'},\ 2^{AP},\ \delta_\mathcal{D},\ \{Q_0\cap Q'\}\rangle,\qquad \delta_\mathcal{D}(S,a)=\textstyle\bigcup_{q\in S}\delta|_{Q'}(q,a)" />
+</div>
+
+<div class="text-right text-[13px] text-gray-600 -mt-1">
+(בנייה דטרמיניסטית סטנדרטית של "כל המצבים האפשריים", בלי תנאי קבלה, רק עקיבת מעברים.)
+</div>
+
+<div class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-[14px] leading-relaxed" dir="ltr">
+<KatexInline display math="\mathcal{A}_{bad}=\langle 2^{Q'},\ 2^{AP},\ \delta_\mathcal{D},\ \{Q_0\cap Q'\},\ \{\emptyset\}\rangle" />
+</div>
+
+<div v-click class="mt-2 bg-emerald-50 border border-emerald-200 rounded p-2 text-[14px] leading-relaxed text-right">
+המצב <KatexInline math="\emptyset" /> לכוד: אם אין כרגע אף ריצה אפשרית של <KatexInline math="\mathcal{A}'" />, גם בהמשך לא תהיה ריצה כזו. לכן "ביקור אחד" ב-<KatexInline math="\emptyset" /> שווה ל"ביקור אינסוף פעמים", וזה מתאים בדיוק לתנאי Büchi.
+</div>
+
+<div v-click class="mt-2 bg-blue-50 border border-blue-200 rounded p-2 text-[14px] leading-relaxed text-right">
+<KatexInline math="\sigma" /> מתקבלת ע"י <span dir="ltr"><KatexInline math="\mathcal{A}_{bad}" /></span> אם ורק אם הריצה הדטרמיניסטית של <KatexInline math="\mathcal{D}" /> על <KatexInline math="\sigma" /> מגיעה אי-פעם ל-<KatexInline math="\emptyset" />, כלומר אם ורק אם יש קידומת שאין עליה אף ריצה של <KatexInline math="\mathcal{A}'" />. לפי סעיף ב', זה שקול לכך של-<KatexInline math="\sigma" /> יש קידומת רעה, ולכן <span dir="ltr"><KatexInline math="\sigma\notin closure(P)" /></span>.
+</div>
+
+---
+
+# פתרון ד': <span dir="ltr"><KatexInline math="\mathcal{A}_{live}" /></span> וסגירת המעגל
+
+<div class="mt-1 bg-slate-50 border border-slate-200 rounded p-2 text-[15px] leading-relaxed" dir="ltr">
+<KatexInline display math="L_\omega(\mathcal{A}_{live})=L_\omega(\mathcal{A}')\cup L_\omega(\mathcal{A}_{bad})" />
+</div>
+
+<div class="text-right text-[13px] text-gray-600 -mt-1">
+מכיוון ש-<KatexInline math="\mathcal{A}'" /> שקול ל-<KatexInline math="\mathcal{A}" />, נקבל <span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_{live})=P\cup\big((2^{AP})^\omega\setminus closure(P)\big)" /></span>.
+</div>
+
+<div v-click class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-[14px] leading-relaxed text-right">
+<span class="font-bold">חַיּוּת:</span> לכל מילה סופית <KatexInline math="\rho" />: אם יש לה המשך ב-<KatexInline math="P" />, סיימנו. אחרת <KatexInline math="\rho" /> עצמה קידומת רעה, ואז <span class="font-bold">כל</span> המשך שלה אינו בסגירה, כלומר נמצא ב-<span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_{bad})" /></span>. כך או כך יש המשך ב-<span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_{live})" /></span>; זו בדיוק הגדרת תכונת חַיּוּת.
+</div>
+
+<div v-click class="mt-2 bg-emerald-50 border border-emerald-200 rounded p-2 text-[14px] leading-relaxed text-right">
+<span class="font-bold">החיתוך:</span> <KatexInline math="P\subseteq L_\omega(\mathcal{A}_{safe})" /> כי <KatexInline math="\mathcal{A}'" /> שקול ל-<KatexInline math="\mathcal{A}" /> וריצותיו הן בתוך <KatexInline math="Q'" />, ו-<KatexInline math="P\subseteq L_\omega(\mathcal{A}_{live})" /> בבירור. לכן <KatexInline math="P" /> מוכל בחיתוך. ולהפך: מילה בחיתוך שייכת ל-<KatexInline math="closure(P)" />, ולפי סעיף ג' היא <span class="font-bold">אינה</span> ב-<span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_{bad})" /></span>, כך שמ-<KatexInline math="L_\omega(\mathcal{A}_{live})" /> נשאר רק <KatexInline math="P" />.
 </div>
