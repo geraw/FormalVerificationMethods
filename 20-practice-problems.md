@@ -272,7 +272,7 @@ info: |
 
 <div class="bg-blue-50 border border-blue-200 rounded p-3">
 <span class="font-bold">ד'. (5 נק')</span>
-הפעילו את הבנייה על <span dir="ltr"><KatexInline math="\varphi=\Box a\land\neg\Box\neg b" /></span> (כלומר <KatexInline math="\Box a\land\Diamond b" />) מעל <span dir="ltr"><KatexInline math="AP=\{a,b\}" /></span>: רשמו את <KatexInline math="cl(\varphi)" />, מצב התחלה אחד לדוגמה עם המעבר היוצא ממנו, ואת <KatexInline math="\mathcal{F}" />.
+הפעילו את הבנייה על <span dir="ltr"><KatexInline math="\varphi=\Box a\land\neg\Box b" /></span> מעל <span dir="ltr"><KatexInline math="AP=\{a,b\}" /></span>: רשמו את <KatexInline math="cl(\varphi)" />, מצב התחלה אחד לדוגמה עם המעבר היוצא ממנו, ואת <KatexInline math="\mathcal{F}" />.
 </div>
 
 </div>
@@ -297,7 +297,7 @@ info: |
 </div>
 
 <div v-click class="mt-2 bg-slate-50 border border-slate-200 rounded p-2 text-[15px] leading-relaxed">
-שימו לב: בניגוד ל-<span dir="ltr">Until</span>, אין כאן כלל "מספיק" חד-מצבי (כמו <span dir="ltr"><KatexInline math="\psi_2\in B\Rightarrow\psi_1\mathbin{\mathrm{U}}\psi_2\in B" /></span>): קוניונקציה לא מאפשרת "להיפטר" מההתחייבות לעתיד באף שלב.
+שימו לב: בניגוד ל-<span dir="ltr">Until</span>, אין כאן כלל "מספיק" חד-מצבי (כמו <span dir="ltr"><KatexInline math="\psi_2\in B\Rightarrow\psi_1\mathbin{\mathrm{U}}\psi_2\in B" /></span>): אי אפשר להיפטר מההתחייבות לעתיד באף שלב.
 </div>
 
 ---
@@ -327,7 +327,7 @@ info: |
     { id: 'q', x: 190, y: 110, label: '$\\neg\\Box\\psi,\\psi$', initial: true, initialDirection: 'left', accepting: false, stroke: '#dc2626', r: 42, labelWidth: 170, labelHeight: 40 }
   ]"
   :transitions="[
-    { source: 'q', target: 'q', label: '$\\psi$', loopDirection: '-90deg', labelY: -12, labelWidth: 60 }
+    { source: 'q', target: 'q', label: '', loopDirection: '-90deg', loopRadius: 90, stroke: '#dc2626', labelX: 0, labelY: -10 }
   ]"
 />
 </div>
@@ -350,31 +350,31 @@ info: |
 
 ---
 
-# פתרון ד': הבנייה על <span dir="ltr"><KatexInline math="\Box a\land\Diamond b" /></span>
+# פתרון ד': הבנייה על <span dir="ltr"><KatexInline math="\Box a\land\neg\Box b" /></span>
 
 <div class="text-right text-[16px] leading-relaxed mt-2" dir="ltr">
-<KatexInline math="cl(\varphi)=\{a,\neg a,\ b,\neg b,\ \Box a,\neg\Box a,\ \Box\neg b,\neg\Box\neg b,\ \varphi,\neg\varphi\}" />, כאשר <KatexInline math="\varphi=\Box a\land\neg\Box\neg b" />.
+<KatexInline math="cl(\varphi)=\{a,\neg a,\ b,\neg b,\ \Box a,\neg\Box a,\ \Box b,\neg\Box b,\ \varphi,\neg\varphi\}" />, כאשר <KatexInline math="\varphi=\Box a\land\neg\Box b" />.
 </div>
 
 <div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-[17px]" dir="ltr">
-<div class="text-right font-bold mb-1">מצב התחלה לדוגמה (חייב להכיל <KatexInline math="\varphi" />, ולכן <KatexInline math="\Box a" /> ו-<KatexInline math="\neg\Box\neg b" />)</div>
-<KatexInline display math="B=\{\varphi,\ \Box a,\ a,\ \neg\Box\neg b,\ \neg b\}" />
+<div class="text-right font-bold mb-1">מצב התחלה לדוגמה (חייב להכיל <KatexInline math="\varphi" />, ולכן <KatexInline math="\Box a" /> ו-<KatexInline math="\neg\Box b" />)</div>
+<KatexInline display math="B=\{\varphi,\ \Box a,\ a,\ \neg\Box b,\ b\}" />
 </div>
 
-<div v-click class="mt-2 bg-amber-50 border border-amber-200 rounded p-3 text-[16px] leading-relaxed" dir="ltr">
-לפי סעיף א': <KatexInline math="\Box a\in B\Rightarrow a\in B" />; ובחרנו <KatexInline math="\neg b\in B" /> כדי שההבטחה <KatexInline math="\neg\Box\neg b" /> תישאר פתוחה (שאר התוויות, כגון <KatexInline math="\neg\Box a" />, נקבעות במשתמע ע"י המקסימליות).
+<div v-click class="mt-2 bg-amber-50 border border-amber-200 rounded p-3 text-[16px] leading-relaxed text-right">
+לפי סעיף א': <KatexInline math="\Box a\in B\Rightarrow a\in B" />; ובחרנו <KatexInline math="b\in B" /> כדי שההבטחה <KatexInline math="\neg\Box b" /> (כלומר <KatexInline math="\Diamond\neg b" />) תישאר פתוחה (שאר התוויות, כגון <KatexInline math="\neg\Box a" />, נקבעות במשתמע ע"י המקסימליות).
 </div>
 
-<div v-click class="mt-2 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed" dir="ltr">
-לפי סעיף א': <KatexInline math="\Box a\in B\Rightarrow\Box a\in B'" />. לפי סעיף ג' (<KatexInline math="\neg b\in B" />): אין אילוץ על <KatexInline math="\neg\Box\neg b" /> ב-<KatexInline math="B'" /> (יכול להיפתח או להיסגר). מעבר חוקי אחד: <KatexInline math="B'=\{\Box a,a,\Box\neg b,b\}" /> (סוגרים את ההבטחה: <KatexInline math="b\in B'" />).
+<div v-click class="mt-2 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed text-right">
+לפי סעיף א': <KatexInline math="\Box a\in B\Rightarrow\Box a\in B'" />. לפי סעיף ג' (<KatexInline math="b\in B" />): אין אילוץ על <KatexInline math="\neg\Box b" /> ב-<KatexInline math="B'" /> (יכול להיפתח או להיסגר). מעבר חוקי אחד: <KatexInline math="B'=\{\Box a,a,\neg\Box b,\neg b\}" /> (סוגרים את ההבטחה: <KatexInline math="\neg b\in B'" />).
 </div>
 
 <div v-click class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-[18px] text-center" dir="ltr">
-<KatexInline math="\mathcal{F}=\{F_{\neg\Box\neg b}\},\qquad F_{\neg\Box\neg b}=\{B\mid \neg\Box\neg b\notin B\lor\neg b\in B\}" />
+<KatexInline math="\mathcal{F}=\{F_{\neg\Box b}\},\qquad F_{\neg\Box b}=\{B\mid \neg\Box b\notin B\lor\neg b\in B\}" />
 </div>
 
 <div v-click class="mt-2 bg-slate-50 border border-slate-200 rounded p-2 text-[15px] leading-relaxed">
-שימו לב: <KatexInline math="\Box a" /> לא תורם אף קבוצת קבלה (לפי סעיף ב'); כל ה-<KatexInline math="\mathcal{F}" /> מגיע מההבטחה הנסתרת בתוך <KatexInline math="\neg\Box\neg b" />, אף שאין <span dir="ltr">Until</span> בתחביר כלל.
+שימו לב: <KatexInline math="\Box a" /> לא תורם אף קבוצת קבלה (לפי סעיף ב'); כל ה-<KatexInline math="\mathcal{F}" /> מגיע מההבטחה הנסתרת בתוך <KatexInline math="\neg\Box b" />, אף שאין <span dir="ltr">Until</span> ולא <span dir="ltr">Diamond</span> בתחביר כלל.
 </div>
 
 ---
