@@ -864,7 +864,7 @@ info: |
 
 ---
 
-# שאלה: מעבר מ-LTL ל-QPTL (10 נק')
+# שאלה: מעבר מ-LTL ל-QPTL (25 נק')
 
 <div class="text-right text-[17px] leading-relaxed mt-3">
 נניח <KatexInline math="AP=\{p\}" /> ונתבונן בשפת המילים שבהן <KatexInline math="p" /> מופיע מספר סופי וזוגי של פעמים:
@@ -899,7 +899,7 @@ info: |
 </div>
 
 <div class="mt-3 text-center text-[18px]" dir="ltr">
-<KatexInline display math="\exists q.\ q\ \land\ \Box\bigl(Xq\leftrightarrow(q\leftrightarrow\neg p)\bigr)\ \land\ \Diamond\Box\neg p\ \land\ \Diamond(q\land\Box\neg p)" />
+<KatexInline display math="\exists q.\ q\ \land\ \Box\bigl(Xq\leftrightarrow(q\leftrightarrow\neg p)\bigr)\ \land\ \Diamond(q\land\Box\neg p)" />
 </div>
 
 <div class="mt-3 grid grid-cols-2 gap-3 text-[15px] leading-relaxed">
