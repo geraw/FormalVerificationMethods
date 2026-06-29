@@ -429,9 +429,9 @@ info: |
   ]"
   :transitions="[
     { source: 'q0', target: 'q0', label: '$true$', loopDirection: '-90deg', labelY: -10, labelWidth: 40 },
-    { source: 'q0', target: 'q1', label: '$a$', labelY: -10, curve: 0.15 },
+    { source: 'q0', target: 'q1', label: '$a$', labelY: 12, curve: 0.15 },
     { source: 'q1', target: 'q1', label: '$a$', loopDirection: '-90deg', labelY: -10, labelWidth: 40 },
-    { source: 'q1', target: 'q0', label: '$true$', labelY: 10, curve: 0.15 }
+    { source: 'q1', target: 'q0', label: '$true$', labelY: -12, curve: 0.15 }
   ]"
 />
 </div>
@@ -440,12 +440,12 @@ info: |
 <TransitionSystemD3
   :width="320" :height="190"
   :states="[
-    { id: 's0', text: 's0', label: '{a}', initial: true, initialDirection: 'top', x: 220, y: 40, width: 80 },
-    { id: 's1', text: 's1', label: '∅', x: 220, y: 160, width: 80 }
+    { id: 's0', text: 's0', label: '$\\{a\\}$', initial: true, initialDirection: 'top', x: 220, y: 40, width: 80 },
+    { id: 's1', text: 's1', label: '$\\{\\}$', x: 220, y: 160, width: 80 }
   ]"
   :transitions="[
-    { source: 's0', target: 's1', action: 'step', curve: 0.3 },
-    { source: 's1', target: 's0', action: 'step', curve: 0.3 }
+    { source: 's0', target: 's1', action: 'step', curve: 0.3, actionX: -22 },
+    { source: 's1', target: 's0', action: 'step', curve: 0.3, actionX: 22 }
   ]"
 />
 </div>
@@ -464,14 +464,14 @@ info: |
 </div>
 
 <div class="flex justify-center mt-1 scale-[0.88] origin-top">
-<AutomatonD3 variant="classic" :width="480" :height="200" :arrowSize="3.5" :stateLabelFontSize="14" :transitionLabelFontSize="13"
+<AutomatonD3 variant="classic" :width="600" :height="200" :arrowSize="3.5" :stateLabelFontSize="14" :transitionLabelFontSize="13"
   :states="[
-    { id: 'p1', x: 240, y: 40, label: '$\\langle s_0,q_0\\rangle$', initial: true, initialDirection: 'top', r: 34, labelWidth: 90 },
-    { id: 'p2', x: 100, y: 160, label: '$\\langle s_1,q_0\\rangle$', r: 34, labelWidth: 90, stroke: '#dc2626', strokeWidth: 2.5 },
-    { id: 'p3', x: 380, y: 160, label: '$\\langle s_0,q_1\\rangle$', initial: true, initialDirection: 'top', r: 34, labelWidth: 90, accepting: true, fill: '#d1fae5', stroke: '#059669' }
+    { id: 'p1', x: 100, y: 160, label: '$\\langle s_0,q_0\\rangle$', initial: true, initialDirection: 'top', r: 34, labelWidth: 90 },
+    { id: 'p2', x: 300, y: 160, label: '$\\langle s_1,q_0\\rangle$', r: 34, labelWidth: 90, stroke: '#dc2626', strokeWidth: 2.5 },
+    { id: 'p3', x: 500, y: 160, label: '$\\langle s_0,q_1\\rangle$', initial: true, initialDirection: 'top', r: 34, labelWidth: 90, accepting: true, fill: '#d1fae5', stroke: '#059669' }
   ]"
   :transitions="[
-    { source: 'p1', target: 'p2', label: '', curve: 0 },
+    { source: 'p1', target: 'p2', label: '', curve: 0, stroke: '#dc2626' },
     { source: 'p2', target: 'p1', label: '', curve: 0.2, stroke: '#dc2626' },
     { source: 'p2', target: 'p3', label: '', curve: -0.2 },
     { source: 'p3', target: 'p2', label: '', curve: 0 }
@@ -479,8 +479,12 @@ info: |
 />
 </div>
 
-<div v-click class="mt-1 bg-red-50 border border-red-200 rounded p-2 text-[15px] leading-relaxed" dir="ltr">
+<div v-click class="mt-1 bg-red-50 border border-red-200 rounded p-2 text-[15px] leading-relaxed text-right">
 <span class="font-bold text-red-700">ריצה לא טובה:</span> <KatexInline math="\langle s_0,q_0\rangle\langle s_1,q_0\rangle\langle s_0,q_0\rangle\cdots" /> (המעגל האדום) — קיימת, ולעולם לא מבקרת ב-<KatexInline math="F=\{q_1\}" />.
+</div>
+
+<div v-click class="mt-1 bg-blue-50 border border-blue-200 rounded p-2 text-[15px] leading-relaxed text-right">
+הריצה הזאת מתאימה לשילוב של ריצת מערכת שהאוטומט <span class="font-bold">מקבל</span> (זו שעוברת תמיד ל-<KatexInline math="q_1" />) עם ריצה אחרת שהאוטומט <span class="font-bold">לא מקבל</span> (זו שנשארת ב-<KatexInline math="q_0" />).
 </div>
 
 <div v-click class="mt-2 bg-emerald-50 border border-emerald-200 rounded p-3 text-[17px] leading-relaxed">
