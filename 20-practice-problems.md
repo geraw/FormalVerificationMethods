@@ -64,7 +64,27 @@ info: |
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-3">
 <span class="font-bold">ג'. (5 נק')</span>
-הפעילו את הבנייה על הדוגמה: <KatexInline math="TS" /> עם <span dir="ltr"><KatexInline math="S=\{s_0,s_1,s_2\}" /></span>, <span dir="ltr"><KatexInline math="s_0\xrightarrow{submit}s_1,\ s_1\xrightarrow{cancel}s_0,\ s_1\xrightarrow{grant}s_2,\ s_2\xrightarrow{release}s_0" /></span>, <span dir="ltr"><KatexInline math="L(s_0)=\emptyset,L(s_1)=\{requested\},L(s_2)=\{granted\}" /></span>, <KatexInline math="\varphi=\Box\Diamond granted" />, <span dir="ltr"><KatexInline math="\mathcal{F}=\langle\emptyset,\{\{grant\}\},\emptyset\rangle" /></span>. רשמו את <KatexInline math="TS'" /> (החלק הנגיש) ואת <KatexInline math="\varphi'" />.
+<div class="grid grid-cols-[1fr_auto] gap-2 items-center mt-1">
+<div class="text-right text-[14px] leading-snug">
+הפעילו את הבנייה על הדוגמה (התרשים), עם <KatexInline math="AP=\{p\},\ L(s_1)=\{p\}" /> (אחרת <KatexInline math="\emptyset" />), <KatexInline math="\varphi=\Box\Diamond p" />, <span dir="ltr"><KatexInline math="\mathcal{F}=\langle\emptyset,\{\{\gamma\}\},\emptyset\rangle" /></span>. רשמו את <KatexInline math="TS'" /> ואת <KatexInline math="\varphi'" />.
+</div>
+<div class="flex justify-center -mt-8">
+<TransitionSystemD3
+  :width="380" :height="100" :auto="false"
+  :states="[
+    { id: 's0', text: 's0', x: 70, y: 55, initial: true, initialDirection: 'top', width: 56, label: '$\\{\\}$', labelX: 20, labelY: 14 },
+    { id: 's1', text: 's1', label: '$\\{p\\}$', labelX: 20, labelY: 14, x: 195, y: 55, width: 56 },
+    { id: 's2', text: 's2', x: 335, y: 55, width: 56, label: '$\\{\\}$', labelX: 20, labelY: 14, }
+  ]"
+  :transitions="[
+    { source: 's0', target: 's0', action: '$\\alpha$', loopDirection: '180deg', loopRadius: 82, actionX: 5 },
+    { source: 's0', target: 's1', actionY: -12, action: '$\\gamma$' },
+    { source: 's1', target: 's2', actionY: 12, action: '$\\beta$' },
+    { source: 's2', target: 's1', actionY: -12, action: '$\\delta$' }
+  ]"
+/>
+</div>
+</div>
 </div>
 
 <div class="bg-blue-50 border border-blue-200 rounded p-3">
@@ -84,7 +104,10 @@ info: |
 
 <div class="grid grid-cols-2 gap-3 mt-3 text-[16px]" dir="ltr">
 <div class="bg-slate-50 border border-slate-200 rounded p-3"><KatexInline display math="S'=S\times\{0,1\}^{\Gamma}" /></div>
-<div class="bg-slate-50 border border-slate-200 rounded p-3"><KatexInline display math="AP'=AP\cup\{en_A,tk_A\mid A\in\Gamma\}" /></div>
+<div class="bg-slate-50 border border-slate-200 rounded p-3">
+<KatexInline display math="AP'=AP\uplus\{en_A,tk_A\mid A\in\Gamma\}" />
+<div dir="rtl" class="text-right text-[13px] mt-1">בהנחה שהפסוקים האטומיים האלה אינם מופיעים כבר ב-<KatexInline math="AP" />.</div>
+</div>
 </div>
 
 <div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-[16px]" dir="ltr">
@@ -95,8 +118,9 @@ info: |
 <KatexInline display math="\langle s,b\rangle\xrightarrow{\alpha}{}'\langle t,b'\rangle \iff s\xrightarrow{\alpha}t \ \land\ \forall A\in\Gamma\ \left(b'(A)=[\alpha\in A]\right)" />
 </div>
 
-<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-2 text-[15px] leading-relaxed" dir="ltr">
-<KatexInline math="I'=\{\langle s_0,\vec{0}\rangle\mid s_0\in I\}" /> (הבחירה ההתחלתית של <KatexInline math="b" /> שרירותית, שכן אינה משפיעה על <KatexInline math="\Box\Diamond" />/<KatexInline math="\Diamond\Box" />).
+<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-2 text-[15px] leading-relaxed">
+<div class="text-center" dir="ltr"><KatexInline math="I'=\{\langle s_0,\vec{0}\rangle\mid s_0\in I\}" /></div>
+<div class="text-center mt-1">הבחירה ההתחלתית של <KatexInline math="b" /> שרירותית, היא במילא לא משפיעה על <span dir="ltr"><KatexInline math="\Box\Diamond" />/<KatexInline math="\Diamond\Box" /></span>.</div>
 </div>
 
 ---
@@ -104,22 +128,37 @@ info: |
 # פתרון ב': <span dir="ltr"><KatexInline math="\theta_{\mathcal{F}},\varphi'" /></span> ונכונות
 
 <div class="text-center text-[18px] mt-2" dir="ltr">
-<KatexInline display math="\theta_{\mathcal{F}}=\bigwedge_{A\in\mathcal{F}_{uncond}}\Box\Diamond tk_A\ \land\ \bigwedge_{A\in\mathcal{F}_{strong}}(\Box\Diamond en_A\Rightarrow\Box\Diamond tk_A)\ \land\ \bigwedge_{A\in\mathcal{F}_{weak}}(\Diamond\Box en_A\Rightarrow\Box\Diamond tk_A)" />
+<KatexInline display math="\theta_{\mathcal{F}}=\bigwedge_{U\in\mathcal{F}_{uncond}}\Box\Diamond tk_U\ \land\ \bigwedge_{S\in\mathcal{F}_{strong}}(\Box\Diamond en_S\Rightarrow\Box\Diamond tk_S)\ \land\ \bigwedge_{W\in\mathcal{F}_{weak}}(\Diamond\Box en_W\Rightarrow\Box\Diamond tk_W)" />
 </div>
 
-<div class="text-center text-[22px] mt-3" dir="ltr">
+<div class="mt-1 bg-slate-50 border border-slate-200 rounded p-1 text-[13px] leading-tight text-right">
+<div class="font-bold tracking-wide">נכונות <KatexInline math="\theta_{\mathcal{F}}" />:</div>
+כל מחובר הוא הגדרת הוגנות אחת (<KatexInline math="tk_X" />="נבחרה לאחרונה", <KatexInline math="en_X" />="מאופשרת כעת").
+<ul class="list-disc ps-4 space-y-0 mt-0">
+<li>בלתי-מותנית <KatexInline math="U" />: נבחרת אינסוף פעמים.</li>
+<li>חזקה <KatexInline math="S" />: מאופשרת אינסוף פעמים גוררת נבחרת אינסוף פעמים.</li>
+<li>חלשה <KatexInline math="W" />: מאופשרת מרגע מסוים גוררת נבחרת אינסוף פעמים.</li>
+</ul>
+</div>
+
+<div class="text-center text-[16px] mt-0" dir="ltr">
 <KatexInline display math="\varphi'=\theta_{\mathcal{F}}\Rightarrow\varphi" />
 </div>
 
-<div v-click class="mt-4 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed">
+<div class="text-[13px] -mt-2 text-right mx-2">
+<div class="font-bold tracking-wide">נכונות <KatexInline math="\varphi'" />:</div>
+הגרירה ריקה (אמת) בריצה לא-הוגנת, ודורשת קיום <KatexInline math="\varphi" /> רק בריצה הוגנת, כלומר שקולה ל-<KatexInline math="\rho\models_{\mathcal{F}}\varphi" />.
+</div>
+
+<div v-click class="mt-0.5 bg-blue-50 border border-blue-200 rounded p-0.5 text-[12px] leading-tight">
 לכל ריצה <KatexInline math="\rho" /> של <KatexInline math="TS" />, יש בדיוק ריצה <KatexInline math="\rho'" /> של <KatexInline math="TS'" /> מעליה (ה-<KatexInline math="b" />-ים נקבעים חד-משמעית מהפעולות, פרט לראשון שאינו משנה); ולהפך, השמטת הסיביות מכל ריצה של <KatexInline math="TS'" /> נותנת ריצה של <KatexInline math="TS" />.
 </div>
 
-<div v-click class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed">
+<div v-click class="mt-0.5 bg-blue-50 border border-blue-200 rounded p-0.5 text-[12px] leading-tight">
 מבניית <KatexInline math="L'" />: <span dir="ltr"><KatexInline math="\rho'\models\theta_{\mathcal{F}}\iff\rho" /> הוגנת ביחס ל-<KatexInline math="\mathcal{F}" /></span> (כל מחובר תואם מילה במילה את הגדרת ההוֹגְנוּת), ו-<span dir="ltr"><KatexInline math="\rho'\models\varphi\iff\rho\models\varphi" /></span> (כי <KatexInline math="AP\subseteq AP'" /> והתיוג על <KatexInline math="AP" /> לא השתנה).
 </div>
 
-<div v-click class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-[17px] leading-relaxed">
+<div v-click class="mt-0.5 bg-emerald-50 border border-emerald-200 rounded p-0.5 text-[13px] leading-tight text-center">
 לכן <span dir="ltr"><KatexInline math="TS'\models(\theta_{\mathcal{F}}\Rightarrow\varphi)\iff\forall\rho\ (\rho\ \mathcal{F}\text{-הוגנת}\Rightarrow\rho\models\varphi)\iff TS\models_{\mathcal{F}}\varphi" /></span>.
 </div>
 
@@ -128,60 +167,58 @@ info: |
 # פתרון ג': הבנייה על הדוגמה
 
 <div class="text-right text-[16px] leading-relaxed mt-2">
-<span dir="ltr"><KatexInline math="\Gamma=\{\{grant\}\}" /></span>, סיבית יחידה <KatexInline math="b\in\{0,1\}" />, <span dir="ltr"><KatexInline math="AP'=\{requested,granted,en_{grant},tk_{grant}\}" /></span>.
+<span dir="ltr"><KatexInline math="\Gamma=\{\{\gamma\}\}" /></span>, סיבית יחידה <KatexInline math="b\in\{0,1\}" />, <span dir="ltr"><KatexInline math="AP'=\{p,en_{\gamma},tk_{\gamma}\}" /></span>.
 </div>
 
 <div class="flex justify-center -mt-1 scale-[0.82] origin-top">
 <TransitionSystemD3
-  :width="600" :height="240"
+  :width="850" :height="160"
   :states="[
-    { id: 'a', text: '⟨s0,0⟩', initial: true, initialDirection: 'top', x: 300, y: 35, width: 110 },
-    { id: 'b', text: '⟨s1,0⟩', x: 90, y: 230, width: 110 },
-    { id: 'c', text: '⟨s2,1⟩', x: 510, y: 230, width: 110 }
+    { id: 'a', text: '$\\langle s_0,0 \\rangle$', initial: true, initialDirection: 'top', x: 95, y: 70, width: 110 },
+    { id: 'b', text: '$\\langle s_1,1 \\rangle$', x: 315, y: 70, width: 110 },
+    { id: 'c', text: '$\\langle s_2,0 \\rangle$', x: 535, y: 70, width: 110 },
+    { id: 'd', text: '$\\langle s_1,0 \\rangle$', x: 755, y: 70, width: 110 }
   ]"
   :transitions="[
-    { source: 'a', target: 'b', action: 'submit' },
-    { source: 'b', target: 'a', action: 'cancel' },
-    { source: 'b', target: 'c', action: 'grant' },
-    { source: 'c', target: 'a', action: 'release' }
+    { source: 'a', target: 'a', action: '$\\alpha$', loopDirection: '180deg', loopRadius: 150, actionX: 30 },
+    { source: 'a', target: 'b', actionY: -12, action: '$\\gamma$' },
+    { source: 'b', target: 'c', actionY: -12, action: '$\\beta$' },
+    { source: 'c', target: 'd', actionY: 22, action: '$\\delta$' },
+    { source: 'd', target: 'c', actionY: -22, action: '$\\beta$' }
   ]"
 />
 </div>
 
 <div class="text-center text-[15px] -mt-2" dir="ltr">
-<KatexInline math="L'(\langle s_0,0\rangle)=\emptyset,\quad L'(\langle s_1,0\rangle)=\{requested,en_{grant}\},\quad L'(\langle s_2,1\rangle)=\{granted,tk_{grant}\}" />
+<KatexInline math="L'(\langle s_0,0\rangle)=\{en_{\gamma}\},\quad L'(\langle s_1,1\rangle)=\{p,tk_{\gamma}\},\quad L'(\langle s_2,0\rangle)=\emptyset,\quad L'(\langle s_1,0\rangle)=\{p\}" />
 </div>
 
 <div v-click class="mt-1 bg-slate-50 border border-slate-200 rounded p-2 text-[15px] leading-relaxed" dir="ltr">
-החלק הנגיש: <KatexInline math="\{\langle s_0,0\rangle,\langle s_1,0\rangle,\langle s_2,1\rangle\}" /> בלבד (המצבים <KatexInline math="\langle s_0,1\rangle,\langle s_1,1\rangle,\langle s_2,0\rangle" /> אינם נגישים).
+החלק הנגיש: <KatexInline math="\{\langle s_0,0\rangle,\langle s_1,1\rangle,\langle s_2,0\rangle,\langle s_1,0\rangle\}" /> — 4 מתוך 6 הצירופים (<KatexInline math="\langle s_0,1\rangle,\langle s_2,1\rangle" /> אינם נגישים). שימו לב: <KatexInline math="s_1" /> <span dir="rtl">מתפצל לשני מצבים נגישים</span> — <KatexInline math="\langle s_1,1\rangle" /> מגיעים אליו ב-<KatexInline math="\gamma" />, <KatexInline math="\langle s_1,0\rangle" /> ב-<KatexInline math="\delta" /> — כך ש-<KatexInline math="TS'" /> אכן <span class="font-bold">גדול ממש</span> מ-<KatexInline math="TS" />.
 </div>
 
 <div v-click class="mt-2 text-center text-[20px]" dir="ltr">
-<KatexInline display math="\varphi'=\left(\Box\Diamond en_{grant}\Rightarrow\Box\Diamond tk_{grant}\right)\Rightarrow\Box\Diamond granted" />
+<KatexInline display math="\varphi'=\left(\Box\Diamond en_{\gamma}\Rightarrow\Box\Diamond tk_{\gamma}\right)\Rightarrow\Box\Diamond p" />
 </div>
 
 ---
 
-# פתרון ד': שקילות ומסקנה
+# פתרון ד': ניתוח הריצות ומסקנה
 
-<div class="text-right text-[18px] leading-relaxed mt-3">
-ההתאמה <span dir="ltr"><KatexInline math="\langle s_0,0\rangle\mapsto s_0,\ \langle s_1,0\rangle\mapsto s_1,\ \langle s_2,1\rangle\mapsto s_2" /></span> משרה התאמה חד-חד-ערכית בין הריצות (אותם מעברים ופעולות), ולכן <span dir="ltr"><KatexInline math="TS'" /></span> (החלק הנגיש) <span class="font-bold">שקול</span> ל-<KatexInline math="TS" />: מקיים בדיוק את אותן תכונות זמן ליניארי (לפי משפט שקילות העקבות), עם ההתאמה:
+<div class="text-right text-[16px] leading-relaxed mt-2">
+מהתרשים, כל ריצה של <span dir="ltr"><KatexInline math="TS'" /></span> (הח"נ) מתחילה ב-<KatexInline math="\langle s_0,0\rangle" />, ומתפצלת לשני מקרים בלבד: נשארת בו לעד (לולאת <KatexInline math="\alpha" />), או עוברת בשלב סופי ב-<KatexInline math="\gamma" /> ונכנסת למחזור <span dir="ltr"><KatexInline math="\langle s_1,1\rangle\to\langle s_2,0\rangle\to\langle s_1,0\rangle\to\langle s_2,0\rangle\to\cdots" /></span> (אין דרך לחזור ל-<KatexInline math="\langle s_0,0\rangle" />).
 </div>
 
-<div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-[18px] text-center" dir="ltr">
-<KatexInline math="en_{grant}\equiv requested,\qquad tk_{grant}\equiv granted" />
-</div>
-
-<div v-click class="mt-3 bg-amber-50 border border-amber-200 rounded p-2 text-[15px] leading-relaxed">
-מבנה <KatexInline math="TS" /> מבטיח שכל ריצה אינסופית חוזרת ל-<KatexInline math="s_1" /> אינסוף פעמים (מ-<KatexInline math="s_0" /> היחיד שמובילה ל-<KatexInline math="s_1" />; מ-<KatexInline math="s_2" /> היחיד שמובילה ל-<KatexInline math="s_0" /> ומשם ל-<KatexInline math="s_1" />), ולכן <KatexInline math="\Box\Diamond requested" /> מתקיים בכל ריצה.
+<div v-click class="mt-3 bg-amber-50 border border-amber-200 rounded p-2 text-[15px] leading-relaxed text-right">
+<span class="font-bold">מקרה 1 (לולאת <KatexInline math="\alpha" /> לעד):</span> <KatexInline math="en_{\gamma}" /> מתקיים תמיד אך <KatexInline math="tk_{\gamma}" /> לעולם לא, כך ש-<span dir="ltr"><KatexInline math="\theta_{\mathcal{F}}=(\Box\Diamond en_{\gamma}\Rightarrow\Box\Diamond tk_{\gamma})" /></span> שקרי — ו-<KatexInline math="\varphi'=\theta_{\mathcal{F}}\Rightarrow\varphi" /> מתקיים באופן ריק.
 </div>
 
 <div v-click class="mt-3 bg-blue-50 border border-blue-200 rounded p-2 text-[15px] leading-relaxed text-right">
-לפי השקילות <KatexInline math="(A\Rightarrow B)\Rightarrow B\equiv A\lor B" />: <KatexInline math="\varphi'\equiv\Box\Diamond requested\lor\Box\Diamond granted" />, ומכיוון שהמחובר הראשון מתקיים תמיד, <span class="font-bold">כל</span> ריצה מקיימת את <KatexInline math="\varphi'" />.
+<span class="font-bold">מקרה 2 (יוצאים בשלב סופי):</span> מאז <KatexInline math="\gamma" /> אינו זמין עוד, ולכן <KatexInline math="\Box\Diamond en_{\gamma}" /> שקרי ו-<KatexInline math="\theta_{\mathcal{F}}" /> מתקיים שוב באופן ריק. (וגם בלי ריקנות: במחזור <KatexInline math="\langle s_1,\cdot\rangle" /> — ולכן <KatexInline math="p" /> — חוזר אינסוף פעמים, כך ש-<KatexInline math="\Box\Diamond p" /> מתקיים ישירות.)
 </div>
 
 <div v-click class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-2 text-[16px] leading-relaxed">
-לכן <span dir="ltr"><KatexInline math="TS'\models\varphi'" /></span>, ולפי סעיף ב' מתקיים <span dir="ltr"><KatexInline math="TS\models_{\mathcal{F}}\varphi" /></span>: קיבלנו את התשובה ישירות מהבנייה, בלי לנמק בנפרד על הוֹגְנוּת על <KatexInline math="TS" /> המקורית.
+בשני המקרים <span dir="ltr"><KatexInline math="TS'\models\varphi'" /></span>, ולפי סעיף ב' מתקיים <span dir="ltr"><KatexInline math="TS\models_{\mathcal{F}}\varphi" /></span>. בניגוד לדוגמה "שקופה": כאן <span dir="ltr"><KatexInline math="TS\not\models\varphi" /></span> בלי הנחת ההוֹגְנוּת (הריצה <KatexInline math="s_0^\omega" /> מפרה אותה), וההוֹגְנוּת היא שמכריחה בסוף לבחור ב-<KatexInline math="\gamma" /> ומכאן את קיום <KatexInline math="\varphi" />.
 </div>
 
 ---
