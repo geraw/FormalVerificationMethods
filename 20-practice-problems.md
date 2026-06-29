@@ -678,3 +678,312 @@ info: |
 <div v-click class="mt-2 bg-emerald-50 border border-emerald-200 rounded p-2 text-[14px] leading-relaxed text-right">
 <span class="font-bold">החיתוך:</span> <KatexInline math="P\subseteq L_\omega(\mathcal{A}_{safe})" /> כי <KatexInline math="\mathcal{A}'" /> שקול ל-<KatexInline math="\mathcal{A}" /> וריצותיו הן בתוך <KatexInline math="Q'" />, ו-<KatexInline math="P\subseteq L_\omega(\mathcal{A}_{live})" /> בבירור. לכן <KatexInline math="P" /> מוכל בחיתוך. ולהפך: מילה בחיתוך שייכת ל-<KatexInline math="closure(P)" />, ולפי סעיף ג' היא <span class="font-bold">אינה</span> ב-<span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_{bad})" /></span>, כך שמ-<KatexInline math="L_\omega(\mathcal{A}_{live})" /> נשאר רק <KatexInline math="P" />.
 </div>
+
+---
+
+# מסקנה: הפירוק נשאר בתוך שפות <span dir="ltr"><KatexInline math="\omega" /></span>-רגולריות
+
+<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-[18px] leading-relaxed text-right">
+אם <KatexInline math="P" /> היא שפה <KatexInline math="\omega" />-רגולרית, אז קיימות שפות <KatexInline math="\omega" />-רגולריות <KatexInline math="P_{safe}" /> ו-<KatexInline math="P_{live}" /> כך ש:
+</div>
+
+<div class="mt-4 text-center text-[24px]" dir="ltr">
+<KatexInline display math="P=P_{safe}\cap P_{live}" />
+</div>
+
+<div v-click class="mt-4 bg-blue-50 border border-blue-200 rounded p-3 text-[17px] leading-relaxed text-right">
+הסיבה היא בנייתית: אם <KatexInline math="P=L_\omega(\mathcal{A})" />, אז הפרוצדורה בסעיף א' נותנת אוטומט שקול <KatexInline math="\mathcal{A}'" />. ממנו בנינו בפועל שני אוטומטי Büchi סופיים, ולכן שתי השפות שהתקבלו הן <KatexInline math="\omega" />-רגולריות.
+</div>
+
+<div v-click class="mt-4 grid grid-cols-2 gap-3 text-[15px] leading-relaxed">
+  <div class="bg-amber-50 border border-amber-200 rounded p-3 text-right">
+    <div class="font-bold mb-2">רכיב הבטיחות</div>
+    <div dir="ltr" class="text-left">
+      <KatexInline display math="P_{safe}=L_\omega(\mathcal{A}_{safe})=closure(P)" />
+    </div>
+    <div class="text-right">
+      את <KatexInline math="\mathcal{A}_{safe}" /> מקבלים מ-<KatexInline math="\mathcal{A}'" /> על ידי קבלה טריוויאלית.
+    </div>
+  </div>
+
+  <div class="bg-sky-50 border border-sky-200 rounded p-3 text-right">
+    <div class="font-bold mb-2">רכיב החַיּוּת</div>
+    <div dir="ltr" class="text-left">
+      <KatexInline display math="P_{live}=L_\omega(\mathcal{A}_{live})=P\cup\big((2^{AP})^\omega\setminus closure(P)\big)" />
+    </div>
+    <div class="text-right">
+      את <KatexInline math="\mathcal{A}_{live}" /> מקבלים מאיחוד השפות של <KatexInline math="\mathcal{A}'" /> ושל <KatexInline math="\mathcal{A}_{bad}" />.
+    </div>
+  </div>
+</div>
+
+<div v-click class="mt-4 bg-slate-50 border border-slate-200 rounded p-3 text-[16px] leading-relaxed text-right">
+דוגמת בנייה: עבור כל אוטומט Büchi נתון ל-<KatexInline math="P" />, מחשבים <KatexInline math="\mathcal{A}'" />, מחליפים את קבלת <KatexInline math="\mathcal{A}'" /> ב-<KatexInline math="Q'" /> כדי לקבל <KatexInline math="\mathcal{A}_{safe}" />, ובונים אוטומט החזקה שמקבל הגעה ל-<KatexInline math="\emptyset" /> כדי לקבל את <KatexInline math="\mathcal{A}_{bad}" />. מכאן מתקבל <KatexInline math="\mathcal{A}_{live}" />.
+</div>
+
+---
+
+# דוגמה פתורה: המחיקה ו-<span dir="ltr"><KatexInline math="\mathcal{A}'" /></span>
+
+<div class="mt-2 bg-slate-50 border border-slate-200 rounded p-2 text-[15px] leading-relaxed text-right">
+המצבים המקבלים הם <KatexInline math="q_1,q_2,q_3" />. השרשרת התחתונה בנויה כך שנדרשות שתי איטרציות מחיקה.
+</div>
+
+<div class="mt-2 grid grid-cols-[1.35fr_0.95fr] gap-2">
+  <div class="bg-white border border-slate-200 rounded p-2">
+    <div class="text-center font-bold mb-1" dir="ltr"><KatexInline math="\mathcal{A}" /></div>
+    <AutomatonD3 variant="classic" :width="540" :height="225" :arrowSize="3.1" :stateLabelFontSize="13" :transitionLabelFontSize="10.5"
+      :states="[
+        { id: 'q0', label: '$q_0$', initial: true, initialDirection: 'left', x: 58, y: 65, r: 19, labelWidth: 42 },
+        { id: 'q1', label: '$q_1$', x: 205, y: 65, r: 19, labelWidth: 42, accepting: true, fill: '#d1fae5', stroke: '#059669' },
+        { id: 'q2', label: '$q_2$', x: 145, y: 152, r: 17, labelWidth: 42, accepting: true, fill: '#fee2e2', stroke: '#dc2626' },
+        { id: 'q3', label: '$q_3$', x: 250, y: 152, r: 17, labelWidth: 42, accepting: true, fill: '#fee2e2', stroke: '#dc2626' },
+        { id: 'q4', label: '$q_4$', x: 355, y: 152, r: 17, labelWidth: 42, fill: '#fee2e2', stroke: '#dc2626' },
+        { id: 'q5', label: '$q_5$', x: 460, y: 152, r: 17, labelWidth: 42, fill: '#fee2e2', stroke: '#dc2626' },
+      ]"
+      :transitions="[
+        { source: 'q0', target: 'q0', label: '$a\\Rightarrow b$', loopDirection: '-90deg', labelY: -8, labelWidth: 78 },
+        { source: 'q0', target: 'q1', label: '$true$', labelY: -10, labelWidth: 52 },
+        { source: 'q1', target: 'q1', label: '$b$', loopDirection: '-90deg', labelY: -8, labelWidth: 36 },
+        { source: 'q0', labelX:-12, target: 'q2', label: '$true$', curve: 0.08, labelY: 10, stroke: '#dc2626', labelColor: '#dc2626', labelWidth: 52 },
+        { source: 'q2', labelY:-12, target: 'q3', label: '$true$', stroke: '#dc2626', labelColor: '#dc2626', labelWidth: 52 },
+        { source: 'q3', labelY:-12, target: 'q4', label: '$true$', stroke: '#dc2626', labelColor: '#dc2626', labelWidth: 52 },
+        { source: 'q4', labelY: -28, target: 'q5', label: '$true$', stroke: '#dc2626', labelColor: '#dc2626', labelWidth: 52 },
+        { source: 'q5', target: 'q4', label: '$true$', curve: 0.28, labelY: 28, stroke: '#dc2626', labelColor: '#dc2626', labelWidth: 52 },
+      ]"
+    />
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded p-2">
+    <div class="text-center font-bold mb-1" dir="ltr"><KatexInline math="\mathcal{A}'" /></div>
+    <AutomatonD3 variant="classic" :width="315" :height="225" :arrowSize="3.1" :stateLabelFontSize="13" :transitionLabelFontSize="10.5"
+      :states="[
+        { id: 'q0', label: '$q_0$', initial: true, initialDirection: 'left', x: 65, y: 85, r: 19, labelWidth: 42 },
+        { id: 'q1', label: '$q_1$', x: 220, y: 85, r: 19, labelWidth: 42, accepting: true, fill: '#d1fae5', stroke: '#059669' },
+      ]"
+      :transitions="[
+        { source: 'q0', target: 'q0', label: '$a\\Rightarrow b$', loopDirection: '-90deg', labelY: -8, labelWidth: 78 },
+        { source: 'q0', target: 'q1', label: '$true$', labelY: -10, labelWidth: 52 },
+        { source: 'q1', target: 'q1', label: '$b$', loopDirection: '-90deg', labelY: -8, labelWidth: 36 },
+      ]"
+    />
+    <div class="text-center text-[14px] text-red-700 -mt-2">
+      <KatexInline math="q_3,q_4,q_5" /> נמחקים תחילה; אחר כך <KatexInline math="q_2" />.
+    </div>
+  </div>
+</div>
+
+---
+
+# דוגמה פתורה: אוטומט החזקה ל-<span dir="ltr"><KatexInline math="\mathcal{A}_{bad}" /></span>
+
+<div class="mt-2 bg-slate-50 border border-slate-200 rounded p-2 text-[15px] leading-relaxed text-right">
+אחרי המחיקה עובדים עם <KatexInline math="\mathcal{A}'" /> בלבד. אוטומט ההחזקה עוקב אחרי קבוצת המצבים האפשריים ב-<KatexInline math="\mathcal{A}'" />, ומקבל כאשר מגיעים ל-<KatexInline math="\emptyset" />.
+</div>
+
+<div class="mt-2 bg-white border border-slate-200 rounded p-2">
+<AutomatonD3 variant="classic" :width="900" :height="280" :arrowSize="3.5" :stateLabelFontSize="15" :transitionLabelFontSize="12"
+  :states="[
+    { id: 'q0set', label: '$\\{q_0\\}$', initial: true, initialDirection: 'left', x: 120, y: 130, rx: 42, ry: 26, labelWidth: 90 },
+    { id: 'both', label: '$\\{q_0,q_1\\}$', x: 360, y: 80, rx: 58, ry: 28, labelWidth: 125 },
+    { id: 'q1set', label: '$\\{q_1\\}$', x: 360, y: 195, rx: 42, ry: 26, labelWidth: 90 },
+    { id: 'empty', label: '$\\emptyset$', x: 650, y: 195, rx: 42, ry: 26, labelWidth: 90, accepting: true, fill: '#fee2e2', stroke: '#dc2626' },
+  ]"
+  :transitions="[
+    { source: 'q0set', target: 'both', label: '$a\\Rightarrow b$', curve: -0.15, labelY: -10, labelWidth: 78 },
+    { source: 'q0set', target: 'q1set', label: '$\\neg(a\\Rightarrow b)$', curve: 0.15, labelY: 14, labelWidth: 112 },
+    { source: 'both', target: 'both', label: '$a\\Rightarrow b$', loopDirection: '-90deg', labelY: -10, labelWidth: 78 },
+    { source: 'both', target: 'q1set', label: '$\\neg(a\\Rightarrow b)$', curve: 0.12, labelX: 72, labelWidth: 112 },
+    { source: 'q1set', target: 'q1set', label: '$b$', loopDirection: '90deg', labelY: 10, labelWidth: 36 },
+    { source: 'q1set', target: 'empty', label: '$\\neg b$', labelY: -10, labelWidth: 52 },
+    { source: 'empty', target: 'empty', label: '$true$', loopDirection: '90deg', labelY: 10, labelWidth: 52 },
+  ]"
+/>
+</div>
+
+---
+
+# דוגמה פתורה: אוטומטי המטרה
+
+<div class="mt-2 grid grid-cols-2 gap-3">
+  <div class="bg-white border border-amber-200 rounded p-2">
+    <div class="text-center font-bold mb-1">
+      <span dir="ltr"><KatexInline math="\mathcal{A}_{safe}" /></span>
+    </div>
+    <AutomatonD3 variant="classic" :width="440" :height="230" :arrowSize="3.3" :stateLabelFontSize="14" :transitionLabelFontSize="11"
+      :states="[
+        { id: 's0', label: '$q_0$', initial: true, initialDirection: 'left', x: 95, y: 105, r: 21, labelWidth: 46, accepting: true, fill: '#fef3c7', stroke: '#d97706' },
+        { id: 's1', label: '$q_1$', x: 300, y: 105, r: 21, labelWidth: 46, accepting: true, fill: '#fef3c7', stroke: '#d97706' },
+      ]"
+      :transitions="[
+        { source: 's0', target: 's0', label: '$a\\Rightarrow b$', loopDirection: '-90deg', labelY: -8, labelWidth: 78 },
+        { source: 's0', target: 's1', label: '$true$', labelY: -10, labelWidth: 52 },
+        { source: 's1', target: 's1', label: '$b$', loopDirection: '-90deg', labelY: -8, labelWidth: 36 },
+      ]"
+    />
+    <div class="text-right text-[14px] leading-relaxed -mt-2">
+      זהו <KatexInline math="\mathcal{A}'" /> עם קבלה טריוויאלית: שני המצבים מקבלים.
+    </div>
+  </div>
+
+  <div class="bg-white border border-sky-200 rounded p-2">
+    <div class="text-center font-bold mb-1">
+      <span dir="ltr"><KatexInline math="\mathcal{A}_{live}" /></span>
+    </div>
+    <div class="text-right text-[14px] leading-relaxed mb-1">
+      שפת האיחוד: רכיב אחד הוא <KatexInline math="\mathcal{A}'" />, והרכיב השני הוא <KatexInline math="\mathcal{A}_{bad}" />.
+    </div>
+    <AutomatonD3 variant="classic" :width="390" :height="225" :arrowSize="2.4" :stateLabelFontSize="9.5" :transitionLabelFontSize="8.5"
+      :states="[
+        { id: 'l0', label: '$q_0$', initial: true, initialDirection: 'left', x: 62, y: 52, r: 14, labelWidth: 36 },
+        { id: 'l1', label: '$q_1$', x: 155, y: 52, r: 14, labelWidth: 36, accepting: true, fill: '#d1fae5', stroke: '#059669' },
+        { id: 'p0', label: '$\\{q_0\\}$', initial: true, initialDirection: 'left', x: 58, y: 158, rx: 27, ry: 16, labelWidth: 66 },
+        { id: 'p01', label: '$\\{q_0,q_1\\}$', x: 165, y: 128, rx: 37, ry: 17, labelWidth: 90 },
+        { id: 'p1', label: '$\\{q_1\\}$', x: 165, y: 195, rx: 27, ry: 16, labelWidth: 66 },
+        { id: 'pe', label: '$\\emptyset$', x: 305, y: 195, rx: 27, ry: 16, labelWidth: 66, accepting: true, fill: '#fee2e2', stroke: '#dc2626' },
+      ]"
+      :transitions="[
+        { source: 'l0', target: 'l0', label: '$a\\Rightarrow b$', loopDirection: '-90deg', labelY: -6, labelWidth: 68 },
+        { source: 'l0', target: 'l1', label: '$true$', labelY: -8, labelWidth: 42 },
+        { source: 'l1', target: 'l1', label: '$b$', loopDirection: '-90deg', labelY: -6, labelWidth: 28 },
+        { source: 'p0', target: 'p01', label: '$a\\Rightarrow b$', curve: -0.12, labelY: -8, labelWidth: 68 },
+        { source: 'p0', target: 'p1', label: '$\\neg(a\\Rightarrow b)$', curve: 0.12, labelY: 10, labelWidth: 86 },
+        { source: 'p01', target: 'p01', label: '$a\\Rightarrow b$', loopDirection: '-90deg', labelY: -6, labelWidth: 68 },
+        { source: 'p01', target: 'p1', label: '$\\neg(a\\Rightarrow b)$', curve: 0.12, labelX: 45, labelWidth: 86 },
+        { source: 'p1', target: 'p1', label: '$b$', loopDirection: '90deg', labelY: 8, labelWidth: 28 },
+        { source: 'p1', target: 'pe', label: '$\\neg b$', labelY: -8, labelWidth: 42 },
+        { source: 'pe', target: 'pe', label: '$true$', loopDirection: '90deg', labelY: 8, labelWidth: 42 },
+      ]"
+    />
+  </div>
+</div>
+
+<div class="mt-3 bg-slate-50 border border-slate-200 rounded p-2 text-[15px] leading-relaxed text-right">
+בדוגמה זו מתקיים <span dir="ltr"><KatexInline math="L_\omega(\mathcal{A}_{safe})\cap L_\omega(\mathcal{A}_{live})=L_\omega(\mathcal{A})" /></span>.
+</div>
+
+---
+
+# שאלה: טופולוגיה של בטיחות וחַיּוּת (20 נק')
+
+<div class="text-right text-[18px] leading-relaxed mt-3">
+נסמן <KatexInline math="\Sigma=2^{AP}" />. עבור שתי מילים אינסופיות <span dir="ltr"><KatexInline math="\sigma,\tau\in\Sigma^\omega" /></span>, נגדיר:
+</div>
+
+<div class="mt-4 text-center text-[23px]" dir="ltr">
+<KatexInline display math="d(\sigma,\tau)=
+\begin{cases}
+0 & \sigma=\tau\\
+2^{-n} & n=\min\{i\ge 0\mid \sigma_i\ne\tau_i\}
+\end{cases}" />
+</div>
+
+<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[17px] leading-relaxed text-right">
+כלומר, ככל שהרישא המשותפת ארוכה יותר, המרחק קטן יותר.
+</div>
+
+<div class="mt-4 space-y-3 text-right text-[17px] leading-relaxed">
+<div class="bg-slate-50 border border-slate-200 rounded p-3">
+<span class="font-bold">א'.</span>
+הראו ש-<KatexInline math="d" /> היא מטריקה על <KatexInline math="\Sigma^\omega" />.
+</div>
+
+<div class="bg-amber-50 border border-amber-200 rounded p-3">
+<span class="font-bold">ב'.</span>
+הוכיחו: <KatexInline math="P\subseteq\Sigma^\omega" /> היא תכונת בטיחות אם ורק אם <KatexInline math="P" /> סגורה ביחס למטריקה <KatexInline math="d" />.
+</div>
+
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
+<span class="font-bold">ג'.</span>
+נאמר ש-<KatexInline math="P" /> צפופה אם לכל <KatexInline math="\sigma\in\Sigma^\omega" /> ולכל <KatexInline math="\varepsilon>0" /> קיימת <KatexInline math="\tau\in P" /> כך ש-<KatexInline math="d(\sigma,\tau)<\varepsilon" />. הוכיחו: <KatexInline math="P" /> היא תכונת חַיּוּת אם ורק אם <KatexInline math="P" /> צפופה.
+</div>
+</div>
+
+---
+
+# שאלה: יישום לקידוד עשרוני
+
+<div class="text-right text-[18px] leading-relaxed mt-3">
+נניח <KatexInline math="AP=\{p_0,\ldots,p_9\}" />. לכל אות <KatexInline math="A\in2^{AP}" /> נתאים את גודלה <KatexInline math="|A|" />.
+</div>
+
+<div class="mt-3 bg-rose-50 border border-rose-200 rounded p-3 text-[16px] leading-relaxed text-right">
+<span class="font-bold">שימו לב:</span> אם <KatexInline math="|AP|=10" />, אז <KatexInline math="|A|" /> יכול להיות גם <KatexInline math="10" />. כדי לקבל ספרות עשרוניות ממש, נניח בשאלה זו שלא מופיעה אות מגודל <KatexInline math="10" />. לחלופין, בלי ההגבלה הזו עובדים באותו אופן בבסיס <KatexInline math="11" />.
+</div>
+
+<div class="mt-4 text-right text-[17px] leading-relaxed">
+עבור מילה <span dir="ltr"><KatexInline math="\sigma=A_0A_1A_2\cdots" /></span> נגדיר ספרות <KatexInline math="d_i=|A_i|" /> ומספר ממשי:
+</div>
+
+<div class="mt-3 text-center text-[23px]" dir="ltr">
+<KatexInline display math="x_\sigma=0.d_0d_1d_2\cdots=\sum_{i=0}^{\infty} d_i\cdot 10^{-(i+1)}" />
+</div>
+
+<div class="mt-4 space-y-3 text-right text-[17px] leading-relaxed">
+<div class="bg-slate-50 border border-slate-200 rounded p-3">
+<span class="font-bold">ד'.</span>
+הסבירו מדוע מילים עם רישא משותפת ארוכה מתאימות למספרים עשרוניים קרובים.
+</div>
+
+<div class="bg-blue-50 border border-blue-200 rounded p-3">
+<span class="font-bold">ה'.</span>
+נסחו במונחים של קבוצות מספרים מתי תכונה של מילים היא בטיחות ומתי היא חַיּוּת.
+</div>
+
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
+<span class="font-bold">ו'.</span>
+תנו דוגמה לתכונת בטיחות ודוגמה לתכונת חַיּוּת בעזרת תנאי על המספר <KatexInline math="x_\sigma" />.
+</div>
+</div>
+
+---
+
+# פתרון: סגור וצפוף
+
+<div class="mt-2 bg-slate-50 border border-slate-200 rounded p-3 text-[16px] leading-relaxed text-right">
+זו מטריקה: אי-שליליות וסימטריה מיידיות, ו-<KatexInline math="d(\sigma,\tau)=0" /> רק כאשר <KatexInline math="\sigma=\tau" />. בנוסף מתקיים אי-שוויון חזק יותר מהמשולש: אם <KatexInline math="\sigma" /> ו-<KatexInline math="\tau" /> מסכימות עם <KatexInline math="\eta" /> על רישא ארוכה, אז גם <KatexInline math="\sigma" /> ו-<KatexInline math="\tau" /> מסכימות לפחות עד המינימום מבין שתי הרישות האלה. לכן <span dir="ltr"><KatexInline math="d(\sigma,\tau)\le\max(d(\sigma,\eta),d(\eta,\tau))" /></span>.
+</div>
+
+<div class="mt-2 bg-amber-50 border border-amber-200 rounded p-3 text-[16px] leading-relaxed text-right">
+כדור ברדיוס <KatexInline math="2^{-n}" /> סביב מילה <KatexInline math="\sigma" /> קובע בדיוק רישא מספיק ארוכה של <KatexInline math="\sigma" />. לכן התכנסות במטריקה הזו היא בדיוק התכנסות של רישות סופיות: לכל אורך <KatexInline math="n" />, החל ממקום מסוים כל המילים מסכימות עם <KatexInline math="\sigma" /> על <KatexInline math="n" /> האותיות הראשונות.
+</div>
+
+<div v-click class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed text-right">
+<span class="font-bold">בטיחות:</span> <KatexInline math="P" /> סגורה אם ורק אם כל מילה מחוץ ל-<KatexInline math="P" /> מופרדת מ-<KatexInline math="P" /> על ידי רישא סופית. זו בדיוק ההגדרה של קידומת רעה, ולכן זו בדיוק תכונת בטיחות.
+</div>
+
+<div v-click class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-[16px] leading-relaxed text-right">
+<span class="font-bold">חַיּוּת:</span> <KatexInline math="P" /> צפופה אם ורק אם כל כדור בסיסי פוגש את <KatexInline math="P" />. אבל כדור בסיסי הוא כל המילים עם רישא סופית נתונה, ולכן זה שקול לכך שלכל רישא סופית יש המשך שנמצא ב-<KatexInline math="P" />. זו בדיוק הגדרת חַיּוּת.
+</div>
+
+---
+
+# פתרון: הקידוד העשרוני
+
+<div class="mt-2 bg-slate-50 border border-slate-200 rounded p-3 text-[16px] leading-relaxed text-right">
+אם שתי מילים מסכימות על <KatexInline math="n" /> האותיות הראשונות, אז המספרים <KatexInline math="x_\sigma,x_\tau" /> מסכימים על <KatexInline math="n" /> הספרות הראשונות אחרי הנקודה, ולכן:
+</div>
+
+<div class="mt-3 text-center text-[23px]" dir="ltr">
+<KatexInline display math="|x_\sigma-x_\tau|\le 10^{-n}" />
+</div>
+
+<div v-click class="mt-4 grid grid-cols-2 gap-3 text-[15px] leading-relaxed">
+  <div class="bg-amber-50 border border-amber-200 rounded p-3 text-right">
+    <div class="font-bold mb-2">דוגמת בטיחות</div>
+    <div>
+      <KatexInline math="x_\sigma\le \frac12" />. אם <KatexInline math="x_\sigma>\frac12" />, יש רישא עשרונית סופית שכבר מכריחה שכל המשך יישאר גדול מ-<KatexInline math="\frac12" />.
+    </div>
+  </div>
+
+  <div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-right">
+    <div class="font-bold mb-2">דוגמת חַיּוּת</div>
+    <div>
+      <KatexInline math="x_\sigma" /> מכיל את הספרה <KatexInline math="7" /> באיזשהו מקום. לכל רישא סופית אפשר להוסיף אחריה אות בגודל <KatexInline math="7" />, ולכן התכונה צפופה.
+    </div>
+  </div>
+</div>
+
+<div v-click class="mt-4 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed text-right">
+במונחי המספרים: בטיחות מתאימה לקבוצות סגורות, וחַיּוּת מתאימה לקבוצות צפופות, כאשר מסתכלים על הטופולוגיה שנוצרת מקירוב לפי רישות סופיות.
+</div>
