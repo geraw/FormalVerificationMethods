@@ -226,7 +226,19 @@ info: |
 # שאלה: תרגום LTL לאוטומט Büchi עם Always במקום Until (20 נק')
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
-נתבונן בתחביר LTL מצומצם, בלי אופרטור <span dir="ltr">Until</span> כלל: הבסיס הוא <span dir="ltr"><KatexInline math="\{AP,\neg,\land,\bigcirc,\Box\}" /></span> (כש-<KatexInline math="\Box" /> הוא אופרטור <span class="font-bold">יסודי</span>, לא סוכר תחבירי; <KatexInline math="\Diamond\psi:=\neg\Box\neg\psi" /> נשארת הגדרה).
+נתבונן בתחביר LTL מצומצם, בלי אופרטור <span dir="ltr">Until</span> כלל:
+</div>
+
+<div class="text-center text-[20px] mt-3" dir="ltr">
+<KatexInline display math="\varphi ::= true \mid p \mid \neg\varphi \mid \varphi\land\varphi \mid \bigcirc\varphi \mid \textcolor{blue}{\Box\varphi} \qquad (p\in AP)" />
+</div>
+
+<div class="text-right text-[16px] leading-relaxed mt-3 text-gray-600">
+(<KatexInline math="\Box" /> הוא אופרטור <span class="font-bold">יסודי</span> בתחביר זה, לא סוכר תחבירי; <KatexInline math="\Diamond\psi:=\neg\Box\neg\psi" /> נשארת הגדרה.)
+</div>
+
+<div class="text-right text-[15px] leading-relaxed mt-2 text-gray-600">
+הערה: התחביר הזה חלש ממש מ-LTL המלא — ניתן להוכיח שאי אפשר לבטא בו את <KatexInline math="p\mathbin{\mathrm{U}}q" /> (גם בעזרת הסוכרים התחביריים <KatexInline math="\Diamond,\lor,\Rightarrow" />).
 </div>
 
 <div class="mt-5 bg-blue-50 border border-blue-200 rounded p-4 text-[19px] leading-relaxed">
