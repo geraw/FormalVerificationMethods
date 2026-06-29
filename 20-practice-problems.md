@@ -941,15 +941,15 @@ info: |
 </div>
 
 <div class="mt-2 bg-amber-50 border border-amber-200 rounded p-3 text-[16px] leading-relaxed text-right">
-כדור ברדיוס <KatexInline math="2^{-n}" /> סביב מילה <KatexInline math="\sigma" /> קובע בדיוק רישא מספיק ארוכה של <KatexInline math="\sigma" />. לכן התכנסות במטריקה הזו היא בדיוק התכנסות של רישות סופיות: לכל אורך <KatexInline math="n" />, החל ממקום מסוים כל המילים מסכימות עם <KatexInline math="\sigma" /> על <KatexInline math="n" /> האותיות הראשונות.
+כדור פתוח סביב מילה <KatexInline math="\sigma" /> הוא אוסף כל המילים שקרובות מספיק ל-<KatexInline math="\sigma" />. במטריקה הזו, להיות קרוב מספיק פירושו להסכים עם <KatexInline math="\sigma" /> על רישא ארוכה מספיק. למשל, כדור קטן מרדיוס <KatexInline math="2^{-n}" /> מכיל רק מילים שמסכימות עם <KatexInline math="\sigma" /> על <KatexInline math="n" /> האותיות הראשונות.
 </div>
 
 <div v-click class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed text-right">
-<span class="font-bold">בטיחות:</span> <KatexInline math="P" /> סגורה אם ורק אם כל מילה מחוץ ל-<KatexInline math="P" /> מופרדת מ-<KatexInline math="P" /> על ידי רישא סופית. זו בדיוק ההגדרה של קידומת רעה, ולכן זו בדיוק תכונת בטיחות.
+<span class="font-bold">בטיחות:</span> אם <KatexInline math="P" /> סגורה ו-<KatexInline math="\sigma\notin P" />, אז המשלים פתוח. לכן קיים כדור פתוח <KatexInline math="B(\sigma,\varepsilon)" /> שמוכל כולו במשלים. נבחר רישא <KatexInline math="\rho" /> של <KatexInline math="\sigma" /> ארוכה מספיק כך שכל מילה שמתחילה ב-<KatexInline math="\rho" /> נמצאת בכדור הזה. לכן כל המשך של <KatexInline math="\rho" /> מחוץ ל-<KatexInline math="P" />, כלומר <KatexInline math="\rho" /> קידומת רעה. להפך, אם לכל <KatexInline math="\sigma\notin P" /> יש רישא רעה, אז סביב <KatexInline math="\sigma" /> יש כדור שמוכל במשלים, ולכן המשלים פתוח ו-<KatexInline math="P" /> סגורה.
 </div>
 
 <div v-click class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-[16px] leading-relaxed text-right">
-<span class="font-bold">חַיּוּת:</span> <KatexInline math="P" /> צפופה אם ורק אם כל כדור בסיסי פוגש את <KatexInline math="P" />. אבל כדור בסיסי הוא כל המילים עם רישא סופית נתונה, ולכן זה שקול לכך שלכל רישא סופית יש המשך שנמצא ב-<KatexInline math="P" />. זו בדיוק הגדרת חַיּוּת.
+<span class="font-bold">חַיּוּת:</span> לפי ההגדרה הטופולוגית, <KatexInline math="P" /> צפופה אם ורק אם כל כדור פתוח מכיל נקודה מתוך <KatexInline math="P" />. לכן, לכל רישא סופית <KatexInline math="\rho" />, ניקח מילה כלשהי <KatexInline math="\sigma" /> שמתחילה ב-<KatexInline math="\rho" /> וכדור קטן מספיק סביב <KatexInline math="\sigma" /> שמכריח את הרישא <KatexInline math="\rho" />. הצפיפות נותנת מילה ב-<KatexInline math="P" /> בתוך הכדור, ולכן יש המשך <KatexInline math="\rho\eta\in P" />. להפך, אם לכל <KatexInline math="\rho" /> יש המשך כזה, אז כל כדור פתוח מכיל מילים עם רישא סופית מסוימת, ואחת מהן נמצאת ב-<KatexInline math="P" />. לכן <KatexInline math="P" /> צפופה.
 </div>
 
 ---
@@ -986,6 +986,6 @@ info: |
 
   <div class="bg-slate-50 border border-slate-200 rounded p-2 text-right">
     <div class="font-bold mb-1">שתיהן</div>
-    <div>רק <KatexInline math="S_8=[0,1]" />. <KatexInline math="S_7=\emptyset" /> היא בטיחות בלבד.</div>
+    <div><KatexInline math="S_8=[0,1]" /></div>
   </div>
 </div>
