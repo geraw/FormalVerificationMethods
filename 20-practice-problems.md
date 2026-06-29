@@ -812,8 +812,8 @@ info: |
     </div>
     <AutomatonD3 variant="classic" :width="440" :height="230" :arrowSize="3.3" :stateLabelFontSize="14" :transitionLabelFontSize="11"
       :states="[
-        { id: 's0', label: '$q_0$', initial: true, initialDirection: 'left', x: 95, y: 105, r: 21, labelWidth: 46, accepting: true, fill: '#fef3c7', stroke: '#d97706' },
-        { id: 's1', label: '$q_1$', x: 300, y: 105, r: 21, labelWidth: 46, accepting: true, fill: '#fef3c7', stroke: '#d97706' },
+        { id: 's0', label: '$q_0$', initial: true, initialDirection: 'left', x: 95, y: 105, r: 21, labelWidth: 46, accepting: true },
+        { id: 's1', label: '$q_1$', x: 300, y: 105, r: 21, labelWidth: 46, accepting: true },
       ]"
       :transitions="[
         { source: 's0', target: 's0', label: '$a\\Rightarrow b$', loopDirection: '-90deg', labelY: -8, labelWidth: 78 },
@@ -826,21 +826,21 @@ info: |
     </div>
   </div>
 
-  <div class="bg-white border border-sky-200 rounded p-2">
+  <div class="bg-white border border-sky-200 rounded p-2 min-h-[360px]">
     <div class="text-center font-bold mb-1">
       <span dir="ltr"><KatexInline math="\mathcal{A}_{live}" /></span>
     </div>
-    <div class="text-right text-[14px] leading-relaxed mb-1">
+    <div class="text-right text-[14px] leading-relaxed mb-3">
       שפת האיחוד: רכיב אחד הוא <KatexInline math="\mathcal{A}'" />, והרכיב השני הוא <KatexInline math="\mathcal{A}_{bad}" />.
     </div>
-    <AutomatonD3 variant="classic" :width="390" :height="225" :arrowSize="2.4" :stateLabelFontSize="9.5" :transitionLabelFontSize="8.5"
+    <AutomatonD3 variant="classic" :width="390" :height="245" :arrowSize="2.4" :stateLabelFontSize="9.5" :transitionLabelFontSize="8.5"
       :states="[
-        { id: 'l0', label: '$q_0$', initial: true, initialDirection: 'left', x: 62, y: 52, r: 14, labelWidth: 36 },
-        { id: 'l1', label: '$q_1$', x: 155, y: 52, r: 14, labelWidth: 36, accepting: true, fill: '#d1fae5', stroke: '#059669' },
-        { id: 'p0', label: '$\\{q_0\\}$', initial: true, initialDirection: 'left', x: 58, y: 158, rx: 27, ry: 16, labelWidth: 66 },
-        { id: 'p01', label: '$\\{q_0,q_1\\}$', x: 165, y: 128, rx: 37, ry: 17, labelWidth: 90 },
-        { id: 'p1', label: '$\\{q_1\\}$', x: 165, y: 195, rx: 27, ry: 16, labelWidth: 66 },
-        { id: 'pe', label: '$\\emptyset$', x: 305, y: 195, rx: 27, ry: 16, labelWidth: 66, accepting: true, fill: '#fee2e2', stroke: '#dc2626' },
+        { id: 'l0', label: '$q_0$', initial: true, initialDirection: 'left', x: 62, y: 62, r: 14, labelWidth: 36 },
+        { id: 'l1', label: '$q_1$', x: 155, y: 62, r: 14, labelWidth: 36, accepting: true },
+        { id: 'p0', label: '$\\{q_0\\}$', initial: true, initialDirection: 'left', x: 58, y: 178, rx: 27, ry: 16, labelWidth: 66 },
+        { id: 'p01', label: '$\\{q_0,q_1\\}$', x: 165, y: 148, rx: 37, ry: 17, labelWidth: 90 },
+        { id: 'p1', label: '$\\{q_1\\}$', x: 165, y: 215, rx: 27, ry: 16, labelWidth: 66 },
+        { id: 'pe', label: '$\\emptyset$', x: 305, y: 215, rx: 27, ry: 16, labelWidth: 66, accepting: true },
       ]"
       :transitions="[
         { source: 'l0', target: 'l0', label: '$a\\Rightarrow b$', loopDirection: '-90deg', labelY: -6, labelWidth: 68 },
@@ -904,36 +904,30 @@ info: |
 # שאלה: יישום לקידוד עשרוני
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
-נניח <KatexInline math="AP=\{p_0,\ldots,p_9\}" />. לכל אות <KatexInline math="A\in2^{AP}" /> נתאים את גודלה <KatexInline math="|A|" />.
+נניח <KatexInline math="AP=\{p_0,\ldots,p_8\}" />. לכל אות <KatexInline math="A\in2^{AP}" /> נתאים את גודלה <KatexInline math="|A|" />. כך <KatexInline math="|A|\in\{0,\ldots,9\}" />, ולכן אפשר לקרוא אותו כספרה עשרונית.
+עבור מילה <KatexInline math="\sigma" /> נגדיר ספרות <KatexInline math="d_i=|\sigma[i]|" /> ומספר ממשי:
 </div>
 
-<div class="mt-3 bg-rose-50 border border-rose-200 rounded p-3 text-[16px] leading-relaxed text-right">
-<span class="font-bold">שימו לב:</span> אם <KatexInline math="|AP|=10" />, אז <KatexInline math="|A|" /> יכול להיות גם <KatexInline math="10" />. כדי לקבל ספרות עשרוניות ממש, נניח בשאלה זו שלא מופיעה אות מגודל <KatexInline math="10" />. לחלופין, בלי ההגבלה הזו עובדים באותו אופן בבסיס <KatexInline math="11" />.
-</div>
-
-<div class="mt-4 text-right text-[17px] leading-relaxed">
-עבור מילה <span dir="ltr"><KatexInline math="\sigma=A_0A_1A_2\cdots" /></span> נגדיר ספרות <KatexInline math="d_i=|A_i|" /> ומספר ממשי:
-</div>
-
-<div class="mt-3 text-center text-[23px]" dir="ltr">
+<div class="mt-2 text-center text-[18px]" dir="ltr">
 <KatexInline display math="x_\sigma=0.d_0d_1d_2\cdots=\sum_{i=0}^{\infty} d_i\cdot 10^{-(i+1)}" />
 </div>
 
-<div class="mt-4 space-y-3 text-right text-[17px] leading-relaxed">
-<div class="bg-slate-50 border border-slate-200 rounded p-3">
-<span class="font-bold">ד'.</span>
-הסבירו מדוע מילים עם רישא משותפת ארוכה מתאימות למספרים עשרוניים קרובים.
+<div class="mt-2 bg-blue-50 border border-blue-200 rounded p-3 text-[17px] leading-relaxed text-right">
+עבור כל אחת מהקבוצות הבאות, קבעו האם התכונה <KatexInline math="\{\sigma\mid x_\sigma\in S\}" /> היא בטיחות, חַיּוּת, שתיהן, או אף אחת מהן:
 </div>
 
-<div class="bg-blue-50 border border-blue-200 rounded p-3">
-<span class="font-bold">ה'.</span>
-נסחו במונחים של קבוצות מספרים מתי תכונה של מילים היא בטיחות ומתי היא חַיּוּת.
-</div>
+<div class="mt-2 grid grid-cols-2 gap-2 text-[16px] leading-relaxed" dir="ltr">
+  <div>
+    <KatexInline display math="S_1=[0,\tfrac12]" />
+    <KatexInline display math="S_2=(0,1)" />
+    <KatexInline display math="S_3=[0,\tfrac12]\cup(\tfrac34,1)" />
+  </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
-<span class="font-bold">ו'.</span>
-תנו דוגמה לתכונת בטיחות ודוגמה לתכונת חַיּוּת בעזרת תנאי על המספר <KatexInline math="x_\sigma" />.
-</div>
+  <div>
+    <KatexInline display math="S_4=\{x\mid \text{some decimal digit of }x\text{ is }7\}" />
+    <KatexInline display math="S_5=\{x\mid \text{infinitely many decimal digits of }x\text{ are }7\}" />
+    <KatexInline display math="S_6=\emptyset,\qquad S_7=[0,1]" />
+  </div>
 </div>
 
 ---
@@ -960,30 +954,35 @@ info: |
 
 # פתרון: הקידוד העשרוני
 
-<div class="mt-2 bg-slate-50 border border-slate-200 rounded p-3 text-[16px] leading-relaxed text-right">
-אם שתי מילים מסכימות על <KatexInline math="n" /> האותיות הראשונות, אז המספרים <KatexInline math="x_\sigma,x_\tau" /> מסכימים על <KatexInline math="n" /> הספרות הראשונות אחרי הנקודה, ולכן:
+<div class="mt-2 bg-slate-50 border border-slate-200 rounded p-2 text-[14px] leading-relaxed text-right">
+רישא משותפת באורך <KatexInline math="n" /> גוררת אותן <KatexInline math="n" /> ספרות ראשונות, ולכן <span dir="ltr"><KatexInline math="|x_\sigma-x_\tau|\le 10^{-n}" /></span>. הסיווג נעשה לפי סגירות וצפיפות בטופולוגיית הרישות.
 </div>
 
-<div class="mt-3 text-center text-[23px]" dir="ltr">
-<KatexInline display math="|x_\sigma-x_\tau|\le 10^{-n}" />
-</div>
-
-<div v-click class="mt-4 grid grid-cols-2 gap-3 text-[15px] leading-relaxed">
-  <div class="bg-amber-50 border border-amber-200 rounded p-3 text-right">
-    <div class="font-bold mb-2">דוגמת בטיחות</div>
-    <div>
-      <KatexInline math="x_\sigma\le \frac12" />. אם <KatexInline math="x_\sigma>\frac12" />, יש רישא עשרונית סופית שכבר מכריחה שכל המשך יישאר גדול מ-<KatexInline math="\frac12" />.
-    </div>
+<div v-click class="mt-3 grid grid-cols-2 gap-2 text-[13.5px] leading-relaxed">
+  <div class="bg-amber-50 border border-amber-200 rounded p-2 text-right">
+    <div class="font-bold mb-1">בטיחות</div>
+    <div><KatexInline math="S_1=[0,\frac12]" /></div>
+    <div><KatexInline math="S_6=\emptyset" /></div>
+    <div><KatexInline math="S_7=[0,1]" /></div>
   </div>
 
-  <div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-right">
-    <div class="font-bold mb-2">דוגמת חַיּוּת</div>
-    <div>
-      <KatexInline math="x_\sigma" /> מכיל את הספרה <KatexInline math="7" /> באיזשהו מקום. לכל רישא סופית אפשר להוסיף אחריה אות בגודל <KatexInline math="7" />, ולכן התכונה צפופה.
-    </div>
+  <div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-right">
+    <div class="font-bold mb-1">חַיּוּת</div>
+    <div><KatexInline math="S_2=(0,1)" /></div>
+    <div><KatexInline math="S_4" />: מופיעה ספרה <KatexInline math="7" /></div>
+    <div><KatexInline math="S_5" />: אינסוף ספרות <KatexInline math="7" /></div>
+    <div><KatexInline math="S_7=[0,1]" /></div>
   </div>
 </div>
 
-<div v-click class="mt-4 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed text-right">
-במונחי המספרים: בטיחות מתאימה לקבוצות סגורות, וחַיּוּת מתאימה לקבוצות צפופות, כאשר מסתכלים על הטופולוגיה שנוצרת מקירוב לפי רישות סופיות.
+<div v-click class="mt-2 grid grid-cols-2 gap-2 text-[13.5px] leading-relaxed">
+  <div class="bg-blue-50 border border-blue-200 rounded p-2 text-right">
+    <div class="font-bold mb-1">אף אחת</div>
+    <div><KatexInline math="S_3=[0,\frac12]\cup(\frac34,1)" /> אינה סגורה ואינה צפופה.</div>
+  </div>
+
+  <div class="bg-slate-50 border border-slate-200 rounded p-2 text-right">
+    <div class="font-bold mb-1">שתיהן</div>
+    <div>רק <KatexInline math="S_7=[0,1]" />. <KatexInline math="S_6=\emptyset" /> היא בטיחות בלבד.</div>
+  </div>
 </div>
