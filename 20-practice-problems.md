@@ -864,6 +864,81 @@ info: |
 
 ---
 
+# שאלה: מעבר מ-LTL ל-QPTL (10 נק')
+
+<div class="text-right text-[17px] leading-relaxed mt-3">
+נניח <KatexInline math="AP=\{p\}" /> ונתבונן בשפת המילים שבהן <KatexInline math="p" /> מופיע מספר סופי וזוגי של פעמים:
+</div>
+
+<div class="mt-3 text-center text-[20px]" dir="ltr">
+<KatexInline display math="L_{\mathrm{even}}=\{\sigma\in(2^{\{p\}})^\omega\mid |\{i\in\mathbb{N}\mid p\in\sigma[i]\}|\in 2\mathbb{N}\}" />
+</div>
+
+<div class="mt-4 bg-amber-50 border border-amber-200 rounded p-3 text-[16px] leading-relaxed text-right">
+קבלו ללא הוכחה: אין נוסחת <span dir="ltr">LTL</span> שמתארת את <KatexInline math="L_{\mathrm{even}}" />.
+</div>
+
+<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed text-right">
+בשאלה זו נגדיר <span dir="ltr">QPTL</span> כהרחבה של <span dir="ltr">LTL</span> שבה מותר לכמת על פסוקים אטומיים. למשל, <KatexInline math="\exists q.\varphi" /> אומר שקיימת השמה של אמת/שקר לאורך כל המילה עבור פסוק חדש <KatexInline math="q" />, כך שהנוסחה <KatexInline math="\varphi" /> מתקיימת.
+</div>
+
+<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed text-right">
+הסבירו איך ההרחבה הזו מאפשרת לעקוף את מגבלת הביטוי של <span dir="ltr">LTL</span>. כתבו נוסחת <span dir="ltr">QPTL</span> עבור <KatexInline math="L_{\mathrm{even}}" />. בנוסף, הוכיחו שכל תכונה אומגה-רגולרית ניתנת לביטוי באמצעות <span dir="ltr">QPTL</span>.
+</div>
+
+---
+
+# פתרון: מעבר מ-LTL ל-QPTL
+
+<div class="text-right text-[16px] leading-relaxed mt-3">
+ב-<span dir="ltr">QPTL</span> מותר לכמת על פסוק אטומי חדש <KatexInline math="q" />. נשתמש בו כזיכרון: <KatexInline math="q" /> אמת במקום הנוכחי אם מספר מופעי <KatexInline math="p" /> עד לפני המקום הזה זוגי.
+</div>
+
+<div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-[16px] leading-relaxed text-right">
+המעבר מעדכן את הזוגיות: אם <KatexInline math="p" /> מתקיים עכשיו, הערך של <KatexInline math="q" /> מתהפך בצעד הבא; אחרת הוא נשאר כפי שהיה.
+</div>
+
+<div class="mt-3 text-center text-[18px]" dir="ltr">
+<KatexInline display math="\exists q.\ q\ \land\ \Box\bigl(Xq\leftrightarrow(q\leftrightarrow\neg p)\bigr)\ \land\ \Diamond\Box\neg p\ \land\ \Diamond(q\land\Box\neg p)" />
+</div>
+
+<div class="mt-3 grid grid-cols-2 gap-3 text-[15px] leading-relaxed">
+  <div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-right">
+    <div class="font-bold mb-1">מה הנוסחה דורשת?</div>
+    <div><KatexInline math="q" /> מתחיל כזוגי, מתעדכן לפי <KatexInline math="p" />, ובסוף <KatexInline math="p" /> מפסיק להופיע.</div>
+  </div>
+  <div class="bg-blue-50 border border-blue-200 rounded p-3 text-right">
+    <div class="font-bold mb-1">למה זה עוקף את LTL?</div>
+    <div>הפסוק <KatexInline math="q" /> מסמן לאורך המילה זיכרון שאינו חלק מ-<KatexInline math="AP" />. הכימות עליו מאפשר לתאר את מצב הזוגיות.</div>
+  </div>
+</div>
+
+---
+
+# פתרון: כל אומגה-רגולרית היא QPTL
+
+<div class="text-right text-[16px] leading-relaxed mt-3">
+תהי <KatexInline math="P" /> תכונה אומגה-רגולרית. קיים אוטומט Büchi <span dir="ltr"><KatexInline math="\mathcal{A}=\langle Q,\Sigma,\delta,Q_0,F\rangle" /></span> כך ש-<span dir="ltr"><KatexInline math="P=L_\omega(\mathcal{A})" /></span>.
+</div>
+
+<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed text-right">
+ב-<span dir="ltr">QPTL</span> נכמת פסוק עזר <KatexInline math="r_q" /> לכל מצב <KatexInline math="q\in Q" />. המשמעות: בזמן <KatexInline math="i" />, בדיוק אחד מהפסוקים <KatexInline math="r_q" /> נכון, והוא מציין באיזה מצב נמצאת הריצה.
+</div>
+
+<div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-[15px] leading-relaxed text-right">
+הנוסחה דורשת: מצב התחלתי בזמן <KatexInline math="0" />, בדיוק מצב אחד בכל רגע, כל מעבר מתאים לאות הנקראת, ומצב מקבל מופיע אינסוף פעמים:
+</div>
+
+<div class="mt-2 text-center text-[17px]" dir="ltr">
+<KatexInline display math="\exists (r_q)_{q\in Q}.\ \mathrm{Init}\land\Box\mathrm{One}\land\Box\mathrm{Step}\land\Box\Diamond\bigvee_{q\in F} r_q" />
+</div>
+
+<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-[16px] leading-relaxed text-right">
+לכן נוסחת <span dir="ltr">QPTL</span> אומרת בדיוק: קיימת ריצה מקבלת של <KatexInline math="\mathcal{A}" /> על המילה. זו בדיוק ההגדרה של קבלה על ידי אוטומט Büchi, ולכן כל תכונה אומגה-רגולרית ניתנת לביטוי ב-<span dir="ltr">QPTL</span>.
+</div>
+
+---
+
 # שאלה: טופולוגיה של בטיחות וחַיּוּת (20 נק')
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
