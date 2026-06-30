@@ -1155,6 +1155,25 @@ class: text-center
 
 ---
 
+# שאלה: שמורה גוררת התמדה?
+
+<div class="text-center text-[19px] mt-6">
+הוכיחו או הפריכו: <b>כל תכונת שמורה היא גם תכונת התמדה.</b>
+</div>
+
+---
+
+# פתרון: לא נכון - שמורה לא-טריוויאלית אינה התמדה
+
+<div class="mt-3 bg-red-50 border border-red-200 rounded p-3 text-red-900 text-right text-[16px] leading-relaxed">
+<b>הטענה אינה נכונה.</b> התמדה (<span dir="ltr"><KatexInline math="\Diamond\Box p" /></span>) היא תת-מחלקה של חַיּוּת: לכל רישא סופית, אפשר להמשיך כך שמרגע מסוים <span dir="ltr">p</span> יחזיק לנצח - העבר לעולם אינו דן אותה. שמורה לא-טריוויאלית (<span dir="ltr"><KatexInline math="\Box p" /></span> עבור <span dir="ltr">p</span> לא-טאוטולוגי) <b>אינה</b> חַיּוּת: רישא עם מצב יחיד שמפר את <span dir="ltr">p</span> דנה את התכונה לנצח, ואין המשך שמתקן זאת. מכיוון ש<b>כל התמדה היא חַיּוּת</b> אך שמורה לא-טריוויאלית אינה חַיּוּת, היא בפרט אינה התמדה.
+</div>
+<div class="mt-2 bg-slate-50 border border-slate-200 rounded p-3 text-right text-[15px] leading-relaxed">
+<b>ישירות:</b> <span dir="ltr"><KatexInline math="\Box p" /></span> הוא תת-קבוצה <b>ממש</b> של <span dir="ltr"><KatexInline math="\Diamond\Box p" /></span>, לא שווה לה - מילה שבה <span dir="ltr">p</span> מופר רק באות הראשונה ומחזיק לנצח אח"כ מקיימת <span dir="ltr"><KatexInline math="\Diamond\Box p" /></span> אך לא <span dir="ltr"><KatexInline math="\Box p" /></span>.
+</div>
+
+---
+
 # שאלה: סיווג תכונות
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
