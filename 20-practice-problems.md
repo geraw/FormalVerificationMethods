@@ -1077,30 +1077,41 @@ class: text-center
 
 ---
 
-# שאלה: מבוי סתום בנעילה כפולה (10 נק')
+# שאלה: בטיחות, חַיּוּת, גם וגם, או לא ולא? (10 נק')
 
-<div class="text-right text-[18px] leading-relaxed mt-3">
-שני תהליכים, כל אחד צריך לנעול שני נעולים <span dir="ltr">A,B</span> לפני קטע קריטי. תהליך 1 נועל לפי הסדר <span dir="ltr">A</span> ואז <span dir="ltr">B</span>; תהליך 2 נועל <span dir="ltr">B</span> ואז <span dir="ltr">A</span>.
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+
+<div class="mt-3 min-h-[70px]">
+<div v-show="$slidev.nav.clicks === 0" class="bg-slate-50 border border-slate-200 rounded p-3 text-slate-600 text-center text-[16px]">
+לחצו להצגת התשובות, אחת בכל פעם.
+</div>
+<div v-show="$slidev.nav.clicks === 1" class="bg-blue-50 border-2 border-blue-300 rounded p-3 text-blue-900 text-center text-[17px]">
+<b>א — בטיחות:</b> הפרה (שני תהליכים בקטע הקריטי בו-זמנית) מתגלה ברישא סופית; אין צורך לבדוק התנהגות אינסופית.
+</div>
+<div v-show="$slidev.nav.clicks === 2" class="bg-emerald-50 border-2 border-emerald-300 rounded p-3 text-emerald-900 text-center text-[17px]">
+<b>ב — חַיּוּת:</b> לכל רישא סופית (גם כזו שבה <span dir="ltr">x</span> טרם התאפס) יש המשך שמקיים את הדרישה — אין רישא שמכריחה הפרה.
+</div>
+<div v-show="$slidev.nav.clicks === 3" class="bg-amber-50 border-2 border-amber-300 rounded p-3 text-amber-900 text-center text-[17px]">
+<b>ג — חַיּוּת:</b> תכונת "תגובה" — לכל רישא, גם עם בקשה פתוחה, אפשר להמשיך כך שכל הבקשות שעדיין פתוחות יזכו למענק. (תכונה זו "מרגישה" כמו בטיחות בגלל ה־<span dir="ltr">□</span>, אך אין לה רישא רעה סופית.)
+</div>
+<div v-show="$slidev.nav.clicks === 4" class="bg-red-50 border-2 border-red-300 rounded p-3 text-red-900 text-center text-[17px]">
+<b>ד — לא ולא (שילוב אמיתי):</b> "תמיד זוגי" היא בטיחות ו"מגיע ל-10 בשלב מסוים" היא חַיּוּת — הצירוף שלהן אינו שקול לאף אחת מהמחלקות בנפרד.
+</div>
+<div v-show="$slidev.nav.clicks >= 5" class="bg-purple-50 border-2 border-purple-300 rounded p-3 text-purple-900 text-center text-[17px]">
+<b>ה — גם וגם:</b> תכונה טריוויאלית (מתקיימת תמיד) היא הדוגמה <b>היחידה</b> שהיא גם בטיחות וגם חַיּוּת בו־זמנית.
+</div>
 </div>
 
-<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
-<b>א.</b> תארו ריצה (שזירה) שמובילה למבוי סתום.<br/>
-<b>ב.</b> הציעו תיקון פשוט שמסלק את המבוי הסתום.
-</div>
-
----
-
-# פתרון: נעילה מעגלית וסדר אחיד
-
-<div class="grid grid-cols-2 gap-4 mt-3 text-[15px] text-right leading-relaxed">
-<div class="bg-red-50 border border-red-200 rounded p-3 text-red-900">
-<div class="font-bold mb-1">א. הריצה החוסמת</div>
-תהליך 1 נועל <span dir="ltr">A</span>, תהליך 2 נועל <span dir="ltr">B</span> (לפני שאחד מהם השלים) — כעת תהליך 1 ממתין ל-<span dir="ltr">B</span> (תפוס) ותהליך 2 ממתין ל-<span dir="ltr">A</span> (תפוס): המתנה מעגלית, אף תהליך לא מתקדם — מבוי סתום.
-</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
-<div class="font-bold mb-1">ב. סדר נעילה אחיד</div>
-אם שני התהליכים נועלים <span dir="ltr">A</span> לפני <span dir="ltr">B</span>, לא יכולה להיווצר המתנה מעגלית — מי שמחזיק את <span dir="ltr">A</span> תמיד יקבל את <span dir="ltr">B</span> לפני שהשני מתחיל לנעול.
-</div>
+<div class="mt-4 grid grid-cols-1 gap-2 text-right text-[16px] leading-snug">
+<div class="bg-white border border-slate-200 rounded p-2"><b>א.</b> שני תהליכים לעולם לא נמצאים בקטע הקריטי בו-זמנית: <span dir="ltr"><KatexInline math="\Box\neg(c_1\land c_2)" /></span>.</div>
+<div class="bg-white border border-slate-200 rounded p-2"><b>ב.</b> המשתנה <span dir="ltr">x</span> מקבל את הערך <span dir="ltr">0</span> לפחות פעם אחת: <span dir="ltr"><KatexInline math="\Diamond(x=0)" /></span>.</div>
+<div class="bg-white border border-slate-200 rounded p-2"><b>ג.</b> כל בקשה נענית בסופו של דבר: <span dir="ltr"><KatexInline math="\Box(\mathit{req}\to\Diamond\,\mathit{grant})" /></span>.</div>
+<div class="bg-white border border-slate-200 rounded p-2"><b>ד.</b> <span dir="ltr">x</span> נשאר זוגי לכל אורך הריצה, <b>וגם</b> מגיע לערך <span dir="ltr">10</span> בשלב מסוים.</div>
+<div class="bg-white border border-slate-200 rounded p-2"><b>ה.</b> תכונה שמתקיימת ע"י <b>כל</b> ריצה אפשרית (טאוטולוגיה לינארית-זמן).</div>
 </div>
 
 ---
