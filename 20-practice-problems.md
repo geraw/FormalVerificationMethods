@@ -1072,124 +1072,12 @@ class: text-center
 # פרק: שאלות הכנה למבחן
 
 <div class="mt-10 text-[20px] text-slate-600">
-שאלות מייצגות מכל אחד מהנושאים שנלמדו בקורס — מעבר על גרפי תוכנית ושזירה, מערכות תקשורת, קידוד סימבולי, התפוצצות מצבים ומבוי סתום, אינוריאנטים, בדיקת תכונות בטיחות רגולריות, ואוטומטי <span dir="ltr">Büchi</span> דטרמיניסטיים.
+שאלות מייצגות על נושאי הקורס שמעבר לבעיית התפוצצות המצבים — מבוי סתום, אינוריאנטים, בדיקת תכונות בטיחות רגולריות, ואוטומטי <span dir="ltr">Büchi</span> דטרמיניסטיים. אחדות מהשאלות מבוססות על תרגילים מהספר.
 </div>
 
 ---
 
-# שאלה: שזירה של שני גרפי תוכנית (15 נק')
-
-<div class="text-right text-[18px] leading-relaxed mt-3">
-נתונים שני גרפי תוכנית על משתנה משותף <span dir="ltr"><KatexInline math="x" /></span>, מאותחל ב-<span dir="ltr"><KatexInline math="x=1" /></span>:
-</div>
-
-<div class="mt-4 grid grid-cols-2 gap-5 text-[17px]">
-<div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900 text-right">
-<div class="font-bold mb-1"><span dir="ltr">PG₁</span> (תהליך <span dir="ltr">A</span>)</div>
-<span dir="ltr"><KatexInline math="l_0\xrightarrow{x:=x+1}l_1\xrightarrow{x:=x+1}l_2" /></span>
-</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900 text-right">
-<div class="font-bold mb-1"><span dir="ltr">PG₂</span> (תהליך <span dir="ltr">B</span>)</div>
-<span dir="ltr"><KatexInline math="m_0\xrightarrow{x:=2\cdot x}m_1" /></span>
-</div>
-</div>
-
-<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
-<b>א.</b> כמה סדרי שזירה (interleavings) שונים בין שני התהליכים קיימים?<br/>
-<b>ב.</b> מהם כל הערכים הסופיים האפשריים של <span dir="ltr">x</span>?<br/>
-<b>ג.</b> האם <span dir="ltr"><KatexInline math="TS\models\Box(x\le 4)" /></span>?
-</div>
-
----
-
-# פתרון: שלוש שזירות, שלוש תוצאות
-
-<div class="text-right text-[17px] leading-relaxed mt-3">
-תהליך <span dir="ltr">A</span> מבצע 2 צעדים ותהליך <span dir="ltr">B</span> צעד 1 — <span dir="ltr"><KatexInline math="\binom{3}{1}=3" /></span> סדרי שזירה אפשריים, לפי מיקומו של צעד <span dir="ltr">B</span> ביחס לשני צעדי <span dir="ltr">A</span>:
-</div>
-
-<div class="mt-3 grid grid-cols-3 gap-3 text-[15px] text-right">
-<div class="bg-blue-50 border border-blue-200 rounded p-2 text-blue-900">
-<span dir="ltr">B</span> ראשון: <span dir="ltr"><KatexInline math="1\xrightarrow{B}2\xrightarrow{A}3\xrightarrow{A}4" /></span>
-</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900">
-<span dir="ltr">B</span> באמצע: <span dir="ltr"><KatexInline math="1\xrightarrow{A}2\xrightarrow{B}4\xrightarrow{A}5" /></span>
-</div>
-<div class="bg-amber-50 border border-amber-200 rounded p-2 text-amber-900">
-<span dir="ltr">B</span> אחרון: <span dir="ltr"><KatexInline math="1\xrightarrow{A}2\xrightarrow{A}3\xrightarrow{B}6" /></span>
-</div>
-</div>
-
-<div class="mt-4 bg-red-50 border-2 border-red-300 rounded p-3 text-red-900 text-center text-[17px] leading-relaxed">
-הערכים הסופיים האפשריים הם <span dir="ltr"><KatexInline math="\{4,5,6\}" /></span>. מאחר שריצה אחת מגיעה ל-<span dir="ltr"><KatexInline math="x=6" /></span>, <span dir="ltr"><KatexInline math="TS\not\models\Box(x\le 4)" /></span>. כל שזירה אפשרית מוסיפה ערך אפשרי נוסף — זו ההתפוצצות (state explosion) במיניאטורה.
-</div>
-
----
-
-# שאלה: ערוץ חסום וקיבולת (15 נק')
-
-<div class="text-right text-[18px] leading-relaxed mt-3">
-תהליך שולח מבצע <span dir="ltr"><KatexInline math="c!v_1;\,c!v_2" /></span> ותהליך מקבל מבצע <span dir="ltr"><KatexInline math="c?x" /></span> פעם אחת, על ערוץ <span dir="ltr">c</span> בקיבולת <span dir="ltr">1</span>.
-</div>
-
-<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
-<b>א.</b> מה קורה לפעולת השליחה השנייה לפני שמתבצעת קבלה?<br/>
-<b>ב.</b> האם המערכת חשופה למבוי סתום? מתי?<br/>
-<b>ג.</b> אילו השלכות (חיוביות ושליליות) יש להחלפת הערוץ בקיבולת אינסופית?
-</div>
-
----
-
-# פתרון: חסימה, מבוי סתום, ומחיר הקיבולת האינסופית
-
-<div class="grid grid-cols-3 gap-3 mt-3 text-[15px] text-right">
-<div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900">
-<div class="font-bold mb-1">א. חסימה</div>
-כל עוד הערוץ מלא (תוכן אחד שלא נקרא), לפעולת <span dir="ltr"><KatexInline math="c!v_2" /></span> <b>אין מעבר מאופשר</b> — התהליך השולח נחסם עד שמתבצעת קבלה שמפנה מקום.
-</div>
-<div class="bg-red-50 border border-red-200 rounded p-3 text-red-900">
-<div class="font-bold mb-1">ב. מבוי סתום</div>
-אם המקבל עצמו ממתין (למשל לאירוע מהשולח) לפני שמבצע <span dir="ltr">c?x</span>, ושני התהליכים לא מתקדמים — זה מבוי סתום: אין אף מעבר מאופשר בשום תהליך.
-</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
-<div class="font-bold mb-1">ג. קיבולת אינסופית</div>
-<span dir="ltr">c!v₂</span> תמיד מאופשרת (אין חסימה), אך תוכן הערוץ יכול לצמוח בלי גבול — מרחב המצבים הופך <b>אינסופי</b>, ובדיקת מודלים אוטומטית מאבדת התכנות.
-</div>
-</div>
-
----
-
-# שאלה: קידוד בוליאני של משתנה ב-SMV (10 נק')
-
-<div class="text-right text-[18px] leading-relaxed mt-3">
-משתנה <span dir="ltr">counter</span> מקבל ערכים <span dir="ltr">0..5</span> (6 ערכים), ועובר <span dir="ltr"><KatexInline math="\mathit{counter}'=(\mathit{counter}+1)\bmod 6" /></span> בכל צעד.
-</div>
-
-<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
-<b>א.</b> כמה ביטים בוליאניים <span dir="ltr"><KatexInline math="b_2,b_1,b_0" /></span> דרושים לקידוד בינארי ישיר?<br/>
-<b>ב.</b> כתבו נוסחה בוליאנית למצב ההתחלה <span dir="ltr"><KatexInline math="\mathit{counter}=0" /></span>.<br/>
-<b>ג.</b> אילו הקצאות לביטים הן "בלתי חוקיות" (לא מתאימות לאף ערך <span dir="ltr">0..5</span>), וכיצד מתייחסים אליהן?
-</div>
-
----
-
-# פתרון: שלושה ביטים, שתי הקצאות חסרות פשר
-
-<div class="text-right text-[16px] leading-relaxed mt-3">
-<div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900 mb-2">
-<b>א.</b> <span dir="ltr"><KatexInline math="\lceil\log_2 6\rceil=3" /></span> ביטים מספיקים (<span dir="ltr"><KatexInline math="2^3=8\ge 6" /></span>).
-</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900 mb-2">
-<b>ב.</b> מצב התחלה: <span dir="ltr"><KatexInline math="\neg b_2\land\neg b_1\land\neg b_0" /></span> (הקידוד של <span dir="ltr">0</span>).
-</div>
-<div class="bg-red-50 border border-red-200 rounded p-3 text-red-900">
-<b>ג.</b> ההקצאות <span dir="ltr"><KatexInline math="110" /></span> ו-<span dir="ltr"><KatexInline math="111" /></span> (כלומר <span dir="ltr"><KatexInline math="6,7" /></span>) אינן מתאימות לאף ערך של <span dir="ltr">counter</span>. הן נחשבות "לא מגיעות" (unreachable) — או מוחרגות מפורשות מהאינוריאנט הראשוני, או שמוודאים שיחס המעבר לעולם לא מוביל אליהן.
-</div>
-</div>
-
----
-
-# שאלה: מבוי סתום והפחתת סדר חלקי (15 נק')
+# שאלה: מבוי סתום בנעילה כפולה (10 נק')
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
 שני תהליכים, כל אחד צריך לנעול שני נעולים <span dir="ltr">A,B</span> לפני קטע קריטי. תהליך 1 נועל לפי הסדר <span dir="ltr">A</span> ואז <span dir="ltr">B</span>; תהליך 2 נועל <span dir="ltr">B</span> ואז <span dir="ltr">A</span>.
@@ -1197,26 +1085,59 @@ class: text-center
 
 <div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
 <b>א.</b> תארו ריצה (שזירה) שמובילה למבוי סתום.<br/>
-<b>ב.</b> הציעו תיקון פשוט שמסלק את המבוי הסתום.<br/>
-<b>ג.</b> הסבירו איך הפחתת סדר חלקי (POR) יכולה לדלג על חלק מהשזירות בלי לפגוע ביכולת לגלות את המבוי הסתום.
+<b>ב.</b> הציעו תיקון פשוט שמסלק את המבוי הסתום.
 </div>
 
 ---
 
-# פתרון: נעילה מעגלית, סדר אחיד, ו-POR
+# פתרון: נעילה מעגלית וסדר אחיד
 
-<div class="grid grid-cols-3 gap-3 mt-3 text-[14.5px] text-right leading-relaxed">
+<div class="grid grid-cols-2 gap-4 mt-3 text-[15px] text-right leading-relaxed">
 <div class="bg-red-50 border border-red-200 rounded p-3 text-red-900">
 <div class="font-bold mb-1">א. הריצה החוסמת</div>
-תהליך 1 נועל <span dir="ltr">A</span>, תהליך 2 נועל <span dir="ltr">B</span> (לפני שאחד מהם השלים) — כעת תהליך 1 ממתין ל-<span dir="ltr">B</span> (תפוס) ותהליך 2 ממתין ל-<span dir="ltr">A</span> (תפוס): המתנה מעגלית, אף תהליך לא מתקדם.
+תהליך 1 נועל <span dir="ltr">A</span>, תהליך 2 נועל <span dir="ltr">B</span> (לפני שאחד מהם השלים) — כעת תהליך 1 ממתין ל-<span dir="ltr">B</span> (תפוס) ותהליך 2 ממתין ל-<span dir="ltr">A</span> (תפוס): המתנה מעגלית, אף תהליך לא מתקדם — מבוי סתום.
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
 <div class="font-bold mb-1">ב. סדר נעילה אחיד</div>
-אם שני התהליכים נועלים <span dir="ltr">A</span> לפני <span dir="ltr">B</span>, לא יכולה להיווצר המתנה מעגלית — מי שמחזיק את <span dir="ltr">A</span> תמיד יקבל את <span dir="ltr">B</span> לפני שהשני מתחיל.
+אם שני התהליכים נועלים <span dir="ltr">A</span> לפני <span dir="ltr">B</span>, לא יכולה להיווצר המתנה מעגלית — מי שמחזיק את <span dir="ltr">A</span> תמיד יקבל את <span dir="ltr">B</span> לפני שהשני מתחיל לנעול.
 </div>
+</div>
+
+---
+
+# שאלה (מתוך הספר, תרגיל 3.6): סיווג תכונות (10 נק')
+
+<div class="text-right text-[18px] leading-relaxed mt-3">
+יהי <span dir="ltr"><KatexInline math="AP=\{A,B\}" /></span>. נסחו את התכונות הבאות כתכונות לינאריות-זמן, וסווגו כל אחת — אינוריאנט, תכונת בטיחות, תכונת חַיּוּת, או אף אחת מהן:
+</div>
+
+<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
+<b>א.</b> <span dir="ltr">A</span> לעולם לא מתקיימת.<br/>
+<b>ב.</b> <span dir="ltr">A</span> מתקיימת פעם אחת בדיוק.<br/>
+<b>ג.</b> <span dir="ltr">A</span> ו-<span dir="ltr">B</span> מתחלפות אינסוף פעמים.<br/>
+<b>ד.</b> <span dir="ltr">A</span> תמיד מלווה בהמשך ע"י <span dir="ltr">B</span> (בסופו של דבר).
+</div>
+
+---
+
+# פתרון: ארבע תכונות, ארבע מחלקות
+
+<div class="grid grid-cols-2 gap-3 mt-3 text-[14.5px] text-right leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900">
-<div class="font-bold mb-1">ג. הפחתת סדר חלקי</div>
-פעולות "נעילת המשאב הראשון" של שני התהליכים <b>תלויות</b> (מתחרות על מצב משאבים), ולכן <b>לא ניתן</b> לבחור רק נציג אחד מבין סדרי הביצוע שלהן — תנאי ה-ample set מחייב לבדוק את שתי האפשרויות בדיוק במקום שבו עלול להיווצר מבוי סתום, כך שהוא לא נסתר.
+<div class="font-bold mb-1">א. אינוריאנט</div>
+"<span dir="ltr">A</span> לא מתקיימת" היא תנאי בוליאני על כל מצב בנפרד — <b>אינוריאנט</b> (ולכן גם תכונת בטיחות).
+</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
+<div class="font-bold mb-1">ב. בטיחות (לא אינוריאנט)</div>
+מופע שני של <span dir="ltr">A</span> הוא רישא רעה סופית שמפרה את התכונה — <b>תכונת בטיחות</b>, אך לא אינוריאנט (תלויה בהיסטוריה, לא רק במצב הנוכחי).
+</div>
+<div class="bg-red-50 border border-red-200 rounded p-3 text-red-900">
+<div class="font-bold mb-1">ג. לא בטיחות ולא חַיּוּת</div>
+זו דרישת "אינסוף פעמים" (לא בטיחות, אין רישא רעה סופית) <b>וגם</b> דרישה שמתקיימת רק חלקית ע"י כל המשך (לא חַיּוּת גרידא, כי כל רישא סופית מפירה את ה"לעולם לא תיפר") — <b>אף אחת מהשתיים</b>.
+</div>
+<div class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900">
+<div class="font-bold mb-1">ד. חַיּוּת</div>
+לכל רישא סופית יש המשך שמקיים את הדרישה (פשוט תוסיפו <span dir="ltr">B</span> אחרי כל <span dir="ltr">A</span> מאותה נקודה) — <b>תכונת חַיּוּת</b> גרידא.
 </div>
 </div>
 
@@ -1295,6 +1216,86 @@ class: text-center
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
 <b>ג.</b> תכונת בטיחות נשברת ב<b>רישא סופית</b> — הגעה למצב <span dir="ltr">bad</span>. אין צורך לבדוק התנהגות אינסופית או "אינסוף פעמים" כמו ב-<span dir="ltr">LTL</span> כללית, ולכן הישגות (לא קבלת <span dir="ltr">Büchi</span>) מספיקה.
+</div>
+</div>
+
+---
+
+# שאלה (מתוך הספר, תרגיל 4.9): בניית NBA לפי זוגיות (15 נק')
+
+<div class="text-right text-[18px] leading-relaxed mt-3">
+יהי <span dir="ltr"><KatexInline math="\Sigma=\{A,B\}" /></span>. בנו <span dir="ltr">NBA</span> שמקבל את המילים האינסופיות <span dir="ltr">σ</span> מעל <span dir="ltr">Σ</span> כך ש־<span dir="ltr">A</span> מופיעה בהן אינסוף פעמים, ובין כל שתי הופעות <span dir="ltr">A</span> עוקבות מופיע מספר <b>אי־זוגי</b> של <span dir="ltr">B</span>.
+</div>
+
+---
+
+# פתרון: שלושה מצבים, מעקב זוגיות
+
+<div class="bg-white rounded border border-slate-200 shadow-sm p-2 mt-2">
+<AutomatonD3 variant="classic" :width="560" :height="180" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="12"
+  :states="[
+    { id: 'init', x: 80,  y: 90, label: '$init$', r: 30, initial: true, initialDirection: 'top' },
+    { id: 'ev',   x: 280, y: 90, label: '$even$', r: 30, accepting: true },
+    { id: 'od',   x: 480, y: 90, label: '$odd$', r: 30 }
+  ]"
+  :transitions="[
+    { source: 'init', target: 'init', label: '$B$', loopDirection: '-90deg', labelY: -16 },
+    { source: 'init', target: 'ev', label: '$A$', curve: 0.1 },
+    { source: 'ev', target: 'od', label: '$B$', labelY: -12, curve: 0.15 },
+    { source: 'od', target: 'ev', label: '$B$', labelY: 12, curve: 0.15 },
+    { source: 'od', target: 'ev', label: '$A$', labelY: 24, curve: 0.45 }
+  ]"
+/>
+</div>
+
+<div class="mt-2 grid grid-cols-3 gap-2 text-[14px] text-right leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-2 text-blue-900"><span dir="ltr">init</span>: לפני ה־<span dir="ltr">A</span> הראשונה — אין דרישה, <span dir="ltr">B</span> חופשי.</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900"><span dir="ltr">even</span>: נספרו <span dir="ltr">0</span> (זוגי) <span dir="ltr">B</span>-ים מאז ה־<span dir="ltr">A</span> האחרונה. <b>אין</b> מעבר על <span dir="ltr">A</span> מכאן — זה היה אוסר ספירה זוגית.</div>
+<div class="bg-amber-50 border border-amber-200 rounded p-2 text-amber-900"><span dir="ltr">odd</span>: נספרו אי־זוגי <span dir="ltr">B</span>-ים. מעבר על <span dir="ltr">A</span> מכאן <b>חוקי</b> וחוזר ל־<span dir="ltr">even</span> (איפוס המונה).</div>
+</div>
+
+<div class="mt-2 bg-red-50 border-2 border-red-300 rounded p-2 text-red-900 text-center text-[14px] leading-snug">
+<span dir="ltr"><KatexInline math="F=\{even\}" /></span>: ביקור חוזר ואינסופי ב־<span dir="ltr">even</span> מתאפשר רק דרך מעברי <span dir="ltr">A</span> תקפים מ־<span dir="ltr">odd</span> — ולכן הוא שקול ל"<span dir="ltr">A</span> אינסוף פעמים, כל פעם אחרי מספר אי־זוגי של <span dir="ltr">B</span>".
+</div>
+
+---
+
+# שאלה (בהשראת קורס CMU 15-414): מענק תמיד יבוא (10 נק')
+
+<div class="text-right text-[18px] leading-relaxed mt-3">
+תהליך מבקש שירות (<span dir="ltr">t</span>) ומקבל מענק (<span dir="ltr">c</span>). התכונה הנדרשת: <span dir="ltr"><KatexInline math="\Box(t\to\Diamond c)" /></span> — כל בקשה זוכה <b>בסופו של דבר</b> למענק (ללא חסם זמן קבוע, בניגוד לתכונה "מענק תוך 2 צעדים" שראינו קודם).
+</div>
+
+<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
+<b>א.</b> בנו <span dir="ltr">NBA</span> (2 מצבים) המקבל בדיוק את המילים המקיימות את התכונה.<br/>
+<b>ב.</b> הסבירו מדוע <b>לא ניתן</b> להשתמש כאן בבדיקת הישגות בלבד (כפי שעשינו לתכונת הבטיחות עם הניטור הסופי), אלא יש צורך בתנאי קבלה מסוג <span dir="ltr">Büchi</span>.
+</div>
+
+---
+
+# פתרון: מצב מקבל "נח", מצב ביניים "חייב לסגור"
+
+<div class="bg-white rounded border border-slate-200 shadow-sm p-2 mt-2">
+<AutomatonD3 variant="classic" :width="420" :height="160" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="12"
+  :states="[
+    { id: 'q0', x: 90, y: 80, label: '$q_0$', r: 30, initial: true, initialDirection: 'top', accepting: true },
+    { id: 'q1', x: 290, y: 80, label: '$q_1$', r: 30 }
+  ]"
+  :transitions="[
+    { source: 'q0', target: 'q0', label: '$\\neg t\\lor c$', loopDirection: '-90deg', labelY: -16 },
+    { source: 'q0', target: 'q1', label: '$t\\land\\neg c$', curve: 0.15 },
+    { source: 'q1', target: 'q1', label: '$\\neg c$', loopDirection: '-90deg', labelY: -16 },
+    { source: 'q1', target: 'q0', label: '$c$', labelY: 24, curve: 0.45 }
+  ]"
+/>
+</div>
+
+<div class="mt-2 grid grid-cols-2 gap-3 text-[14.5px] text-right leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-2 text-blue-900">
+<b>א.</b> <span dir="ltr">q₀</span> (מקבל): נשארים כל עוד אין בקשה פתוחה, או שבקשה זוכה למענק מיידי. <span dir="ltr">q₁</span>: בקשה פתוחה ללא מענק עדיין — נשארים כאן עד שמגיע <span dir="ltr">c</span> וחוזרים ל-<span dir="ltr">q₀</span>.
+</div>
+<div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
+<b>ב.</b> ריצה שנתקעת לנצח ב-<span dir="ltr">q₁</span> (בקשה שלעולם לא נענית) חייבת <b>להידחות</b>, אך זו תכונת "אינסוף פעמים" על כלל ההמשך — אין רישא סופית שמעידה על הפרה, ולכן הישגות (כמו בבטיחות) לא מספיקה; צריך לבדוק שהריצה <b>לא</b> נתקעת לנצח מחוץ ל-<span dir="ltr">F={q₀}</span>, וזה מצריך קבלת <span dir="ltr">Büchi</span>.
 </div>
 </div>
 
