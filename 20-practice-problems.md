@@ -28,7 +28,7 @@ info: |
 
 ---
 
-# שאלה: אלגוריתם לטיפול בהוֹגְנוּת על ידי הרחבת המערכת (20 נק')
+# שאלה: אלגוריתם לטיפול בהוֹגְנוּת על ידי הרחבת המערכת
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
 נתונים: מערכת מעברים <KatexInline math="TS=\langle S,Act,\to,I,AP,L\rangle" />, נוסחת LTL <KatexInline math="\varphi" /> מעל <KatexInline math="AP" />, והנחת הוֹגְנוּת <span dir="ltr"><KatexInline math="\mathcal{F}=\langle\mathcal{F}_{uncond},\mathcal{F}_{strong},\mathcal{F}_{weak}\rangle" /></span>.
@@ -223,7 +223,7 @@ info: |
 
 ---
 
-# שאלה: תרגום LTL לאוטומט Büchi עם Always במקום Until (20 נק')
+# שאלה: תרגום LTL לאוטומט Büchi עם Always במקום Until
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
 נתבונן בתחביר LTL מצומצם, בלי אופרטור <span dir="ltr">Until</span> כלל:
@@ -379,7 +379,7 @@ info: |
 
 ---
 
-# שאלה: אלגוריתם חלופי לבדיקת <span dir="ltr"><KatexInline math="TS\models P" /></span> (20 נק')
+# שאלה: אלגוריתם חלופי לבדיקת <span dir="ltr"><KatexInline math="TS\models P" /></span>
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
 תהי <KatexInline math="P" /> תכונה <KatexInline math="\omega" />-רגולרית, ויהי <span dir="ltr"><KatexInline math="\mathcal{A}=\langle Q,2^{AP},\delta,Q_0,F\rangle" /></span> אוטומט Büchi עם <span dir="ltr"><KatexInline math="L_\omega(\mathcal{A})=P" /></span> (אוטומט <span class="font-bold">של</span> <KatexInline math="P" /> עצמה, לא של שלילתה).
@@ -517,7 +517,7 @@ info: |
 
 ---
 
-# שאלה: פירוק אוטומט Büchi לבטיחות וחַיּוּת (20 נק')
+# שאלה: פירוק אוטומט Büchi לבטיחות וחַיּוּת
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
 נתון אוטומט Büchi <span dir="ltr"><KatexInline math="\mathcal{A}=\langle Q,2^{AP},\delta,Q_0,F\rangle" /></span> המייצג תכונת זמן ליניארי <KatexInline math="\omega" />-רגולרית <span dir="ltr"><KatexInline math="P=L_\omega(\mathcal{A})" /></span> (לאו דווקא בטיחות או חַיּוּת).
@@ -864,7 +864,7 @@ info: |
 
 ---
 
-# שאלה: מעבר מ-LTL ל-QPTL (25 נק')
+# שאלה: מעבר מ-LTL ל-QPTL
 
 <div class="text-right text-[17px] leading-relaxed mt-3">
 נניח <KatexInline math="AP=\{p\}" /> ונתבונן בשפת המילים שבהן <KatexInline math="p" /> מופיע מספר סופי וזוגי של פעמים:
@@ -939,7 +939,7 @@ info: |
 
 ---
 
-# שאלה: טופולוגיה של בטיחות וחַיּוּת (20 נק')
+# שאלה: טופולוגיה של בטיחות וחַיּוּת
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
 נסמן <KatexInline math="\Sigma=2^{AP}" />. עבור שתי מילים אינסופיות <span dir="ltr"><KatexInline math="\sigma,\tau\in\Sigma^\omega" /></span>, נגדיר:
@@ -1072,96 +1072,19 @@ class: text-center
 # פרק: שאלות הכנה למבחן
 
 <div class="mt-10 text-[20px] text-slate-600">
-שאלות מייצגות על נושאי הקורס שמעבר לבעיית התפוצצות המצבים — מבוי סתום, אינוריאנטים, בדיקת תכונות בטיחות רגולריות, ואוטומטי <span dir="ltr">Büchi</span> דטרמיניסטיים.
+שאלות מייצגות על נושאי הקורס שמעבר לבעיית התפוצצות המצבים - מבוי סתום, שמורות, בדיקת תכונות בטיחות רגולריות, ואוטומטי <span dir="ltr">Büchi</span> דטרמיניסטיים.
 </div>
 
 ---
 
-# שאלה: בטיחות, חַיּוּת, גם וגם, או לא ולא? (10 נק')
-
-<span v-click class="hidden"></span>
-<span v-click class="hidden"></span>
-<span v-click class="hidden"></span>
-<span v-click class="hidden"></span>
-<span v-click class="hidden"></span>
-
-<div class="mt-3 min-h-[70px]">
-<div v-show="$slidev.nav.clicks === 0" class="bg-slate-50 border border-slate-200 rounded p-3 text-slate-600 text-center text-[16px]">
-לחצו להצגת התשובות, אחת בכל פעם.
-</div>
-<div v-show="$slidev.nav.clicks === 1" class="bg-blue-50 border-2 border-blue-300 rounded p-3 text-blue-900 text-center text-[17px]">
-<b>א — בטיחות:</b> הפרה (שני תהליכים בקטע הקריטי בו-זמנית) מתגלה ברישא סופית; אין צורך לבדוק התנהגות אינסופית.
-</div>
-<div v-show="$slidev.nav.clicks === 2" class="bg-emerald-50 border-2 border-emerald-300 rounded p-3 text-emerald-900 text-center text-[17px]">
-<b>ב — חַיּוּת:</b> לכל רישא סופית (גם כזו שבה <span dir="ltr">x</span> טרם התאפס) יש המשך שמקיים את הדרישה — אין רישא שמכריחה הפרה.
-</div>
-<div v-show="$slidev.nav.clicks === 3" class="bg-amber-50 border-2 border-amber-300 rounded p-3 text-amber-900 text-center text-[17px]">
-<b>ג — חַיּוּת:</b> תכונת "תגובה" — לכל רישא, גם עם בקשה פתוחה, אפשר להמשיך כך שכל הבקשות שעדיין פתוחות יזכו למענק. (תכונה זו "מרגישה" כמו בטיחות בגלל ה־<span dir="ltr">□</span>, אך אין לה רישא רעה סופית.)
-</div>
-<div v-show="$slidev.nav.clicks === 4" class="bg-red-50 border-2 border-red-300 rounded p-3 text-red-900 text-center text-[17px]">
-<b>ד — לא ולא (שילוב אמיתי):</b> "תמיד זוגי" היא בטיחות ו"מגיע ל-10 בשלב מסוים" היא חַיּוּת — הצירוף שלהן אינו שקול לאף אחת מהמחלקות בנפרד.
-</div>
-<div v-show="$slidev.nav.clicks >= 5" class="bg-purple-50 border-2 border-purple-300 rounded p-3 text-purple-900 text-center text-[17px]">
-<b>ה — גם וגם:</b> תכונה טריוויאלית (מתקיימת תמיד) היא הדוגמה <b>היחידה</b> שהיא גם בטיחות וגם חַיּוּת בו־זמנית.
-</div>
-</div>
-
-<div class="mt-4 grid grid-cols-1 gap-2 text-right text-[16px] leading-snug">
-<div class="bg-white border border-slate-200 rounded p-2"><b>א.</b> שני תהליכים לעולם לא נמצאים בקטע הקריטי בו-זמנית: <span dir="ltr"><KatexInline math="\Box\neg(c_1\land c_2)" /></span>.</div>
-<div class="bg-white border border-slate-200 rounded p-2"><b>ב.</b> המשתנה <span dir="ltr">x</span> מקבל את הערך <span dir="ltr">0</span> לפחות פעם אחת: <span dir="ltr"><KatexInline math="\Diamond(x=0)" /></span>.</div>
-<div class="bg-white border border-slate-200 rounded p-2"><b>ג.</b> כל בקשה נענית בסופו של דבר: <span dir="ltr"><KatexInline math="\Box(\mathit{req}\to\Diamond\,\mathit{grant})" /></span>.</div>
-<div class="bg-white border border-slate-200 rounded p-2"><b>ד.</b> <span dir="ltr">x</span> נשאר זוגי לכל אורך הריצה, <b>וגם</b> מגיע לערך <span dir="ltr">10</span> בשלב מסוים.</div>
-<div class="bg-white border border-slate-200 rounded p-2"><b>ה.</b> תכונה שמתקיימת ע"י <b>כל</b> ריצה אפשרית (טאוטולוגיה לינארית-זמן).</div>
-</div>
-
----
-
-# שאלה: סיווג תכונות (10 נק')
-
-<div class="text-right text-[18px] leading-relaxed mt-3">
-יהי <span dir="ltr"><KatexInline math="AP=\{A,B\}" /></span>. נסחו את התכונות הבאות כתכונות לינאריות-זמן, וסווגו כל אחת — אינוריאנט, תכונת בטיחות, תכונת חַיּוּת, או אף אחת מהן:
-</div>
-
-<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
-<b>א.</b> <span dir="ltr">A</span> לעולם לא מתקיימת.<br/>
-<b>ב.</b> <span dir="ltr">A</span> מתקיימת פעם אחת בדיוק.<br/>
-<b>ג.</b> <span dir="ltr">A</span> ו-<span dir="ltr">B</span> מתחלפות אינסוף פעמים.<br/>
-<b>ד.</b> <span dir="ltr">A</span> תמיד מלווה בהמשך ע"י <span dir="ltr">B</span> (בסופו של דבר).
-</div>
-
----
-
-# פתרון: ארבע תכונות, ארבע מחלקות
-
-<div class="grid grid-cols-2 gap-3 mt-3 text-[14.5px] text-right leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900">
-<div class="font-bold mb-1">א. אינוריאנט</div>
-"<span dir="ltr">A</span> לא מתקיימת" היא תנאי בוליאני על כל מצב בנפרד — <b>אינוריאנט</b> (ולכן גם תכונת בטיחות).
-</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
-<div class="font-bold mb-1">ב. בטיחות (לא אינוריאנט)</div>
-מופע שני של <span dir="ltr">A</span> הוא רישא רעה סופית שמפרה את התכונה — <b>תכונת בטיחות</b>, אך לא אינוריאנט (תלויה בהיסטוריה, לא רק במצב הנוכחי).
-</div>
-<div class="bg-red-50 border border-red-200 rounded p-3 text-red-900">
-<div class="font-bold mb-1">ג. לא בטיחות ולא חַיּוּת</div>
-זו דרישת "אינסוף פעמים" (לא בטיחות, אין רישא רעה סופית) <b>וגם</b> דרישה שמתקיימת רק חלקית ע"י כל המשך (לא חַיּוּת גרידא, כי כל רישא סופית מפירה את ה"לעולם לא תיפר") — <b>אף אחת מהשתיים</b>.
-</div>
-<div class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900">
-<div class="font-bold mb-1">ד. חַיּוּת</div>
-לכל רישא סופית יש המשך שמקיים את הדרישה (פשוט תוסיפו <span dir="ltr">B</span> אחרי כל <span dir="ltr">A</span> מאותה נקודה) — <b>תכונת חַיּוּת</b> גרידא.
-</div>
-</div>
-
----
-
-# שאלה: הוכחת בטיחות באמצעות אינוריאנט אינדוקטיבי (15 נק')
+# שאלה: הוכחת בטיחות באמצעות שמורה אינדוקטיבית
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
 משתנה <span dir="ltr">x</span> מתחיל ב-<span dir="ltr"><KatexInline math="x=0" /></span>, ובכל צעד: אם <span dir="ltr"><KatexInline math="x<10" /></span> מתבצע <span dir="ltr"><KatexInline math="x:=x+2" /></span>, אחרת <span dir="ltr">x</span> נשאר ללא שינוי.
 </div>
 
 <div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
-<b>א.</b> הציעו אינוריאנט אינדוקטיבי <span dir="ltr"><KatexInline math="I(x)" /></span> שמוכיח <span dir="ltr"><KatexInline math="\Box(0\le x\le 10\land \mathit{even}(x))" /></span>.<br/>
+<b>א.</b> הציעו שמורה אינדוקטיבית <span dir="ltr"><KatexInline math="I(x)" /></span> שמוכיחה <span dir="ltr"><KatexInline math="\Box(0\le x\le 10\land \mathit{even}(x))" /></span>.<br/>
 <b>ב.</b> הוכיחו: (1) תנאי הבסיס במצב ההתחלה. (2) סגירות תחת המעבר.
 </div>
 
@@ -1171,7 +1094,7 @@ class: text-center
 
 <div class="text-right text-[16px] leading-relaxed mt-3">
 <div class="mt-1 bg-blue-50 border border-blue-200 rounded p-3 text-blue-900 mb-2">
-<b>אינוריאנט:</b> <span dir="ltr"><KatexInline math="I(x)\;\equiv\;0\le x\le 10 \land \mathit{even}(x)" /></span>.
+<b>שמורה:</b> <span dir="ltr"><KatexInline math="I(x)\;\equiv\;0\le x\le 10 \land \mathit{even}(x)" /></span>.
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900 mb-2">
 <b>בסיס:</b> <span dir="ltr"><KatexInline math="x=0" /></span> מקיים <span dir="ltr"><KatexInline math="0\le 0\le 10" /></span> וזוגי. <span dir="ltr">✓</span>
@@ -1182,16 +1105,16 @@ class: text-center
 <li>אם <span dir="ltr"><KatexInline math="x<10" /></span>: בגלל הזוגיות <span dir="ltr"><KatexInline math="x\le 8" /></span>, ולכן <span dir="ltr"><KatexInline math="x'=x+2\le 10" /></span>; וסכום שני זוגיים זוגי, אז <span dir="ltr"><KatexInline math="I(x')" /></span> מתקיים.</li>
 <li>אם <span dir="ltr"><KatexInline math="x=10" /></span> (גבול עליון, ובהכרח זוגי): <span dir="ltr"><KatexInline math="x'=x" /></span> ללא שינוי, ועדיין <span dir="ltr"><KatexInline math="I(x')" /></span> מתקיים.</li>
 </ul>
-לכן <span dir="ltr"><KatexInline math="I" /></span> סגור תחת המעבר, ומתקיים בכל מצב נגיש — מה שמוכיח את תכונת הבטיחות.
+לכן <span dir="ltr"><KatexInline math="I" /></span> סגור תחת המעבר, ומתקיים בכל מצב נגיש - מה שמוכיח את תכונת הבטיחות.
 </div>
 </div>
 
 ---
 
-# שאלה: בדיקת תכונת בטיחות רגולרית במכפלה (15 נק')
+# שאלה: בדיקת תכונת בטיחות רגולרית במכפלה
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
-תכונת בטיחות רגולרית מעל <span dir="ltr"><KatexInline math="AP=\{\mathit{req},\mathit{ack}\}" /></span>: "כל <span dir="ltr">req</span> חייב להיות מלווה ב-<span dir="ltr">ack</span> בתוך הצעד שאחריו" (אחרת — הפרה).
+תכונת בטיחות רגולרית מעל <span dir="ltr"><KatexInline math="AP=\{\mathit{req},\mathit{ack}\}" /></span>: "כל <span dir="ltr">req</span> חייב להיות מלווה ב-<span dir="ltr">ack</span> בתוך הצעד שאחריו" (אחרת - הפרה).
 </div>
 
 <div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
@@ -1223,16 +1146,100 @@ class: text-center
 
 <div class="mt-3 grid grid-cols-2 gap-3 text-[15px] text-right leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900">
-<b>ב.</b> בונים <span dir="ltr"><KatexInline math="TS\times\mathcal{A}" /></span> ובודקים אם המצב <span dir="ltr">bad</span> <b>נגיש</b> (חיפוש גרף רגיל, <span dir="ltr">BFS/DFS</span>). אם כן — קיימת ריצה מפרה.
+<b>ב.</b> בונים <span dir="ltr"><KatexInline math="TS\times\mathcal{A}" /></span> ובודקים אם המצב <span dir="ltr">bad</span> <b>נגיש</b> (חיפוש גרף רגיל, <span dir="ltr">BFS/DFS</span>). אם כן - קיימת ריצה מפרה.
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
-<b>ג.</b> תכונת בטיחות נשברת ב<b>רישא סופית</b> — הגעה למצב <span dir="ltr">bad</span>. אין צורך לבדוק התנהגות אינסופית או "אינסוף פעמים" כמו ב-<span dir="ltr">LTL</span> כללית, ולכן הישגות (לא קבלת <span dir="ltr">Büchi</span>) מספיקה.
+<b>ג.</b> תכונת בטיחות נשברת ב<b>רישא סופית</b> - הגעה למצב <span dir="ltr">bad</span>. אין צורך לבדוק התנהגות אינסופית או "אינסוף פעמים" כמו ב-<span dir="ltr">LTL</span> כללית, ולכן הישגות (לא קבלת <span dir="ltr">Büchi</span>) מספיקה.
 </div>
 </div>
 
 ---
 
-# שאלה: בניית NBA לפי זוגיות (15 נק')
+# שאלה: אוטומט מונה, מבוי-סתום, והאם זו שמורה?
+
+<div class="text-right text-[16px] leading-relaxed mt-3">
+יהי <span dir="ltr"><KatexInline math="TS" /></span>, <span dir="ltr"><KatexInline math="\Phi" /></span> פסוק מצב, <span dir="ltr">n\in\mathbb{N}</span>. נגדיר <span dir="ltr"><KatexInline math="P_{\Phi,n}=\{\sigma\mid \forall i\ge0,\ \neg\bigwedge_{j=i}^{i+n}(\sigma[j]\models\Phi)\}" /></span> - בכל ריצה, <span dir="ltr">Φ</span> לא יחזיק <span dir="ltr">n+1</span> צעדים רצופים. בודקים זאת ע"י מכפלה <span dir="ltr"><KatexInline math="TS'=TS\times \mathcal{A}_{n,\Phi}" /></span> עם אוטומט מונה: <span dir="ltr"><KatexInline math="q_i\xrightarrow{\Phi}q_{i+1}" /></span>, <span dir="ltr"><KatexInline math="q_i\xrightarrow{\neg\Phi}q_0" /></span>, <span dir="ltr"><KatexInline math="q_n\xrightarrow{\Phi}q_{err}" /></span>, <span dir="ltr"><KatexInline math="q_{err}\xrightarrow{\mathit{true}}q_{err}" /></span> (המעבר במכפלה נקבע לפי תווית <b>מצב היעד</b> ב-<span dir="ltr">TS</span>).
+</div>
+
+<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[16px] leading-relaxed">
+הוכיחו או הפריכו כל אחת:<br/>
+<b>א.</b> <span dir="ltr">TS\models P_{\Phi,n}</span> אם ורק אם אין מצב מהצורה <span dir="ltr">\langle s,q_{err}\rangle</span> נגיש ב-<span dir="ltr">TS'</span>.<br/>
+<b>ב.</b> <span dir="ltr">P_{\Phi,n}</span> היא תכונת שמורה.<br/>
+<b>ג.</b> <span dir="ltr">TS</span> מפרה את <span dir="ltr">P_{\Phi,n}</span> אם ורק אם ניתן להגיע למצב מבוי-סתום ב-<span dir="ltr">TS'</span>.
+</div>
+
+---
+
+# פתרון: שלוש הפרכות, שלושה כשלים אופייניים
+
+<div class="grid grid-cols-1 gap-2 mt-2 text-right text-[14px] leading-snug">
+<div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
+<b>א. לא נכון.</b> דוגמה נגדית: <span dir="ltr">AP=\{a\}</span>, <span dir="ltr">\Phi=a</span>, <span dir="ltr">n=1</span>, ו-<span dir="ltr">TS</span>: <span dir="ltr">s_0\to s_1\to s_2\to s_2\to\cdots</span> עם <span dir="ltr">L(s_0)=L(s_1)=\{a\}</span>, <span dir="ltr">L(s_2)=\emptyset</span>. הריצה <span dir="ltr">\{a\}\{a\}\emptyset\cdots</span> מפרה (שני <span dir="ltr">a</span> רצופים בהתחלה) - <span dir="ltr">TS\not\models P_{a,1}</span>. אבל במכפלה תמיד מתחילים ב-<span dir="ltr">q_0</span> בלי תלות ב-<span dir="ltr">L(s_0)</span>, כך שהריצה היחידה היא <span dir="ltr">\langle s_0,q_0\rangle\to\langle s_1,q_1\rangle\to\langle s_2,q_0\rangle\to\cdots</span> - <span dir="ltr">q_{err}</span> לעולם לא נגיש. <b>שקר ⟺ אמת</b> - הבנייה "מפספסת" הפרה שמתחילה כבר במצב ההתחלתי, כי המונה לא סופר את <span dir="ltr">L(s_0)</span> עצמו.
+</div>
+<div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
+<b>ב. לא נכון.</b> שמורה מאופיינת ע"י פסוק מצב <span dir="ltr">\psi</span> שמחזיק בכל מצב בנפרד. בשלילה: אם <span dir="ltr">P_{\Phi,n}</span> הייתה שמורה כזו, מילה שרק האות הראשונה שלה מקיימת <span dir="ltr">\Phi</span> (ושאר האותיות <span dir="ltr">\neg\Phi</span>) מקיימת <span dir="ltr">P_{\Phi,n}</span> (אין רצף של <span dir="ltr">n+1</span> הפרות) - כל אות בה מקיימת <span dir="ltr">\psi</span>, ובפרט האות הראשונה, ולכן <span dir="ltr">\Phi\Rightarrow\psi</span>. אבל אז המילה הקבועה שכל אותיותיה מקיימות <span dir="ltr">\Phi</span> מקיימת גם היא <span dir="ltr">\psi</span> בכל מקום - ולכן לפי ההנחה צריכה לקיים <span dir="ltr">P_{\Phi,n}</span>, בסתירה לכך שהיא מפרה אותה (רצף אינסופי של <span dir="ltr">\Phi</span>). תכונה שתלויה ב<b>חלון</b> של <span dir="ltr">n+1</span> צעדים, ולא במצב בודד, אינה שמורה.
+</div>
+<div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
+<b>ג. לא נכון.</b> מבוי-סתום הוא מצב <b>בלי יציאות בכלל</b>. הפרת התכונה מתבטאת בהגעה ל-<span dir="ltr">q_{err}</span>, אבל זהו מצב <b>מלכודת</b> (יש ממנו מעבר עצמי) ולא מצב סופי. אם ל-<span dir="ltr">s</span> יש יציאות ב-<span dir="ltr">TS</span>, גם ל-<span dir="ltr">\langle s,q_{err}\rangle</span> יש יציאות (ל-<span dir="ltr">\langle s',q_{err}\rangle</span>) - הפרת התכונה <b>אינה</b> גוררת מבוי-סתום.
+</div>
+</div>
+
+---
+
+# שאלה: רדוקציה שבורה - בטיחות "אף פעם לא bad"
+
+<div class="text-right text-[16px] leading-relaxed mt-3">
+תכונת הבטיחות <span dir="ltr"><KatexInline math="P=\{\sigma\mid\forall i,\ \sigma[i]\ne\sigma[i+1]\}" /></span> ("שני מצבים עוקבים לא מתויגים אותו דבר"). מציעים לבדוק אותה ע"י <span dir="ltr"><KatexInline math="TS'=\langle S\times 2^{AP},\,Act,\,\to',\,I\times\{L(s):s\in I\},\,\{bad\},\,L'\rangle" /></span> כאשר <span dir="ltr"><KatexInline math="\langle s,S\rangle\xrightarrow{\alpha}\langle t,L(s)\rangle" /></span> לכל <span dir="ltr">s\xrightarrow{\alpha}t</span>, ו-<span dir="ltr">L'(\langle s,S\rangle)=\{bad\}</span> אם ורק אם <span dir="ltr">S=L(s)</span> (המרכיב השני "זוכר" את התווית הקודמת).
+</div>
+
+<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[16px] leading-relaxed">
+<b>א.</b> הראו שלא לכל <span dir="ltr">TS</span> מתקיים <span dir="ltr">TS\models P \iff TS'\models\Box\neg bad</span>.<br/>
+<b>ב.</b> הציעו תיקון פשוט לבנייה כך שהשקילות תתקיים תמיד.
+</div>
+
+---
+
+# פתרון: הבעיה היא ב"זיכרון" של המצב ההתחלתי
+
+<div class="grid grid-cols-1 gap-2 mt-2 text-right text-[14.5px] leading-snug">
+<div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
+<b>א.</b> דוגמה נגדית: <span dir="ltr">S=\{s_0,s_1\}</span>, <span dir="ltr">I=\{s_0\}</span>, <span dir="ltr">L(s_0)=\{a,b\}</span>, <span dir="ltr">L(s_1)=\{a\}</span>, <span dir="ltr">s_0\to s_1\to s_0\to\cdots</span>. <span dir="ltr">TS\models P</span> (התוויות מתחלפות, לעולם לא שוות ברצף). אבל המצב ההתחלתי ב-<span dir="ltr">TS'</span> הוא <span dir="ltr">\langle s_0,L(s_0)\rangle=\langle s_0,\{a,b\}\rangle</span> - ולכן מיד <span dir="ltr">L'(\langle s_0,\{a,b\}\rangle)=\{bad\}</span>, כלומר <span dir="ltr">TS'\not\models\Box\neg bad</span>. הבנייה מניחה "תווית קודמת" למצב ההתחלתי, אבל אין כזו בפועל - <span dir="ltr">TS\models P</span> ועדיין <span dir="ltr">TS'\not\models\Box\neg bad</span>.
+</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900">
+<b>ב. התיקון:</b> מוסיפים סימן טרי <span dir="ltr">start\notin AP</span> ומשנים רק את <b>המצבים ההתחלתיים</b>: <span dir="ltr">I'=I\times\{\{start\}\}</span> (במקום <span dir="ltr">I\times\{L(s):s\in I\}</span>). כך, בצעד הראשון <span dir="ltr">S=\{start\}\ne L(s_0)</span> בוודאות (כי <span dir="ltr">start\notin AP</span>), ואין הפרת-שווא. כל שאר הבנייה (מעברים ותיוג <span dir="ltr">bad</span>) נשארת זהה. עכשיו <span dir="ltr">\langle s,S\rangle</span> "זוכר" תווית אמיתית קודמת בכל מצב חוץ מההתחלה, ושם בדיוק לא נדרשת השוואה - מתקיים <span dir="ltr">TS\models P\iff TS'\models\Box\neg bad</span> לכל <span dir="ltr">TS</span>.
+</div>
+</div>
+
+---
+
+# שאלה: שמורה, סגירות, ופירוק לבטיחות וחיות
+
+<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[16px] leading-relaxed">
+קבעו נכון/שגוי, והוכיחו:<br/>
+<b>א.</b> אם <span dir="ltr">P</span> וגם המשלים שלה <span dir="ltr">\overline{P}</span> הן שתיהן תכונות בטיחות, אז <span dir="ltr">P</span> היא תכונת שמורה.<br/>
+<b>ב.</b> יהי <span dir="ltr">AP=\{p\}</span>, <span dir="ltr">\psi=\Box(p\to\X p)</span>. הטענה: <span dir="ltr">closure(\mathit{Words}(\psi))=\mathit{Words}(\psi)</span> (כלומר <span dir="ltr">\psi</span> מגדירה תכונת בטיחות).<br/>
+<b>ג.</b> כל תכונה <span dir="ltr">\omega</span>-רגולרית <span dir="ltr">P</span> ניתנת לכתיבה כ-<span dir="ltr">P=P_{safe}\cap P_{live}</span> עם <span dir="ltr">P_{safe}</span> תכונת בטיחות <b>רגולרית</b>.
+</div>
+
+---
+
+# פתרון: שמורה היא יותר מבטיחות-בשני-הכיוונים
+
+<div class="grid grid-cols-1 gap-2 mt-2 text-right text-[14.5px] leading-snug">
+<div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
+<b>א. לא נכון.</b> דוגמה נגדית פשוטה: <span dir="ltr">P=\mathit{Words}(p)</span> ("האות הראשונה היא <span dir="ltr">p</span>", שאר האותיות חופשיות). <span dir="ltr">P</span> בטיחות: הרישא הרעה המינימלית היחידה היא אות ראשונה <span dir="ltr">\neg p</span> - אם נצפה בה, אין דרך לתקן. <span dir="ltr">\overline P=\mathit{Words}(\neg p)</span> בטיחות בדיוק מאותה סיבה (בתמורה). אך <span dir="ltr">P</span> אינה שמורה: שמורה דורשת תנאי-מצב יחיד שמתקיים <b>בכל</b> מצב, ואילו <span dir="ltr">P</span> מגבילה רק את הצעד הראשון - המילים <span dir="ltr">p\,p\,p\,\cdots</span> ו-<span dir="ltr">p\,\neg p\,\neg p\,\cdots</span> שתיהן ב-<span dir="ltr">P</span> אך אין תנאי-מצב יחיד שמחזיק בכל אות בשתיהן ומבדיל אותן מ-<span dir="ltr">\neg p\,p\,p\,\cdots</span>. <b>מסקנה:</b> "בטיחות + משלים בטיחות" (סגור-ופתוח) הוא תנאי חלש מ"שמורה" - הוא מבטיח החלטה מוקדמת אך לא בהכרח <b>חזרה על אותו תנאי בכל צעד</b>.
+</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900">
+<b>ב. נכון.</b> מספיק להראות רישא רעה לכל מילה שמפרה. אם <span dir="ltr">\sigma\notin\mathit{Words}(\psi)</span>, קיים <span dir="ltr">i</span> עם <span dir="ltr">\sigma[i]\models p</span> וגם <span dir="ltr">\sigma[i+1]\not\models p</span>. הרישא <span dir="ltr">\rho=\sigma[0..i+1]</span> היא רישא רעה: <b>כל</b> המשך שלה כבר מכיל את ההפרה ב-<span dir="ltr">i</span>, ולכן לעולם לא יקיים <span dir="ltr">\psi</span>. לכן <span dir="ltr">\psi</span> בטיחות, ועל כן <span dir="ltr">closure(\mathit{Words}(\psi))=\mathit{Words}(\psi)</span>.
+</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900">
+<b>ג. נכון.</b> משפט הפירוק: <span dir="ltr">P_{safe}=closure(P)</span>, <span dir="ltr">P_{live}</span> חיות, ו-<span dir="ltr">P=P_{safe}\cap P_{live}</span> תמיד. נשאר להראות ש-<span dir="ltr">P_{safe}</span> רגולרית כש-<span dir="ltr">P</span> <span dir="ltr">\omega</span>-רגולרית: אם <span dir="ltr">P=L_\omega(\mathcal{A})</span>, אז קבוצת <b>הרישות הסופיות</b> <span dir="ltr">pref(P)</span> מתקבלת ע"י <span dir="ltr">\mathcal{A}</span> עם כל מצביו מוגדרים כמקבלים (הישגות גרידא) - שפה רגולרית. <span dir="ltr">closure(P)</span> הוא בדיוק קבוצת המילים שכל הרישות שלהן ב-<span dir="ltr">pref(P)</span>, כלומר המשלים של "יש רישא מחוץ ל-<span dir="ltr">pref(P)</span>" - ומכיוון שרגולריות סגורות להשלמה, גם זו תכונת בטיחות רגולרית.
+</div>
+</div>
+
+---
+
+# שאלה: בניית NBA לפי זוגיות
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
 יהי <span dir="ltr"><KatexInline math="\Sigma=\{A,B\}" /></span>. בנו <span dir="ltr">NBA</span> שמקבל את המילים האינסופיות <span dir="ltr">σ</span> מעל <span dir="ltr">Σ</span> כך ש־<span dir="ltr">A</span> מופיעה בהן אינסוף פעמים, ובין כל שתי הופעות <span dir="ltr">A</span> עוקבות מופיע מספר <b>אי־זוגי</b> של <span dir="ltr">B</span>.
@@ -1260,21 +1267,21 @@ class: text-center
 </div>
 
 <div class="mt-2 grid grid-cols-3 gap-2 text-[14px] text-right leading-snug">
-<div class="bg-blue-50 border border-blue-200 rounded p-2 text-blue-900"><span dir="ltr">init</span>: לפני ה־<span dir="ltr">A</span> הראשונה — אין דרישה, <span dir="ltr">B</span> חופשי.</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900"><span dir="ltr">even</span>: נספרו <span dir="ltr">0</span> (זוגי) <span dir="ltr">B</span>-ים מאז ה־<span dir="ltr">A</span> האחרונה. <b>אין</b> מעבר על <span dir="ltr">A</span> מכאן — זה היה אוסר ספירה זוגית.</div>
+<div class="bg-blue-50 border border-blue-200 rounded p-2 text-blue-900"><span dir="ltr">init</span>: לפני ה־<span dir="ltr">A</span> הראשונה - אין דרישה, <span dir="ltr">B</span> חופשי.</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900"><span dir="ltr">even</span>: נספרו <span dir="ltr">0</span> (זוגי) <span dir="ltr">B</span>-ים מאז ה־<span dir="ltr">A</span> האחרונה. <b>אין</b> מעבר על <span dir="ltr">A</span> מכאן - זה היה אוסר ספירה זוגית.</div>
 <div class="bg-amber-50 border border-amber-200 rounded p-2 text-amber-900"><span dir="ltr">odd</span>: נספרו אי־זוגי <span dir="ltr">B</span>-ים. מעבר על <span dir="ltr">A</span> מכאן <b>חוקי</b> וחוזר ל־<span dir="ltr">even</span> (איפוס המונה).</div>
 </div>
 
 <div class="mt-2 bg-red-50 border-2 border-red-300 rounded p-2 text-red-900 text-center text-[14px] leading-snug">
-<span dir="ltr"><KatexInline math="F=\{even\}" /></span>: ביקור חוזר ואינסופי ב־<span dir="ltr">even</span> מתאפשר רק דרך מעברי <span dir="ltr">A</span> תקפים מ־<span dir="ltr">odd</span> — ולכן הוא שקול ל"<span dir="ltr">A</span> אינסוף פעמים, כל פעם אחרי מספר אי־זוגי של <span dir="ltr">B</span>".
+<span dir="ltr"><KatexInline math="F=\{even\}" /></span>: ביקור חוזר ואינסופי ב־<span dir="ltr">even</span> מתאפשר רק דרך מעברי <span dir="ltr">A</span> תקפים מ־<span dir="ltr">odd</span> - ולכן הוא שקול ל"<span dir="ltr">A</span> אינסוף פעמים, כל פעם אחרי מספר אי־זוגי של <span dir="ltr">B</span>".
 </div>
 
 ---
 
-# שאלה: מענק תמיד יבוא (10 נק')
+# שאלה: מענק תמיד יבוא
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
-תהליך מבקש שירות (<span dir="ltr">t</span>) ומקבל מענק (<span dir="ltr">c</span>). התכונה הנדרשת: <span dir="ltr"><KatexInline math="\Box(t\to\Diamond c)" /></span> — כל בקשה זוכה <b>בסופו של דבר</b> למענק (ללא חסם זמן קבוע, בניגוד לתכונה "מענק תוך 2 צעדים" שראינו קודם).
+תהליך מבקש שירות (<span dir="ltr">t</span>) ומקבל מענק (<span dir="ltr">c</span>). התכונה הנדרשת: <span dir="ltr"><KatexInline math="\Box(t\to\Diamond c)" /></span> - כל בקשה זוכה <b>בסופו של דבר</b> למענק (ללא חסם זמן קבוע, בניגוד לתכונה "מענק תוך 2 צעדים" שראינו קודם).
 </div>
 
 <div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
@@ -1303,16 +1310,16 @@ class: text-center
 
 <div class="mt-2 grid grid-cols-2 gap-3 text-[14.5px] text-right leading-snug">
 <div class="bg-blue-50 border border-blue-200 rounded p-2 text-blue-900">
-<b>א.</b> <span dir="ltr">q₀</span> (מקבל): נשארים כל עוד אין בקשה פתוחה, או שבקשה זוכה למענק מיידי. <span dir="ltr">q₁</span>: בקשה פתוחה ללא מענק עדיין — נשארים כאן עד שמגיע <span dir="ltr">c</span> וחוזרים ל-<span dir="ltr">q₀</span>.
+<b>א.</b> <span dir="ltr">q₀</span> (מקבל): נשארים כל עוד אין בקשה פתוחה, או שבקשה זוכה למענק מיידי. <span dir="ltr">q₁</span>: בקשה פתוחה ללא מענק עדיין - נשארים כאן עד שמגיע <span dir="ltr">c</span> וחוזרים ל-<span dir="ltr">q₀</span>.
 </div>
 <div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
-<b>ב.</b> ריצה שנתקעת לנצח ב-<span dir="ltr">q₁</span> (בקשה שלעולם לא נענית) חייבת <b>להידחות</b>, אך זו תכונת "אינסוף פעמים" על כלל ההמשך — אין רישא סופית שמעידה על הפרה, ולכן הישגות (כמו בבטיחות) לא מספיקה; צריך לבדוק שהריצה <b>לא</b> נתקעת לנצח מחוץ ל-<span dir="ltr">F={q₀}</span>, וזה מצריך קבלת <span dir="ltr">Büchi</span>.
+<b>ב.</b> ריצה שנתקעת לנצח ב-<span dir="ltr">q₁</span> (בקשה שלעולם לא נענית) חייבת <b>להידחות</b>, אך זו תכונת "אינסוף פעמים" על כלל ההמשך - אין רישא סופית שמעידה על הפרה, ולכן הישגות (כמו בבטיחות) לא מספיקה; צריך לבדוק שהריצה <b>לא</b> נתקעת לנצח מחוץ ל-<span dir="ltr">F={q₀}</span>, וזה מצריך קבלת <span dir="ltr">Büchi</span>.
 </div>
 </div>
 
 ---
 
-# שאלה: למה לא לכל NBA יש DBA שקול (10 נק')
+# שאלה: למה לא לכל NBA יש DBA שקול
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
 תהי <span dir="ltr"><KatexInline math="L=\{\sigma\in\{a,b\}^\omega \mid a\text{ מופיעה בה רק סופית פעמים}\}" /></span> (כלומר <span dir="ltr"><KatexInline math="\mathsf{FG}\neg a" /></span>).
@@ -1320,7 +1327,8 @@ class: text-center
 
 <div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
 <b>א.</b> תנו <span dir="ltr">NBA</span> בעל 2 מצבים המקבל את <span dir="ltr">L</span>.<br/>
-<b>ב.</b> הסבירו אינטואיטיבית מדוע אין <span dir="ltr">DBA</span> שקול ל-<span dir="ltr">L</span>.
+<b>ב.</b> הסבירו אינטואיטיבית מדוע אין <span dir="ltr">DBA</span> שקול ל-<span dir="ltr">L</span>.<br/>
+<b>ג.</b> האם לשפה המשלימה <span dir="ltr"><KatexInline math="\{a,b\}^\omega\setminus L" /></span> (כלומר <span dir="ltr">a</span> מופיעה <b>אינסוף</b> פעמים) קיים <span dir="ltr">DBA</span>?
 </div>
 
 ---
@@ -1342,8 +1350,27 @@ class: text-center
 </div>
 
 <div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-blue-900 text-right text-[15px] leading-relaxed">
-<b>א.</b> <span dir="ltr">NBA</span>: <span dir="ltr"><KatexInline math="q_0" /></span> (התחלה, לא מקבל) עם לולאה עצמית על <span dir="ltr">a,b</span> ומעבר <b>לא־דטרמיניסטי</b> ל-<span dir="ltr"><KatexInline math="q_1" /></span> (מקבל) על <span dir="ltr">b</span> — הניחוש: "זו הופעת <span dir="ltr">a</span> האחרונה". מ-<span dir="ltr"><KatexInline math="q_1" /></span>, לולאה עצמית רק על <span dir="ltr">b</span> (אם מגיעה עוד <span dir="ltr">a</span> — אין מעבר, ריצה זו "נכשלת" אך ריצות אחרות עם ניחוש מאוחר יותר עדיין מקבלות).
+<b>א.</b> <span dir="ltr">NBA</span>: <span dir="ltr"><KatexInline math="q_0" /></span> (התחלה, לא מקבל) עם לולאה עצמית על <span dir="ltr">a,b</span> ומעבר <b>לא־דטרמיניסטי</b> ל-<span dir="ltr"><KatexInline math="q_1" /></span> (מקבל) על <span dir="ltr">b</span> - הניחוש: "זו הופעת <span dir="ltr">a</span> האחרונה". מ-<span dir="ltr"><KatexInline math="q_1" /></span>, לולאה עצמית רק על <span dir="ltr">b</span> (אם מגיעה עוד <span dir="ltr">a</span> - אין מעבר, ריצה זו "נכשלת" אך ריצות אחרות עם ניחוש מאוחר יותר עדיין מקבלות).
 </div>
 <div class="mt-2 bg-red-50 border border-red-200 rounded p-3 text-red-900 text-right text-[15px] leading-relaxed">
-<b>ב.</b> אוטומט דטרמיניסטי <b>חייב להחליט עכשיו</b>, ללא יכולת "לנחש ולחזור בו", מתי לעבור סופית למצב מקבל יציב. אבל בכל מילה סופית שנקראה עד כה תמיד <b>אפשרי</b> שתופיע עוד <span dir="ltr">a</span> בעתיד — כל החלטה "כעת אין יותר <span dir="ltr">a</span>" עלולה להתבדות. לכן כל <span dir="ltr">DBA</span> מועמד יוכשל ע"י איזושהי מילה ב-<span dir="ltr">L</span> או חוצה אותה — אין <span dir="ltr">DBA</span> שקול.
+<b>ב.</b> אוטומט דטרמיניסטי <b>חייב להחליט עכשיו</b>, ללא יכולת "לנחש ולחזור בו", מתי לעבור סופית למצב מקבל יציב. אבל בכל מילה סופית שנקראה עד כה תמיד <b>אפשרי</b> שתופיע עוד <span dir="ltr">a</span> בעתיד - כל החלטה "כעת אין יותר <span dir="ltr">a</span>" עלולה להתבדות. לכן כל <span dir="ltr">DBA</span> מועמד יוכשל ע"י איזושהי מילה ב-<span dir="ltr">L</span> או חוצה אותה - אין <span dir="ltr">DBA</span> שקול. (<span dir="ltr">L</span> היא תכונת <b>התמדה</b> - <span dir="ltr">◇□¬a</span> - וכפי שראינו, התמדה לא-טריוויאלית "מרגישה כמו" החלטה שלעולם אינה בטוחה.)
 </div>
+<div class="mt-2 bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900 text-right text-[15px] leading-relaxed">
+<b>ג. כן, יש <span dir="ltr">DBA</span>.</b> המשלים הוא <span dir="ltr"><KatexInline math="\Box\Diamond a" /></span> ("<span dir="ltr">a</span> אינסוף פעמים") - תכונת <b>חזרה</b> (recurrence), לא התמדה. בשונה מהתמדה, חזרה <b>אינה</b> דורשת מהאוטומט להחליט "סופית" שמשהו יציב לנצח - היא רק דורשת לחזור ולעבור דרך מצב מקבל בכל פעם ש-<span dir="ltr">a</span> מופיעה, וזו החלטה מקומית שאפשר לקבל בו-זמנית עם קריאת <span dir="ltr">a</span> עצמה.
+</div>
+
+<div class="bg-white rounded border border-slate-200 shadow-sm p-2 mt-2">
+<AutomatonD3 variant="classic" :width="420" :height="160" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="12"
+  :states="[
+    { id: 'w0', x: 90, y: 80, label: '$wait$', r: 32, initial: true, initialDirection: 'top' },
+    { id: 'w1', x: 300, y: 80, label: '$\\mathit{just}\\text{-}a$', r: 38, labelWidth: 76, accepting: true }
+  ]"
+  :transitions="[
+    { source: 'w0', target: 'w0', label: '$\\neg a$', loopDirection: '-90deg', labelY: -16 },
+    { source: 'w0', target: 'w1', label: '$a$', curve: 0.1 },
+    { source: 'w1', target: 'w1', label: '$a$', loopDirection: '-90deg', labelY: -16 },
+    { source: 'w1', target: 'w0', label: '$\\neg a$', curve: 0.1 }
+  ]"
+/>
+</div>
+<div class="mt-1 text-center text-slate-500 text-[13px]">כל הופעת <span dir="ltr">a</span> נכנסת ל-<span dir="ltr">just-a</span> (מקבל) - ביקור אינסופי בו שקול ל"<span dir="ltr">a</span> אינסוף פעמים".</div>
