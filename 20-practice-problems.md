@@ -1077,6 +1077,122 @@ class: text-center
 
 ---
 
+# שאלה: בטיחות, חַיּוּת, גם וגם, או לא ולא?
+
+<div class="text-center text-slate-500 text-[13px]">לכל תכונה: שמורה? התמדה? חַיּוּת? בטיחות? (שמורה⊆בטיחות, התמדה⊆חַיּוּת) - לחצו לפתרון, אחת בכל פעם.</div>
+
+<div class="mt-2 grid grid-cols-1 gap-1 text-right text-[15px] leading-snug">
+<div class="bg-white border border-slate-200 rounded p-1.5"><b>א.</b> <span dir="ltr"><KatexInline math="\Box\neg(c_1\land c_2)" /></span></div>
+<div class="bg-white border border-slate-200 rounded p-1.5"><b>ב.</b> <span dir="ltr"><KatexInline math="\Diamond(x=0)" /></span></div>
+<div class="bg-white border border-slate-200 rounded p-1.5"><b>ג.</b> <span dir="ltr"><KatexInline math="\Box(\mathit{req}\to\Diamond\,\mathit{grant})" /></span></div>
+<div class="bg-white border border-slate-200 rounded p-1.5"><b>ד.</b> <span dir="ltr"><KatexInline math="\Box\,\mathit{even}(x)\;\land\;\Diamond(x=10)" /></span></div>
+<div class="bg-white border border-slate-200 rounded p-1.5"><b>ה.</b> <span dir="ltr"><KatexInline math="\mathit{true}" /></span> (טאוטולוגיה בזמן לינארי)</div>
+</div>
+
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+<span v-click class="hidden"></span>
+
+<div class="mt-2 min-h-[210px]">
+<div v-show="$slidev.nav.clicks === 0" class="bg-slate-50 border border-slate-200 rounded p-3 text-slate-600 text-center text-[16px]">
+לחצו להצגת התשובות, אחת בכל פעם.
+</div>
+
+<div v-show="$slidev.nav.clicks === 1" class="bg-blue-50 border-2 border-blue-300 rounded p-2 text-blue-900 text-[13px] leading-snug">
+<div class="font-bold text-center mb-1">א. <span dir="ltr">□¬(c₁∧c₂)</span></div>
+<div class="grid grid-cols-2 gap-1">
+<div><b>שמורה: כן.</b> זו ממש <span dir="ltr">□p</span> עם תנאי-מצב <span dir="ltr">p≡¬(c₁∧c₂)</span> שנבדק בכל מצב בנפרד.</div>
+<div><b>התמדה: לא.</b> התמדה היא תת-מחלקה של חַיּוּת, וזו אינה חַיּוּת (ראו להלן) - שמורה לא-טריוויאלית לעולם אינה התמדה. (גם ישירות: <span dir="ltr">□p</span> הוא תת-קבוצה ממש של <span dir="ltr">◇□p</span>, לא שווה לה - למשל <span dir="ltr">c₁∧c₂</span> רק בצעד הראשון ו-<span dir="ltr">¬(c₁∧c₂)</span> לנצח אח"כ מקיים <span dir="ltr">◇□¬(c₁∧c₂)</span> אך לא <span dir="ltr">□¬(c₁∧c₂)</span>.)</div>
+<div><b>חַיּוּת: לא.</b> ברישא הסופית שבה <span dir="ltr">c₁∧c₂</span> מתקיים פעם אחת אין שום המשך שמתקן את ההפרה שכבר קרתה.</div>
+<div><b>בטיחות: כן.</b> כל רישא שמסתיימת במצב עם <span dir="ltr">c₁∧c₂</span> היא רישא רעה - הדוגמה הקנונית לתכונת בטיחות.</div>
+</div>
+</div>
+
+<div v-show="$slidev.nav.clicks === 2" class="bg-emerald-50 border-2 border-emerald-300 rounded p-2 text-emerald-900 text-[13px] leading-snug">
+<div class="font-bold text-center mb-1">ב. <span dir="ltr">◇(x=0)</span></div>
+<div class="grid grid-cols-2 gap-1">
+<div><b>שמורה: לא.</b> כל שמורה היא תכונת בטיחות, וזו אינה בטיחות (ראו להלן) - ולכן אינה יכולה להיות שמורה.</div>
+<div><b>התמדה: לא.</b> הרישא שבה <span dir="ltr">x=0</span> פעם אחת ואז <span dir="ltr">x≠0</span> לנצח מקיימת <span dir="ltr">◇(x=0)</span> אך לא <span dir="ltr">◇□(x=0)</span> - שתי השפות שונות.</div>
+<div><b>חַיּוּת: כן.</b> לכל רישא סופית (גם אם <span dir="ltr">x</span> טרם התאפס) אפשר להמשיך ולהציב <span dir="ltr">x=0</span> בצעד הבא - אין רישא שמכריחה הפרה.</div>
+<div><b>בטיחות: לא.</b> בריצה שבה <span dir="ltr">x≠0</span> לנצח, לכל רישא סופית שלה יש המשך עם <span dir="ltr">x=0</span> שמקיים את התכונה - אין רישא רעה.</div>
+</div>
+</div>
+
+<div v-show="$slidev.nav.clicks === 3" class="bg-amber-50 border-2 border-amber-300 rounded p-2 text-amber-900 text-[13px] leading-snug">
+<div class="font-bold text-center mb-1">ג. <span dir="ltr">□(req→◇grant)</span></div>
+<div class="grid grid-cols-2 gap-1">
+<div><b>שמורה: לא.</b> שמורה היא בטיחות, וזו אינה בטיחות (ראו להלן).</div>
+<div><b>התמדה: לא.</b> ריצה עם בקשות ומענקים החוזרים אינסוף פעמים מקיימת את התכונה בלי ש-<span dir="ltr">req</span> או <span dir="ltr">grant</span> מתייצבים לנצח על ערך קבוע.</div>
+<div><b>חַיּוּת: כן.</b> לכל רישא, גם עם בקשה פתוחה, אפשר להמשיך כך שהבקשה תיענה מיידית וכל בקשה עתידית תיענה - אין רישא שמכריחה הפרה. (התכונה "מרגישה" כמו בטיחות בגלל ה־<span dir="ltr">□</span>, אך אין לה רישא רעה סופית.)</div>
+<div><b>בטיחות: לא.</b> כל רישא עם בקשה פתוחה ללא מענק ניתנת להשלמה ע"י מענק בצעד הבא - שום רישא סופית אינה דנה את התכונה לכישלון.</div>
+</div>
+</div>
+
+<div v-show="$slidev.nav.clicks === 4" class="bg-red-50 border-2 border-red-300 rounded p-2 text-red-900 text-[13px] leading-snug">
+<div class="font-bold text-center mb-1">ד. <span dir="ltr">□even(x) ∧ ◇(x=10)</span></div>
+<div class="grid grid-cols-2 gap-1">
+<div><b>שמורה: לא.</b> כולל דרישת "אי-פעם" (<span dir="ltr">◇</span>) שאינה תנאי-מצב הנבדק בכל רגע בנפרד.</div>
+<div><b>התמדה: לא.</b> הריצה <span dir="ltr">10,8,10,8,...</span> מקיימת את שני האגפים בלי להתייצב לנצח על שום ערך קבוע.</div>
+<div><b>חַיּוּת: לא.</b> ברישא עם ערך אי-זוגי יחיד כבר אין המשך שמקיים <span dir="ltr">□even(x)</span> - העבר דן את התכונה.</div>
+<div><b>בטיחות: לא.</b> בריצה <span dir="ltr">x=0</span> לנצח (זוגי תמיד, לעולם לא 10), לכל רישא שלה יש המשך עם <span dir="ltr">x=10</span> שמקיים את התכונה - אין רישא רעה.</div>
+</div>
+<div class="text-center mt-1 font-bold">שילוב אמיתי של בטיחות (<span dir="ltr">□even(x)</span>) וחַיּוּת (<span dir="ltr">◇(x=10)</span>) שאינו שקול לאף אחת מהן.</div>
+</div>
+
+<div v-show="$slidev.nav.clicks >= 5" class="bg-purple-50 border-2 border-purple-300 rounded p-2 text-purple-900 text-[13px] leading-snug">
+<div class="font-bold text-center mb-1">ה. <span dir="ltr">true</span></div>
+<div class="grid grid-cols-2 gap-1">
+<div><b>שמורה: כן.</b> <span dir="ltr">p≡true</span> מתקיים בכל מצב בנפרד.</div>
+<div><b>התמדה: כן.</b> <span dir="ltr">◇□true</span> מתקיים טריוויאלית.</div>
+<div><b>חַיּוּת: כן.</b> כל רישא סופית מקיימת המשך (כל המשך, באופן ריק) שמקיים <span dir="ltr">true</span>.</div>
+<div><b>בטיחות: כן.</b> אין כלל ריצות מפרות, ולכן התנאי על רישא רעה מתקיים באופן ריק.</div>
+</div>
+<div class="text-center mt-1 font-bold">היחידה מבין החמש שהיא גם שמורה, גם התמדה, גם חַיּוּת וגם בטיחות בו-זמנית.</div>
+</div>
+</div>
+
+---
+
+# שאלה: סיווג תכונות
+
+<div class="text-right text-[18px] leading-relaxed mt-3">
+יהי <span dir="ltr"><KatexInline math="AP=\{A,B\}" /></span>. נסחו את התכונות הבאות כתכונות בזמן לינארי, וסווגו כל אחת - שמורה, תכונת בטיחות, תכונת חַיּוּת, או אף אחת מהן:
+</div>
+
+<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
+<b>א.</b> <span dir="ltr">A</span> לעולם לא מתקיימת.<br/>
+<b>ב.</b> <span dir="ltr">A</span> מתקיימת פעם אחת בדיוק.<br/>
+<b>ג.</b> <span dir="ltr">A</span> ו-<span dir="ltr">B</span> מתחלפות אינסוף פעמים.<br/>
+<b>ד.</b> <span dir="ltr">A</span> תמיד מלווה בהמשך ע"י <span dir="ltr">B</span> (בסופו של דבר).
+</div>
+
+---
+
+# פתרון: ארבע תכונות, ארבע מחלקות
+
+<div class="grid grid-cols-2 gap-3 mt-3 text-[14.5px] text-right leading-relaxed">
+<div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900">
+<div class="font-bold mb-1">א. שמורה</div>
+"<span dir="ltr">A</span> לא מתקיימת" היא תנאי בוליאני על כל מצב בנפרד - <b>שמורה</b> (ולכן גם תכונת בטיחות).
+</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
+<div class="font-bold mb-1">ב. בטיחות (לא שמורה)</div>
+מופע שני של <span dir="ltr">A</span> הוא רישא רעה סופית שמפרה את התכונה - <b>תכונת בטיחות</b>, אך לא שמורה (תלויה בהיסטוריה, לא רק במצב הנוכחי).
+</div>
+<div class="bg-red-50 border border-red-200 rounded p-3 text-red-900">
+<div class="font-bold mb-1">ג. לא בטיחות ולא חַיּוּת</div>
+זו דרישת "אינסוף פעמים" (לא בטיחות, אין רישא רעה סופית) <b>וגם</b> דרישה שמתקיימת רק חלקית ע"י כל המשך (לא חַיּוּת גרידא, כי כל רישא סופית מפירה את ה"לעולם לא תיפר") - <b>אף אחת מהשתיים</b>.
+</div>
+<div class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900">
+<div class="font-bold mb-1">ד. חַיּוּת</div>
+לכל רישא סופית יש המשך שמקיים את הדרישה (פשוט תוסיפו <span dir="ltr">B</span> אחרי כל <span dir="ltr">A</span> מאותה נקודה) - <b>תכונת חַיּוּת</b> גרידא.
+</div>
+</div>
+
+---
+
 # שאלה: הוכחת בטיחות באמצעות שמורה אינדוקטיבית
 
 <div class="text-right text-[18px] leading-relaxed mt-3">
