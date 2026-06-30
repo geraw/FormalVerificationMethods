@@ -899,7 +899,7 @@ info: |
 </div>
 
 <div class="mt-3 text-center text-[18px]" dir="ltr">
-<KatexInline display math="\exists q.\ q\ \land\ \Box\bigl(Xq\leftrightarrow(q\leftrightarrow\neg p)\bigr)\ \land\ \Diamond(q\land\Box\neg p)" />
+<KatexInline display math="\exists q.\ q\ \land\ \Box\bigl(\bigcirc q\leftrightarrow(q\leftrightarrow\neg p)\bigr)\ \land\ \Diamond(q\land\Box\neg p)" />
 </div>
 
 <div class="mt-3 grid grid-cols-2 gap-3 text-[15px] leading-relaxed">
@@ -953,22 +953,22 @@ info: |
 \end{cases}" />
 </div>
 
-<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[17px] leading-relaxed text-right">
+<div class="mt-2 bg-blue-50 border border-blue-200 rounded p-2 text-[15px] leading-snug text-right">
 כלומר, ככל שהרישא המשותפת ארוכה יותר, המרחק קטן יותר.
 </div>
 
-<div class="mt-4 space-y-3 text-right text-[17px] leading-relaxed">
-<div class="bg-slate-50 border border-slate-200 rounded p-3">
+<div class="mt-2 space-y-1.5 text-right text-[14.5px] leading-snug">
+<div class="bg-slate-50 border border-slate-200 rounded p-2">
 <span class="font-bold">א'.</span>
 הראו ש-<KatexInline math="d" /> היא מטריקה על <KatexInline math="\Sigma^\omega" />.
 </div>
 
-<div class="bg-amber-50 border border-amber-200 rounded p-3">
+<div class="bg-amber-50 border border-amber-200 rounded p-2">
 <span class="font-bold">ב'.</span>
 הוכיחו: <KatexInline math="P\subseteq\Sigma^\omega" /> היא תכונת בטיחות אם ורק אם <KatexInline math="P" /> סגורה ביחס למטריקה <KatexInline math="d" />.
 </div>
 
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2">
 <span class="font-bold">ג'.</span>
 נאמר ש-<KatexInline math="P" /> צפופה אם לכל <KatexInline math="\sigma\in\Sigma^\omega" /> ולכל <KatexInline math="\varepsilon>0" /> קיימת <KatexInline math="\tau\in P" /> כך ש-<KatexInline math="d(\sigma,\tau)<\varepsilon" />. הוכיחו: <KatexInline math="P" /> היא תכונת חַיּוּת אם ורק אם <KatexInline math="P" /> צפופה.
 </div>
@@ -1079,7 +1079,7 @@ class: text-center
 
 # שאלה: בטיחות, חַיּוּת, גם וגם, או לא ולא?
 
-<div class="text-center text-slate-500 text-[13px]">לכל תכונה: שמורה? התמדה? חַיּוּת? בטיחות? (שמורה⊆בטיחות, התמדה⊆חַיּוּת) - לחצו לפתרון, אחת בכל פעם.</div>
+<div class="text-center text-slate-500 text-[13px]">לכל תכונה: שמורה? התמדה? חַיּוּת? בטיחות? (כל שמורה היא בטיחות, כל התמדה היא חַיּוּת) - לחצו לפתרון, אחת בכל פעם.</div>
 
 <div class="mt-2 grid grid-cols-1 gap-1 text-right text-[15px] leading-snug">
 <div class="bg-white border border-slate-200 rounded p-1.5"><b>א.</b> <span dir="ltr"><KatexInline math="\Box\neg(c_1\land c_2)" /></span></div>
@@ -1274,14 +1274,14 @@ class: text-center
 # שאלה: אוטומט מונה, מבוי-סתום, והאם זו שמורה?
 
 <div class="text-right text-[16px] leading-relaxed mt-3">
-יהי <span dir="ltr"><KatexInline math="TS" /></span>, <span dir="ltr"><KatexInline math="\Phi" /></span> פסוק מצב, <span dir="ltr">n\in\mathbb{N}</span>. נגדיר <span dir="ltr"><KatexInline math="P_{\Phi,n}=\{\sigma\mid \forall i\ge0,\ \neg\bigwedge_{j=i}^{i+n}(\sigma[j]\models\Phi)\}" /></span> - בכל ריצה, <span dir="ltr">Φ</span> לא יחזיק <span dir="ltr">n+1</span> צעדים רצופים. בודקים זאת ע"י מכפלה <span dir="ltr"><KatexInline math="TS'=TS\times \mathcal{A}_{n,\Phi}" /></span> עם אוטומט מונה: <span dir="ltr"><KatexInline math="q_i\xrightarrow{\Phi}q_{i+1}" /></span>, <span dir="ltr"><KatexInline math="q_i\xrightarrow{\neg\Phi}q_0" /></span>, <span dir="ltr"><KatexInline math="q_n\xrightarrow{\Phi}q_{err}" /></span>, <span dir="ltr"><KatexInline math="q_{err}\xrightarrow{\mathit{true}}q_{err}" /></span> (המעבר במכפלה נקבע לפי תווית <b>מצב היעד</b> ב-<span dir="ltr">TS</span>).
+יהי <span dir="ltr"><KatexInline math="TS" /></span>, <span dir="ltr"><KatexInline math="\Phi" /></span> פסוק מצב, <span dir="ltr"><KatexInline math="n\in\mathbb{N}" /></span>. נגדיר <span dir="ltr"><KatexInline math="P_{\Phi,n}=\{\sigma\mid \forall i\ge0,\ \neg\bigwedge_{j=i}^{i+n}(\sigma[j]\models\Phi)\}" /></span> - בכל ריצה, <span dir="ltr">Φ</span> לא יחזיק <span dir="ltr">n+1</span> צעדים רצופים. בודקים זאת ע"י מכפלה <span dir="ltr"><KatexInline math="TS'=TS\times \mathcal{A}_{n,\Phi}" /></span> עם אוטומט מונה: <span dir="ltr"><KatexInline math="q_i\xrightarrow{\Phi}q_{i+1}" /></span>, <span dir="ltr"><KatexInline math="q_i\xrightarrow{\neg\Phi}q_0" /></span>, <span dir="ltr"><KatexInline math="q_n\xrightarrow{\Phi}q_{err}" /></span>, <span dir="ltr"><KatexInline math="q_{err}\xrightarrow{\mathit{true}}q_{err}" /></span> (המעבר במכפלה נקבע לפי תווית <b>מצב היעד</b> ב-<span dir="ltr">TS</span>).
 </div>
 
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[16px] leading-relaxed">
 הוכיחו או הפריכו כל אחת:<br/>
-<b>א.</b> <span dir="ltr">TS\models P_{\Phi,n}</span> אם ורק אם אין מצב מהצורה <span dir="ltr">\langle s,q_{err}\rangle</span> נגיש ב-<span dir="ltr">TS'</span>.<br/>
-<b>ב.</b> <span dir="ltr">P_{\Phi,n}</span> היא תכונת שמורה.<br/>
-<b>ג.</b> <span dir="ltr">TS</span> מפרה את <span dir="ltr">P_{\Phi,n}</span> אם ורק אם ניתן להגיע למצב מבוי-סתום ב-<span dir="ltr">TS'</span>.
+<b>א.</b> <span dir="ltr"><KatexInline math="TS\models P_{\Phi,n}" /></span> אם ורק אם אין מצב מהצורה <span dir="ltr"><KatexInline math="\langle s,q_{err}\rangle" /></span> נגיש ב-<span dir="ltr">TS'</span>.<br/>
+<b>ב.</b> <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> היא תכונת שמורה.<br/>
+<b>ג.</b> <span dir="ltr">TS</span> מפרה את <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> אם ורק אם ניתן להגיע למצב מבוי-סתום ב-<span dir="ltr">TS'</span>.
 </div>
 
 ---
@@ -1290,13 +1290,13 @@ class: text-center
 
 <div class="grid grid-cols-1 gap-2 mt-2 text-right text-[14px] leading-snug">
 <div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
-<b>א. לא נכון.</b> דוגמה נגדית: <span dir="ltr">AP=\{a\}</span>, <span dir="ltr">\Phi=a</span>, <span dir="ltr">n=1</span>, ו-<span dir="ltr">TS</span>: <span dir="ltr">s_0\to s_1\to s_2\to s_2\to\cdots</span> עם <span dir="ltr">L(s_0)=L(s_1)=\{a\}</span>, <span dir="ltr">L(s_2)=\emptyset</span>. הריצה <span dir="ltr">\{a\}\{a\}\emptyset\cdots</span> מפרה (שני <span dir="ltr">a</span> רצופים בהתחלה) - <span dir="ltr">TS\not\models P_{a,1}</span>. אבל במכפלה תמיד מתחילים ב-<span dir="ltr">q_0</span> בלי תלות ב-<span dir="ltr">L(s_0)</span>, כך שהריצה היחידה היא <span dir="ltr">\langle s_0,q_0\rangle\to\langle s_1,q_1\rangle\to\langle s_2,q_0\rangle\to\cdots</span> - <span dir="ltr">q_{err}</span> לעולם לא נגיש. <b>שקר ⟺ אמת</b> - הבנייה "מפספסת" הפרה שמתחילה כבר במצב ההתחלתי, כי המונה לא סופר את <span dir="ltr">L(s_0)</span> עצמו.
+<b>א. לא נכון.</b> דוגמה נגדית: <span dir="ltr"><KatexInline math="AP=\{a\}" /></span>, <span dir="ltr"><KatexInline math="\Phi=a" /></span>, <span dir="ltr">n=1</span>, ו-<span dir="ltr">TS</span>: <span dir="ltr"><KatexInline math="s_0\to s_1\to s_2\to s_2\to\cdots" /></span> עם <span dir="ltr"><KatexInline math="L(s_0)=L(s_1)=\{a\}" /></span>, <span dir="ltr"><KatexInline math="L(s_2)=\emptyset" /></span>. הריצה <span dir="ltr"><KatexInline math="\{a\}\{a\}\emptyset\cdots" /></span> מפרה (שני <span dir="ltr">a</span> רצופים בהתחלה) - <span dir="ltr"><KatexInline math="TS\not\models P_{a,1}" /></span>. אבל במכפלה תמיד מתחילים ב-<span dir="ltr"><KatexInline math="q_0" /></span> בלי תלות ב-<span dir="ltr"><KatexInline math="L(s_0)" /></span>, כך שהריצה היחידה היא <span dir="ltr"><KatexInline math="\langle s_0,q_0\rangle\to\langle s_1,q_1\rangle\to\langle s_2,q_0\rangle\to\cdots" /></span> - <span dir="ltr"><KatexInline math="q_{err}" /></span> לעולם לא נגיש. <b>שקר ⟺ אמת</b> - הבנייה "מפספסת" הפרה שמתחילה כבר במצב ההתחלתי, כי המונה לא סופר את <span dir="ltr"><KatexInline math="L(s_0)" /></span> עצמו.
 </div>
 <div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
-<b>ב. לא נכון.</b> שמורה מאופיינת ע"י פסוק מצב <span dir="ltr">\psi</span> שמחזיק בכל מצב בנפרד. בשלילה: אם <span dir="ltr">P_{\Phi,n}</span> הייתה שמורה כזו, מילה שרק האות הראשונה שלה מקיימת <span dir="ltr">\Phi</span> (ושאר האותיות <span dir="ltr">\neg\Phi</span>) מקיימת <span dir="ltr">P_{\Phi,n}</span> (אין רצף של <span dir="ltr">n+1</span> הפרות) - כל אות בה מקיימת <span dir="ltr">\psi</span>, ובפרט האות הראשונה, ולכן <span dir="ltr">\Phi\Rightarrow\psi</span>. אבל אז המילה הקבועה שכל אותיותיה מקיימות <span dir="ltr">\Phi</span> מקיימת גם היא <span dir="ltr">\psi</span> בכל מקום - ולכן לפי ההנחה צריכה לקיים <span dir="ltr">P_{\Phi,n}</span>, בסתירה לכך שהיא מפרה אותה (רצף אינסופי של <span dir="ltr">\Phi</span>). תכונה שתלויה ב<b>חלון</b> של <span dir="ltr">n+1</span> צעדים, ולא במצב בודד, אינה שמורה.
+<b>ב. לא נכון.</b> שמורה מאופיינת ע"י פסוק מצב <span dir="ltr"><KatexInline math="\psi" /></span> שמחזיק בכל מצב בנפרד. בשלילה: אם <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> הייתה שמורה כזו, מילה שרק האות הראשונה שלה מקיימת <span dir="ltr"><KatexInline math="\Phi" /></span> (ושאר האותיות <span dir="ltr"><KatexInline math="\neg\Phi" /></span>) מקיימת <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> (אין רצף של <span dir="ltr">n+1</span> הפרות) - כל אות בה מקיימת <span dir="ltr"><KatexInline math="\psi" /></span>, ובפרט האות הראשונה, ולכן <span dir="ltr"><KatexInline math="\Phi\Rightarrow\psi" /></span>. אבל אז המילה הקבועה שכל אותיותיה מקיימות <span dir="ltr"><KatexInline math="\Phi" /></span> מקיימת גם היא <span dir="ltr"><KatexInline math="\psi" /></span> בכל מקום - ולכן לפי ההנחה צריכה לקיים <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span>, בסתירה לכך שהיא מפרה אותה (רצף אינסופי של <span dir="ltr"><KatexInline math="\Phi" /></span>). תכונה שתלויה ב<b>חלון</b> של <span dir="ltr">n+1</span> צעדים, ולא במצב בודד, אינה שמורה.
 </div>
 <div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
-<b>ג. לא נכון.</b> מבוי-סתום הוא מצב <b>בלי יציאות בכלל</b>. הפרת התכונה מתבטאת בהגעה ל-<span dir="ltr">q_{err}</span>, אבל זהו מצב <b>מלכודת</b> (יש ממנו מעבר עצמי) ולא מצב סופי. אם ל-<span dir="ltr">s</span> יש יציאות ב-<span dir="ltr">TS</span>, גם ל-<span dir="ltr">\langle s,q_{err}\rangle</span> יש יציאות (ל-<span dir="ltr">\langle s',q_{err}\rangle</span>) - הפרת התכונה <b>אינה</b> גוררת מבוי-סתום.
+<b>ג. לא נכון.</b> מבוי-סתום הוא מצב <b>בלי יציאות בכלל</b>. הפרת התכונה מתבטאת בהגעה ל-<span dir="ltr"><KatexInline math="q_{err}" /></span>, אבל זהו מצב <b>מלכודת</b> (יש ממנו מעבר עצמי) ולא מצב סופי. אם ל-<span dir="ltr">s</span> יש יציאות ב-<span dir="ltr">TS</span>, גם ל-<span dir="ltr"><KatexInline math="\langle s,q_{err}\rangle" /></span> יש יציאות (ל-<span dir="ltr"><KatexInline math="\langle s',q_{err}\rangle" /></span>) - הפרת התכונה <b>אינה</b> גוררת מבוי-סתום.
 </div>
 </div>
 
@@ -1305,11 +1305,11 @@ class: text-center
 # שאלה: רדוקציה שבורה - בטיחות "אף פעם לא bad"
 
 <div class="text-right text-[16px] leading-relaxed mt-3">
-תכונת הבטיחות <span dir="ltr"><KatexInline math="P=\{\sigma\mid\forall i,\ \sigma[i]\ne\sigma[i+1]\}" /></span> ("שני מצבים עוקבים לא מתויגים אותו דבר"). מציעים לבדוק אותה ע"י <span dir="ltr"><KatexInline math="TS'=\langle S\times 2^{AP},\,Act,\,\to',\,I\times\{L(s):s\in I\},\,\{bad\},\,L'\rangle" /></span> כאשר <span dir="ltr"><KatexInline math="\langle s,S\rangle\xrightarrow{\alpha}\langle t,L(s)\rangle" /></span> לכל <span dir="ltr">s\xrightarrow{\alpha}t</span>, ו-<span dir="ltr">L'(\langle s,S\rangle)=\{bad\}</span> אם ורק אם <span dir="ltr">S=L(s)</span> (המרכיב השני "זוכר" את התווית הקודמת).
+תכונת הבטיחות <span dir="ltr"><KatexInline math="P=\{\sigma\mid\forall i,\ \sigma[i]\ne\sigma[i+1]\}" /></span> ("שני מצבים עוקבים לא מתויגים אותו דבר"). מציעים לבדוק אותה ע"י <span dir="ltr"><KatexInline math="TS'=\langle S\times 2^{AP},\,Act,\,\to',\,I\times\{L(s):s\in I\},\,\{bad\},\,L'\rangle" /></span> כאשר <span dir="ltr"><KatexInline math="\langle s,S\rangle\xrightarrow{\alpha}\langle t,L(s)\rangle" /></span> לכל <span dir="ltr"><KatexInline math="s\xrightarrow{\alpha}t" /></span>, ו-<span dir="ltr"><KatexInline math="L'(\langle s,S\rangle)=\{bad\}" /></span> אם ורק אם <span dir="ltr">S=L(s)</span> (המרכיב השני "זוכר" את התווית הקודמת).
 </div>
 
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[16px] leading-relaxed">
-<b>א.</b> הראו שלא לכל <span dir="ltr">TS</span> מתקיים <span dir="ltr">TS\models P \iff TS'\models\Box\neg bad</span>.<br/>
+<b>א.</b> הראו שלא לכל <span dir="ltr">TS</span> מתקיים <span dir="ltr"><KatexInline math="TS\models P \iff TS'\models\Box\neg bad" /></span>.<br/>
 <b>ב.</b> הציעו תיקון פשוט לבנייה כך שהשקילות תתקיים תמיד.
 </div>
 
@@ -1319,10 +1319,10 @@ class: text-center
 
 <div class="grid grid-cols-1 gap-2 mt-2 text-right text-[14.5px] leading-snug">
 <div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
-<b>א.</b> דוגמה נגדית: <span dir="ltr">S=\{s_0,s_1\}</span>, <span dir="ltr">I=\{s_0\}</span>, <span dir="ltr">L(s_0)=\{a,b\}</span>, <span dir="ltr">L(s_1)=\{a\}</span>, <span dir="ltr">s_0\to s_1\to s_0\to\cdots</span>. <span dir="ltr">TS\models P</span> (התוויות מתחלפות, לעולם לא שוות ברצף). אבל המצב ההתחלתי ב-<span dir="ltr">TS'</span> הוא <span dir="ltr">\langle s_0,L(s_0)\rangle=\langle s_0,\{a,b\}\rangle</span> - ולכן מיד <span dir="ltr">L'(\langle s_0,\{a,b\}\rangle)=\{bad\}</span>, כלומר <span dir="ltr">TS'\not\models\Box\neg bad</span>. הבנייה מניחה "תווית קודמת" למצב ההתחלתי, אבל אין כזו בפועל - <span dir="ltr">TS\models P</span> ועדיין <span dir="ltr">TS'\not\models\Box\neg bad</span>.
+<b>א.</b> דוגמה נגדית: <span dir="ltr"><KatexInline math="S=\{s_0,s_1\}" /></span>, <span dir="ltr"><KatexInline math="I=\{s_0\}" /></span>, <span dir="ltr"><KatexInline math="L(s_0)=\{a,b\}" /></span>, <span dir="ltr"><KatexInline math="L(s_1)=\{a\}" /></span>, <span dir="ltr"><KatexInline math="s_0\to s_1\to s_0\to\cdots" /></span>. <span dir="ltr"><KatexInline math="TS\models P" /></span> (התוויות מתחלפות, לעולם לא שוות ברצף). אבל המצב ההתחלתי ב-<span dir="ltr">TS'</span> הוא <span dir="ltr"><KatexInline math="\langle s_0,L(s_0)\rangle=\langle s_0,\{a,b\}\rangle" /></span> - ולכן מיד <span dir="ltr"><KatexInline math="L'(\langle s_0,\{a,b\}\rangle)=\{bad\}" /></span>, כלומר <span dir="ltr"><KatexInline math="TS'\not\models\Box\neg bad" /></span>. הבנייה מניחה "תווית קודמת" למצב ההתחלתי, אבל אין כזו בפועל - <span dir="ltr"><KatexInline math="TS\models P" /></span> ועדיין <span dir="ltr"><KatexInline math="TS'\not\models\Box\neg bad" /></span>.
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900">
-<b>ב. התיקון:</b> מוסיפים סימן טרי <span dir="ltr">start\notin AP</span> ומשנים רק את <b>המצבים ההתחלתיים</b>: <span dir="ltr">I'=I\times\{\{start\}\}</span> (במקום <span dir="ltr">I\times\{L(s):s\in I\}</span>). כך, בצעד הראשון <span dir="ltr">S=\{start\}\ne L(s_0)</span> בוודאות (כי <span dir="ltr">start\notin AP</span>), ואין הפרת-שווא. כל שאר הבנייה (מעברים ותיוג <span dir="ltr">bad</span>) נשארת זהה. עכשיו <span dir="ltr">\langle s,S\rangle</span> "זוכר" תווית אמיתית קודמת בכל מצב חוץ מההתחלה, ושם בדיוק לא נדרשת השוואה - מתקיים <span dir="ltr">TS\models P\iff TS'\models\Box\neg bad</span> לכל <span dir="ltr">TS</span>.
+<b>ב. התיקון:</b> מוסיפים סימן טרי <span dir="ltr"><KatexInline math="start\notin AP" /></span> ומשנים רק את <b>המצבים ההתחלתיים</b>: <span dir="ltr"><KatexInline math="I'=I\times\{\{start\}\}" /></span> (במקום <span dir="ltr"><KatexInline math="I\times\{L(s):s\in I\}" /></span>). כך, בצעד הראשון <span dir="ltr"><KatexInline math="S=\{start\}\ne L(s_0)" /></span> בוודאות (כי <span dir="ltr"><KatexInline math="start\notin AP" /></span>), ואין הפרת-שווא. כל שאר הבנייה (מעברים ותיוג <span dir="ltr">bad</span>) נשארת זהה. עכשיו <span dir="ltr"><KatexInline math="\langle s,S\rangle" /></span> "זוכר" תווית אמיתית קודמת בכל מצב חוץ מההתחלה, ושם בדיוק לא נדרשת השוואה - מתקיים <span dir="ltr"><KatexInline math="TS\models P\iff TS'\models\Box\neg bad" /></span> לכל <span dir="ltr">TS</span>.
 </div>
 </div>
 
@@ -1332,9 +1332,9 @@ class: text-center
 
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[16px] leading-relaxed">
 קבעו נכון/שגוי, והוכיחו:<br/>
-<b>א.</b> אם <span dir="ltr">P</span> וגם המשלים שלה <span dir="ltr">\overline{P}</span> הן שתיהן תכונות בטיחות, אז <span dir="ltr">P</span> היא תכונת שמורה.<br/>
-<b>ב.</b> יהי <span dir="ltr">AP=\{p\}</span>, <span dir="ltr">\psi=\Box(p\to\X p)</span>. הטענה: <span dir="ltr">closure(\mathit{Words}(\psi))=\mathit{Words}(\psi)</span> (כלומר <span dir="ltr">\psi</span> מגדירה תכונת בטיחות).<br/>
-<b>ג.</b> כל תכונה <span dir="ltr">\omega</span>-רגולרית <span dir="ltr">P</span> ניתנת לכתיבה כ-<span dir="ltr">P=P_{safe}\cap P_{live}</span> עם <span dir="ltr">P_{safe}</span> תכונת בטיחות <b>רגולרית</b>.
+<b>א.</b> אם <span dir="ltr">P</span> וגם המשלים שלה <span dir="ltr"><KatexInline math="\overline{P}" /></span> הן שתיהן תכונות בטיחות, אז <span dir="ltr">P</span> היא תכונת שמורה.<br/>
+<b>ב.</b> יהי <span dir="ltr"><KatexInline math="AP=\{p\}" /></span>, <span dir="ltr"><KatexInline math="\psi=\Box(p\to\bigcirc p)" /></span>. הטענה: <span dir="ltr"><KatexInline math="closure(\mathit{Words}(\psi))=\mathit{Words}(\psi)" /></span> (כלומר <span dir="ltr"><KatexInline math="\psi" /></span> מגדירה תכונת בטיחות).<br/>
+<b>ג.</b> כל תכונה <span dir="ltr"><KatexInline math="\omega" /></span>-רגולרית <span dir="ltr">P</span> ניתנת לכתיבה כ-<span dir="ltr"><KatexInline math="P=P_{safe}\cap P_{live}" /></span> עם <span dir="ltr"><KatexInline math="P_{safe}" /></span> תכונת בטיחות <b>רגולרית</b>.
 </div>
 
 ---
@@ -1343,13 +1343,13 @@ class: text-center
 
 <div class="grid grid-cols-1 gap-2 mt-2 text-right text-[14.5px] leading-snug">
 <div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
-<b>א. לא נכון.</b> דוגמה נגדית פשוטה: <span dir="ltr">P=\mathit{Words}(p)</span> ("האות הראשונה היא <span dir="ltr">p</span>", שאר האותיות חופשיות). <span dir="ltr">P</span> בטיחות: הרישא הרעה המינימלית היחידה היא אות ראשונה <span dir="ltr">\neg p</span> - אם נצפה בה, אין דרך לתקן. <span dir="ltr">\overline P=\mathit{Words}(\neg p)</span> בטיחות בדיוק מאותה סיבה (בתמורה). אך <span dir="ltr">P</span> אינה שמורה: שמורה דורשת תנאי-מצב יחיד שמתקיים <b>בכל</b> מצב, ואילו <span dir="ltr">P</span> מגבילה רק את הצעד הראשון - המילים <span dir="ltr">p\,p\,p\,\cdots</span> ו-<span dir="ltr">p\,\neg p\,\neg p\,\cdots</span> שתיהן ב-<span dir="ltr">P</span> אך אין תנאי-מצב יחיד שמחזיק בכל אות בשתיהן ומבדיל אותן מ-<span dir="ltr">\neg p\,p\,p\,\cdots</span>. <b>מסקנה:</b> "בטיחות + משלים בטיחות" (סגור-ופתוח) הוא תנאי חלש מ"שמורה" - הוא מבטיח החלטה מוקדמת אך לא בהכרח <b>חזרה על אותו תנאי בכל צעד</b>.
+<b>א. לא נכון.</b> דוגמה נגדית פשוטה: <span dir="ltr"><KatexInline math="P=\mathit{Words}(p)" /></span> ("האות הראשונה היא <span dir="ltr">p</span>", שאר האותיות חופשיות). <span dir="ltr">P</span> בטיחות: הרישא הרעה המינימלית היחידה היא אות ראשונה <span dir="ltr"><KatexInline math="\neg p" /></span> - אם נצפה בה, אין דרך לתקן. <span dir="ltr"><KatexInline math="\overline P=\mathit{Words}(\neg p)" /></span> בטיחות בדיוק מאותה סיבה (בתמורה). אך <span dir="ltr">P</span> אינה שמורה: שמורה דורשת תנאי-מצב יחיד שמתקיים <b>בכל</b> מצב, ואילו <span dir="ltr">P</span> מגבילה רק את הצעד הראשון - המילים <span dir="ltr"><KatexInline math="p\,p\,p\,\cdots" /></span> ו-<span dir="ltr"><KatexInline math="p\,\neg p\,\neg p\,\cdots" /></span> שתיהן ב-<span dir="ltr">P</span> אך אין תנאי-מצב יחיד שמחזיק בכל אות בשתיהן ומבדיל אותן מ-<span dir="ltr"><KatexInline math="\neg p\,p\,p\,\cdots" /></span>. <b>מסקנה:</b> "בטיחות + משלים בטיחות" (סגור-ופתוח) הוא תנאי חלש מ"שמורה" - הוא מבטיח החלטה מוקדמת אך לא בהכרח <b>חזרה על אותו תנאי בכל צעד</b>.
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900">
-<b>ב. נכון.</b> מספיק להראות רישא רעה לכל מילה שמפרה. אם <span dir="ltr">\sigma\notin\mathit{Words}(\psi)</span>, קיים <span dir="ltr">i</span> עם <span dir="ltr">\sigma[i]\models p</span> וגם <span dir="ltr">\sigma[i+1]\not\models p</span>. הרישא <span dir="ltr">\rho=\sigma[0..i+1]</span> היא רישא רעה: <b>כל</b> המשך שלה כבר מכיל את ההפרה ב-<span dir="ltr">i</span>, ולכן לעולם לא יקיים <span dir="ltr">\psi</span>. לכן <span dir="ltr">\psi</span> בטיחות, ועל כן <span dir="ltr">closure(\mathit{Words}(\psi))=\mathit{Words}(\psi)</span>.
+<b>ב. נכון.</b> מספיק להראות רישא רעה לכל מילה שמפרה. אם <span dir="ltr"><KatexInline math="\sigma\notin\mathit{Words}(\psi)" /></span>, קיים <span dir="ltr">i</span> עם <span dir="ltr"><KatexInline math="\sigma[i]\models p" /></span> וגם <span dir="ltr"><KatexInline math="\sigma[i+1]\not\models p" /></span>. הרישא <span dir="ltr"><KatexInline math="\rho=\sigma[0..i+1]" /></span> היא רישא רעה: <b>כל</b> המשך שלה כבר מכיל את ההפרה ב-<span dir="ltr">i</span>, ולכן לעולם לא יקיים <span dir="ltr"><KatexInline math="\psi" /></span>. לכן <span dir="ltr"><KatexInline math="\psi" /></span> בטיחות, ועל כן <span dir="ltr"><KatexInline math="closure(\mathit{Words}(\psi))=\mathit{Words}(\psi)" /></span>.
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900">
-<b>ג. נכון.</b> משפט הפירוק: <span dir="ltr">P_{safe}=closure(P)</span>, <span dir="ltr">P_{live}</span> חיות, ו-<span dir="ltr">P=P_{safe}\cap P_{live}</span> תמיד. נשאר להראות ש-<span dir="ltr">P_{safe}</span> רגולרית כש-<span dir="ltr">P</span> <span dir="ltr">\omega</span>-רגולרית: אם <span dir="ltr">P=L_\omega(\mathcal{A})</span>, אז קבוצת <b>הרישות הסופיות</b> <span dir="ltr">pref(P)</span> מתקבלת ע"י <span dir="ltr">\mathcal{A}</span> עם כל מצביו מוגדרים כמקבלים (הישגות גרידא) - שפה רגולרית. <span dir="ltr">closure(P)</span> הוא בדיוק קבוצת המילים שכל הרישות שלהן ב-<span dir="ltr">pref(P)</span>, כלומר המשלים של "יש רישא מחוץ ל-<span dir="ltr">pref(P)</span>" - ומכיוון שרגולריות סגורות להשלמה, גם זו תכונת בטיחות רגולרית.
+<b>ג. נכון.</b> משפט הפירוק: <span dir="ltr"><KatexInline math="P_{safe}=closure(P)" /></span>, <span dir="ltr"><KatexInline math="P_{live}" /></span> חיות, ו-<span dir="ltr"><KatexInline math="P=P_{safe}\cap P_{live}" /></span> תמיד. נשאר להראות ש-<span dir="ltr"><KatexInline math="P_{safe}" /></span> רגולרית כש-<span dir="ltr">P</span> <span dir="ltr"><KatexInline math="\omega" /></span>-רגולרית: אם <span dir="ltr"><KatexInline math="P=L_\omega(\mathcal{A})" /></span>, אז קבוצת <b>הרישות הסופיות</b> <span dir="ltr">pref(P)</span> מתקבלת ע"י <span dir="ltr"><KatexInline math="\mathcal{A}" /></span> עם כל מצביו מוגדרים כמקבלים (הישגות גרידא) - שפה רגולרית. <span dir="ltr">closure(P)</span> הוא בדיוק קבוצת המילים שכל הרישות שלהן ב-<span dir="ltr">pref(P)</span>, כלומר המשלים של "יש רישא מחוץ ל-<span dir="ltr">pref(P)</span>" - ומכיוון שרגולריות סגורות להשלמה, גם זו תכונת בטיחות רגולרית.
 </div>
 </div>
 
@@ -1429,7 +1429,7 @@ class: text-center
 <b>א.</b> <span dir="ltr">q₀</span> (מקבל): נשארים כל עוד אין בקשה פתוחה, או שבקשה זוכה למענק מיידי. <span dir="ltr">q₁</span>: בקשה פתוחה ללא מענק עדיין - נשארים כאן עד שמגיע <span dir="ltr">c</span> וחוזרים ל-<span dir="ltr">q₀</span>.
 </div>
 <div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
-<b>ב.</b> ריצה שנתקעת לנצח ב-<span dir="ltr">q₁</span> (בקשה שלעולם לא נענית) חייבת <b>להידחות</b>, אך זו תכונת "אינסוף פעמים" על כלל ההמשך - אין רישא סופית שמעידה על הפרה, ולכן הישגות (כמו בבטיחות) לא מספיקה; צריך לבדוק שהריצה <b>לא</b> נתקעת לנצח מחוץ ל-<span dir="ltr">F={q₀}</span>, וזה מצריך קבלת <span dir="ltr">Büchi</span>.
+<b>ב.</b> ריצה שנתקעת לנצח ב-<span dir="ltr">q₁</span> (בקשה שלעולם לא נענית) חייבת <b>להידחות</b>, אך זו תכונת "אינסוף פעמים" על כלל ההמשך - אין רישא סופית שמעידה על הפרה, ולכן הישגות (כמו בבטיחות) לא מספיקה; צריך לבדוק שהריצה <b>לא</b> נתקעת לנצח מחוץ ל-<span dir="ltr"><KatexInline math="F={q₀}" /></span>, וזה מצריך קבלת <span dir="ltr">Büchi</span>.
 </div>
 </div>
 
@@ -1471,9 +1471,9 @@ class: text-center
 <div class="mt-2 bg-red-50 border border-red-200 rounded p-3 text-red-900 text-right text-[15px] leading-relaxed">
 <b>ב.</b> אוטומט דטרמיניסטי <b>חייב להחליט עכשיו</b>, ללא יכולת "לנחש ולחזור בו", מתי לעבור סופית למצב מקבל יציב. אבל בכל מילה סופית שנקראה עד כה תמיד <b>אפשרי</b> שתופיע עוד <span dir="ltr">a</span> בעתיד - כל החלטה "כעת אין יותר <span dir="ltr">a</span>" עלולה להתבדות. לכן כל <span dir="ltr">DBA</span> מועמד יוכשל ע"י איזושהי מילה ב-<span dir="ltr">L</span> או חוצה אותה - אין <span dir="ltr">DBA</span> שקול. (<span dir="ltr">L</span> היא תכונת <b>התמדה</b> - <span dir="ltr">◇□¬a</span> - וכפי שראינו, התמדה לא-טריוויאלית "מרגישה כמו" החלטה שלעולם אינה בטוחה.)
 </div>
-<div class="mt-2 bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900 text-right text-[15px] leading-relaxed">
-<b>ג. כן, יש <span dir="ltr">DBA</span>.</b> המשלים הוא <span dir="ltr"><KatexInline math="\Box\Diamond a" /></span> ("<span dir="ltr">a</span> אינסוף פעמים") - תכונת <b>חזרה</b> (recurrence), לא התמדה. בשונה מהתמדה, חזרה <b>אינה</b> דורשת מהאוטומט להחליט "סופית" שמשהו יציב לנצח - היא רק דורשת לחזור ולעבור דרך מצב מקבל בכל פעם ש-<span dir="ltr">a</span> מופיעה, וזו החלטה מקומית שאפשר לקבל בו-זמנית עם קריאת <span dir="ltr">a</span> עצמה.
-</div>
+---
+
+# פתרון ג': חזרה, בניגוד להתמדה, כן ניתנת להחלטה דטרמיניסטית
 
 <div class="bg-white rounded border border-slate-200 shadow-sm p-2 mt-2">
 <AutomatonD3 variant="classic" :width="420" :height="160" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="12"
@@ -1490,3 +1490,7 @@ class: text-center
 />
 </div>
 <div class="mt-1 text-center text-slate-500 text-[13px]">כל הופעת <span dir="ltr">a</span> נכנסת ל-<span dir="ltr">just-a</span> (מקבל) - ביקור אינסופי בו שקול ל"<span dir="ltr">a</span> אינסוף פעמים".</div>
+
+<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900 text-right text-[15px] leading-relaxed">
+<b>ג. כן, יש <span dir="ltr">DBA</span>.</b> המשלים הוא <span dir="ltr"><KatexInline math="\Box\Diamond a" /></span> ("<span dir="ltr">a</span> אינסוף פעמים") - תכונת <b>חזרה</b> (recurrence), לא התמדה. בשונה מהתמדה, חזרה <b>אינה</b> דורשת מהאוטומט להחליט "סופית" שמשהו יציב לנצח - היא רק דורשת לחזור ולעבור דרך מצב מקבל בכל פעם ש-<span dir="ltr">a</span> מופיעה, וזו החלטה מקומית שאפשר לקבל בו-זמנית עם קריאת <span dir="ltr">a</span> עצמה.
+</div>
