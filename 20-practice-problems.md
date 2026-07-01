@@ -1380,10 +1380,24 @@ class: text-center
 
 <div class="grid grid-cols-1 gap-2 mt-2 text-right text-[14.5px] leading-snug">
 <div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
-<b>א.</b> דוגמה נגדית: <span dir="ltr"><KatexInline math="S=\{s_0,s_1\}" /></span>, <span dir="ltr"><KatexInline math="I=\{s_0\}" /></span>, <span dir="ltr"><KatexInline math="L(s_0)=\{a,b\}" /></span>, <span dir="ltr"><KatexInline math="L(s_1)=\{a\}" /></span>, <span dir="ltr"><KatexInline math="s_0\to s_1\to s_0\to\cdots" /></span>. <span dir="ltr"><KatexInline math="TS\models P" /></span> (התוויות מתחלפות, לעולם לא שוות ברצף). אבל המצב ההתחלתי ב-<span dir="ltr">TS'</span> הוא <span dir="ltr"><KatexInline math="\langle s_0,L(s_0)\rangle=\langle s_0,\{a,b\}\rangle" /></span> - ולכן מיד <span dir="ltr"><KatexInline math="L'(\langle s_0,\{a,b\}\rangle)=\{bad\}" /></span>, כלומר <span dir="ltr"><KatexInline math="TS'\not\models\Box\neg bad" /></span>. הבנייה מניחה "תווית קודמת" למצב ההתחלתי, אבל אין כזו בפועל - <span dir="ltr"><KatexInline math="TS\models P" /></span> ועדיין <span dir="ltr"><KatexInline math="TS'\not\models\Box\neg bad" /></span>.
+<b>א. דוגמה נגדית:</b> <span dir="ltr"><KatexInline math="S=\{s_0,s_1\}" /></span>, <span dir="ltr"><KatexInline math="I=\{s_0\}" /></span>, <span dir="ltr"><KatexInline math="L(s_0)=\{a,b\}" /></span>, <span dir="ltr"><KatexInline math="L(s_1)=\{a\}" /></span>, <span dir="ltr"><KatexInline math="s_0\to s_1\to s_0\to\cdots" /></span>.
+<ul class="list-disc list-inside mt-1 space-y-0.5">
+<li><span dir="ltr"><KatexInline math="TS\models P" /></span>: התוויות מתחלפות בין <span dir="ltr"><KatexInline math="\{a,b\}" /></span> ל-<span dir="ltr"><KatexInline math="\{a\}" /></span>, לעולם לא שוות ברצף.</li>
+<li>מצב ההתחלה ב-<span dir="ltr"><KatexInline math="TS'" /></span>: <span dir="ltr"><KatexInline math="\langle s_0,L(s_0)\rangle=\langle s_0,\{a,b\}\rangle" /></span>.</li>
+<li>תיוג: <span dir="ltr"><KatexInline math="L'(\langle s_0,\{a,b\}\rangle)=\{bad\}" /></span> כי <span dir="ltr"><KatexInline math="S=\{a,b\}=L(s_0)" /></span>.</li>
+<li>לכן <span dir="ltr"><KatexInline math="TS'\not\models\Box\neg bad" /></span> - למרות ש-<span dir="ltr"><KatexInline math="TS\models P" /></span>. השקילות נכשלת.</li>
+<li><b>הבעיה:</b> הבנייה מאתחלת את הזיכרון כ-<span dir="ltr"><KatexInline math="L(s_0)" /></span> כאילו היה "תווית קודמת", אבל אין מצב קודם למצב ההתחלתי.</li>
+</ul>
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900">
-<b>ב. התיקון:</b> מוסיפים סימן טרי <span dir="ltr"><KatexInline math="start\notin AP" /></span> ומשנים רק את <b>המצבים ההתחלתיים</b>: <span dir="ltr"><KatexInline math="I'=I\times\{\{start\}\}" /></span> (במקום <span dir="ltr"><KatexInline math="I\times\{L(s):s\in I\}" /></span>). כך, בצעד הראשון <span dir="ltr"><KatexInline math="S=\{start\}\ne L(s_0)" /></span> בוודאות (כי <span dir="ltr"><KatexInline math="start\notin AP" /></span>), ואין הפרת-שווא. כל שאר הבנייה (מעברים ותיוג <span dir="ltr">bad</span>) נשארת זהה. עכשיו <span dir="ltr"><KatexInline math="\langle s,S\rangle" /></span> "זוכר" תווית אמיתית קודמת בכל מצב חוץ מההתחלה, ושם בדיוק לא נדרשת השוואה - מתקיים <span dir="ltr"><KatexInline math="TS\models P\iff TS'\models\Box\neg bad" /></span> לכל <span dir="ltr">TS</span>.
+<b>ב. התיקון:</b>
+<ul class="list-disc list-inside mt-1 space-y-0.5">
+<li>מוסיפים <span dir="ltr"><KatexInline math="start\notin AP" /></span> - סמל חדש שאינו בשום תווית.</li>
+<li>משנים רק את <b>מצבי ההתחלה</b>: <span dir="ltr"><KatexInline math="I'=I\times\{\{start\}\}" /></span> במקום <span dir="ltr"><KatexInline math="I\times\{L(s):s\in I\}" /></span>.</li>
+<li>כעת בצעד הראשון <span dir="ltr"><KatexInline math="S=\{start\}\ne L(s_0)" /></span> תמיד (כי <span dir="ltr"><KatexInline math="start\notin AP" /></span>), ולכן מצב ההתחלה אינו מתויג <span dir="ltr">bad</span>.</li>
+<li>כל שאר הבנייה נשארת ללא שינוי: מהצעד השני ואילך, <span dir="ltr"><KatexInline math="S" /></span> שומר תווית אמיתית של המצב הקודם.</li>
+<li><b>תוצאה:</b> <span dir="ltr"><KatexInline math="TS\models P\iff TS'\models\Box\neg bad" /></span> לכל <span dir="ltr"><KatexInline math="TS" /></span>.</li>
+</ul>
 </div>
 </div>
 
