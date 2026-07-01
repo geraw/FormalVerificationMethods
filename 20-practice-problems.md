@@ -1034,21 +1034,25 @@ info: |
 
 # פתרון ג': חַיּוּת אמ"מ צפופה
 
-<div class="mt-3 grid grid-cols-1 gap-3 text-right text-[17px] leading-relaxed">
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
-<div class="font-bold mb-2">כיוון ⟹: חַיּוּת ← צפופה</div>
-<ol class="list-decimal list-inside space-y-1.5">
-<li>יהי <KatexInline math="\sigma\in\Sigma^\omega" /> ו-<KatexInline math="\varepsilon>0" />. נבחר <KatexInline math="n" /> כך ש-<KatexInline math="2^{-(n+1)}<\varepsilon" />.</li>
-<li>מחַיּוּת, לרישא <KatexInline math="u=\sigma[0..n]" /> קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="u\sqsubseteq\tau" />.</li>
-<li><KatexInline math="\tau[0..n]=\sigma[0..n]" />, לכן <KatexInline math="d(\sigma,\tau)\le 2^{-(n+1)}<\varepsilon" />. <span dir="ltr">□</span></li>
+<div class="mt-2 grid grid-cols-1 gap-2 text-right text-[15px] leading-snug">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2">
+<div class="font-bold mb-1">כיוון ⟹: חַיּוּת ← צפופה</div>
+<ol class="list-decimal list-inside space-y-1">
+<li>יהי <KatexInline math="\sigma\in\Sigma^\omega" /> ו-<KatexInline math="\varepsilon>0" /> שרירותיים. רוצים למצוא <KatexInline math="\tau\in P" /> עם <KatexInline math="d(\sigma,\tau)<\varepsilon" />.</li>
+<li>נבחר <KatexInline math="n" /> כך ש-<KatexInline math="2^{-(n+1)}<\varepsilon" /> (אפשרי כי <KatexInline math="2^{-(n+1)}\to 0" />).</li>
+<li>נגדיר <KatexInline math="u=\sigma[0..n]" /> - רישא של <KatexInline math="\sigma" /> באורך <KatexInline math="n+1" />.</li>
+<li>מכיוון ש-<KatexInline math="P" /> חַיּוּת, לרישא <KatexInline math="u" /> קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="u\sqsubseteq\tau" />, כלומר <KatexInline math="\tau[0..n]=\sigma[0..n]" />.</li>
+<li>לכן <KatexInline math="d(\sigma,\tau)\le 2^{-(n+1)}<\varepsilon" />, ומצאנו <KatexInline math="\tau\in P" /> בכדור. <span dir="ltr">□</span></li>
 </ol>
 </div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
-<div class="font-bold mb-2">כיוון ⟸: צפופה ← חַיּוּת</div>
-<ol class="list-decimal list-inside space-y-1.5">
-<li>יהי <KatexInline math="u\in\Sigma^*" /> באורך <KatexInline math="n" />. נבחר <KatexInline math="\sigma" /> עם <KatexInline math="u\sqsubseteq\sigma" /> ו-<KatexInline math="\varepsilon=2^{-(n+1)}" />.</li>
-<li>מצפיפות, קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="d(\sigma,\tau)<\varepsilon" />.</li>
-<li><KatexInline math="\tau[0..n]=u" />, לכן <KatexInline math="u\sqsubseteq\tau" /> ו-<KatexInline math="\tau\in P" />: המשך ב-<KatexInline math="P" />. <span dir="ltr">□</span></li>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2">
+<div class="font-bold mb-1">כיוון ⟸: צפופה ← חַיּוּת</div>
+<ol class="list-decimal list-inside space-y-1">
+<li>יהי <KatexInline math="u\in\Sigma^*" /> רישא שרירותית באורך <KatexInline math="n" />. רוצים למצוא <KatexInline math="\tau\in P" /> עם <KatexInline math="u\sqsubseteq\tau" />.</li>
+<li>נבחר מילה <KatexInline math="\sigma\in\Sigma^\omega" /> כלשהי המתחילה ב-<KatexInline math="u" />, ונגדיר <KatexInline math="\varepsilon=2^{-(n+1)}" />.</li>
+<li>מכיוון ש-<KatexInline math="P" /> צפופה, קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="d(\sigma,\tau)<\varepsilon=2^{-(n+1)}" />.</li>
+<li>מהגדרת המטריקה: <KatexInline math="d(\sigma,\tau)<2^{-(n+1)}" /> פירושו <KatexInline math="\tau[0..n]=\sigma[0..n]=u" />.</li>
+<li>לכן <KatexInline math="u\sqsubseteq\tau" /> ו-<KatexInline math="\tau\in P" /> - מצאנו המשך של <KatexInline math="u" /> ב-<KatexInline math="P" />. <span dir="ltr">□</span></li>
 </ol>
 </div>
 </div>
