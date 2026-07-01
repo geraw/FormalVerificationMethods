@@ -1007,10 +1007,10 @@ info: |
 
 # פתרון ב': בטיחות אמ"מ סגורה
 
-<div class="mt-3 grid grid-cols-1 gap-3 text-right text-[17px] leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-3">
-<div class="font-bold mb-2">כיוון ⟹: בטיחות ← סגורה</div>
-<ol class="list-decimal list-inside space-y-1.5">
+<div class="mt-2 grid grid-cols-1 gap-2 text-right text-[15px] leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-2">
+<div class="font-bold mb-1">כיוון ⟹: בטיחות ← סגורה</div>
+<ol class="list-decimal list-inside space-y-1">
 <li>יהי <KatexInline math="\sigma\notin P" />. מכיוון ש-<KatexInline math="P" /> בטיחות, קיימת <b>רישא רעה</b> <KatexInline math="u=\sigma[0..n]" />.</li>
 <li>כלומר: לכל <KatexInline math="\tau\in\Sigma^\omega" /> עם <KatexInline math="u\sqsubseteq\tau" /> מתקיים <KatexInline math="\tau\notin P" />.</li>
 <li>נבחר <KatexInline math="\varepsilon=2^{-(n+1)}" />. מהגדרת המטריקה: <KatexInline math="B(\sigma,\varepsilon)=\{\tau\mid\tau[0..n]=\sigma[0..n]\}=\{\tau\mid u\sqsubseteq\tau\}" />.</li>
@@ -1018,9 +1018,9 @@ info: |
 <li>מכיוון ש-<KatexInline math="\sigma" /> שרירותי, המשלים פתוח ולכן <KatexInline math="P" /> סגורה. <span dir="ltr">□</span></li>
 </ol>
 </div>
-<div class="bg-blue-50 border border-blue-200 rounded p-3">
-<div class="font-bold mb-2">כיוון ⟸: סגורה ← בטיחות</div>
-<ol class="list-decimal list-inside space-y-1.5">
+<div class="bg-blue-50 border border-blue-200 rounded p-2">
+<div class="font-bold mb-1">כיוון ⟸: סגורה ← בטיחות</div>
+<ol class="list-decimal list-inside space-y-1">
 <li>יהי <KatexInline math="\sigma\notin P" />. מכיוון ש-<KatexInline math="P" /> סגורה, המשלים <KatexInline math="\Sigma^\omega\setminus P" /> פתוח.</li>
 <li>לכן קיים <KatexInline math="\varepsilon>0" /> כך ש-<KatexInline math="B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />.</li>
 <li>נבחר <KatexInline math="n" /> שלם כך ש-<KatexInline math="2^{-(n+1)}\le\varepsilon" />. אז <KatexInline math="B(\sigma,2^{-(n+1)})\subseteq B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />.</li>
