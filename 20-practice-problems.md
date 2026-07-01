@@ -1335,11 +1335,12 @@ class: text-center
 <b>א. לא - אינה שמורה.</b> שמורה מאופיינת ע"י פסוק מצב <span dir="ltr"><KatexInline math="\Psi" /></span> שמחזיק בכל מצב בנפרד. בשלילה: אם <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> הייתה שמורה, מילה שרק האות הראשונה בה מקיימת <span dir="ltr"><KatexInline math="\Phi" /></span> מקיימת את <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> ולכן <span dir="ltr"><KatexInline math="\Phi\Rightarrow\Psi" /></span>. אז המילה הקבועה <span dir="ltr"><KatexInline math="\Phi^\omega" /></span> מקיימת <span dir="ltr"><KatexInline math="\Psi" /></span> בכל אות ולכן צריכה לקיים את <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span>, סתירה. תכונה התלויה בחלון של <span dir="ltr"><KatexInline math="n+1" /></span> צעדים אינה שמורה.
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900">
-<b>ב. אלגוריתם - בדיקת הישגות באוטומט מונה:</b>
+<b>ב. אלגוריתם - הרחבת מרחב המצבים במונה ישיר:</b>
 <ol class="list-decimal list-inside space-y-0.5 mt-1">
-<li>בנו אוטומט מונה <span dir="ltr"><KatexInline math="\mathcal{A}_{n,\Phi}" /></span>: מצבים <span dir="ltr"><KatexInline math="q_0,\ldots,q_n,q_{err}" /></span>; מעברים <span dir="ltr"><KatexInline math="q_i\xrightarrow{\Phi}q_{i+1}" /></span>, <span dir="ltr"><KatexInline math="q_i\xrightarrow{\neg\Phi}q_0" /></span>, <span dir="ltr"><KatexInline math="q_n\xrightarrow{\Phi}q_{err}" /></span>, ו-<span dir="ltr"><KatexInline math="q_{err}" /></span> מלכודת.</li>
-<li>בנו מכפלה <span dir="ltr"><KatexInline math="TS'=TS\times\mathcal{A}_{n,\Phi}" /></span>: מעבר <span dir="ltr"><KatexInline math="\langle s,q\rangle\to\langle t,q'\rangle" /></span> כאשר המעבר באוטומט נקבע לפי <span dir="ltr"><KatexInline math="L(t)" /></span> (תווית <b>היעד</b>).</li>
-<li>בדקו הישגות (BFS/DFS): <span dir="ltr"><KatexInline math="TS\models P_{\Phi,n}" /></span> אמ"מ אין מצב <span dir="ltr"><KatexInline math="\langle s,q_{err}\rangle" /></span> נגיש מ-<span dir="ltr"><KatexInline math="\langle s_0,q_0\rangle" /></span> עבור <span dir="ltr"><KatexInline math="s_0\in I" /></span>.</li>
+<li>הגדירו מערכת מצבים מורחבת עם מרכיב מונה: מצב הוא זוג <span dir="ltr"><KatexInline math="\langle s,\,c\rangle\in S\times\{0,1,\ldots,n+1\}" /></span>.</li>
+<li><b>מצבים התחלתיים:</b> לכל <span dir="ltr"><KatexInline math="s_0\in I" /></span>: <span dir="ltr"><KatexInline math="\langle s_0,\,c_0\rangle" /></span> כאשר <span dir="ltr"><KatexInline math="c_0=1" /></span> אם <span dir="ltr"><KatexInline math="L(s_0)\models\Phi" /></span>, ואחרת <span dir="ltr"><KatexInline math="c_0=0" /></span>.</li>
+<li><b>מעברים:</b> <span dir="ltr"><KatexInline math="\langle s,c\rangle\to\langle t,c'\rangle" /></span> לכל מעבר <span dir="ltr"><KatexInline math="s\to t" /></span> ב-<span dir="ltr"><KatexInline math="TS" /></span>, כאשר <span dir="ltr"><KatexInline math="c'=c+1" /></span> אם <span dir="ltr"><KatexInline math="L(t)\models\Phi" /></span>, ואחרת <span dir="ltr"><KatexInline math="c'=0" /></span>.</li>
+<li><b>בדיקה:</b> <span dir="ltr"><KatexInline math="TS\models P_{\Phi,n}" /></span> אמ"מ אין מצב <span dir="ltr"><KatexInline math="\langle s,\,n+1\rangle" /></span> נגיש (BFS/DFS על המערכת המורחבת).</li>
 </ol>
 </div>
 </div>
