@@ -1349,9 +1349,9 @@ class: text-center
 
 # שאלה: רדוקציה שבורה - בטיחות "אף פעם לא bad"
 
-<div class="text-right text-[15px] leading-snug mt-2">
+<div class="text-right text-[15px] leading-relaxed mt-3">
 תכונת הבטיחות: <span dir="ltr"><KatexInline math="P=\{\sigma\mid\forall i,\ \sigma[i]\ne\sigma[i+1]\}" /></span> ("שני מצבים עוקבים לא מתויגים אותו דבר"). מציעים לבדוק אותה ע"י מערכת מעברים <span dir="ltr"><KatexInline math="TS'" /></span> עם:
-<ul class="list-disc list-inside mt-1 space-y-0.5">
+<ul class="list-disc list-inside mt-2 space-y-1">
 <li><b>מצבים:</b> <span dir="ltr"><KatexInline math="S\times 2^{AP}" /></span> (המרכיב השני "זוכר" את תווית המצב הקודם)</li>
 <li><b>מצבי התחלה:</b> <span dir="ltr"><KatexInline math="\{\langle s,L(s)\rangle\mid s\in I\}" /></span></li>
 <li><b>מעברים:</b> <span dir="ltr"><KatexInline math="\langle s,S\rangle\xrightarrow{\alpha}\langle t,L(s)\rangle" /></span> לכל <span dir="ltr"><KatexInline math="s\xrightarrow{\alpha}t" /></span></li>
@@ -1359,11 +1359,17 @@ class: text-center
 </ul>
 </div>
 
-<div class="mt-2 bg-slate-50 border border-slate-200 rounded p-2 text-right text-[14px] leading-snug">
-<b>דוגמה שבה הבנייה נותנת תשובה נכונה:</b> יהי <span dir="ltr"><KatexInline math="TS" /></span>: מצב יחיד <span dir="ltr"><KatexInline math="s_0" /></span> עם לולאה עצמית, <span dir="ltr"><KatexInline math="L(s_0)=\{a\}" /></span>. אז <span dir="ltr"><KatexInline math="TS\not\models P" /></span> (תמיד <span dir="ltr"><KatexInline math="\sigma[i]=\sigma[i+1]=\{a\}" /></span>). ב-<span dir="ltr"><KatexInline math="TS'" /></span>: המצב ההתחלתי הוא <span dir="ltr"><KatexInline math="\langle s_0,\{a\}\rangle" /></span> ומיד <span dir="ltr"><KatexInline math="L'(\langle s_0,\{a\}\rangle)=\{bad\}" /></span>, כלומר <span dir="ltr"><KatexInline math="TS'\not\models\Box\neg bad" /></span>. <b>תוצאה נכונה</b> - גם <span dir="ltr"><KatexInline math="TS" /></span> אינה מקיימת את <span dir="ltr"><KatexInline math="P" /></span>.
+<div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-right text-[15px] leading-relaxed">
+<b>דוגמה שבה הבנייה נותנת תשובה נכונה:</b> יהי <span dir="ltr"><KatexInline math="AP=\{a\}" /></span>, מצב יחיד <span dir="ltr"><KatexInline math="s_0" /></span> עם לולאה עצמית, <span dir="ltr"><KatexInline math="L(s_0)=\{a\}" /></span>.
+<ul class="list-disc list-inside mt-1 space-y-1">
+<li><span dir="ltr"><KatexInline math="TS\not\models P" /></span>: כל ריצה היא <span dir="ltr"><KatexInline math="s_0,s_0,s_0,\ldots" /></span> עם <span dir="ltr"><KatexInline math="\sigma[i]=\sigma[i+1]=\{a\}" /></span> לכל <span dir="ltr"><KatexInline math="i" /></span>.</li>
+<li>מצב ההתחלה ב-<span dir="ltr"><KatexInline math="TS'" /></span>: <span dir="ltr"><KatexInline math="\langle s_0,L(s_0)\rangle=\langle s_0,\{a\}\rangle" /></span>.</li>
+<li>תיוג: <span dir="ltr"><KatexInline math="L'(\langle s_0,\{a\}\rangle)=\{bad\}" /></span> כי <span dir="ltr"><KatexInline math="S=\{a\}=L(s_0)" /></span>.</li>
+<li>לכן <span dir="ltr"><KatexInline math="bad" /></span> נגיש מיד, כלומר <span dir="ltr"><KatexInline math="TS'\not\models\Box\neg bad" /></span>. <b>תוצאה נכונה</b>: שני הצדדים שוללים.</li>
+</ul>
 </div>
 
-<div class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-amber-900 text-right text-[15px] leading-snug">
+<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[15px] leading-relaxed">
 <b>א.</b> הראו שלא לכל <span dir="ltr"><KatexInline math="TS" /></span> מתקיים <span dir="ltr"><KatexInline math="TS\models P\iff TS'\models\Box\neg bad" /></span>.<br/>
 <b>ב.</b> הציעו תיקון פשוט לבנייה כך שהשקילות תתקיים תמיד.
 </div>
