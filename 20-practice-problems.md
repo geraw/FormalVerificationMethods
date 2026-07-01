@@ -1133,15 +1133,6 @@ info: |
 class: text-center
 ---
 
-<!-- # פרק: שאלות הכנה למבחן
-
-<div class="mt-10 text-[20px] text-slate-600">
-שאלות מייצגות על נושאי הקורס שמעבר לבעיית התפוצצות המצבים - מבוי סתום, שמורות, בדיקת תכונות בטיחות רגולריות, ואוטומטי <span dir="ltr">Büchi</span> דטרמיניסטיים.
-</div>
-
---- 
--->
-
 # שאלה: בטיחות, חַיּוּת, גם וגם, או לא ולא?
 
 <div class="text-center text-slate-500 text-[13px]">לכל תכונה: שמורה? התמדה? חַיּוּת? בטיחות? (כל שמורה היא בטיחות, כל התמדה היא חַיּוּת) - לחצו לפתרון, אחת בכל פעם.</div>
@@ -1248,132 +1239,96 @@ class: text-center
 
 ---
 
-# שאלה: סיווג תכונות
+# שאלה: התאמת נוסחאות LTL לאוטומטי Büchi
 
-<div class="text-right text-[18px] leading-relaxed mt-3">
-יהי <span dir="ltr"><KatexInline math="AP=\{A,B\}" /></span>. נסחו את התכונות הבאות כתכונות בזמן לינארי, וסווגו כל אחת - שמורה, תכונת בטיחות, תכונת חַיּוּת, או אף אחת מהן:
+<div class="text-right text-[16px] mt-2 mb-1">
+להלן שלושה אוטומטי <span dir="ltr">Büchi</span> מעל <span dir="ltr"><KatexInline math="AP=\{a,b\}" /></span>. התאימו כל אוטומט לנוסחת ה-<span dir="ltr">LTL</span> המתאימה לו.
 </div>
 
-<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
-<b>א.</b> <span dir="ltr">A</span> לעולם לא מתקיימת.<br/>
-<b>ב.</b> <span dir="ltr">A</span> מתקיימת פעם אחת בדיוק.<br/>
-<b>ג.</b> <span dir="ltr">A</span> ו-<span dir="ltr">B</span> מתחלפות אינסוף פעמים.<br/>
-<b>ד.</b> <span dir="ltr">A</span> תמיד מלווה בהמשך ע"י <span dir="ltr">B</span> (בסופו של דבר).
-</div>
-
----
-
-# פתרון: ארבע תכונות, ארבע מחלקות
-
-<div class="grid grid-cols-2 gap-3 mt-3 text-[14.5px] text-right leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900">
-<div class="font-bold mb-1">א. שמורה</div>
-"<span dir="ltr">A</span> לא מתקיימת" היא תנאי בוליאני על כל מצב בנפרד - <b>שמורה</b> (ולכן גם תכונת בטיחות).
-</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
-<div class="font-bold mb-1">ב. בטיחות (לא שמורה)</div>
-מופע שני של <span dir="ltr">A</span> הוא רישא רעה סופית שמפרה את התכונה - <b>תכונת בטיחות</b>, אך לא שמורה (תלויה בהיסטוריה, לא רק במצב הנוכחי).
-</div>
-<div class="bg-red-50 border border-red-200 rounded p-3 text-red-900">
-<div class="font-bold mb-1">ג. לא בטיחות ולא חַיּוּת</div>
-זו דרישת "אינסוף פעמים" (לא בטיחות, אין רישא רעה סופית) <b>וגם</b> דרישה שמתקיימת רק חלקית ע"י כל המשך (לא חַיּוּת גרידא, כי כל רישא סופית מפירה את ה"לעולם לא תיפר") - <b>אף אחת מהשתיים</b>.
-</div>
-<div class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900">
-<div class="font-bold mb-1">ד. חַיּוּת</div>
-לכל רישא סופית יש המשך שמקיים את הדרישה (פשוט תוסיפו <span dir="ltr">B</span> אחרי כל <span dir="ltr">A</span> מאותה נקודה) - <b>תכונת חַיּוּת</b> גרידא.
-</div>
-</div>
-
----
-
-# שאלה: הוכחת בטיחות באמצעות שמורה אינדוקטיבית
-
-<div class="text-right text-[18px] leading-relaxed mt-3">
-משתנה <span dir="ltr">x</span> מתחיל ב-<span dir="ltr"><KatexInline math="x=0" /></span>, ובכל צעד: אם <span dir="ltr"><KatexInline math="x<10" /></span> מתבצע <span dir="ltr"><KatexInline math="x:=x+2" /></span>, אחרת <span dir="ltr">x</span> נשאר ללא שינוי.
-</div>
-
-<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
-<b>א.</b> הציעו שמורה אינדוקטיבית <span dir="ltr"><KatexInline math="I(x)" /></span> שמוכיחה <span dir="ltr"><KatexInline math="\Box(0\le x\le 10\land \mathit{even}(x))" /></span>.<br/>
-<b>ב.</b> הוכיחו: (1) תנאי הבסיס במצב ההתחלה. (2) סגירות תחת המעבר.
-</div>
-
----
-
-# פתרון: זוגיות וחסם נשמרים יחד
-
-<div class="text-right text-[16px] leading-relaxed mt-3">
-<div class="mt-1 bg-blue-50 border border-blue-200 rounded p-3 text-blue-900 mb-2">
-<b>שמורה:</b> <span dir="ltr"><KatexInline math="I(x)\;\equiv\;0\le x\le 10 \land \mathit{even}(x)" /></span>.
-</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900 mb-2">
-<b>בסיס:</b> <span dir="ltr"><KatexInline math="x=0" /></span> מקיים <span dir="ltr"><KatexInline math="0\le 0\le 10" /></span> וזוגי. <span dir="ltr">✓</span>
-</div>
-<div class="bg-amber-50 border border-amber-200 rounded p-3 text-amber-900">
-<b>סגירות:</b> נניח <span dir="ltr"><KatexInline math="I(x)" /></span> מתקיים.
-<ul class="mt-1">
-<li>אם <span dir="ltr"><KatexInline math="x<10" /></span>: בגלל הזוגיות <span dir="ltr"><KatexInline math="x\le 8" /></span>, ולכן <span dir="ltr"><KatexInline math="x'=x+2\le 10" /></span>; וסכום שני זוגיים זוגי, אז <span dir="ltr"><KatexInline math="I(x')" /></span> מתקיים.</li>
-<li>אם <span dir="ltr"><KatexInline math="x=10" /></span> (גבול עליון, ובהכרח זוגי): <span dir="ltr"><KatexInline math="x'=x" /></span> ללא שינוי, ועדיין <span dir="ltr"><KatexInline math="I(x')" /></span> מתקיים.</li>
-</ul>
-לכן <span dir="ltr"><KatexInline math="I" /></span> סגור תחת המעבר, ומתקיים בכל מצב נגיש - מה שמוכיח את תכונת הבטיחות.
-</div>
-</div>
-
----
-
-# שאלה: בדיקת תכונת בטיחות רגולרית במכפלה
-
-<div class="text-right text-[18px] leading-relaxed mt-3">
-תכונת בטיחות רגולרית מעל <span dir="ltr"><KatexInline math="AP=\{\mathit{req},\mathit{ack}\}" /></span>: "כל <span dir="ltr">req</span> חייב להיות מלווה ב-<span dir="ltr">ack</span> בתוך הצעד שאחריו" (אחרת - הפרה).
-</div>
-
-<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
-<b>א.</b> תארו אוטומט ניטור (3 מצבים) שמזהה הפרה.<br/>
-<b>ב.</b> כיצד בודקים את <span dir="ltr"><KatexInline math="TS\models" /></span> התכונה באמצעות מכפלה עם הניטור?<br/>
-<b>ג.</b> מדוע מספיקה בדיקת <b>הישגות</b> (reachability) ולא צריך תנאי קבלה מסוג <span dir="ltr">Büchi</span>, בשונה מבדיקת <span dir="ltr">LTL</span> כללית?
-</div>
-
----
-
-# פתרון: ניטור, מכפלה, והישגות במקום קבלה אינסופית
-
-<div class="bg-white rounded border border-slate-200 shadow-sm p-2 mt-2">
-<AutomatonD3 variant="classic" :width="500" :height="160" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="12"
+<div class="grid grid-cols-3 gap-2 mt-1">
+<div class="bg-white border border-slate-200 rounded p-1 text-center">
+<div class="font-bold text-[14px] mb-1">I</div>
+<AutomatonD3 variant="classic" :width="240" :height="120" :arrowSize="3" :stateLabelFontSize="12" :transitionLabelFontSize="11"
   :states="[
-    { id: 'ok',  x: 80,  y: 80, label: '$ok$', r: 30, initial: true, initialDirection: 'top' },
-    { id: 'pend', x: 260, y: 80, label: '$pending$', r: 34, labelWidth: 80 },
-    { id: 'bad', x: 440, y: 80, label: '$bad$', r: 30, stroke: '#dc2626', strokeWidth: 3 }
+    { id: 'q0', x: 65, y: 60, label: '$q_0$', r: 26, initial: true, initialDirection: 'top', accepting: true },
+    { id: 'q1', x: 175, y: 60, label: '$q_1$', r: 26 }
   ]"
   :transitions="[
-    { source: 'ok', target: 'ok', label: '$\\neg req$', loopDirection: '-90deg', labelY: -16 },
-    { source: 'ok', target: 'pend', label: '$req$', curve: 0.1 },
-    { source: 'pend', target: 'ok', label: '$ack$', labelY: -14, curve: 0.25 },
-    { source: 'pend', target: 'bad', label: '$\\neg ack$', curve: 0.1 },
-    { source: 'bad', target: 'bad', label: '$\\mathit{true}$', loopDirection: '-90deg', labelY: -16 }
+    { source: 'q0', target: 'q0', label: '$a$', loopDirection: '-90deg', labelY: -14 },
+    { source: 'q0', target: 'q1', label: '$b$', curve: 0.1, labelY: -10 },
+    { source: 'q1', target: 'q0', label: '$a$', curve: 0.1, labelY: 10 },
+    { source: 'q1', target: 'q1', label: '$b$', loopDirection: '-90deg', labelY: -14 }
   ]"
 />
 </div>
+<div class="bg-white border border-slate-200 rounded p-1 text-center">
+<div class="font-bold text-[14px] mb-1">II</div>
+<AutomatonD3 variant="classic" :width="240" :height="120" :arrowSize="3" :stateLabelFontSize="12" :transitionLabelFontSize="11"
+  :states="[
+    { id: 'q0', x: 65, y: 60, label: '$q_0$', r: 26, initial: true, initialDirection: 'top' },
+    { id: 'q1', x: 175, y: 60, label: '$q_1$', r: 26, accepting: true }
+  ]"
+  :transitions="[
+    { source: 'q0', target: 'q0', label: '$b$', loopDirection: '-90deg', labelY: -14 },
+    { source: 'q0', target: 'q1', label: '$a$', curve: 0.1, labelY: -10 },
+    { source: 'q1', target: 'q0', label: '$b$', curve: 0.1, labelY: 10 },
+    { source: 'q1', target: 'q1', label: '$a$', loopDirection: '-90deg', labelY: -14 }
+  ]"
+/>
+</div>
+<div class="bg-white border border-slate-200 rounded p-1 text-center">
+<div class="font-bold text-[14px] mb-1">III</div>
+<AutomatonD3 variant="classic" :width="240" :height="120" :arrowSize="3" :stateLabelFontSize="12" :transitionLabelFontSize="11"
+  :states="[
+    { id: 'q0', x: 65, y: 60, label: '$q_0$', r: 26, initial: true, initialDirection: 'top' },
+    { id: 'q1', x: 175, y: 60, label: '$q_1$', r: 26, accepting: true }
+  ]"
+  :transitions="[
+    { source: 'q0', target: 'q0', label: '$a$', loopDirection: '-90deg', labelY: -14 },
+    { source: 'q0', target: 'q1', label: '$b$', curve: 0.1, labelY: -10 },
+    { source: 'q1', target: 'q1', label: '$a,b$', loopDirection: '-90deg', labelY: -14 }
+  ]"
+/>
+</div>
+</div>
 
-<div class="mt-3 grid grid-cols-2 gap-3 text-[15px] text-right leading-relaxed">
-<div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900">
-<b>ב.</b> בונים <span dir="ltr"><KatexInline math="TS\times\mathcal{A}" /></span> ובודקים אם המצב <span dir="ltr">bad</span> <b>נגיש</b> (חיפוש גרף רגיל, <span dir="ltr">BFS/DFS</span>). אם כן - קיימת ריצה מפרה.
-</div>
-<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
-<b>ג.</b> תכונת בטיחות נשברת ב<b>רישא סופית</b> - הגעה למצב <span dir="ltr">bad</span>. אין צורך לבדוק התנהגות אינסופית או "אינסוף פעמים" כמו ב-<span dir="ltr">LTL</span> כללית, ולכן הישגות (לא קבלת <span dir="ltr">Büchi</span>) מספיקה.
-</div>
+<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[16px]">
+<b>א.</b> <span dir="ltr"><KatexInline math="\Box\Diamond a" /></span> <span class="mx-4 text-slate-400">|</span>
+<b>ב.</b> <span dir="ltr"><KatexInline math="\Diamond\Box a" /></span> <span class="mx-4 text-slate-400">|</span>
+<b>ג.</b> <span dir="ltr"><KatexInline math="a\,\mathrm{U}\,b" /></span>
 </div>
 
 ---
 
-# שאלה: אוטומט מונה, מבוי-סתום, והאם זו שמורה?
+# פתרון: התאמת נוסחאות לאוטומטים
+
+<div class="mt-3 grid grid-cols-3 gap-3 text-right text-[15px] leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-3 text-blue-900">
+<div class="font-bold mb-1 text-center">I = א: <span dir="ltr"><KatexInline math="\Box\Diamond a" /></span></div>
+<span dir="ltr">q0</span> מקבל ומחכה: ריצה מקבלת מבקרת ב-<span dir="ltr">q0</span> אינסוף פעמים, כלומר <span dir="ltr">a</span> מופיעה אינסוף פעמים. כל <span dir="ltr">b</span> שולחת ל-<span dir="ltr">q1</span>, ורק <span dir="ltr">a</span> מחזירה.
+</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900">
+<div class="font-bold mb-1 text-center">II = ב: <span dir="ltr"><KatexInline math="\Diamond\Box a" /></span></div>
+ריצה מקבלת מגיעה ל-<span dir="ltr">q1</span> ונשארת שם לנצח, כלומר מרגע כלשהו רק <span dir="ltr">a</span> מופיעה ולא <span dir="ltr">b</span>. כניסה ל-<span dir="ltr">q1</span> מסמנת "מרגע זה תמיד <span dir="ltr">a</span>".
+</div>
+<div class="bg-red-50 border border-red-200 rounded p-3 text-red-900">
+<div class="font-bold mb-1 text-center">III = ג: <span dir="ltr"><KatexInline math="a\,\mathrm{U}\,b" /></span></div>
+ברגע ש-<span dir="ltr">b</span> מופיעה, האוטומט שוקע ב-<span dir="ltr">q1</span> המקבל לנצח. לפני כן, רק <span dir="ltr">a</span> שומרת על <span dir="ltr">q0</span>. אם <span dir="ltr">b</span> לא מגיע - הריצה נשארת ב-<span dir="ltr">q0</span> ולא מקבלת.
+</div>
+</div>
+---
+
+# שאלה: אופק חסום?
 
 <div class="text-right text-[16px] leading-relaxed mt-3">
-יהי <span dir="ltr"><KatexInline math="TS" /></span>, <span dir="ltr"><KatexInline math="\Phi" /></span> פסוק מצב, <span dir="ltr"><KatexInline math="n\in\mathbb{N}" /></span>. נגדיר <span dir="ltr"><KatexInline math="P_{\Phi,n}=\{\sigma\mid \forall i\ge0,\ \neg\bigwedge_{j=i}^{i+n}(\sigma[j]\models\Phi)\}" /></span> - בכל ריצה, <span dir="ltr">Φ</span> לא יחזיק <span dir="ltr">n+1</span> צעדים רצופים. בודקים זאת ע"י מכפלה <span dir="ltr"><KatexInline math="TS'=TS\times \mathcal{A}_{n,\Phi}" /></span> עם אוטומט מונה: <span dir="ltr"><KatexInline math="q_i\xrightarrow{\Phi}q_{i+1}" /></span>, <span dir="ltr"><KatexInline math="q_i\xrightarrow{\neg\Phi}q_0" /></span>, <span dir="ltr"><KatexInline math="q_n\xrightarrow{\Phi}q_{err}" /></span>, <span dir="ltr"><KatexInline math="q_{err}\xrightarrow{\mathit{true}}q_{err}" /></span> (המעבר במכפלה נקבע לפי תווית <b>מצב היעד</b> ב-<span dir="ltr">TS</span>).
+יהי <span dir="ltr"><KatexInline math="TS" /></span>, <span dir="ltr"><KatexInline math="\Phi" /></span> פסוק מצב, <span dir="ltr"><KatexInline math="n\in\mathbb{N}" /></span>. נגדיר <span dir="ltr"><KatexInline math="P_{\Phi,n}=\{\sigma\mid \forall i\ge0,\ \neg\bigwedge_{j=i}^{i+n}(\sigma[j]\models\Phi)\}" /></span> - בכל ריצה, <span dir="ltr">Φ</span> לא יחזיק <span dir="ltr">n
++1</span> צעדים רצופים. 
 </div>
 
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[16px] leading-relaxed">
-הוכיחו או הפריכו כל אחת:<br/>
-<b>א.</b> <span dir="ltr"><KatexInline math="TS\models P_{\Phi,n}" /></span> אם ורק אם אין מצב מהצורה <span dir="ltr"><KatexInline math="\langle s,q_{err}\rangle" /></span> נגיש ב-<span dir="ltr">TS'</span>.<br/>
-<b>ב.</b> <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> היא תכונת שמורה.<br/>
+
+<b>א.</b> <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> היא תכונת שמורה.<br/>
+<b>ב.</b> הציעו אלגוריתם לבדיקה אם <span dir="ltr">$TS\models P_{\Phi,n}$</span> (ללא שימוש ב-<span dir="ltr">LTL</span> או <span dir="ltr">Büchi</span>).<br/>
 <b>ג.</b> <span dir="ltr">TS</span> מפרה את <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> אם ורק אם ניתן להגיע למצב מבוי-סתום ב-<span dir="ltr">TS'</span>.
 </div>
 
