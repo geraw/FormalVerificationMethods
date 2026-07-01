@@ -885,12 +885,11 @@ info: |
 <KatexInline math="\varphi \;::=\; \mathit{true} \;\mid\; p \;\mid\; \neg\varphi \;\mid\; \varphi\land\varphi \;\mid\; \bigcirc\varphi \;\mid\; \varphi\,\mathbin{\mathrm{U}}\,\varphi \;\mid\; \exists q.\,\varphi" />
 </div>
 כאשר <KatexInline math="p\in AP" /> ו-<KatexInline math="q\notin AP" /> פסוק חדש (<b>משתנה מכומת</b>).
-<div class="mt-2"><b>סמנטיקה</b> - בהינתן <KatexInline math="\sigma\in(2^{AP})^\omega" /> והשמה <KatexInline math="v:Q\to(\mathbb{N}\to\{0,1\})" /> למשתנים המכומתים <KatexInline math="Q" />, כל כללי <span dir="ltr">LTL</span> נשמרים, עם:</div>
-<ul class="mt-1 list-disc list-inside">
-<li>במיקום <KatexInline math="i" />: <KatexInline math="q\in\sigma_v[i]" /> אמ"מ <KatexInline math="v(q)(i)=1" /></li>
-<li><KatexInline math="\sigma,v\models\exists q.\,\varphi" /> אמ"מ קיימת <KatexInline math="w:\mathbb{N}\to\{0,1\}" /> כך ש-<KatexInline math="\sigma,\,v[q\mapsto w]\models\varphi" /></li>
-</ul>
-לנוסחה <b>סגורה</b> (ללא משתנים חופשיים) כותבים <KatexInline math="\sigma\models\varphi" /> ללא <KatexInline math="v" />.
+<div class="mt-2"><b>סמנטיקה</b> - מתי מילה <KatexInline math="\sigma\in(2^{AP})^\omega" /> מקיימת נוסחה: כל כללי <span dir="ltr">LTL</span> נשמרים, ועבור כימות:</div>
+<div class="mt-1 text-center" dir="ltr">
+<KatexInline math="\sigma\models\exists q.\,\varphi \;\iff\; \exists\tau\in(2^{AP\cup\{q\}})^\omega.\;\bigl(\forall i{:}\ \tau[i]\cap AP=\sigma[i]\bigr)\land\tau\models\varphi" />
+</div>
+כלומר, קיימת הרחבת המילה ל-<KatexInline math="AP\cup\{q\}" /> שעולה בקנה אחד עם <KatexInline math="\sigma" /> ומקיימת את <KatexInline math="\varphi" />.
 </div>
 
 <div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed text-right">
