@@ -1332,7 +1332,7 @@ class: text-center
 
 <div class="mt-2 grid grid-cols-1 gap-2 text-right text-[14px] leading-snug">
 <div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
-<b>א. לא - אינה שמורה.</b> שמורה מאופיינת ע"י פסוק מצב <span dir="ltr"><KatexInline math="\psi" /></span> שמחזיק בכל מצב בנפרד. בשלילה: אם <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> הייתה שמורה, מילה שרק אותה ראשונה מקיימת <span dir="ltr"><KatexInline math="\Phi" /></span> מקיימת את <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> ולכן <span dir="ltr"><KatexInline math="\Phi\Rightarrow\psi" /></span>. אז המילה הקבועה <span dir="ltr"><KatexInline math="\Phi^\omega" /></span> מקיימת <span dir="ltr"><KatexInline math="\psi" /></span> בכל אות ולכן צריכה לקיים את <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span>, סתירה. תכונה התלויה בחלון של <span dir="ltr"><KatexInline math="n+1" /></span> צעדים אינה שמורה.
+<b>א. לא - אינה שמורה.</b> שמורה מאופיינת ע"י פסוק מצב <span dir="ltr"><KatexInline math="\Psi" /></span> שמחזיק בכל מצב בנפרד. בשלילה: אם <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> הייתה שמורה, מילה שרק האות הראשונה בה מקיימת <span dir="ltr"><KatexInline math="\Phi" /></span> מקיימת את <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> ולכן <span dir="ltr"><KatexInline math="\Phi\Rightarrow\Psi" /></span>. אז המילה הקבועה <span dir="ltr"><KatexInline math="\Phi^\omega" /></span> מקיימת <span dir="ltr"><KatexInline math="\Psi" /></span> בכל אות ולכן צריכה לקיים את <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span>, סתירה. תכונה התלויה בחלון של <span dir="ltr"><KatexInline math="n+1" /></span> צעדים אינה שמורה.
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900">
 <b>ב. אלגוריתם - בדיקת הישגות באוטומט מונה:</b>
@@ -1343,6 +1343,8 @@ class: text-center
 </ol>
 </div>
 </div>
+
+---
 
 # שאלה: רדוקציה שבורה - בטיחות "אף פעם לא bad"
 
