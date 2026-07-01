@@ -1364,7 +1364,7 @@ class: text-center
 </div>
 
 <div class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-amber-900 text-right text-[15px] leading-snug">
-<b>א.</b> הראו שלא לכל <span dir="ltr"><KatexInline math="TS" /></span> מתקיים <span dir="ltr"><KatexInline math="TS\models P\iff TS'\models\Box\neg bad" /></span>. (הרמז: מה קורה במצבים ההתחלתיים?)<br/>
+<b>א.</b> הראו שלא לכל <span dir="ltr"><KatexInline math="TS" /></span> מתקיים <span dir="ltr"><KatexInline math="TS\models P\iff TS'\models\Box\neg bad" /></span>.<br/>
 <b>ב.</b> הציעו תיקון פשוט לבנייה כך שהשקילות תתקיים תמיד.
 </div>
 
