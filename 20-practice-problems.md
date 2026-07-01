@@ -866,19 +866,19 @@ info: |
 
 # שאלה: מעבר מ-LTL ל-QPTL
 
-<div class="text-right text-[17px] leading-relaxed mt-3">
+<div class="text-right text-[15px] leading-snug mt-2">
 נניח <KatexInline math="AP=\{p\}" /> ונתבונן בשפת המילים שבהן <KatexInline math="p" /> מופיע מספר סופי וזוגי של פעמים:
 </div>
 
-<div class="mt-3 text-center text-[20px]" dir="ltr">
+<div class="mt-1 text-center text-[17px]" dir="ltr">
 <KatexInline display math="L_{\mathrm{even}}=\{\sigma\in(2^{\{p\}})^\omega\mid |\{i\in\mathbb{N}\mid p\in\sigma[i]\}|\in 2\mathbb{N}\}" />
 </div>
 
-<div class="mt-4 bg-amber-50 border border-amber-200 rounded p-3 text-[16px] leading-relaxed text-right">
+<div class="mt-1 bg-amber-50 border border-amber-200 rounded p-2 text-[14px] leading-snug text-right">
 קבלו ללא הוכחה: אין נוסחת <span dir="ltr">LTL</span> שמתארת את <KatexInline math="L_{\mathrm{even}}" />.
 </div>
 
-<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[15px] leading-snug text-right">
+<div class="mt-2 bg-blue-50 border border-blue-200 rounded p-2 text-[14px] leading-snug text-right">
 <div class="font-bold mb-1">הגדרה: <span dir="ltr">QPTL</span></div>
 <b>תחביר</b> - נוסחת <span dir="ltr">QPTL</span> מעל <KatexInline math="AP" /> נבנית על ידי:
 <div class="mt-1 text-center" dir="ltr">
@@ -892,7 +892,7 @@ info: |
 כלומר, קיימת הרחבת המילה ל-<KatexInline math="AP\cup\{q\}" /> שעולה בקנה אחד עם <KatexInline math="\sigma" /> ומקיימת את <KatexInline math="\varphi" />.
 </div>
 
-<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed text-right">
+<div class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-[14px] leading-snug text-right">
 הסבירו איך ההרחבה הזו מאפשרת לעקוף את מגבלת הביטוי של <span dir="ltr">LTL</span>. כתבו נוסחת <span dir="ltr">QPTL</span> עבור <KatexInline math="L_{\mathrm{even}}" />. בנוסף, הוכיחו שכל תכונה אומגה-רגולרית ניתנת לביטוי באמצעות <span dir="ltr">QPTL</span>.
 </div>
 
