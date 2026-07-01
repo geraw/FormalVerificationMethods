@@ -1392,9 +1392,9 @@ class: text-center
 <div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900">
 <b>ב. התיקון:</b>
 <ul class="list-disc list-inside mt-1 space-y-0.5">
-<li>מוסיפים <span dir="ltr"><KatexInline math="start\notin AP" /></span> - סמל חדש שאינו בשום תווית.</li>
-<li>משנים רק את <b>מצבי ההתחלה</b>: <span dir="ltr"><KatexInline math="I'=I\times\{\{start\}\}" /></span> במקום <span dir="ltr"><KatexInline math="I\times\{L(s):s\in I\}" /></span>.</li>
-<li>כעת בצעד הראשון <span dir="ltr"><KatexInline math="S=\{start\}\ne L(s_0)" /></span> תמיד (כי <span dir="ltr"><KatexInline math="start\notin AP" /></span>), ולכן מצב ההתחלה אינו מתויג <span dir="ltr">bad</span>.</li>
+<li>משנים רק את <b>מצבי ההתחלה</b>: <span dir="ltr"><KatexInline math="I'=I\times\{\{start\}\}" /></span> במקום <span dir="ltr"><KatexInline math="I\times\{L(s):s\in I\}" /></span>, כאשר <span dir="ltr"><KatexInline math="start\notin AP" /></span>.</li>
+<li><b>למה צריך פסוק חדש ולא פשוט ∅?</b> כי <span dir="ltr"><KatexInline math="L(s_0)" /></span> יכול להיות <b>כל</b> קבוצה ב-<span dir="ltr"><KatexInline math="2^{AP}" /></span>, כולל ∅. אם <span dir="ltr"><KatexInline math="L(s_0)=\emptyset" /></span>, אתחול ב-∅ ייתן <span dir="ltr"><KatexInline math="S=\emptyset=L(s_0)" /></span> ומיד bad - אותה בעיה. <span dir="ltr">start</span> חי <b>מחוץ</b> ל-<span dir="ltr"><KatexInline math="AP" /></span>, ולכן מובטח ש-<span dir="ltr"><KatexInline math="\{start\}\notin 2^{AP}" /></span> ואינו יכול להיות שווה לאף תווית.</li>
+<li>כעת בצעד הראשון <span dir="ltr"><KatexInline math="S=\{start\}\ne L(s_0)" /></span> תמיד, ולכן מצב ההתחלה אינו מתויג <span dir="ltr">bad</span>.</li>
 <li>כל שאר הבנייה נשארת ללא שינוי: מהצעד השני ואילך, <span dir="ltr"><KatexInline math="S" /></span> שומר תווית אמיתית של המצב הקודם.</li>
 <li><b>תוצאה:</b> <span dir="ltr"><KatexInline math="TS\models P\iff TS'\models\Box\neg bad" /></span> לכל <span dir="ltr"><KatexInline math="TS" /></span>.</li>
 </ul>
