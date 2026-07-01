@@ -206,7 +206,7 @@ info: |
 # פתרון ד': ניתוח הריצות ומסקנה
 
 <div class="text-right text-[16px] leading-relaxed mt-2">
-מהתרשים, כל ריצה של <span dir="ltr"><KatexInline math="TS'" /></span> (הח"נ) מתחילה ב-<KatexInline math="\langle s_0,0\rangle" />, ומתפצלת לשני מקרים בלבד: נשארת בו לעד (לולאת <KatexInline math="\alpha" />), או עוברת בשלב סופי ב-<KatexInline math="\gamma" /> ונכנסת למחזור <span dir="ltr"><KatexInline math="\langle s_1,1\rangle\to\langle s_2,0\rangle\to\langle s_1,0\rangle\to\langle s_2,0\rangle\to\cdots" /></span> (אין דרך לחזור ל-<KatexInline math="\langle s_0,0\rangle" />).
+מהתרשים, כל ריצה של <span dir="ltr"><KatexInline math="TS'" /></span> (ההרכבה) מתחילה ב-<KatexInline math="\langle s_0,0\rangle" />, ומתפצלת לשני מקרים בלבד: נשארת בו לעד (לולאת <KatexInline math="\alpha" />), או עוברת בשלב סופי ב-<KatexInline math="\gamma" /> ונכנסת למחזור <span dir="ltr"><KatexInline math="\langle s_1,1\rangle\to\langle s_2,0\rangle\to\langle s_1,0\rangle\to\langle s_2,0\rangle\to\cdots" /></span> (אין דרך לחזור ל-<KatexInline math="\langle s_0,0\rangle" />).
 </div>
 
 <div v-click class="mt-3 bg-amber-50 border border-amber-200 rounded p-2 text-[15px] leading-relaxed text-right">
