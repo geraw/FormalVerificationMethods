@@ -1009,19 +1009,23 @@ info: |
 
 <div class="mt-3 grid grid-cols-1 gap-3 text-right text-[17px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-3">
-<div class="font-bold mb-2">כיוון ⟹: בטיחות → סגורה</div>
+<div class="font-bold mb-2">כיוון ⟹: בטיחות ← סגורה</div>
 <ol class="list-decimal list-inside space-y-1.5">
-<li>יהי <KatexInline math="\sigma\notin P" />. מבטיחות קיימת רישא רעה <KatexInline math="u=\sigma[0..n]" />: לכל <KatexInline math="\tau" /> עם <KatexInline math="u\sqsubseteq\tau" /> - <KatexInline math="\tau\notin P" />.</li>
-<li>נבחר <KatexInline math="\varepsilon=2^{-(n+1)}" />. אז <KatexInline math="B(\sigma,\varepsilon)=\{\tau\mid u\sqsubseteq\tau\}\subseteq\Sigma^\omega\setminus P" />.</li>
-<li>המשלים פתוח, לכן <KatexInline math="P" /> סגורה. <span dir="ltr">□</span></li>
+<li>יהי <KatexInline math="\sigma\notin P" />. מכיוון ש-<KatexInline math="P" /> בטיחות, קיימת <b>רישא רעה</b> <KatexInline math="u=\sigma[0..n]" />.</li>
+<li>כלומר: לכל <KatexInline math="\tau\in\Sigma^\omega" /> עם <KatexInline math="u\sqsubseteq\tau" /> מתקיים <KatexInline math="\tau\notin P" />.</li>
+<li>נבחר <KatexInline math="\varepsilon=2^{-(n+1)}" />. מהגדרת המטריקה: <KatexInline math="B(\sigma,\varepsilon)=\{\tau\mid\tau[0..n]=\sigma[0..n]\}=\{\tau\mid u\sqsubseteq\tau\}" />.</li>
+<li>לכן <KatexInline math="B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />, כלומר מצאנו כדור פתוח סביב <KatexInline math="\sigma" /> מוכל במשלים.</li>
+<li>מכיוון ש-<KatexInline math="\sigma" /> שרירותי, המשלים פתוח ולכן <KatexInline math="P" /> סגורה. <span dir="ltr">□</span></li>
 </ol>
 </div>
 <div class="bg-blue-50 border border-blue-200 rounded p-3">
-<div class="font-bold mb-2">כיוון ⟸: סגורה → בטיחות</div>
+<div class="font-bold mb-2">כיוון ⟸: סגורה ← בטיחות</div>
 <ol class="list-decimal list-inside space-y-1.5">
-<li>יהי <KatexInline math="\sigma\notin P" />. מסגירות המשלים פתוח, קיים <KatexInline math="\varepsilon>0" /> עם <KatexInline math="B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />.</li>
-<li>נבחר <KatexInline math="n" /> כך ש-<KatexInline math="2^{-(n+1)}\le\varepsilon" />. אז <KatexInline math="B(\sigma,2^{-(n+1)})\subseteq\Sigma^\omega\setminus P" />.</li>
-<li><KatexInline math="u=\sigma[0..n]" /> היא רישא רעה: לכל <KatexInline math="\tau" /> עם <KatexInline math="u\sqsubseteq\tau" /> - <KatexInline math="\tau\notin P" />. <span dir="ltr">□</span></li>
+<li>יהי <KatexInline math="\sigma\notin P" />. מכיוון ש-<KatexInline math="P" /> סגורה, המשלים <KatexInline math="\Sigma^\omega\setminus P" /> פתוח.</li>
+<li>לכן קיים <KatexInline math="\varepsilon>0" /> כך ש-<KatexInline math="B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />.</li>
+<li>נבחר <KatexInline math="n" /> שלם כך ש-<KatexInline math="2^{-(n+1)}\le\varepsilon" />. אז <KatexInline math="B(\sigma,2^{-(n+1)})\subseteq B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />.</li>
+<li>נגדיר <KatexInline math="u=\sigma[0..n]" />. כל <KatexInline math="\tau" /> עם <KatexInline math="u\sqsubseteq\tau" /> מקיים <KatexInline math="d(\sigma,\tau)\le 2^{-(n+1)}" />, לכן <KatexInline math="\tau\in B(\sigma,2^{-(n+1)})\subseteq\Sigma^\omega\setminus P" />.</li>
+<li>כלומר <KatexInline math="u" /> רישא רעה של <KatexInline math="\sigma" />, לכן <KatexInline math="P" /> בטיחות. <span dir="ltr">□</span></li>
 </ol>
 </div>
 </div>
@@ -1032,7 +1036,7 @@ info: |
 
 <div class="mt-3 grid grid-cols-1 gap-3 text-right text-[17px] leading-relaxed">
 <div class="bg-emerald-50 border border-emerald-200 rounded p-3">
-<div class="font-bold mb-2">כיוון ⟹: חַיּוּת → צפופה</div>
+<div class="font-bold mb-2">כיוון ⟹: חַיּוּת ← צפופה</div>
 <ol class="list-decimal list-inside space-y-1.5">
 <li>יהי <KatexInline math="\sigma\in\Sigma^\omega" /> ו-<KatexInline math="\varepsilon>0" />. נבחר <KatexInline math="n" /> כך ש-<KatexInline math="2^{-(n+1)}<\varepsilon" />.</li>
 <li>מחַיּוּת, לרישא <KatexInline math="u=\sigma[0..n]" /> קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="u\sqsubseteq\tau" />.</li>
@@ -1040,7 +1044,7 @@ info: |
 </ol>
 </div>
 <div class="bg-emerald-50 border border-emerald-200 rounded p-3">
-<div class="font-bold mb-2">כיוון ⟸: צפופה → חַיּוּת</div>
+<div class="font-bold mb-2">כיוון ⟸: צפופה ← חַיּוּת</div>
 <ol class="list-decimal list-inside space-y-1.5">
 <li>יהי <KatexInline math="u\in\Sigma^*" /> באורך <KatexInline math="n" />. נבחר <KatexInline math="\sigma" /> עם <KatexInline math="u\sqsubseteq\sigma" /> ו-<KatexInline math="\varepsilon=2^{-(n+1)}" />.</li>
 <li>מצפיפות, קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="d(\sigma,\tau)<\varepsilon" />.</li>
