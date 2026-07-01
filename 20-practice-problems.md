@@ -374,7 +374,7 @@ info: |
 </div>
 
 <div v-click class="mt-2 bg-slate-50 border border-slate-200 rounded p-2 text-[15px] leading-relaxed">
-שימו לב: <KatexInline math="\Box a" /> לא תורם אף קבוצת קבלה (לפי סעיף ב'); כל ה-<KatexInline math="\mathcal{F}" /> מגיע מההבטחה הנסתרת בתוך <KatexInline math="\neg\Box b" />, אף שאין <span dir="ltr">Until</span> ולא <span dir="ltr">Diamond</span> בתחביר כלל.
+שימו לב: <KatexInline math="\Box a" /> לא תורם אף קבוצת קבלה (לפי סעיף ב'); כל ה-<KatexInline math="\mathcal{F}" /> מגיע מההבטחה הנסתרת בתוך <KatexInline math="\neg\Box b" />, אף שאין <span dir="ltr">Until</span> ולא <span dir="ltr"><KatexInline math="\Diamond" /></span> בתחביר כלל.
 </div>
 
 ---
