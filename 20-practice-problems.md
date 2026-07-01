@@ -1235,10 +1235,14 @@ class: text-center
 </ol>
 </div>
 <div class="mt-2 bg-slate-50 border border-slate-200 rounded p-2 text-right text-[14px] leading-snug">
-<b>דוגמת נגד מפורשת:</b> <span dir="ltr"><KatexInline math="\sigma=
-eg p\cdot p^\omega" /></span> מקיימת <span dir="ltr"><KatexInline math="\Diamond\Box p" /></span> (מרגע 1 ואילך <span dir="ltr">p</span> מחזיק לנצח) אך <span dir="ltr"><KatexInline math="\sigma
-ot\models\Box p" /></span> (מפרה <span dir="ltr">p</span> בצעד הראשון). לכן <span dir="ltr"><KatexInline math="\Box p\subsetneq\Diamond\Box p" /></span>.
+<b>דוגמת נגד מפורשת:</b> <span dir="ltr"><KatexInline math="\sigma=\neg p\cdot p^\omega" /></span> מקיימת <span dir="ltr"><KatexInline math="\Diamond\Box p" /></span> (מרגע 1 ואילך <span dir="ltr">p</span> מחזיק לנצח) אך <span dir="ltr"><KatexInline math="\sigma\not\models\Box p" /></span> (מפרה <span dir="ltr">p</span> בצעד הראשון). לכן <span dir="ltr"><KatexInline math="\Box p\subsetneq\Diamond\Box p" /></span>.
 </div>
+<div class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-right text-[14px] leading-snug">
+<b>הכללה:</b> אם <span dir="ltr"><KatexInline math="\Phi" /></span> תכונת מצב לא-טריוויאלית (קיימת אות המקיימת אותה וקיימת אות שאינה מקיימת) אז
+<span dir="ltr"><KatexInline math="\mathit{Words}(\Box\Diamond\Phi)\;\neq\;\mathit{Words}(\Diamond\Box\Phi)" /></span>.
+הכלה <span dir="ltr"><KatexInline math="\supseteq" /></span> מתקיימת תמיד (התמדה גוררת חזרה), אך לא שוויון: המילה <span dir="ltr"><KatexInline math="(a_\Phi\cdot b_{\neg\Phi})^\omega" /></span> (אות מקיימת ואות לא מקיימת לסירוגין) מקיימת <span dir="ltr"><KatexInline math="\Box\Diamond\Phi" /></span> (חזרה) אך לא <span dir="ltr"><KatexInline math="\Diamond\Box\Phi" /></span> (התמדה) כי <span dir="ltr"><KatexInline math="\Phi" /></span> לעולם לא מחזיקה לנצח.
+</div>
+
 ---
 
 # שאלה: סיווג תכונות
