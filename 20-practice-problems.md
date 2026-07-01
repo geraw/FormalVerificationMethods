@@ -975,12 +975,12 @@ info: |
 
 <div class="bg-amber-50 border border-amber-200 rounded p-2">
 <span class="font-bold">ב'.</span>
-הוכיחו: <KatexInline math="P\subseteq\Sigma^\omega" /> היא תכונת בטיחות אם ורק אם <KatexInline math="P" /> סגורה ביחס למטריקה <KatexInline math="d" />.
+נאמר ש-<KatexInline math="P" /> <b>סגורה</b> אם לכל <KatexInline math="\sigma\notin P" /> קיים <KatexInline math="n\ge 0" /> כך שלכל <KatexInline math="\tau\in\Sigma^\omega" /> עם <KatexInline math="\tau[0..n]=\sigma[0..n]" /> מתקיים <KatexInline math="\tau\notin P" />. הוכיחו: <KatexInline math="P" /> היא תכונת בטיחות אם ורק אם <KatexInline math="P" /> סגורה.
 </div>
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-2">
 <span class="font-bold">ג'.</span>
-נאמר ש-<KatexInline math="P" /> צפופה אם לכל <KatexInline math="\sigma\in\Sigma^\omega" /> ולכל <KatexInline math="\varepsilon>0" /> קיימת <KatexInline math="\tau\in P" /> כך ש-<KatexInline math="d(\sigma,\tau)<\varepsilon" />. הוכיחו: <KatexInline math="P" /> היא תכונת חַיּוּת אם ורק אם <KatexInline math="P" /> צפופה.
+נאמר ש-<KatexInline math="P" /> <b>צפופה</b> אם לכל <KatexInline math="u\in\Sigma^*" /> קיימת <KatexInline math="\tau\in P" /> כך ש-<KatexInline math="u\sqsubseteq\tau" /> (<KatexInline math="u" /> היא רישא של <KatexInline math="\tau" />). הוכיחו: <KatexInline math="P" /> היא תכונת חַיּוּת אם ורק אם <KatexInline math="P" /> צפופה.
 </div>
 </div>
 
