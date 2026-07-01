@@ -997,10 +997,10 @@ info: |
 <KatexInline display math="d(\sigma,\tau)\;\le\;\max\bigl(d(\sigma,\eta),\,d(\eta,\tau)\bigr)" />
 </div>
 <div class="mt-2 text-right text-[16px] leading-relaxed">
-שכן אם <KatexInline math="\sigma" /> ו-<KatexInline math="\eta" /> מסכימות על <KatexInline math="k" /> אותיות ראשונות, ו-<KatexInline math="\eta" /> ו-<KatexInline math="\tau" /> מסכימות על <KatexInline math="m" /> אותיות ראשונות, אז <KatexInline math="\sigma" /> ו-<KatexInline math="\tau" /> מסכימות לפחות על <KatexInline math="\min(k,m)" /> — לכן <KatexInline math="d(\sigma,\tau)\le 2^{-\min(k,m)}=\max(2^{-k},2^{-m})" />.
+שכן אם <KatexInline math="\sigma" /> ו-<KatexInline math="\eta" /> מסכימות על <KatexInline math="k" /> אותיות ראשונות, ו-<KatexInline math="\eta" /> ו-<KatexInline math="\tau" /> מסכימות על <KatexInline math="m" /> אותיות ראשונות, אז <KatexInline math="\sigma" /> ו-<KatexInline math="\tau" /> מסכימות לפחות על <KatexInline math="\min(k,m)" /> - לכן <KatexInline math="d(\sigma,\tau)\le 2^{-\min(k,m)}=\max(2^{-k},2^{-m})" />.
 </div>
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded p-2 text-[15px] text-right leading-snug">
-<b>תצפית מפתח:</b> כדור פתוח = קונוס רישא. <KatexInline math="B(\sigma,2^{-(n+1)})=\{\tau\mid\tau[0..n]=\sigma[0..n]\}" /> — המילים שמסכימות עם <KatexInline math="\sigma" /> על <KatexInline math="n+1" /> האותיות הראשונות. לכל <KatexInline math="\varepsilon>0" /> בחירת <KatexInline math="n\ge\lceil\log_2(1/\varepsilon)\rceil" /> נותנת <KatexInline math="B(\sigma,2^{-(n+1)})\subseteq B(\sigma,\varepsilon)" />.
+<b>תצפית מפתח:</b> כדור פתוח = קונוס רישא. <KatexInline math="B(\sigma,2^{-(n+1)})=\{\tau\mid\tau[0..n]=\sigma[0..n]\}" /> - המילים שמסכימות עם <KatexInline math="\sigma" /> על <KatexInline math="n+1" /> האותיות הראשונות. לכל <KatexInline math="\varepsilon>0" /> בחירת <KatexInline math="n\ge\lceil\log_2(1/\varepsilon)\rceil" /> נותנת <KatexInline math="B(\sigma,2^{-(n+1)})\subseteq B(\sigma,\varepsilon)" />.
 </div>
 
 ---
