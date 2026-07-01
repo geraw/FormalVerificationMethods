@@ -878,8 +878,19 @@ info: |
 קבלו ללא הוכחה: אין נוסחת <span dir="ltr">LTL</span> שמתארת את <KatexInline math="L_{\mathrm{even}}" />.
 </div>
 
-<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed text-right">
-בשאלה זו נגדיר <span dir="ltr">QPTL</span> כהרחבה של <span dir="ltr">LTL</span> שבה מותר לכמת על פסוקים אטומיים. למשל, <KatexInline math="\exists q.\varphi" /> אומר שקיימת השמה של אמת/שקר לאורך כל המילה עבור פסוק חדש <KatexInline math="q" />, כך שהנוסחה <KatexInline math="\varphi" /> מתקיימת.
+<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[15px] leading-snug text-right">
+<div class="font-bold mb-1">הגדרה: <span dir="ltr">QPTL</span></div>
+<b>תחביר</b> — נוסחת <span dir="ltr">QPTL</span> מעל <KatexInline math="AP" /> נבנית על ידי:
+<div class="mt-1 text-center" dir="ltr">
+<KatexInline math="\varphi \;::=\; \mathit{true} \;\mid\; p \;\mid\; \neg\varphi \;\mid\; \varphi\land\varphi \;\mid\; \bigcirc\varphi \;\mid\; \varphi\,\mathbin{\mathrm{U}}\,\varphi \;\mid\; \exists q.\,\varphi" />
+</div>
+כאשר <KatexInline math="p\in AP" /> ו-<KatexInline math="q\notin AP" /> פסוק חדש (<b>משתנה מכומת</b>).
+<div class="mt-2"><b>סמנטיקה</b> — בהינתן <KatexInline math="\sigma\in(2^{AP})^\omega" /> והשמה <KatexInline math="v:Q\to(\mathbb{N}\to\{0,1\})" /> למשתנים המכומתים <KatexInline math="Q" />, כל כללי <span dir="ltr">LTL</span> נשמרים, עם:</div>
+<ul class="mt-1 list-disc list-inside">
+<li>במיקום <KatexInline math="i" />: <KatexInline math="q\in\sigma_v[i]" /> אמ"מ <KatexInline math="v(q)(i)=1" /></li>
+<li><KatexInline math="\sigma,v\models\exists q.\,\varphi" /> אמ"מ קיימת <KatexInline math="w:\mathbb{N}\to\{0,1\}" /> כך ש-<KatexInline math="\sigma,\,v[q\mapsto w]\models\varphi" /></li>
+</ul>
+לנוסחה <b>סגורה</b> (ללא משתנים חופשיים) כותבים <KatexInline math="\sigma\models\varphi" /> ללא <KatexInline math="v" />.
 </div>
 
 <div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed text-right">
