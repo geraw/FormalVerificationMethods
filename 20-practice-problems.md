@@ -1226,13 +1226,19 @@ class: text-center
 הוכיחו או הפריכו: <b>כל תכונת שמורה היא גם תכונת התמדה.</b>
 </div>
 
-<div class="mt-3 bg-red-50 border border-red-200 rounded p-3 text-red-900 text-right text-[15px] leading-relaxed">
-<b>לא נכון.</b> התמדה (<span dir="ltr"><KatexInline math="\Diamond\Box p" /></span>) היא תת-מחלקה של חַיּוּת: לכל רישא סופית, אפשר להמשיך כך שמרגע מסוים <span dir="ltr">p</span> יחזיק לנצח - העבר לעולם אינו דן אותה. שמורה לא-טריוויאלית (<span dir="ltr"><KatexInline math="\Box p" /></span> עבור <span dir="ltr">p</span> לא-טאוטולוגי) <b>אינה</b> חַיּוּת: רישא עם מצב יחיד שמפר את <span dir="ltr">p</span> דנה את התכונה לנצח, ואין המשך שמתקן זאת. מכיוון ש<b>כל התמדה היא חַיּוּת</b> אך שמורה לא-טריוויאלית אינה חַיּוּת, היא בפרט אינה התמדה.
+<div class="mt-3 bg-red-50 border border-red-200 rounded p-3 text-red-900 text-right text-[15px] leading-snug">
+<div class="font-bold mb-2">לא נכון - הפרכה דרך שרשרת ההכלות:</div>
+<ol class="list-decimal list-inside space-y-1.5">
+<li><b>התמדה היא חַיּוּת:</b> תכונת התמדה <span dir="ltr"><KatexInline math="\Diamond\Box p" /></span> מקיימת את תנאי חַיּוּת - לכל רישא סופית אפשר להמשיך כך ש-<span dir="ltr">p</span> יחזיק מרגע מסוים לנצח. העבר לעולם אינו דן אותה.</li>
+<li><b>שמורה לא-טריוויאלית אינה חַיּוּת:</b> תכונת שמורה <span dir="ltr"><KatexInline math="\Box p" /></span> אינה חַיּוּת - רישא שמכילה מצב שמפר את <span dir="ltr">p</span> דנה את התכונה לנצח, ואין המשך שמתקן הפרה שכבר קרתה.</li>
+<li><b>מסקנה:</b> אילו שמורה היתה גם התמדה, היתה גם חַיּוּת (כי התמדה <span dir="ltr"><KatexInline math="\subseteq" /></span> חַיּוּת). אבל שמורה לא-טריוויאלית אינה חַיּוּת. סתירה.</li>
+</ol>
 </div>
-<div class="mt-2 bg-slate-50 border border-slate-200 rounded p-2 text-right text-[14px] leading-relaxed">
-<b>ישירות:</b> <span dir="ltr"><KatexInline math="\Box p" /></span> הוא תת-קבוצה <b>ממש</b> של <span dir="ltr"><KatexInline math="\Diamond\Box p" /></span> - מילה שבה <span dir="ltr">p</span> מופר רק באות הראשונה ומחזיק לנצח אח"כ מקיימת <span dir="ltr"><KatexInline math="\Diamond\Box p" /></span> אך לא <span dir="ltr"><KatexInline math="\Box p" /></span>.
+<div class="mt-2 bg-slate-50 border border-slate-200 rounded p-2 text-right text-[14px] leading-snug">
+<b>דוגמת נגד מפורשת:</b> <span dir="ltr"><KatexInline math="\sigma=
+eg p\cdot p^\omega" /></span> מקיימת <span dir="ltr"><KatexInline math="\Diamond\Box p" /></span> (מרגע 1 ואילך <span dir="ltr">p</span> מחזיק לנצח) אך <span dir="ltr"><KatexInline math="\sigma
+ot\models\Box p" /></span> (מפרה <span dir="ltr">p</span> בצעד הראשון). לכן <span dir="ltr"><KatexInline math="\Box p\subsetneq\Diamond\Box p" /></span>.
 </div>
-
 ---
 
 # שאלה: סיווג תכונות
