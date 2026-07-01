@@ -1407,9 +1407,9 @@ class: text-center
 
 <div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[16px] leading-relaxed">
 קבעו נכון/שגוי, והוכיחו:<br/>
-<b>א.</b> אם <span dir="ltr">P</span> וגם המשלים שלה <span dir="ltr"><KatexInline math="\overline{P}" /></span> הן שתיהן תכונות בטיחות, אז <span dir="ltr">P</span> היא תכונת שמורה.<br/>
-<b>ב.</b> יהי <span dir="ltr"><KatexInline math="AP=\{p\}" /></span>, <span dir="ltr"><KatexInline math="\psi=\Box(p\to\bigcirc p)" /></span>. הטענה: <span dir="ltr"><KatexInline math="closure(\mathit{Words}(\psi))=\mathit{Words}(\psi)" /></span> (כלומר <span dir="ltr"><KatexInline math="\psi" /></span> מגדירה תכונת בטיחות).<br/>
-<b>ג.</b> כל תכונה <span dir="ltr"><KatexInline math="\omega" /></span>-רגולרית <span dir="ltr">P</span> ניתנת לכתיבה כ-<span dir="ltr"><KatexInline math="P=P_{safe}\cap P_{live}" /></span> עם <span dir="ltr"><KatexInline math="P_{safe}" /></span> תכונת בטיחות <b>רגולרית</b>.
+<b>א.</b> אם <span dir="ltr"><KatexInline math="P" /></span> וגם המשלים שלה <span dir="ltr"><KatexInline math="\overline{P}" /></span> הן שתיהן תכונות בטיחות, אז <span dir="ltr"><KatexInline math="P" /></span> היא תכונת שמורה.<br/>
+<b>ב.</b> יהי <span dir="ltr"><KatexInline math="AP=\{p\}" /></span>, <span dir="ltr"><KatexInline math="\psi=\Box(p\to\bigcirc p)" /></span>. הטענה: <span dir="ltr"><KatexInline math="\mathrm{closure}(\mathrm{Words}(\psi))=\mathrm{Words}(\psi)" /></span> (כלומר <span dir="ltr"><KatexInline math="\psi" /></span> מגדירה תכונת בטיחות).<br/>
+<b>ג.</b> כל תכונה <span dir="ltr"><KatexInline math="\omega" /></span>-רגולרית <span dir="ltr"><KatexInline math="P" /></span> ניתנת לכתיבה כ-<span dir="ltr"><KatexInline math="P=P_{safe}\cap P_{live}" /></span> עם <span dir="ltr"><KatexInline math="P_{safe}" /></span> תכונת בטיחות <b>רגולרית</b>.
 </div>
 
 ---
