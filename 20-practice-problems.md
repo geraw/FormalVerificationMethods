@@ -1250,13 +1250,13 @@ class: text-center
 <div class="font-bold text-[14px] mb-1">I</div>
 <AutomatonD3 variant="classic" :width="240" :height="120" :arrowSize="3" :stateLabelFontSize="12" :transitionLabelFontSize="11"
   :states="[
-    { id: 'q0', x: 65, y: 60, label: '$q_0$', r: 26, initial: true, initialDirection: 'top', accepting: true },
+    { id: 'q0', x: 65, y: 60, label: '$q_0$', r: 26, initial: true, initialDirection: 'left', accepting: true },
     { id: 'q1', x: 175, y: 60, label: '$q_1$', r: 26 }
   ]"
   :transitions="[
     { source: 'q0', target: 'q0', label: '$a$', loopDirection: '-90deg', labelY: -14 },
-    { source: 'q0', target: 'q1', label: '$b$', curve: 0.1, labelY: -10 },
-    { source: 'q1', target: 'q0', label: '$a$', curve: 0.1, labelY: 10 },
+    { source: 'q0', target: 'q1', label: '$b$', curve: 0.1, labelY: 12 },
+    { source: 'q1', target: 'q0', label: '$a$', curve: 0.1, labelY: -12 },
     { source: 'q1', target: 'q1', label: '$b$', loopDirection: '-90deg', labelY: -14 }
   ]"
 />
@@ -1265,13 +1265,13 @@ class: text-center
 <div class="font-bold text-[14px] mb-1">II</div>
 <AutomatonD3 variant="classic" :width="240" :height="120" :arrowSize="3" :stateLabelFontSize="12" :transitionLabelFontSize="11"
   :states="[
-    { id: 'q0', x: 65, y: 60, label: '$q_0$', r: 26, initial: true, initialDirection: 'top' },
+    { id: 'q0', x: 65, y: 60, label: '$q_0$', r: 26, initial: true, initialDirection: 'left' },
     { id: 'q1', x: 175, y: 60, label: '$q_1$', r: 26, accepting: true }
   ]"
   :transitions="[
     { source: 'q0', target: 'q0', label: '$b$', loopDirection: '-90deg', labelY: -14 },
-    { source: 'q0', target: 'q1', label: '$a$', curve: 0.1, labelY: -10 },
-    { source: 'q1', target: 'q0', label: '$b$', curve: 0.1, labelY: 10 },
+    { source: 'q0', target: 'q1', label: '$a$', curve: 0.1, labelY: 12 },
+    { source: 'q1', target: 'q0', label: '$b$', curve: 0.1, labelY: -12 },
     { source: 'q1', target: 'q1', label: '$a$', loopDirection: '-90deg', labelY: -14 }
   ]"
 />
@@ -1280,12 +1280,12 @@ class: text-center
 <div class="font-bold text-[14px] mb-1">III</div>
 <AutomatonD3 variant="classic" :width="240" :height="120" :arrowSize="3" :stateLabelFontSize="12" :transitionLabelFontSize="11"
   :states="[
-    { id: 'q0', x: 65, y: 60, label: '$q_0$', r: 26, initial: true, initialDirection: 'top' },
+    { id: 'q0', x: 65, y: 60, label: '$q_0$', r: 26, initial: true, initialDirection: 'left' },
     { id: 'q1', x: 175, y: 60, label: '$q_1$', r: 26, accepting: true }
   ]"
   :transitions="[
     { source: 'q0', target: 'q0', label: '$a$', loopDirection: '-90deg', labelY: -14 },
-    { source: 'q0', target: 'q1', label: '$b$', curve: 0.1, labelY: -10 },
+    { source: 'q0', target: 'q1', label: '$b$', labelY: -12 },
     { source: 'q1', target: 'q1', label: '$a,b$', loopDirection: '-90deg', labelY: -14 }
   ]"
 />
@@ -1317,38 +1317,32 @@ class: text-center
 </div>
 </div>
 ---
+---
 
 # שאלה: אופק חסום?
 
-<div class="text-right text-[16px] leading-relaxed mt-3">
-יהי <span dir="ltr"><KatexInline math="TS" /></span>, <span dir="ltr"><KatexInline math="\Phi" /></span> פסוק מצב, <span dir="ltr"><KatexInline math="n\in\mathbb{N}" /></span>. נגדיר <span dir="ltr"><KatexInline math="P_{\Phi,n}=\{\sigma\mid \forall i\ge0,\ \neg\bigwedge_{j=i}^{i+n}(\sigma[j]\models\Phi)\}" /></span> - בכל ריצה, <span dir="ltr">Φ</span> לא יחזיק <span dir="ltr">n
-+1</span> צעדים רצופים. 
+<div class="text-right text-[16px] leading-relaxed mt-2">
+יהי <span dir="ltr"><KatexInline math="TS" /></span>, <span dir="ltr"><KatexInline math="\Phi" /></span> פסוק מצב, <span dir="ltr"><KatexInline math="n\in\mathbb{N}" /></span>. נגדיר <span dir="ltr"><KatexInline math="P_{\Phi,n}=\{\sigma\mid \forall i\ge0,\ \neg\bigwedge_{j=i}^{i+n}(\sigma[j]\models\Phi)\}" /></span> - בכל ריצה, <KatexInline math="\Phi" /> לא יחזיק <KatexInline math="n+1" /> צעדים רצופים.
 </div>
 
-<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[16px] leading-relaxed">
-
-<b>א.</b> <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> היא תכונת שמורה.<br/>
-<b>ב.</b> הציעו אלגוריתם לבדיקה אם <span dir="ltr">$TS\models P_{\Phi,n}$</span> (ללא שימוש ב-<span dir="ltr">LTL</span> או <span dir="ltr">Büchi</span>).<br/>
-<b>ג.</b> <span dir="ltr">TS</span> מפרה את <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> אם ורק אם ניתן להגיע למצב מבוי-סתום ב-<span dir="ltr">TS'</span>.
+<div class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-amber-900 text-right text-[15px] leading-snug">
+<b>א.</b> האם <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> היא תכונת שמורה?<br/>
+<b>ב.</b> הציעו אלגוריתם לבדיקה אם <span dir="ltr"><KatexInline math="TS\models P_{\Phi,n}" /></span> ללא שימוש ב-<span dir="ltr">LTL</span> או אוטומט <span dir="ltr">Büchi</span>.
 </div>
 
----
-
-# פתרון: שלוש הפרכות, שלושה כשלים אופייניים
-
-<div class="grid grid-cols-1 gap-2 mt-2 text-right text-[14px] leading-snug">
+<div class="mt-2 grid grid-cols-1 gap-2 text-right text-[14px] leading-snug">
 <div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
-<b>א. לא נכון.</b> דוגמה נגדית: <span dir="ltr"><KatexInline math="AP=\{a\}" /></span>, <span dir="ltr"><KatexInline math="\Phi=a" /></span>, <span dir="ltr">n=1</span>, ו-<span dir="ltr">TS</span>: <span dir="ltr"><KatexInline math="s_0\to s_1\to s_2\to s_2\to\cdots" /></span> עם <span dir="ltr"><KatexInline math="L(s_0)=L(s_1)=\{a\}" /></span>, <span dir="ltr"><KatexInline math="L(s_2)=\emptyset" /></span>. הריצה <span dir="ltr"><KatexInline math="\{a\}\{a\}\emptyset\cdots" /></span> מפרה (שני <span dir="ltr">a</span> רצופים בהתחלה) - <span dir="ltr"><KatexInline math="TS\not\models P_{a,1}" /></span>. אבל במכפלה תמיד מתחילים ב-<span dir="ltr"><KatexInline math="q_0" /></span> בלי תלות ב-<span dir="ltr"><KatexInline math="L(s_0)" /></span>, כך שהריצה היחידה היא <span dir="ltr"><KatexInline math="\langle s_0,q_0\rangle\to\langle s_1,q_1\rangle\to\langle s_2,q_0\rangle\to\cdots" /></span> - <span dir="ltr"><KatexInline math="q_{err}" /></span> לעולם לא נגיש. <b>שקר ⟺ אמת</b> - הבנייה "מפספסת" הפרה שמתחילה כבר במצב ההתחלתי, כי המונה לא סופר את <span dir="ltr"><KatexInline math="L(s_0)" /></span> עצמו.
+<b>א. לא - אינה שמורה.</b> שמורה מאופיינת ע"י פסוק מצב <span dir="ltr"><KatexInline math="\psi" /></span> שמחזיק בכל מצב בנפרד. בשלילה: אם <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> הייתה שמורה, מילה שרק אותה ראשונה מקיימת <span dir="ltr"><KatexInline math="\Phi" /></span> מקיימת את <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> ולכן <span dir="ltr"><KatexInline math="\Phi\Rightarrow\psi" /></span>. אז המילה הקבועה <span dir="ltr"><KatexInline math="\Phi^\omega" /></span> מקיימת <span dir="ltr"><KatexInline math="\psi" /></span> בכל אות ולכן צריכה לקיים את <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span>, סתירה. תכונה התלויה בחלון של <span dir="ltr"><KatexInline math="n+1" /></span> צעדים אינה שמורה.
 </div>
-<div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
-<b>ב. לא נכון.</b> שמורה מאופיינת ע"י פסוק מצב <span dir="ltr"><KatexInline math="\psi" /></span> שמחזיק בכל מצב בנפרד. בשלילה: אם <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> הייתה שמורה כזו, מילה שרק האות הראשונה שלה מקיימת <span dir="ltr"><KatexInline math="\Phi" /></span> (ושאר האותיות <span dir="ltr"><KatexInline math="\neg\Phi" /></span>) מקיימת <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span> (אין רצף של <span dir="ltr">n+1</span> הפרות) - כל אות בה מקיימת <span dir="ltr"><KatexInline math="\psi" /></span>, ובפרט האות הראשונה, ולכן <span dir="ltr"><KatexInline math="\Phi\Rightarrow\psi" /></span>. אבל אז המילה הקבועה שכל אותיותיה מקיימות <span dir="ltr"><KatexInline math="\Phi" /></span> מקיימת גם היא <span dir="ltr"><KatexInline math="\psi" /></span> בכל מקום - ולכן לפי ההנחה צריכה לקיים <span dir="ltr"><KatexInline math="P_{\Phi,n}" /></span>, בסתירה לכך שהיא מפרה אותה (רצף אינסופי של <span dir="ltr"><KatexInline math="\Phi" /></span>). תכונה שתלויה ב<b>חלון</b> של <span dir="ltr">n+1</span> צעדים, ולא במצב בודד, אינה שמורה.
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900">
+<b>ב. אלגוריתם - בדיקת הישגות באוטומט מונה:</b>
+<ol class="list-decimal list-inside space-y-0.5 mt-1">
+<li>בנו אוטומט מונה <span dir="ltr"><KatexInline math="\mathcal{A}_{n,\Phi}" /></span>: מצבים <span dir="ltr"><KatexInline math="q_0,\ldots,q_n,q_{err}" /></span>; מעברים <span dir="ltr"><KatexInline math="q_i\xrightarrow{\Phi}q_{i+1}" /></span>, <span dir="ltr"><KatexInline math="q_i\xrightarrow{\neg\Phi}q_0" /></span>, <span dir="ltr"><KatexInline math="q_n\xrightarrow{\Phi}q_{err}" /></span>, ו-<span dir="ltr"><KatexInline math="q_{err}" /></span> מלכודת.</li>
+<li>בנו מכפלה <span dir="ltr"><KatexInline math="TS'=TS\times\mathcal{A}_{n,\Phi}" /></span>: מעבר <span dir="ltr"><KatexInline math="\langle s,q\rangle\to\langle t,q'\rangle" /></span> כאשר המעבר באוטומט נקבע לפי <span dir="ltr"><KatexInline math="L(t)" /></span> (תווית <b>היעד</b>).</li>
+<li>בדקו הישגות (BFS/DFS): <span dir="ltr"><KatexInline math="TS\models P_{\Phi,n}" /></span> אמ"מ אין מצב <span dir="ltr"><KatexInline math="\langle s,q_{err}\rangle" /></span> נגיש מ-<span dir="ltr"><KatexInline math="\langle s_0,q_0\rangle" /></span> עבור <span dir="ltr"><KatexInline math="s_0\in I" /></span>.</li>
+</ol>
 </div>
-<div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
-<b>ג. לא נכון.</b> מבוי-סתום הוא מצב <b>בלי יציאות בכלל</b>. הפרת התכונה מתבטאת בהגעה ל-<span dir="ltr"><KatexInline math="q_{err}" /></span>, אבל זהו מצב <b>מלכודת</b> (יש ממנו מעבר עצמי) ולא מצב סופי. אם ל-<span dir="ltr">s</span> יש יציאות ב-<span dir="ltr">TS</span>, גם ל-<span dir="ltr"><KatexInline math="\langle s,q_{err}\rangle" /></span> יש יציאות (ל-<span dir="ltr"><KatexInline math="\langle s',q_{err}\rangle" /></span>) - הפרת התכונה <b>אינה</b> גוררת מבוי-סתום.
 </div>
-</div>
-
----
 
 # שאלה: רדוקציה שבורה - בטיחות "אף פעם לא bad"
 
