@@ -987,6 +987,86 @@ info: |
 
 ---
 
+
+# פתרון א': כדורים פתוחים = קונוסי רישות
+
+<div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-[16px] leading-relaxed text-right">
+<b>א'. d מטריקה.</b> אי-שליליות, סימטריה, וזהות מיידיות. אי-שוויון משולש מתקיים בצורה חזקה יותר:
+</div>
+<div class="mt-2 text-center" dir="ltr">
+<KatexInline display math="d(\sigma,\tau)\;\le\;\max\bigl(d(\sigma,\eta),\,d(\eta,\tau)\bigr)" />
+</div>
+<div class="mt-2 text-right text-[16px] leading-relaxed">
+שכן אם <KatexInline math="\sigma" /> ו-<KatexInline math="\eta" /> מסכימות על <KatexInline math="k" /> אותיות ראשונות, ו-<KatexInline math="\eta" /> ו-<KatexInline math="\tau" /> מסכימות על <KatexInline math="m" /> אותיות ראשונות, אז <KatexInline math="\sigma" /> ו-<KatexInline math="\tau" /> מסכימות לפחות על <KatexInline math="\min(k,m)" /> — לכן <KatexInline math="d(\sigma,\tau)\le 2^{-\min(k,m)}=\max(2^{-k},2^{-m})" />.
+</div>
+<div class="mt-3 bg-amber-50 border border-amber-200 rounded p-2 text-[15px] text-right leading-snug">
+<b>תצפית מפתח:</b> כדור פתוח = קונוס רישא. <KatexInline math="B(\sigma,2^{-(n+1)})=\{\tau\mid\tau[0..n]=\sigma[0..n]\}" /> — המילים שמסכימות עם <KatexInline math="\sigma" /> על <KatexInline math="n+1" /> האותיות הראשונות. לכל <KatexInline math="\varepsilon>0" /> בחירת <KatexInline math="n\ge\lceil\log_2(1/\varepsilon)\rceil" /> נותנת <KatexInline math="B(\sigma,2^{-(n+1)})\subseteq B(\sigma,\varepsilon)" />.
+</div>
+
+---
+
+# פתרון ב' (כיוון ⟹): בטיחות → סגורה
+
+<div class="mt-4 bg-blue-50 border border-blue-200 rounded p-4 text-[16px] leading-relaxed text-right">
+<b>נניח</b> <KatexInline math="P" /> תכונת בטיחות. רוצים: לכל <KatexInline math="\sigma\notin P" /> קיים <KatexInline math="\varepsilon>0" /> כך ש-<KatexInline math="B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />.
+</div>
+<div class="mt-3 text-right text-[16px] leading-relaxed">
+<ol class="list-decimal list-inside space-y-2">
+<li>יהי <KatexInline math="\sigma\notin P" />. מכיוון ש-<KatexInline math="P" /> בטיחות, קיימת <b>רישא רעה</b>: <KatexInline math="u=\sigma[0..n]" /> כך שלכל <KatexInline math="\tau\in\Sigma^\omega" /> עם <KatexInline math="u\sqsubseteq\tau" /> מתקיים <KatexInline math="\tau\notin P" />.</li>
+<li>נבחר <KatexInline math="\varepsilon=2^{-(n+1)}" />. אז <KatexInline math="B(\sigma,\varepsilon)=\{\tau\mid\tau[0..n]=\sigma[0..n]\}=\{\tau\mid u\sqsubseteq\tau\}" />.</li>
+<li>מהרישא הרעה: כל <KatexInline math="\tau\in B(\sigma,\varepsilon)" /> מקיים <KatexInline math="\tau\notin P" />, כלומר <KatexInline math="B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />. <span dir="ltr">□</span></li>
+</ol>
+</div>
+
+---
+
+# פתרון ב' (כיוון ⟸): סגורה → בטיחות
+
+<div class="mt-4 bg-blue-50 border border-blue-200 rounded p-4 text-[16px] leading-relaxed text-right">
+<b>נניח</b> <KatexInline math="P" /> סגורה. רוצים: לכל <KatexInline math="\sigma\notin P" /> קיימת רישא <KatexInline math="u\sqsubseteq\sigma" /> כך שכל <KatexInline math="\tau" /> עם <KatexInline math="u\sqsubseteq\tau" /> מקיים <KatexInline math="\tau\notin P" />.
+</div>
+<div class="mt-3 text-right text-[16px] leading-relaxed">
+<ol class="list-decimal list-inside space-y-2">
+<li>יהי <KatexInline math="\sigma\notin P" />. מכיוון ש-<KatexInline math="P" /> סגורה, המשלים <KatexInline math="\Sigma^\omega\setminus P" /> פתוח, לכן קיים <KatexInline math="\varepsilon>0" /> כך ש-<KatexInline math="B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />.</li>
+<li>נבחר <KatexInline math="n" /> כך ש-<KatexInline math="2^{-(n+1)}\le\varepsilon" />. אז <KatexInline math="B(\sigma,2^{-(n+1)})\subseteq B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />.</li>
+<li>נגדיר <KatexInline math="u=\sigma[0..n]" />. לכל <KatexInline math="\tau" /> עם <KatexInline math="u\sqsubseteq\tau" />: <KatexInline math="\tau\in B(\sigma,2^{-(n+1)})\subseteq\Sigma^\omega\setminus P" />, כלומר <KatexInline math="\tau\notin P" />.</li>
+<li><KatexInline math="u" /> היא רישא רעה של <KatexInline math="\sigma" />. <span dir="ltr">□</span></li>
+</ol>
+</div>
+
+---
+
+# פתרון ג' (כיוון ⟹): חַיּוּת → צפופה
+
+<div class="mt-4 bg-emerald-50 border border-emerald-200 rounded p-4 text-[16px] leading-relaxed text-right">
+<b>נניח</b> <KatexInline math="P" /> תכונת חַיּוּת. רוצים: לכל <KatexInline math="\sigma\in\Sigma^\omega" /> ולכל <KatexInline math="\varepsilon>0" /> קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="d(\sigma,\tau)<\varepsilon" />.
+</div>
+<div class="mt-3 text-right text-[16px] leading-relaxed">
+<ol class="list-decimal list-inside space-y-2">
+<li>יהי <KatexInline math="\sigma\in\Sigma^\omega" /> ו-<KatexInline math="\varepsilon>0" />. נבחר <KatexInline math="n" /> כך ש-<KatexInline math="2^{-(n+1)}<\varepsilon" />.</li>
+<li>נגדיר רישא <KatexInline math="u=\sigma[0..n]" />. מכיוון ש-<KatexInline math="P" /> חַיּוּת, קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="u\sqsubseteq\tau" />.</li>
+<li>מהגדרת המטריקה: <KatexInline math="\tau[0..n]=\sigma[0..n]" />, לכן <KatexInline math="d(\sigma,\tau)\le 2^{-(n+1)}<\varepsilon" />. <span dir="ltr">□</span></li>
+</ol>
+</div>
+
+---
+
+# פתרון ג' (כיוון ⟸): צפופה → חַיּוּת
+
+<div class="mt-4 bg-emerald-50 border border-emerald-200 rounded p-4 text-[16px] leading-relaxed text-right">
+<b>נניח</b> <KatexInline math="P" /> צפופה. רוצים: לכל רישא סופית <KatexInline math="u\in\Sigma^*" /> קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="u\sqsubseteq\tau" />.
+</div>
+<div class="mt-3 text-right text-[16px] leading-relaxed">
+<ol class="list-decimal list-inside space-y-2">
+<li>יהי <KatexInline math="u\in\Sigma^*" /> רישא באורך <KatexInline math="n" />. נבחר מילה כלשהי <KatexInline math="\sigma\in\Sigma^\omega" /> עם <KatexInline math="u\sqsubseteq\sigma" />, ונגדיר <KatexInline math="\varepsilon=2^{-(n+1)}" />.</li>
+<li>מכיוון ש-<KatexInline math="P" /> צפופה, קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="d(\sigma,\tau)<\varepsilon=2^{-(n+1)}" />.</li>
+<li>לכן <KatexInline math="\tau[0..n]=\sigma[0..n]=u" />, כלומר <KatexInline math="u\sqsubseteq\tau" /> ו-<KatexInline math="\tau\in P" />.</li>
+<li>לכן <KatexInline math="P" /> חַיּוּת. <span dir="ltr">□</span></li>
+</ol>
+</div>
+
+---
+
 # שאלה: יישום לקידוד עשרוני
 
 <div class="text-right text-[16px] leading-relaxed mt-2">
@@ -1020,25 +1100,6 @@ info: |
 
 ---
 
-# פתרון: סגור וצפוף
-
-<div class="mt-2 bg-slate-50 border border-slate-200 rounded p-3 text-[16px] leading-relaxed text-right">
-זו מטריקה: אי-שליליות וסימטריה מיידיות, ו-<KatexInline math="d(\sigma,\tau)=0" /> רק כאשר <KatexInline math="\sigma=\tau" />. בנוסף מתקיים אי-שוויון חזק יותר מהמשולש: אם <KatexInline math="\sigma" /> ו-<KatexInline math="\tau" /> מסכימות עם <KatexInline math="\eta" /> על רישא ארוכה, אז גם <KatexInline math="\sigma" /> ו-<KatexInline math="\tau" /> מסכימות לפחות עד המינימום מבין שתי הרישות האלה. לכן <span dir="ltr"><KatexInline math="d(\sigma,\tau)\le\max(d(\sigma,\eta),d(\eta,\tau))" /></span>.
-</div>
-
-<div class="mt-2 bg-amber-50 border border-amber-200 rounded p-3 text-[16px] leading-relaxed text-right">
-כדור פתוח סביב מילה <KatexInline math="\sigma" /> הוא אוסף כל המילים שקרובות מספיק ל-<KatexInline math="\sigma" />. במטריקה הזו, להיות קרוב מספיק פירושו להסכים עם <KatexInline math="\sigma" /> על רישא ארוכה מספיק. למשל, כדור קטן מרדיוס <KatexInline math="2^{-n}" /> מכיל רק מילים שמסכימות עם <KatexInline math="\sigma" /> על <KatexInline math="n" /> האותיות הראשונות.
-</div>
-
-<div v-click class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-[16px] leading-relaxed text-right">
-<span class="font-bold">בטיחות:</span> אם <KatexInline math="P" /> סגורה ו-<KatexInline math="\sigma\notin P" />, אז המשלים פתוח. לכן קיים כדור פתוח <KatexInline math="B(\sigma,\varepsilon)" /> שמוכל כולו במשלים. נבחר רישא <KatexInline math="\rho" /> של <KatexInline math="\sigma" /> ארוכה מספיק כך שכל מילה שמתחילה ב-<KatexInline math="\rho" /> נמצאת בכדור הזה. לכן כל המשך של <KatexInline math="\rho" /> מחוץ ל-<KatexInline math="P" />, כלומר <KatexInline math="\rho" /> קידומת רעה. להפך, אם לכל <KatexInline math="\sigma\notin P" /> יש רישא רעה, אז סביב <KatexInline math="\sigma" /> יש כדור שמוכל במשלים, ולכן המשלים פתוח ו-<KatexInline math="P" /> סגורה.
-</div>
-
-<div v-click class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-[16px] leading-relaxed text-right">
-<span class="font-bold">חַיּוּת:</span> לפי ההגדרה הטופולוגית, <KatexInline math="P" /> צפופה אם ורק אם כל כדור פתוח מכיל נקודה מתוך <KatexInline math="P" />. לכן, לכל רישא סופית <KatexInline math="\rho" />, ניקח מילה כלשהי <KatexInline math="\sigma" /> שמתחילה ב-<KatexInline math="\rho" /> וכדור קטן מספיק סביב <KatexInline math="\sigma" /> שמכריח את הרישא <KatexInline math="\rho" />. הצפיפות נותנת מילה ב-<KatexInline math="P" /> בתוך הכדור, ולכן יש המשך <KatexInline math="\rho\eta\in P" />. להפך, אם לכל <KatexInline math="\rho" /> יש המשך כזה, אז כל כדור פתוח מכיל מילים עם רישא סופית מסוימת, ואחת מהן נמצאת ב-<KatexInline math="P" />. לכן <KatexInline math="P" /> צפופה.
-</div>
-
----
 
 # פתרון: הקידוד העשרוני
 
