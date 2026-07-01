@@ -1432,6 +1432,39 @@ class: text-center
 
 # שאלה: בניית NBA לפי זוגיות
 
+<div class="text-right text-[17px] leading-relaxed mt-2">
+יהי <span dir="ltr"><KatexInline math="\Sigma=\{A,B\}" /></span>. בנו <span dir="ltr">NBA</span> שמקבל את המילים האינסופיות <span dir="ltr"><KatexInline math="\sigma" /></span> מעל <span dir="ltr"><KatexInline math="\Sigma" /></span> כך ש-<span dir="ltr"><KatexInline math="A" /></span> מופיעה בהן אינסוף פעמים, ובין כל שתי הופעות <span dir="ltr"><KatexInline math="A" /></span> עוקבות מופיע מספר <b>אי-זוגי</b> של <span dir="ltr"><KatexInline math="B" /></span>.
+</div>
+
+<div class="bg-white rounded border border-slate-200 shadow-sm p-2 mt-3">
+<AutomatonD3 variant="classic" :width="560" :height="180" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="12"
+  :states="[
+    { id: 'init', x: 80,  y: 90, label: '$init$', r: 30, initial: true, initialDirection: 'left' },
+    { id: 'ev',   x: 280, y: 90, label: '$even$', r: 30, accepting: true },
+    { id: 'od',   x: 480, y: 90, label: '$odd$', r: 30 }
+  ]"
+  :transitions="[
+    { source: 'init', target: 'init', label: '$B$', loopDirection: '-90deg', labelY: -16 },
+    { source: 'init', target: 'ev', label: '$A$', labelY: -12 },
+    { source: 'ev', target: 'ev', label: '$A$', loopDirection: '-90deg', labelY: -16 },
+    { source: 'ev', target: 'od', label: '$B$', labelY: 12, curve: 0.15 },
+    { source: 'od', target: 'ev', label: '$B$', labelY: -12, curve: 0.15 },
+    { source: 'od', target: 'ev', label: '$A$', labelY: -12, curve: 0.45 }
+  ]"
+/>
+</div>
+
+<div class="mt-2 grid grid-cols-3 gap-2 text-[14px] text-right leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-2 text-blue-900"><span dir="ltr"><KatexInline math="init" /></span>: לפני ה-<span dir="ltr"><KatexInline math="A" /></span> הראשונה - אין דרישה, <span dir="ltr"><KatexInline math="B" /></span> חופשי.</div>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900"><span dir="ltr"><KatexInline math="even" /></span>: נספרו <span dir="ltr"><KatexInline math="0" /></span> (זוגי) <span dir="ltr"><KatexInline math="B" /></span>-ים מאז ה-<span dir="ltr"><KatexInline math="A" /></span> האחרונה. <b>אין</b> מעבר על <span dir="ltr"><KatexInline math="A" /></span> מכאן - זה היה אוסר ספירה זוגית.</div>
+<div class="bg-amber-50 border border-amber-200 rounded p-2 text-amber-900"><span dir="ltr"><KatexInline math="odd" /></span>: נספרו אי-זוגי <span dir="ltr"><KatexInline math="B" /></span>-ים. מעבר על <span dir="ltr"><KatexInline math="A" /></span> מכאן <b>חוקי</b> וחוזר ל-<span dir="ltr"><KatexInline math="even" /></span> (איפוס המונה).</div>
+</div>
+
+<div class="mt-2 bg-red-50 border-2 border-red-300 rounded p-2 text-red-900 text-center text-[14px] leading-snug">
+<span dir="ltr"><KatexInline math="F=\{even\}" /></span>: ביקור חוזר ואינסופי ב-<span dir="ltr"><KatexInline math="even" /></span> מתאפשר רק דרך מעברי <span dir="ltr"><KatexInline math="A" /></span> תקפים מ-<span dir="ltr"><KatexInline math="odd" /></span> - ולכן הוא שקול ל-"<span dir="ltr"><KatexInline math="A" /></span> אינסוף פעמים, כל פעם אחרי מספר אי-זוגי של <span dir="ltr"><KatexInline math="B" /></span>".
+</div>
+# שאלה: בניית NBA לפי זוגיות
+
 <div class="text-right text-[18px] leading-relaxed mt-3">
 יהי <span dir="ltr"><KatexInline math="\Sigma=\{A,B\}" /></span>. בנו <span dir="ltr">NBA</span> שמקבל את המילים האינסופיות <span dir="ltr">σ</span> מעל <span dir="ltr">Σ</span> כך ש־<span dir="ltr">A</span> מופיעה בהן אינסוף פעמים, ובין כל שתי הופעות <span dir="ltr">A</span> עוקבות מופיע מספר <b>אי־זוגי</b> של <span dir="ltr">B</span>.
 </div>
@@ -1443,16 +1476,17 @@ class: text-center
 <div class="bg-white rounded border border-slate-200 shadow-sm p-2 mt-2">
 <AutomatonD3 variant="classic" :width="560" :height="180" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="12"
   :states="[
-    { id: 'init', x: 80,  y: 90, label: '$init$', r: 30, initial: true, initialDirection: 'top' },
+    { id: 'init', x: 80,  y: 90, label: '$init$', r: 30, initial: true, initialDirection: 'left' },
     { id: 'ev',   x: 280, y: 90, label: '$even$', r: 30, accepting: true },
     { id: 'od',   x: 480, y: 90, label: '$odd$', r: 30 }
   ]"
   :transitions="[
     { source: 'init', target: 'init', label: '$B$', loopDirection: '-90deg', labelY: -16 },
-    { source: 'init', target: 'ev', label: '$A$', curve: 0.1 },
-    { source: 'ev', target: 'od', label: '$B$', labelY: -12, curve: 0.15 },
-    { source: 'od', target: 'ev', label: '$B$', labelY: 12, curve: 0.15 },
-    { source: 'od', target: 'ev', label: '$A$', labelY: 24, curve: 0.45 }
+    { source: 'init', target: 'ev', label: '$A$', labelY: -12 },
+    { source: 'ev', target: 'ev', label: '$A$', loopDirection: '-90deg', labelY: -16 },
+    { source: 'ev', target: 'od', label: '$B$', labelY: 12, curve: 0.15 },
+    { source: 'od', target: 'ev', label: '$B$', labelY: -12, curve: 0.15 },
+    { source: 'od', target: 'ev', label: '$A$', labelY: -12, curve: 0.45 }
   ]"
 />
 </div>
@@ -1467,105 +1501,3 @@ class: text-center
 <span dir="ltr"><KatexInline math="F=\{even\}" /></span>: ביקור חוזר ואינסופי ב־<span dir="ltr">even</span> מתאפשר רק דרך מעברי <span dir="ltr">A</span> תקפים מ־<span dir="ltr">odd</span> - ולכן הוא שקול ל"<span dir="ltr">A</span> אינסוף פעמים, כל פעם אחרי מספר אי־זוגי של <span dir="ltr">B</span>".
 </div>
 
----
-
-# שאלה: מענק תמיד יבוא
-
-<div class="text-right text-[18px] leading-relaxed mt-3">
-תהליך מבקש שירות (<span dir="ltr">t</span>) ומקבל מענק (<span dir="ltr">c</span>). התכונה הנדרשת: <span dir="ltr"><KatexInline math="\Box(t\to\Diamond c)" /></span> - כל בקשה זוכה <b>בסופו של דבר</b> למענק (ללא חסם זמן קבוע, בניגוד לתכונה "מענק תוך 2 צעדים" שראינו קודם).
-</div>
-
-<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
-<b>א.</b> בנו <span dir="ltr">NBA</span> (2 מצבים) המקבל בדיוק את המילים המקיימות את התכונה.<br/>
-<b>ב.</b> הסבירו מדוע <b>לא ניתן</b> להשתמש כאן בבדיקת הישגות בלבד (כפי שעשינו לתכונת הבטיחות עם הניטור הסופי), אלא יש צורך בתנאי קבלה מסוג <span dir="ltr">Büchi</span>.
-</div>
-
----
-
-# פתרון: מצב מקבל "נח", מצב ביניים "חייב לסגור"
-
-<div class="bg-white rounded border border-slate-200 shadow-sm p-2 mt-2">
-<AutomatonD3 variant="classic" :width="420" :height="160" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="12"
-  :states="[
-    { id: 'q0', x: 90, y: 80, label: '$q_0$', r: 30, initial: true, initialDirection: 'top', accepting: true },
-    { id: 'q1', x: 290, y: 80, label: '$q_1$', r: 30 }
-  ]"
-  :transitions="[
-    { source: 'q0', target: 'q0', label: '$\\neg t\\lor c$', loopDirection: '-90deg', labelY: -16 },
-    { source: 'q0', target: 'q1', label: '$t\\land\\neg c$', curve: 0.15 },
-    { source: 'q1', target: 'q1', label: '$\\neg c$', loopDirection: '-90deg', labelY: -16 },
-    { source: 'q1', target: 'q0', label: '$c$', labelY: 24, curve: 0.45 }
-  ]"
-/>
-</div>
-
-<div class="mt-2 grid grid-cols-2 gap-3 text-[14.5px] text-right leading-snug">
-<div class="bg-blue-50 border border-blue-200 rounded p-2 text-blue-900">
-<b>א.</b> <span dir="ltr">q₀</span> (מקבל): נשארים כל עוד אין בקשה פתוחה, או שבקשה זוכה למענק מיידי. <span dir="ltr">q₁</span>: בקשה פתוחה ללא מענק עדיין - נשארים כאן עד שמגיע <span dir="ltr">c</span> וחוזרים ל-<span dir="ltr">q₀</span>.
-</div>
-<div class="bg-red-50 border border-red-200 rounded p-2 text-red-900">
-<b>ב.</b> ריצה שנתקעת לנצח ב-<span dir="ltr">q₁</span> (בקשה שלעולם לא נענית) חייבת <b>להידחות</b>, אך זו תכונת "אינסוף פעמים" על כלל ההמשך - אין רישא סופית שמעידה על הפרה, ולכן הישגות (כמו בבטיחות) לא מספיקה; צריך לבדוק שהריצה <b>לא</b> נתקעת לנצח מחוץ ל-<span dir="ltr"><KatexInline math="F={q₀}" /></span>, וזה מצריך קבלת <span dir="ltr">Büchi</span>.
-</div>
-</div>
-
----
-
-# שאלה: למה לא לכל NBA יש DBA שקול
-
-<div class="text-right text-[18px] leading-relaxed mt-3">
-תהי <span dir="ltr"><KatexInline math="L=\{\sigma\in\{a,b\}^\omega \mid a\text{ מופיעה בה רק סופית פעמים}\}" /></span> (כלומר <span dir="ltr"><KatexInline math="\mathsf{FG}\neg a" /></span>).
-</div>
-
-<div class="mt-5 bg-amber-50 border border-amber-200 rounded p-3 text-amber-900 text-right text-[17px] leading-relaxed">
-<b>א.</b> תנו <span dir="ltr">NBA</span> בעל 2 מצבים המקבל את <span dir="ltr">L</span>.<br/>
-<b>ב.</b> הסבירו אינטואיטיבית מדוע אין <span dir="ltr">DBA</span> שקול ל-<span dir="ltr">L</span>.<br/>
-<b>ג.</b> האם לשפה המשלימה <span dir="ltr"><KatexInline math="\{a,b\}^\omega\setminus L" /></span> (כלומר <span dir="ltr">a</span> מופיעה <b>אינסוף</b> פעמים) קיים <span dir="ltr">DBA</span>?
-</div>
-
----
-
-# פתרון: ניחוש מותר, החלטה דטרמיניסטית אסורה
-
-<div class="bg-white rounded border border-slate-200 shadow-sm p-2 mt-2">
-<AutomatonD3 variant="classic" :width="420" :height="160" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="12"
-  :states="[
-    { id: 'q0', x: 90, y: 80, label: '$q_0$', r: 30, initial: true, initialDirection: 'top' },
-    { id: 'q1', x: 290, y: 80, label: '$q_1$', r: 30, accepting: true }
-  ]"
-  :transitions="[
-    { source: 'q0', target: 'q0', label: '$a,b$', loopDirection: '-90deg', labelY: -16 },
-    { source: 'q0', target: 'q1', label: '$b$', curve: 0.1 },
-    { source: 'q1', target: 'q1', label: '$b$', loopDirection: '-90deg', labelY: -16 }
-  ]"
-/>
-</div>
-
-<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-blue-900 text-right text-[15px] leading-relaxed">
-<b>א.</b> <span dir="ltr">NBA</span>: <span dir="ltr"><KatexInline math="q_0" /></span> (התחלה, לא מקבל) עם לולאה עצמית על <span dir="ltr">a,b</span> ומעבר <b>לא־דטרמיניסטי</b> ל-<span dir="ltr"><KatexInline math="q_1" /></span> (מקבל) על <span dir="ltr">b</span> - הניחוש: "זו הופעת <span dir="ltr">a</span> האחרונה". מ-<span dir="ltr"><KatexInline math="q_1" /></span>, לולאה עצמית רק על <span dir="ltr">b</span> (אם מגיעה עוד <span dir="ltr">a</span> - אין מעבר, ריצה זו "נכשלת" אך ריצות אחרות עם ניחוש מאוחר יותר עדיין מקבלות).
-</div>
-<div class="mt-2 bg-red-50 border border-red-200 rounded p-3 text-red-900 text-right text-[15px] leading-relaxed">
-<b>ב.</b> אוטומט דטרמיניסטי <b>חייב להחליט עכשיו</b>, ללא יכולת "לנחש ולחזור בו", מתי לעבור סופית למצב מקבל יציב. אבל בכל מילה סופית שנקראה עד כה תמיד <b>אפשרי</b> שתופיע עוד <span dir="ltr">a</span> בעתיד - כל החלטה "כעת אין יותר <span dir="ltr">a</span>" עלולה להתבדות. לכן כל <span dir="ltr">DBA</span> מועמד יוכשל ע"י איזושהי מילה ב-<span dir="ltr">L</span> או חוצה אותה - אין <span dir="ltr">DBA</span> שקול. (<span dir="ltr">L</span> היא תכונת <b>התמדה</b> - <span dir="ltr">◇□¬a</span> - וכפי שראינו, התמדה לא-טריוויאלית "מרגישה כמו" החלטה שלעולם אינה בטוחה.)
-</div>
----
-
-# פתרון ג': חזרה, בניגוד להתמדה, כן ניתנת להחלטה דטרמיניסטית
-
-<div class="bg-white rounded border border-slate-200 shadow-sm p-2 mt-2">
-<AutomatonD3 variant="classic" :width="420" :height="160" :arrowSize="3.5" :stateLabelFontSize="13" :transitionLabelFontSize="12"
-  :states="[
-    { id: 'w0', x: 90, y: 80, label: '$wait$', r: 32, initial: true, initialDirection: 'top' },
-    { id: 'w1', x: 300, y: 80, label: '$\\mathit{just}\\text{-}a$', r: 38, labelWidth: 76, accepting: true }
-  ]"
-  :transitions="[
-    { source: 'w0', target: 'w0', label: '$\\neg a$', loopDirection: '-90deg', labelY: -16 },
-    { source: 'w0', target: 'w1', label: '$a$', curve: 0.1 },
-    { source: 'w1', target: 'w1', label: '$a$', loopDirection: '-90deg', labelY: -16 },
-    { source: 'w1', target: 'w0', label: '$\\neg a$', curve: 0.1 }
-  ]"
-/>
-</div>
-<div class="mt-1 text-center text-slate-500 text-[13px]">כל הופעת <span dir="ltr">a</span> נכנסת ל-<span dir="ltr">just-a</span> (מקבל) - ביקור אינסופי בו שקול ל"<span dir="ltr">a</span> אינסוף פעמים".</div>
-
-<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-emerald-900 text-right text-[15px] leading-relaxed">
-<b>ג. כן, יש <span dir="ltr">DBA</span>.</b> המשלים הוא <span dir="ltr"><KatexInline math="\Box\Diamond a" /></span> ("<span dir="ltr">a</span> אינסוף פעמים") - תכונת <b>חזרה</b> (recurrence), לא התמדה. בשונה מהתמדה, חזרה <b>אינה</b> דורשת מהאוטומט להחליט "סופית" שמשהו יציב לנצח - היא רק דורשת לחזור ולעבור דרך מצב מקבל בכל פעם ש-<span dir="ltr">a</span> מופיעה, וזו החלטה מקומית שאפשר לקבל בו-זמנית עם קריאת <span dir="ltr">a</span> עצמה.
-</div>
