@@ -965,7 +965,7 @@ info: |
 
 <div class="mt-2 bg-blue-50 border border-blue-200 rounded p-2 text-[15px] leading-snug text-right">
 כלומר, ככל שהרישא המשותפת ארוכה יותר, המרחק קטן יותר. 
-המושגים "סגורה" ו"צפופה" שמופיעים בסעיפים ב'-ג' הם מושגים סטנדרטיים במרחבים מטריים ובשאלה זאת נראה את הקשר שלהם אלינו.
+המושגים "סגורה" ו"צפופה" שמופיעים בסעיפים ב'-ג' הם מושגים סטנדרטיים במרחבים מטריים (קבוצות עם מטריקה) ובשאלה זאת נראה את הקשר שלהם אלינו.
 </div>
 
 <div class="mt-2 space-y-1.5 text-right text-[14.5px] leading-snug">
@@ -981,7 +981,7 @@ info: |
 
 <div class="bg-emerald-50 border border-emerald-200 rounded p-2">
 <span class="font-bold">ג'.</span>
-נאמר ש-<KatexInline math="P" /> <b>צפופה</b> אם כל כדור פתוח חותך את <KatexInline math="P" />, כלומר: לכל <KatexInline math="\sigma\in\Sigma^\omega" /> ולכל <KatexInline math="\varepsilon>0" /> קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="d(\sigma,\tau)<\varepsilon" />. הוכיחו: <KatexInline math="P" /> היא תכונת חַיּוּת אם ורק אם <KatexInline math="P" /> צפופה.
+נאמר ש-<KatexInline math="P" /> <b>צפופה</b> אם כל כדור פתוח חותך את <KatexInline math="P" />, כלומר: לכל <KatexInline math="\sigma\in\Sigma^\omega" /> ולכל <KatexInline math="\varepsilon>0" /> קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="d(\sigma,\tau)<\varepsilon" />. <br/> הוכיחו: <KatexInline math="P" /> היא תכונת חַיּוּת אם ורק אם <KatexInline math="P" /> צפופה.
 </div>
 </div>
 
