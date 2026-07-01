@@ -1005,64 +1005,48 @@ info: |
 
 ---
 
-# פתרון ב' (כיוון ⟹): בטיחות → סגורה
+# פתרון ב': בטיחות אמ"מ סגורה
 
-<div class="mt-4 bg-blue-50 border border-blue-200 rounded p-4 text-[16px] leading-relaxed text-right">
-<b>נניח</b> <KatexInline math="P" /> תכונת בטיחות. רוצים: לכל <KatexInline math="\sigma\notin P" /> קיים <KatexInline math="\varepsilon>0" /> כך ש-<KatexInline math="B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />.
-</div>
-<div class="mt-3 text-right text-[16px] leading-relaxed">
-<ol class="list-decimal list-inside space-y-2">
-<li>יהי <KatexInline math="\sigma\notin P" />. מכיוון ש-<KatexInline math="P" /> בטיחות, קיימת <b>רישא רעה</b>: <KatexInline math="u=\sigma[0..n]" /> כך שלכל <KatexInline math="\tau\in\Sigma^\omega" /> עם <KatexInline math="u\sqsubseteq\tau" /> מתקיים <KatexInline math="\tau\notin P" />.</li>
-<li>נבחר <KatexInline math="\varepsilon=2^{-(n+1)}" />. אז <KatexInline math="B(\sigma,\varepsilon)=\{\tau\mid\tau[0..n]=\sigma[0..n]\}=\{\tau\mid u\sqsubseteq\tau\}" />.</li>
-<li>מהרישא הרעה: כל <KatexInline math="\tau\in B(\sigma,\varepsilon)" /> מקיים <KatexInline math="\tau\notin P" />, כלומר <KatexInline math="B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />. <span dir="ltr">□</span></li>
+<div class="mt-3 grid grid-cols-2 gap-3 text-right text-[15px] leading-snug">
+<div class="bg-blue-50 border border-blue-200 rounded p-3">
+<div class="font-bold mb-2">כיוון ⟹: בטיחות → סגורה</div>
+<ol class="list-decimal list-inside space-y-1.5">
+<li>יהי <KatexInline math="\sigma\notin P" />. מבטיחות קיימת רישא רעה <KatexInline math="u=\sigma[0..n]" />: לכל <KatexInline math="\tau" /> עם <KatexInline math="u\sqsubseteq\tau" /> - <KatexInline math="\tau\notin P" />.</li>
+<li>נבחר <KatexInline math="\varepsilon=2^{-(n+1)}" />. אז <KatexInline math="B(\sigma,\varepsilon)=\{\tau\mid u\sqsubseteq\tau\}\subseteq\Sigma^\omega\setminus P" />.</li>
+<li>המשלים פתוח, לכן <KatexInline math="P" /> סגורה. <span dir="ltr">□</span></li>
 </ol>
+</div>
+<div class="bg-blue-50 border border-blue-200 rounded p-3">
+<div class="font-bold mb-2">כיוון ⟸: סגורה → בטיחות</div>
+<ol class="list-decimal list-inside space-y-1.5">
+<li>יהי <KatexInline math="\sigma\notin P" />. מסגירות המשלים פתוח, קיים <KatexInline math="\varepsilon>0" /> עם <KatexInline math="B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />.</li>
+<li>נבחר <KatexInline math="n" /> כך ש-<KatexInline math="2^{-(n+1)}\le\varepsilon" />. אז <KatexInline math="B(\sigma,2^{-(n+1)})\subseteq\Sigma^\omega\setminus P" />.</li>
+<li><KatexInline math="u=\sigma[0..n]" /> היא רישא רעה: לכל <KatexInline math="\tau" /> עם <KatexInline math="u\sqsubseteq\tau" /> - <KatexInline math="\tau\notin P" />. <span dir="ltr">□</span></li>
+</ol>
+</div>
 </div>
 
 ---
 
-# פתרון ב' (כיוון ⟸): סגורה → בטיחות
+# פתרון ג': חַיּוּת אמ"מ צפופה
 
-<div class="mt-4 bg-blue-50 border border-blue-200 rounded p-4 text-[16px] leading-relaxed text-right">
-<b>נניח</b> <KatexInline math="P" /> סגורה. רוצים: לכל <KatexInline math="\sigma\notin P" /> קיימת רישא <KatexInline math="u\sqsubseteq\sigma" /> כך שכל <KatexInline math="\tau" /> עם <KatexInline math="u\sqsubseteq\tau" /> מקיים <KatexInline math="\tau\notin P" />.
-</div>
-<div class="mt-3 text-right text-[16px] leading-relaxed">
-<ol class="list-decimal list-inside space-y-2">
-<li>יהי <KatexInline math="\sigma\notin P" />. מכיוון ש-<KatexInline math="P" /> סגורה, המשלים <KatexInline math="\Sigma^\omega\setminus P" /> פתוח, לכן קיים <KatexInline math="\varepsilon>0" /> כך ש-<KatexInline math="B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />.</li>
-<li>נבחר <KatexInline math="n" /> כך ש-<KatexInline math="2^{-(n+1)}\le\varepsilon" />. אז <KatexInline math="B(\sigma,2^{-(n+1)})\subseteq B(\sigma,\varepsilon)\subseteq\Sigma^\omega\setminus P" />.</li>
-<li>נגדיר <KatexInline math="u=\sigma[0..n]" />. לכל <KatexInline math="\tau" /> עם <KatexInline math="u\sqsubseteq\tau" />: <KatexInline math="\tau\in B(\sigma,2^{-(n+1)})\subseteq\Sigma^\omega\setminus P" />, כלומר <KatexInline math="\tau\notin P" />.</li>
-<li><KatexInline math="u" /> היא רישא רעה של <KatexInline math="\sigma" />. <span dir="ltr">□</span></li>
-</ol>
-</div>
-
----
-
-# פתרון ג' (כיוון ⟹): חַיּוּת → צפופה
-
-<div class="mt-4 bg-emerald-50 border border-emerald-200 rounded p-4 text-[16px] leading-relaxed text-right">
-<b>נניח</b> <KatexInline math="P" /> תכונת חַיּוּת. רוצים: לכל <KatexInline math="\sigma\in\Sigma^\omega" /> ולכל <KatexInline math="\varepsilon>0" /> קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="d(\sigma,\tau)<\varepsilon" />.
-</div>
-<div class="mt-3 text-right text-[16px] leading-relaxed">
-<ol class="list-decimal list-inside space-y-2">
+<div class="mt-3 grid grid-cols-2 gap-3 text-right text-[15px] leading-snug">
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
+<div class="font-bold mb-2">כיוון ⟹: חַיּוּת → צפופה</div>
+<ol class="list-decimal list-inside space-y-1.5">
 <li>יהי <KatexInline math="\sigma\in\Sigma^\omega" /> ו-<KatexInline math="\varepsilon>0" />. נבחר <KatexInline math="n" /> כך ש-<KatexInline math="2^{-(n+1)}<\varepsilon" />.</li>
-<li>נגדיר רישא <KatexInline math="u=\sigma[0..n]" />. מכיוון ש-<KatexInline math="P" /> חַיּוּת, קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="u\sqsubseteq\tau" />.</li>
-<li>מהגדרת המטריקה: <KatexInline math="\tau[0..n]=\sigma[0..n]" />, לכן <KatexInline math="d(\sigma,\tau)\le 2^{-(n+1)}<\varepsilon" />. <span dir="ltr">□</span></li>
+<li>מחַיּוּת, לרישא <KatexInline math="u=\sigma[0..n]" /> קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="u\sqsubseteq\tau" />.</li>
+<li><KatexInline math="\tau[0..n]=\sigma[0..n]" />, לכן <KatexInline math="d(\sigma,\tau)\le 2^{-(n+1)}<\varepsilon" />. <span dir="ltr">□</span></li>
 </ol>
 </div>
-
----
-
-# פתרון ג' (כיוון ⟸): צפופה → חַיּוּת
-
-<div class="mt-4 bg-emerald-50 border border-emerald-200 rounded p-4 text-[16px] leading-relaxed text-right">
-<b>נניח</b> <KatexInline math="P" /> צפופה. רוצים: לכל רישא סופית <KatexInline math="u\in\Sigma^*" /> קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="u\sqsubseteq\tau" />.
-</div>
-<div class="mt-3 text-right text-[16px] leading-relaxed">
-<ol class="list-decimal list-inside space-y-2">
-<li>יהי <KatexInline math="u\in\Sigma^*" /> רישא באורך <KatexInline math="n" />. נבחר מילה כלשהי <KatexInline math="\sigma\in\Sigma^\omega" /> עם <KatexInline math="u\sqsubseteq\sigma" />, ונגדיר <KatexInline math="\varepsilon=2^{-(n+1)}" />.</li>
-<li>מכיוון ש-<KatexInline math="P" /> צפופה, קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="d(\sigma,\tau)<\varepsilon=2^{-(n+1)}" />.</li>
-<li>לכן <KatexInline math="\tau[0..n]=\sigma[0..n]=u" />, כלומר <KatexInline math="u\sqsubseteq\tau" /> ו-<KatexInline math="\tau\in P" />.</li>
-<li>לכן <KatexInline math="P" /> חַיּוּת. <span dir="ltr">□</span></li>
+<div class="bg-emerald-50 border border-emerald-200 rounded p-3">
+<div class="font-bold mb-2">כיוון ⟸: צפופה → חַיּוּת</div>
+<ol class="list-decimal list-inside space-y-1.5">
+<li>יהי <KatexInline math="u\in\Sigma^*" /> באורך <KatexInline math="n" />. נבחר <KatexInline math="\sigma" /> עם <KatexInline math="u\sqsubseteq\sigma" /> ו-<KatexInline math="\varepsilon=2^{-(n+1)}" />.</li>
+<li>מצפיפות, קיימת <KatexInline math="\tau\in P" /> עם <KatexInline math="d(\sigma,\tau)<\varepsilon" />.</li>
+<li><KatexInline math="\tau[0..n]=u" />, לכן <KatexInline math="u\sqsubseteq\tau" /> ו-<KatexInline math="\tau\in P" />: המשך ב-<KatexInline math="P" />. <span dir="ltr">□</span></li>
 </ol>
+</div>
 </div>
 
 ---
