@@ -1007,7 +1007,7 @@ info: |
 
 # פתרון ב': בטיחות אמ"מ סגורה
 
-<div class="mt-3 grid grid-cols-2 gap-3 text-right text-[15px] leading-snug">
+<div class="mt-3 grid grid-cols-1 gap-3 text-right text-[17px] leading-relaxed">
 <div class="bg-blue-50 border border-blue-200 rounded p-3">
 <div class="font-bold mb-2">כיוון ⟹: בטיחות → סגורה</div>
 <ol class="list-decimal list-inside space-y-1.5">
@@ -1030,7 +1030,7 @@ info: |
 
 # פתרון ג': חַיּוּת אמ"מ צפופה
 
-<div class="mt-3 grid grid-cols-2 gap-3 text-right text-[15px] leading-snug">
+<div class="mt-3 grid grid-cols-1 gap-3 text-right text-[17px] leading-relaxed">
 <div class="bg-emerald-50 border border-emerald-200 rounded p-3">
 <div class="font-bold mb-2">כיוון ⟹: חַיּוּת → צפופה</div>
 <ol class="list-decimal list-inside space-y-1.5">
