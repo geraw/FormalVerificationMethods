@@ -1322,7 +1322,7 @@ class: text-center
 # שאלה: אופק חסום?
 
 <div class="text-right text-[16px] leading-relaxed mt-2">
-יהי <span dir="ltr"><KatexInline math="TS" /></span>, <span dir="ltr"><KatexInline math="\Phi" /></span> פסוק מצב, <span dir="ltr"><KatexInline math="n\in\mathbb{N}" /></span>. נגדיר <span dir="ltr"><KatexInline math="P_{\Phi,n}=\{\sigma\mid \forall i\ge0,\ \neg\bigwedge_{j=i}^{i+n}(\sigma[j]\models\Phi)\}" /></span> - בכל ריצה, <KatexInline math="\Phi" /> לא יחזיק <KatexInline math="n+1" /> צעדים רצופים.
+יהי <span dir="ltr"><KatexInline math="TS" /></span>, <span dir="ltr"><KatexInline math="\Phi" /></span> פסוק מצב לא-טריוויאלי, <span dir="ltr"><KatexInline math="n\in\mathbb{N}" /></span>. נגדיר <span dir="ltr"><KatexInline math="P_{\Phi,n}=\{\sigma\mid \forall i\ge0,\ \neg\bigwedge_{j=i}^{i+n}(\sigma[j]\models\Phi)\}" /></span> - בכל ריצה, <KatexInline math="\Phi" /> לא יחזיק <KatexInline math="n+1" /> צעדים רצופים.
 </div>
 
 <div class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-amber-900 text-right text-[15px] leading-snug">
