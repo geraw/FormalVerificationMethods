@@ -1238,9 +1238,12 @@ class: text-center
 <b>דוגמת נגד מפורשת:</b> <span dir="ltr"><KatexInline math="\sigma=\neg p\cdot p^\omega" /></span> מקיימת <span dir="ltr"><KatexInline math="\Diamond\Box p" /></span> (מרגע 1 ואילך <span dir="ltr">p</span> מחזיק לנצח) אך <span dir="ltr"><KatexInline math="\sigma\not\models\Box p" /></span> (מפרה <span dir="ltr">p</span> בצעד הראשון). לכן <span dir="ltr"><KatexInline math="\Box p\subsetneq\Diamond\Box p" /></span>.
 </div>
 <div class="mt-2 bg-amber-50 border border-amber-200 rounded p-2 text-right text-[14px] leading-snug">
-<b>הכללה:</b> אם <span dir="ltr"><KatexInline math="\Phi" /></span> תכונת מצב לא-טריוויאלית (קיימת אות המקיימת אותה וקיימת אות שאינה מקיימת) אז
-<span dir="ltr"><KatexInline math="\mathit{Words}(\Box\Diamond\Phi)\;\neq\;\mathit{Words}(\Diamond\Box\Phi)" /></span>.
-הכלה <span dir="ltr"><KatexInline math="\supseteq" /></span> מתקיימת תמיד (התמדה גוררת חזרה), אך לא שוויון: המילה <span dir="ltr"><KatexInline math="(a_\Phi\cdot b_{\neg\Phi})^\omega" /></span> (אות מקיימת ואות לא מקיימת לסירוגין) מקיימת <span dir="ltr"><KatexInline math="\Box\Diamond\Phi" /></span> (חזרה) אך לא <span dir="ltr"><KatexInline math="\Diamond\Box\Phi" /></span> (התמדה) כי <span dir="ltr"><KatexInline math="\Phi" /></span> לעולם לא מחזיקה לנצח.
+<b>הכללה:</b> אם <span dir="ltr"><KatexInline math="\Phi" /></span> תכונת מצב לא-טריוויאלית - קיים <span dir="ltr"><KatexInline math="A\in 2^{AP}" /></span> עם <span dir="ltr"><KatexInline math="A\models\Phi" /></span> וקיים <span dir="ltr"><KatexInline math="B\in 2^{AP}" /></span> עם <span dir="ltr"><KatexInline math="B\not\models\Phi" /></span> - אז
+<span dir="ltr"><KatexInline math="\mathrm{Words}(\Box\Diamond\Phi)\;\supsetneq\;\mathrm{Words}(\Diamond\Box\Phi)" /></span>.
+<ul class="list-disc list-inside mt-1 space-y-1">
+<li><b>הכלה (</b><span dir="ltr"><KatexInline math="\supseteq" /></span><b>):</b> כל <span dir="ltr"><KatexInline math="\sigma\models\Diamond\Box\Phi" /></span> מקיים גם <span dir="ltr"><KatexInline math="\sigma\models\Box\Diamond\Phi" /></span>, כי אם <span dir="ltr"><KatexInline math="\Phi" /></span> מחזיקה מרגע <span dir="ltr"><KatexInline math="k" /></span> לנצח, בפרט היא מתקיימת אינסוף פעמים.</li>
+<li><b>הכלה ממש (</b><span dir="ltr"><KatexInline math="\neq" /></span><b>):</b> המילה <span dir="ltr"><KatexInline math="(A\cdot B)^\omega" /></span> (אותיות <span dir="ltr"><KatexInline math="A\models\Phi" /></span> ו-<span dir="ltr"><KatexInline math="B\not\models\Phi" /></span> לסירוגין) מקיימת <span dir="ltr"><KatexInline math="\Box\Diamond\Phi" /></span> (<span dir="ltr"><KatexInline math="\Phi" /></span> מתקיימת בכל מיקום זוגי) אך לא <span dir="ltr"><KatexInline math="\Diamond\Box\Phi" /></span> (<span dir="ltr"><KatexInline math="\Phi" /></span> נכשלת בכל מיקום אי-זוגי לנצח, ולכן לעולם אינה מחזיקה לנצח).</li>
+</ul>
 </div>
 
 ---
