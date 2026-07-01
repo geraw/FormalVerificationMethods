@@ -1338,7 +1338,7 @@ class: text-center
 <b>ב. אלגוריתם - הרחבת מרחב המצבים במונה ישיר:</b>
 <ol class="list-decimal list-inside space-y-0.5 mt-1">
 <li>הגדירו מערכת מעברים מורחבת עם מרכיב מונה: מצב הוא זוג <span dir="ltr"><KatexInline math="\langle s,\,c\rangle\in S\times\{0,1,\ldots,n+1\}" /></span>.</li>
-<li><b>מצבים התחלתיים:</b> לכל <span dir="ltr"><KatexInline math="s_0\in I" /></span>: <span dir="ltr"><KatexInline math="\langle s_0,\,c_0\rangle" /></span> כאשר <span dir="ltr"><KatexInline math="c_0=1" /></span> אם <span dir="ltr"><KatexInline math="L(s_0)\models\Phi" /></span>, ואחרת <span dir="ltr"><KatexInline math="c_0=0" /></span>.</li>
+<li><b>מצבי התחלה:</b> לכל <span dir="ltr"><KatexInline math="s_0\in I" /></span>: <span dir="ltr"><KatexInline math="\langle s_0,\,c_0\rangle" /></span> כאשר <span dir="ltr"><KatexInline math="c_0=1" /></span> אם <span dir="ltr"><KatexInline math="L(s_0)\models\Phi" /></span>, ואחרת <span dir="ltr"><KatexInline math="c_0=0" /></span>.</li>
 <li><b>מעברים:</b> <span dir="ltr"><KatexInline math="\langle s,c\rangle\to\langle t,c'\rangle" /></span> לכל מעבר <span dir="ltr"><KatexInline math="s\to t" /></span> ב-<span dir="ltr"><KatexInline math="TS" /></span>, כאשר <span dir="ltr"><KatexInline math="c'=c+1" /></span> אם <span dir="ltr"><KatexInline math="L(t)\models\Phi" /></span>, ואחרת <span dir="ltr"><KatexInline math="c'=0" /></span>.</li>
 <li><b>בדיקה:</b> <span dir="ltr"><KatexInline math="TS\models P_{\Phi,n}" /></span> אמ"מ אין מצב <span dir="ltr"><KatexInline math="\langle s,\,n+1\rangle" /></span> נגיש (BFS/DFS על המערכת המורחבת).</li>
 </ol>
@@ -1353,7 +1353,7 @@ class: text-center
 תכונת הבטיחות: <span dir="ltr"><KatexInline math="P=\{\sigma\mid\forall i,\ \sigma[i]\ne\sigma[i+1]\}" /></span> ("שני מצבים עוקבים לא מתויגים אותו דבר"). מציעים לבדוק אותה ע"י מערכת מעברים <span dir="ltr"><KatexInline math="TS'" /></span> עם:
 <ul class="list-disc list-inside mt-1 space-y-0.5">
 <li><b>מצבים:</b> <span dir="ltr"><KatexInline math="S\times 2^{AP}" /></span> (המרכיב השני "זוכר" את תווית המצב הקודם)</li>
-<li><b>מצבים התחלתיים:</b> <span dir="ltr"><KatexInline math="\{\langle s,L(s)\rangle\mid s\in I\}" /></span></li>
+<li><b>מצבי התחלה:</b> <span dir="ltr"><KatexInline math="\{\langle s,L(s)\rangle\mid s\in I\}" /></span></li>
 <li><b>מעברים:</b> <span dir="ltr"><KatexInline math="\langle s,S\rangle\xrightarrow{\alpha}\langle t,L(s)\rangle" /></span> לכל <span dir="ltr"><KatexInline math="s\xrightarrow{\alpha}t" /></span></li>
 <li><b>תיוג:</b> <span dir="ltr"><KatexInline math="L'(\langle s,S\rangle)=\{bad\}" /></span> אמ"מ <span dir="ltr"><KatexInline math="S=L(s)" /></span> (תווית קודמת = תווית נוכחית)</li>
 </ul>
