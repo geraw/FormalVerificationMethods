@@ -1337,7 +1337,7 @@ class: text-center
 <div class="bg-emerald-50 border border-emerald-200 rounded p-2 text-emerald-900">
 <b>ב. אלגוריתם - הרחבת מרחב המצבים במונה ישיר:</b>
 <ol class="list-decimal list-inside space-y-0.5 mt-1">
-<li>הגדירו מערכת מצבים מורחבת עם מרכיב מונה: מצב הוא זוג <span dir="ltr"><KatexInline math="\langle s,\,c\rangle\in S\times\{0,1,\ldots,n+1\}" /></span>.</li>
+<li>הגדירו מערכת מעברים מורחבת עם מרכיב מונה: מצב הוא זוג <span dir="ltr"><KatexInline math="\langle s,\,c\rangle\in S\times\{0,1,\ldots,n+1\}" /></span>.</li>
 <li><b>מצבים התחלתיים:</b> לכל <span dir="ltr"><KatexInline math="s_0\in I" /></span>: <span dir="ltr"><KatexInline math="\langle s_0,\,c_0\rangle" /></span> כאשר <span dir="ltr"><KatexInline math="c_0=1" /></span> אם <span dir="ltr"><KatexInline math="L(s_0)\models\Phi" /></span>, ואחרת <span dir="ltr"><KatexInline math="c_0=0" /></span>.</li>
 <li><b>מעברים:</b> <span dir="ltr"><KatexInline math="\langle s,c\rangle\to\langle t,c'\rangle" /></span> לכל מעבר <span dir="ltr"><KatexInline math="s\to t" /></span> ב-<span dir="ltr"><KatexInline math="TS" /></span>, כאשר <span dir="ltr"><KatexInline math="c'=c+1" /></span> אם <span dir="ltr"><KatexInline math="L(t)\models\Phi" /></span>, ואחרת <span dir="ltr"><KatexInline math="c'=0" /></span>.</li>
 <li><b>בדיקה:</b> <span dir="ltr"><KatexInline math="TS\models P_{\Phi,n}" /></span> אמ"מ אין מצב <span dir="ltr"><KatexInline math="\langle s,\,n+1\rangle" /></span> נגיש (BFS/DFS על המערכת המורחבת).</li>
@@ -1350,7 +1350,7 @@ class: text-center
 # שאלה: רדוקציה שבורה - בטיחות "אף פעם לא bad"
 
 <div class="text-right text-[15px] leading-snug mt-2">
-תכונת הבטיחות: <span dir="ltr"><KatexInline math="P=\{\sigma\mid\forall i,\ \sigma[i]\ne\sigma[i+1]\}" /></span> ("שני מצבים עוקבים לא מתויגים אותו דבר"). מציעים לבדוק אותה ע"י מערכת מצבים <span dir="ltr"><KatexInline math="TS'" /></span> עם:
+תכונת הבטיחות: <span dir="ltr"><KatexInline math="P=\{\sigma\mid\forall i,\ \sigma[i]\ne\sigma[i+1]\}" /></span> ("שני מצבים עוקבים לא מתויגים אותו דבר"). מציעים לבדוק אותה ע"י מערכת מעברים <span dir="ltr"><KatexInline math="TS'" /></span> עם:
 <ul class="list-disc list-inside mt-1 space-y-0.5">
 <li><b>מצבים:</b> <span dir="ltr"><KatexInline math="S\times 2^{AP}" /></span> (המרכיב השני "זוכר" את תווית המצב הקודם)</li>
 <li><b>מצבים התחלתיים:</b> <span dir="ltr"><KatexInline math="\{\langle s,L(s)\rangle\mid s\in I\}" /></span></li>
