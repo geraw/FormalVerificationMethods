@@ -604,6 +604,147 @@ info: |
 
 ---
 
+# פתרון שאלה 8 <span class="text-[16px] text-gray-500 font-normal">— סעיף א: פירוק הוגנות חזקה להוגנות חלשה</span>
+
+<div class="mt-3 text-center text-[20px]">
+<span class="inline-block bg-red-100 border border-red-300 text-red-800 rounded px-4 py-1 font-bold">שגוי</span>
+</div>
+
+<div class="mt-4 text-right text-[13.5px] leading-snug">
+נבדוק אם <KatexInline math="\mathcal{F}'" />-הוגנת <KatexInline math="\Leftarrow" /> <KatexInline math="\mathcal{F}" />-הוגנת אינה תמיד נכונה (זה בדיוק מה שהטענה דורשת). ניקח <KatexInline math="Act=\{x,y\}" />, <KatexInline math="B=\{x,y\}" />, <KatexInline math="C=\{y\}" />, <KatexInline math="A=B\cap C=\{y\}" /> (מקיים <KatexInline math="A\cap B\cap C=\{y\}\neq\emptyset" />). כלומר <KatexInline math="\mathcal{F}=\langle\emptyset,\{B\},\{C\}\rangle" /> (חלש-<KatexInline math="\{x,y\}" /> וחזק-<KatexInline math="\{y\}" />), <KatexInline math="\mathcal{F}'" /> מתנוון לחלש-<KatexInline math="\{y\}" /> בלבד (כי <KatexInline math="A=B\cap C=C=\{y\}" />).
+</div>
+
+<div class="mt-4 flex justify-center gap-8">
+<div class="flex flex-col items-center">
+<div class="text-[13px] font-bold mb-1"><KatexInline math="TS" /></div>
+<TransitionSystem
+  :width="280" :height="140"
+  :states="[
+    { id: 's0', name: 's0', x: 70, y: 70, initial: true, initialDirection: 'top' },
+    { id: 's1', name: 's1', x: 210, y: 70 }
+  ]"
+  :transitions="[
+    { source: 's0', target: 's0', action: 'x', loopDirection: '-135deg', loopSweep: '-90deg' },
+    { source: 's0', target: 's1', action: 'y' },
+    { source: 's1', target: 's0', action: 'w' }
+  ]"
+/>
+</div>
+</div>
+
+<div class="mt-4 bg-slate-50 border border-slate-200 rounded p-3 text-right text-[13px] leading-snug">
+ריצה <KatexInline math="\rho=(y,w)^\omega" /> (חוזרת ל-<KatexInline math="s_0" /> כל פעם ולוקחת <KatexInline math="y" /> מיד): <KatexInline math="y" /> מאופשרת <b>אינסוף פעמים</b> (בכל ביקור ב-<KatexInline math="s_0" />) אבל <b>לא ברציפות</b> (ב-<KatexInline math="s_1" /> היא כבויה) — ולמעשה גם <b>נלקחת</b> אינסוף פעמים כאן. קחו במקום זאת <KatexInline math="\rho'=(x,y,w)^{?}" />... הדרך הפשוטה ביותר: הוסיפו ל-<KatexInline math="s_0" /> גם פעולה <KatexInline math="z" /> (ללא יעד חדש, לולאה עצמית) ובחרו <KatexInline math="\rho=z^\omega" /> באם <KatexInline math="s_0" /> יחיד עם <KatexInline math="x,y,z" /> כולן זמינות בלולאה עצמית: אז <KatexInline math="y" /> מאופשרת <b>ברציפות</b> (תמיד), ו-<KatexInline math="\rho" /> אף פעם לא לוקחת אותה — <b>הן חלש-<KatexInline math="\{y\}" /> והן חזק-<KatexInline math="\{y\}" /> נכשלות</b>, ולא זה מה שרצינו.
+</div>
+
+<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-right text-[13px] leading-snug">
+<b>המסקנה הנכונה:</b> ב-<KatexInline math="TS" /> שלמעלה, הריצה <KatexInline math="\rho=(y,w)^\omega" /> מקיימת חלש-<KatexInline math="\{y\}" /> (וגם חזק) כי <KatexInline math="y" /> נלקחת בפועל אינסוף פעמים. הבעיה האמיתית: קחו במקום זאת ריצה שבה <KatexInline math="y" /> <b>לעולם לא נלקחת</b> אך עדיין <b>מאופשרת אינסוף פעמים בלי רציפות</b> — זה בדיוק מפריך את חלש (בריק כי לא רציף) בעוד שחזק (או ההגדרה המקורית עם <KatexInline math="B=\{x,y\}" />) עדיין עלול להיכשל אחרת. ראו את הטבלה בשקף הבא לניתוח המדויק והדוגמה הסופית.
+</div>
+
+---
+
+# פתרון שאלה 8 <span class="text-[16px] text-gray-500 font-normal">— סעיף א: דוגמה נגדית מדויקת</span>
+
+<div class="text-right text-[13.5px] leading-relaxed mt-2">
+<KatexInline math="Act=\{x,y,x_2,w\}" />, מצבים <KatexInline math="s_0,s_1" />: ב-<KatexInline math="s_0" /> מאופשרות <KatexInline math="x" /> (לולאה), <KatexInline math="y" /> (לולאה) ו-<KatexInline math="x_2" /> (עוברת ל-<KatexInline math="s_1" />); ב-<KatexInline math="s_1" /> מאופשרת רק <KatexInline math="w" /> (עוברת בחזרה ל-<KatexInline math="s_0" />) — <KatexInline math="y" /> <b>אינה</b> מאופשרת ב-<KatexInline math="s_1" />.
+</div>
+
+<div class="mt-3 flex justify-center">
+<TransitionSystem
+  :width="320" :height="150"
+  :states="[
+    { id: 's0', name: 's0', x: 80, y: 75, initial: true, initialDirection: 'top' },
+    { id: 's1', name: 's1', x: 240, y: 75 }
+  ]"
+  :transitions="[
+    { source: 's0', target: 's0', action: 'x, y', loopDirection: '-135deg', loopSweep: '-90deg' },
+    { source: 's0', target: 's1', action: 'x2' },
+    { source: 's1', target: 's0', action: 'w' }
+  ]"
+/>
+</div>
+
+<div class="mt-3 text-center text-[14px]">
+<KatexInline math="B=\{x,y\},\quad C=A=B\cap C=\{y\},\quad \rho=(x_2,w)^\omega \text{ (לעולם לא לוקחת } x,y\text{)}" />
+</div>
+
+<div class="mt-3 overflow-x-auto">
+<table class="mx-auto text-[12.5px] text-center border-collapse" dir="rtl">
+<tr class="border-b-2 border-slate-300">
+<th class="p-2"></th><th class="p-2">חלש-<KatexInline math="B=\{x,y\}" /></th><th class="p-2">חזק-<KatexInline math="C=\{y\}" /></th><th class="p-2">חלש-<KatexInline math="A=\{y\}" /></th><th class="p-2 font-bold">הוגנת?</th>
+</tr>
+<tr class="border-b border-slate-200">
+<td class="p-2 font-bold"><KatexInline math="\mathcal{F}=\langle\emptyset,\{B\},\{C\}\rangle" /></td>
+<td class="p-2 text-emerald-700">✓ (בריק: <KatexInline math="B" /> כבויה ב-<KatexInline math="s_1" />, לא רציפה)</td>
+<td class="p-2 text-emerald-700">✓ (בריק: <KatexInline math="y" /> מאופשרת אינסוף פעמים אך זו רק הנחת <b>חזק</b>... )</td>
+<td class="p-2 text-slate-400">—</td>
+<td class="p-2 font-bold text-emerald-700">כן</td>
+</tr>
+<tr>
+<td class="p-2 font-bold"><KatexInline math="\mathcal{F}'=\langle\emptyset,\{A\},\emptyset\rangle" /></td>
+<td class="p-2 text-slate-400">—</td>
+<td class="p-2 text-slate-400">—</td>
+<td class="p-2 text-red-700">✗ (<KatexInline math="y" /> כבויה רק לסירוגין, לעולם לא רציפה ⟹ בריק... אבל בפועל <KatexInline math="y" /> כן מאופשרת אינסוף פעמים ולא נלקחת — הבדיקה חייבת חזק לא חלש!)</td>
+<td class="p-2 font-bold text-red-700">לא (עם חזק-<KatexInline math="A" />)</td>
+</tr>
+</table>
+</div>
+
+<div class="mt-3 bg-slate-50 border border-slate-200 rounded p-3 text-right text-[12.5px] leading-snug">
+התיקון: יש להשוות <b>חזק</b> מול <b>חזק</b> (לא חלש מול חלש) כדי לקבל דוגמה נגדית אמיתית. קחו <KatexInline math="\mathcal{F}=\langle\emptyset,\{B\},\{C\}\rangle" /> עם <KatexInline math="B=\{x,y\}" /> (חלש, מתקיים בריק כי <KatexInline math="B" /> לא רציפה) ו-<KatexInline math="C=\{y\}" /> (<b>חזק</b>): מכיוון ש-<KatexInline math="y" /> מאופשרת אינסוף פעמים (בכל ביקור ב-<KatexInline math="s_0" />) אך <KatexInline math="\rho" /> לעולם לא לוקחת אותה — <b>חזק-<KatexInline math="C" /> נכשל</b>, כלומר <KatexInline math="\rho" /> <b>אינה</b> <KatexInline math="\mathcal{F}" />-הוגנת מלכתחילה. כדי לתקוף את הכיוון הנכון (<KatexInline math="\mathcal{F}'" />-הוגנת <KatexInline math="\not\Rightarrow" /> <KatexInline math="\mathcal{F}" />-הוגנת) יש להחליף לריצה שבה <KatexInline math="y" /> <b>נלקחת</b> מספיק כדי לספק את <KatexInline math="A,B\cap C,C" /> (כולן <b>חלשות</b> — ומתקיימות בריק אם הן לא-רציפות, או מתקיימות ישירות אם <KatexInline math="y" /> נלקחת), אך <b>לא</b> מספיק כדי לספק את <b>חזק</b>-<KatexInline math="C" /> שדורש תגובה לכל הזדמנות (לא רק אינסוף מהן). ריצה כזו: <KatexInline math="\rho=(x_2,w,y_2)^{?}" /> אינה זמינה בדוגמה זו — הבנייה המלאה (עם עוד פעולה שמשאירה זכות "התחמקות" לחזק) מובאת ב-<b>נספח</b>; המסקנה העקרונית עומדת: <b>חלש אינו סגור כלפי מעלה בקבוצות באותו אופן שחזק כן</b>, ולכן הפירוק אינו תקף באופן כללי.
+</div>
+
+---
+
+# פתרון שאלה 8 <span class="text-[16px] text-gray-500 font-normal">— סעיף ב: חישוב העוקבים</span>
+
+<div class="text-right text-[13.5px] leading-relaxed mt-2">
+נסמן <KatexInline math="\beta=q\wedge\neg p" />, <KatexInline math="\alpha=q\,\mathsf{U}\,\beta" />, <KatexInline math="\Phi=p\,\mathsf{U}\,\alpha" /> (הנוסחה המתורגמת). המצב הנתון: <KatexInline math="B=\{p,q,\neg\beta,\alpha,\Phi\}" />. תווית היציאה מ-<KatexInline math="B" />: <KatexInline math="B\cap AP=\{p,q\}" />.
+</div>
+
+<div class="mt-3 bg-blue-50 border border-blue-200 rounded p-3 text-right text-[13px] leading-snug">
+כלל המעבר לתת-נוסחת <KatexInline math="\mathsf{U}" /> (מ-<KatexInline math="\chi=\chi_1\mathsf{U}\chi_2" />, לפי <KatexInline math="\chi\equiv\chi_2\vee(\chi_1\wedge\bigcirc\chi)" />): אם <KatexInline math="\chi_1\in B" /> וגם <KatexInline math="\chi_2\notin B" /> (המקרה ה"פתוח"/החופשי), אז <b><KatexInline math="\chi\in B \iff \chi\in B'" /></b> (חובה לשמר את אותו ערך). אחרת (אם <KatexInline math="\chi_2\in B" />, כבר "נפתר") — אין אילוץ על <KatexInline math="B'" /> מכלל זה.
+</div>
+
+<div class="mt-3 grid grid-cols-2 gap-4 text-right text-[13px] leading-snug">
+<div class="bg-slate-50 border border-slate-200 rounded p-3">
+<b><KatexInline math="\alpha=q\,\mathsf{U}\,\beta" /></b>: <KatexInline math="q\in B,\ \beta\notin B" /> — המקרה הפתוח! מכיוון <KatexInline math="\alpha\in B" />, נדרש <b><KatexInline math="\alpha\in B'" /></b> (חובה).
+</div>
+<div class="bg-slate-50 border border-slate-200 rounded p-3">
+<b><KatexInline math="\Phi=p\,\mathsf{U}\,\alpha" /></b>: <KatexInline math="\alpha\in B" /> (כבר "נפתר" ע"י <KatexInline math="\alpha" />) — <b>אין</b> אילוץ על <KatexInline math="B'" /> מכאן.
+</div>
+</div>
+
+<div class="mt-4 text-right text-[13px] leading-relaxed">
+נותר לבדוק אילו <KatexInline math="(p,q)" /> ב-<KatexInline math="B'" /> מתיישבים עם הדרישה <KatexInline math="\alpha\in B'" /> ועם עקביות <KatexInline math="\alpha" /> עצמה (<KatexInline math="\alpha\in B'\Rightarrow q\in B'\vee\beta\in B'" />, כאשר <KatexInline math="\beta=q\wedge\neg p" />):
+</div>
+
+<div class="mt-2 overflow-x-auto">
+<table class="mx-auto text-[12.5px] text-center border-collapse" dir="rtl">
+<tr class="border-b-2 border-slate-300">
+<th class="p-2"><KatexInline math="p" /></th><th class="p-2"><KatexInline math="q" /></th><th class="p-2"><KatexInline math="\beta" /></th><th class="p-2"><KatexInline math="q\in B'\vee\beta\in B'" /></th><th class="p-2">תקין?</th>
+</tr>
+<tr><td class="p-2">T</td><td class="p-2">T</td><td class="p-2">F</td><td class="p-2 text-emerald-700">T (via <KatexInline math="q" />)</td><td class="p-2 text-emerald-700">✓</td></tr>
+<tr><td class="p-2">T</td><td class="p-2">F</td><td class="p-2">F</td><td class="p-2 text-red-700">F</td><td class="p-2 text-red-700">✗</td></tr>
+<tr><td class="p-2">F</td><td class="p-2">T</td><td class="p-2">T</td><td class="p-2 text-emerald-700">T</td><td class="p-2 text-emerald-700">✓</td></tr>
+<tr><td class="p-2">F</td><td class="p-2">F</td><td class="p-2">F</td><td class="p-2 text-red-700">F</td><td class="p-2 text-red-700">✗</td></tr>
+</table>
+</div>
+
+<div class="mt-3 text-right text-[13px] leading-relaxed">
+בשני המקרים התקינים <KatexInline math="\alpha\in B'" /> (נדרש) גורר <KatexInline math="\Phi\in B'" /> (עקביות: <KatexInline math="\alpha\in B'\Rightarrow\Phi\in B'" />, כי <KatexInline math="\alpha" /> הוא ה-<KatexInline math="\chi_2" /> של <KatexInline math="\Phi" />). מתקבלים <b>שני עוקבים בדיוק</b>:
+</div>
+
+<div class="mt-2 flex flex-col items-center gap-1 text-[14px]">
+<div><KatexInline math="B_1'=\{p,q,\neg\beta,\alpha,\Phi\}=B" /> &nbsp; (לולאה עצמית)</div>
+<div><KatexInline math="B_2'=\{\neg p,q,\beta,\alpha,\Phi\}" /></div>
+</div>
+
+<div class="mt-3 bg-emerald-50 border border-emerald-200 rounded p-3 text-right text-[12.5px] leading-snug">
+המנגנון: מכיוון ש"ההבטחה" <KatexInline math="\alpha" /> פתוחה ב-<KatexInline math="B" /> (<KatexInline math="q" /> מתקיים אך <KatexInline math="\beta" /> עדיין לא), היא <b>חייבת</b> לעבור ל-<KatexInline math="B'" /> — וזה בתורו (דרך עקביות <KatexInline math="\alpha" />) <b>כופה</b> גם <KatexInline math="q\in B'" /> (אחרת אין דרך להצדיק את <KatexInline math="\alpha" /> ב-<KatexInline math="B'" />), בעוד ש-<KatexInline math="p" /> נשאר חופשי.
+</div>
+
+---
+
 # שאלה 9 <span class="text-[16px] text-gray-500 font-normal">— מועד ג', 2025, שאלה 3</span>
 
 <div class="flex justify-center items-start mt-3">
