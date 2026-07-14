@@ -213,9 +213,39 @@ info: |
 
 <div class="text-right text-[14px] leading-relaxed mt-2">
 
-**תווית היציאה מ-<KatexInline math="B" />** נקבעת ישירות: <KatexInline math="a \in B \iff a \in \text{התווית}" /> (כאן <KatexInline math="a\in\{p,q\}" />) — כלומר <KatexInline math="B" /> "קורא" בדיוק את <KatexInline math="p,q" /> שהוא מכיל.
+**תווית היציאה מ-<KatexInline math="B" />** נקבעת ישירות: <KatexInline math="a \in B \iff a \in L(B)" /> כאשר <KatexInline math="L(B)" /> היא התווית של <KatexInline math="B" /> (וכאן <KatexInline math="a\in\{p,q\}" />) — כלומר <KatexInline math="B" /> "קורא" בדיוק את <KatexInline math="p,q" /> שהוא מכיל.
 
-**מעבר**: <KatexInline math="B \xrightarrow{\;B\cap AP\;} B'" /> מותר אם"ם <KatexInline math="\bigcirc q \in B \iff q \in B'" /> (זו ההגבלה היחידה — <KatexInline math="\bigcirc q" /> הוא איבר ה-<KatexInline math="\bigcirc" /> היחיד ב-<KatexInline math="\operatorname{cl}(\varphi)" />). כלומר מ-<KatexInline math="B" /> אפשר לעבור לכל אחת מ-9 הקבוצות (מתוך ה-18) שבהן <KatexInline math="q" /> תואם את <KatexInline math="\bigcirc q" /> של <KatexInline math="B" /> — אוטומט לא-דטרמיניסטי לגמרי.
+**מעבר**: <KatexInline math="B \xrightarrow{\;B\cap AP\;} B'" /> מותר אם"ם <KatexInline math="\bigcirc q \in B \iff q \in B'" /> (זו ההגבלה היחידה — <KatexInline math="\bigcirc q" /> הוא איבר ה-<KatexInline math="\bigcirc" /> היחיד ב-<KatexInline math="\operatorname{cl}(\varphi)" />). כלומר מ-<KatexInline math="B" /> אפשר לעבור לכל אחת מ-9 הקבוצות (מתוך ה-18) שבהן <KatexInline math="q" /> תואם את <KatexInline math="\bigcirc q" /> של <KatexInline math="B" /> — אוטומט לא-דטרמיניסטי לגמרי. לפי מספור השורות מהטבלה הקודמת (וללא תלות בביט <KatexInline math="q" /> החופשי של המקור, שרק קובע את חלק התווית הנקרא):
+
+<div class="mt-1 flex justify-center gap-6">
+<div class="text-[10px]" style="line-height:1.15">
+
+| מ-# | <KatexInline math="p" /> | <KatexInline math="\bigcirc q" /> | יעד: <KatexInline math="q'" /> נדרש |
+|:-:|:-:|:-:|:-:|
+| 1 | T | T | T |
+| 2 | T | T | T |
+| 3 | T | F | F |
+| 4 | T | F | F |
+| 5 | T | F | F |
+
+</div>
+<div class="text-[10px]" style="line-height:1.15">
+
+| מ-# | <KatexInline math="p" /> | <KatexInline math="\bigcirc q" /> | יעד: <KatexInline math="q'" /> נדרש |
+|:-:|:-:|:-:|:-:|
+| 6 | T | F | F |
+| 7 | T | F | F |
+| 8 | F | T | T |
+| 9 | F | F | F |
+
+</div>
+</div>
+
+<div class="text-right text-[11px] leading-snug mt-1">
+
+כלומר: מ-<KatexInline math="B" /> בשורה <KatexInline math="\#r" /> (עם <KatexInline math="q" /> נוכחי כלשהו) קוראים את <KatexInline math="(p_r,q)" /> ועוברים לכל אחת מ-9 השורות <KatexInline math="1,\dots,9" /> שבהן <KatexInline math="q'" /> שווה לערך <KatexInline math="\bigcirc q" /> של השורה — היעד תלוי רק בשורה של המקור, לא בביט <KatexInline math="q" /> הנוכחי שלו.
+
+</div>
 
 **תנאי קבלה מוכלל** — קבוצת קבלה אחת לכל תת-נוסחת <KatexInline math="\mathsf{U}" /> ב-<KatexInline math="\operatorname{cl}(\varphi)" />:
 
@@ -255,6 +285,65 @@ info: |
 
 <div class="flex justify-center items-start mt-3">
 <img src="./public/practice-lesson-21/q03.png" class="max-w-[92%] max-h-[560px] object-contain rounded-lg border border-slate-200 shadow-md bg-white p-2" />
+</div>
+
+<div class="text-center text-[12px] text-gray-500 mt-2">
+הבהרה לסעיף 3: <KatexInline math="\sigma[0]" /> היא קבוצה (ב-<KatexInline math="2^{\{0,\dots,9\}}" />), לא מספר — יש לקרוא את התכונה כ-<KatexInline math="\{\sigma:\forall i.\ \sigma[\,|\sigma[0]|\cdot i\,]=\sigma[1]\}" />, כאשר <KatexInline math="|\sigma[0]|" /> הוא גודל הקבוצה במיקום 0.
+</div>
+
+---
+
+# פתרון שאלה 3 <span class="text-[16px] text-gray-500 font-normal">— סעיף 1: מוכלל דטרמיניסטי ⇐ רגיל דטרמיניסטי</span>
+
+<div class="text-right text-[15px] leading-relaxed mt-3">
+
+**נכון.** יהי <KatexInline math="A=(Q,\Sigma,\delta,q_0,\{F_1,\dots,F_k\})" /> GNBA דטרמיניסטי (כלומר <KatexInline math="\delta" /> היא פונקציה). בונים אוטומט בוקי רגיל <KatexInline math="A'=(Q\times\{1,\dots,k\},\Sigma,\delta',(q_0,1),F)" /> — בדיוק הבנייה הרגילה מהקורס להמרת GNBA ל-NBA:
+
+<div class="flex flex-col items-end gap-1 mt-2">
+<div><KatexInline math="\delta'((q,j),a) = (\delta(q,a),\, \mathrm{next}(q,j))" /></div>
+<div><KatexInline math="\mathrm{next}(q,j) = \begin{cases} (j \bmod k) + 1 & q \in F_j \\ j & q \notin F_j \end{cases}" /></div>
+<div><KatexInline math="F = F_1 \times \{1\}" /></div>
+</div>
+
+הרכיב השני "זוכר" איזו קבוצת קבלה מחכים לה כרגע; כשמגיעים אליה עוברים לחכות לקבוצה הבאה. ריצה מבקרת ב-<KatexInline math="F_1\times\{1\}" /> אינסוף פעמים אם"ם היא "מסתובבת" סביב כל ה-<KatexInline math="F_1,\dots,F_k" /> אינסוף פעמים, כלומר מבקרת בכל אחת מהן אינסוף פעמים — בדיוק תנאי הקבלה המוכלל המקורי.
+
+**דטרמיניזם נשמר:** <KatexInline math="\mathrm{next}(q,j)" /> נקבע לגמרי לפי <KatexInline math="(q,j)" /> (ללא ניחוש), ו-<KatexInline math="\delta" /> דטרמיניסטית בהנחה — ולכן גם <KatexInline math="\delta'" /> היא פונקציה. קיבלנו אוטומט בוקי רגיל **דטרמיניסטי** לאותה שפה.
+
+</div>
+
+---
+
+# פתרון שאלה 3 <span class="text-[16px] text-gray-500 font-normal">— סעיף 2: סגירות דטרמיניסטית לחיתוך</span>
+
+<div class="text-right text-[15px] leading-relaxed mt-3">
+
+**נכון.** יהיו <KatexInline math="\mathcal{A}_1=(Q_1,\Sigma,\delta_1,q_1^0,F_1)" />, <KatexInline math="\mathcal{A}_2=(Q_2,\Sigma,\delta_2,q_2^0,F_2)" /> אוטומטי בוקי דטרמיניסטיים (מלאים) עם <KatexInline math="P_i=\mathcal{L}_\omega(\mathcal{A}_i)" />. בונים מכפלה:
+
+<div class="flex flex-col items-end gap-1 mt-2">
+<div><KatexInline math="\delta_\times((s_1,s_2),a) = (\delta_1(s_1,a),\, \delta_2(s_2,a))" /> &nbsp; — פונקציה, כי <KatexInline math="\delta_1,\delta_2" /> פונקציות</div>
+<div><KatexInline math="G_1 = F_1\times Q_2, \qquad G_2 = Q_1\times F_2" /></div>
+</div>
+
+ריצה יחידה <KatexInline math="\rho" /> של המכפלה על <KatexInline math="\sigma" /> מוקרנת לריצות היחידות <KatexInline math="\rho_1,\rho_2" /> של <KatexInline math="\mathcal{A}_1,\mathcal{A}_2" />. מכיוון שהאוטומטים דטרמיניסטיים ומלאים: <KatexInline math="\rho" /> מבקרת ב-<KatexInline math="G_1" /> אינסוף פעמים <KatexInline math="\iff" /> <KatexInline math="\rho_1" /> מבקרת ב-<KatexInline math="F_1" /> אינסוף פעמים <KatexInline math="\iff" /> <KatexInline math="\sigma\in P_1" />, ובאותו אופן עבור <KatexInline math="G_2,P_2" />. לכן:
+
+<div class="mt-2"><KatexInline math="\sigma \text{ מתקבל לפי } \{G_1,G_2\} \iff \sigma \in P_1\cap P_2" /></div>
+
+כלומר <KatexInline math="(Q_1\times Q_2,\Sigma,\delta_\times,(q_1^0,q_2^0),\{G_1,G_2\})" /> הוא **GNBA דטרמיניסטי** ל-<KatexInline math="P_1\cap P_2" />. לפי סעיף 1, קיים ממנו גם אוטומט בוקי **רגיל דטרמיניסטי** <KatexInline math="\mathcal{A}" /> עם <KatexInline math="P_1\cap P_2=\mathcal{L}_\omega(\mathcal{A})" />. (כלומר: אוטומטי בוקי דטרמיניסטיים סגורים לחיתוך — אך, כידוע, לא לשלילה.)
+
+</div>
+
+---
+
+# פתרון שאלה 3 <span class="text-[16px] text-gray-500 font-normal">— סעיף 3: קיים בוקי, אך לא LTL</span>
+
+<div class="text-right text-[14px] leading-snug mt-3">
+
+**נכון.** נסמן <KatexInline math="AP=\{0,\dots,9\}" />, כך ש-<KatexInline math="\sigma[0]\subseteq AP" />, ונגדיר <KatexInline math="p := |\sigma[0]|\in\{0,\dots,10\}" /> — **גודל** (עוצמת) הקבוצה במיקום 0, לא תוכנה. התכונה, בניסוח מדויק, היא <KatexInline math="\{\sigma:\forall i.\ \sigma[\,|\sigma[0]|\cdot i\,]=\sigma[1]\}" />: כל מיקום שהוא כפולה של <KatexInline math="p" /> (<KatexInline math="0,p,2p,\dots" />) נושא את אותה אות כמו <KatexInline math="\sigma[1]" />.
+
+**קיים אוטומט בוקי (אף דטרמיניסטי!):** בונים אוטומט עם שלב "קריאת <KatexInline math="\sigma[0]" />" (קביעת <KatexInline math="p=|\sigma[0]|" />), שלב "קריאת <KatexInline math="\sigma[1]" />" (שמירת האות <KatexInline math="b" />), ואז מונה <KatexInline math="c\in\{0,\dots,p-1\}" /> (מיקום מודולו <KatexInline math="p" />, סופי כי <KatexInline math="p\le 10" />): בכל <KatexInline math="c=0" /> בודקים שהאות הנוכחית <KatexInline math="=b" />; אם לא — עוברים למצב "מלכודת" לא-מקבל עם לולאה עצמית לנצח. <KatexInline math="F=" /> כל המצבים חוץ מהמלכודת. זו תכונת בטיחות: המילה מתקבלת אם"ם אף פעם לא נכנסים למלכודת אם"ם התכונה מתקיימת — ולכן זהו למעשה DBA (מספר המצבים סופי כי <KatexInline math="p\le 10" />).
+
+**אין נוסחת LTL:** קבעו <KatexInline math="p\ge 2" />. הקבוצה <KatexInline math="\{\sigma:|\sigma[0]|=p\}" /> ניתנת לביטוי ב-LTL (תנאי על שתי האותיות הראשונות בלבד). אילו התכונה כולה הייתה LTL-בת-ביטוי, אז (מסגירות LTL תחת חיתוך/<KatexInline math="\wedge" />) גם החיתוך שלה עם קבוצה זו היה LTL-בת-ביטוי — וזו בדיוק תכונת "ספירה מודולו <KatexInline math="p" />" (כל מיקום ה-<KatexInline math="p" />-י שווה לעוגן קבוע), המקבילה לדוגמה הקלאסית (כגון "<KatexInline math="q" /> מתקיים בכל מיקום זוגי") שאינה שפה star-free/aperiodic, ולכן (ממשפט קמפ, <KatexInline math="\mathrm{LTL}=\text{star-free}" />) אינה LTL-בת-ביטוי — סתירה. לכן אין נוסחת LTL לתכונה.
+
 </div>
 
 ---
