@@ -356,6 +356,120 @@ info: |
 
 ---
 
+# פתרון שאלה 4 <span class="text-[16px] text-gray-500 font-normal">— סעיף א: מודל צ'קינג ישיר מול אוטומט דטרמיניסטי</span>
+
+<div class="text-right text-[14px] leading-relaxed mt-2">
+
+**נכון** (עבור <KatexInline math="|Q_0|=1" />, ו-<KatexInline math="TS" /> ללא מצבים סופניים, כרגיל). נסמן <KatexInline math="Q_0=\{q_0\}" />. מכיוון ש-<KatexInline math="\delta" /> **פונקציה מלאה**, לכל מילה <KatexInline math="\sigma=A_0A_1\cdots" /> יש **ריצה יחידה** <KatexInline math="q_0,q_1,\dots" /> (<KatexInline math="q_{i+1}=\delta(q_i,A_i)" />), ו-<KatexInline math="\sigma\in\mathcal{L}_\omega(\mathcal{A}) \iff" /> הריצה מבקרת ב-<KatexInline math="F" /> אינסוף פעמים <KatexInline math="\iff" /> (כי <KatexInline math="F" /> סופית, שובך יונים) קיים <KatexInline math="q\in F" /> שמבוקר אינסוף פעמים.
+
+באותה סיבה (דטרמיניזם + שלמות + מצב התחלה יחיד), לכל נתיב <KatexInline math="\pi" /> ב-<KatexInline math="TS" /> מ-<KatexInline math="Init(TS)" /> יש **נתיב מכפלה יחיד** תואם ב-<KatexInline math="TS\times\mathcal{A}" /> מ-<KatexInline math="Init(TS)\times\{q_0\}" />, וההתאמה היא חד-חד-ערכית ועל בין נתיבי <KatexInline math="TS" /> לנתיבי <KatexInline math="TS\times\mathcal{A}" />. לכן:
+
+<div class="mt-2 text-center">
+<KatexInline math="TS\models\mathcal{L}_\omega(\mathcal{A})" /> &nbsp;<KatexInline math="\iff" />&nbsp; כל עקבה של <KatexInline math="TS" /> מתקבלת ע"י <KatexInline math="\mathcal{A}" /> &nbsp;<KatexInline math="\iff" />&nbsp; כל נתיב-מכפלה מבקר ב-<KatexInline math="F" /> אינסוף פעמים &nbsp;<KatexInline math="\iff" />&nbsp; <KatexInline math="TS\times\mathcal{A}\models\bigvee_{q\in F}\square\Diamond q" />
+</div>
+
+</div>
+
+---
+
+# פתרון שאלה 4 <span class="text-[16px] text-gray-500 font-normal">— סעיף א (המשך): מה קורה אם <KatexInline math="|Q_0|=2" />?</span>
+
+<div class="text-right text-[15px] leading-relaxed mt-3">
+
+**כן, משנה את התשובה — הטענה נהיית שגויה.** ההוכחה למעלה נשענת קריטית על ריצה **יחידה** לכל מילה; עם שני מצבי התחלה זה קורס, כי <KatexInline math="TS\models\mathcal{L}_\omega(\mathcal{A})" /> דורש **קיום** ריצה מקבלת (מאחד משני המצבים ההתחלתיים), בעוד ש-<KatexInline math="TS\times\mathcal{A}" /> (עם <KatexInline math="Init=Init(TS)\times Q_0" />) דורש שהתנאי יתקיים **לכל** נתיב, כולל אלו שמתחילים במצב ה"לא נכון".
+
+**דוגמה נגדית:** <KatexInline math="AP=\emptyset" /> (אות יחידה <KatexInline math="\emptyset" />), <KatexInline math="Q=\{q_0,q_1\}" />, <KatexInline math="Q_0=\{q_0,q_1\}" />, <KatexInline math="F=\{q_1\}" />, <KatexInline math="\delta(q_0,\emptyset)=q_0" />, <KatexInline math="\delta(q_1,\emptyset)=q_1" /> (שני מצבים בלולאה עצמית). המילה היחידה <KatexInline math="\emptyset^\omega" /> מתקבלת (דרך הריצה המתחילה ב-<KatexInline math="q_1" />), ולכן <KatexInline math="\mathcal{L}_\omega(\mathcal{A})=\{\emptyset^\omega\}" /> = כל השפה. עבור <KatexInline math="TS" /> עם מצב יחיד <KatexInline math="s_0" /> (עם לולאה עצמית): <KatexInline math="TS\models\mathcal{L}_\omega(\mathcal{A})" /> **מתקיים** (טריוויאלית). אבל ב-<KatexInline math="TS\times\mathcal{A}" /> יש נתיב שמתחיל ב-<KatexInline math="(s_0,q_0)" /> ולעולם לא מבקר ב-<KatexInline math="q_1\in F" /> — ולכן <KatexInline math="TS\times\mathcal{A}\not\models\square\Diamond q_1" />. **סתירה לשקילות.**
+
+</div>
+
+---
+
+# פתרון שאלה 4 <span class="text-[16px] text-gray-500 font-normal">— סעיף א: תרשים הדוגמה הנגדית</span>
+
+<div class="mt-4 flex justify-center items-start gap-10">
+
+<div class="flex flex-col items-center">
+<div class="text-[13px] font-bold mb-1"><KatexInline math="TS" /></div>
+<TransitionSystem
+  :width="160" :height="130"
+  :states="[
+    { id: 's0', name: 's0', x: 80, y: 65, initial: true, initialDirection: 'top' }
+  ]"
+  :transitions="[
+    { source: 's0', target: 's0', loopDirection: '-90deg', loopSweep: '90deg' }
+  ]"
+/>
+</div>
+
+<div class="flex flex-col items-center">
+<div class="text-[13px] font-bold mb-1"><KatexInline math="\mathcal{A}" /> &nbsp; (<KatexInline math="|Q_0|=2" />)</div>
+<AutomatonD3 variant="classic" :width="260" :height="130" :arrowSize="4" :stateLabelFontSize="14" :transitionLabelFontSize="12"
+  :states="[
+    { id: 'q0', x: 70, y: 65, label: '$q_0$', initial: true, initialDirection: 'left', accepting: false, r: 18, labelWidth: 30 },
+    { id: 'q1', x: 200, y: 65, label: '$q_1$', initial: true, initialDirection: 'right', accepting: true, r: 18, labelWidth: 30 }
+  ]"
+  :transitions="[
+    { source: 'q0', target: 'q0', label: '', loopDirection: '-90deg', labelWidth: 10, labelY: -8 },
+    { source: 'q1', target: 'q1', label: '', loopDirection: '-90deg', labelWidth: 10, labelY: -8 }
+  ]"
+/>
+</div>
+
+<div class="flex flex-col items-center">
+<div class="text-[13px] font-bold mb-1"><KatexInline math="TS\times\mathcal{A}" /></div>
+<TransitionSystem
+  :width="260" :height="130"
+  :states="[
+    { id: 'p0', name: '(s0,q0)', x: 90, y: 65, initial: true, initialDirection: 'top' },
+    { id: 'p1', name: '(s0,q1)', label: 'F', x: 230, y: 65, initial: true, initialDirection: 'top' }
+  ]"
+  :transitions="[
+    { source: 'p0', target: 'p0', loopDirection: '-90deg', loopSweep: '90deg' },
+    { source: 'p1', target: 'p1', loopDirection: '-90deg', loopSweep: '90deg' }
+  ]"
+/>
+</div>
+
+</div>
+
+<div class="text-right text-[13px] leading-snug mt-6">
+
+<KatexInline math="q_1" /> (מקבל, מסומן בכפול) הוא היחיד ב-<KatexInline math="F" />. ב-<KatexInline math="\mathcal{A}" /> עצמו יש **קיום** ריצה מקבלת עבור <KatexInline math="\emptyset^\omega" /> (זו שמתחילה ב-<KatexInline math="q_1" />) — ולכן <KatexInline math="\mathcal{L}_\omega(\mathcal{A})" /> היא כל השפה ו-<KatexInline math="TS\models\mathcal{L}_\omega(\mathcal{A})" /> מתקיים. אבל ב-<KatexInline math="TS\times\mathcal{A}" /> **שני** מצבי ההתחלה ממשיכים כל אחד בנתיב נפרד: הנתיב מ-<KatexInline math="(s_0,q_0)" /> (משמאל, לא מקבל) **לעולם לא** מבקר במצב מקבל — לכן <KatexInline math="TS\times\mathcal{A}\not\models\bigvee_{q\in F}\square\Diamond q" />, למרות ש-<KatexInline math="TS\models\mathcal{L}_\omega(\mathcal{A})" />. אי-ההתאמה בין "קיום ריצה מקבלת" (בהגדרת <KatexInline math="\mathcal{L}_\omega" />) ל"כל הנתיבים במכפלה" (בהגדרת ההתמדה של המכפלה) היא בדיוק מה שדורש מצב התחלה יחיד.
+
+</div>
+
+---
+
+# פתרון שאלה 4 <span class="text-[16px] text-gray-500 font-normal">— סעיף ב: האם כל שמורה היא התמדה?</span>
+
+<div class="text-right text-[15px] leading-relaxed mt-3">
+
+**שגוי.** נכון ש-<KatexInline math="P_{\mathrm{inv}}(\Phi)\subseteq P_{\mathrm{per}}(\Phi)" /> באופן טריוויאלי (אם <KatexInline math="\Phi" /> מתקיים תמיד, בפרט הוא מתקיים החל ממקום 0) — אבל השאלה היא האם **שפת** השמורה עצמה **שווה** לאיזושהי שפת התמדה (עם נוסחת מצב <KatexInline math="\Psi" /> כלשהי, לאו דווקא <KatexInline math="\Phi" />), וזה כבר לא נכון עבור שמורה לא-טריוויאלית.
+
+**דוגמה נגדית:** יהי <KatexInline math="p\in AP" />, <KatexInline math="\Phi=p" /> (לא טאוטולוגיה ולא סתירה). <KatexInline math="P_{\mathrm{inv}}(p)=X^\omega" /> כאשר <KatexInline math="X=\{A\subseteq AP: p\in A\}\neq\emptyset,\Sigma" />. נניח בשלילה שקיימת <KatexInline math="\Psi" /> עם <KatexInline math="P_{\mathrm{per}}(\Psi)=X^\omega" />, ונסמן <KatexInline math="Y=\{A:A\models\Psi\}" />, כך ש-<KatexInline math="\Sigma^*Y^\omega = X^\omega" />. אם <KatexInline math="Y\neq\emptyset" />, בחרו <KatexInline math="A_0\notin X" /> (קיים כי <KatexInline math="X\neq\Sigma" />) ו-<KatexInline math="B\in Y" />: המילה <KatexInline math="A_0B^\omega \in \Sigma^*Y^\omega=X^\omega" />, אך אות ראשונה <KatexInline math="A_0\notin X" /> סותרת <KatexInline math="A_0B^\omega\in X^\omega" /> (השמורה דורשת <KatexInline math="X" /> **בכל** מיקום, כולל הראשון). אם <KatexInline math="Y=\emptyset" /> אז <KatexInline math="P_{\mathrm{per}}(\Psi)=\emptyset\neq X^\omega" /> (כי <KatexInline math="X\neq\emptyset" />). בשני המקרים סתירה. **לכן אין <KatexInline math="\Psi" /> כזו — השמורה <KatexInline math="P_{\mathrm{inv}}(p)" /> אינה תכונת התמדה.**
+
+<div class="mt-1 text-[12.5px] text-gray-600">(זהו בדיוק המשפט מההרצאה: שוויון בין שמורה להתמדה מתקיים רק במקרים הטריוויאליים <KatexInline math="\Phi\equiv\mathit{true}" /> או <KatexInline math="\Phi\equiv\mathit{false}" />.)</div>
+
+</div>
+
+---
+
+# פתרון שאלה 4 <span class="text-[16px] text-gray-500 font-normal">— סעיף ג: עקביות בבניית ה-GNBA</span>
+
+<div class="text-right text-[15px] leading-relaxed mt-3">
+
+**לא ייתכן — הצירוף בהכרח לא עקבי**, בלי שום תלות בתנאים על <KatexInline math="\varphi\in B" /> או <KatexInline math="\varphi\,\mathsf{U}\,\neg\varphi\notin B" />: הסתירה נובעת רק מ-<KatexInline math="\bigcirc\varphi\notin B" />, <KatexInline math="B'\in\delta(B,B\cap AP)" /> ו-<KatexInline math="\varphi\,\mathsf{U}\,\neg\varphi\notin B'" />.
+
+**הוכחה:** לפי כלל המעבר על תת-נוסחאות <KatexInline math="\bigcirc" /> (המשמש בבניה, ראו שאלה 2): <KatexInline math="B\xrightarrow{B\cap AP}B'" /> חוקי רק אם <KatexInline math="\bigcirc\varphi\in B \iff \varphi\in B'" />. בהינתן <KatexInline math="\bigcirc\varphi\notin B" />, נובע <KatexInline math="\varphi\notin B'" />. מעקביות (שלמות) <KatexInline math="B'" /> — לכל תת-נוסחה בדיוק אחת מבין <KatexInline math="\varphi,\neg\varphi" /> שייכת ל-<KatexInline math="B'" /> — מקבלים <KatexInline math="\neg\varphi\in B'" />.
+
+כעת מפעילים את כלל העקביות ל-Until <KatexInline math="\chi=\varphi\,\mathsf{U}\,\neg\varphi" /> (עם <KatexInline math="\chi_1=\varphi,\ \chi_2=\neg\varphi" />) על <KatexInline math="B'" />: <KatexInline math="\chi_2\in B' \Rightarrow \chi\in B'" />, כלומר <KatexInline math="\neg\varphi\in B' \Rightarrow \varphi\,\mathsf{U}\,\neg\varphi\in B'" />. קיבלנו <KatexInline math="\varphi\,\mathsf{U}\,\neg\varphi\in B'" /> — **בסתירה** לדרישה <KatexInline math="\varphi\,\mathsf{U}\,\neg\varphi\notin B'" />.
+
+לכן צירוף המצבים המבוקש אינו יכול להתקיים באף הרצה של הבניה. <KatexInline math="\blacksquare" />
+
+</div>
+
+---
+
 # שאלה 5 <span class="text-[16px] text-gray-500 font-normal">— מועד א' מילואים, 2024, שאלה 2</span>
 
 <div class="flex justify-center items-start mt-3">

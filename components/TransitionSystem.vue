@@ -15,7 +15,18 @@ interface State {
   label?: string; // Atomic Propositions (below right)
   name?: string;  // Inside the rectangle
   initial?: boolean;
+  initialDirection?: 'left' | 'top' | 'right' | 'bottom'; // where the initial arrow comes from
 }
+
+const initialOffset = (dir?: string): { dx: number; dy: number } => {
+  switch (dir) {
+    case 'top': return { dx: 0, dy: -50 };
+    case 'bottom': return { dx: 0, dy: 50 };
+    case 'right': return { dx: 50, dy: 0 };
+    case 'left':
+    default: return { dx: -50, dy: 0 };
+  }
+};
 
 interface Transition {
   source: string;
@@ -85,10 +96,11 @@ const render = () => {
 
     // Initial Arrow Source
     if (s.initial) {
+       const { dx, dy } = initialOffset(s.initialDirection);
        elements.push({
           group: 'nodes',
           data: { id: 'init_' + s.id },
-          position: hasPosition ? { x: s.x! - 50, y: s.y! } : undefined,
+          position: hasPosition ? { x: s.x! + dx, y: s.y! + dy } : undefined,
           classes: 'init-source'
        });
        elements.push({
@@ -268,9 +280,11 @@ const render = () => {
               // Move Initial Arrow Source
               const initNode = cy?.getElementById('init_' + node.id());
               if (initNode && initNode.nonempty()) {
+                  const state = props.states.find(s => s.id === node.id());
+                  const { dx, dy } = initialOffset(state?.initialDirection);
                   initNode.position({
-                      x: pos.x - 50, // Reduced offset
-                      y: pos.y
+                      x: pos.x + dx,
+                      y: pos.y + dy
                   });
               }
           });
