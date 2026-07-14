@@ -660,49 +660,49 @@ info: |
 
 # פתרון שאלה 8 <span class="text-[16px] text-gray-500 font-normal">— סעיף ב: חישוב העוקבים</span>
 
-<div class="text-right text-[12.5px] leading-snug mt-1">
+<div class="text-right text-[11.5px] leading-tight mt-0.5">
 נסמן <KatexInline math="\beta=q\wedge\neg p" />, <KatexInline math="\alpha=q\,\mathsf{U}\,\beta" />, <KatexInline math="\Phi=p\,\mathsf{U}\,\alpha" /> (הנוסחה המתורגמת). המצב הנתון: <KatexInline math="B=\{p,q,\neg\beta,\alpha,\Phi\}" />. תווית היציאה מ-<KatexInline math="B" />: <KatexInline math="B\cap AP=\{p,q\}" />.
 </div>
 
-<div class="mt-2 bg-blue-50 border border-blue-200 rounded p-2 text-right text-[12px] leading-snug">
+<div class="mt-1 bg-blue-50 border border-blue-200 rounded p-1.5 text-right text-[11px] leading-tight">
 כלל המעבר לתת-נוסחת <KatexInline math="\mathsf{U}" /> (מ-<KatexInline math="\chi=\chi_1\mathsf{U}\chi_2" />, לפי <KatexInline math="\chi\equiv\chi_2\vee(\chi_1\wedge\bigcirc\chi)" />): אם <KatexInline math="\chi_1\in B" /> וגם <KatexInline math="\chi_2\notin B" /> (המקרה ה"פתוח"/החופשי), אז <b><KatexInline math="\chi\in B \iff \chi\in B'" /></b> (חובה לשמר את אותו ערך). אחרת (אם <KatexInline math="\chi_2\in B" />, כבר "נפתר") — אין אילוץ על <KatexInline math="B'" /> מכלל זה.
 </div>
 
-<div class="mt-2 grid grid-cols-2 gap-3 text-right text-[12px] leading-snug">
-<div class="bg-slate-50 border border-slate-200 rounded p-2">
+<div class="mt-1 grid grid-cols-2 gap-2 text-right text-[11px] leading-tight">
+<div class="bg-slate-50 border border-slate-200 rounded p-1.5">
 <b><KatexInline math="\alpha=q\,\mathsf{U}\,\beta" /></b>: <KatexInline math="q\in B,\ \beta\notin B" /> — המקרה הפתוח! מכיוון <KatexInline math="\alpha\in B" />, נדרש <b><KatexInline math="\alpha\in B'" /></b> (חובה).
 </div>
-<div class="bg-slate-50 border border-slate-200 rounded p-2">
+<div class="bg-slate-50 border border-slate-200 rounded p-1.5">
 <b><KatexInline math="\Phi=p\,\mathsf{U}\,\alpha" /></b>: <KatexInline math="\alpha\in B" /> (כבר "נפתר" ע"י <KatexInline math="\alpha" />) — <b>אין</b> אילוץ על <KatexInline math="B'" /> מכאן.
 </div>
 </div>
 
-<div class="mt-2 text-right text-[12px] leading-snug">
+<div class="mt-1 text-right text-[11px] leading-tight">
 נותר לבדוק אילו <KatexInline math="(p,q)" /> ב-<KatexInline math="B'" /> מתיישבים עם הדרישה <KatexInline math="\alpha\in B'" /> ועם עקביות <KatexInline math="\alpha" /> עצמה (<KatexInline math="\alpha\in B'\Rightarrow q\in B'\vee\beta\in B'" />, כאשר <KatexInline math="\beta=q\wedge\neg p" />):
 </div>
 
-<div class="mt-1 overflow-x-auto">
-<table class="mx-auto text-[12px] text-center border-collapse" dir="rtl">
+<div class="mt-0.5 overflow-x-auto">
+<table class="mx-auto text-[11px] text-center border-collapse" dir="rtl">
 <tr class="border-b-2 border-slate-300">
-<th class="p-1"><KatexInline math="p" /></th><th class="p-1"><KatexInline math="q" /></th><th class="p-1"><KatexInline math="\beta" /></th><th class="p-1"><KatexInline math="q\in B'\vee\beta\in B'" /></th><th class="p-1">תקין?</th>
+<th class="p-0.5"><KatexInline math="p" /></th><th class="p-0.5"><KatexInline math="q" /></th><th class="p-0.5"><KatexInline math="\beta" /></th><th class="p-0.5"><KatexInline math="q\in B'\vee\beta\in B'" /></th><th class="p-0.5">תקין?</th>
 </tr>
-<tr><td class="p-1">T</td><td class="p-1">T</td><td class="p-1">F</td><td class="p-1 text-emerald-700">T (via <KatexInline math="q" />)</td><td class="p-1 text-emerald-700">✓</td></tr>
-<tr><td class="p-1">T</td><td class="p-1">F</td><td class="p-1">F</td><td class="p-1 text-red-700">F</td><td class="p-1 text-red-700">✗</td></tr>
-<tr><td class="p-1">F</td><td class="p-1">T</td><td class="p-1">T</td><td class="p-1 text-emerald-700">T</td><td class="p-1 text-emerald-700">✓</td></tr>
-<tr><td class="p-1">F</td><td class="p-1">F</td><td class="p-1">F</td><td class="p-1 text-red-700">F</td><td class="p-1 text-red-700">✗</td></tr>
+<tr><td class="p-0.5">T</td><td class="p-0.5">T</td><td class="p-0.5">F</td><td class="p-0.5 text-emerald-700">T (via <KatexInline math="q" />)</td><td class="p-0.5 text-emerald-700">✓</td></tr>
+<tr><td class="p-0.5">T</td><td class="p-0.5">F</td><td class="p-0.5">F</td><td class="p-0.5 text-red-700">F</td><td class="p-0.5 text-red-700">✗</td></tr>
+<tr><td class="p-0.5">F</td><td class="p-0.5">T</td><td class="p-0.5">T</td><td class="p-0.5 text-emerald-700">T</td><td class="p-0.5 text-emerald-700">✓</td></tr>
+<tr><td class="p-0.5">F</td><td class="p-0.5">F</td><td class="p-0.5">F</td><td class="p-0.5 text-red-700">F</td><td class="p-0.5 text-red-700">✗</td></tr>
 </table>
 </div>
 
-<div class="mt-2 text-right text-[12px] leading-snug">
+<div class="mt-1 text-right text-[11px] leading-tight">
 בשני המקרים התקינים <KatexInline math="\alpha\in B'" /> (נדרש) גורר <KatexInline math="\Phi\in B'" /> (עקביות: <KatexInline math="\alpha\in B'\Rightarrow\Phi\in B'" />, כי <KatexInline math="\alpha" /> הוא ה-<KatexInline math="\chi_2" /> של <KatexInline math="\Phi" />). מתקבלים <b>שני עוקבים בדיוק</b>:
 </div>
 
-<div class="mt-1 flex flex-col items-center gap-0.5 text-[13px]">
+<div class="mt-0.5 flex flex-col items-center gap-0.5 text-[12px]">
 <div><KatexInline math="B_1'=\{p,q,\neg\beta,\alpha,\Phi\}=B" /> &nbsp; (לולאה עצמית)</div>
 <div><KatexInline math="B_2'=\{\neg p,q,\beta,\alpha,\Phi\}" /></div>
 </div>
 
-<div class="mt-2 bg-emerald-50 border border-emerald-200 rounded p-2 text-right text-[12px] leading-snug">
+<div class="mt-1 bg-emerald-50 border border-emerald-200 rounded p-1.5 text-right text-[11px] leading-tight">
 המנגנון: מכיוון ש"ההבטחה" <KatexInline math="\alpha" /> פתוחה ב-<KatexInline math="B" /> (<KatexInline math="q" /> מתקיים אך <KatexInline math="\beta" /> עדיין לא), היא <b>חייבת</b> לעבור ל-<KatexInline math="B'" /> — וזה בתורו (דרך עקביות <KatexInline math="\alpha" />) <b>כופה</b> גם <KatexInline math="q\in B'" /> (אחרת אין דרך להצדיק את <KatexInline math="\alpha" /> ב-<KatexInline math="B'" />), בעוד ש-<KatexInline math="p" /> נשאר חופשי.
 </div>
 
