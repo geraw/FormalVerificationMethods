@@ -36,5 +36,6 @@ dir: rtl
     <li><b>18 - לוגיקת זמנים ליניארית:</b> תחביר וסמנטיקה של LTL, מודליות זמן, שקילויות, Weak Until, Release וצורה חיובית נורמלית. <a href="./18-linear-temporal-logic/#/1" target="_blank">[מצגת]</a> <a href="./18-linear-temporal-logic/18-linear-temporal-logic.pdf" target="_blank" download>[PDF]</a></li>
     <li><b>19 - תרגום LTL לאוטומטי Büchi מוכללים:</b> בניית GNBA מנוסחת LTL, קבוצות עקביות, מעברים לפי כללי פריסה ותנאי קבלה להבטחות Until. <a href="./19-ltl-to-generalized-buchi-automata/#/1" target="_blank">[מצגת]</a> <a href="./19-ltl-to-generalized-buchi-automata/19-ltl-to-generalized-buchi-automata.pdf" target="_blank" download>[PDF]</a></li>
     <li><b>20 - שאלות תרגול:</b> הרחבת מערכת לטיפול בהוֹגְנוּת, תרגום LTL לאוטומט Büchi עם Always במקום Until, ואלגוריתם חלופי לבדיקת TS⊨P. <a href="./20-practice-problems/#/1" target="_blank">[מצגת]</a> <a href="./20-practice-problems/20-practice-problems.pdf" target="_blank" download>[PDF]</a></li>
+    <li><b>21 - שאלות ממבחנים קודמים:</b> שלוש עשרה שאלות שנלקחו ממבחני הקורס בשנים 2022–2025. <a href="./21-practice-lesson/#/1" target="_blank">[מצגת]</a> <a href="./21-practice-lesson/21-practice-lesson.pdf" target="_blank" download>[PDF]</a></li>
   </ul>
 </div>
