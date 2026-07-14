@@ -622,22 +622,22 @@ info: |
 
 # שאלה 11 <span class="text-[16px] text-gray-500 font-normal">— מבחן ג', 2022, שאלה 1</span>
 
-<div class="flex justify-center items-start mt-3">
-<img src="./public/practice-lesson-21/q11.png" class="max-w-[92%] max-h-[560px] object-contain rounded-lg border border-slate-200 shadow-md bg-white p-2" />
+<div class="flex justify-center items-start mt-1">
+<img src="./public/practice-lesson-21/q11.png" class="max-w-[85%] max-h-[480px] object-contain rounded-lg border border-slate-200 shadow-md bg-white p-2" />
 </div>
 
 ---
 
 # שאלה 12 <span class="text-[16px] text-gray-500 font-normal">— מבחן ג', 2022, שאלה 3</span>
 
-<div class="flex justify-center items-start mt-3">
-<img src="./public/practice-lesson-21/q12.png" class="max-w-[92%] max-h-[560px] object-contain rounded-lg border border-slate-200 shadow-md bg-white p-2" />
+<div class="flex justify-center items-start mt-1">
+<img src="./public/practice-lesson-21/q12.png" class="max-w-[85%] max-h-[480px] object-contain rounded-lg border border-slate-200 shadow-md bg-white p-2" />
 </div>
 
 ---
 
 # שאלה 13 <span class="text-[16px] text-gray-500 font-normal">— מבחן מועד ב', 2022, שאלה 4</span>
 
-<div class="flex justify-center items-start mt-3">
-<img src="./public/practice-lesson-21/q13.png" class="max-w-[92%] max-h-[560px] object-contain rounded-lg border border-slate-200 shadow-md bg-white p-2" />
+<div class="flex justify-center items-start mt-1">
+<img src="./public/practice-lesson-21/q13.png" class="max-w-[85%] max-h-[480px] object-contain rounded-lg border border-slate-200 shadow-md bg-white p-2" />
 </div>
